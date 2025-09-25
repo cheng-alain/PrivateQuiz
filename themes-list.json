@@ -35,6 +35,24 @@
       "difficulty": "Advanced",
       "questions_count": 100,
       "file": "airfund.json"
+    },
+    {
+      "id": "docker",
+      "title": "Docker",
+      "description": "Questions de conteneurisation avec Docker",
+      "icon": "DEVOPS",
+      "difficulty": "Intermediate",
+      "questions_count": 50,
+      "file": "docker.json"
+    },
+    {
+      "id": "gcp",
+      "title": "Google Cloud Platform",
+      "description": "Questions sur les services Google Cloud Platform",
+      "icon": "CLOUD",
+      "difficulty": "Intermediate",
+      "questions_count": 50,
+      "file": "gcp.json"
     }
   ]
 }
