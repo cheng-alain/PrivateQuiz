@@ -1,0 +1,605 @@
+{
+  "title": "Cyberwatch - Préparation entretien",
+  "questions": [
+  {
+    "id": 1,
+    "question": "Quel est le rôle principal de Kubernetes ?",
+    "options": [
+      "Automatiser le déploiement, la mise à l'échelle et la gestion des applications conteneurisées",
+      "Créer des machines virtuelles",
+      "Remplacer le noyau Linux",
+      "Exécuter des scripts Bash"
+    ],
+    "correct": 0,
+    "explanation": "Kubernetes est un orchestrateur de conteneurs qui permet d'automatiser le déploiement, la mise à l'échelle et la gestion des applications conteneurisées."
+  },
+  {
+    "id": 2,
+    "question": "Quelle commande Docker permet de construire une image à partir d'un Dockerfile ?",
+    "options": [
+      "docker create",
+      "docker build",
+      "docker run",
+      "docker compose"
+    ],
+    "correct": 1,
+    "explanation": "La commande 'docker build' permet de construire une image Docker à partir d'un Dockerfile et d'un contexte de build."
+  },
+  {
+    "id": 3,
+    "question": "Dans GitLab CI/CD, quel fichier définit les pipelines ?",
+    "options": [
+      ".gitlab-ci.yml",
+      "pipeline.yaml",
+      "ci-config.json",
+      "gitlab-pipeline.txt"
+    ],
+    "correct": 0,
+    "explanation": "Le fichier '.gitlab-ci.yml' à la racine du projet définit la configuration des pipelines GitLab CI/CD."
+  },
+  {
+    "id": 4,
+    "question": "Qu'est-ce qu'OpenStack ?",
+    "options": [
+      "Un système d'exploitation",
+      "Une plateforme de cloud computing open source",
+      "Un outil de monitoring",
+      "Un gestionnaire de conteneurs"
+    ],
+    "correct": 1,
+    "explanation": "OpenStack est une plateforme de cloud computing open source qui permet de créer et gérer des infrastructures cloud privées et publiques."
+  },
+  {
+    "id": 5,
+    "question": "Quelle commande Linux permet de voir les processus en cours d'exécution ?",
+    "options": [
+      "ls -la",
+      "ps aux",
+      "cat /proc",
+      "systemctl status"
+    ],
+    "correct": 1,
+    "explanation": "La commande 'ps aux' affiche tous les processus en cours d'exécution avec des informations détaillées sur chaque processus."
+  },
+  {
+    "id": 6,
+    "question": "Dans un pipeline CI/CD, que signifie l'acronyme 'CD' ?",
+    "options": [
+      "Code Development",
+      "Continuous Deployment",
+      "Container Distribution",
+      "Configuration Database"
+    ],
+    "correct": 1,
+    "explanation": "CD signifie 'Continuous Deployment' (déploiement continu) ou 'Continuous Delivery' (livraison continue)."
+  },
+  {
+    "id": 7,
+    "question": "Quel port utilise par défaut le protocole HTTPS ?",
+    "options": [
+      "80",
+      "8080",
+      "443",
+      "22"
+    ],
+    "correct": 2,
+    "explanation": "Le protocole HTTPS utilise par défaut le port 443, tandis que HTTP utilise le port 80."
+  },
+  {
+    "id": 8,
+    "question": "Qu'est-ce qu'un Helm Chart ?",
+    "options": [
+      "Un graphique de monitoring",
+      "Un package d'applications Kubernetes",
+      "Un type de conteneur Docker",
+      "Un script d'automatisation"
+    ],
+    "correct": 1,
+    "explanation": "Un Helm Chart est un package qui contient les fichiers de configuration nécessaires pour déployer une application sur Kubernetes."
+  },
+  {
+    "id": 9,
+    "question": "Quelle commande permet de redémarrer un service avec systemd ?",
+    "options": [
+      "service restart nom_service",
+      "systemctl restart nom_service",
+      "init.d restart nom_service",
+      "reload nom_service"
+    ],
+    "correct": 1,
+    "explanation": "La commande 'systemctl restart nom_service' permet de redémarrer un service géré par systemd."
+  },
+  {
+    "id": 10,
+    "question": "Que signifie IaC dans le contexte DevOps ?",
+    "options": [
+      "Internet as Code",
+      "Infrastructure as Code",
+      "Integration as Code",
+      "Installation as Code"
+    ],
+    "correct": 1,
+    "explanation": "IaC signifie 'Infrastructure as Code', une approche qui consiste à gérer l'infrastructure IT via du code plutôt que manuellement."
+  },
+  {
+    "id": 11,
+    "question": "Quel outil est principalement utilisé pour l'automatisation de configuration ?",
+    "options": [
+      "Docker",
+      "Ansible",
+      "Kubernetes",
+      "Prometheus"
+    ],
+    "correct": 1,
+    "explanation": "Ansible est un outil d'automatisation qui permet de configurer des systèmes, déployer des logiciels et orchestrer des tâches complexes."
+  },
+  {
+    "id": 12,
+    "question": "Dans Docker, à quoi sert un volume ?",
+    "options": [
+      "À augmenter la RAM du conteneur",
+      "À persister les données en dehors du conteneur",
+      "À accélérer le réseau",
+      "À compiler le code source"
+    ],
+    "correct": 1,
+    "explanation": "Un volume Docker permet de persister les données en dehors du cycle de vie du conteneur, évitant leur perte lors du redémarrage."
+  },
+  {
+    "id": 13,
+    "question": "Que surveille principalement Prometheus ?",
+    "options": [
+      "Les logs applicatifs",
+      "Les métriques système et applicatives",
+      "Les vulnérabilités de sécurité",
+      "Les accès utilisateurs"
+    ],
+    "correct": 1,
+    "explanation": "Prometheus est un système de monitoring qui collecte et stocke des métriques système et applicatives sous forme de séries temporelles."
+  },
+  {
+    "id": 14,
+    "question": "Quelle commande Git permet de fusionner une branche ?",
+    "options": [
+      "git merge",
+      "git pull",
+      "git push",
+      "git branch"
+    ],
+    "correct": 0,
+    "explanation": "La commande 'git merge' permet de fusionner les modifications d'une branche dans la branche courante."
+  },
+  {
+    "id": 15,
+    "question": "Dans Kubernetes, qu'est-ce qu'un Pod ?",
+    "options": [
+      "Un cluster de machines",
+      "La plus petite unité déployable contenant un ou plusieurs conteneurs",
+      "Un type de réseau",
+      "Un fichier de configuration"
+    ],
+    "correct": 1,
+    "explanation": "Un Pod est la plus petite unité déployable dans Kubernetes, pouvant contenir un ou plusieurs conteneurs qui partagent le réseau et le stockage."
+  },
+  {
+    "id": 16,
+    "question": "Quel protocole utilise SSH par défaut ?",
+    "options": [
+      "UDP sur le port 21",
+      "TCP sur le port 22",
+      "TCP sur le port 80",
+      "UDP sur le port 53"
+    ],
+    "correct": 1,
+    "explanation": "SSH (Secure Shell) utilise le protocole TCP sur le port 22 par défaut pour les connexions sécurisées."
+  },
+  {
+    "id": 17,
+    "question": "Qu'est-ce que Terraform ?",
+    "options": [
+      "Un outil de monitoring",
+      "Un orchestrateur de conteneurs",
+      "Un outil d'Infrastructure as Code",
+      "Un système de gestion de versions"
+    ],
+    "correct": 2,
+    "explanation": "Terraform est un outil d'Infrastructure as Code qui permet de définir, provisionner et gérer l'infrastructure cloud via des fichiers de configuration."
+  },
+  {
+    "id": 18,
+    "question": "Dans le contexte de la sécurité, que signifie OWASP ?",
+    "options": [
+      "Open Web Application Security Project",
+      "Organized Web Authentication Security Protocol",
+      "Online Web Access Security Platform",
+      "Official Web Application Standard Procedures"
+    ],
+    "correct": 0,
+    "explanation": "OWASP (Open Web Application Security Project) est une organisation qui fournit des ressources et guides pour améliorer la sécurité des applications web."
+  },
+  {
+    "id": 19,
+    "question": "Quelle commande permet de voir l'utilisation de l'espace disque sous Linux ?",
+    "options": [
+      "df -h",
+      "ps aux",
+      "top",
+      "netstat -an"
+    ],
+    "correct": 0,
+    "explanation": "La commande 'df -h' affiche l'utilisation de l'espace disque de manière lisible (human-readable) pour tous les systèmes de fichiers montés."
+  },
+  {
+    "id": 20,
+    "question": "Dans GitLab CI/CD, qu'est-ce qu'un Runner ?",
+    "options": [
+      "Un développeur qui fait du jogging",
+      "Un agent qui exécute les jobs du pipeline",
+      "Un type de branche Git",
+      "Un fichier de configuration"
+    ],
+    "correct": 1,
+    "explanation": "Un GitLab Runner est un agent qui exécute les jobs définis dans les pipelines CI/CD. Il peut être installé sur différentes machines pour paralléliser les tâches."
+  },
+  {
+    "id": 21,
+    "question": "Quelle est la différence principale entre un conteneur et une machine virtuelle ?",
+    "options": [
+      "Les conteneurs partagent le noyau de l'OS hôte, les VMs ont leur propre OS",
+      "Les conteneurs sont plus lents que les VMs",
+      "Les VMs consomment moins de ressources",
+      "Il n'y a aucune différence"
+    ],
+    "correct": 0,
+    "explanation": "Les conteneurs partagent le noyau du système d'exploitation hôte, ce qui les rend plus légers et rapides que les VMs qui embarquent leur propre OS complet."
+  },
+  {
+    "id": 22,
+    "question": "Dans Ansible, comment appelle-t-on un fichier contenant une série de tâches ?",
+    "options": [
+      "Un script",
+      "Un playbook",
+      "Un module",
+      "Un handler"
+    ],
+    "correct": 1,
+    "explanation": "Un playbook Ansible est un fichier YAML qui contient une série de tâches à exécuter sur des hôtes cibles."
+  },
+  {
+    "id": 23,
+    "question": "Quel code de statut HTTP indique une réponse réussie ?",
+    "options": [
+      "404",
+      "500",
+      "200",
+      "302"
+    ],
+    "correct": 2,
+    "explanation": "Le code de statut HTTP 200 (OK) indique que la requête a été traitée avec succès."
+  },
+  {
+    "id": 24,
+    "question": "Dans Kubernetes, qu'est-ce qu'un Service ?",
+    "options": [
+      "Un conteneur qui exécute une application",
+      "Une abstraction qui expose un ensemble de Pods",
+      "Un fichier de configuration",
+      "Un type de volume"
+    ],
+    "correct": 1,
+    "explanation": "Un Service Kubernetes est une abstraction qui définit un ensemble logique de Pods et une politique d'accès, permettant l'exposition et la découverte de services."
+  },
+  {
+    "id": 25,
+    "question": "Quelle commande permet de voir les logs d'un conteneur Docker en cours d'exécution ?",
+    "options": [
+      "docker ps logs",
+      "docker logs <container_id>",
+      "docker exec logs",
+      "docker inspect logs"
+    ],
+    "correct": 1,
+    "explanation": "La commande 'docker logs <container_id>' permet d'afficher les logs d'un conteneur Docker spécifique."
+  },
+  {
+    "id": 26,
+    "question": "Qu'est-ce que l'Infrastructure as Code (IaC) apporte principalement ?",
+    "options": [
+      "Une interface graphique pour gérer les serveurs",
+      "La reproductibilité et le versioning de l'infrastructure",
+      "Une meilleure performance des applications",
+      "La sécurisation automatique des données"
+    ],
+    "correct": 1,
+    "explanation": "L'IaC permet de définir l'infrastructure via du code, apportant reproductibilité, versioning, et possibilité de révision collaborative."
+  },
+  {
+    "id": 27,
+    "question": "Dans un environnement Linux, où sont généralement stockés les logs système ?",
+    "options": [
+      "/home/logs",
+      "/var/log",
+      "/etc/logs",
+      "/tmp/logs"
+    ],
+    "correct": 1,
+    "explanation": "Les logs système sous Linux sont généralement stockés dans le répertoire '/var/log' selon la hiérarchie standard des systèmes de fichiers."
+  },
+  {
+    "id": 28,
+    "question": "Quel outil permet de visualiser les métriques collectées par Prometheus ?",
+    "options": [
+      "Kibana",
+      "Grafana",
+      "Splunk",
+      "Nagios"
+    ],
+    "correct": 1,
+    "explanation": "Grafana est l'outil de visualisation le plus couramment utilisé avec Prometheus pour créer des tableaux de bord et graphiques à partir des métriques."
+  },
+  {
+    "id": 29,
+    "question": "Dans Git, que fait la commande 'git stash' ?",
+    "options": [
+      "Supprime définitivement les modifications",
+      "Sauvegarde temporairement les modifications non commitées",
+      "Crée une nouvelle branche",
+      "Fusionne deux branches"
+    ],
+    "correct": 1,
+    "explanation": "La commande 'git stash' sauvegarde temporairement les modifications non commitées, permettant de changer de branche sans perdre le travail en cours."
+  },
+  {
+    "id": 30,
+    "question": "Qu'est-ce qu'un Load Balancer ?",
+    "options": [
+      "Un outil de surveillance des performances",
+      "Un système qui distribue le trafic entre plusieurs serveurs",
+      "Un type de base de données",
+      "Un protocole de sécurité"
+    ],
+    "correct": 1,
+    "explanation": "Un Load Balancer (répartiteur de charge) distribue le trafic entrant entre plusieurs serveurs pour améliorer les performances et la disponibilité."
+  },
+  {
+    "id": 31,
+    "question": "Dans Docker Compose, quel fichier définit les services ?",
+    "options": [
+      "docker-compose.yml",
+      "dockerfile.yaml",
+      "compose-config.json",
+      "services.docker"
+    ],
+    "correct": 0,
+    "explanation": "Le fichier 'docker-compose.yml' définit les services, réseaux et volumes pour une application multi-conteneurs avec Docker Compose."
+  },
+  {
+    "id": 32,
+    "question": "Quelle commande Linux permet de changer les permissions d'un fichier ?",
+    "options": [
+      "chown",
+      "chmod",
+      "chgrp",
+      "chroot"
+    ],
+    "correct": 1,
+    "explanation": "La commande 'chmod' (change mode) permet de modifier les permissions d'accès d'un fichier ou répertoire sous Linux."
+  },
+  {
+    "id": 33,
+    "question": "Dans le contexte DevOps, que signifie 'CI' ?",
+    "options": [
+      "Container Integration",
+      "Continuous Integration",
+      "Cloud Infrastructure",
+      "Configuration Item"
+    ],
+    "correct": 1,
+    "explanation": "CI signifie 'Continuous Integration' (Intégration Continue), une pratique qui consiste à intégrer fréquemment les modifications de code."
+  },
+  {
+    "id": 34,
+    "question": "Quel protocole utilise le DNS par défaut ?",
+    "options": [
+      "TCP sur le port 53",
+      "UDP sur le port 53",
+      "HTTP sur le port 80",
+      "HTTPS sur le port 443"
+    ],
+    "correct": 1,
+    "explanation": "Le DNS utilise principalement UDP sur le port 53 pour les requêtes standard, et TCP pour les transferts de zone ou requêtes volumineuses."
+  },
+  {
+    "id": 35,
+    "question": "Dans Kubernetes, qu'est-ce qu'un Namespace ?",
+    "options": [
+      "Un type de conteneur",
+      "Un mécanisme d'isolation logique des ressources",
+      "Un fichier de configuration",
+      "Un protocole réseau"
+    ],
+    "correct": 1,
+    "explanation": "Un Namespace Kubernetes fournit un mécanisme d'isolation logique des ressources, permettant de séparer les environnements ou équipes."
+  },
+  {
+    "id": 36,
+    "question": "Quelle vulnérabilité est classée #1 dans l'OWASP Top 10 2021 ?",
+    "options": [
+      "SQL Injection",
+      "Broken Access Control",
+      "Cross-Site Scripting (XSS)",
+      "Insecure Direct Object References"
+    ],
+    "correct": 1,
+    "explanation": "Broken Access Control est classé #1 dans l'OWASP Top 10 2021, remplaçant l'Injection qui était #1 dans les versions précédentes."
+  },
+  {
+    "id": 37,
+    "question": "Quel est l'avantage principal d'utiliser un reverse proxy ?",
+    "options": [
+      "Accélérer le développement d'applications",
+      "Masquer la complexité de l'infrastructure backend et améliorer la sécurité",
+      "Réduire la consommation mémoire",
+      "Automatiser les déploiements"
+    ],
+    "correct": 1,
+    "explanation": "Un reverse proxy masque la complexité de l'infrastructure backend, améliore la sécurité, peut faire du load balancing et de la terminaison SSL."
+  },
+  {
+    "id": 38,
+    "question": "Dans GitLab CI/CD, dans quel ordre s'exécutent généralement les stages par défaut ?",
+    "options": [
+      "build, test, deploy",
+      "test, build, deploy",
+      "deploy, test, build",
+      "build, deploy, test"
+    ],
+    "correct": 0,
+    "explanation": "L'ordre logique des stages dans un pipeline CI/CD est généralement : build (construction), test (tests), puis deploy (déploiement)."
+  },
+  {
+    "id": 39,
+    "question": "Quelle commande permet de voir l'utilisation CPU et mémoire en temps réel sous Linux ?",
+    "options": [
+      "ps aux",
+      "top",
+      "df -h",
+      "netstat -an"
+    ],
+    "correct": 1,
+    "explanation": "La commande 'top' affiche en temps réel l'utilisation CPU, mémoire et les processus actifs sur un système Linux."
+  },
+  {
+    "id": 40,
+    "question": "Dans le contexte cloud, que signifie 'haute disponibilité' ?",
+    "options": [
+      "Performances très élevées",
+      "Système conçu pour minimiser les interruptions de service",
+      "Stockage de grande capacité",
+      "Interface utilisateur intuitive"
+    ],
+    "correct": 1,
+    "explanation": "La haute disponibilité (High Availability) désigne la conception de systèmes pour minimiser les interruptions de service et maintenir un fonctionnement continu."
+  },
+  {
+    "id": 41,
+    "question": "Combien de couches compte le modèle OSI ?",
+    "options": [
+      "5 couches",
+      "6 couches",
+      "7 couches",
+      "8 couches"
+    ],
+    "correct": 2,
+    "explanation": "Le modèle OSI (Open Systems Interconnection) compte 7 couches : Physique, Liaison, Réseau, Transport, Session, Présentation, Application."
+  },
+  {
+    "id": 42,
+    "question": "À quelle couche du modèle OSI appartient le protocole TCP ?",
+    "options": [
+      "Couche 3 - Réseau",
+      "Couche 4 - Transport",
+      "Couche 5 - Session",
+      "Couche 7 - Application"
+    ],
+    "correct": 1,
+    "explanation": "TCP (Transmission Control Protocol) opère à la couche 4 (Transport) du modèle OSI, gérant la fiabilité et le contrôle de flux."
+  },
+  {
+    "id": 43,
+    "question": "Quel est le rôle principal d'un switch dans un réseau ?",
+    "options": [
+      "Router les paquets entre différents réseaux",
+      "Commuter les trames au niveau de la couche 2 (liaison)",
+      "Convertir les signaux analogiques en numériques",
+      "Filtrer le trafic au niveau applicatif"
+    ],
+    "correct": 1,
+    "explanation": "Un switch opère au niveau de la couche 2 (liaison) et commute les trames Ethernet en utilisant les adresses MAC."
+  },
+  {
+    "id": 44,
+    "question": "Quelle est la différence entre TCP et UDP ?",
+    "options": [
+      "TCP est plus rapide qu'UDP",
+      "UDP est plus fiable que TCP",
+      "TCP est orienté connexion et fiable, UDP est sans connexion et plus rapide",
+      "Il n'y a aucune différence"
+    ],
+    "correct": 2,
+    "explanation": "TCP est un protocole fiable orienté connexion avec contrôle d'erreur, tandis qu'UDP est un protocole sans connexion plus rapide mais moins fiable."
+  },
+  {
+    "id": 45,
+    "question": "Quelle commande permet de tester la connectivité réseau vers une adresse IP ?",
+    "options": [
+      "netstat",
+      "ping",
+      "ifconfig",
+      "route"
+    ],
+    "correct": 1,
+    "explanation": "La commande 'ping' utilise le protocole ICMP pour tester la connectivité réseau vers une adresse IP spécifique."
+  },
+  {
+    "id": 46,
+    "question": "Dans quel format est exprimée une adresse MAC ?",
+    "options": [
+      "192.168.1.1",
+      "00:1A:2B:3C:4D:5E",
+      "255.255.255.0",
+      "::1"
+    ],
+    "correct": 1,
+    "explanation": "Une adresse MAC (Media Access Control) est exprimée en format hexadécimal avec 6 octets séparés par des deux-points, par exemple 00:1A:2B:3C:4D:5E."
+  },
+  {
+    "id": 47,
+    "question": "Quel protocole utilise HTTPS pour sécuriser les communications ?",
+    "options": [
+      "SSH",
+      "TLS/SSL",
+      "FTP",
+      "SMTP"
+    ],
+    "correct": 1,
+    "explanation": "HTTPS utilise TLS/SSL (Transport Layer Security/Secure Sockets Layer) pour chiffrer et sécuriser les communications HTTP."
+  },
+  {
+    "id": 48,
+    "question": "À quoi correspond l'adresse IP 127.0.0.1 ?",
+    "options": [
+      "Adresse de broadcast",
+      "Adresse de bouclage local (localhost)",
+      "Adresse de passerelle par défaut",
+      "Adresse multicast"
+    ],
+    "correct": 1,
+    "explanation": "L'adresse 127.0.0.1 est l'adresse de bouclage local (loopback/localhost) qui permet à une machine de communiquer avec elle-même."
+  },
+  {
+    "id": 49,
+    "question": "Quel masque de sous-réseau correspond à un /24 en notation CIDR ?",
+    "options": [
+      "255.255.0.0",
+      "255.255.255.0",
+      "255.255.255.128",
+      "255.0.0.0"
+    ],
+    "correct": 1,
+    "explanation": "Un /24 en notation CIDR correspond à 24 bits pour la partie réseau, soit le masque 255.255.255.0 (les 3 premiers octets)."
+  },
+  {
+    "id": 50,
+    "question": "Dans le contexte des firewalls, que signifie une règle 'DENY ALL' en fin de liste ?",
+    "options": [
+      "Autoriser tout le trafic par défaut",
+      "Bloquer tout le trafic qui ne correspond à aucune règle précédente",
+      "Rediriger tout le trafic vers un autre serveur",
+      "Enregistrer tout le trafic dans les logs"
+    ],
+    "correct": 1,
+    "explanation": "Une règle 'DENY ALL' en fin de liste de firewall bloque par défaut tout le trafic qui n'a pas été explicitement autorisé par les règles précédentes."
+  }
+  ]
+}
