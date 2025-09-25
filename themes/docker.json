@@ -1,0 +1,605 @@
+{
+    "title": "Docker",
+    "questions": [
+        {
+            "id": 1,
+            "question": "Qu\u2019est-ce que Docker ?",
+            "options": [
+                "Un syst\u00e8me d\u2019exploitation",
+                "Un orchestrateur de conteneurs",
+                "Une plateforme de conteneurisation",
+                "Une machine virtuelle"
+            ],
+            "correct": 2,
+            "explanation": "Docker est une plateforme de conteneurisation qui permet d\u2019ex\u00e9cuter des applications de mani\u00e8re isol\u00e9e."
+        },
+        {
+            "id": 2,
+            "question": "Quelle commande permet de lister les conteneurs en cours d\u2019ex\u00e9cution ?",
+            "options": [
+                "docker images",
+                "docker ps",
+                "docker ls",
+                "docker run"
+            ],
+            "correct": 1,
+            "explanation": "La commande `docker ps` liste les conteneurs en cours d\u2019ex\u00e9cution."
+        },
+        {
+            "id": 3,
+            "question": "Quelle commande permet de t\u00e9l\u00e9charger une image depuis Docker Hub ?",
+            "options": [
+                "docker fetch",
+                "docker install",
+                "docker pull",
+                "docker get"
+            ],
+            "correct": 2,
+            "explanation": "La commande `docker pull` t\u00e9l\u00e9charge une image depuis un registre comme Docker Hub."
+        },
+        {
+            "id": 4,
+            "question": "Que fait la commande `docker run -d nginx` ?",
+            "options": [
+                "D\u00e9marre un conteneur Nginx en mode interactif",
+                "Construit une image bas\u00e9e sur nginx",
+                "Lance un conteneur Nginx en arri\u00e8re-plan",
+                "Supprime un conteneur Nginx"
+            ],
+            "correct": 2,
+            "explanation": "L\u2019option `-d` (detached) ex\u00e9cute le conteneur en arri\u00e8re-plan."
+        },
+        {
+            "id": 5,
+            "question": "Quelle est la diff\u00e9rence entre `docker stop` et `docker kill` ?",
+            "options": [
+                "Aucune diff\u00e9rence",
+                "`docker stop` arr\u00eate proprement, `docker kill` force l\u2019arr\u00eat",
+                "`docker stop` supprime le conteneur, `docker kill` le suspend",
+                "`docker stop` red\u00e9marre le conteneur, `docker kill` le supprime"
+            ],
+            "correct": 1,
+            "explanation": "`docker stop` envoie un signal pour arr\u00eater proprement, alors que `docker kill` envoie un signal SIGKILL pour forcer l\u2019arr\u00eat."
+        },
+        {
+            "id": 6,
+            "question": "Que fait la commande `docker exec -it <container_name> bash` ?",
+            "options": [
+                "Ex\u00e9cute un script dans un conteneur",
+                "D\u00e9marre un nouveau conteneur avec bash",
+                "Ouvre un shell bash dans un conteneur en cours d\u2019ex\u00e9cution",
+                "Cr\u00e9e une image depuis le conteneur"
+            ],
+            "correct": 2,
+            "explanation": "`docker exec -it` permet d\u2019ouvrir une session interactive dans un conteneur existant."
+        },
+        {
+            "id": 7,
+            "question": "Quelle commande permet de lister les images locales ?",
+            "options": [
+                "docker images",
+                "docker ps -a",
+                "docker list images",
+                "docker show"
+            ],
+            "correct": 0,
+            "explanation": "La commande `docker images` liste toutes les images disponibles localement."
+        },
+        {
+            "id": 8,
+            "question": "Que fait l\u2019option `-p 8080:80` dans `docker run -p 8080:80 nginx` ?",
+            "options": [
+                "Expose le port 8080 dans le conteneur et le mappe sur 80 en local",
+                "Expose le port 80 dans le conteneur et le mappe sur 8080 en local",
+                "Ferme le port 8080 en local",
+                "Affecte deux ports au conteneur"
+            ],
+            "correct": 1,
+            "explanation": "La syntaxe `-p host:container` redirige le port 8080 de l\u2019h\u00f4te vers le port 80 du conteneur."
+        },
+        {
+            "id": 9,
+            "question": "Quelle commande construit une image Docker \u00e0 partir d\u2019un Dockerfile ?",
+            "options": [
+                "docker build",
+                "docker make",
+                "docker compile",
+                "docker create"
+            ],
+            "correct": 0,
+            "explanation": "`docker build` construit une image \u00e0 partir d\u2019un Dockerfile."
+        },
+        {
+            "id": 10,
+            "question": "Quel fichier permet de d\u00e9finir la configuration d\u2019une image Docker personnalis\u00e9e ?",
+            "options": [
+                "Dockerfile",
+                "docker-compose.yml",
+                "docker-config.json",
+                "Docker.yaml"
+            ],
+            "correct": 0,
+            "explanation": "Le `Dockerfile` contient les instructions pour construire une image Docker."
+        },
+        {
+            "id": 11,
+            "question": "Que fait la commande `docker rmi image_id` ?",
+            "options": [
+                "Supprime un conteneur",
+                "Supprime une image",
+                "Red\u00e9marre une image",
+                "Installe une image"
+            ],
+            "correct": 1,
+            "explanation": "`docker rmi` supprime une image Docker locale."
+        },
+        {
+            "id": 12,
+            "question": "Qu\u2019est-ce qu\u2019un volume Docker ?",
+            "options": [
+                "Un fichier de configuration",
+                "Un espace de stockage persistant pour les conteneurs",
+                "Un port r\u00e9seau",
+                "Un processus d\u2019ex\u00e9cution"
+            ],
+            "correct": 1,
+            "explanation": "Un volume est une solution de stockage persistant g\u00e9r\u00e9e par Docker pour conserver les donn\u00e9es."
+        },
+        {
+            "id": 13,
+            "question": "Quelle commande permet de cr\u00e9er un volume ?",
+            "options": [
+                "docker volume create",
+                "docker create volume",
+                "docker new volume",
+                "docker run --volume"
+            ],
+            "correct": 0,
+            "explanation": "`docker volume create` permet de cr\u00e9er un volume nomm\u00e9."
+        },
+        {
+            "id": 14,
+            "question": "Quelle commande permet de voir les logs d\u2019un conteneur ?",
+            "options": [
+                "docker log",
+                "docker logs",
+                "docker inspect",
+                "docker output"
+            ],
+            "correct": 1,
+            "explanation": "La commande `docker logs` affiche les journaux d\u2019un conteneur."
+        },
+        {
+            "id": 15,
+            "question": "Que fait la commande `docker inspect` ?",
+            "options": [
+                "Affiche les processus du conteneur",
+                "Donne des informations d\u00e9taill\u00e9es sur un conteneur ou une image",
+                "Supprime un conteneur",
+                "Liste les volumes disponibles"
+            ],
+            "correct": 1,
+            "explanation": "`docker inspect` affiche des informations d\u00e9taill\u00e9es en JSON sur un conteneur ou une image."
+        },
+        {
+            "id": 16,
+            "question": "Que fait la commande `docker rm container_id` ?",
+            "options": [
+                "Arr\u00eate le conteneur",
+                "Supprime un conteneur arr\u00eat\u00e9",
+                "Supprime une image",
+                "Red\u00e9marre un conteneur"
+            ],
+            "correct": 1,
+            "explanation": "`docker rm` supprime un conteneur arr\u00eat\u00e9, pas une image."
+        },
+        {
+            "id": 17,
+            "question": "Quelle commande arr\u00eate tous les conteneurs en cours d\u2019ex\u00e9cution ?",
+            "options": [
+                "docker stop $(docker ps -q)",
+                "docker kill all",
+                "docker stop all",
+                "docker halt"
+            ],
+            "correct": 0,
+            "explanation": "La commande `docker stop $(docker ps -q)` arr\u00eate tous les conteneurs en cours d\u2019ex\u00e9cution."
+        },
+        {
+            "id": 18,
+            "question": "Quelle est la diff\u00e9rence entre une image et un conteneur ?",
+            "options": [
+                "Une image est un mod\u00e8le, un conteneur est une instance en cours d\u2019ex\u00e9cution",
+                "Une image contient des donn\u00e9es, un conteneur contient uniquement du code",
+                "Une image est toujours en cours d\u2019ex\u00e9cution, un conteneur est statique",
+                "Aucune diff\u00e9rence"
+            ],
+            "correct": 0,
+            "explanation": "Une image est un mod\u00e8le immuable, tandis qu\u2019un conteneur est une instance active bas\u00e9e sur cette image."
+        },
+        {
+            "id": 19,
+            "question": "Que fait la commande `docker-compose up` ?",
+            "options": [
+                "Construit et d\u00e9marre les services d\u00e9finis dans un fichier docker-compose.yml",
+                "Arr\u00eate les services Docker",
+                "Supprime un r\u00e9seau Docker",
+                "T\u00e9l\u00e9charge des images depuis Docker Hub"
+            ],
+            "correct": 0,
+            "explanation": "`docker-compose up` lance les services d\u00e9finis dans le fichier `docker-compose.yml`."
+        },
+        {
+            "id": 20,
+            "question": "Quel est le r\u00f4le du fichier `docker-compose.yml` ?",
+            "options": [
+                "Stocker les logs",
+                "D\u00e9finir et g\u00e9rer des applications multi-conteneurs",
+                "Cr\u00e9er un volume",
+                "G\u00e9n\u00e9rer une image automatiquement"
+            ],
+            "correct": 1,
+            "explanation": "`docker-compose.yml` d\u00e9finit la configuration des services multi-conteneurs."
+        },
+        {
+            "id": 21,
+            "question": "Que fait la commande `docker network create my_network` ?",
+            "options": [
+                "Cr\u00e9e un nouveau volume",
+                "Cr\u00e9e un nouveau r\u00e9seau utilisateur",
+                "Cr\u00e9e une nouvelle image",
+                "Cr\u00e9e un conteneur nomm\u00e9 my_network"
+            ],
+            "correct": 1,
+            "explanation": "Cette commande cr\u00e9e un r\u00e9seau Docker pour connecter des conteneurs entre eux."
+        },
+        {
+            "id": 22,
+            "question": "Quelle commande permet de connecter un conteneur \u00e0 un r\u00e9seau Docker existant ?",
+            "options": [
+                "docker network add",
+                "docker connect",
+                "docker network connect",
+                "docker attach"
+            ],
+            "correct": 2,
+            "explanation": "`docker network connect` relie un conteneur \u00e0 un r\u00e9seau existant."
+        },
+        {
+            "id": 23,
+            "question": "Que signifie l\u2019option `--rm` avec `docker run` ?",
+            "options": [
+                "Le conteneur sera supprim\u00e9 automatiquement apr\u00e8s son arr\u00eat",
+                "Le conteneur sera red\u00e9marr\u00e9 automatiquement",
+                "Le conteneur utilisera un volume en lecture seule",
+                "Le conteneur sera mis en pause"
+            ],
+            "correct": 0,
+            "explanation": "Avec `--rm`, Docker supprime le conteneur une fois qu\u2019il est arr\u00eat\u00e9."
+        },
+        {
+            "id": 24,
+            "question": "Quelle est la diff\u00e9rence entre `docker-compose up` et `docker-compose up -d` ?",
+            "options": [
+                "`-d` ex\u00e9cute les services en arri\u00e8re-plan",
+                "`-d` supprime les conteneurs apr\u00e8s ex\u00e9cution",
+                "`-d` affiche plus de logs",
+                "Aucune diff\u00e9rence"
+            ],
+            "correct": 0,
+            "explanation": "L\u2019option `-d` (detached mode) ex\u00e9cute les services en arri\u00e8re-plan."
+        },
+        {
+            "id": 25,
+            "question": "Quel est le r\u00f4le de la commande `FROM` dans un Dockerfile ?",
+            "options": [
+                "D\u00e9finit l\u2019image de base \u00e0 utiliser",
+                "Installe un paquet dans l\u2019image",
+                "Sp\u00e9cifie un volume",
+                "Ajoute une variable d\u2019environnement"
+            ],
+            "correct": 0,
+            "explanation": "`FROM` d\u00e9finit l\u2019image de base utilis\u00e9e pour construire l\u2019image personnalis\u00e9e."
+        },
+        {
+            "id": 26,
+            "question": "Quelle instruction du Dockerfile est recommand\u00e9e pour copier simplement des fichiers locaux dans une image ?",
+            "options": [
+                "COPY",
+                "ADD",
+                "INCLUDE",
+                "IMPORT"
+            ],
+            "correct": 0,
+            "explanation": "L\u2019instruction `COPY` est recommand\u00e9e pour copier des fichiers locaux car elle est plus pr\u00e9visible qu\u2019`ADD`."
+        },
+        {
+            "id": 27,
+            "question": "Quelle instruction du Dockerfile permet de lancer une commande lors de l\u2019ex\u00e9cution du conteneur ?",
+            "options": [
+                "RUN",
+                "CMD",
+                "ENTRYPOINT",
+                "EXEC"
+            ],
+            "correct": 1,
+            "explanation": "`CMD` d\u00e9finit la commande par d\u00e9faut ex\u00e9cut\u00e9e quand le conteneur d\u00e9marre."
+        },
+        {
+            "id": 28,
+            "question": "Quelle est la diff\u00e9rence entre `CMD` et `ENTRYPOINT` dans un Dockerfile ?",
+            "options": [
+                "CMD est obligatoire, ENTRYPOINT est optionnel",
+                "CMD peut \u00eatre remplac\u00e9 \u00e0 l\u2019ex\u00e9cution, ENTRYPOINT est fixe",
+                "ENTRYPOINT sert pour les volumes, CMD pour les ports",
+                "Aucune diff\u00e9rence"
+            ],
+            "correct": 1,
+            "explanation": "`CMD` peut \u00eatre surcharg\u00e9 \u00e0 l\u2019ex\u00e9cution, `ENTRYPOINT` d\u00e9finit un point d\u2019entr\u00e9e fixe."
+        },
+        {
+            "id": 29,
+            "question": "Que fait la commande `docker system prune` ?",
+            "options": [
+                "Nettoie les conteneurs, images et volumes inutilis\u00e9s",
+                "Arr\u00eate tous les conteneurs",
+                "Supprime les r\u00e9seaux actifs",
+                "R\u00e9initialise Docker"
+            ],
+            "correct": 0,
+            "explanation": "`docker system prune` supprime toutes les ressources inutilis\u00e9es (conteneurs, images, volumes et r\u00e9seaux)."
+        },
+        {
+            "id": 30,
+            "question": "Quelle commande permet de limiter la m\u00e9moire d\u2019un conteneur ?",
+            "options": [
+                "docker run --memory=512m",
+                "docker run --limit-memory=512m",
+                "docker config mem=512m",
+                "docker ps --memory=512m"
+            ],
+            "correct": 0,
+            "explanation": "`docker run --memory=512m` limite l\u2019utilisation de la m\u00e9moire du conteneur."
+        },
+        {
+            "id": 31,
+            "question": "Quelle commande permet de limiter le nombre de CPU utilisables par un conteneur ?",
+            "options": [
+                "docker run --cpus=2",
+                "docker run --cpu-limit=2",
+                "docker run --max-cpu=2",
+                "docker config --cpus=2"
+            ],
+            "correct": 0,
+            "explanation": "L\u2019option `--cpus=2` limite un conteneur \u00e0 2 CPU logiques."
+        },
+        {
+            "id": 32,
+            "question": "Que fait la commande `docker tag image_id monrepo/monimage:1.0` ?",
+            "options": [
+                "Renomme une image",
+                "Cr\u00e9e un alias vers une image existante",
+                "Clone une image",
+                "Supprime l\u2019image"
+            ],
+            "correct": 1,
+            "explanation": "`docker tag` permet de donner un nouveau tag \u00e0 une image existante."
+        },
+        {
+            "id": 33,
+            "question": "Quelle commande permet d\u2019envoyer une image sur Docker Hub ?",
+            "options": [
+                "docker push",
+                "docker upload",
+                "docker send",
+                "docker publish"
+            ],
+            "correct": 0,
+            "explanation": "`docker push` envoie une image vers un registre Docker comme Docker Hub."
+        },
+        {
+            "id": 34,
+            "question": "Quelle commande permet de lancer un conteneur interactif bas\u00e9 sur Ubuntu ?",
+            "options": [
+                "docker run ubuntu",
+                "docker run -it ubuntu bash",
+                "docker exec ubuntu",
+                "docker attach ubuntu"
+            ],
+            "correct": 1,
+            "explanation": "`docker run -it ubuntu bash` lance un shell interactif dans un conteneur Ubuntu."
+        },
+        {
+            "id": 35,
+            "question": "Quelle commande permet de suivre en temps r\u00e9el les logs d\u2019un conteneur ?",
+            "options": [
+                "docker logs -f container_id",
+                "docker logs --watch container_id",
+                "docker inspect -f container_id",
+                "docker ps --logs"
+            ],
+            "correct": 0,
+            "explanation": "`docker logs -f` permet de suivre les logs en direct."
+        },
+        {
+            "id": 36,
+            "question": "Quelle est la diff\u00e9rence entre `docker pause` et `docker stop` ?",
+            "options": [
+                "`docker pause` arr\u00eate le conteneur, `docker stop` le met en pause",
+                "`docker pause` suspend les processus, `docker stop` arr\u00eate le conteneur",
+                "`docker pause` supprime le conteneur, `docker stop` le red\u00e9marre",
+                "Aucune diff\u00e9rence"
+            ],
+            "correct": 1,
+            "explanation": "`docker pause` suspend les processus du conteneur, alors que `docker stop` l\u2019arr\u00eate compl\u00e8tement."
+        },
+        {
+            "id": 37,
+            "question": "Quelle commande permet de cr\u00e9er une image \u00e0 partir d\u2019un conteneur existant ?",
+            "options": [
+                "docker export",
+                "docker save",
+                "docker commit",
+                "docker clone"
+            ],
+            "correct": 2,
+            "explanation": "`docker commit` permet de cr\u00e9er une image \u00e0 partir d\u2019un conteneur existant."
+        },
+        {
+            "id": 38,
+            "question": "Quelle commande exporte un conteneur en fichier tar ?",
+            "options": [
+                "docker export",
+                "docker save",
+                "docker commit",
+                "docker pack"
+            ],
+            "correct": 0,
+            "explanation": "`docker export` exporte le syst\u00e8me de fichiers d\u2019un conteneur en fichier tar."
+        },
+        {
+            "id": 39,
+            "question": "Quelle commande sauvegarde une image en fichier tar ?",
+            "options": [
+                "docker export",
+                "docker save",
+                "docker commit",
+                "docker backup"
+            ],
+            "correct": 1,
+            "explanation": "`docker save` enregistre une image dans un fichier tar."
+        },
+        {
+            "id": 40,
+            "question": "Quelle est la diff\u00e9rence entre `docker save` et `docker export` ?",
+            "options": [
+                "`docker save` exporte une image, `docker export` exporte un conteneur",
+                "`docker save` est obsol\u00e8te, `docker export` le remplace",
+                "`docker save` sauvegarde en JSON, `docker export` en tar",
+                "Aucune diff\u00e9rence"
+            ],
+            "correct": 0,
+            "explanation": "`docker save` sauvegarde une image compl\u00e8te, alors que `docker export` exporte un conteneur."
+        },
+        {
+            "id": 41,
+            "question": "Quelle commande permet de d\u00e9marrer un conteneur qui a \u00e9t\u00e9 cr\u00e9\u00e9 mais arr\u00eat\u00e9 ?",
+            "options": [
+                "docker restart",
+                "docker run --restart",
+                "docker up",
+                "docker start container_id"
+            ],
+            "correct": 3,
+            "explanation": "`docker start` d\u00e9marre un conteneur existant, contrairement \u00e0 `docker run` qui cr\u00e9e un nouveau conteneur."
+        },
+        {
+            "id": 42,
+            "question": "Quelle commande supprime tous les conteneurs arr\u00eat\u00e9s ?",
+            "options": [
+                "docker rm $(docker ps -a -q)",
+                "docker rmi $(docker ps -a -q)",
+                "docker prune containers",
+                "docker clean containers"
+            ],
+            "correct": 0,
+            "explanation": "`docker rm $(docker ps -a -q)` supprime tous les conteneurs arr\u00eat\u00e9s."
+        },
+        {
+            "id": 43,
+            "question": "Quelle commande permet de tester la connectivit\u00e9 entre deux conteneurs ?",
+            "options": [
+                "docker connect",
+                "docker exec -it container1 ping container2",
+                "docker inspect --ping",
+                "docker network ls"
+            ],
+            "correct": 1,
+            "explanation": "Avec `docker exec -it`, on peut ex\u00e9cuter `ping` depuis un conteneur vers un autre (ils doivent \u00eatre sur le m\u00eame r\u00e9seau)."
+        },
+        {
+            "id": 44,
+            "question": "Que fait l\u2019option `--build` avec `docker-compose up` ?",
+            "options": [
+                "Reconstruit les images avant de d\u00e9marrer",
+                "Nettoie les conteneurs avant d\u00e9marrage",
+                "Ex\u00e9cute en mode debug",
+                "Active les logs d\u00e9taill\u00e9s"
+            ],
+            "correct": 0,
+            "explanation": "`docker-compose up --build` reconstruit les images avant de lancer les services."
+        },
+        {
+            "id": 45,
+            "question": "Quelle commande affiche les statistiques en temps r\u00e9el des conteneurs ?",
+            "options": [
+                "docker top",
+                "docker inspect",
+                "docker stats",
+                "docker monitor"
+            ],
+            "correct": 2,
+            "explanation": "`docker stats` affiche l\u2019utilisation CPU, m\u00e9moire, r\u00e9seau en temps r\u00e9el."
+        },
+        {
+            "id": 46,
+            "question": "Que fait la commande `docker cp fichier.txt <container_id>:/app/` ?",
+            "options": [
+                "Copie un fichier du conteneur vers l\u2019h\u00f4te",
+                "Copie un fichier de l\u2019h\u00f4te vers le conteneur",
+                "Synchronise les volumes",
+                "Monte un volume temporaire"
+            ],
+            "correct": 1,
+            "explanation": "`docker cp` permet de copier un fichier de l\u2019h\u00f4te vers un conteneur ou inversement."
+        },
+        {
+            "id": 47,
+            "question": "Quelle commande affiche les processus en cours dans un conteneur ?",
+            "options": [
+                "docker ps",
+                "docker inspect",
+                "docker top container_id",
+                "docker logs container_id"
+            ],
+            "correct": 2,
+            "explanation": "`docker top` montre les processus en cours dans un conteneur."
+        },
+        {
+            "id": 48,
+            "question": "Que fait l\u2019option `--scale` avec `docker-compose up` ?",
+            "options": [
+                "Change la taille des volumes",
+                "Ajuste le nombre d\u2019instances d\u2019un service",
+                "R\u00e9duit la taille des logs",
+                "Optimise la m\u00e9moire utilis\u00e9e"
+            ],
+            "correct": 1,
+            "explanation": "`docker-compose up --scale web=3` lance par exemple 3 instances du service web."
+        },
+        {
+            "id": 49,
+            "question": "Quelle commande liste les r\u00e9seaux Docker ?",
+            "options": [
+                "docker network ps",
+                "docker networks",
+                "docker network ls",
+                "docker list networks"
+            ],
+            "correct": 2,
+            "explanation": "`docker network ls` affiche la liste des r\u00e9seaux disponibles."
+        },
+        {
+            "id": 50,
+            "question": "Quelle commande permet d\u2019ex\u00e9cuter un conteneur avec un volume mont\u00e9 ?",
+            "options": [
+                "docker run -v /host/data:/container/data image",
+                "docker mount /host/data image",
+                "docker volume attach image",
+                "docker run --volume image"
+            ],
+            "correct": 0,
+            "explanation": "Avec `-v host_path:container_path`, on monte un volume dans un conteneur."
+        }
+    ]
+}

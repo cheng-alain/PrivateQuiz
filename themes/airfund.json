@@ -51,14 +51,14 @@
         },
         {
             "id": 5,
-            "question": "Quel outil est utilis\u00e9 dans ce projet pour d\u00e9ployer des applications sur Kubernetes ?",
+            "question": "Quel outil est couramment utilis\u00e9 pour le d\u00e9ploiement GitOps continu sur Kubernetes ?",
             "options": [
                 "Helm",
                 "Argo CD",
                 "Skaffold",
                 "Terraform"
             ],
-            "correct": 2,
+            "correct": 1,
             "explanation": "Argo CD est utilis\u00e9 pour le d\u00e9ploiement GitOps continu sur Kubernetes."
         },
         {
@@ -135,7 +135,7 @@
         },
         {
             "id": 12,
-            "question": "Quelle base de donn\u00e9es est mentionn\u00e9e dans l'environnement technique ?",
+            "question": "Quelle base de donn\u00e9es NoSQL est couramment utilis\u00e9e pour les applications modernes ?",
             "options": [
                 "PostgreSQL",
                 "MongoDB",
@@ -143,7 +143,7 @@
                 "Cassandra"
             ],
             "correct": 1,
-            "explanation": "Le projet utilise MongoDB comme base de donn\u00e9es."
+            "explanation": "MongoDB est une base de donn\u00e9es NoSQL tr\u00e8s populaire pour les applications modernes."
         },
         {
             "id": 13,
@@ -195,7 +195,7 @@
         },
         {
             "id": 17,
-            "question": "Quel outil est utilis\u00e9 pour la gestion de versions de code et l\u2019int\u00e9gration continue dans cet environnement ?",
+            "question": "Quel outil fournit \u00e0 la fois la gestion de versions Git et des fonctionnalit\u00e9s CI/CD int\u00e9gr\u00e9es ?",
             "options": [
                 "GitHub Actions",
                 "CircleCI",
@@ -203,7 +203,7 @@
                 "Jenkins"
             ],
             "correct": 2,
-            "explanation": "L\u2019environnement utilise GitLab pour la CI/CD."
+            "explanation": "GitLab fournit une plateforme compl\u00e8te avec gestion Git et pipelines CI/CD int\u00e9gr\u00e9s."
         },
         {
             "id": 18,
@@ -447,7 +447,7 @@
         },
         {
             "id": 38,
-            "question": "Quel langage est utilis\u00e9 dans l'environnement backend d\u00e9crit par l'offre ?",
+            "question": "Quel langage de programmation est particuli\u00e8rement adapt\u00e9 pour les microservices et les applications cloud-native ?",
             "options": [
                 "Java",
                 "Go",
@@ -455,7 +455,7 @@
                 "Ruby"
             ],
             "correct": 1,
-            "explanation": "L'environnement backend utilise principalement Go, avec du C# et du Kotlin en option."
+            "explanation": "Go est particuli\u00e8rement appr\u00e9ci\u00e9 pour les microservices gr\u00e2ce \u00e0 sa performance et sa simplicit\u00e9."
         },
         {
             "id": 39,
@@ -599,7 +599,7 @@
                 "Volume"
             ],
             "correct": 1,
-            "explanation": "Les objets Secret permettent d\u2019injecter des donn\u00e9es sensibles comme variables d\u2019environnement ou volumes."
+            "explanation": "Les objets Secret permettent d\u2019injecter des donn\u00e9es sensibles comme variables d\u2019environnement dans les pods."
         },
         {
             "id": 51,
