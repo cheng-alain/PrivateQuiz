@@ -1,0 +1,1205 @@
+{
+    "title": "Airfund",
+    "questions": [
+        {
+            "id": 1,
+            "question": "Quelle est la commande pour lister tous les pods dans Kubernetes dans le namespace 'production' ?",
+            "options": [
+                "kubectl get pods",
+                "kubectl get pods -n production",
+                "kubectl describe pods production",
+                "kubectl get all"
+            ],
+            "correct": 1,
+            "explanation": "La commande 'kubectl get pods -n production' permet de lister les pods sp\u00e9cifiquement dans le namespace 'production'."
+        },
+        {
+            "id": 2,
+            "question": "Dans Kubernetes, quel objet est responsable de maintenir un nombre d\u00e9fini de pods en ex\u00e9cution ?",
+            "options": [
+                "Service",
+                "ConfigMap",
+                "Deployment",
+                "Ingress"
+            ],
+            "correct": 2,
+            "explanation": "Un Deployment g\u00e8re la cr\u00e9ation et la mise \u00e0 jour d\u2019un nombre d\u00e9fini de pods."
+        },
+        {
+            "id": 3,
+            "question": "Quel est l'avantage principal de Kind (Kubernetes in Docker) ?",
+            "options": [
+                "Permet de d\u00e9ployer directement sur GCP",
+                "Facilite la cr\u00e9ation de clusters Kubernetes locaux pour le test",
+                "Remplace kubectl pour l'administration",
+                "Automatise les pipelines CI/CD"
+            ],
+            "correct": 1,
+            "explanation": "Kind permet de cr\u00e9er des clusters Kubernetes locaux dans Docker pour le d\u00e9veloppement et les tests."
+        },
+        {
+            "id": 4,
+            "question": "Quelle commande Docker permet de construire une image \u00e0 partir d\u2019un Dockerfile ?",
+            "options": [
+                "docker create",
+                "docker build",
+                "docker run",
+                "docker compose"
+            ],
+            "correct": 1,
+            "explanation": "La commande 'docker build' construit une image \u00e0 partir d\u2019un Dockerfile."
+        },
+        {
+            "id": 5,
+            "question": "Quel outil est utilis\u00e9 dans ce projet pour d\u00e9ployer des applications sur Kubernetes ?",
+            "options": [
+                "Helm",
+                "Argo CD",
+                "Skaffold",
+                "Terraform"
+            ],
+            "correct": 2,
+            "explanation": "Argo CD est utilis\u00e9 pour le d\u00e9ploiement GitOps continu sur Kubernetes."
+        },
+        {
+            "id": 6,
+            "question": "Quelle est la fonction principale de Skaffold ?",
+            "options": [
+                "Automatiser le build et le d\u00e9ploiement d'applications Kubernetes",
+                "G\u00e9rer les secrets Kubernetes",
+                "Superviser l'\u00e9tat des pods",
+                "D\u00e9finir l\u2019infrastructure en tant que code"
+            ],
+            "correct": 0,
+            "explanation": "Skaffold simplifie et automatise le cycle de d\u00e9veloppement (build, push, d\u00e9ploiement) sur Kubernetes."
+        },
+        {
+            "id": 7,
+            "question": "Quel service GCP est le plus utilis\u00e9 pour h\u00e9berger des clusters Kubernetes ?",
+            "options": [
+                "Cloud Run",
+                "GKE (Google Kubernetes Engine)",
+                "Compute Engine",
+                "App Engine"
+            ],
+            "correct": 1,
+            "explanation": "GKE est le service manag\u00e9 de Google pour ex\u00e9cuter Kubernetes."
+        },
+        {
+            "id": 8,
+            "question": "Quel est l\u2019objectif principal de Terraform dans un projet DevOps ?",
+            "options": [
+                "Superviser les m\u00e9triques",
+                "Automatiser les d\u00e9ploiements applicatifs",
+                "D\u00e9finir et provisionner l\u2019infrastructure en tant que code",
+                "Assurer la scalabilit\u00e9 automatique"
+            ],
+            "correct": 2,
+            "explanation": "Terraform permet de g\u00e9rer l\u2019infrastructure en tant que code et de la provisionner de mani\u00e8re d\u00e9clarative."
+        },
+        {
+            "id": 9,
+            "question": "Quel format de fichier est g\u00e9n\u00e9ralement utilis\u00e9 par Kubernetes pour d\u00e9finir ses manifests ?",
+            "options": [
+                "JSON",
+                "YAML",
+                "XML",
+                "TOML"
+            ],
+            "correct": 1,
+            "explanation": "Les manifests Kubernetes sont principalement \u00e9crits en YAML, bien que JSON soit aussi accept\u00e9."
+        },
+        {
+            "id": 10,
+            "question": "Quel outil de monitoring est capable de collecter et stocker des m\u00e9triques temporelles dans Kubernetes ?",
+            "options": [
+                "Grafana",
+                "Prometheus",
+                "ElasticSearch",
+                "Loki"
+            ],
+            "correct": 1,
+            "explanation": "Prometheus collecte et stocke des m\u00e9triques temporelles, Grafana est utilis\u00e9 pour les visualiser."
+        },
+        {
+            "id": 11,
+            "question": "Quelle est la commande pour appliquer un manifest Kubernetes stock\u00e9 dans un fichier YAML ?",
+            "options": [
+                "kubectl run -f file.yaml",
+                "kubectl create -f file.yaml",
+                "kubectl apply -f file.yaml",
+                "kubectl deploy file.yaml"
+            ],
+            "correct": 2,
+            "explanation": "La commande 'kubectl apply -f file.yaml' applique un manifest \u00e0 un cluster Kubernetes."
+        },
+        {
+            "id": 12,
+            "question": "Quelle base de donn\u00e9es est mentionn\u00e9e dans l'environnement technique ?",
+            "options": [
+                "PostgreSQL",
+                "MongoDB",
+                "MySQL",
+                "Cassandra"
+            ],
+            "correct": 1,
+            "explanation": "Le projet utilise MongoDB comme base de donn\u00e9es."
+        },
+        {
+            "id": 13,
+            "question": "Dans Docker, quel est le r\u00f4le du fichier '.dockerignore' ?",
+            "options": [
+                "D\u00e9finir les volumes ignor\u00e9s par les conteneurs",
+                "Exclure certains fichiers/dossiers du contexte de build",
+                "Emp\u00eacher un conteneur de d\u00e9marrer",
+                "Ignorer les erreurs lors du build"
+            ],
+            "correct": 1,
+            "explanation": "Le fichier '.dockerignore' permet d'exclure des fichiers/dossiers du contexte envoy\u00e9 au d\u00e9mon Docker lors du build."
+        },
+        {
+            "id": 14,
+            "question": "Quel type de ressources Kubernetes permet d\u2019exposer une application vers l\u2019ext\u00e9rieur du cluster ?",
+            "options": [
+                "ConfigMap",
+                "Deployment",
+                "Service",
+                "ReplicaSet"
+            ],
+            "correct": 2,
+            "explanation": "Un Service de type LoadBalancer ou NodePort permet d\u2019exposer une application vers l\u2019ext\u00e9rieur."
+        },
+        {
+            "id": 15,
+            "question": "Quelle m\u00e9trique est la plus utilis\u00e9e pour surveiller la scalabilit\u00e9 d\u2019une application sur Kubernetes ?",
+            "options": [
+                "Nombre de pods",
+                "Utilisation CPU/M\u00e9moire",
+                "Logs applicatifs",
+                "Nombre de namespaces"
+            ],
+            "correct": 1,
+            "explanation": "Les autoscalers Kubernetes se basent souvent sur l'utilisation CPU ou m\u00e9moire pour ajuster le nombre de pods."
+        },
+        {
+            "id": 16,
+            "question": "Quelle commande permet de se connecter \u00e0 un pod pour ex\u00e9cuter un shell interactif ?",
+            "options": [
+                "kubectl connect pod",
+                "kubectl attach pod-name",
+                "kubectl exec -it pod-name -- /bin/sh",
+                "kubectl get pods -o shell"
+            ],
+            "correct": 2,
+            "explanation": "La commande 'kubectl exec -it pod-name -- /bin/sh' permet d\u2019ouvrir un shell dans le pod."
+        },
+        {
+            "id": 17,
+            "question": "Quel outil est utilis\u00e9 pour la gestion de versions de code et l\u2019int\u00e9gration continue dans cet environnement ?",
+            "options": [
+                "GitHub Actions",
+                "CircleCI",
+                "GitLab",
+                "Jenkins"
+            ],
+            "correct": 2,
+            "explanation": "L\u2019environnement utilise GitLab pour la CI/CD."
+        },
+        {
+            "id": 18,
+            "question": "Quelle bonne pratique DevOps am\u00e9liore la reproductibilit\u00e9 des environnements ?",
+            "options": [
+                "Utiliser des scripts manuels",
+                "Configurer les serveurs directement \u00e0 la main",
+                "Infrastructure as Code",
+                "Multiplier les environnements de test manuels"
+            ],
+            "correct": 2,
+            "explanation": "L\u2019Infrastructure as Code (IaC) garantit des environnements reproductibles et tra\u00e7ables."
+        },
+        {
+            "id": 19,
+            "question": "Quelle diff\u00e9rence principale entre Grafana et Prometheus ?",
+            "options": [
+                "Grafana stocke les m\u00e9triques, Prometheus les visualise",
+                "Prometheus collecte et stocke les m\u00e9triques, Grafana les visualise",
+                "Les deux font la m\u00eame chose",
+                "Prometheus est pour les logs, Grafana pour les dashboards"
+            ],
+            "correct": 1,
+            "explanation": "Prometheus collecte et stocke les m\u00e9triques, tandis que Grafana sert \u00e0 cr\u00e9er des dashboards de visualisation."
+        },
+        {
+            "id": 20,
+            "question": "Quelle fonctionnalit\u00e9 de Kubernetes permet de red\u00e9marrer automatiquement un pod en cas de crash ?",
+            "options": [
+                "Liveness Probe",
+                "Readiness Probe",
+                "ReplicaSet",
+                "Horizontal Pod Autoscaler"
+            ],
+            "correct": 0,
+            "explanation": "La Liveness Probe permet \u00e0 Kubernetes de d\u00e9tecter si un conteneur est en panne et de le red\u00e9marrer."
+        },
+        {
+            "id": 21,
+            "question": "Quel est le r\u00f4le d\u2019un ConfigMap dans Kubernetes ?",
+            "options": [
+                "Stocker des secrets",
+                "Stocker des configurations non sensibles",
+                "Cr\u00e9er un cluster",
+                "Superviser des pods"
+            ],
+            "correct": 1,
+            "explanation": "Un ConfigMap permet de stocker des donn\u00e9es de configuration non sensibles pour les pods."
+        },
+        {
+            "id": 22,
+            "question": "Quel outil est le plus adapt\u00e9 pour g\u00e9rer les secrets dans Kubernetes ?",
+            "options": [
+                "ConfigMap",
+                "Secret",
+                "Deployment",
+                "Service"
+            ],
+            "correct": 1,
+            "explanation": "Les objets Kubernetes 'Secret' sont con\u00e7us pour stocker des informations sensibles comme des mots de passe ou des cl\u00e9s API."
+        },
+        {
+            "id": 23,
+            "question": "Quelle commande Docker permet de lister les conteneurs en cours d'ex\u00e9cution ?",
+            "options": [
+                "docker images",
+                "docker ps",
+                "docker ls",
+                "docker run"
+            ],
+            "correct": 1,
+            "explanation": "La commande 'docker ps' liste les conteneurs en cours d'ex\u00e9cution."
+        },
+        {
+            "id": 24,
+            "question": "Que signifie le principe 'Platform as a Product' dans le contexte DevOps ?",
+            "options": [
+                "L'infrastructure est vendue comme un service externe",
+                "Les \u00e9quipes Platform fournissent des outils et services internes aux d\u00e9veloppeurs comme un produit",
+                "Les applications sont transform\u00e9es en produits SaaS",
+                "La plateforme est uniquement g\u00e9r\u00e9e par le CTO"
+            ],
+            "correct": 1,
+            "explanation": "Le concept 'Platform as a Product' signifie que l'\u00e9quipe Platform con\u00e7oit et maintient la plateforme comme un produit interne pour les d\u00e9veloppeurs."
+        },
+        {
+            "id": 25,
+            "question": "Quelle ressource Kubernetes permet de d\u00e9crire la limite CPU/m\u00e9moire d'un conteneur ?",
+            "options": [
+                "ResourceQuota",
+                "LimitRange",
+                "Requests/Limits dans la spec du pod",
+                "ConfigMap"
+            ],
+            "correct": 2,
+            "explanation": "Les 'requests' et 'limits' d\u00e9finis dans la spec d'un pod permettent de limiter CPU et m\u00e9moire."
+        },
+        {
+            "id": 26,
+            "question": "Quel outil est recommand\u00e9 pour centraliser et analyser les logs Kubernetes ?",
+            "options": [
+                "Grafana",
+                "Loki",
+                "Prometheus",
+                "MongoDB"
+            ],
+            "correct": 1,
+            "explanation": "Loki est un outil de gestion de logs optimis\u00e9 pour fonctionner avec Grafana."
+        },
+        {
+            "id": 27,
+            "question": "Dans GCP, quel service permet de stocker des fichiers et objets binaires ?",
+            "options": [
+                "BigQuery",
+                "Cloud SQL",
+                "Cloud Storage",
+                "Firestore"
+            ],
+            "correct": 2,
+            "explanation": "Cloud Storage est utilis\u00e9 pour stocker des objets et fichiers binaires dans GCP."
+        },
+        {
+            "id": 28,
+            "question": "Quel est l'avantage principal de l'utilisation de microservices par rapport \u00e0 une architecture monolithique ?",
+            "options": [
+                "Un seul langage doit \u00eatre utilis\u00e9",
+                "Plus de d\u00e9pendances",
+                "Scalabilit\u00e9 et d\u00e9ploiement ind\u00e9pendant des services",
+                "Moins de complexit\u00e9 r\u00e9seau"
+            ],
+            "correct": 2,
+            "explanation": "Les microservices permettent de scaler et d\u00e9ployer ind\u00e9pendamment chaque service."
+        },
+        {
+            "id": 29,
+            "question": "Quelle commande Git permet de cloner un d\u00e9p\u00f4t distant ?",
+            "options": [
+                "git init",
+                "git pull",
+                "git clone",
+                "git fetch"
+            ],
+            "correct": 2,
+            "explanation": "'git clone' permet de cr\u00e9er une copie locale d'un d\u00e9p\u00f4t distant."
+        },
+        {
+            "id": 30,
+            "question": "Quel est l'objectif d'un pipeline CI/CD ?",
+            "options": [
+                "Automatiser les d\u00e9ploiements et les tests",
+                "Remplacer les d\u00e9veloppeurs",
+                "G\u00e9rer les tickets de support",
+                "Superviser la charge CPU"
+            ],
+            "correct": 0,
+            "explanation": "Un pipeline CI/CD permet d'automatiser la construction, les tests et le d\u00e9ploiement d'une application."
+        },
+        {
+            "id": 31,
+            "question": "Quelle est la commande pour supprimer un pod nomm\u00e9 'api-pod' dans Kubernetes ?",
+            "options": [
+                "kubectl delete pod api-pod",
+                "kubectl remove pod api-pod",
+                "kubectl kill api-pod",
+                "kubectl drop pod api-pod"
+            ],
+            "correct": 0,
+            "explanation": "La commande 'kubectl delete pod api-pod' supprime un pod sp\u00e9cifique."
+        },
+        {
+            "id": 32,
+            "question": "Quelle fonctionnalit\u00e9 Kubernetes permet d'exposer plusieurs services via un seul point d'entr\u00e9e HTTP ?",
+            "options": [
+                "Service",
+                "Ingress",
+                "Deployment",
+                "ReplicaSet"
+            ],
+            "correct": 1,
+            "explanation": "Ingress permet de g\u00e9rer l'acc\u00e8s HTTP/HTTPS \u00e0 plusieurs services Kubernetes via un seul point d'entr\u00e9e."
+        },
+        {
+            "id": 33,
+            "question": "Dans Prometheus, quel langage de requ\u00eate est utilis\u00e9 pour interroger les m\u00e9triques ?",
+            "options": [
+                "SQL",
+                "PromQL",
+                "GraphQL",
+                "JSONPath"
+            ],
+            "correct": 1,
+            "explanation": "Prometheus utilise PromQL (Prometheus Query Language) pour interroger ses donn\u00e9es."
+        },
+        {
+            "id": 34,
+            "question": "Quelle commande permet de visualiser les logs d'un pod nomm\u00e9 'frontend' ?",
+            "options": [
+                "kubectl logs frontend",
+                "kubectl get logs frontend",
+                "kubectl show frontend",
+                "kubectl describe logs frontend"
+            ],
+            "correct": 0,
+            "explanation": "La commande 'kubectl logs frontend' affiche les logs du pod 'frontend'."
+        },
+        {
+            "id": 35,
+            "question": "Quelle pratique permet d'assurer la portabilit\u00e9 des applications dans des environnements vari\u00e9s ?",
+            "options": [
+                "Utiliser des scripts shell",
+                "Conteneurisation",
+                "Configurer chaque serveur manuellement",
+                "Stocker les fichiers dans Git"
+            ],
+            "correct": 1,
+            "explanation": "La conteneurisation (via Docker par exemple) garantit la portabilit\u00e9 et la reproductibilit\u00e9 des applications."
+        },
+        {
+            "id": 36,
+            "question": "Dans Git, quelle commande permet de cr\u00e9er une nouvelle branche appel\u00e9e 'feature-x' ?",
+            "options": [
+                "git switch feature-x",
+                "git branch feature-x",
+                "git checkout feature-x",
+                "git clone feature-x"
+            ],
+            "correct": 1,
+            "explanation": "La commande 'git branch feature-x' cr\u00e9e une nouvelle branche appel\u00e9e 'feature-x'."
+        },
+        {
+            "id": 37,
+            "question": "Quel est le r\u00f4le principal de l'Horizontal Pod Autoscaler dans Kubernetes ?",
+            "options": [
+                "Red\u00e9marrer les pods en cas d'\u00e9chec",
+                "Adapter automatiquement le nombre de pods selon la charge",
+                "G\u00e9rer la persistance des donn\u00e9es",
+                "Superviser l'\u00e9tat des services"
+            ],
+            "correct": 1,
+            "explanation": "L'Horizontal Pod Autoscaler ajuste automatiquement le nombre de pods en fonction des m\u00e9triques de charge."
+        },
+        {
+            "id": 38,
+            "question": "Quel langage est utilis\u00e9 dans l'environnement backend d\u00e9crit par l'offre ?",
+            "options": [
+                "Java",
+                "Go",
+                "Python",
+                "Ruby"
+            ],
+            "correct": 1,
+            "explanation": "L'environnement backend utilise principalement Go, avec du C# et du Kotlin en option."
+        },
+        {
+            "id": 39,
+            "question": "Quel est le r\u00f4le d'un 'readiness probe' dans Kubernetes ?",
+            "options": [
+                "V\u00e9rifier si le conteneur est en bonne sant\u00e9",
+                "D\u00e9terminer si le conteneur est pr\u00eat \u00e0 recevoir du trafic",
+                "Relancer un pod plant\u00e9",
+                "Mesurer la consommation CPU"
+            ],
+            "correct": 1,
+            "explanation": "Le 'readiness probe' indique si un pod est pr\u00eat \u00e0 recevoir du trafic r\u00e9seau."
+        },
+        {
+            "id": 40,
+            "question": "Quelle commande Docker permet de lancer un conteneur en arri\u00e8re-plan ?",
+            "options": [
+                "docker run -it",
+                "docker run -d",
+                "docker start -it",
+                "docker exec -d"
+            ],
+            "correct": 1,
+            "explanation": "L'option '-d' de 'docker run' ex\u00e9cute le conteneur en mode d\u00e9tach\u00e9 (arri\u00e8re-plan)."
+        },
+        {
+            "id": 41,
+            "question": "Quel type de Kubernetes Service est utilis\u00e9 pour rendre un service accessible uniquement \u00e0 l\u2019int\u00e9rieur du cluster ?",
+            "options": [
+                "ClusterIP",
+                "NodePort",
+                "LoadBalancer",
+                "Ingress"
+            ],
+            "correct": 0,
+            "explanation": "ClusterIP est le type par d\u00e9faut, exposant le service uniquement \u00e0 l\u2019int\u00e9rieur du cluster."
+        },
+        {
+            "id": 42,
+            "question": "Dans GCP, quel service est le plus adapt\u00e9 pour stocker et interroger de tr\u00e8s grands ensembles de donn\u00e9es analytiques ?",
+            "options": [
+                "Cloud SQL",
+                "Firestore",
+                "BigQuery",
+                "Cloud Storage"
+            ],
+            "correct": 2,
+            "explanation": "BigQuery est un entrep\u00f4t de donn\u00e9es serverless optimis\u00e9 pour l\u2019analytique \u00e0 grande \u00e9chelle."
+        },
+        {
+            "id": 43,
+            "question": "Quelle commande kubectl permet de voir les \u00e9v\u00e9nements r\u00e9cents dans un namespace ?",
+            "options": [
+                "kubectl get events -n <namespace>",
+                "kubectl describe events -n <namespace>",
+                "kubectl logs events -n <namespace>",
+                "kubectl events get <namespace>"
+            ],
+            "correct": 0,
+            "explanation": "La commande 'kubectl get events -n <namespace>' liste les \u00e9v\u00e9nements r\u00e9cents du namespace."
+        },
+        {
+            "id": 44,
+            "question": "Quelle est la diff\u00e9rence entre un StatefulSet et un Deployment dans Kubernetes ?",
+            "options": [
+                "Un StatefulSet g\u00e8re les applications stateless",
+                "Un Deployment g\u00e8re la persistance des volumes",
+                "Un StatefulSet g\u00e8re l\u2019identit\u00e9 stable et la persistance, contrairement au Deployment",
+                "Aucune diff\u00e9rence, ce sont des alias"
+            ],
+            "correct": 2,
+            "explanation": "Un StatefulSet est con\u00e7u pour les applications n\u00e9cessitant une identit\u00e9 stable et une persistance (ex: bases de donn\u00e9es)."
+        },
+        {
+            "id": 45,
+            "question": "Quelle est la commande Docker pour voir les logs d\u2019un conteneur appel\u00e9 'webapp' ?",
+            "options": [
+                "docker logs webapp",
+                "docker show webapp",
+                "docker view webapp",
+                "docker ps -logs webapp"
+            ],
+            "correct": 0,
+            "explanation": "'docker logs webapp' permet d\u2019afficher les logs du conteneur 'webapp'."
+        },
+        {
+            "id": 46,
+            "question": "Quelle sonde Kubernetes permet de v\u00e9rifier si une application est vivante mais non forc\u00e9ment pr\u00eate ?",
+            "options": [
+                "Startup probe",
+                "Readiness probe",
+                "Liveness probe",
+                "Healthcheck probe"
+            ],
+            "correct": 2,
+            "explanation": "La liveness probe v\u00e9rifie si le conteneur est vivant et doit \u00eatre red\u00e9marr\u00e9 en cas d\u2019\u00e9chec."
+        },
+        {
+            "id": 47,
+            "question": "Dans Git, quelle commande permet de fusionner la branche 'feature' dans la branche courante ?",
+            "options": [
+                "git checkout feature",
+                "git merge feature",
+                "git branch feature",
+                "git pull feature"
+            ],
+            "correct": 1,
+            "explanation": "'git merge feature' fusionne la branche 'feature' dans la branche courante."
+        },
+        {
+            "id": 48,
+            "question": "Quel protocole est principalement utilis\u00e9 par Prometheus pour collecter les m\u00e9triques ?",
+            "options": [
+                "HTTP (pull)",
+                "gRPC",
+                "WebSocket",
+                "UDP"
+            ],
+            "correct": 0,
+            "explanation": "Prometheus r\u00e9cup\u00e8re les m\u00e9triques en mode pull via HTTP."
+        },
+        {
+            "id": 49,
+            "question": "Dans Docker, que fait la commande 'docker-compose up -d' ?",
+            "options": [
+                "Construit uniquement les images",
+                "D\u00e9marre les conteneurs d\u00e9finis dans docker-compose en arri\u00e8re-plan",
+                "Met \u00e0 jour Docker Desktop",
+                "Supprime les conteneurs arr\u00eat\u00e9s"
+            ],
+            "correct": 1,
+            "explanation": "'docker-compose up -d' lance les conteneurs d\u00e9finis dans le fichier docker-compose en mode d\u00e9tach\u00e9."
+        },
+        {
+            "id": 50,
+            "question": "Dans Kubernetes, quelle ressource est utilis\u00e9e pour injecter des variables d\u2019environnement sensibles dans un pod ?",
+            "options": [
+                "ConfigMap",
+                "Secret",
+                "ServiceAccount",
+                "Volume"
+            ],
+            "correct": 1,
+            "explanation": "Les objets Secret permettent d\u2019injecter des donn\u00e9es sensibles comme variables d\u2019environnement ou volumes."
+        },
+        {
+            "id": 51,
+            "question": "Quel m\u00e9canisme Kubernetes permet de limiter l\u2019acc\u00e8s d\u2019un pod aux ressources CPU et m\u00e9moire ?",
+            "options": [
+                "LimitRange",
+                "RBAC",
+                "PodSecurityPolicy",
+                "Ingress"
+            ],
+            "correct": 0,
+            "explanation": "LimitRange d\u00e9finit des limites par d\u00e9faut et maximales pour les ressources CPU/m\u00e9moire des pods."
+        },
+        {
+            "id": 52,
+            "question": "Quelle est la commande Git pour voir l\u2019historique des commits ?",
+            "options": [
+                "git history",
+                "git status",
+                "git log",
+                "git commits"
+            ],
+            "correct": 2,
+            "explanation": "'git log' affiche l\u2019historique d\u00e9taill\u00e9 des commits."
+        },
+        {
+            "id": 53,
+            "question": "Quel service GCP permet d\u2019orchestrer et d\u2019automatiser des workflows de donn\u00e9es ?",
+            "options": [
+                "Pub/Sub",
+                "Cloud Dataflow",
+                "Cloud Composer",
+                "BigQuery"
+            ],
+            "correct": 2,
+            "explanation": "Cloud Composer (bas\u00e9 sur Airflow) est utilis\u00e9 pour orchestrer des workflows de donn\u00e9es complexes."
+        },
+        {
+            "id": 54,
+            "question": "Quel est le r\u00f4le principal de RBAC (Role-Based Access Control) dans Kubernetes ?",
+            "options": [
+                "Assurer la scalabilit\u00e9 automatique",
+                "D\u00e9finir qui peut faire quoi sur quelles ressources",
+                "Superviser les m\u00e9triques",
+                "Stocker les secrets"
+            ],
+            "correct": 1,
+            "explanation": "RBAC permet de d\u00e9finir les autorisations d\u2019acc\u00e8s aux ressources Kubernetes selon les r\u00f4les."
+        },
+        {
+            "id": 55,
+            "question": "Dans Docker, quelle commande permet de supprimer une image non utilis\u00e9e ?",
+            "options": [
+                "docker rmi <image_id>",
+                "docker rm <image_id>",
+                "docker delete <image_id>",
+                "docker clean <image_id>"
+            ],
+            "correct": 0,
+            "explanation": "La commande 'docker rmi <image_id>' supprime une image Docker."
+        },
+        {
+            "id": 56,
+            "question": "Quelle ressource Kubernetes est la plus adapt\u00e9e pour ex\u00e9cuter des t\u00e2ches ponctuelles ?",
+            "options": [
+                "Deployment",
+                "StatefulSet",
+                "CronJob",
+                "DaemonSet"
+            ],
+            "correct": 2,
+            "explanation": "Un CronJob (ou Job) permet d\u2019ex\u00e9cuter des t\u00e2ches ponctuelles ou planifi\u00e9es."
+        },
+        {
+            "id": 57,
+            "question": "Dans Grafana, que peut-on cr\u00e9er pour visualiser des m\u00e9triques Prometheus ?",
+            "options": [
+                "Dashboards",
+                "ConfigMaps",
+                "Probes",
+                "Secrets"
+            ],
+            "correct": 0,
+            "explanation": "Grafana permet de cr\u00e9er des dashboards pour visualiser les m\u00e9triques collect\u00e9es par Prometheus."
+        },
+        {
+            "id": 58,
+            "question": "Quelle est la diff\u00e9rence entre un 'hard limit' et un 'soft limit' dans Kubernetes ?",
+            "options": [
+                "Hard limit = max CPU/m\u00e9moire autoris\u00e9, Soft limit = valeur par d\u00e9faut demand\u00e9e",
+                "Hard limit = logs persistants, Soft limit = logs temporaires",
+                "Hard limit = pour un namespace, Soft limit = pour un pod",
+                "Pas de diff\u00e9rence"
+            ],
+            "correct": 0,
+            "explanation": "Un 'soft limit' (request) est la ressource garantie, un 'hard limit' (limit) est le maximum autoris\u00e9."
+        },
+        {
+            "id": 59,
+            "question": "Quelle bonne pratique de CI/CD permet d\u2019\u00e9viter de d\u00e9ployer du code non test\u00e9 en production ?",
+            "options": [
+                "Tests automatis\u00e9s",
+                "D\u00e9ploiement manuel",
+                "Logs applicatifs",
+                "Scaling horizontal"
+            ],
+            "correct": 0,
+            "explanation": "Les tests automatis\u00e9s int\u00e9gr\u00e9s au pipeline CI/CD garantissent que seul du code test\u00e9 atteint la production."
+        },
+        {
+            "id": 60,
+            "question": "Quel service GCP est adapt\u00e9 pour g\u00e9rer des conteneurs sans administrer directement Kubernetes ?",
+            "options": [
+                "App Engine",
+                "Cloud Run",
+                "Compute Engine",
+                "BigQuery"
+            ],
+            "correct": 1,
+            "explanation": "Cloud Run permet d'ex\u00e9cuter des conteneurs serverless sans g\u00e9rer l'infrastructure Kubernetes."
+        },
+        {
+            "id": 61,
+            "question": "Un pod dans Kubernetes red\u00e9marre en boucle. Quelle est la premi\u00e8re commande que tu ex\u00e9cutes pour diagnostiquer le probl\u00e8me ?",
+            "options": [
+                "kubectl get pods",
+                "kubectl logs <pod_name>",
+                "kubectl exec -it <pod_name> -- /bin/sh",
+                "kubectl delete pod <pod_name>"
+            ],
+            "correct": 1,
+            "explanation": "La premi\u00e8re \u00e9tape est de consulter les logs du pod pour identifier la cause du red\u00e9marrage."
+        },
+        {
+            "id": 62,
+            "question": "Ton application d\u00e9ploy\u00e9e sur GKE est lente et consomme beaucoup de CPU. Quelle approche est la plus adapt\u00e9e ?",
+            "options": [
+                "Augmenter le nombre de pods avec un HPA",
+                "Red\u00e9marrer manuellement les pods",
+                "Changer de cluster",
+                "D\u00e9sactiver les limites CPU"
+            ],
+            "correct": 0,
+            "explanation": "L\u2019Horizontal Pod Autoscaler (HPA) permet d\u2019ajuster automatiquement le nombre de pods selon la charge."
+        },
+        {
+            "id": 63,
+            "question": "Un d\u00e9ploiement \u00e9choue avec l\u2019erreur 'ImagePullBackOff'. Quelle est la cause la plus probable ?",
+            "options": [
+                "Le pod n\u2019a pas assez de CPU",
+                "L\u2019image Docker est introuvable ou acc\u00e8s refus\u00e9",
+                "Le Service n\u2019est pas configur\u00e9",
+                "Le node est satur\u00e9 en m\u00e9moire"
+            ],
+            "correct": 1,
+            "explanation": "'ImagePullBackOff' indique un probl\u00e8me pour t\u00e9l\u00e9charger l\u2019image : mauvaise URL, credentials manquants ou image inexistante."
+        },
+        {
+            "id": 64,
+            "question": "Tu dois d\u00e9ployer une nouvelle version d\u2019une app critique. Quelle strat\u00e9gie minimisera les interruptions de service ?",
+            "options": [
+                "Recreate",
+                "RollingUpdate",
+                "Blue/Green",
+                "Canary"
+            ],
+            "correct": 1,
+            "explanation": "RollingUpdate d\u00e9ploie progressivement la nouvelle version tout en gardant l\u2019ancienne active, r\u00e9duisant l\u2019indisponibilit\u00e9."
+        },
+        {
+            "id": 65,
+            "question": "Un d\u00e9veloppeur se plaint que ses pods ne d\u00e9marrent pas \u00e0 cause de 'CrashLoopBackOff'. Quelle action r\u00e9aliste entreprendre ?",
+            "options": [
+                "Supprimer le namespace",
+                "Augmenter les ressources CPU/m\u00e9moire",
+                "V\u00e9rifier les probes et les logs",
+                "Recr\u00e9er le cluster"
+            ],
+            "correct": 2,
+            "explanation": "CrashLoopBackOff survient souvent \u00e0 cause d\u2019un probl\u00e8me dans l\u2019application ou une mauvaise configuration des probes."
+        },
+        {
+            "id": 66,
+            "question": "Tu remarques que la facture GCP augmente anormalement. Quelle est la premi\u00e8re \u00e9tape ?",
+            "options": [
+                "Red\u00e9marrer les clusters",
+                "V\u00e9rifier le billing report et identifier les ressources co\u00fbteuses",
+                "Supprimer tous les pods",
+                "Changer de cloud provider"
+            ],
+            "correct": 1,
+            "explanation": "La premi\u00e8re \u00e9tape est d\u2019analyser le rapport de facturation pour identifier les services ou clusters responsables des co\u00fbts."
+        },
+        {
+            "id": 67,
+            "question": "Un pod n\u2019est pas accessible depuis l\u2019ext\u00e9rieur alors que le Service est bien cr\u00e9\u00e9. Quelle ressource manquante suspectes-tu ?",
+            "options": [
+                "ConfigMap",
+                "Ingress",
+                "Deployment",
+                "LimitRange"
+            ],
+            "correct": 1,
+            "explanation": "Si un Service est cr\u00e9\u00e9 mais l\u2019acc\u00e8s externe ne fonctionne pas, un Ingress est souvent n\u00e9cessaire pour g\u00e9rer l\u2019exposition HTTP/HTTPS."
+        },
+        {
+            "id": 68,
+            "question": "Ton application utilise des secrets Kubernetes mais un d\u00e9veloppeur a commit accidentellement un mot de passe dans Git. Quelle est la bonne pratique ?",
+            "options": [
+                "Ignorer, ce n\u2019est pas grave",
+                "Changer imm\u00e9diatement le secret et r\u00e9voquer l\u2019ancien",
+                "Supprimer l\u2019historique Git",
+                "Stocker le secret dans un ConfigMap"
+            ],
+            "correct": 1,
+            "explanation": "La meilleure pratique est de changer imm\u00e9diatement le secret expos\u00e9 et d\u2019en g\u00e9n\u00e9rer un nouveau."
+        },
+        {
+            "id": 69,
+            "question": "Un service microservice A ne peut pas appeler le microservice B dans Kubernetes. Quelle \u00e9tape v\u00e9rifies-tu en premier ?",
+            "options": [
+                "Les logs du microservice B",
+                "La configuration DNS interne (serviceB.namespace.svc.cluster.local)",
+                "Les probes du pod A",
+                "Les dashboards Grafana"
+            ],
+            "correct": 1,
+            "explanation": "La communication interne entre services Kubernetes passe par DNS interne, il faut v\u00e9rifier la r\u00e9solution et le Service associ\u00e9."
+        },
+        {
+            "id": 70,
+            "question": "Tu constates que Prometheus ne collecte plus certaines m\u00e9triques. Quelle est la cause probable ?",
+            "options": [
+                "Les pods sont down",
+                "Le ServiceMonitor ou scrape config est mal configur\u00e9",
+                "Grafana est en panne",
+                "Les pods n\u2019ont pas assez de m\u00e9moire"
+            ],
+            "correct": 1,
+            "explanation": "Prometheus d\u00e9pend de configurations de scraping (ServiceMonitor), une mauvaise config peut emp\u00eacher la collecte."
+        },
+        {
+            "id": 71,
+            "question": "Un pod fonctionne mais n\u2019est jamais marqu\u00e9 comme 'Ready'. Quelle est la cause la plus probable ?",
+            "options": [
+                "Liveness probe \u00e9choue",
+                "Readiness probe \u00e9choue",
+                "Pas assez de CPU",
+                "Pas assez de n\u0153uds disponibles"
+            ],
+            "correct": 1,
+            "explanation": "Un pod non pr\u00eat mais en cours d\u2019ex\u00e9cution est souvent li\u00e9 \u00e0 une Readiness probe mal configur\u00e9e ou qui \u00e9choue."
+        },
+        {
+            "id": 72,
+            "question": "Tu veux diagnostiquer un probl\u00e8me r\u00e9seau dans un pod. Quelle commande ex\u00e9cutes-tu depuis l\u2019int\u00e9rieur du pod ?",
+            "options": [
+                "curl",
+                "ping",
+                "nslookup",
+                "Toutes les r\u00e9ponses"
+            ],
+            "correct": 3,
+            "explanation": "curl, ping et nslookup sont tous utiles pour diagnostiquer les probl\u00e8mes r\u00e9seau depuis un pod."
+        },
+        {
+            "id": 73,
+            "question": "Un d\u00e9ploiement \u00e9choue car Terraform indique un 'state lock'. Quelle est la meilleure approche ?",
+            "options": [
+                "Supprimer manuellement le fichier state",
+                "Attendre ou forcer le d\u00e9verrouillage si le processus est bloqu\u00e9",
+                "Recommencer depuis z\u00e9ro",
+                "Ignorer et d\u00e9ployer directement"
+            ],
+            "correct": 1,
+            "explanation": "Le 'state lock' emp\u00eache les conflits, il faut soit attendre la lib\u00e9ration soit le d\u00e9verrouiller proprement si bloqu\u00e9."
+        },
+        {
+            "id": 74,
+            "question": "Un conteneur d\u00e9marre mais se termine imm\u00e9diatement. Quelle est la cause probable ?",
+            "options": [
+                "La commande CMD ou ENTRYPOINT s\u2019ex\u00e9cute puis se termine",
+                "Pas assez de m\u00e9moire",
+                "Cluster satur\u00e9",
+                "Port non expos\u00e9"
+            ],
+            "correct": 0,
+            "explanation": "Si un conteneur s\u2019arr\u00eate imm\u00e9diatement, c\u2019est souvent parce que le process principal s\u2019est termin\u00e9."
+        },
+        {
+            "id": 75,
+            "question": "Un d\u00e9veloppeur veut d\u00e9boguer son application dans un pod en production. Quelle bonne pratique DevOps appliquer ?",
+            "options": [
+                "Donner un acc\u00e8s root permanent",
+                "Utiliser kubectl exec pour un acc\u00e8s temporaire",
+                "Donner l\u2019acc\u00e8s SSH au n\u0153ud",
+                "Recr\u00e9er le pod en mode debug"
+            ],
+            "correct": 1,
+            "explanation": "kubectl exec permet un acc\u00e8s temporaire et cibl\u00e9 dans un pod pour debug, sans compromettre la s\u00e9curit\u00e9."
+        },
+        {
+            "id": 76,
+            "question": "Un pod consomme trop de m\u00e9moire et est tu\u00e9 par Kubernetes. Quelle en est la cause probable ?",
+            "options": [
+                "OOMKilled (Out Of Memory)",
+                "CrashLoopBackOff",
+                "Readiness probe",
+                "RBAC"
+            ],
+            "correct": 0,
+            "explanation": "Lorsque la m\u00e9moire allou\u00e9e est d\u00e9pass\u00e9e, Kubernetes tue le conteneur avec le statut OOMKilled."
+        },
+        {
+            "id": 77,
+            "question": "Tu dois surveiller les logs applicatifs en temps r\u00e9el. Quelle commande est adapt\u00e9e ?",
+            "options": [
+                "kubectl logs -f <pod_name>",
+                "kubectl get logs -f <pod_name>",
+                "docker logs <pod_name>",
+                "kubectl watch <pod_name>"
+            ],
+            "correct": 0,
+            "explanation": "'kubectl logs -f' permet de suivre les logs en streaming en temps r\u00e9el."
+        },
+        {
+            "id": 78,
+            "question": "Un service critique tombe en panne. Quelle est la premi\u00e8re \u00e9tape dans une approche SRE ?",
+            "options": [
+                "Chercher la cause racine imm\u00e9diatement",
+                "R\u00e9tablir le service au plus vite",
+                "Notifier les clients directement",
+                "Red\u00e9marrer tout le cluster"
+            ],
+            "correct": 1,
+            "explanation": "La priorit\u00e9 en SRE est de restaurer le service le plus rapidement possible, puis d\u2019analyser la cause apr\u00e8s."
+        },
+        {
+            "id": 79,
+            "question": "Un pod a besoin d\u2019\u00e9crire des fichiers persistants. Quelle ressource Kubernetes dois-tu utiliser ?",
+            "options": [
+                "ConfigMap",
+                "Secret",
+                "PersistentVolumeClaim",
+                "LimitRange"
+            ],
+            "correct": 2,
+            "explanation": "Un PersistentVolumeClaim permet de demander du stockage persistant pour un pod."
+        },
+        {
+            "id": 80,
+            "question": "Apr\u00e8s un d\u00e9ploiement, tu constates une augmentation du taux d\u2019erreurs 500. Quelle est la meilleure r\u00e9action ?",
+            "options": [
+                "Roll-back de la version d\u00e9ploy\u00e9e",
+                "Ignorer et attendre",
+                "Augmenter le nombre de pods",
+                "Red\u00e9marrer le cluster"
+            ],
+            "correct": 0,
+            "explanation": "Un rollback rapide est la meilleure approche pour r\u00e9tablir la stabilit\u00e9 apr\u00e8s un d\u00e9ploiement probl\u00e9matique."
+        },
+        {
+            "id": 81,
+            "question": "Pourquoi utiliser un readiness probe s\u00e9par\u00e9 d\u2019un liveness probe dans Kubernetes ?",
+            "options": [
+                "Pour \u00e9conomiser des ressources CPU",
+                "Parce qu\u2019ils sont identiques",
+                "Readiness d\u00e9termine si le pod peut recevoir du trafic, liveness si le pod doit \u00eatre red\u00e9marr\u00e9",
+                "Cela ne sert \u00e0 rien"
+            ],
+            "correct": 2,
+            "explanation": "Readiness probe contr\u00f4le la disponibilit\u00e9 pour le trafic, liveness red\u00e9marre le conteneur si bloqu\u00e9."
+        },
+        {
+            "id": 82,
+            "question": "Quel est l\u2019avantage principal de Skaffold pour les d\u00e9veloppeurs ?",
+            "options": [
+                "Il remplace Docker",
+                "Il automatise le cycle build \u2192 push \u2192 deploy",
+                "Il supprime le besoin de Kubernetes",
+                "Il est utilis\u00e9 uniquement pour la CI/CD"
+            ],
+            "correct": 1,
+            "explanation": "Skaffold automatise le build, push et d\u00e9ploiement des applications Kubernetes, acc\u00e9l\u00e9rant le dev loop."
+        },
+        {
+            "id": 83,
+            "question": "Que se passe-t-il si tu d\u00e9finis une limite m\u00e9moire trop basse sur un conteneur ?",
+            "options": [
+                "Le conteneur sera plus rapide",
+                "Le pod sera red\u00e9marr\u00e9 avec OOMKilled",
+                "Kubernetes ignore la limite",
+                "La limite s\u2019applique uniquement au n\u0153ud"
+            ],
+            "correct": 1,
+            "explanation": "Une limite m\u00e9moire trop basse entra\u00eene des OOMKilled car le process d\u00e9passe la m\u00e9moire allou\u00e9e."
+        },
+        {
+            "id": 84,
+            "question": "Quelle est la diff\u00e9rence entre un Deployment et un StatefulSet ?",
+            "options": [
+                "Aucune",
+                "Deployment g\u00e8re des pods stateless, StatefulSet garde une identit\u00e9 stable pour chaque pod",
+                "StatefulSet est plus rapide",
+                "Deployment est utilis\u00e9 pour les bases de donn\u00e9es"
+            ],
+            "correct": 1,
+            "explanation": "Un StatefulSet attribue une identit\u00e9 persistante et est utilis\u00e9 pour les workloads stateful comme les DB."
+        },
+        {
+            "id": 85,
+            "question": "Un d\u00e9veloppeur veut stocker des secrets dans un ConfigMap. Quelle est ta r\u00e9action ?",
+            "options": [
+                "Accepter car c\u2019est plus simple",
+                "Refuser, car ConfigMap n\u2019est pas s\u00e9curis\u00e9, pr\u00e9f\u00e9rer Secret ou Vault",
+                "Utiliser des annotations",
+                "Encoder en Base64"
+            ],
+            "correct": 1,
+            "explanation": "ConfigMap n\u2019est pas con\u00e7u pour la s\u00e9curit\u00e9, il faut utiliser Secret ou un gestionnaire sp\u00e9cialis\u00e9 comme Vault."
+        },
+        {
+            "id": 86,
+            "question": "Que fait exactement 'kubectl port-forward' ?",
+            "options": [
+                "Expose un Service via un LoadBalancer",
+                "Cr\u00e9e un tunnel TCP de ta machine vers un pod",
+                "Ajoute une r\u00e8gle de firewall",
+                "Expose un pod sur internet"
+            ],
+            "correct": 1,
+            "explanation": "kubectl port-forward cr\u00e9e un tunnel TCP entre ta machine locale et un pod sp\u00e9cifique."
+        },
+        {
+            "id": 87,
+            "question": "Quelle est la diff\u00e9rence entre Dockerfile CMD et ENTRYPOINT ?",
+            "options": [
+                "ENTRYPOINT est toujours ex\u00e9cut\u00e9, CMD peut \u00eatre \u00e9cras\u00e9",
+                "CMD est obligatoire, ENTRYPOINT est optionnel",
+                "Ils sont identiques",
+                "ENTRYPOINT d\u00e9finit l\u2019utilisateur, CMD la commande"
+            ],
+            "correct": 0,
+            "explanation": "ENTRYPOINT d\u00e9finit le binaire par d\u00e9faut, CMD d\u00e9finit les arguments (ou peut \u00eatre \u00e9cras\u00e9)."
+        },
+        {
+            "id": 88,
+            "question": "Quelle est la meilleure fa\u00e7on de g\u00e9rer plusieurs environnements (dev, staging, prod) en Kubernetes ?",
+            "options": [
+                "Un cluster par d\u00e9veloppeur",
+                "Namespaces s\u00e9par\u00e9s et configurations via Helm/Kustomize",
+                "Tout dans le m\u00eame namespace",
+                "Changer manuellement les manifests"
+            ],
+            "correct": 1,
+            "explanation": "Utiliser namespaces + outils comme Helm/Kustomize permet de g\u00e9rer plusieurs environnements proprement."
+        },
+        {
+            "id": 89,
+            "question": "Que fait un Horizontal Pod Autoscaler (HPA) ?",
+            "options": [
+                "Ajoute automatiquement des n\u0153uds au cluster",
+                "\u00c9quilibre le trafic r\u00e9seau",
+                "Ajuste dynamiquement le nombre de pods en fonction des m\u00e9triques",
+                "Ajoute de la m\u00e9moire aux pods"
+            ],
+            "correct": 2,
+            "explanation": "HPA ajuste le nombre de pods en fonction de m\u00e9triques (CPU, RAM, custom metrics)."
+        },
+        {
+            "id": 90,
+            "question": "Pourquoi utiliser ArgoCD plut\u00f4t que des scripts kubectl manuels ?",
+            "options": [
+                "ArgoCD rend Kubernetes plus rapide",
+                "ArgoCD applique le GitOps et assure la synchro entre Git et le cluster",
+                "ArgoCD supprime le besoin de YAML",
+                "ArgoCD est obligatoire pour GKE"
+            ],
+            "correct": 1,
+            "explanation": "ArgoCD applique GitOps, garantissant que l\u2019\u00e9tat du cluster correspond toujours au repo Git."
+        },
+        {
+            "id": 91,
+            "question": "Quelle commande permet de voir les \u00e9v\u00e9nements r\u00e9cents dans Kubernetes pour diagnostiquer un probl\u00e8me ?",
+            "options": [
+                "kubectl get pods",
+                "kubectl describe pod <name>",
+                "kubectl events",
+                "kubectl get logs"
+            ],
+            "correct": 1,
+            "explanation": "kubectl describe pod affiche les \u00e9v\u00e9nements associ\u00e9s et aide au diagnostic."
+        },
+        {
+            "id": 92,
+            "question": "Un certificat TLS d\u2019Ingress a expir\u00e9. Quelle est la cons\u00e9quence imm\u00e9diate ?",
+            "options": [
+                "Le pod crash",
+                "Les utilisateurs re\u00e7oivent une erreur de certificat non valide",
+                "Le service est inaccessible m\u00eame en interne",
+                "Kubernetes supprime l\u2019Ingress"
+            ],
+            "correct": 1,
+            "explanation": "Un certificat expir\u00e9 entra\u00eene des erreurs SSL/TLS c\u00f4t\u00e9 client."
+        },
+        {
+            "id": 93,
+            "question": "Pourquoi OpenTelemetry est int\u00e9ressant dans une stack d\u2019observabilit\u00e9 ?",
+            "options": [
+                "Il remplace Prometheus",
+                "Il fournit un standard pour collecter traces, logs et m\u00e9triques",
+                "Il est obligatoire avec Grafana",
+                "Il sert uniquement \u00e0 collecter des logs"
+            ],
+            "correct": 1,
+            "explanation": "OpenTelemetry fournit un standard ouvert pour traces, m\u00e9triques et logs, facilitant l\u2019int\u00e9gration multi-outils."
+        },
+        {
+            "id": 94,
+            "question": "Un Pod est dans l\u2019\u00e9tat 'Pending' depuis longtemps. Quelle cause probable ?",
+            "options": [
+                "Image Docker corrompue",
+                "Pas assez de ressources disponibles sur les n\u0153uds",
+                "Probes \u00e9chou\u00e9es",
+                "Service mal configur\u00e9"
+            ],
+            "correct": 1,
+            "explanation": "Un pod en Pending signifie que le scheduler n\u2019a pas trouv\u00e9 de n\u0153ud avec assez de ressources."
+        },
+        {
+            "id": 95,
+            "question": "Quelle diff\u00e9rence entre ClusterIP, NodePort et LoadBalancer dans Kubernetes ?",
+            "options": [
+                "ClusterIP expose sur internet",
+                "NodePort expose sur chaque n\u0153ud, LoadBalancer provisionne un LB cloud",
+                "ClusterIP est pour pods stateful",
+                "LoadBalancer supprime le besoin d\u2019Ingress"
+            ],
+            "correct": 1,
+            "explanation": "ClusterIP = interne, NodePort = expos\u00e9 sur chaque n\u0153ud, LoadBalancer = provisionne un load balancer cloud."
+        },
+        {
+            "id": 96,
+            "question": "Quelle est la meilleure approche pour appliquer un patch rapide \u00e0 un d\u00e9ploiement en production ?",
+            "options": [
+                "Modifier le YAML en prod",
+                "kubectl edit directement",
+                "Cr\u00e9er une nouvelle image, commit dans Git et d\u00e9ployer via GitOps",
+                "Red\u00e9marrer le pod"
+            ],
+            "correct": 2,
+            "explanation": "La meilleure pratique est GitOps : modifier le code source et laisser ArgoCD ou CI/CD appliquer le changement."
+        },
+        {
+            "id": 97,
+            "question": "Quelle est la diff\u00e9rence entre ReplicaSet et Deployment ?",
+            "options": [
+                "ReplicaSet permet le scaling manuel, Deployment g\u00e8re les mises \u00e0 jour et rollback",
+                "Deployment est plus rapide",
+                "Ils sont identiques",
+                "ReplicaSet est obsol\u00e8te"
+            ],
+            "correct": 0,
+            "explanation": "Deployment g\u00e8re les mises \u00e0 jour, strat\u00e9gies de d\u00e9ploiement et rollback, tout en utilisant ReplicaSet."
+        },
+        {
+            "id": 98,
+            "question": "Quelle commande permet de d\u00e9boguer les ressources appliqu\u00e9es par Terraform ?",
+            "options": [
+                "terraform apply --debug",
+                "terraform state list",
+                "terraform describe",
+                "terraform logs"
+            ],
+            "correct": 1,
+            "explanation": "terraform state list permet de voir les ressources actuellement suivies par Terraform."
+        },
+        {
+            "id": 99,
+            "question": "Pourquoi utiliser des ResourceQuotas dans Kubernetes ?",
+            "options": [
+                "Pour am\u00e9liorer les logs",
+                "Pour limiter l\u2019utilisation des ressources par namespace et \u00e9viter l\u2019\u00e9puisement",
+                "Pour scaler automatiquement les pods",
+                "Pour crypter les secrets"
+            ],
+            "correct": 1,
+            "explanation": "ResourceQuotas permettent d\u2019\u00e9viter qu\u2019un namespace consomme toutes les ressources du cluster."
+        },
+        {
+            "id": 100,
+            "question": "Quel est l\u2019int\u00e9r\u00eat principal de Canary Deployment par rapport \u00e0 Blue/Green ?",
+            "options": [
+                "D\u00e9ploiement plus rapide",
+                "Moins d\u2019utilisation de ressources, d\u00e9ploiement progressif sur un pourcentage d\u2019utilisateurs",
+                "Moins de complexit\u00e9",
+                "Pas besoin de rollback"
+            ],
+            "correct": 1,
+            "explanation": "Canary d\u00e9ploie une nouvelle version progressivement sur une fraction d'utilisateurs avant rollout complet."
+        }
+    ]
+}
