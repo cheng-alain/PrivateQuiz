@@ -19,24 +19,6 @@
       "file": "kubernetes.json"
     },
     {
-      "id": "cyberwatch",
-      "title": "Cyberwatch - Préparation entretien",
-      "description": "QCM pour se préparer à l'entretien chez Cyberwatch",
-      "icon": "SECURITY",
-      "difficulty": "Intermediate",
-      "questions_count": 50,
-      "file": "cyberwatch.json"
-    },
-    {
-      "id": "airfund",
-      "title": "Airfund - Préparation entretien",
-      "description": "Questions DevOps et Kubernetes pour Airfund",
-      "icon": "DEVOPS",
-      "difficulty": "Advanced",
-      "questions_count": 100,
-      "file": "airfund.json"
-    },
-    {
       "id": "docker",
       "title": "Docker",
       "description": "Questions de conteneurisation avec Docker",
