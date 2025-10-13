@@ -8,7 +8,7 @@ A simple and customizable multiple-choice questionnaire (QCM) application built 
 - **Customizable**: Easily modify questions and answers
 - **Real-time validation**: Immediate feedback on answers
 - **Responsive design**: Works on desktop and mobile devices
-- **Simple setup**: No external dependencies required
+- **Simple setup**: No external dependencies required 
 
 ## Quick Start
 
