@@ -54,6 +54,103 @@ body {
     letter-spacing: -0.01em;
 }
 
+.difficulty-selection {
+    padding: 32px;
+    background: rgba(30, 41, 59, 0.6);
+    border-bottom: 1px solid #475569;
+}
+
+.difficulty-selection h2 {
+    color: #f1f5f9;
+    font-size: 1.6em;
+    margin-bottom: 32px;
+    font-weight: 500;
+    text-align: center;
+    letter-spacing: -0.01em;
+}
+
+.difficulty-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.difficulty-card {
+    background: rgba(51, 65, 85, 0.7);
+    border: 1px solid #475569;
+    border-radius: 8px;
+    padding: 28px 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+    backdrop-filter: blur(5px);
+}
+
+.difficulty-card:hover {
+    border-color: #64748b;
+    background: rgba(71, 85, 105, 0.8);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.difficulty-icon {
+    font-size: 3em;
+    margin-bottom: 16px;
+}
+
+.difficulty-card h3 {
+    color: #f1f5f9;
+    font-size: 1.3em;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.difficulty-card p {
+    color: #94a3b8;
+    font-size: 0.9em;
+    margin-bottom: 12px;
+}
+
+.difficulty-card .question-count {
+    display: inline-block;
+    background: rgba(71, 85, 105, 0.6);
+    padding: 6px 12px;
+    border-radius: 12px;
+    font-size: 0.85em;
+    color: #cbd5e1;
+    border: 1px solid #64748b;
+}
+
+.difficulty-all {
+    grid-column: span 1;
+    background: linear-gradient(135deg, rgba(71, 85, 105, 0.7) 0%, rgba(51, 65, 85, 0.7) 100%);
+    border: 2px solid #fbbf24;
+}
+
+.difficulty-all:hover {
+    background: linear-gradient(135deg, rgba(100, 116, 139, 0.8) 0%, rgba(71, 85, 105, 0.8) 100%);
+    border-color: #fde047;
+    box-shadow: 0 10px 40px rgba(251, 191, 36, 0.2);
+}
+
+.difficulty-badge {
+    background: rgba(71, 85, 105, 0.6);
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.85em;
+    color: #cbd5e1;
+    border: 1px solid #64748b;
+    margin-left: 8px;
+}
+
+.difficulty.progressive {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.2) 0%, rgba(251, 191, 36, 0.2) 50%, rgba(239, 68, 68, 0.2) 100%);
+    color: #fde047;
+    border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
 .themes-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));

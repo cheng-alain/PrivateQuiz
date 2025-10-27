@@ -20,6 +20,7 @@ type Question struct {
 	Options     []string    `json:"options"`
 	Correct     interface{} `json:"correct"`
 	Explanation string      `json:"explanation"`
+	Difficulty  string      `json:"difficulty,omitempty"`
 }
 
 type QCM struct {
@@ -35,6 +36,7 @@ type Theme struct {
 	Difficulty     string `json:"difficulty"`
 	QuestionsCount int    `json:"questions_count"`
 	File           string `json:"file"`
+	HasDifficulty  bool   `json:"has_difficulty"`
 }
 
 type ThemesList struct {
@@ -198,9 +200,21 @@ func getQCM(w http.ResponseWriter, r *http.Request) {
 
 	countParam := r.URL.Query().Get("count")
 	randomParam := r.URL.Query().Get("random")
+	difficultyParam := r.URL.Query().Get("difficulty")
 
 	questions := make([]Question, len(qcmData.Questions))
 	copy(questions, qcmData.Questions)
+
+	// Filter by difficulty if specified
+	if difficultyParam != "" && difficultyParam != "all" {
+		var filteredQuestions []Question
+		for _, q := range questions {
+			if strings.EqualFold(q.Difficulty, difficultyParam) {
+				filteredQuestions = append(filteredQuestions, q)
+			}
+		}
+		questions = filteredQuestions
+	}
 
 	if randomParam == "true" {
 		rand.Seed(time.Now().UnixNano())

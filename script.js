@@ -6,6 +6,7 @@ let totalQuestions = 0;
 let wrongAnswers = [];
 let maxQuestionsAvailable = 0;
 let selectedTheme = null;
+let selectedDifficulty = null;
 let themes = [];
 
 window.addEventListener('DOMContentLoaded', async function() {
@@ -56,14 +57,21 @@ async function selectTheme(theme) {
     selectedTheme = theme;
 
     document.getElementById('themeSelection').style.display = 'none';
-    document.getElementById('controls').style.display = 'block';
 
-    updateSelectedThemeInfo();
-    await updateMaxQuestions();
+    // If theme has difficulty levels, show difficulty selection
+    if (theme.has_difficulty) {
+        document.getElementById('difficultySelection').style.display = 'block';
+        updateDifficultyThemeInfo();
+    } else {
+        // Otherwise go directly to controls
+        document.getElementById('controls').style.display = 'block';
+        updateSelectedThemeInfo();
+        await updateMaxQuestions();
+    }
 }
 
-function updateSelectedThemeInfo() {
-    const infoElement = document.getElementById('selectedThemeInfo');
+function updateDifficultyThemeInfo() {
+    const infoElement = document.getElementById('difficultyThemeInfo');
     if (selectedTheme && infoElement) {
         infoElement.innerHTML = `
             <div class="selected-theme">
@@ -74,10 +82,45 @@ function updateSelectedThemeInfo() {
     }
 }
 
+async function selectDifficulty(difficulty) {
+    selectedDifficulty = difficulty;
+
+    document.getElementById('difficultySelection').style.display = 'none';
+    document.getElementById('controls').style.display = 'block';
+
+    updateSelectedThemeInfo();
+    await updateMaxQuestions();
+}
+
+function updateSelectedThemeInfo() {
+    const infoElement = document.getElementById('selectedThemeInfo');
+    if (selectedTheme && infoElement) {
+        let difficultyBadge = '';
+        if (selectedDifficulty) {
+            const difficultyLabels = {
+                'easy': '📚 Facile',
+                'intermediate': '🎯 Moyen',
+                'advanced': '🚀 Difficile',
+                'all': '🏆 Examen Final'
+            };
+            difficultyBadge = `<span class="difficulty-badge">${difficultyLabels[selectedDifficulty]}</span>`;
+        }
+        infoElement.innerHTML = `
+            <div class="selected-theme">
+                <span class="theme-icon-small">${selectedTheme.icon}</span>
+                <span class="theme-title-small">${selectedTheme.title}</span>
+                ${difficultyBadge}
+            </div>
+        `;
+    }
+}
+
 function goBackToThemes() {
     document.getElementById('controls').style.display = 'none';
+    document.getElementById('difficultySelection').style.display = 'none';
     document.getElementById('themeSelection').style.display = 'block';
     selectedTheme = null;
+    selectedDifficulty = null;
 }
 
 async function updateMaxQuestions() {
@@ -85,7 +128,12 @@ async function updateMaxQuestions() {
     if (!maxQuestionsElement || !selectedTheme) return;
 
     try {
-        const response = await fetch(`/api/qcm?theme=${selectedTheme.id}&count=999`);
+        let url = `/api/qcm?theme=${selectedTheme.id}&count=999`;
+        if (selectedDifficulty) {
+            url += `&difficulty=${selectedDifficulty}`;
+        }
+
+        const response = await fetch(url);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -123,16 +171,19 @@ async function startQuiz() {
         if (randomOrder) {
             url += '&random=true';
         }
-        
+        if (selectedDifficulty) {
+            url += `&difficulty=${selectedDifficulty}`;
+        }
+
         const response = await fetch(url);
         const data = await response.json();
-        
+
         questions = data.questions;
         totalQuestions = data.total;
-        
+
         document.getElementById('loading').style.display = 'none';
         document.getElementById('quizContainer').style.display = 'block';
-        
+
         resetQuizState();
         displayQuestion();
     } catch (error) {
@@ -431,6 +482,7 @@ function resetQuiz() {
     document.getElementById('results').style.display = 'none';
     document.getElementById('quizContainer').style.display = 'none';
     document.getElementById('controls').style.display = 'none';
+    document.getElementById('difficultySelection').style.display = 'none';
     document.getElementById('themeSelection').style.display = 'block';
 
     questions = [];
@@ -440,4 +492,5 @@ function resetQuiz() {
     totalQuestions = 0;
     wrongAnswers = [];
     selectedTheme = null;
+    selectedDifficulty = null;
 }

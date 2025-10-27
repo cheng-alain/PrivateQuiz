@@ -20,6 +20,40 @@
             </div>
         </div>
 
+        <div class="difficulty-selection" id="difficultySelection" style="display: none;">
+            <div class="controls-header">
+                <button class="back-btn" onclick="goBackToThemes()">← Back to Topics</button>
+                <div class="selected-theme-info" id="difficultyThemeInfo"></div>
+            </div>
+            <h2>Select Difficulty Level</h2>
+            <div class="difficulty-container">
+                <div class="difficulty-card" onclick="selectDifficulty('easy')">
+                    <div class="difficulty-icon">📚</div>
+                    <h3>Facile</h3>
+                    <p>Questions fondamentales</p>
+                    <span class="question-count">50 questions</span>
+                </div>
+                <div class="difficulty-card" onclick="selectDifficulty('intermediate')">
+                    <div class="difficulty-icon">🎯</div>
+                    <h3>Moyen</h3>
+                    <p>Concepts intermédiaires</p>
+                    <span class="question-count">50 questions</span>
+                </div>
+                <div class="difficulty-card" onclick="selectDifficulty('advanced')">
+                    <div class="difficulty-icon">🚀</div>
+                    <h3>Difficile</h3>
+                    <p>Questions avancées</p>
+                    <span class="question-count">50 questions</span>
+                </div>
+                <div class="difficulty-card difficulty-all" onclick="selectDifficulty('all')">
+                    <div class="difficulty-icon">🏆</div>
+                    <h3>Examen Final</h3>
+                    <p>Tous les niveaux</p>
+                    <span class="question-count">150 questions</span>
+                </div>
+            </div>
+        </div>
+
         <div class="controls" id="controls" style="display: none;">
             <div class="controls-header">
                 <button class="back-btn" onclick="goBackToThemes()">← Back to Topics</button>

@@ -14,9 +14,10 @@
       "title": "Kubernetes",
       "description": "Testez vos connaissances sur Kubernetes",
       "icon": "K8S",
-      "difficulty": "Advanced",
-      "questions_count": 100,
-      "file": "kubernetes.json"
+      "difficulty": "Progressive",
+      "questions_count": 150,
+      "file": "kubernetes.json",
+      "has_difficulty": true
     },
     {
       "id": "docker",
