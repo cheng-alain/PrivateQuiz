@@ -62,6 +62,7 @@ async function selectTheme(theme) {
     if (theme.has_difficulty) {
         document.getElementById('difficultySelection').style.display = 'block';
         updateDifficultyThemeInfo();
+        await updateDifficultyCounts();
     } else {
         // Otherwise go directly to controls
         document.getElementById('controls').style.display = 'block';
@@ -79,6 +80,36 @@ function updateDifficultyThemeInfo() {
                 <span class="theme-title-small">${selectedTheme.title}</span>
             </div>
         `;
+    }
+}
+
+async function updateDifficultyCounts() {
+    if (!selectedTheme) return;
+
+    const difficulties = ['easy', 'intermediate', 'advanced', 'all'];
+
+    for (const difficulty of difficulties) {
+        const countElement = document.getElementById(`${difficulty}Count`);
+        if (!countElement) continue;
+
+        try {
+            let url = `/api/qcm?theme=${selectedTheme.id}&count=999`;
+            if (difficulty !== 'all') {
+                url += `&difficulty=${difficulty}`;
+            }
+
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const data = await response.json();
+            const count = data.total;
+
+            countElement.textContent = `${count} question${count > 1 ? 's' : ''}`;
+        } catch (error) {
+            console.error(`Error loading ${difficulty} question count:`, error);
+            countElement.textContent = '? questions';
+        }
     }
 }
 

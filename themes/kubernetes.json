@@ -1,1305 +1,1956 @@
 {
-    "title": "Kubernetes",
-    "questions": [
-        {
-            "id": 1,
-            "question": "Quel est le rôle principal de Kubernetes ?",
-            "options": [
-                "Automatiser le déploiement, la mise à l’échelle et la gestion des applications conteneurisées",
-                "Créer des machines virtuelles",
-                "Remplacer le noyau Linux",
-                "Exécuter des scripts Bash"
-            ],
-            "correct": 0,
-            "explanation": "Kubernetes est un orchestrateur de conteneurs qui permet d’automatiser le déploiement, la mise à l’échelle et la gestion des applications conteneurisées.",
-            "difficulty": "easy"
-        },
-        {
-            "id": 2,
-            "question": "Comment s’appelle l’unité de base de déploiement dans Kubernetes ?",
-            "options": [
-                "Pod",
-                "Service",
-                "Cluster",
-                "Deployment"
-            ],
-            "correct": 0,
-            "explanation": "Un Pod est la plus petite unité déployable de Kubernetes. Il peut contenir un ou plusieurs conteneurs partageant le même réseau et le même stockage.",
-            "difficulty": "easy"
-        },
-        {
-            "id": 3,
-            "question": "Quel composant Kubernetes est responsable de la planification des Pods sur les nœuds ?",
-            "options": [
-                "kubelet",
-                "Scheduler",
-                "Controller Manager",
-                "API Server"
-            ],
-            "correct": 1,
-            "explanation": "Le Scheduler assigne les Pods aux nœuds en fonction des ressources disponibles et des contraintes spécifiées.",
-            "difficulty": "easy"
-        },
-        {
-            "id": 4,
-            "question": "Quel objet Kubernetes expose une application à l’extérieur du cluster ?",
-            "options": [
-                "ConfigMap",
-                "ReplicaSet",
-                "Service de type LoadBalancer",
-                "Namespace"
-            ],
-            "correct": 2,
-            "explanation": "Un Service de type LoadBalancer permet d’exposer une application vers l’extérieur du cluster en attribuant une adresse IP externe.",
-            "difficulty": "easy"
-        },
-        {
-            "id": 5,
-            "question": "Quel fichier est généralement utilisé pour décrire un objet Kubernetes ?",
-            "options": [
-                "Fichier YAML",
-                "Fichier JSON",
-                "Script Bash",
-                "Dockerfile"
-            ],
-            "correct": 0,
-            "explanation": "La plupart des définitions d’objets Kubernetes sont décrites en YAML, bien que le JSON soit aussi accepté.",
-            "difficulty": "easy"
-        },
-        {
-            "id": 6,
-            "question": "Quel composant exécute réellement les conteneurs sur chaque nœud ?",
-            "options": [
-                "kubelet",
-                "Scheduler",
-                "API Server",
-                "kubectl"
-            ],
-            "correct": 0,
-            "explanation": "Le kubelet est l’agent qui s’exécute sur chaque nœud et qui interagit avec le runtime de conteneurs pour exécuter les Pods.",
-            "difficulty": "easy"
-        },
-        {
-            "id": 7,
-            "question": "Comment appelle-t-on un regroupement logique d’objets dans Kubernetes pour organiser les ressources ?",
-            "options": [
-                "Pod",
-                "Namespace",
-                "Node",
-                "Service"
-            ],
-            "correct": 1,
-            "explanation": "Un Namespace permet de regrouper et d’isoler logiquement des ressources Kubernetes au sein d’un même cluster.",
-            "difficulty": "easy"
-        },
-        {
-            "id": 8,
-            "question": "Quel objet Kubernetes garantit qu’un nombre souhaité de Pods est toujours en cours d’exécution ?",
-            "options": [
-                "Service",
-                "Deployment",
-                "ConfigMap",
-                "Secret"
-            ],
-            "correct": 1,
-            "explanation": "Un Deployment gère la création et la mise à jour des Pods afin de garantir qu’un nombre spécifié d’instances est toujours actif.",
-            "difficulty": "easy"
-        },
-        {
-            "id": 9,
-            "question": "Quelle commande permet de vérifier l’état des Pods dans un cluster Kubernetes ?",
-            "options": [
-                "kubectl get pods",
-                "kubectl describe services",
-                "kubectl get nodes",
-                "kubectl apply -f"
-            ],
-            "correct": 0,
-            "explanation": "La commande `kubectl get pods` affiche la liste et l’état des Pods dans un namespace donné.",
-            "difficulty": "easy"
-        },
-        {
-            "id": 10,
-            "question": "Quel objet Kubernetes permet de stocker des données de configuration non sensibles sous forme de paires clé-valeur ?",
-            "options": [
-                "Secret",
-                "ConfigMap",
-                "PersistentVolume",
-                "ServiceAccount"
-            ],
-            "correct": 1,
-            "explanation": "Un ConfigMap permet de stocker des données de configuration sous forme de paires clé-valeur, distinctes du code applicatif.",
-            "difficulty": "easy"
-        },
-        {
-            "id": 11,
-            "question": "Quel objet Kubernetes est utilisé pour stocker des informations sensibles comme des mots de passe ou des clés API ?",
-            "options": [
-                "ConfigMap",
-                "Secret",
-                "Namespace",
-                "Volume"
-            ],
-            "correct": 1,
-            "explanation": "Un Secret est utilisé pour stocker des données sensibles comme des mots de passe ou certificats, généralement encodés en base64.",
-            "difficulty": "easy"
-        },
-        {
-            "id": 12,
-            "question": "Quelle ressource Kubernetes permet de définir des limites par défaut de CPU et de mémoire pour les Pods ?",
-            "options": [
-                "ResourceQuota",
-                "LimitRange",
-                "ConfigMap",
-                "Service"
-            ],
-            "correct": 1,
-            "explanation": "Un LimitRange définit les limites minimales et maximales de ressources qu’un Pod ou un conteneur peut utiliser.",
-            "difficulty": "easy"
-        },
-        {
-            "id": 13,
-            "question": "Quel type de volume Kubernetes permet de conserver les données même si un Pod est supprimé ?",
-            "options": [
-                "emptyDir",
-                "PersistentVolume",
-                "ConfigMap",
-                "Secret"
-            ],
-            "correct": 1,
-            "explanation": "Un PersistentVolume (PV) permet de conserver les données indépendamment du cycle de vie des Pods.",
-            "difficulty": "easy"
-        },
-        {
-            "id": 14,
-            "question": "Quelle commande permet de lancer un shell interactif dans un Pod en cours d’exécution ?",
-            "options": [
-                "kubectl exec -it <pod> -- /bin/sh",
-                "kubectl get pods -o shell",
-                "kubectl describe pod <pod>",
-                "kubectl run <pod> --shell"
-            ],
-            "correct": 0,
-            "explanation": "La commande `kubectl exec -it <pod> -- /bin/sh` permet d’ouvrir un shell interactif dans un conteneur d’un Pod.",
-            "difficulty": "easy"
-        },
-        {
-            "id": 15,
-            "question": "Quel type de mise à jour est réalisée par défaut avec un Deployment Kubernetes ?",
-            "options": [
-                "Blue/Green",
-                "Recreate",
-                "Rolling Update",
-                "Canary"
-            ],
-            "correct": 2,
-            "explanation": "Par défaut, Kubernetes effectue des Rolling Updates pour mettre à jour les Pods progressivement sans interruption de service.",
-            "difficulty": "easy"
-        },
-        {
-            "id": 16,
-            "question": "Quel composant du plan de contrôle expose l’API Kubernetes utilisée par kubectl ?",
-            "options": [
-                "Scheduler",
-                "Controller Manager",
-                "API Server",
-                "etcd"
-            ],
-            "correct": 2,
-            "explanation": "L’API Server est l’interface principale de Kubernetes, utilisée par kubectl, les contrôleurs et les autres composants.",
-            "difficulty": "easy"
-        },
-        {
-            "id": 17,
-            "question": "Où Kubernetes stocke-t-il l’état et la configuration du cluster ?",
-            "options": [
-                "Dans etcd",
-                "Dans un fichier YAML sur le maître",
-                "Dans kubelet",
-                "Dans Docker Hub"
-            ],
-            "correct": 0,
-            "explanation": "etcd est la base de données clé-valeur distribuée utilisée par Kubernetes pour stocker l’état et la configuration du cluster.",
-            "difficulty": "easy"
-        },
-        {
-            "id": 18,
-            "question": "Quel objet Kubernetes permet d’exécuter une tâche unique ou périodique ?",
-            "options": [
-                "Deployment",
-                "DaemonSet",
-                "Job / CronJob",
-                "ReplicaSet"
-            ],
-            "correct": 2,
-            "explanation": "Un Job exécute une tâche unique, tandis qu’un CronJob permet d’exécuter une tâche périodique planifiée.",
-            "difficulty": "easy"
-        },
-        {
-            "id": 19,
-            "question": "Quel type de Service Kubernetes expose les Pods uniquement à l'intérieur du cluster ?",
-            "options": [
-                "ClusterIP",
-                "NodePort",
-                "LoadBalancer",
-                "Ingress"
-            ],
-            "correct": 0,
-            "explanation": "Un Service de type ClusterIP est accessible uniquement depuis l'intérieur du cluster et distribue le trafic entre les Pods.",
-            "difficulty": "easy"
-        },
-        {
-            "id": 20,
-            "question": "Quel objet Kubernetes permet de gérer l’accès HTTP/HTTPS externe à plusieurs Services à l’aide de règles de routage ?",
-            "options": [
-                "ConfigMap",
-                "Ingress",
-                "Namespace",
-                "ServiceAccount"
-            ],
-            "correct": 1,
-            "explanation": "Un Ingress gère l’accès HTTP/HTTPS externe et permet de définir des règles de routage vers différents Services.",
-            "difficulty": "easy"
-        },
-        {
-            "id": 21,
-            "question": "Quel objet Kubernetes permet d'assurer qu'un Pod est exécuté sur chaque nœud du cluster ?",
-            "options": [
-                "Deployment",
-                "ReplicaSet",
-                "DaemonSet",
-                "StatefulSet"
-            ],
-            "correct": 2,
-            "explanation": "Un DaemonSet s’assure qu’un Pod spécifique est exécuté sur chaque nœud (par exemple pour des agents de monitoring ou de logging).",
-            "difficulty": "easy"
-        },
-        {
-            "id": 22,
-            "question": "Quelle est la principale différence entre un ReplicaSet et un StatefulSet ?",
-            "options": [
-                "ReplicaSet gère des Pods stateless, StatefulSet gère des Pods avec identité et stockage persistant",
-                "ReplicaSet gère le stockage persistant, StatefulSet non",
-                "ReplicaSet est plus lent que StatefulSet",
-                "Ils sont identiques, seul le nom change"
-            ],
-            "correct": 0,
-            "explanation": "Un StatefulSet gère l'identité stable des Pods (nom, réseau, volumes persistants), ce qui est essentiel pour les bases de données distribuées, contrairement au ReplicaSet.",
-            "difficulty": "easy"
-        },
-        {
-            "id": 23,
-            "question": "Quelle commande kubectl permet de consulter les logs d’un Pod ?",
-            "options": [
-                "kubectl get logs <pod>",
-                "kubectl logs <pod>",
-                "kubectl describe pod <pod>",
-                "kubectl exec <pod> logs"
-            ],
-            "correct": 1,
-            "explanation": "La commande `kubectl logs <pod>` permet de consulter les logs des conteneurs d’un Pod.",
-            "difficulty": "easy"
-        },
-        {
-            "id": 24,
-            "question": "Quelle commande permet de suivre les logs en temps réel d’un Pod ?",
-            "options": [
-                "kubectl logs -f <pod>",
-                "kubectl get pods -f",
-                "kubectl describe logs <pod>",
-                "kubectl exec -it <pod> -- tail -f /var/log/app.log"
-            ],
-            "correct": 0,
-            "explanation": "L’option `-f` (follow) de `kubectl logs` permet de suivre les logs en continu.",
-            "difficulty": "easy"
-        },
-        {
-            "id": 25,
-            "question": "Quelle commande affiche les événements récents d’un Pod (par exemple erreurs de scheduling) ?",
-            "options": [
-                "kubectl get pods",
-                "kubectl events <pod>",
-                "kubectl describe pod <pod>",
-                "kubectl logs <pod>"
-            ],
-            "correct": 2,
-            "explanation": "La commande `kubectl describe pod <pod>` permet de voir les détails et les événements associés à un Pod.",
-            "difficulty": "easy"
-        },
-        {
-            "id": 26,
-            "question": "Quel type d’objet Kubernetes utilise-t-on pour gérer des Pods avec des identités réseau stables et un stockage persistant, souvent pour des bases de données ?",
-            "options": [
-                "ReplicaSet",
-                "DaemonSet",
-                "StatefulSet",
-                "Deployment"
-            ],
-            "correct": 2,
-            "explanation": "Les StatefulSets sont utilisés pour les applications nécessitant une identité stable, comme les bases de données distribuées.",
-            "difficulty": "easy"
-        },
-        {
-            "id": 27,
-            "question": "Quelle commande permet de lister tous les namespaces du cluster ?",
-            "options": [
-                "kubectl get ns",
-                "kubectl list namespaces",
-                "kubectl describe all",
-                "kubectl get cluster-ns"
-            ],
-            "correct": 0,
-            "explanation": "La commande `kubectl get ns` (ou `kubectl get namespaces`) liste tous les namespaces du cluster.",
-            "difficulty": "easy"
-        },
-        {
-            "id": 28,
-            "question": "Quelle ressource Kubernetes est utilisée pour définir des règles réseau afin de contrôler le trafic entrant et sortant des Pods ?",
-            "options": [
-                "Ingress",
-                "Service",
-                "NetworkPolicy",
-                "Firewall"
-            ],
-            "correct": 2,
-            "explanation": "Une NetworkPolicy permet de définir des règles de sécurité réseau (contrôle du trafic entrant/sortant) pour les Pods.",
-            "difficulty": "easy"
-        },
-        {
-            "id": 29,
-            "question": "Quelle commande permet d'afficher l'utilisation des ressources (CPU, mémoire) des Pods ?",
-            "options": [
-                "kubectl top pods",
-                "kubectl get resources",
-                "kubectl describe cpu",
-                "kubectl metrics pods"
-            ],
-            "correct": 0,
-            "explanation": "La commande `kubectl top pods` (avec Metrics Server installé) permet de visualiser l’utilisation des ressources des Pods.",
-            "difficulty": "easy"
-        },
-        {
-            "id": 30,
-            "question": "Quel composant Kubernetes exécute les contrôleurs qui surveillent l’état du cluster et prennent des actions correctives ?",
-            "options": [
-                "Scheduler",
-                "Controller Manager",
-                "kubelet",
-                "API Server"
-            ],
-            "correct": 1,
-            "explanation": "Le Controller Manager exécute divers contrôleurs (ReplicaSet controller, Node controller, etc.) pour maintenir l’état désiré du cluster.",
-            "difficulty": "easy"
-        },
-        {
-            "id": 31,
-            "question": "Quelle commande permet de supprimer un Pod spécifique ?",
-            "options": [
-                "kubectl delete pod <nom>",
-                "kubectl remove pod <nom>",
-                "kubectl destroy pod <nom>",
-                "kubectl kill pod <nom>"
-            ],
-            "correct": 0,
-            "explanation": "La commande `kubectl delete pod <nom>` permet de supprimer un Pod spécifique.",
-            "difficulty": "easy"
-        },
-        {
-            "id": 32,
-            "question": "Quel objet Kubernetes définit des volumes persistants dynamiques via des classes de stockage ?",
-            "options": [
-                "PersistentVolumeClaim",
-                "ConfigMap",
-                "StorageClass",
-                "StatefulSet"
-            ],
-            "correct": 2,
-            "explanation": "Un StorageClass définit la manière dont les volumes persistants dynamiques sont créés dans Kubernetes.",
-            "difficulty": "easy"
-        },
-        {
-            "id": 33,
-            "question": "Quelle commande kubectl permet d'obtenir l'adresse IP d'un Pod ?",
-            "options": [
-                "kubectl get pod -o wide",
-                "kubectl ip pod <nom>",
-                "kubectl describe pod ip",
-                "kubectl show ip <pod>"
-            ],
-            "correct": 0,
-            "explanation": "La commande `kubectl get pod -o wide` affiche des informations supplémentaires, dont l’adresse IP du Pod.",
-            "difficulty": "easy"
-        },
-        {
-            "id": 34,
-            "question": "Quel objet Kubernetes est utilisé pour monter un secret ou un ConfigMap en tant que fichier dans un conteneur ?",
-            "options": [
-                "Volume",
-                "PersistentVolume",
-                "EmptyDir",
-                "StatefulSet"
-            ],
-            "correct": 0,
-            "explanation": "Un Volume peut être utilisé pour monter un ConfigMap ou un Secret en tant que fichier dans un conteneur.",
-            "difficulty": "easy"
-        },
-        {
-            "id": 35,
-            "question": "Quel type de Service Kubernetes permet d'exposer une application sur chaque nœud via un port spécifique ?",
-            "options": [
-                "ClusterIP",
-                "NodePort",
-                "LoadBalancer",
-                "ExternalName"
-            ],
-            "correct": 1,
-            "explanation": "Un Service de type NodePort expose l’application sur un port statique de chaque nœud du cluster.",
-            "difficulty": "easy"
-        },
-        {
-            "id": 36,
-            "question": "Quelle commande permet d’obtenir la configuration complète d’un objet Kubernetes au format YAML ?",
-            "options": [
-                "kubectl show yaml <objet>",
-                "kubectl get <objet> -o yaml",
-                "kubectl describe <objet> yaml",
-                "kubectl get <objet> --yaml"
-            ],
-            "correct": 1,
-            "explanation": "La commande `kubectl get <objet> -o yaml` permet d’afficher la configuration complète d’un objet au format YAML.",
-            "difficulty": "easy"
-        },
-        {
-            "id": 37,
-            "question": "Quel objet Kubernetes garantit qu'un Pod s'exécute sur tous les nœuds qui correspondent à une sélection spécifique de labels ?",
-            "options": [
-                "StatefulSet",
-                "ReplicaSet",
-                "DaemonSet",
-                "Deployment"
-            ],
-            "correct": 2,
-            "explanation": "Un DaemonSet déploie des Pods sur chaque nœud qui correspond aux labels définis dans sa configuration.",
-            "difficulty": "easy"
-        },
-        {
-            "id": 38,
-            "question": "Quelle commande permet d’exécuter une commande directement dans un conteneur d’un Pod ?",
-            "options": [
-                "kubectl logs <pod>",
-                "kubectl exec -it <pod> -- <commande>",
-                "kubectl attach <pod>",
-                "kubectl run <pod> <commande>"
-            ],
-            "correct": 1,
-            "explanation": "La commande `kubectl exec -it <pod> -- <commande>` permet d’exécuter une commande dans un conteneur d’un Pod.",
-            "difficulty": "easy"
-        },
-        {
-            "id": 39,
-            "question": "Quel objet Kubernetes est le mieux adapté pour déployer une application web avec montée en charge horizontale et mises à jour progressives ?",
-            "options": [
-                "DaemonSet",
-                "StatefulSet",
-                "Deployment",
-                "Job"
-            ],
-            "correct": 2,
-            "explanation": "Un Deployment est utilisé pour déployer des applications stateless avec scalabilité et rolling updates.",
-            "difficulty": "easy"
-        },
-        {
-            "id": 40,
-            "question": "Quelle commande permet de mettre à jour l’image d’un conteneur géré par un Deployment ?",
-            "options": [
-                "kubectl edit deployment <nom>",
-                "kubectl set image deployment/<nom> <container>=<image:tag>",
-                "kubectl update image <nom>",
-                "kubectl rollout update <nom>"
-            ],
-            "correct": 1,
-            "explanation": "La commande `kubectl set image deployment/<nom> <container>=<image:tag>` met à jour l’image utilisée dans un Deployment.",
-            "difficulty": "easy"
-        },
-        {
-            "id": 41,
-            "question": "Quel objet Kubernetes permet de définir des règles d’accès basées sur les rôles pour contrôler les permissions des utilisateurs et services ?",
-            "options": [
-                "ConfigMap",
-                "Role / ClusterRole",
-                "Secret",
-                "ServiceAccount"
-            ],
-            "correct": 1,
-            "explanation": "RBAC utilise des Role et ClusterRole associés à des RoleBinding ou ClusterRoleBinding pour définir des permissions.",
-            "difficulty": "easy"
-        },
-        {
-            "id": 42,
-            "question": "Quelle commande permet de voir quels rôles sont liés à un utilisateur ou un service account ?",
-            "options": [
-                "kubectl describe rolebinding",
-                "kubectl get rbac",
-                "kubectl show roles",
-                "kubectl describe sa"
-            ],
-            "correct": 0,
-            "explanation": "La commande `kubectl describe rolebinding` permet de voir quels rôles sont liés et à qui ils s’appliquent.",
-            "difficulty": "easy"
-        },
-        {
-            "id": 43,
-            "question": "Quel mécanisme Kubernetes permet de bloquer l’ordonnancement de Pods sur certains nœuds sauf si les Pods ont une tolérance spécifique ?",
-            "options": [
-                "NodeSelector",
-                "Affinity",
-                "Taints et Tolerations",
-                "Labels"
-            ],
-            "correct": 2,
-            "explanation": "Les Taints empêchent les Pods d’être planifiés sur certains nœuds, sauf si ceux-ci possèdent la tolérance correspondante.",
-            "difficulty": "easy"
-        },
-        {
-            "id": 44,
-            "question": "Quelle commande kubectl permet de vérifier les ressources disponibles et utilisées d'un nœud ?",
-            "options": [
-                "kubectl get nodes -o wide",
-                "kubectl top node",
-                "kubectl describe node <nom>",
-                "kubectl get resources"
-            ],
-            "correct": 1,
-            "explanation": "La commande `kubectl top node` affiche l'utilisation actuelle des ressources CPU et mémoire de tous les nœuds.",
-            "difficulty": "easy"
-        },
-        {
-            "id": 45,
-            "question": "Quel composant Kubernetes applique les Admission Controllers qui valident ou modifient les requêtes API avant leur persistance ?",
-            "options": [
-                "kubelet",
-                "API Server",
-                "Controller Manager",
-                "Scheduler"
-            ],
-            "correct": 1,
-            "explanation": "Les Admission Controllers fonctionnent dans l’API Server pour valider ou modifier les requêtes avant qu’elles ne soient stockées dans etcd.",
-            "difficulty": "easy"
-        },
-        {
-            "id": 46,
-            "question": "Quel objet Kubernetes permet de limiter le nombre de Pods ou de ressources CPU/mémoire utilisables dans un namespace ?",
-            "options": [
-                "LimitRange",
-                "ResourceQuota",
-                "RoleBinding",
-                "NetworkPolicy"
-            ],
-            "correct": 1,
-            "explanation": "Un ResourceQuota définit les limites globales de consommation de ressources (Pods, CPU, mémoire) dans un namespace.",
-            "difficulty": "easy"
-        },
-        {
-            "id": 47,
-            "question": "Quelle commande permet de voir l’historique des déploiements et leurs versions ?",
-            "options": [
-                "kubectl rollout history deployment <nom>",
-                "kubectl describe deployment <nom>",
-                "kubectl get deployment <nom> -o yaml",
-                "kubectl rollout status <nom>"
-            ],
-            "correct": 0,
-            "explanation": "La commande `kubectl rollout history deployment <nom>` affiche l’historique des versions d’un déploiement.",
-            "difficulty": "easy"
-        },
-        {
-            "id": 48,
-            "question": "Quel objet Kubernetes est utilisé pour gérer des conteneurs qui doivent s’exécuter en tâche de fond sur chaque nœud, comme un agent de monitoring ?",
-            "options": [
-                "Deployment",
-                "StatefulSet",
-                "Job",
-                "DaemonSet"
-            ],
-            "correct": 3,
-            "explanation": "Un DaemonSet déploie automatiquement un Pod sur chaque nœud du cluster pour des tâches de fond.",
-            "difficulty": "easy"
-        },
-        {
-            "id": 49,
-            "question": "Quelle commande kubectl permet de forcer un redémarrage des Pods gérés par un Deployment ?",
-            "options": [
-                "kubectl rollout restart deployment <nom>",
-                "kubectl restart pod <nom>",
-                "kubectl delete pods --force",
-                "kubectl update deployment <nom>"
-            ],
-            "correct": 0,
-            "explanation": "La commande `kubectl rollout restart deployment <nom>` force Kubernetes à recréer les Pods d’un Deployment.",
-            "difficulty": "easy"
-        },
-        {
-            "id": 50,
-            "question": "Quelle commande permet de tester la connectivité réseau entre deux Pods ?",
-            "options": [
-                "kubectl ping podA podB",
-                "kubectl exec -it <podA> -- ping <service_podB>",
-                "kubectl describe net podA podB",
-                "kubectl logs --net podA podB"
-            ],
-            "correct": 1,
-            "explanation": "En utilisant `kubectl exec` dans un Pod, on peut lancer `ping` vers le service d'un autre Pod pour tester la connectivité réseau.",
-            "difficulty": "easy"
-        },
-        {
-            "id": 51,
-            "question": "Quel objet Kubernetes permet d’exécuter un conteneur unique pour une tâche courte et non répétée ?",
-            "options": [
-                "Deployment",
-                "Job",
-                "DaemonSet",
-                "StatefulSet"
-            ],
-            "correct": 1,
-            "explanation": "Un Job exécute un Pod jusqu’à son achèvement, idéal pour les tâches ponctuelles.",
-            "difficulty": "intermediate"
-        },
-        {
-            "id": 52,
-            "question": "Quelle commande permet de surveiller en continu les événements dans un cluster Kubernetes ?",
-            "options": [
-                "kubectl get events --watch",
-                "kubectl watch events",
-                "kubectl describe events",
-                "kubectl top events"
-            ],
-            "correct": 0,
-            "explanation": "La commande `kubectl get events --watch` affiche les événements en temps réel.",
-            "difficulty": "intermediate"
-        },
-        {
-            "id": 53,
-            "question": "Quel objet Kubernetes permet de définir une règle de mise à jour progressive avec rollback possible ?",
-            "options": [
-                "Deployment",
-                "Job",
-                "ReplicaSet",
-                "ConfigMap"
-            ],
-            "correct": 0,
-            "explanation": "Un Deployment gère les Rolling Updates et permet de faire un rollback vers une version précédente.",
-            "difficulty": "intermediate"
-        },
-        {
-            "id": 54,
-            "question": "Quelle commande permet d’afficher l’état de santé d’un déploiement en cours de mise à jour ?",
-            "options": [
-                "kubectl rollout status deployment <nom>",
-                "kubectl get deployment <nom>",
-                "kubectl logs deployment <nom>",
-                "kubectl health deployment <nom>"
-            ],
-            "correct": 0,
-            "explanation": "La commande `kubectl rollout status deployment <nom>` permet de suivre l’état d’une mise à jour.",
-            "difficulty": "intermediate"
-        },
-        {
-            "id": 55,
-            "question": "Quel mécanisme Kubernetes permet d’exécuter des conteneurs initiaux avant le démarrage des conteneurs principaux d’un Pod ?",
-            "options": [
-                "Sidecar containers",
-                "Init Containers",
-                "DaemonSet",
-                "Startup Probe"
-            ],
-            "correct": 1,
-            "explanation": "Les Init Containers s’exécutent avant les conteneurs principaux pour préparer l’environnement.",
-            "difficulty": "intermediate"
-        },
-        {
-            "id": 56,
-            "question": "Quelle commande permet de filtrer les Pods par label dans un namespace ?",
-            "options": [
-                "kubectl get pods --selector <clé=valeur>",
-                "kubectl describe pods --labels",
-                "kubectl filter pods <label>",
-                "kubectl get pods --labels-only"
-            ],
-            "correct": 0,
-            "explanation": "La commande `kubectl get pods --selector <clé=valeur>` filtre les Pods selon leurs labels.",
-            "difficulty": "intermediate"
-        },
-        {
-            "id": 57,
-            "question": "Quel objet Kubernetes permet de regrouper plusieurs règles d’accès HTTP sous un même point d’entrée ?",
-            "options": [
-                "Ingress",
-                "Service",
-                "NetworkPolicy",
-                "ReplicaSet"
-            ],
-            "correct": 0,
-            "explanation": "Un Ingress gère les règles d’accès HTTP/HTTPS externes pour router le trafic vers les Services.",
-            "difficulty": "intermediate"
-        },
-        {
-            "id": 58,
-            "question": "Quelle commande permet de voir tous les objets Kubernetes dans un namespace donné ?",
-            "options": [
-                "kubectl get all -n <namespace>",
-                "kubectl describe namespace <nom>",
-                "kubectl list namespace <nom>",
-                "kubectl show all <namespace>"
-            ],
-            "correct": 0,
-            "explanation": "La commande `kubectl get all -n <namespace>` liste tous les objets dans un namespace spécifique.",
-            "difficulty": "intermediate"
-        },
-        {
-            "id": 59,
-            "question": "Quel type de probe Kubernetes permet de vérifier si une application est prête à recevoir du trafic ?",
-            "options": [
-                "Liveness Probe",
-                "Readiness Probe",
-                "Startup Probe",
-                "Health Check"
-            ],
-            "correct": 1,
-            "explanation": "La Readiness Probe vérifie si une application est prête à recevoir du trafic. Tant qu’elle échoue, le Pod n’est pas ajouté au Service.",
-            "difficulty": "intermediate"
-        },
-        {
-            "id": 60,
-            "question": "Quelle commande kubectl permet de forcer un rollback d’un déploiement vers une version précédente ?",
-            "options": [
-                "kubectl rollout undo deployment <nom>",
-                "kubectl rollback deployment <nom>",
-                "kubectl set image rollback <nom>",
-                "kubectl delete deployment <nom>"
-            ],
-            "correct": 0,
-            "explanation": "La commande `kubectl rollout undo deployment <nom>` permet de revenir à la version précédente d’un déploiement.",
-            "difficulty": "intermediate"
-        },
-        {
-            "id": 61,
-            "question": "Quelle commande kubeadm permet d’initialiser un nouveau cluster Kubernetes ?",
-            "options": [
-                "kubeadm create cluster",
-                "kubeadm init",
-                "kubeadm bootstrap",
-                "kubeadm start"
-            ],
-            "correct": 1,
-            "explanation": "La commande `kubeadm init` initialise le plan de contrôle d’un cluster Kubernetes.",
-            "difficulty": "intermediate"
-        },
-        {
-            "id": 62,
-            "question": "Quelle commande kubeadm permet à un nœud de rejoindre un cluster existant ?",
-            "options": [
-                "kubeadm add-node",
-                "kubeadm join",
-                "kubeadm connect",
-                "kubeadm attach"
-            ],
-            "correct": 1,
-            "explanation": "La commande `kubeadm join` permet à un nœud de rejoindre un cluster Kubernetes existant.",
-            "difficulty": "intermediate"
-        },
-        {
-            "id": 63,
-            "question": "Quel fichier contient la configuration d’accès pour kubectl (clusters, users, contexts) ?",
-            "options": [
-                "/etc/kubernetes/config.yaml",
-                "~/.kube/config",
-                "/var/lib/kubelet/config.yaml",
-                "/etc/docker/config.json"
-            ],
-            "correct": 1,
-            "explanation": "Le fichier `~/.kube/config` contient les informations nécessaires pour que kubectl communique avec le cluster.",
-            "difficulty": "intermediate"
-        },
-        {
-            "id": 64,
-            "question": "Quelle commande permet de vérifier la version du serveur et du client Kubernetes ?",
-            "options": [
-                "kubectl version",
-                "kubectl get version",
-                "kubectl cluster-info version",
-                "kubectl info"
-            ],
-            "correct": 0,
-            "explanation": "La commande `kubectl version` affiche la version du client et du serveur Kubernetes.",
-            "difficulty": "intermediate"
-        },
-        {
-            "id": 65,
-            "question": "Quel objet Kubernetes permet de s’assurer qu’un Pod est relancé automatiquement en cas de crash ?",
-            "options": [
-                "Job",
-                "Deployment",
-                "StatefulSet",
-                "ReplicaSet"
-            ],
-            "correct": 1,
-            "explanation": "Un Deployment garantit que les Pods sont relancés si un conteneur échoue.",
-            "difficulty": "intermediate"
-        },
-        {
-            "id": 66,
-            "question": "Quelle commande permet de voir la configuration en cours d’un kubelet sur un nœud ?",
-            "options": [
-                "cat /var/lib/kubelet/config.yaml",
-                "systemctl status kubelet",
-                "kubectl get kubelet",
-                "kubectl describe node"
-            ],
-            "correct": 0,
-            "explanation": "Le fichier `/var/lib/kubelet/config.yaml` contient la configuration actuelle du kubelet sur le nœud.",
-            "difficulty": "intermediate"
-        },
-        {
-            "id": 67,
-            "question": "Quelle commande kubectl permet de lister tous les CRDs (CustomResourceDefinitions) installés ?",
-            "options": [
-                "kubectl get crds",
-                "kubectl get custom-resources",
-                "kubectl describe crd",
-                "kubectl get api-resources"
-            ],
-            "correct": 0,
-            "explanation": "La commande `kubectl get crds` liste toutes les définitions de ressources personnalisées.",
-            "difficulty": "intermediate"
-        },
-        {
-            "id": 68,
-            "question": "Quel outil est utilisé par défaut pour stocker l’état du cluster Kubernetes ?",
-            "options": [
-                "Redis",
-                "MySQL",
-                "etcd",
-                "ZooKeeper"
-            ],
-            "correct": 2,
-            "explanation": "Kubernetes utilise etcd comme base de données clé-valeur distribuée pour stocker l’état du cluster.",
-            "difficulty": "intermediate"
-        },
-        {
-            "id": 69,
-            "question": "Quelle commande permet de sauvegarder l’état du cluster depuis etcd ?",
-            "options": [
-                "etcdctl snapshot save",
-                "kubectl etcd backup",
-                "etcd backup create",
-                "kubectl save etcd"
-            ],
-            "correct": 0,
-            "explanation": "La commande `etcdctl snapshot save <fichier>` permet de sauvegarder l’état du cluster.",
-            "difficulty": "intermediate"
-        },
-        {
-            "id": 70,
-            "question": "Quelle commande permet de restaurer un snapshot etcd ?",
-            "options": [
-                "etcdctl snapshot restore",
-                "kubectl restore etcd",
-                "kubeadm etcd restore",
-                "kubectl etcd snapshot import"
-            ],
-            "correct": 0,
-            "explanation": "La commande `etcdctl snapshot restore <fichier>` permet de restaurer un snapshot etcd.",
-            "difficulty": "intermediate"
-        },
-        {
-            "id": 71,
-            "question": "Quelle commande permet de voir les conditions d’un Pod (prêt, en cours, planté) ?",
-            "options": [
-                "kubectl get pod <nom> -o yaml",
-                "kubectl describe pod <nom>",
-                "kubectl status pod <nom>",
-                "kubectl logs pod <nom>"
-            ],
-            "correct": 1,
-            "explanation": "La commande `kubectl describe pod <nom>` affiche les conditions et événements associés au Pod.",
-            "difficulty": "intermediate"
-        },
-        {
-            "id": 72,
-            "question": "Quel mécanisme Kubernetes permet d’empêcher que trop de Pods tournent sur un même nœud en imposant une distribution équilibrée ?",
-            "options": [
-                "NodeAffinity",
-                "PodAntiAffinity",
-                "Taints",
-                "LimitRange"
-            ],
-            "correct": 1,
-            "explanation": "La PodAntiAffinity permet de définir des règles pour éviter que certains Pods s’exécutent sur le même nœud.",
-            "difficulty": "intermediate"
-        },
-        {
-            "id": 73,
-            "question": "Quelle commande kubectl permet de diagnostiquer la connectivité réseau en affichant les endpoints d’un Service ?",
-            "options": [
-                "kubectl describe service <nom>",
-                "kubectl get service <nom> -o yaml",
-                "kubectl get endpoints <nom>",
-                "kubectl logs service <nom>"
-            ],
-            "correct": 2,
-            "explanation": "La commande `kubectl get endpoints <nom>` permet de voir les Pods associés à un Service.",
-            "difficulty": "intermediate"
-        },
-        {
-            "id": 74,
-            "question": "Quel objet Kubernetes permet de donner une identité à un Pod pour s’authentifier auprès de l’API ?",
-            "options": [
-                "ServiceAccount",
-                "Role",
-                "Secret",
-                "Token"
-            ],
-            "correct": 0,
-            "explanation": "Un ServiceAccount fournit une identité aux Pods pour accéder à l’API Kubernetes.",
-            "difficulty": "intermediate"
-        },
-        {
-            "id": 75,
-            "question": "Quelle commande permet d’obtenir l’IP externe attribuée à un Service de type LoadBalancer ?",
-            "options": [
-                "kubectl get service <nom>",
-                "kubectl describe service <nom>",
-                "kubectl get endpoints <nom>",
-                "kubectl top service <nom>"
-            ],
-            "correct": 0,
-            "explanation": "La commande `kubectl get service <nom>` affiche l’IP externe lorsqu’un LoadBalancer est utilisé.",
-            "difficulty": "intermediate"
-        },
-        {
-            "id": 76,
-            "question": "Quel probe Kubernetes est utilisé pour vérifier si un conteneur a démarré correctement avant de lancer les autres ?",
-            "options": [
-                "Liveness Probe",
-                "Readiness Probe",
-                "Startup Probe",
-                "Health Check"
-            ],
-            "correct": 2,
-            "explanation": "La Startup Probe vérifie si une application a bien démarré avant d’autoriser les Liveness et Readiness probes.",
-            "difficulty": "intermediate"
-        },
-        {
-            "id": 77,
-            "question": "Quelle commande permet d’exécuter un déploiement en mode interactif pour test rapide ?",
-            "options": [
-                "kubectl run <nom> --image=<image>",
-                "kubectl create deployment <nom> --image=<image>",
-                "kubectl apply -f <fichier>.yaml",
-                "kubectl test <nom>"
-            ],
-            "correct": 0,
-            "explanation": "La commande `kubectl run <nom> --image=<image>` permet de créer rapidement un Pod à des fins de test.",
-            "difficulty": "intermediate"
-        },
-        {
-            "id": 78,
-            "question": "Quelle commande kubeadm permet de mettre à niveau le plan de contrôle Kubernetes ?",
-            "options": [
-                "kubeadm upgrade apply",
-                "kubeadm upgrade master",
-                "kubeadm update cluster",
-                "kubeadm upgrade init"
-            ],
-            "correct": 0,
-            "explanation": "La commande `kubeadm upgrade apply <version>` permet de mettre à jour le plan de contrôle Kubernetes.",
-            "difficulty": "intermediate"
-        },
-        {
-            "id": 79,
-            "question": "Quelle commande permet de vérifier la santé des composants principaux du cluster (scheduler, controller, etcd) ?",
-            "options": [
-                "kubectl get componentstatuses",
-                "kubectl describe cluster",
-                "kubectl check components",
-                "kubectl health cluster"
-            ],
-            "correct": 0,
-            "explanation": "La commande `kubectl get componentstatuses` (dépréciée dans les versions récentes) permet de vérifier la santé des composants du plan de contrôle.",
-            "difficulty": "intermediate"
-        },
-        {
-            "id": 80,
-            "question": "Quelle commande permet de supprimer tous les Pods d’un namespace sans supprimer les autres ressources ?",
-            "options": [
-                "kubectl delete pods --all -n <namespace>",
-                "kubectl delete all -n <namespace>",
-                "kubectl reset pods -n <namespace>",
-                "kubectl purge namespace <nom>"
-            ],
-            "correct": 0,
-            "explanation": "La commande `kubectl delete pods --all -n <namespace>` supprime uniquement les Pods dans un namespace.",
-            "difficulty": "intermediate"
-        },
-        {
-            "id": 81,
-            "question": "Quel objet Kubernetes a remplacé les PodSecurityPolicies (PSP) depuis Kubernetes 1.25 ?",
-            "options": [
-                "NetworkPolicy",
-                "PodSecurity Admission",
-                "OPA Gatekeeper",
-                "RoleBinding"
-            ],
-            "correct": 1,
-            "explanation": "Les PodSecurityPolicies ont été retirées et remplacées par PodSecurity Admission, basé sur des niveaux prédéfinis (privileged, baseline, restricted).",
-            "difficulty": "intermediate"
-        },
-        {
-            "id": 82,
-            "question": "Quelle commande permet de tester l’accès réseau entre deux Pods dans Kubernetes ?",
-            "options": [
-                "kubectl net-test",
-                "kubectl exec <pod> -- curl <ip>",
-                "kubectl test connectivity",
-                "kubectl ping pod"
-            ],
-            "correct": 1,
-            "explanation": "On utilise `kubectl exec` avec curl ou ping pour tester la connectivité entre Pods.",
-            "difficulty": "intermediate"
-        },
-        {
-            "id": 83,
-            "question": "Quel composant Kubernetes gère la résolution DNS dans le cluster ?",
-            "options": [
-                "CoreDNS",
-                "etcd",
-                "kube-proxy",
-                "kubelet"
-            ],
-            "correct": 0,
-            "explanation": "CoreDNS fournit la résolution DNS pour les Services et Pods dans Kubernetes.",
-            "difficulty": "intermediate"
-        },
-        {
-            "id": 84,
-            "question": "Quelle commande permet de redémarrer un Pod sans supprimer son Deployment ?",
-            "options": [
-                "kubectl rollout restart deployment <nom>",
-                "kubectl restart pod <nom>",
-                "kubectl delete pod <nom>",
-                "kubectl recreate deployment <nom>"
-            ],
-            "correct": 0,
-            "explanation": "La commande `kubectl rollout restart deployment <nom>` redémarre proprement les Pods d’un Deployment.",
-            "difficulty": "intermediate"
-        },
-        {
-            "id": 85,
-            "question": "Quel type de Secret Kubernetes est utilisé pour stocker les identifiants Docker ?",
-            "options": [
-                "Opaque",
-                "kubernetes.io/dockerconfigjson",
-                "docker.io/secret",
-                "RegistrySecret"
-            ],
-            "correct": 1,
-            "explanation": "Le type `kubernetes.io/dockerconfigjson` est utilisé pour stocker les identifiants de registre d’images Docker.",
-            "difficulty": "intermediate"
-        },
-        {
-            "id": 86,
-            "question": "Quelle commande permet de vérifier les certificats TLS utilisés par l’API server ?",
-            "options": [
-                "openssl x509 -in /etc/kubernetes/pki/apiserver.crt -text -noout",
-                "kubectl get certificates",
-                "kubectl describe tls apiserver",
-                "kubeadm certs list"
-            ],
-            "correct": 0,
-            "explanation": "Les certificats TLS du plan de contrôle sont stockés dans `/etc/kubernetes/pki`. On peut les inspecter avec `openssl x509`.",
-            "difficulty": "intermediate"
-        },
-        {
-            "id": 87,
-            "question": "Quel objet Kubernetes définit des règles de pare-feu au niveau réseau entre Pods ?",
-            "options": [
-                "Role",
-                "ClusterRole",
-                "NetworkPolicy",
-                "ServiceAccount"
-            ],
-            "correct": 2,
-            "explanation": "Les NetworkPolicies permettent de définir des règles de communication réseau entre Pods et namespaces.",
-            "difficulty": "intermediate"
-        },
-        {
-            "id": 88,
-            "question": "Quelle commande permet de forcer une rotation des certificats générés par kubeadm ?",
-            "options": [
-                "kubeadm certs renew all",
-                "kubeadm rotate-certs",
-                "kubectl cert-manager renew",
-                "kubeadm certs reset"
-            ],
-            "correct": 0,
-            "explanation": "La commande `kubeadm certs renew all` permet de régénérer les certificats TLS d’un cluster.",
-            "difficulty": "intermediate"
-        },
-        {
-            "id": 89,
-            "question": "Quelle commande permet de vérifier la connectivité d’un Pod vers un Service DNS interne ?",
-            "options": [
-                "kubectl exec <pod> -- nslookup <service>",
-                "kubectl describe dns <service>",
-                "kubectl logs coredns",
-                "kubectl test dns"
-            ],
-            "correct": 0,
-            "explanation": "On peut utiliser `nslookup` ou `dig` dans un Pod pour vérifier la résolution DNS.",
-            "difficulty": "intermediate"
-        },
-        {
-            "id": 90,
-            "question": "Quel composant Kubernetes implémente le proxy réseau pour exposer les Services ?",
-            "options": [
-                "CoreDNS",
-                "kube-proxy",
-                "kubelet",
-                "etcd"
-            ],
-            "correct": 1,
-            "explanation": "kube-proxy implémente le routage réseau des Services en utilisant iptables ou IPVS.",
-            "difficulty": "intermediate"
-        },
-        {
-            "id": 91,
-            "question": "Quelle commande permet de vérifier l’utilisation CPU et mémoire des Pods en temps réel ?",
-            "options": [
-                "kubectl top pods",
-                "kubectl get metrics pods",
-                "kubectl stats pods",
-                "kubectl describe pod --metrics"
-            ],
-            "correct": 0,
-            "explanation": "`kubectl top pods` affiche la consommation CPU et mémoire des Pods si Metrics Server est installé.",
-            "difficulty": "intermediate"
-        },
-        {
-            "id": 92,
-            "question": "Quelle API resource Kubernetes permet de gérer dynamiquement des certificats TLS pour les Ingress ?",
-            "options": [
-                "Certificate (via cert-manager)",
-                "TLSSecret",
-                "IngressTLS",
-                "PodSecurity"
-            ],
-            "correct": 0,
-            "explanation": "Avec cert-manager, on peut utiliser l’objet `Certificate` pour demander et renouveler automatiquement des certificats TLS.",
-            "difficulty": "intermediate"
-        },
-        {
-            "id": 93,
-            "question": "Quelle commande permet d’afficher les événements récents dans un cluster Kubernetes ?",
-            "options": [
-                "kubectl get events --sort-by=.metadata.creationTimestamp",
-                "kubectl describe events",
-                "kubectl logs events",
-                "kubectl show events"
-            ],
-            "correct": 0,
-            "explanation": "La commande `kubectl get events --sort-by=.metadata.creationTimestamp` affiche les événements dans l’ordre chronologique.",
-            "difficulty": "intermediate"
-        },
-        {
-            "id": 94,
-            "question": "Quelle commande permet de vérifier si le cluster peut tirer des images depuis un registre externe ?",
-            "options": [
-                "kubectl run test --image=nginx",
-                "kubectl pull image nginx",
-                "kubectl check registry nginx",
-                "kubectl create pod nginx"
-            ],
-            "correct": 0,
-            "explanation": "On peut tester un pull d’image avec `kubectl run test --image=nginx`.",
-            "difficulty": "intermediate"
-        },
-        {
-            "id": 95,
-            "question": "Quel mécanisme Kubernetes limite l’utilisation CPU/mémoire au niveau du namespace ?",
-            "options": [
-                "LimitRange",
-                "ResourceQuota",
-                "PodSecurityPolicy",
-                "NodeSelector"
-            ],
-            "correct": 1,
-            "explanation": "ResourceQuota permet de limiter les ressources globales utilisées dans un namespace.",
-            "difficulty": "intermediate"
-        },
-        {
-            "id": 96,
-            "question": "Quelle commande permet de redémarrer un kubelet planté sur un nœud ?",
-            "options": [
-                "systemctl restart kubelet",
-                "kubectl restart kubelet",
-                "kubeadm reset kubelet",
-                "kubectl delete node"
-            ],
-            "correct": 0,
-            "explanation": "On redémarre le kubelet via `systemctl restart kubelet` directement sur le nœud.",
-            "difficulty": "intermediate"
-        },
-        {
-            "id": 97,
-            "question": "Quel objet Kubernetes est souvent utilisé pour exposer une application en HTTPS avec certificat TLS ?",
-            "options": [
-                "Service",
-                "Ingress",
-                "ConfigMap",
-                "Pod"
-            ],
-            "correct": 1,
-            "explanation": "Un Ingress permet d’exposer une application en HTTPS en associant un certificat TLS stocké dans un Secret.",
-            "difficulty": "intermediate"
-        },
-        {
-            "id": 98,
-            "question": "Quelle commande permet de forcer un cordon sanitaire sur un nœud (empêcher la planification de Pods) ?",
-            "options": [
-                "kubectl cordon <node>",
-                "kubectl taint node <node>",
-                "kubectl drain <node>",
-                "kubectl isolate node <node>"
-            ],
-            "correct": 0,
-            "explanation": "La commande `kubectl cordon <node>` marque un nœud comme non-schedulable.",
-            "difficulty": "intermediate"
-        },
-        {
-            "id": 99,
-            "question": "Quelle commande permet de migrer proprement les Pods avant de mettre un nœud en maintenance ?",
-            "options": [
-                "kubectl cordon <node>",
-                "kubectl drain <node>",
-                "kubectl delete pods -n <node>",
-                "kubectl evict node <node>"
-            ],
-            "correct": 1,
-            "explanation": "La commande `kubectl drain <node>` évacue les Pods d’un nœud avant sa maintenance.",
-            "difficulty": "intermediate"
-        },
-        {
-            "id": 100,
-            "question": "Quelle commande permet de vérifier le contexte Kubernetes actuellement utilisé par kubectl ?",
-            "options": [
-                "kubectl config current-context",
-                "kubectl get context",
-                "kubectl describe context",
-                "kubectl show kubeconfig"
-            ],
-            "correct": 0,
-            "explanation": "La commande `kubectl config current-context` affiche le contexte actif dans le fichier kubeconfig.",
-            "difficulty": "intermediate"
-        }
-    ]
+  "title": "Kubernetes",
+  "description": "150 questions couvrant tous les niveaux de Kubernetes : 40 questions de base sur l'architecture, les ressources et commandes kubectl, 60 questions intermédiaires sur la configuration avancée, networking, storage et RBAC, et 50 questions avancées sur l'architecture interne, la sécurité et l'optimisation production",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Qu'est-ce que Kubernetes ?",
+      "options": [
+        "Un système d'orchestration de conteneurs open-source",
+        "Un système d'exploitation pour serveurs",
+        "Un langage de programmation pour le cloud",
+        "Un système de base de données distribuée"
+      ],
+      "answer": 0,
+      "explanation": "Kubernetes (K8s) est une plateforme open-source d'orchestration de conteneurs développée initialement par Google, permettant d'automatiser le déploiement, la mise à l'échelle et la gestion d'applications conteneurisées.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 2,
+      "question": "Quelle est la plus petite unité déployable dans Kubernetes ?",
+      "options": [
+        "Un conteneur",
+        "Un Pod",
+        "Un Node",
+        "Un Deployment"
+      ],
+      "answer": 1,
+      "explanation": "Le Pod est la plus petite unité déployable dans Kubernetes. Un Pod peut contenir un ou plusieurs conteneurs qui partagent les mêmes ressources réseau et stockage.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 3,
+      "question": "Quel composant du control plane est responsable de l'ordonnancement des Pods sur les nodes ?",
+      "options": [
+        "API Server",
+        "Controller Manager",
+        "Scheduler",
+        "etcd"
+      ],
+      "answer": 2,
+      "explanation": "Le Scheduler (kube-scheduler) est responsable d'assigner les Pods nouvellement créés aux nodes appropriés en fonction des ressources disponibles et des contraintes définies.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 4,
+      "question": "Quelle commande permet de lister tous les Pods dans le namespace par défaut ?",
+      "options": [
+        "kubectl list pods",
+        "kubectl get pods",
+        "kubectl show pods",
+        "kubectl display pods"
+      ],
+      "answer": 1,
+      "explanation": "La commande 'kubectl get pods' affiche la liste des Pods dans le namespace courant (par défaut si non spécifié).",
+      "difficulty": "easy"
+    },
+    {
+      "id": 5,
+      "question": "Quel fichier stocke les informations de configuration pour kubectl ?",
+      "options": [
+        "~/.kube/credentials",
+        "~/.kube/config",
+        "~/.kubernetes/config",
+        "/etc/kubernetes/kubectl.conf"
+      ],
+      "answer": 1,
+      "explanation": "Le fichier ~/.kube/config (ou kubeconfig) contient les informations de connexion aux clusters, les contextes, et les credentials d'authentification.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 6,
+      "question": "Qu'est-ce qu'un Namespace dans Kubernetes ?",
+      "options": [
+        "Un type de conteneur spécifique",
+        "Un mécanisme d'isolation logique des ressources",
+        "Un protocole réseau",
+        "Un type de stockage"
+      ],
+      "answer": 1,
+      "explanation": "Un Namespace permet d'isoler logiquement des ressources Kubernetes au sein d'un même cluster, utile pour la multi-tenancy ou la séparation d'environnements (dev, staging, prod).",
+      "difficulty": "easy"
+    },
+    {
+      "id": 7,
+      "question": "Quelle ressource Kubernetes permet de gérer le déploiement et la mise à jour d'un ensemble de Pods identiques ?",
+      "options": [
+        "ReplicaSet",
+        "Deployment",
+        "StatefulSet",
+        "DaemonSet"
+      ],
+      "answer": 1,
+      "explanation": "Un Deployment gère le cycle de vie des Pods de manière déclarative, incluant les mises à jour progressives (rolling updates) et les rollbacks. Il crée et gère des ReplicaSets.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 8,
+      "question": "Quel type de Service expose les Pods uniquement à l'intérieur du cluster ?",
+      "options": [
+        "NodePort",
+        "LoadBalancer",
+        "ClusterIP",
+        "ExternalName"
+      ],
+      "answer": 2,
+      "explanation": "Un Service de type ClusterIP (type par défaut) expose les Pods uniquement via une IP interne au cluster, accessible uniquement depuis l'intérieur du cluster.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 9,
+      "question": "Quelle commande permet d'appliquer une configuration depuis un fichier YAML ?",
+      "options": [
+        "kubectl create -f file.yaml",
+        "kubectl apply -f file.yaml",
+        "kubectl deploy -f file.yaml",
+        "kubectl load -f file.yaml"
+      ],
+      "answer": 1,
+      "explanation": "La commande 'kubectl apply -f file.yaml' applique la configuration définie dans le fichier. Elle peut créer ou mettre à jour des ressources de manière déclarative.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 10,
+      "question": "Où sont stockées les données de configuration du cluster Kubernetes ?",
+      "options": [
+        "Dans MySQL",
+        "Dans etcd",
+        "Dans Redis",
+        "Dans MongoDB"
+      ],
+      "answer": 1,
+      "explanation": "etcd est une base de données clé-valeur distribuée qui stocke toutes les données de configuration et l'état du cluster Kubernetes de manière cohérente et hautement disponible.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 11,
+      "question": "Quel composant s'exécute sur chaque node worker et gère les Pods ?",
+      "options": [
+        "kube-proxy",
+        "kubelet",
+        "kube-scheduler",
+        "container runtime"
+      ],
+      "answer": 1,
+      "explanation": "Le kubelet est un agent qui s'exécute sur chaque node worker. Il reçoit les spécifications de Pods de l'API server et s'assure que les conteneurs fonctionnent correctement.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 12,
+      "question": "Quelle ressource permet de stocker des données de configuration sous forme de paires clé-valeur ?",
+      "options": [
+        "Secret",
+        "ConfigMap",
+        "PersistentVolume",
+        "StorageClass"
+      ],
+      "answer": 1,
+      "explanation": "Un ConfigMap stocke des données de configuration non sensibles sous forme de paires clé-valeur, qui peuvent être consommées par les Pods via des variables d'environnement ou des volumes.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 13,
+      "question": "Quelle commande permet de voir les logs d'un Pod nommé 'mypod' ?",
+      "options": [
+        "kubectl logs mypod",
+        "kubectl get logs mypod",
+        "kubectl show logs mypod",
+        "kubectl display mypod logs"
+      ],
+      "answer": 0,
+      "explanation": "La commande 'kubectl logs mypod' affiche les logs de sortie standard du ou des conteneurs dans le Pod spécifié.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 14,
+      "question": "Quel est le port par défaut de l'API Server Kubernetes ?",
+      "options": [
+        "8080",
+        "6443",
+        "8443",
+        "9443"
+      ],
+      "answer": 1,
+      "explanation": "L'API Server Kubernetes écoute par défaut sur le port 6443 en HTTPS pour les communications sécurisées.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 15,
+      "question": "Qu'est-ce qu'un Label dans Kubernetes ?",
+      "options": [
+        "Un type de conteneur",
+        "Une paire clé-valeur attachée aux objets pour l'organisation",
+        "Un protocole réseau",
+        "Un type de stockage"
+      ],
+      "answer": 1,
+      "explanation": "Les Labels sont des paires clé-valeur attachées aux objets Kubernetes (Pods, Services, etc.) permettant de les organiser, sélectionner et filtrer via des label selectors.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 16,
+      "question": "Quelle ressource permet de garantir qu'un nombre spécifique de répliques de Pods sont en cours d'exécution ?",
+      "options": [
+        "Pod",
+        "ReplicaSet",
+        "Service",
+        "Ingress"
+      ],
+      "answer": 1,
+      "explanation": "Un ReplicaSet garantit qu'un nombre spécifié de répliques de Pods identiques sont en cours d'exécution à tout moment. Les Deployments utilisent les ReplicaSets en interne.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 17,
+      "question": "Quelle commande permet de supprimer un Pod nommé 'test-pod' ?",
+      "options": [
+        "kubectl remove pod test-pod",
+        "kubectl delete pod test-pod",
+        "kubectl destroy pod test-pod",
+        "kubectl kill pod test-pod"
+      ],
+      "answer": 1,
+      "explanation": "La commande 'kubectl delete pod test-pod' supprime le Pod spécifié du cluster.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 18,
+      "question": "Quel type de volume Kubernetes perd ses données lorsque le Pod est supprimé ?",
+      "options": [
+        "PersistentVolume",
+        "emptyDir",
+        "hostPath",
+        "nfs"
+      ],
+      "answer": 1,
+      "explanation": "Un volume emptyDir est créé lorsqu'un Pod est assigné à un node et existe tant que le Pod y reste. Les données sont perdues lorsque le Pod est supprimé.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 19,
+      "question": "Quelle ressource permet de stocker des informations sensibles comme des mots de passe ?",
+      "options": [
+        "ConfigMap",
+        "Secret",
+        "PersistentVolume",
+        "Annotation"
+      ],
+      "answer": 1,
+      "explanation": "Un Secret est conçu pour contenir des données sensibles comme des mots de passe, tokens ou clés. Les données sont encodées en base64 (mais pas chiffrées par défaut).",
+      "difficulty": "easy"
+    },
+    {
+      "id": 20,
+      "question": "Quelle commande permet d'obtenir des informations détaillées sur un Pod nommé 'mypod' ?",
+      "options": [
+        "kubectl info pod mypod",
+        "kubectl describe pod mypod",
+        "kubectl details pod mypod",
+        "kubectl inspect pod mypod"
+      ],
+      "answer": 1,
+      "explanation": "La commande 'kubectl describe pod mypod' affiche des informations détaillées sur le Pod, incluant les événements, l'état des conteneurs et la configuration.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 21,
+      "question": "Quel est le namespace par défaut dans Kubernetes ?",
+      "options": [
+        "kube-system",
+        "default",
+        "kube-public",
+        "global"
+      ],
+      "answer": 1,
+      "explanation": "Le namespace 'default' est utilisé par défaut pour les ressources créées sans spécification explicite d'un namespace.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 22,
+      "question": "Quelle ressource Kubernetes permet d'exécuter exactement un Pod par node ?",
+      "options": [
+        "Deployment",
+        "ReplicaSet",
+        "DaemonSet",
+        "StatefulSet"
+      ],
+      "answer": 2,
+      "explanation": "Un DaemonSet garantit qu'une copie d'un Pod s'exécute sur tous (ou certains) nodes du cluster. Utile pour des agents de monitoring ou de logging.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 23,
+      "question": "Quel composant gère les règles de réseau et le routage sur chaque node ?",
+      "options": [
+        "kubelet",
+        "kube-proxy",
+        "kube-scheduler",
+        "container runtime"
+      ],
+      "answer": 1,
+      "explanation": "kube-proxy maintient les règles réseau sur les nodes, permettant la communication réseau vers les Pods depuis l'intérieur ou l'extérieur du cluster.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 24,
+      "question": "Quelle commande permet de changer de contexte Kubernetes ?",
+      "options": [
+        "kubectl switch context",
+        "kubectl use-context <context-name>",
+        "kubectl change-context <context-name>",
+        "kubectl set context <context-name>"
+      ],
+      "answer": 1,
+      "explanation": "La commande 'kubectl config use-context <context-name>' permet de basculer vers un contexte différent défini dans le kubeconfig.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 25,
+      "question": "Qu'est-ce qu'une annotation dans Kubernetes ?",
+      "options": [
+        "Une paire clé-valeur pour stocker des métadonnées non-identifiantes",
+        "Un type de label",
+        "Une commande kubectl",
+        "Un type de Service"
+      ],
+      "answer": 0,
+      "explanation": "Les annotations sont des métadonnées arbitraires attachées aux objets, utilisées pour stocker des informations non-identifiantes qui ne sont pas utilisées pour la sélection d'objets.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 26,
+      "question": "Quelle commande permet de lister tous les namespaces ?",
+      "options": [
+        "kubectl get ns",
+        "kubectl list namespaces",
+        "kubectl show namespaces",
+        "kubectl display ns"
+      ],
+      "answer": 0,
+      "explanation": "La commande 'kubectl get namespaces' (ou 'kubectl get ns' en abrégé) liste tous les namespaces du cluster.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 27,
+      "question": "Quel type de Service expose les Pods via un port statique sur chaque node ?",
+      "options": [
+        "ClusterIP",
+        "NodePort",
+        "LoadBalancer",
+        "ExternalName"
+      ],
+      "answer": 1,
+      "explanation": "Un Service de type NodePort expose les Pods sur un port statique (entre 30000-32767 par défaut) sur chaque node du cluster, accessible depuis l'extérieur.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 28,
+      "question": "Quelle est l'extension de fichier standard pour les manifestes Kubernetes ?",
+      "options": [
+        ".xml",
+        ".json",
+        ".yaml",
+        ".conf"
+      ],
+      "answer": 2,
+      "explanation": "YAML (.yaml ou .yml) est le format standard pour écrire les manifestes Kubernetes, bien que JSON soit également supporté.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 29,
+      "question": "Quel champ YAML définit le type de ressource Kubernetes à créer ?",
+      "options": [
+        "type",
+        "kind",
+        "resource",
+        "object"
+      ],
+      "answer": 1,
+      "explanation": "Le champ 'kind' dans un manifest YAML spécifie le type de ressource Kubernetes (Pod, Deployment, Service, etc.).",
+      "difficulty": "easy"
+    },
+    {
+      "id": 30,
+      "question": "Quelle commande permet d'exécuter une commande dans un conteneur d'un Pod en cours d'exécution ?",
+      "options": [
+        "kubectl run",
+        "kubectl exec",
+        "kubectl execute",
+        "kubectl shell"
+      ],
+      "answer": 1,
+      "explanation": "La commande 'kubectl exec' permet d'exécuter des commandes dans un conteneur d'un Pod en cours d'exécution, par exemple: kubectl exec -it mypod -- /bin/bash",
+      "difficulty": "easy"
+    },
+    {
+      "id": 31,
+      "question": "Quel est le rôle principal de l'API Server ?",
+      "options": [
+        "Ordonnancer les Pods",
+        "Point d'entrée pour toutes les requêtes REST du cluster",
+        "Stocker les données du cluster",
+        "Gérer le réseau entre les Pods"
+      ],
+      "answer": 1,
+      "explanation": "L'API Server (kube-apiserver) est le point d'entrée central pour toutes les opérations REST, exposant l'API Kubernetes et servant de frontend au control plane.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 32,
+      "question": "Quelle ressource permet de gérer des applications avec état (stateful) ?",
+      "options": [
+        "Deployment",
+        "ReplicaSet",
+        "StatefulSet",
+        "DaemonSet"
+      ],
+      "answer": 2,
+      "explanation": "Un StatefulSet gère le déploiement et la mise à l'échelle d'un ensemble de Pods avec des garanties sur l'ordre et l'unicité, idéal pour les applications avec état comme les bases de données.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 33,
+      "question": "Quelle commande permet de créer rapidement un Pod nginx nommé 'test' ?",
+      "options": [
+        "kubectl create pod test --image=nginx",
+        "kubectl run test --image=nginx",
+        "kubectl deploy test --image=nginx",
+        "kubectl start test --image=nginx"
+      ],
+      "answer": 1,
+      "explanation": "La commande 'kubectl run test --image=nginx' crée rapidement un Pod nommé 'test' utilisant l'image nginx.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 34,
+      "question": "Qu'est-ce qu'un Selector dans Kubernetes ?",
+      "options": [
+        "Un outil de sélection de nodes",
+        "Un mécanisme pour filtrer des objets basé sur leurs labels",
+        "Un type de Service",
+        "Un composant du control plane"
+      ],
+      "answer": 1,
+      "explanation": "Un Selector (label selector) est utilisé pour identifier et filtrer un ensemble d'objets Kubernetes basé sur leurs labels, crucial pour les Services et les Deployments.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 35,
+      "question": "Quelle commande permet d'afficher la version de kubectl et du serveur Kubernetes ?",
+      "options": [
+        "kubectl info",
+        "kubectl version",
+        "kubectl --version",
+        "kubectl cluster-info"
+      ],
+      "answer": 1,
+      "explanation": "La commande 'kubectl version' affiche la version du client kubectl et du serveur Kubernetes API.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 36,
+      "question": "Quel protocole est principalement utilisé par les Services Kubernetes pour le load balancing ?",
+      "options": [
+        "HTTP uniquement",
+        "TCP et UDP",
+        "FTP",
+        "SMTP"
+      ],
+      "answer": 1,
+      "explanation": "Les Services Kubernetes supportent le load balancing pour les protocoles TCP et UDP, permettant de distribuer le trafic vers les Pods backend.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 37,
+      "question": "Quelle commande permet de redémarrer un Deployment nommé 'myapp' ?",
+      "options": [
+        "kubectl restart deployment myapp",
+        "kubectl rollout restart deployment myapp",
+        "kubectl redeploy myapp",
+        "kubectl update deployment myapp"
+      ],
+      "answer": 1,
+      "explanation": "La commande 'kubectl rollout restart deployment myapp' déclenche un redémarrage progressif du Deployment en recréant tous ses Pods.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 38,
+      "question": "Quel est le runtime de conteneur par défaut utilisé par Kubernetes actuellement ?",
+      "options": [
+        "Docker",
+        "containerd",
+        "rkt",
+        "LXC"
+      ],
+      "answer": 1,
+      "explanation": "Depuis Kubernetes 1.24, Docker n'est plus supporté comme runtime. containerd est devenu le runtime de conteneur standard et par défaut.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 39,
+      "question": "Quelle commande permet d'obtenir la liste de tous les nodes du cluster ?",
+      "options": [
+        "kubectl get nodes",
+        "kubectl list nodes",
+        "kubectl show nodes",
+        "kubectl display nodes"
+      ],
+      "answer": 0,
+      "explanation": "La commande 'kubectl get nodes' affiche la liste de tous les nodes (master et workers) du cluster avec leur état.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 40,
+      "question": "Qu'est-ce qu'un Ingress dans Kubernetes ?",
+      "options": [
+        "Un type de Pod",
+        "Une ressource qui gère l'accès externe HTTP/HTTPS aux Services",
+        "Un composant du control plane",
+        "Un type de volume"
+      ],
+      "answer": 1,
+      "explanation": "Un Ingress est une ressource API qui gère l'accès externe aux Services du cluster, typiquement HTTP/HTTPS, fournissant le routage basé sur des règles, SSL/TLS, etc.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 41,
+      "question": "Quelle est la différence principale entre un Deployment et un StatefulSet ?",
+      "options": [
+        "Le Deployment ne peut pas être mis à l'échelle",
+        "Le StatefulSet maintient une identité stable et un ordre pour chaque Pod",
+        "Le Deployment est plus rapide",
+        "Le StatefulSet ne supporte pas les rolling updates"
+      ],
+      "answer": 1,
+      "explanation": "Un StatefulSet garantit que chaque Pod a une identité réseau stable, un stockage persistant stable et un ordre de déploiement/suppression prévisible, contrairement aux Deployments où les Pods sont interchangeables.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 42,
+      "question": "Comment forcer la suppression immédiate d'un Pod bloqué en état 'Terminating' ?",
+      "options": [
+        "kubectl delete pod mypod --force",
+        "kubectl delete pod mypod --grace-period=0 --force",
+        "kubectl kill pod mypod",
+        "kubectl remove pod mypod --immediate"
+      ],
+      "answer": 1,
+      "explanation": "La commande 'kubectl delete pod mypod --grace-period=0 --force' supprime immédiatement le Pod sans attendre la période de grâce, utile pour les Pods bloqués.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 43,
+      "question": "Quelle ressource Kubernetes permet de définir des quotas de ressources par namespace ?",
+      "options": [
+        "LimitRange",
+        "ResourceQuota",
+        "PodSecurityPolicy",
+        "NetworkPolicy"
+      ],
+      "answer": 1,
+      "explanation": "Un ResourceQuota limite les ressources (CPU, mémoire, nombre d'objets) qu'un namespace peut consommer, permettant la gestion multi-tenant.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 44,
+      "question": "Quelle commande permet de faire un rollback vers la révision précédente d'un Deployment ?",
+      "options": [
+        "kubectl rollback deployment myapp",
+        "kubectl rollout undo deployment myapp",
+        "kubectl revert deployment myapp",
+        "kubectl deployment rollback myapp"
+      ],
+      "answer": 1,
+      "explanation": "La commande 'kubectl rollout undo deployment myapp' annule le dernier déploiement et revient à la révision précédente.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 45,
+      "question": "Qu'est-ce qu'une Probe (sonde) de type 'readinessProbe' ?",
+      "options": [
+        "Vérifie si le conteneur doit être redémarré",
+        "Vérifie si le conteneur est prêt à accepter du trafic",
+        "Vérifie si le conteneur a démarré",
+        "Vérifie la consommation mémoire"
+      ],
+      "answer": 1,
+      "explanation": "La readinessProbe détermine si un conteneur est prêt à recevoir du trafic. Si elle échoue, le Pod est retiré des endpoints du Service.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 46,
+      "question": "Quelle est la différence entre 'requests' et 'limits' pour les ressources CPU/mémoire ?",
+      "options": [
+        "Pas de différence, ce sont des synonymes",
+        "'requests' est la quantité garantie, 'limits' est le maximum autorisé",
+        "'limits' est la quantité garantie, 'requests' est le maximum",
+        "'requests' s'applique au CPU, 'limits' à la mémoire"
+      ],
+      "answer": 1,
+      "explanation": "Les 'requests' définissent la quantité minimale garantie de ressources, utilisée pour le scheduling. Les 'limits' définissent le maximum que le conteneur peut consommer.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 47,
+      "question": "Quelle commande permet de créer un Secret à partir de fichiers locaux ?",
+      "options": [
+        "kubectl create secret generic mysecret --from-file=./config",
+        "kubectl apply secret mysecret --file=./config",
+        "kubectl load secret mysecret --from=./config",
+        "kubectl import secret mysecret --file=./config"
+      ],
+      "answer": 0,
+      "explanation": "La commande 'kubectl create secret generic mysecret --from-file=./config' crée un Secret à partir de fichiers locaux, chaque fichier devenant une clé dans le Secret.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 48,
+      "question": "Qu'est-ce qu'un PersistentVolumeClaim (PVC) ?",
+      "options": [
+        "Un volume physique sur un node",
+        "Une demande de stockage par un utilisateur",
+        "Un type de StorageClass",
+        "Un backup de données"
+      ],
+      "answer": 1,
+      "explanation": "Un PVC est une demande de stockage par un utilisateur/Pod. Il spécifie la taille et le mode d'accès souhaité, et Kubernetes lie le PVC à un PersistentVolume approprié.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 49,
+      "question": "Quel mode d'accès (accessMode) permet à plusieurs Pods sur différents nodes de lire et écrire sur un volume ?",
+      "options": [
+        "ReadWriteOnce (RWO)",
+        "ReadOnlyMany (ROX)",
+        "ReadWriteMany (RWX)",
+        "ReadWriteOncePod (RWOP)"
+      ],
+      "answer": 2,
+      "explanation": "ReadWriteMany (RWX) permet à un volume d'être monté en lecture-écriture par plusieurs nodes simultanément. Tous les modes ne sont pas supportés par tous les types de volumes.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 50,
+      "question": "Comment afficher tous les événements d'un namespace spécifique 'production' ?",
+      "options": [
+        "kubectl get events -n production",
+        "kubectl logs -n production",
+        "kubectl describe namespace production",
+        "kubectl show events production"
+      ],
+      "answer": 0,
+      "explanation": "La commande 'kubectl get events -n production' affiche tous les événements du namespace spécifié, utile pour le debugging.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 51,
+      "question": "Qu'est-ce qu'un Taint sur un node ?",
+      "options": [
+        "Un label spécial",
+        "Une marque qui repousse les Pods sauf ceux qui ont une tolération correspondante",
+        "Un indicateur de performance",
+        "Un type de volume"
+      ],
+      "answer": 1,
+      "explanation": "Un Taint est appliqué à un node pour repousser les Pods qui n'ont pas de Toleration correspondante. Utile pour dédier des nodes à des workloads spécifiques.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 52,
+      "question": "Quelle stratégie de mise à jour (strategy) permet de créer tous les nouveaux Pods avant de supprimer les anciens ?",
+      "options": [
+        "RollingUpdate",
+        "Recreate",
+        "BlueGreen",
+        "Canary"
+      ],
+      "answer": 1,
+      "explanation": "La stratégie 'Recreate' supprime tous les Pods existants avant de créer les nouveaux, causant un downtime. RollingUpdate met à jour progressivement sans downtime.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 53,
+      "question": "Comment lister tous les Pods sur tous les namespaces ?",
+      "options": [
+        "kubectl get pods --all",
+        "kubectl get pods -A",
+        "kubectl get pods --global",
+        "kubectl get pods --everywhere"
+      ],
+      "answer": 1,
+      "explanation": "La commande 'kubectl get pods -A' (ou --all-namespaces) liste les Pods de tous les namespaces du cluster.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 54,
+      "question": "Qu'est-ce qu'un InitContainer ?",
+      "options": [
+        "Le premier conteneur du Pod qui s'exécute en parallèle",
+        "Un conteneur spécial qui s'exécute et se termine avant les conteneurs applicatifs",
+        "Un conteneur de monitoring",
+        "Un conteneur qui ne peut pas être redémarré"
+      ],
+      "answer": 1,
+      "explanation": "Les InitContainers s'exécutent séquentiellement avant les conteneurs applicatifs et doivent se terminer avec succès. Utiles pour l'initialisation, la configuration ou l'attente de dépendances.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 55,
+      "question": "Quelle commande permet de mettre à l'échelle un Deployment 'webapp' à 5 répliques ?",
+      "options": [
+        "kubectl scale deployment webapp --replicas=5",
+        "kubectl resize deployment webapp --count=5",
+        "kubectl replicas deployment webapp 5",
+        "kubectl set deployment webapp --replicas=5"
+      ],
+      "answer": 0,
+      "explanation": "La commande 'kubectl scale deployment webapp --replicas=5' modifie le nombre de répliques du Deployment à 5.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 56,
+      "question": "Quel type de Service permet de mapper un Service à un nom DNS externe ?",
+      "options": [
+        "ClusterIP",
+        "NodePort",
+        "LoadBalancer",
+        "ExternalName"
+      ],
+      "answer": 3,
+      "explanation": "Un Service de type ExternalName retourne un enregistrement CNAME pointant vers un nom DNS externe, permettant d'intégrer des services externes dans le cluster.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 57,
+      "question": "Comment afficher l'utilisation des ressources (CPU/mémoire) des Pods ?",
+      "options": [
+        "kubectl stats pods",
+        "kubectl top pods",
+        "kubectl metrics pods",
+        "kubectl resources pods"
+      ],
+      "answer": 1,
+      "explanation": "La commande 'kubectl top pods' affiche l'utilisation actuelle des ressources CPU et mémoire. Nécessite que metrics-server soit installé dans le cluster.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 58,
+      "question": "Qu'est-ce qu'un HorizontalPodAutoscaler (HPA) ?",
+      "options": [
+        "Un outil pour répartir les Pods sur plusieurs zones",
+        "Un contrôleur qui ajuste automatiquement le nombre de répliques basé sur les métriques",
+        "Un système de backup",
+        "Un gestionnaire de secrets"
+      ],
+      "answer": 1,
+      "explanation": "Le HPA ajuste automatiquement le nombre de répliques d'un Deployment/ReplicaSet basé sur l'utilisation CPU, mémoire ou métriques personnalisées.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 59,
+      "question": "Quelle est la commande pour exporter la définition YAML d'un Deployment existant ?",
+      "options": [
+        "kubectl get deployment myapp -o yaml",
+        "kubectl export deployment myapp",
+        "kubectl describe deployment myapp --yaml",
+        "kubectl save deployment myapp"
+      ],
+      "answer": 0,
+      "explanation": "La commande 'kubectl get deployment myapp -o yaml' exporte la définition complète du Deployment au format YAML.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 60,
+      "question": "Qu'est-ce qu'un NetworkPolicy dans Kubernetes ?",
+      "options": [
+        "Une configuration du load balancer",
+        "Une spécification pour contrôler le trafic réseau entre les Pods",
+        "Un type de Service",
+        "Un protocole réseau"
+      ],
+      "answer": 1,
+      "explanation": "Une NetworkPolicy définit des règles pour contrôler le trafic réseau entrant et sortant des Pods, permettant la microsegmentation au niveau applicatif.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 61,
+      "question": "Comment créer un ConfigMap à partir de variables d'environnement en ligne de commande ?",
+      "options": [
+        "kubectl create configmap myconfig --from-env=KEY=value",
+        "kubectl create configmap myconfig --from-literal=KEY=value",
+        "kubectl create configmap myconfig --env KEY=value",
+        "kubectl create configmap myconfig --var KEY=value"
+      ],
+      "answer": 1,
+      "explanation": "La commande 'kubectl create configmap myconfig --from-literal=KEY=value' crée un ConfigMap avec des paires clé-valeur spécifiées directement en ligne de commande.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 62,
+      "question": "Quelle est la différence entre 'livenessProbe' et 'readinessProbe' ?",
+      "options": [
+        "Aucune différence",
+        "livenessProbe redémarre le conteneur si échec, readinessProbe retire le Pod du Service",
+        "livenessProbe est pour HTTP, readinessProbe pour TCP",
+        "readinessProbe redémarre le conteneur, livenessProbe le met en pause"
+      ],
+      "answer": 1,
+      "explanation": "La livenessProbe redémarre le conteneur en cas d'échec (détecte les deadlocks). La readinessProbe retire temporairement le Pod des endpoints du Service sans le redémarrer.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 63,
+      "question": "Comment appliquer un label 'env=prod' à un node existant nommé 'worker-1' ?",
+      "options": [
+        "kubectl label node worker-1 env=prod",
+        "kubectl set label worker-1 env=prod",
+        "kubectl tag node worker-1 env=prod",
+        "kubectl annotate node worker-1 env=prod"
+      ],
+      "answer": 0,
+      "explanation": "La commande 'kubectl label node worker-1 env=prod' ajoute le label spécifié au node. Utile pour le node affinity et les sélecteurs.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 64,
+      "question": "Qu'est-ce qu'un Job dans Kubernetes ?",
+      "options": [
+        "Une tâche qui s'exécute continuellement",
+        "Une ressource qui crée des Pods pour exécuter une tâche jusqu'à completion",
+        "Un type de Service",
+        "Un scheduler personnalisé"
+      ],
+      "answer": 1,
+      "explanation": "Un Job crée un ou plusieurs Pods et s'assure qu'un nombre spécifié d'entre eux se terminent avec succès. Utile pour les tâches batch ou ponctuelles.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 65,
+      "question": "Quelle ressource permet de planifier l'exécution de Jobs à intervalles réguliers ?",
+      "options": [
+        "ScheduledJob",
+        "CronJob",
+        "TimedJob",
+        "PeriodicJob"
+      ],
+      "answer": 1,
+      "explanation": "Un CronJob crée des Jobs selon un planning défini au format cron, permettant l'exécution de tâches récurrentes (backups, nettoyages, etc.).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 66,
+      "question": "Comment afficher l'historique des rollouts d'un Deployment ?",
+      "options": [
+        "kubectl history deployment myapp",
+        "kubectl rollout history deployment myapp",
+        "kubectl get revisions myapp",
+        "kubectl describe deployment myapp --history"
+      ],
+      "answer": 1,
+      "explanation": "La commande 'kubectl rollout history deployment myapp' affiche l'historique des révisions du Deployment avec les détails de chaque version.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 67,
+      "question": "Qu'est-ce que le 'terminationGracePeriodSeconds' d'un Pod ?",
+      "options": [
+        "Le temps maximum d'exécution du Pod",
+        "Le délai accordé au Pod pour se terminer proprement avant SIGKILL",
+        "Le délai avant le premier health check",
+        "Le temps entre deux restarts"
+      ],
+      "answer": 1,
+      "explanation": "Le terminationGracePeriodSeconds (30s par défaut) est le délai entre l'envoi du signal SIGTERM et SIGKILL, permettant au Pod de se terminer proprement.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 68,
+      "question": "Comment copier un fichier local vers un Pod en cours d'exécution ?",
+      "options": [
+        "kubectl copy file.txt mypod:/tmp/",
+        "kubectl cp file.txt mypod:/tmp/",
+        "kubectl transfer file.txt mypod:/tmp/",
+        "kubectl send file.txt mypod:/tmp/"
+      ],
+      "answer": 1,
+      "explanation": "La commande 'kubectl cp file.txt mypod:/tmp/' copie un fichier local vers un conteneur dans un Pod. Fonctionne aussi dans l'autre sens.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 69,
+      "question": "Qu'est-ce qu'une StorageClass dans Kubernetes ?",
+      "options": [
+        "Un type de volume",
+        "Une classe qui définit comment provisionner dynamiquement du stockage",
+        "Un namespace pour le stockage",
+        "Un label pour les volumes"
+      ],
+      "answer": 1,
+      "explanation": "Une StorageClass décrit une classe de stockage et définit le provisionneur (AWS EBS, GCE PD, etc.) et les paramètres pour le provisionnement dynamique de PersistentVolumes.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 70,
+      "question": "Comment afficher les logs des 100 dernières lignes d'un Pod ?",
+      "options": [
+        "kubectl logs mypod --lines=100",
+        "kubectl logs mypod --tail=100",
+        "kubectl logs mypod --last=100",
+        "kubectl logs mypod -n 100"
+      ],
+      "answer": 1,
+      "explanation": "La commande 'kubectl logs mypod --tail=100' affiche les 100 dernières lignes des logs du Pod.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 71,
+      "question": "Qu'est-ce que le 'NodeAffinity' ?",
+      "options": [
+        "Une limite de ressources sur un node",
+        "Une règle pour contraindre les Pods à être ordonnancés sur certains nodes",
+        "Un type de Service",
+        "Une politique de sécurité"
+      ],
+      "answer": 1,
+      "explanation": "Le NodeAffinity permet de contraindre les Pods à être ordonnancés sur des nodes spécifiques basé sur des labels, avec des règles requises ou préférées.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 72,
+      "question": "Quelle commande permet de vider (drain) un node pour maintenance ?",
+      "options": [
+        "kubectl drain node-1",
+        "kubectl empty node-1",
+        "kubectl evacuate node-1",
+        "kubectl clear node-1"
+      ],
+      "answer": 0,
+      "explanation": "La commande 'kubectl drain node-1' évacue tous les Pods du node en toute sécurité et le marque comme non-ordonnançable, préparant le node pour maintenance.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 73,
+      "question": "Comment rendre à nouveau ordonnançable un node qui a été mis en maintenance ?",
+      "options": [
+        "kubectl enable node-1",
+        "kubectl uncordon node-1",
+        "kubectl activate node-1",
+        "kubectl restore node-1"
+      ],
+      "answer": 1,
+      "explanation": "La commande 'kubectl uncordon node-1' rend le node à nouveau ordonnançable après une maintenance, permettant aux nouveaux Pods d'être assignés.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 74,
+      "question": "Qu'est-ce qu'un 'PodDisruptionBudget' (PDB) ?",
+      "options": [
+        "Une limite de coût pour les Pods",
+        "Une garantie du nombre minimum de Pods disponibles pendant les disruptions volontaires",
+        "Un quota de ressources",
+        "Un timeout pour les Pods"
+      ],
+      "answer": 1,
+      "explanation": "Un PDB définit le nombre minimum de Pods qui doivent rester disponibles ou le nombre maximum qui peuvent être indisponibles pendant des opérations comme drain ou upgrade.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 75,
+      "question": "Comment filtrer les Pods ayant le label 'app=nginx' ?",
+      "options": [
+        "kubectl get pods --label app=nginx",
+        "kubectl get pods -l app=nginx",
+        "kubectl get pods --filter app=nginx",
+        "kubectl get pods --select app=nginx"
+      ],
+      "answer": 1,
+      "explanation": "La commande 'kubectl get pods -l app=nginx' (ou --selector) filtre les Pods basé sur le label selector spécifié.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 76,
+      "question": "Quelle sonde (probe) est utilisée pour déterminer quand un conteneur a démarré ?",
+      "options": [
+        "livenessProbe",
+        "readinessProbe",
+        "startupProbe",
+        "initProbe"
+      ],
+      "answer": 2,
+      "explanation": "La startupProbe vérifie si l'application dans le conteneur a démarré. Elle désactive les autres probes jusqu'au succès, utile pour les apps avec démarrage lent.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 77,
+      "question": "Comment créer un namespace nommé 'development' en ligne de commande ?",
+      "options": [
+        "kubectl create namespace development",
+        "kubectl new namespace development",
+        "kubectl add namespace development",
+        "kubectl make namespace development"
+      ],
+      "answer": 0,
+      "explanation": "La commande 'kubectl create namespace development' crée un nouveau namespace dans le cluster.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 78,
+      "question": "Qu'est-ce que le 'PodAffinity' ?",
+      "options": [
+        "Une limite de ressources par Pod",
+        "Une règle pour co-localiser ou séparer des Pods basé sur les labels d'autres Pods",
+        "Un type de volume",
+        "Une politique réseau"
+      ],
+      "answer": 1,
+      "explanation": "Le PodAffinity/PodAntiAffinity permet de contraindre l'ordonnancement des Pods basé sur les labels d'autres Pods déjà présents sur les nodes (co-location ou séparation).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 79,
+      "question": "Comment voir les logs d'un conteneur spécifique 'sidecar' dans un Pod multi-conteneurs 'mypod' ?",
+      "options": [
+        "kubectl logs mypod sidecar",
+        "kubectl logs mypod -c sidecar",
+        "kubectl logs mypod --container=sidecar",
+        "kubectl logs mypod/sidecar"
+      ],
+      "answer": 1,
+      "explanation": "La commande 'kubectl logs mypod -c sidecar' affiche les logs du conteneur spécifique dans un Pod multi-conteneurs.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 80,
+      "question": "Quelle est la fonction du Controller Manager ?",
+      "options": [
+        "Gérer les utilisateurs",
+        "Exécuter les contrôleurs (ReplicaSet, Deployment, etc.) qui régulent l'état du cluster",
+        "Stocker les données",
+        "Router le trafic réseau"
+      ],
+      "answer": 1,
+      "explanation": "Le Controller Manager exécute les contrôleurs intégrés (ReplicaSet, Deployment, Node, Job, etc.) qui surveillent l'état du cluster et effectuent des actions pour atteindre l'état désiré.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 81,
+      "question": "Comment créer un Secret TLS à partir de fichiers de certificat et de clé ?",
+      "options": [
+        "kubectl create secret tls my-tls --cert=tls.crt --key=tls.key",
+        "kubectl create secret generic my-tls --from-file=tls.crt --from-file=tls.key",
+        "kubectl apply secret tls my-tls --cert=tls.crt --key=tls.key",
+        "kubectl create tls my-tls --certificate=tls.crt --private-key=tls.key"
+      ],
+      "answer": 0,
+      "explanation": "La commande 'kubectl create secret tls my-tls --cert=tls.crt --key=tls.key' crée un Secret de type TLS avec les fichiers de certificat et clé privée.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 82,
+      "question": "Qu'est-ce qu'un ServiceAccount dans Kubernetes ?",
+      "options": [
+        "Un compte utilisateur humain",
+        "Une identité pour les processus qui s'exécutent dans les Pods",
+        "Un type de Service",
+        "Un namespace spécial"
+      ],
+      "answer": 1,
+      "explanation": "Un ServiceAccount fournit une identité pour les processus qui s'exécutent dans les Pods, permettant d'authentifier et d'autoriser l'accès à l'API Kubernetes.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 83,
+      "question": "Comment définir une limite de ressources par défaut pour tous les Pods d'un namespace ?",
+      "options": [
+        "ResourceQuota",
+        "LimitRange",
+        "PodSecurityPolicy",
+        "DefaultLimits"
+      ],
+      "answer": 1,
+      "explanation": "Un LimitRange définit les contraintes de ressources par défaut (min, max, default) pour les conteneurs et Pods dans un namespace.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 84,
+      "question": "Quelle commande permet de suivre les logs d'un Pod en temps réel ?",
+      "options": [
+        "kubectl logs mypod --stream",
+        "kubectl logs mypod -f",
+        "kubectl logs mypod --watch",
+        "kubectl logs mypod --live"
+      ],
+      "answer": 1,
+      "explanation": "La commande 'kubectl logs mypod -f' (ou --follow) affiche les logs en continu, suivant les nouvelles entrées en temps réel.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 85,
+      "question": "Qu'est-ce que le champ 'imagePullPolicy' dans un Pod ?",
+      "options": [
+        "La stratégie de mise à jour de l'image",
+        "La politique de téléchargement de l'image (Always, IfNotPresent, Never)",
+        "Le registre d'images à utiliser",
+        "Le format de l'image"
+      ],
+      "answer": 1,
+      "explanation": "Le imagePullPolicy définit quand Kubernetes doit télécharger l'image: Always (toujours), IfNotPresent (si absente), Never (jamais).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 86,
+      "question": "Comment éditer directement un Deployment existant avec l'éditeur par défaut ?",
+      "options": [
+        "kubectl modify deployment myapp",
+        "kubectl edit deployment myapp",
+        "kubectl update deployment myapp",
+        "kubectl change deployment myapp"
+      ],
+      "answer": 1,
+      "explanation": "La commande 'kubectl edit deployment myapp' ouvre la ressource dans l'éditeur par défaut (vi/nano) permettant des modifications directes.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 87,
+      "question": "Quelle ressource permet de définir des variables d'environnement pour l'intégralité d'un cluster ?",
+      "options": [
+        "Aucune, les variables sont définies au niveau Pod/Deployment",
+        "ClusterConfigMap",
+        "GlobalConfig",
+        "EnvironmentPolicy"
+      ],
+      "answer": 0,
+      "explanation": "Il n'existe pas de ressource cluster-wide pour les variables d'environnement. Elles sont définies au niveau Pod/conteneur, souvent via ConfigMaps ou Secrets.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 88,
+      "question": "Comment patcher un Deployment pour changer l'image à 'nginx:1.20' ?",
+      "options": [
+        "kubectl patch deployment myapp -p '{\"spec\":{\"template\":{\"spec\":{\"containers\":[{\"name\":\"nginx\",\"image\":\"nginx:1.20\"}]}}}}'",
+        "kubectl set image deployment myapp nginx=nginx:1.20",
+        "Les deux réponses sont correctes",
+        "kubectl update deployment myapp --image=nginx:1.20"
+      ],
+      "answer": 2,
+      "explanation": "Les deux commandes fonctionnent: 'kubectl patch' avec JSON/YAML ou 'kubectl set image' de manière plus simple et lisible.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 89,
+      "question": "Qu'est-ce qu'un Headless Service (Service sans ClusterIP) ?",
+      "options": [
+        "Un Service sans backend",
+        "Un Service qui retourne directement les IPs des Pods (ClusterIP: None)",
+        "Un Service externe",
+        "Un Service désactivé"
+      ],
+      "answer": 1,
+      "explanation": "Un Headless Service (ClusterIP: None) ne fait pas de load balancing mais retourne directement les adresses IP des Pods via DNS, utile pour StatefulSets ou service discovery.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 90,
+      "question": "Comment afficher uniquement les noms des Pods sans les autres colonnes ?",
+      "options": [
+        "kubectl get pods -o name",
+        "kubectl get pods --names-only",
+        "kubectl get pods --format=name",
+        "kubectl get pods -o names"
+      ],
+      "answer": 0,
+      "explanation": "La commande 'kubectl get pods -o name' affiche uniquement les noms des ressources au format 'pod/nom', utile pour le scripting.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 91,
+      "question": "Qu'est-ce que le mécanisme de 'Rolling Update' ?",
+      "options": [
+        "Mise à jour instantanée de tous les Pods",
+        "Mise à jour progressive des Pods par vagues, sans downtime",
+        "Redémarrage du cluster",
+        "Backup automatique"
+      ],
+      "answer": 1,
+      "explanation": "Le Rolling Update met à jour progressivement les Pods d'un Deployment par vagues, créant de nouveaux Pods avant de supprimer les anciens, garantissant une disponibilité continue.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 92,
+      "question": "Comment limiter le nombre de Pods d'un ReplicaSet à maximum 10 dans un namespace via ResourceQuota ?",
+      "options": [
+        "On ne peut pas limiter le nombre de Pods d'un ReplicaSet spécifiquement",
+        "count/replicasets: \"10\"",
+        "count/pods: \"10\"",
+        "max/replicasets: \"10\""
+      ],
+      "answer": 2,
+      "explanation": "Via ResourceQuota, on limite 'count/pods' pour l'ensemble du namespace. On ne peut pas cibler spécifiquement un ReplicaSet, mais limiter le total de Pods.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 93,
+      "question": "Quelle commande permet de voir l'état du rollout d'un Deployment ?",
+      "options": [
+        "kubectl status deployment myapp",
+        "kubectl rollout status deployment myapp",
+        "kubectl get rollout myapp",
+        "kubectl describe deployment myapp"
+      ],
+      "answer": 1,
+      "explanation": "La commande 'kubectl rollout status deployment myapp' affiche l'état du déploiement en cours et attend la fin du rollout.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 94,
+      "question": "Quel plugin CNI est connu pour ses fonctionnalités de sécurité réseau avancées et observabilité ?",
+      "options": [
+        "Flannel",
+        "Calico",
+        "Weave",
+        "Canal"
+      ],
+      "answer": 1,
+      "explanation": "Calico est un plugin CNI populaire offrant des NetworkPolicies avancées, chiffrement, et des capacités d'observabilité réseau robustes.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 95,
+      "question": "Comment forcer un Pod à s'exécuter sur un node spécifique nommé 'worker-2' ?",
+      "options": [
+        "Utiliser nodeSelector avec un label correspondant à worker-2",
+        "Utiliser nodeName: worker-2",
+        "Les deux sont possibles",
+        "Utiliser nodeAffinity uniquement"
+      ],
+      "answer": 2,
+      "explanation": "Les deux méthodes fonctionnent: nodeName force directement l'assignation (bypass du scheduler), nodeSelector utilise des labels. NodeName est plus direct mais moins flexible.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 96,
+      "question": "Qu'est-ce que le 'preemption' dans le scheduling Kubernetes ?",
+      "options": [
+        "La priorité d'exécution des conteneurs",
+        "L'éviction de Pods de basse priorité pour faire place aux Pods de haute priorité",
+        "La préparation d'images",
+        "La prédiction de charge"
+      ],
+      "answer": 1,
+      "explanation": "La preemption permet au scheduler d'évincer (supprimer) des Pods de basse priorité pour faire place aux Pods de haute priorité qui ne peuvent pas être ordonnancés.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 97,
+      "question": "Comment créer un Service pour un Deployment existant en ligne de commande ?",
+      "options": [
+        "kubectl create service myapp",
+        "kubectl expose deployment myapp --port=80 --target-port=8080",
+        "kubectl service deployment myapp",
+        "kubectl link deployment myapp"
+      ],
+      "answer": 1,
+      "explanation": "La commande 'kubectl expose deployment myapp --port=80 --target-port=8080' crée un Service pour exposer le Deployment sur le port spécifié.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 98,
+      "question": "Qu'est-ce qu'un Volume de type 'projected' ?",
+      "options": [
+        "Un volume projeté sur plusieurs nodes",
+        "Un volume qui projette plusieurs sources (secrets, configmaps, etc.) dans un même répertoire",
+        "Un volume distant",
+        "Un volume temporaire"
+      ],
+      "answer": 1,
+      "explanation": "Un volume projected permet de monter plusieurs sources de volumes (secrets, configmaps, downwardAPI, serviceAccountToken) dans un seul répertoire.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 99,
+      "question": "Comment vérifier la connectivité réseau entre deux Pods ?",
+      "options": [
+        "kubectl ping pod1 pod2",
+        "kubectl exec pod1 -- ping <IP-pod2>",
+        "kubectl test-connection pod1 pod2",
+        "kubectl network-test pod1 pod2"
+      ],
+      "answer": 1,
+      "explanation": "On utilise 'kubectl exec pod1 -- ping <IP-pod2>' pour exécuter une commande ping depuis pod1 vers l'IP de pod2, testant ainsi la connectivité réseau.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 100,
+      "question": "Quelle est la différence entre un volume 'emptyDir' et 'hostPath' ?",
+      "options": [
+        "Aucune différence",
+        "emptyDir est temporaire au Pod, hostPath monte un répertoire du node hôte",
+        "emptyDir est plus rapide",
+        "hostPath est temporaire, emptyDir est persistant"
+      ],
+      "answer": 1,
+      "explanation": "emptyDir crée un répertoire vide qui existe le temps de vie du Pod. hostPath monte un répertoire/fichier existant du filesystem du node hôte, persistant au-delà du Pod.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 101,
+      "question": "Comment fonctionne le mécanisme de 'leader election' dans les composants du control plane ?",
+      "options": [
+        "Via des locks distribués dans etcd avec des leases",
+        "Via un vote majoritaire entre les nodes",
+        "Via une élection aléatoire",
+        "Via une priorité fixe définie au démarrage"
+      ],
+      "answer": 0,
+      "explanation": "Les composants du control plane (scheduler, controller-manager) utilisent des locks distribués dans etcd avec un mécanisme de lease pour élire un leader actif, les autres restant en standby pour la haute disponibilité.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 102,
+      "question": "Quelle est la différence entre 'PodSecurityPolicy' (déprécié) et 'PodSecurityStandards' ?",
+      "options": [
+        "Aucune différence fonctionnelle",
+        "PSP utilise l'admission, PSS utilise des namespaces labels avec trois niveaux (privileged, baseline, restricted)",
+        "PSS est plus permissif",
+        "PSP est plus récent"
+      ],
+      "answer": 1,
+      "explanation": "PodSecurityStandards (PSS) remplace PSP avec trois politiques prédéfinies (privileged, baseline, restricted) appliquées via des labels de namespace, simplifiant la gestion et évitant les complexités de PSP.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 103,
+      "question": "Comment le scheduler sélectionne-t-il le meilleur node pour un Pod ?",
+      "options": [
+        "Aléatoirement parmi les nodes disponibles",
+        "Phase de filtrage (predicates) puis scoring pour sélectionner le node optimal",
+        "Uniquement basé sur la charge CPU",
+        "Le premier node disponible"
+      ],
+      "answer": 1,
+      "explanation": "Le scheduler utilise un processus en deux phases : filtrage (filtering/predicates) pour éliminer les nodes non-éligibles, puis scoring pour classer les nodes restants et sélectionner le meilleur selon divers critères (ressources, affinité, etc.).",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 104,
+      "question": "Qu'est-ce que le 'kubelet garbage collection' et quels sont ses deux types principaux ?",
+      "options": [
+        "Nettoyage des logs uniquement",
+        "Image GC (suppression des images inutilisées) et Container GC (suppression des conteneurs terminés)",
+        "Nettoyage des Pods uniquement",
+        "Nettoyage du cache réseau"
+      ],
+      "answer": 1,
+      "explanation": "Le kubelet effectue deux types de garbage collection : Image GC (basé sur disk usage threshold) pour supprimer les images non utilisées, et Container GC pour nettoyer les conteneurs terminés selon leur âge et quantité.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 105,
+      "question": "Comment fonctionne le mécanisme de 'Pod Priority and Preemption' ?",
+      "options": [
+        "Les Pods sont simplement ordonnés par date de création",
+        "Les PriorityClasses définissent des valeurs de priorité; les Pods haute priorité peuvent préempter les Pods basse priorité",
+        "Tous les Pods ont la même priorité",
+        "La priorité est basée uniquement sur les ressources demandées"
+      ],
+      "answer": 1,
+      "explanation": "Les PriorityClasses assignent des valeurs numériques aux Pods. Quand un Pod haute priorité ne peut être ordonnancé, le scheduler peut évincer (préempter) des Pods de priorité inférieure pour libérer des ressources.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 106,
+      "question": "Qu'est-ce qu'un 'Custom Resource Definition' (CRD) et comment étend-il l'API Kubernetes ?",
+      "options": [
+        "Un plugin pour kubectl",
+        "Un mécanisme pour définir de nouveaux types de ressources personnalisées dans l'API Kubernetes",
+        "Un type de Secret",
+        "Une configuration de namespace"
+      ],
+      "answer": 1,
+      "explanation": "Les CRDs permettent d'étendre l'API Kubernetes en définissant de nouveaux types de ressources personnalisées, créant ainsi des objets first-class dans Kubernetes avec validation, versioning et gestion complète.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 107,
+      "question": "Quel est le rôle d'un Operator dans Kubernetes ?",
+      "options": [
+        "Gérer les utilisateurs du cluster",
+        "Automatiser la gestion d'applications complexes en encapsulant la logique opérationnelle via des CRDs et controllers",
+        "Surveiller les performances",
+        "Gérer uniquement les backups"
+      ],
+      "answer": 1,
+      "explanation": "Un Operator combine des CRDs et des controllers personnalisés pour automatiser les tâches opérationnelles complexes (déploiement, mise à jour, backup, scaling) d'applications avec état comme les bases de données.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 108,
+      "question": "Comment Kubernetes gère-t-il le 'split-brain' dans etcd en cas de partition réseau ?",
+      "options": [
+        "Il ne le gère pas",
+        "Via le consensus Raft qui nécessite une majorité de quorum (N/2 + 1) pour les écritures",
+        "Via un arbitre externe",
+        "Via un timeout simple"
+      ],
+      "answer": 1,
+      "explanation": "etcd utilise le protocole de consensus Raft qui nécessite qu'une majorité stricte du cluster (quorum) soit disponible pour les opérations d'écriture, empêchant ainsi les situations de split-brain.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 109,
+      "question": "Qu'est-ce que le 'TopologySpreadConstraints' et à quoi sert-il ?",
+      "options": [
+        "Une limite de réseau",
+        "Un mécanisme pour distribuer les Pods uniformément selon des topologies (zones, nodes, etc.)",
+        "Une politique de sécurité",
+        "Un type de volume"
+      ],
+      "answer": 1,
+      "explanation": "TopologySpreadConstraints permet de contrôler comment les Pods sont distribués à travers différentes topologies (zones de disponibilité, nodes, régions) pour améliorer la disponibilité et la résilience.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 110,
+      "question": "Comment fonctionne le 'Container Storage Interface' (CSI) ?",
+      "options": [
+        "C'est un type de volume spécifique",
+        "Une interface standard permettant aux fournisseurs de stockage d'intégrer leurs solutions via des plugins",
+        "Un protocole réseau",
+        "Une commande kubectl"
+      ],
+      "answer": 1,
+      "explanation": "CSI est une interface standard permettant aux fournisseurs de stockage de développer des plugins qui s'intègrent à Kubernetes sans modifier le code core, supportant provisionnement, attachement, snapshot, etc.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 111,
+      "question": "Qu'est-ce que le 'kube-apiserver aggregation layer' et à quoi sert-il ?",
+      "options": [
+        "Un load balancer interne",
+        "Un mécanisme permettant d'étendre l'API Kubernetes avec des API servers personnalisés",
+        "Un système de cache",
+        "Un protocole réseau"
+      ],
+      "answer": 1,
+      "explanation": "L'aggregation layer permet d'étendre l'API Kubernetes en enregistrant des API servers supplémentaires (extension API servers) qui apparaissent comme partie intégrante de l'API Kubernetes principale.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 112,
+      "question": "Comment le 'kube-proxy' implémente-t-il les Services en mode iptables vs IPVS ?",
+      "options": [
+        "Les deux modes sont identiques",
+        "iptables utilise des chaînes de règles (O(n)), IPVS utilise une table de hachage (O(1)) pour de meilleures performances à grande échelle",
+        "IPVS est moins performant",
+        "iptables n'est plus supporté"
+      ],
+      "answer": 1,
+      "explanation": "Le mode iptables utilise des chaînes de règles avec complexité O(n), tandis qu'IPVS utilise une table de hachage dans le noyau (O(1)) offrant de meilleures performances, plus d'algorithmes de load balancing et meilleure scalabilité.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 113,
+      "question": "Qu'est-ce qu'un 'Mutating Admission Webhook' ?",
+      "options": [
+        "Un webhook de monitoring",
+        "Un webhook qui intercepte et peut modifier les objets API avant leur persistance dans etcd",
+        "Un webhook de suppression",
+        "Un webhook de logs"
+      ],
+      "answer": 1,
+      "explanation": "Les Mutating Admission Webhooks interceptent les requêtes API et peuvent modifier (mutate) les objets avant leur stockage, permettant l'injection automatique de sidecars, modification de specs, ajout de labels, etc.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 114,
+      "question": "Comment fonctionne le mécanisme de 'Watch' de l'API Kubernetes ?",
+      "options": [
+        "Polling régulier de l'API",
+        "Connexion HTTP long-polling ou streaming permettant au client de recevoir les changements en temps réel",
+        "WebSockets uniquement",
+        "Push notifications"
+      ],
+      "answer": 1,
+      "explanation": "Le mécanisme Watch utilise HTTP streaming (chunked transfer encoding) pour maintenir une connexion ouverte où l'API server envoie les événements de modification des ressources en temps réel au client.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 115,
+      "question": "Qu'est-ce que le 'PodOverhead' et comment affecte-t-il le scheduling ?",
+      "options": [
+        "Un timeout pour les Pods",
+        "Les ressources additionnelles requises par le runtime (VM overhead pour sandbox) ajoutées aux requests du Pod",
+        "Une limite de CPU",
+        "Un label spécial"
+      ],
+      "answer": 1,
+      "explanation": "PodOverhead représente les ressources consommées par l'infrastructure du Pod (par exemple, VM overhead pour Kata Containers). Le scheduler ajoute cet overhead aux requests du Pod pour le placement.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 116,
+      "question": "Comment fonctionne le 'certificate rotation' automatique dans Kubernetes ?",
+      "options": [
+        "Les certificats ne sont jamais renouvelés",
+        "Le kubelet peut automatiquement demander et renouveler ses certificats via le CSR API",
+        "Renouvellement manuel uniquement",
+        "Via un cron job externe"
+      ],
+      "answer": 1,
+      "explanation": "Le kubelet peut être configuré pour automatiquement demander de nouveaux certificats via l'API CertificateSigningRequest avant expiration, permettant une rotation transparente des certificats client.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 117,
+      "question": "Qu'est-ce que le 'Endpoint Slices' et pourquoi remplace-t-il les Endpoints ?",
+      "options": [
+        "C'est identique aux Endpoints",
+        "EndpointSlices découpe les endpoints en morceaux plus petits pour meilleure scalabilité (réduire la taille des objets et le trafic réseau)",
+        "EndpointSlices est déprécié",
+        "EndpointSlices ne fonctionne qu'avec IPv6"
+      ],
+      "answer": 1,
+      "explanation": "EndpointSlices résout les problèmes de scalabilité des Endpoints en découpant les endpoints en morceaux de 100 endpoints par défaut, réduisant la taille des objets et le trafic réseau pour les Services avec nombreux backends.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 118,
+      "question": "Comment implémenter un 'Blue-Green deployment' dans Kubernetes ?",
+      "options": [
+        "Utiliser deux Deployments avec switching du Service selector entre les versions",
+        "Utiliser uniquement un Deployment",
+        "C'est automatique dans Kubernetes",
+        "Nécessite un outil externe obligatoirement"
+      ],
+      "answer": 0,
+      "explanation": "Le Blue-Green deployment peut être implémenté avec deux Deployments (blue et green). Le Service switch instantanément entre les versions en changeant son selector de labels, permettant un rollback rapide.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 119,
+      "question": "Qu'est-ce que le 'Pod Security Admission' et ses modes d'enforcement ?",
+      "options": [
+        "Un firewall pour Pods",
+        "Un admission controller avec trois modes: enforce (rejette), audit (log), warn (avertit)",
+        "Une politique réseau",
+        "Un type de RBAC"
+      ],
+      "answer": 1,
+      "explanation": "Pod Security Admission est un admission controller built-in qui implémente les Pod Security Standards avec trois modes : enforce (rejette les violations), audit (enregistre mais autorise), warn (avertit l'utilisateur).",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 120,
+      "question": "Comment fonctionne le 'Cluster Autoscaler' et quelle est sa relation avec le HPA ?",
+      "options": [
+        "Ils sont identiques",
+        "Cluster Autoscaler ajuste le nombre de nodes, HPA ajuste les répliques de Pods; ils travaillent ensemble",
+        "Cluster Autoscaler remplace le HPA",
+        "Ils ne peuvent pas coexister"
+      ],
+      "answer": 1,
+      "explanation": "Le Cluster Autoscaler ajuste dynamiquement le nombre de nodes selon les besoins (Pods en pending), tandis que le HPA ajuste les répliques. Ils fonctionnent en tandem : HPA scale les Pods, CA scale les nodes si nécessaire.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 121,
+      "question": "Qu'est-ce que le mécanisme de 'Volume Snapshots' avec CSI ?",
+      "options": [
+        "Un backup manuel uniquement",
+        "Une fonctionnalité CSI permettant de créer des snapshots point-in-time de volumes persistants",
+        "Une copie complète du volume",
+        "Un type de volume"
+      ],
+      "answer": 1,
+      "explanation": "Volume Snapshots via CSI permet de créer des snapshots point-in-time de PersistentVolumes, utile pour backup, clonage ou restore. Nécessite un driver CSI supportant les snapshots.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 122,
+      "question": "Comment fonctionne le 'DNS-based service discovery' dans Kubernetes ?",
+      "options": [
+        "Via fichiers hosts",
+        "CoreDNS crée des enregistrements A/AAAA pour Services (ClusterIP) et SRV pour ports nommés",
+        "Via DHCP",
+        "Via broadcast"
+      ],
+      "answer": 1,
+      "explanation": "CoreDNS (ou kube-dns) crée automatiquement des enregistrements DNS : A/AAAA pour les Services (service.namespace.svc.cluster.local), SRV pour les ports nommés, et records pour les Pods si activé.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 123,
+      "question": "Qu'est-ce que le 'RuntimeClass' dans Kubernetes ?",
+      "options": [
+        "Une classe de priorité",
+        "Un mécanisme pour sélectionner différents runtimes de conteneurs (runc, kata, gVisor) par Pod",
+        "Un type de StorageClass",
+        "Un namespace spécial"
+      ],
+      "answer": 1,
+      "explanation": "RuntimeClass permet de sélectionner différentes configurations de runtime de conteneurs (runc, Kata Containers, gVisor) par Pod, offrant différents niveaux d'isolation et de performance.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 124,
+      "question": "Comment implémenter une stratégie de déploiement Canary avec Kubernetes natif ?",
+      "options": [
+        "Impossible nativement",
+        "Déployer deux versions avec différents labels, ajuster les répliques progressivement, le Service load-balance proportionnellement",
+        "Utiliser uniquement des Ingress",
+        "Nécessite obligatoirement Istio"
+      ],
+      "answer": 1,
+      "explanation": "Un déploiement Canary natif peut être fait avec deux Deployments (stable et canary) partageant le même Service selector. En ajustant les répliques, on contrôle le ratio de trafic (ex: 90% stable, 10% canary).",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 125,
+      "question": "Qu'est-ce que le 'Ephemeral Containers' et leur cas d'usage principal ?",
+      "options": [
+        "Des conteneurs temporaires de stockage",
+        "Des conteneurs qui peuvent être ajoutés à un Pod en cours d'exécution pour le debugging (sans redémarrage)",
+        "Des conteneurs de backup",
+        "Des conteneurs d'initialisation"
+      ],
+      "answer": 1,
+      "explanation": "Les Ephemeral Containers peuvent être ajoutés dynamiquement à un Pod en cours d'exécution pour le debugging, sans nécessiter de redémarrage. Utile quand l'image du Pod n'inclut pas d'outils de debug.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 126,
+      "question": "Comment fonctionne le 'kubectl diff' et pourquoi est-il utile ?",
+      "options": [
+        "Compare deux fichiers locaux",
+        "Effectue un server-side dry-run et affiche les différences entre l'état actuel et la configuration à appliquer",
+        "Compare deux clusters",
+        "Affiche uniquement les logs"
+      ],
+      "answer": 1,
+      "explanation": "kubectl diff effectue un server-side dry-run de l'apply et affiche les différences (style diff Unix) entre la configuration actuelle dans le cluster et celle qu'on s'apprête à appliquer.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 127,
+      "question": "Qu'est-ce que le 'Service Topology' (ou Topology Aware Hints) ?",
+      "options": [
+        "Une carte des Services",
+        "Un mécanisme pour router le trafic vers les endpoints les plus proches topologiquement (même zone/node)",
+        "Un type de NetworkPolicy",
+        "Un outil de visualisation"
+      ],
+      "answer": 1,
+      "explanation": "Topology Aware Hints (anciennement Service Topology) permet de router le trafic des Services vers les endpoints les plus proches topologiquement (même zone, même node) pour réduire la latence et les coûts inter-zones.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 128,
+      "question": "Comment débugger un Pod qui reste en état 'ImagePullBackOff' ?",
+      "options": [
+        "Attendre simplement",
+        "Utiliser 'kubectl describe pod' pour voir les événements, vérifier le nom de l'image, les imagePullSecrets, l'accès au registry",
+        "Redémarrer le cluster",
+        "Supprimer tous les Pods"
+      ],
+      "answer": 1,
+      "explanation": "Pour débugger ImagePullBackOff : vérifier les événements avec 'kubectl describe pod', valider le nom/tag de l'image, vérifier les imagePullSecrets pour registries privés, tester l'accès au registry, vérifier les NetworkPolicies.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 129,
+      "question": "Qu'est-ce que le 'Server-Side Apply' (SSA) et comment diffère-t-il du 'Client-Side Apply' ?",
+      "options": [
+        "Ils sont identiques",
+        "SSA gère le merge des champs côté serveur avec field management, CSA fait le merge côté client (kubectl)",
+        "SSA est déprécié",
+        "SSA ne fonctionne qu'avec CRDs"
+      ],
+      "answer": 1,
+      "explanation": "Server-Side Apply délègue le merge au serveur API qui track précisément qui gère quels champs (field management), résolvant les conflits mieux que Client-Side Apply qui fait le merge dans kubectl.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 130,
+      "question": "Comment fonctionne le 'Pod Security Context' au niveau sécurité ?",
+      "options": [
+        "Il ne fait rien",
+        "Définit les paramètres de sécurité (runAsUser, fsGroup, capabilities, seccomp, etc.) pour les conteneurs du Pod",
+        "C'est uniquement pour les annotations",
+        "C'est un type de Secret"
+      ],
+      "answer": 1,
+      "explanation": "Le Security Context définit les privilèges et contrôles d'accès : runAsUser/Group (UID/GID), fsGroup (propriété volumes), capabilities Linux, SELinux, AppArmor, seccomp profiles, runAsNonRoot, etc.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 131,
+      "question": "Qu'est-ce que le 'kubectl-plugin' et comment étendre kubectl ?",
+      "options": [
+        "Impossible d'étendre kubectl",
+        "Tout exécutable nommé 'kubectl-*' dans le PATH devient une sous-commande kubectl",
+        "Nécessite de recompiler kubectl",
+        "Uniquement via des alias"
+      ],
+      "answer": 1,
+      "explanation": "Kubectl supporte les plugins via le mécanisme de découverte : tout fichier exécutable nommé 'kubectl-foo' dans le PATH devient accessible comme 'kubectl foo', permettant d'étendre facilement kubectl.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 132,
+      "question": "Comment fonctionne le 'Vertical Pod Autoscaler' (VPA) ?",
+      "options": [
+        "Scale horizontalement les Pods",
+        "Ajuste automatiquement les requests/limits de ressources des conteneurs basé sur l'utilisation réelle",
+        "Scale les nodes",
+        "Gère uniquement le CPU"
+      ],
+      "answer": 1,
+      "explanation": "Le VPA analyse l'utilisation réelle des ressources et ajuste automatiquement les requests/limits des conteneurs, soit en mode recommendation, soit en recréant les Pods avec de nouvelles valeurs.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 133,
+      "question": "Qu'est-ce qu'un 'Validating Admission Webhook' et comment diffère-t-il du Mutating ?",
+      "options": [
+        "Ils sont identiques",
+        "Validating ne peut que valider/rejeter (read-only), Mutating peut modifier les objets",
+        "Validating est plus lent",
+        "Mutating ne peut pas rejeter"
+      ],
+      "answer": 1,
+      "explanation": "Les Validating Webhooks peuvent uniquement valider ou rejeter les requêtes (read-only), tandis que les Mutating Webhooks peuvent modifier les objets. Les Mutating s'exécutent avant les Validating dans la chaîne d'admission.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 134,
+      "question": "Comment implémenter le 'circuit breaker' pattern dans Kubernetes ?",
+      "options": [
+        "Nativement dans Kubernetes core",
+        "Via service mesh (Istio, Linkerd) avec retry policies, timeouts et circuit breakers",
+        "Via NetworkPolicy uniquement",
+        "Impossible dans Kubernetes"
+      ],
+      "answer": 1,
+      "explanation": "Le circuit breaker pattern est typiquement implémenté via un service mesh (Istio, Linkerd) qui fournit retry policies, timeouts, circuit breakers et fault injection au niveau du sidecar proxy.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 135,
+      "question": "Qu'est-ce que le 'Pod Disruption Budget' minAvailable vs maxUnavailable ?",
+      "options": [
+        "Ils sont identiques",
+        "minAvailable spécifie le minimum de Pods à maintenir disponibles, maxUnavailable le maximum qui peuvent être indisponibles simultanément",
+        "minAvailable est déprécié",
+        "Ils ne peuvent pas être utilisés ensemble"
+      ],
+      "answer": 1,
+      "explanation": "Un PDB peut spécifier soit minAvailable (nombre ou pourcentage minimum de Pods devant rester disponibles) soit maxUnavailable (maximum pouvant être indisponibles), mais pas les deux simultanément.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 136,
+      "question": "Comment fonctionne le 'kubectl proxy' et à quoi sert-il ?",
+      "options": [
+        "C'est un load balancer",
+        "Crée un proxy local vers l'API server permettant d'accéder à l'API sans authentification (authentification déléguée)",
+        "Configure kube-proxy",
+        "Proxy pour les conteneurs"
+      ],
+      "answer": 1,
+      "explanation": "kubectl proxy crée un serveur proxy local qui authentifie les requêtes vers l'API server en utilisant les credentials du kubeconfig, permettant d'accéder à l'API via HTTP localhost sans gérer l'authentification.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 137,
+      "question": "Qu'est-ce que le 'Scheduler Framework' et les extension points ?",
+      "options": [
+        "Un outil de visualisation",
+        "Une architecture permettant d'étendre le scheduler avec des plugins personnalisés aux différentes phases (PreFilter, Filter, Score, etc.)",
+        "Un type de CRD",
+        "Un système de backup"
+      ],
+      "answer": 1,
+      "explanation": "Le Scheduler Framework expose des extension points (PreFilter, Filter, PostFilter, PreScore, Score, Reserve, Permit, PreBind, Bind, PostBind) permettant de créer des plugins pour customiser la logique de scheduling.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 138,
+      "question": "Comment gérer les secrets au repos (encryption at rest) dans etcd ?",
+      "options": [
+        "Les secrets sont toujours chiffrés",
+        "Configurer l'EncryptionConfiguration avec un provider (aescbc, kms, etc.) dans l'API server",
+        "C'est automatique",
+        "Impossible de chiffrer etcd"
+      ],
+      "answer": 1,
+      "explanation": "Pour chiffrer les secrets dans etcd, il faut configurer une EncryptionConfiguration avec un provider (aescbc, aesgcm, secretbox, kms) et le passer à l'API server via --encryption-provider-config. Par défaut, les secrets ne sont PAS chiffrés dans etcd.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 139,
+      "question": "Qu'est-ce que le 'Pod Affinity' vs 'Node Affinity' ?",
+      "options": [
+        "Ils sont identiques",
+        "Node Affinity contraint les Pods sur des nodes selon leurs labels, Pod Affinity selon les labels d'autres Pods",
+        "Pod Affinity est déprécié",
+        "Node Affinity ne fonctionne pas"
+      ],
+      "answer": 1,
+      "explanation": "Node Affinity place les Pods sur des nodes spécifiques basé sur les labels des nodes. Pod Affinity/AntiAffinity place les Pods en fonction de la localisation d'autres Pods (co-location ou séparation).",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 140,
+      "question": "Comment fonctionne le 'kube-controller-manager' et ses contrôleurs multiples ?",
+      "options": [
+        "C'est un seul contrôleur monolithique",
+        "Un processus exécutant plusieurs contrôleurs (ReplicaSet, Deployment, Node, etc.) dans des goroutines séparées",
+        "Chaque contrôleur est un processus séparé",
+        "Il ne gère qu'un type de ressource"
+      ],
+      "answer": 1,
+      "explanation": "Le kube-controller-manager est un seul binaire exécutant de nombreux contrôleurs (ReplicaSet, Deployment, StatefulSet, DaemonSet, Job, Node, ServiceAccount, etc.) dans des goroutines, chacun réconciliant son type de ressource.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 141,
+      "question": "Qu'est-ce que le 'kubectl alpha debug' et ses capacités ?",
+      "options": [
+        "Un outil de logs uniquement",
+        "Une commande pour créer des Ephemeral Containers ou des copies de Pods pour debugging avec différentes images/configs",
+        "Un profiler de performance",
+        "Un éditeur de YAML"
+      ],
+      "answer": 1,
+      "explanation": "kubectl debug permet de débugger des Pods en créant des ephemeral containers dans un Pod existant, ou en créant une copie d'un Pod avec une image différente (debug image) ou configuration modifiée (ex: sans securityContext).",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 142,
+      "question": "Comment fonctionne le 'Garbage Collection' des objets ownerReferences ?",
+      "options": [
+        "Il n'y a pas de garbage collection",
+        "Les objets avec ownerReferences sont automatiquement supprimés quand leur owner est supprimé (cascading delete)",
+        "Suppression manuelle uniquement",
+        "Via un cron job externe"
+      ],
+      "answer": 1,
+      "explanation": "Le Garbage Collector supprime automatiquement les objets dépendants quand leur owner (défini via ownerReferences) est supprimé. Deux modes : foreground (supprime les dépendants d'abord) et background (async).",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 143,
+      "question": "Qu'est-ce que le 'TTL Controller' pour les Jobs et ressources terminées ?",
+      "options": [
+        "Un contrôleur de timeout",
+        "Un contrôleur qui nettoie automatiquement les ressources terminées (Jobs, Pods) après une TTL",
+        "Un système de cache",
+        "Un load balancer"
+      ],
+      "answer": 1,
+      "explanation": "Le TTL Controller nettoie automatiquement les ressources terminées (principalement Jobs et leurs Pods) après une durée spécifiée dans le champ ttlSecondsAfterFinished, évitant l'accumulation de ressources obsolètes.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 144,
+      "question": "Comment implémenter le 'multi-tenancy' sécurisé dans Kubernetes ?",
+      "options": [
+        "Utiliser uniquement des namespaces",
+        "Combiner namespaces, RBAC, NetworkPolicies, ResourceQuotas, PodSecurityStandards, et idéalement des clusters séparés pour forte isolation",
+        "Impossible dans Kubernetes",
+        "Uniquement via des clusters séparés"
+      ],
+      "answer": 1,
+      "explanation": "Le multi-tenancy sécurisé nécessite une approche en couches : namespaces pour isolation logique, RBAC strict, NetworkPolicies pour isolation réseau, ResourceQuotas, PodSecurityStandards, et pour forte isolation, considérer des clusters séparés ou virtual clusters.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 145,
+      "question": "Qu'est-ce que le 'Descheduler' et comment améliore-t-il le placement des Pods ?",
+      "options": [
+        "C'est le scheduler par défaut",
+        "Un composant qui évacue les Pods mal placés selon des stratégies pour permettre leur re-scheduling optimal",
+        "Un outil de suppression de Pods",
+        "Un load balancer"
+      ],
+      "answer": 1,
+      "explanation": "Le Descheduler (composant optionnel) identifie et évacue les Pods selon des stratégies (déséquilibre de ressources, violations d'affinity, etc.) pour qu'ils soient re-schedulés plus optimalement par le scheduler.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 146,
+      "question": "Comment fonctionne le 'kubelet eviction' et ses seuils ?",
+      "options": [
+        "Le kubelet ne fait jamais d'éviction",
+        "Le kubelet évacue les Pods quand les ressources du node (mémoire, disk, inodes) atteignent des seuils critiques",
+        "Uniquement pour les Pods sans priorité",
+        "C'est aléatoire"
+      ],
+      "answer": 1,
+      "explanation": "Le kubelet surveille les ressources du node (memory, disk, inodes) et évacue proactivement les Pods selon leur QoS class et priorité quand les seuils d'éviction (soft/hard) sont atteints pour protéger le node.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 147,
+      "question": "Qu'est-ce que le 'Feature Gates' dans Kubernetes ?",
+      "options": [
+        "Des portes de sécurité physiques",
+        "Des flags pour activer/désactiver des fonctionnalités alpha/beta dans les composants Kubernetes",
+        "Un type de NetworkPolicy",
+        "Des labels spéciaux"
+      ],
+      "answer": 1,
+      "explanation": "Les Feature Gates sont des flags permettant d'activer ou désactiver des fonctionnalités alpha, beta ou GA dans les composants Kubernetes (API server, kubelet, etc.), contrôlant l'adoption progressive de nouvelles features.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 148,
+      "question": "Comment diagnostiquer un problème de DNS dans un cluster Kubernetes ?",
+      "options": [
+        "Redémarrer le cluster",
+        "Vérifier CoreDNS Pods/logs, tester avec nslookup/dig depuis un Pod, vérifier kube-dns Service, NetworkPolicies, et configmap de CoreDNS",
+        "Supprimer tous les Services",
+        "Attendre simplement"
+      ],
+      "answer": 1,
+      "explanation": "Pour débugger DNS : vérifier que CoreDNS Pods tournent (kube-system), examiner leurs logs, tester résolution depuis un Pod (nslookup kubernetes.default), vérifier le Service kube-dns, NetworkPolicies, et la ConfigMap coredns.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 149,
+      "question": "Qu'est-ce que le 'kubectl events' et comment aide-t-il au troubleshooting ?",
+      "options": [
+        "Une commande pour les logs",
+        "Une commande améliorée pour afficher et filtrer les événements du cluster avec meilleur formatting",
+        "Un outil de monitoring externe",
+        "Un type de ressource"
+      ],
+      "answer": 1,
+      "explanation": "kubectl events (introduit récemment) améliore 'kubectl get events' avec meilleur tri chronologique, filtrage par type/raison/objet, et formatting plus lisible pour faciliter le troubleshooting des problèmes cluster.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 150,
+      "question": "Comment implémenter une stratégie de 'Disaster Recovery' complète pour un cluster Kubernetes ?",
+      "options": [
+        "Uniquement backup des Pods",
+        "Backup régulier d'etcd, GitOps pour les manifestes, snapshots de volumes persistants, documentation de l'infra, procédures de restore testées",
+        "Pas besoin de DR dans Kubernetes",
+        "Uniquement backup des ConfigMaps"
+      ],
+      "answer": 1,
+      "explanation": "Une DR complète inclut : backups réguliers et testés d'etcd, GitOps pour versionner tous les manifestes, snapshots des PersistentVolumes via CSI, documentation complète de l'infrastructure, automation du restore, et tests réguliers de la procédure de récupération.",
+      "difficulty": "advanced"
+    }
+  ]
 }
