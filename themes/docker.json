@@ -1,605 +1,1306 @@
 {
-    "title": "Docker",
-    "questions": [
-        {
-            "id": 1,
-            "question": "Qu\u2019est-ce que Docker ?",
-            "options": [
-                "Un syst\u00e8me d\u2019exploitation",
-                "Un orchestrateur de conteneurs",
-                "Une plateforme de conteneurisation",
-                "Une machine virtuelle"
-            ],
-            "correct": 2,
-            "explanation": "Docker est une plateforme de conteneurisation qui permet d\u2019ex\u00e9cuter des applications de mani\u00e8re isol\u00e9e."
-        },
-        {
-            "id": 2,
-            "question": "Quelle commande permet de lister les conteneurs en cours d\u2019ex\u00e9cution ?",
-            "options": [
-                "docker images",
-                "docker ps",
-                "docker ls",
-                "docker run"
-            ],
-            "correct": 1,
-            "explanation": "La commande `docker ps` liste les conteneurs en cours d\u2019ex\u00e9cution."
-        },
-        {
-            "id": 3,
-            "question": "Quelle commande permet de t\u00e9l\u00e9charger une image depuis Docker Hub ?",
-            "options": [
-                "docker fetch",
-                "docker install",
-                "docker pull",
-                "docker get"
-            ],
-            "correct": 2,
-            "explanation": "La commande `docker pull` t\u00e9l\u00e9charge une image depuis un registre comme Docker Hub."
-        },
-        {
-            "id": 4,
-            "question": "Que fait la commande `docker run -d nginx` ?",
-            "options": [
-                "D\u00e9marre un conteneur Nginx en mode interactif",
-                "Construit une image bas\u00e9e sur nginx",
-                "Lance un conteneur Nginx en arri\u00e8re-plan",
-                "Supprime un conteneur Nginx"
-            ],
-            "correct": 2,
-            "explanation": "L\u2019option `-d` (detached) ex\u00e9cute le conteneur en arri\u00e8re-plan."
-        },
-        {
-            "id": 5,
-            "question": "Quelle est la diff\u00e9rence entre `docker stop` et `docker kill` ?",
-            "options": [
-                "Aucune diff\u00e9rence",
-                "`docker stop` arr\u00eate proprement, `docker kill` force l\u2019arr\u00eat",
-                "`docker stop` supprime le conteneur, `docker kill` le suspend",
-                "`docker stop` red\u00e9marre le conteneur, `docker kill` le supprime"
-            ],
-            "correct": 1,
-            "explanation": "`docker stop` envoie un signal pour arr\u00eater proprement, alors que `docker kill` envoie un signal SIGKILL pour forcer l\u2019arr\u00eat."
-        },
-        {
-            "id": 6,
-            "question": "Que fait la commande `docker exec -it <container_name> bash` ?",
-            "options": [
-                "Ex\u00e9cute un script dans un conteneur",
-                "D\u00e9marre un nouveau conteneur avec bash",
-                "Ouvre un shell bash dans un conteneur en cours d\u2019ex\u00e9cution",
-                "Cr\u00e9e une image depuis le conteneur"
-            ],
-            "correct": 2,
-            "explanation": "`docker exec -it` permet d\u2019ouvrir une session interactive dans un conteneur existant."
-        },
-        {
-            "id": 7,
-            "question": "Quelle commande permet de lister les images locales ?",
-            "options": [
-                "docker images",
-                "docker ps -a",
-                "docker list images",
-                "docker show"
-            ],
-            "correct": 0,
-            "explanation": "La commande `docker images` liste toutes les images disponibles localement."
-        },
-        {
-            "id": 8,
-            "question": "Que fait l\u2019option `-p 8080:80` dans `docker run -p 8080:80 nginx` ?",
-            "options": [
-                "Expose le port 8080 dans le conteneur et le mappe sur 80 en local",
-                "Expose le port 80 dans le conteneur et le mappe sur 8080 en local",
-                "Ferme le port 8080 en local",
-                "Affecte deux ports au conteneur"
-            ],
-            "correct": 1,
-            "explanation": "La syntaxe `-p host:container` redirige le port 8080 de l\u2019h\u00f4te vers le port 80 du conteneur."
-        },
-        {
-            "id": 9,
-            "question": "Quelle commande construit une image Docker \u00e0 partir d\u2019un Dockerfile ?",
-            "options": [
-                "docker build",
-                "docker make",
-                "docker compile",
-                "docker create"
-            ],
-            "correct": 0,
-            "explanation": "`docker build` construit une image \u00e0 partir d\u2019un Dockerfile."
-        },
-        {
-            "id": 10,
-            "question": "Quel fichier permet de d\u00e9finir la configuration d\u2019une image Docker personnalis\u00e9e ?",
-            "options": [
-                "Dockerfile",
-                "docker-compose.yml",
-                "docker-config.json",
-                "Docker.yaml"
-            ],
-            "correct": 0,
-            "explanation": "Le `Dockerfile` contient les instructions pour construire une image Docker."
-        },
-        {
-            "id": 11,
-            "question": "Que fait la commande `docker rmi image_id` ?",
-            "options": [
-                "Supprime un conteneur",
-                "Supprime une image",
-                "Red\u00e9marre une image",
-                "Installe une image"
-            ],
-            "correct": 1,
-            "explanation": "`docker rmi` supprime une image Docker locale."
-        },
-        {
-            "id": 12,
-            "question": "Qu\u2019est-ce qu\u2019un volume Docker ?",
-            "options": [
-                "Un fichier de configuration",
-                "Un espace de stockage persistant pour les conteneurs",
-                "Un port r\u00e9seau",
-                "Un processus d\u2019ex\u00e9cution"
-            ],
-            "correct": 1,
-            "explanation": "Un volume est une solution de stockage persistant g\u00e9r\u00e9e par Docker pour conserver les donn\u00e9es."
-        },
-        {
-            "id": 13,
-            "question": "Quelle commande permet de cr\u00e9er un volume ?",
-            "options": [
-                "docker volume create",
-                "docker create volume",
-                "docker new volume",
-                "docker run --volume"
-            ],
-            "correct": 0,
-            "explanation": "`docker volume create` permet de cr\u00e9er un volume nomm\u00e9."
-        },
-        {
-            "id": 14,
-            "question": "Quelle commande permet de voir les logs d\u2019un conteneur ?",
-            "options": [
-                "docker log",
-                "docker logs",
-                "docker inspect",
-                "docker output"
-            ],
-            "correct": 1,
-            "explanation": "La commande `docker logs` affiche les journaux d\u2019un conteneur."
-        },
-        {
-            "id": 15,
-            "question": "Que fait la commande `docker inspect` ?",
-            "options": [
-                "Affiche les processus du conteneur",
-                "Donne des informations d\u00e9taill\u00e9es sur un conteneur ou une image",
-                "Supprime un conteneur",
-                "Liste les volumes disponibles"
-            ],
-            "correct": 1,
-            "explanation": "`docker inspect` affiche des informations d\u00e9taill\u00e9es en JSON sur un conteneur ou une image."
-        },
-        {
-            "id": 16,
-            "question": "Que fait la commande `docker rm container_id` ?",
-            "options": [
-                "Arr\u00eate le conteneur",
-                "Supprime un conteneur arr\u00eat\u00e9",
-                "Supprime une image",
-                "Red\u00e9marre un conteneur"
-            ],
-            "correct": 1,
-            "explanation": "`docker rm` supprime un conteneur arr\u00eat\u00e9, pas une image."
-        },
-        {
-            "id": 17,
-            "question": "Quelle commande arr\u00eate tous les conteneurs en cours d\u2019ex\u00e9cution ?",
-            "options": [
-                "docker stop $(docker ps -q)",
-                "docker kill all",
-                "docker stop all",
-                "docker halt"
-            ],
-            "correct": 0,
-            "explanation": "La commande `docker stop $(docker ps -q)` arr\u00eate tous les conteneurs en cours d\u2019ex\u00e9cution."
-        },
-        {
-            "id": 18,
-            "question": "Quelle est la diff\u00e9rence entre une image et un conteneur ?",
-            "options": [
-                "Une image est un mod\u00e8le, un conteneur est une instance en cours d\u2019ex\u00e9cution",
-                "Une image contient des donn\u00e9es, un conteneur contient uniquement du code",
-                "Une image est toujours en cours d\u2019ex\u00e9cution, un conteneur est statique",
-                "Aucune diff\u00e9rence"
-            ],
-            "correct": 0,
-            "explanation": "Une image est un mod\u00e8le immuable, tandis qu\u2019un conteneur est une instance active bas\u00e9e sur cette image."
-        },
-        {
-            "id": 19,
-            "question": "Que fait la commande `docker-compose up` ?",
-            "options": [
-                "Construit et d\u00e9marre les services d\u00e9finis dans un fichier docker-compose.yml",
-                "Arr\u00eate les services Docker",
-                "Supprime un r\u00e9seau Docker",
-                "T\u00e9l\u00e9charge des images depuis Docker Hub"
-            ],
-            "correct": 0,
-            "explanation": "`docker-compose up` lance les services d\u00e9finis dans le fichier `docker-compose.yml`."
-        },
-        {
-            "id": 20,
-            "question": "Quel est le r\u00f4le du fichier `docker-compose.yml` ?",
-            "options": [
-                "Stocker les logs",
-                "D\u00e9finir et g\u00e9rer des applications multi-conteneurs",
-                "Cr\u00e9er un volume",
-                "G\u00e9n\u00e9rer une image automatiquement"
-            ],
-            "correct": 1,
-            "explanation": "`docker-compose.yml` d\u00e9finit la configuration des services multi-conteneurs."
-        },
-        {
-            "id": 21,
-            "question": "Que fait la commande `docker network create my_network` ?",
-            "options": [
-                "Cr\u00e9e un nouveau volume",
-                "Cr\u00e9e un nouveau r\u00e9seau utilisateur",
-                "Cr\u00e9e une nouvelle image",
-                "Cr\u00e9e un conteneur nomm\u00e9 my_network"
-            ],
-            "correct": 1,
-            "explanation": "Cette commande cr\u00e9e un r\u00e9seau Docker pour connecter des conteneurs entre eux."
-        },
-        {
-            "id": 22,
-            "question": "Quelle commande permet de connecter un conteneur \u00e0 un r\u00e9seau Docker existant ?",
-            "options": [
-                "docker network add",
-                "docker connect",
-                "docker network connect",
-                "docker attach"
-            ],
-            "correct": 2,
-            "explanation": "`docker network connect` relie un conteneur \u00e0 un r\u00e9seau existant."
-        },
-        {
-            "id": 23,
-            "question": "Que signifie l\u2019option `--rm` avec `docker run` ?",
-            "options": [
-                "Le conteneur sera supprim\u00e9 automatiquement apr\u00e8s son arr\u00eat",
-                "Le conteneur sera red\u00e9marr\u00e9 automatiquement",
-                "Le conteneur utilisera un volume en lecture seule",
-                "Le conteneur sera mis en pause"
-            ],
-            "correct": 0,
-            "explanation": "Avec `--rm`, Docker supprime le conteneur une fois qu\u2019il est arr\u00eat\u00e9."
-        },
-        {
-            "id": 24,
-            "question": "Quelle est la diff\u00e9rence entre `docker-compose up` et `docker-compose up -d` ?",
-            "options": [
-                "`-d` ex\u00e9cute les services en arri\u00e8re-plan",
-                "`-d` supprime les conteneurs apr\u00e8s ex\u00e9cution",
-                "`-d` affiche plus de logs",
-                "Aucune diff\u00e9rence"
-            ],
-            "correct": 0,
-            "explanation": "L\u2019option `-d` (detached mode) ex\u00e9cute les services en arri\u00e8re-plan."
-        },
-        {
-            "id": 25,
-            "question": "Quel est le r\u00f4le de la commande `FROM` dans un Dockerfile ?",
-            "options": [
-                "D\u00e9finit l\u2019image de base \u00e0 utiliser",
-                "Installe un paquet dans l\u2019image",
-                "Sp\u00e9cifie un volume",
-                "Ajoute une variable d\u2019environnement"
-            ],
-            "correct": 0,
-            "explanation": "`FROM` d\u00e9finit l\u2019image de base utilis\u00e9e pour construire l\u2019image personnalis\u00e9e."
-        },
-        {
-            "id": 26,
-            "question": "Quelle instruction du Dockerfile est recommand\u00e9e pour copier simplement des fichiers locaux dans une image ?",
-            "options": [
-                "COPY",
-                "ADD",
-                "INCLUDE",
-                "IMPORT"
-            ],
-            "correct": 0,
-            "explanation": "L\u2019instruction `COPY` est recommand\u00e9e pour copier des fichiers locaux car elle est plus pr\u00e9visible qu\u2019`ADD`."
-        },
-        {
-            "id": 27,
-            "question": "Quelle instruction du Dockerfile permet de lancer une commande lors de l\u2019ex\u00e9cution du conteneur ?",
-            "options": [
-                "RUN",
-                "CMD",
-                "ENTRYPOINT",
-                "EXEC"
-            ],
-            "correct": 1,
-            "explanation": "`CMD` d\u00e9finit la commande par d\u00e9faut ex\u00e9cut\u00e9e quand le conteneur d\u00e9marre."
-        },
-        {
-            "id": 28,
-            "question": "Quelle est la diff\u00e9rence entre `CMD` et `ENTRYPOINT` dans un Dockerfile ?",
-            "options": [
-                "CMD est obligatoire, ENTRYPOINT est optionnel",
-                "CMD peut \u00eatre remplac\u00e9 \u00e0 l\u2019ex\u00e9cution, ENTRYPOINT est fixe",
-                "ENTRYPOINT sert pour les volumes, CMD pour les ports",
-                "Aucune diff\u00e9rence"
-            ],
-            "correct": 1,
-            "explanation": "`CMD` peut \u00eatre surcharg\u00e9 \u00e0 l\u2019ex\u00e9cution, `ENTRYPOINT` d\u00e9finit un point d\u2019entr\u00e9e fixe."
-        },
-        {
-            "id": 29,
-            "question": "Que fait la commande `docker system prune` ?",
-            "options": [
-                "Nettoie les conteneurs, images et volumes inutilis\u00e9s",
-                "Arr\u00eate tous les conteneurs",
-                "Supprime les r\u00e9seaux actifs",
-                "R\u00e9initialise Docker"
-            ],
-            "correct": 0,
-            "explanation": "`docker system prune` supprime toutes les ressources inutilis\u00e9es (conteneurs, images, volumes et r\u00e9seaux)."
-        },
-        {
-            "id": 30,
-            "question": "Quelle commande permet de limiter la m\u00e9moire d\u2019un conteneur ?",
-            "options": [
-                "docker run --memory=512m",
-                "docker run --limit-memory=512m",
-                "docker config mem=512m",
-                "docker ps --memory=512m"
-            ],
-            "correct": 0,
-            "explanation": "`docker run --memory=512m` limite l\u2019utilisation de la m\u00e9moire du conteneur."
-        },
-        {
-            "id": 31,
-            "question": "Quelle commande permet de limiter le nombre de CPU utilisables par un conteneur ?",
-            "options": [
-                "docker run --cpus=2",
-                "docker run --cpu-limit=2",
-                "docker run --max-cpu=2",
-                "docker config --cpus=2"
-            ],
-            "correct": 0,
-            "explanation": "L\u2019option `--cpus=2` limite un conteneur \u00e0 2 CPU logiques."
-        },
-        {
-            "id": 32,
-            "question": "Que fait la commande `docker tag image_id monrepo/monimage:1.0` ?",
-            "options": [
-                "Renomme une image",
-                "Cr\u00e9e un alias vers une image existante",
-                "Clone une image",
-                "Supprime l\u2019image"
-            ],
-            "correct": 1,
-            "explanation": "`docker tag` permet de donner un nouveau tag \u00e0 une image existante."
-        },
-        {
-            "id": 33,
-            "question": "Quelle commande permet d\u2019envoyer une image sur Docker Hub ?",
-            "options": [
-                "docker push",
-                "docker upload",
-                "docker send",
-                "docker publish"
-            ],
-            "correct": 0,
-            "explanation": "`docker push` envoie une image vers un registre Docker comme Docker Hub."
-        },
-        {
-            "id": 34,
-            "question": "Quelle commande permet de lancer un conteneur interactif bas\u00e9 sur Ubuntu ?",
-            "options": [
-                "docker run ubuntu",
-                "docker run -it ubuntu bash",
-                "docker exec ubuntu",
-                "docker attach ubuntu"
-            ],
-            "correct": 1,
-            "explanation": "`docker run -it ubuntu bash` lance un shell interactif dans un conteneur Ubuntu."
-        },
-        {
-            "id": 35,
-            "question": "Quelle commande permet de suivre en temps r\u00e9el les logs d\u2019un conteneur ?",
-            "options": [
-                "docker logs -f container_id",
-                "docker logs --watch container_id",
-                "docker inspect -f container_id",
-                "docker ps --logs"
-            ],
-            "correct": 0,
-            "explanation": "`docker logs -f` permet de suivre les logs en direct."
-        },
-        {
-            "id": 36,
-            "question": "Quelle est la diff\u00e9rence entre `docker pause` et `docker stop` ?",
-            "options": [
-                "`docker pause` arr\u00eate le conteneur, `docker stop` le met en pause",
-                "`docker pause` suspend les processus, `docker stop` arr\u00eate le conteneur",
-                "`docker pause` supprime le conteneur, `docker stop` le red\u00e9marre",
-                "Aucune diff\u00e9rence"
-            ],
-            "correct": 1,
-            "explanation": "`docker pause` suspend les processus du conteneur, alors que `docker stop` l\u2019arr\u00eate compl\u00e8tement."
-        },
-        {
-            "id": 37,
-            "question": "Quelle commande permet de cr\u00e9er une image \u00e0 partir d\u2019un conteneur existant ?",
-            "options": [
-                "docker export",
-                "docker save",
-                "docker commit",
-                "docker clone"
-            ],
-            "correct": 2,
-            "explanation": "`docker commit` permet de cr\u00e9er une image \u00e0 partir d\u2019un conteneur existant."
-        },
-        {
-            "id": 38,
-            "question": "Quelle commande exporte un conteneur en fichier tar ?",
-            "options": [
-                "docker export",
-                "docker save",
-                "docker commit",
-                "docker pack"
-            ],
-            "correct": 0,
-            "explanation": "`docker export` exporte le syst\u00e8me de fichiers d\u2019un conteneur en fichier tar."
-        },
-        {
-            "id": 39,
-            "question": "Quelle commande sauvegarde une image en fichier tar ?",
-            "options": [
-                "docker export",
-                "docker save",
-                "docker commit",
-                "docker backup"
-            ],
-            "correct": 1,
-            "explanation": "`docker save` enregistre une image dans un fichier tar."
-        },
-        {
-            "id": 40,
-            "question": "Quelle est la diff\u00e9rence entre `docker save` et `docker export` ?",
-            "options": [
-                "`docker save` exporte une image, `docker export` exporte un conteneur",
-                "`docker save` est obsol\u00e8te, `docker export` le remplace",
-                "`docker save` sauvegarde en JSON, `docker export` en tar",
-                "Aucune diff\u00e9rence"
-            ],
-            "correct": 0,
-            "explanation": "`docker save` sauvegarde une image compl\u00e8te, alors que `docker export` exporte un conteneur."
-        },
-        {
-            "id": 41,
-            "question": "Quelle commande permet de d\u00e9marrer un conteneur qui a \u00e9t\u00e9 cr\u00e9\u00e9 mais arr\u00eat\u00e9 ?",
-            "options": [
-                "docker restart",
-                "docker run --restart",
-                "docker up",
-                "docker start container_id"
-            ],
-            "correct": 3,
-            "explanation": "`docker start` d\u00e9marre un conteneur existant, contrairement \u00e0 `docker run` qui cr\u00e9e un nouveau conteneur."
-        },
-        {
-            "id": 42,
-            "question": "Quelle commande supprime tous les conteneurs arr\u00eat\u00e9s ?",
-            "options": [
-                "docker rm $(docker ps -a -q)",
-                "docker rmi $(docker ps -a -q)",
-                "docker prune containers",
-                "docker clean containers"
-            ],
-            "correct": 0,
-            "explanation": "`docker rm $(docker ps -a -q)` supprime tous les conteneurs arr\u00eat\u00e9s."
-        },
-        {
-            "id": 43,
-            "question": "Quelle commande permet de tester la connectivit\u00e9 entre deux conteneurs ?",
-            "options": [
-                "docker connect",
-                "docker exec -it container1 ping container2",
-                "docker inspect --ping",
-                "docker network ls"
-            ],
-            "correct": 1,
-            "explanation": "Avec `docker exec -it`, on peut ex\u00e9cuter `ping` depuis un conteneur vers un autre (ils doivent \u00eatre sur le m\u00eame r\u00e9seau)."
-        },
-        {
-            "id": 44,
-            "question": "Que fait l\u2019option `--build` avec `docker-compose up` ?",
-            "options": [
-                "Reconstruit les images avant de d\u00e9marrer",
-                "Nettoie les conteneurs avant d\u00e9marrage",
-                "Ex\u00e9cute en mode debug",
-                "Active les logs d\u00e9taill\u00e9s"
-            ],
-            "correct": 0,
-            "explanation": "`docker-compose up --build` reconstruit les images avant de lancer les services."
-        },
-        {
-            "id": 45,
-            "question": "Quelle commande affiche les statistiques en temps r\u00e9el des conteneurs ?",
-            "options": [
-                "docker top",
-                "docker inspect",
-                "docker stats",
-                "docker monitor"
-            ],
-            "correct": 2,
-            "explanation": "`docker stats` affiche l\u2019utilisation CPU, m\u00e9moire, r\u00e9seau en temps r\u00e9el."
-        },
-        {
-            "id": 46,
-            "question": "Que fait la commande `docker cp fichier.txt <container_id>:/app/` ?",
-            "options": [
-                "Copie un fichier du conteneur vers l\u2019h\u00f4te",
-                "Copie un fichier de l\u2019h\u00f4te vers le conteneur",
-                "Synchronise les volumes",
-                "Monte un volume temporaire"
-            ],
-            "correct": 1,
-            "explanation": "`docker cp` permet de copier un fichier de l\u2019h\u00f4te vers un conteneur ou inversement."
-        },
-        {
-            "id": 47,
-            "question": "Quelle commande affiche les processus en cours dans un conteneur ?",
-            "options": [
-                "docker ps",
-                "docker inspect",
-                "docker top container_id",
-                "docker logs container_id"
-            ],
-            "correct": 2,
-            "explanation": "`docker top` montre les processus en cours dans un conteneur."
-        },
-        {
-            "id": 48,
-            "question": "Que fait l\u2019option `--scale` avec `docker-compose up` ?",
-            "options": [
-                "Change la taille des volumes",
-                "Ajuste le nombre d\u2019instances d\u2019un service",
-                "R\u00e9duit la taille des logs",
-                "Optimise la m\u00e9moire utilis\u00e9e"
-            ],
-            "correct": 1,
-            "explanation": "`docker-compose up --scale web=3` lance par exemple 3 instances du service web."
-        },
-        {
-            "id": 49,
-            "question": "Quelle commande liste les r\u00e9seaux Docker ?",
-            "options": [
-                "docker network ps",
-                "docker networks",
-                "docker network ls",
-                "docker list networks"
-            ],
-            "correct": 2,
-            "explanation": "`docker network ls` affiche la liste des r\u00e9seaux disponibles."
-        },
-        {
-            "id": 50,
-            "question": "Quelle commande permet d\u2019ex\u00e9cuter un conteneur avec un volume mont\u00e9 ?",
-            "options": [
-                "docker run -v /host/data:/container/data image",
-                "docker mount /host/data image",
-                "docker volume attach image",
-                "docker run --volume image"
-            ],
-            "correct": 0,
-            "explanation": "Avec `-v host_path:container_path`, on monte un volume dans un conteneur."
-        }
-    ]
+  "title": "Docker - Quiz Complet",
+  "description": "100 questions couvrant tous les niveaux Docker : 30 questions Easy sur les fondamentaux, 45 questions Intermediate sur l'utilisation avancée, et 25 questions Advanced sur l'expertise production et l'architecture interne",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Quelle est la principale différence entre un conteneur et une machine virtuelle ?",
+      "options": [
+        "Un conteneur virtualise le matériel, une VM virtualise l'OS",
+        "Un conteneur partage le noyau de l'hôte, une VM a son propre noyau",
+        "Un conteneur est plus lent qu'une VM",
+        "Un conteneur nécessite plus de ressources qu'une VM"
+      ],
+      "answer": 1,
+      "explanation": "Les conteneurs partagent le noyau du système d'exploitation hôte et isolent uniquement les processus, tandis que les VMs incluent un système d'exploitation complet avec son propre noyau. C'est ce qui rend les conteneurs plus légers et rapides à démarrer.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 2,
+      "question": "Qu'est-ce qu'une image Docker ?",
+      "options": [
+        "Un conteneur en cours d'exécution",
+        "Un template immuable utilisé pour créer des conteneurs",
+        "Un fichier de configuration Docker",
+        "Un snapshot d'un système de fichiers"
+      ],
+      "answer": 1,
+      "explanation": "Une image Docker est un template en lecture seule qui contient un ensemble d'instructions pour créer un conteneur. Elle est immuable et sert de base pour instancier des conteneurs.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 3,
+      "question": "Quelle commande permet de télécharger une image depuis Docker Hub ?",
+      "options": [
+        "docker download",
+        "docker get",
+        "docker pull",
+        "docker fetch"
+      ],
+      "answer": 2,
+      "explanation": "La commande 'docker pull' permet de télécharger une image depuis un registry Docker (par défaut Docker Hub). Exemple : docker pull nginx:latest",
+      "difficulty": "easy"
+    },
+    {
+      "id": 4,
+      "question": "Que fait la commande 'docker run nginx' ?",
+      "options": [
+        "Elle télécharge uniquement l'image nginx",
+        "Elle crée et démarre un conteneur à partir de l'image nginx",
+        "Elle arrête un conteneur nginx existant",
+        "Elle supprime l'image nginx"
+      ],
+      "answer": 1,
+      "explanation": "La commande 'docker run' crée un nouveau conteneur à partir d'une image et le démarre immédiatement. Si l'image n'existe pas localement, Docker la télécharge automatiquement depuis Docker Hub.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 5,
+      "question": "Comment lister tous les conteneurs en cours d'exécution ?",
+      "options": [
+        "docker list",
+        "docker ps",
+        "docker containers",
+        "docker show"
+      ],
+      "answer": 1,
+      "explanation": "La commande 'docker ps' affiche tous les conteneurs actuellement en cours d'exécution. Pour voir tous les conteneurs (y compris ceux arrêtés), on utilise 'docker ps -a'.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 6,
+      "question": "Quelle commande arrête un conteneur en cours d'exécution ?",
+      "options": [
+        "docker kill <container_id>",
+        "docker stop <container_id>",
+        "docker halt <container_id>",
+        "docker pause <container_id>"
+      ],
+      "answer": 1,
+      "explanation": "La commande 'docker stop' envoie un signal SIGTERM au conteneur pour un arrêt propre. Si le conteneur ne s'arrête pas dans les 10 secondes, Docker envoie un SIGKILL. 'docker kill' force l'arrêt immédiat avec SIGKILL.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 7,
+      "question": "Qu'est-ce que Docker Hub ?",
+      "options": [
+        "Un outil de monitoring Docker",
+        "Un registry public d'images Docker",
+        "Un orchestrateur de conteneurs",
+        "Un réseau privé Docker"
+      ],
+      "answer": 1,
+      "explanation": "Docker Hub est le registry public par défaut où sont stockées et partagées les images Docker. Il contient des images officielles (nginx, postgres, etc.) et des images créées par la communauté.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 8,
+      "question": "Quelle est la différence entre 'docker stop' et 'docker kill' ?",
+      "options": [
+        "Aucune différence, ce sont des alias",
+        "stop envoie SIGTERM puis SIGKILL, kill envoie directement SIGKILL",
+        "stop supprime le conteneur, kill l'arrête seulement",
+        "kill est plus lent que stop"
+      ],
+      "answer": 1,
+      "explanation": "'docker stop' envoie d'abord un signal SIGTERM permettant un arrêt propre (fermeture des connexions, sauvegarde, etc.), puis SIGKILL après 10s. 'docker kill' force l'arrêt immédiat avec SIGKILL sans délai.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 9,
+      "question": "Comment supprimer un conteneur arrêté ?",
+      "options": [
+        "docker delete <container_id>",
+        "docker remove <container_id>",
+        "docker rm <container_id>",
+        "docker del <container_id>"
+      ],
+      "answer": 2,
+      "explanation": "La commande 'docker rm' supprime un ou plusieurs conteneurs arrêtés. Pour supprimer un conteneur en cours d'exécution, il faut d'abord l'arrêter ou utiliser 'docker rm -f'.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 10,
+      "question": "Quelle commande permet de voir les logs d'un conteneur ?",
+      "options": [
+        "docker logs <container_id>",
+        "docker log <container_id>",
+        "docker view <container_id>",
+        "docker output <container_id>"
+      ],
+      "answer": 0,
+      "explanation": "'docker logs' affiche les logs (stdout/stderr) d'un conteneur. Options utiles : -f pour suivre en temps réel, --tail N pour afficher les N dernières lignes, --since pour filtrer par date.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 11,
+      "question": "Comment exécuter une commande dans un conteneur en cours d'exécution ?",
+      "options": [
+        "docker run <container_id> <command>",
+        "docker exec <container_id> <command>",
+        "docker command <container_id> <command>",
+        "docker attach <container_id> <command>"
+      ],
+      "answer": 1,
+      "explanation": "'docker exec' permet d'exécuter une commande dans un conteneur déjà en cours d'exécution. Exemple courant : docker exec -it <container> bash pour ouvrir un shell interactif.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 12,
+      "question": "Comment lister toutes les images Docker présentes localement ?",
+      "options": [
+        "docker images",
+        "docker list images",
+        "docker image list",
+        "docker images et docker image list sont corrects"
+      ],
+      "answer": 3,
+      "explanation": "Les deux commandes 'docker images' et 'docker image list' sont correctes et affichent la liste des images Docker stockées localement avec leur tag, ID, taille et date de création.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 13,
+      "question": "Comment supprimer une image Docker locale ?",
+      "options": [
+        "docker rmi <image_id>",
+        "docker delete image <image_id>",
+        "docker remove <image_id>",
+        "docker image delete <image_id>"
+      ],
+      "answer": 0,
+      "explanation": "'docker rmi' (remove image) supprime une ou plusieurs images locales. On peut aussi utiliser 'docker image rm'. Attention : l'image ne doit pas être utilisée par un conteneur existant.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 14,
+      "question": "Quelle instruction Dockerfile définit l'image de base ?",
+      "options": [
+        "BASE",
+        "FROM",
+        "IMAGE",
+        "SOURCE"
+      ],
+      "answer": 1,
+      "explanation": "L'instruction FROM spécifie l'image de base à partir de laquelle construire. C'est toujours la première instruction d'un Dockerfile (sauf si précédée d'ARG). Exemple : FROM ubuntu:20.04",
+      "difficulty": "easy"
+    },
+    {
+      "id": 15,
+      "question": "Quelle instruction Dockerfile permet d'exécuter des commandes pendant le build ?",
+      "options": [
+        "EXEC",
+        "RUN",
+        "CMD",
+        "EXECUTE"
+      ],
+      "answer": 1,
+      "explanation": "L'instruction RUN exécute des commandes pendant la construction de l'image et crée un nouveau layer. Utilisée pour installer des packages, créer des fichiers, etc. Exemple : RUN apt-get update && apt-get install -y nginx",
+      "difficulty": "easy"
+    },
+    {
+      "id": 16,
+      "question": "Quelle instruction Dockerfile copie des fichiers de l'hôte vers l'image ?",
+      "options": [
+        "COPY",
+        "ADD",
+        "IMPORT",
+        "COPY et ADD sont corrects"
+      ],
+      "answer": 3,
+      "explanation": "COPY et ADD permettent tous deux de copier des fichiers. COPY est préféré pour une copie simple. ADD offre des fonctionnalités supplémentaires (extraction auto de tar, téléchargement d'URL) mais est moins prévisible.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 17,
+      "question": "Quelle est la différence entre CMD et ENTRYPOINT dans un Dockerfile ?",
+      "options": [
+        "CMD définit la commande par défaut, ENTRYPOINT définit l'exécutable principal",
+        "CMD est obligatoire, ENTRYPOINT est optionnel",
+        "CMD s'exécute au build, ENTRYPOINT au runtime",
+        "Aucune différence, ce sont des alias"
+      ],
+      "answer": 0,
+      "explanation": "ENTRYPOINT définit l'exécutable principal du conteneur (non remplaçable facilement). CMD fournit les arguments par défaut à ENTRYPOINT ou définit une commande par défaut (remplaçable via docker run).",
+      "difficulty": "easy"
+    },
+    {
+      "id": 18,
+      "question": "Comment construire une image à partir d'un Dockerfile ?",
+      "options": [
+        "docker create -t myimage .",
+        "docker build -t myimage .",
+        "docker make -t myimage .",
+        "docker compile -t myimage ."
+      ],
+      "answer": 1,
+      "explanation": "'docker build' construit une image à partir d'un Dockerfile. L'option -t permet de taguer l'image, et le . indique le contexte de build (répertoire contenant le Dockerfile et les fichiers à copier).",
+      "difficulty": "easy"
+    },
+    {
+      "id": 19,
+      "question": "Qu'est-ce qu'un layer dans une image Docker ?",
+      "options": [
+        "Un conteneur en cours d'exécution",
+        "Une couche en lecture seule créée par chaque instruction du Dockerfile",
+        "Un réseau Docker",
+        "Un volume monté"
+      ],
+      "answer": 1,
+      "explanation": "Chaque instruction du Dockerfile (FROM, RUN, COPY, etc.) crée un layer (couche) en lecture seule. Les layers sont empilés et partagés entre images pour économiser de l'espace. Le conteneur ajoute un layer en écriture au-dessus.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 20,
+      "question": "Quel est l'avantage du système de cache lors du build d'images ?",
+      "options": [
+        "Il réduit la taille des images",
+        "Il accélère les builds en réutilisant les layers inchangés",
+        "Il améliore la sécurité",
+        "Il permet le multi-stage build"
+      ],
+      "answer": 1,
+      "explanation": "Docker met en cache les layers créés lors du build. Si une instruction n'a pas changé, Docker réutilise le layer existant au lieu de le reconstruire, ce qui accélère considérablement les builds suivants.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 21,
+      "question": "Comment monter un répertoire de l'hôte dans un conteneur ?",
+      "options": [
+        "docker run -v /host/path:/container/path image",
+        "docker run -mount /host/path:/container/path image",
+        "docker run -d /host/path:/container/path image",
+        "docker run -volume /host/path image"
+      ],
+      "answer": 0,
+      "explanation": "L'option -v (ou --volume) permet de monter un répertoire de l'hôte dans le conteneur. Format : -v /chemin/hôte:/chemin/conteneur. On peut aussi utiliser --mount qui est plus verbeux mais plus explicite.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 22,
+      "question": "Qu'est-ce qu'un volume Docker ?",
+      "options": [
+        "Un répertoire du conteneur",
+        "Un mécanisme de persistance des données géré par Docker",
+        "Un réseau entre conteneurs",
+        "Une image Docker compressée"
+      ],
+      "answer": 1,
+      "explanation": "Un volume Docker est un mécanisme de stockage persistant géré par Docker, indépendant du cycle de vie des conteneurs. Les données des volumes survivent à la suppression des conteneurs et sont stockées hors du système de fichiers du conteneur.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 23,
+      "question": "Comment exposer un port du conteneur vers l'hôte ?",
+      "options": [
+        "docker run -p 8080:80 image",
+        "docker run -expose 8080:80 image",
+        "docker run -port 8080:80 image",
+        "docker run -open 8080:80 image"
+      ],
+      "answer": 0,
+      "explanation": "L'option -p (ou --publish) mappe un port du conteneur vers un port de l'hôte. Format : -p port_hôte:port_conteneur. Exemple : -p 8080:80 rend le port 80 du conteneur accessible sur le port 8080 de l'hôte.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 24,
+      "question": "Quel est le réseau par défaut utilisé par les conteneurs Docker ?",
+      "options": [
+        "host",
+        "none",
+        "bridge",
+        "overlay"
+      ],
+      "answer": 2,
+      "explanation": "Le réseau 'bridge' est le réseau par défaut. Il crée un réseau privé virtuel où les conteneurs peuvent communiquer entre eux et accéder à l'extérieur via NAT. Chaque conteneur obtient une IP privée sur ce réseau.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 25,
+      "question": "Que signifie l'option -d dans 'docker run -d nginx' ?",
+      "options": [
+        "Debug mode",
+        "Delete after execution",
+        "Detached mode (en arrière-plan)",
+        "Development mode"
+      ],
+      "answer": 2,
+      "explanation": "L'option -d (detached) lance le conteneur en arrière-plan et affiche son ID. Sans cette option, le conteneur s'exécute au premier plan et bloque le terminal. Très utilisé pour les services (nginx, mysql, etc.).",
+      "difficulty": "easy"
+    },
+    {
+      "id": 26,
+      "question": "Comment nommer un conteneur lors de sa création ?",
+      "options": [
+        "docker run -name mycontainer image",
+        "docker run --name mycontainer image",
+        "docker run -n mycontainer image",
+        "docker run --id mycontainer image"
+      ],
+      "answer": 1,
+      "explanation": "L'option --name permet de donner un nom personnalisé au conteneur. Sans cette option, Docker génère un nom aléatoire. Le nom facilite la gestion (docker stop mycontainer plutôt que docker stop a3b2c1).",
+      "difficulty": "easy"
+    },
+    {
+      "id": 27,
+      "question": "Quelle commande permet de supprimer tous les conteneurs arrêtés ?",
+      "options": [
+        "docker rm $(docker ps -aq)",
+        "docker container prune",
+        "docker system prune --containers",
+        "docker clean containers"
+      ],
+      "answer": 1,
+      "explanation": "'docker container prune' supprime tous les conteneurs arrêtés en une seule commande. Alternative : docker rm $(docker ps -aq) qui liste tous les conteneurs (-a) en mode quiet (-q) et les supprime.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 28,
+      "question": "Comment redémarrer automatiquement un conteneur en cas d'arrêt ?",
+      "options": [
+        "docker run --restart always image",
+        "docker run --auto-restart image",
+        "docker run -r always image",
+        "docker run --keepalive image"
+      ],
+      "answer": 0,
+      "explanation": "L'option --restart définit la politique de redémarrage. 'always' redémarre toujours le conteneur (même après reboot de l'hôte). Autres valeurs : 'no' (défaut), 'on-failure', 'unless-stopped'.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 29,
+      "question": "Que fait l'option -it dans 'docker run -it ubuntu bash' ?",
+      "options": [
+        "Image test mode",
+        "Interactive + TTY (terminal interactif)",
+        "Install tools",
+        "Internal network"
+      ],
+      "answer": 1,
+      "explanation": "-i (interactive) garde STDIN ouvert même si détaché. -t (tty) alloue un pseudo-terminal. Combinées, elles permettent d'interagir avec le shell du conteneur (saisir des commandes, voir la sortie).",
+      "difficulty": "easy"
+    },
+    {
+      "id": 30,
+      "question": "Comment voir l'utilisation des ressources (CPU, mémoire) d'un conteneur ?",
+      "options": [
+        "docker stats <container_id>",
+        "docker top <container_id>",
+        "docker monitor <container_id>",
+        "docker resources <container_id>"
+      ],
+      "answer": 0,
+      "explanation": "'docker stats' affiche en temps réel l'utilisation des ressources (CPU, mémoire, I/O réseau et disque) pour un ou plusieurs conteneurs. Sans argument, il affiche les stats de tous les conteneurs en cours d'exécution.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 31,
+      "question": "Quel est l'avantage principal d'un multi-stage build dans un Dockerfile ?",
+      "options": [
+        "Accélérer le temps de build",
+        "Réduire la taille de l'image finale en n'incluant que les artefacts nécessaires",
+        "Permettre l'utilisation de plusieurs images de base",
+        "Améliorer la sécurité du build"
+      ],
+      "answer": 1,
+      "explanation": "Le multi-stage build permet de compiler/builder dans une première image (avec tous les outils de dev), puis de copier uniquement les artefacts nécessaires dans une image finale minimale, réduisant drastiquement la taille et la surface d'attaque.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 32,
+      "question": "Dans un Dockerfile multi-stage, comment copier un fichier d'un stage précédent ?",
+      "options": [
+        "COPY file /app/",
+        "COPY --from=builder /app/file /app/",
+        "COPY --stage=builder /app/file /app/",
+        "GET --from=builder /app/file /app/"
+      ],
+      "answer": 1,
+      "explanation": "L'instruction COPY --from=<stage_name> permet de copier des fichiers depuis un stage précédent. Le stage source peut être référencé par son nom (défini avec AS) ou son index numérique (0, 1, 2...).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 33,
+      "question": "Quelle est la différence entre ARG et ENV dans un Dockerfile ?",
+      "options": [
+        "ARG est disponible seulement au build-time, ENV au runtime",
+        "ARG est plus sécurisé que ENV",
+        "ENV est disponible seulement au build-time, ARG au runtime",
+        "Aucune différence significative"
+      ],
+      "answer": 0,
+      "explanation": "ARG définit des variables uniquement disponibles pendant le build de l'image. ENV définit des variables d'environnement persistantes dans l'image et disponibles au runtime dans les conteneurs. ARG peut être passé avec --build-arg.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 34,
+      "question": "À quoi sert l'instruction WORKDIR dans un Dockerfile ?",
+      "options": [
+        "Définir le répertoire de travail pour les instructions suivantes",
+        "Créer un nouveau volume",
+        "Définir le point de montage",
+        "Spécifier le répertoire de build"
+      ],
+      "answer": 0,
+      "explanation": "WORKDIR définit le répertoire de travail courant pour les instructions RUN, CMD, ENTRYPOINT, COPY et ADD qui suivent. Si le répertoire n'existe pas, il est créé automatiquement. Meilleure pratique que 'RUN cd /path'.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 35,
+      "question": "Pourquoi utiliser l'instruction USER dans un Dockerfile ?",
+      "options": [
+        "Pour définir le nom du créateur de l'image",
+        "Pour spécifier l'utilisateur qui exécutera les commandes RUN, CMD et ENTRYPOINT",
+        "Pour créer un nouveau compte utilisateur",
+        "Pour définir les permissions des fichiers"
+      ],
+      "answer": 1,
+      "explanation": "USER permet de changer l'utilisateur (et groupe) qui exécutera les instructions suivantes et le processus du conteneur. Par défaut c'est root. Utiliser un utilisateur non-root est une bonne pratique de sécurité.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 36,
+      "question": "À quoi sert le fichier .dockerignore ?",
+      "options": [
+        "Ignorer les erreurs pendant le build",
+        "Exclure des fichiers du contexte de build envoyé au daemon Docker",
+        "Empêcher l'exécution de certaines instructions",
+        "Définir les fichiers à ne pas copier dans l'image"
+      ],
+      "answer": 1,
+      "explanation": "Le fichier .dockerignore (comme .gitignore) liste les fichiers et répertoires à exclure du contexte de build. Cela accélère le build et réduit la taille du contexte envoyé au daemon (node_modules, .git, fichiers temporaires, etc.).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 37,
+      "question": "Comment optimiser les layers d'un Dockerfile pour maximiser l'utilisation du cache ?",
+      "options": [
+        "Mettre les instructions qui changent souvent en premier",
+        "Mettre les instructions qui changent rarement en premier",
+        "Utiliser une seule instruction RUN pour tout",
+        "Éviter d'utiliser COPY"
+      ],
+      "answer": 1,
+      "explanation": "Le cache Docker fonctionne séquentiellement. Placer les instructions stables (FROM, installation de packages système) en premier et les fichiers applicatifs changeants (COPY code source) en dernier maximise la réutilisation du cache.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 38,
+      "question": "Pourquoi est-il recommandé de combiner plusieurs commandes RUN avec && ?",
+      "options": [
+        "Pour accélérer l'exécution",
+        "Pour réduire le nombre de layers créés",
+        "Pour améliorer la lisibilité",
+        "C'est obligatoire en production"
+      ],
+      "answer": 1,
+      "explanation": "Chaque instruction RUN crée un nouveau layer. Combiner plusieurs commandes avec && réduit le nombre de layers, diminuant ainsi la taille de l'image. Exemple : RUN apt-get update && apt-get install -y nginx && rm -rf /var/lib/apt/lists/*",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 39,
+      "question": "Quelle est la syntaxe correcte pour définir un argument de build avec une valeur par défaut ?",
+      "options": [
+        "ARG VERSION 1.0",
+        "ARG VERSION=1.0",
+        "ARG VERSION:1.0",
+        "ARG VERSION default=1.0"
+      ],
+      "answer": 1,
+      "explanation": "La syntaxe ARG NOM=valeur_par_défaut permet de définir une variable de build avec une valeur par défaut. Elle peut être overridée avec --build-arg NOM=autre_valeur lors du build.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 40,
+      "question": "Comment passer une variable d'environnement du host au build-time sans l'inclure dans l'image ?",
+      "options": [
+        "Utiliser ENV",
+        "Utiliser ARG avec --build-arg",
+        "Utiliser COPY",
+        "Impossible, toutes les variables sont incluses"
+      ],
+      "answer": 1,
+      "explanation": "ARG permet de passer des variables au build-time via --build-arg. Ces variables ne persistent pas dans l'image finale contrairement à ENV. Utile pour des tokens de build, versions, etc. qui ne doivent pas être dans l'image.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 41,
+      "question": "Quelle est la structure minimale d'un fichier docker-compose.yml (version 3+) ?",
+      "options": [
+        "version et services",
+        "services uniquement",
+        "version, services et networks",
+        "services, volumes et networks"
+      ],
+      "answer": 1,
+      "explanation": "Depuis Compose v2, la clé 'version' est optionnelle et ignorée. Seule la clé 'services' est obligatoire. 'networks' et 'volumes' sont optionnels. La version du format est automatiquement détectée.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 42,
+      "question": "Comment définir qu'un service doit démarrer après un autre dans Docker Compose ?",
+      "options": [
+        "order: service_name",
+        "depends_on: service_name",
+        "after: service_name",
+        "requires: service_name"
+      ],
+      "answer": 1,
+      "explanation": "La clé 'depends_on' définit les dépendances de démarrage. Attention : elle attend seulement que le conteneur démarre, pas que l'application soit prête. Pour attendre qu'un service soit ready, utiliser des healthchecks ou des outils comme wait-for-it.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 43,
+      "question": "À quoi sert la directive 'healthcheck' dans un service Docker Compose ?",
+      "options": [
+        "Vérifier que le conteneur est en cours d'exécution",
+        "Tester régulièrement si l'application dans le conteneur est fonctionnelle",
+        "Monitorer l'utilisation CPU/RAM",
+        "Sauvegarder automatiquement l'état du conteneur"
+      ],
+      "answer": 1,
+      "explanation": "Un healthcheck définit comment tester la santé de l'application (pas juste si le conteneur tourne). Docker exécute périodiquement une commande de test. Si elle échoue, le conteneur est marqué 'unhealthy'. Utile avec orchestrateurs pour redémarrer automatiquement.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 44,
+      "question": "Comment passer des variables d'environnement à un service dans Docker Compose ?",
+      "options": [
+        "Avec la clé 'environment' ou 'env_file'",
+        "Uniquement avec 'environment'",
+        "Uniquement avec 'env_file'",
+        "Via des arguments de ligne de commande uniquement"
+      ],
+      "answer": 0,
+      "explanation": "Docker Compose offre deux méthodes : 'environment' pour définir des variables inline (environment: - KEY=value) ou 'env_file' pour charger depuis un fichier (env_file: .env). Les deux peuvent être combinées.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 45,
+      "question": "Quelle commande démarre tous les services définis dans docker-compose.yml ?",
+      "options": [
+        "docker-compose start",
+        "docker-compose run",
+        "docker-compose up",
+        "docker-compose create"
+      ],
+      "answer": 2,
+      "explanation": "'docker-compose up' crée et démarre tous les services. Options utiles : -d (detached), --build (rebuild images), --scale service=N. 'start' démarre uniquement des conteneurs existants sans les créer.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 46,
+      "question": "Comment arrêter et supprimer tous les conteneurs, réseaux créés par docker-compose up ?",
+      "options": [
+        "docker-compose stop",
+        "docker-compose kill",
+        "docker-compose down",
+        "docker-compose rm"
+      ],
+      "answer": 2,
+      "explanation": "'docker-compose down' arrête et supprime les conteneurs, réseaux créés par up. Options : -v (supprime aussi les volumes nommés), --rmi (supprime les images). 'stop' arrête seulement les conteneurs sans les supprimer.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 47,
+      "question": "Comment scaler un service à N instances avec Docker Compose ?",
+      "options": [
+        "docker-compose scale service=N",
+        "docker-compose up --scale service=N",
+        "docker-compose replicas service=N",
+        "docker-compose set service=N"
+      ],
+      "answer": 1,
+      "explanation": "La commande 'docker-compose up --scale service=N' crée N instances du service. Attention : ne fonctionne pas si un port spécifique est mappé (conflit). Il faut utiliser des ports dynamiques ou un load balancer.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 48,
+      "question": "Comment définir un volume nommé partagé entre plusieurs services dans Docker Compose ?",
+      "options": [
+        "Le déclarer dans la section 'volumes' racine et le référencer dans chaque service",
+        "Utiliser le même chemin absolu dans chaque service",
+        "Créer le volume manuellement avant docker-compose up",
+        "Utiliser la directive 'shared: true'"
+      ],
+      "answer": 0,
+      "explanation": "Déclarer le volume dans la section 'volumes:' racine, puis le référencer dans les services avec 'volumes: - volume_name:/path'. Docker Compose gère la création et le partage automatiquement entre services.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 49,
+      "question": "Quelle est la différence entre 'docker-compose restart' et 'docker-compose up' ?",
+      "options": [
+        "Aucune différence",
+        "restart redémarre les conteneurs existants, up recrée les conteneurs si le compose file a changé",
+        "restart est plus rapide",
+        "up redémarre toujours, restart seulement si nécessaire"
+      ],
+      "answer": 1,
+      "explanation": "'restart' redémarre simplement les conteneurs existants. 'up' détecte les changements dans docker-compose.yml et recrée les conteneurs si nécessaire (nouvelle image, nouvelle config, etc.). 'up' applique donc les modifications du fichier.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 50,
+      "question": "Comment voir les logs de tous les services Docker Compose ?",
+      "options": [
+        "docker-compose logs",
+        "docker-compose log",
+        "docker logs compose",
+        "docker-compose show-logs"
+      ],
+      "answer": 0,
+      "explanation": "'docker-compose logs' affiche les logs de tous les services. Options : -f (follow), --tail=N (N dernières lignes), service_name (logs d'un service spécifique). Les logs sont colorés par service pour faciliter la lecture.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 51,
+      "question": "Quels sont les types de réseaux Docker disponibles ?",
+      "options": [
+        "bridge, host, overlay, macvlan, none",
+        "bridge, host, private, public",
+        "local, remote, distributed",
+        "internal, external, overlay"
+      ],
+      "answer": 0,
+      "explanation": "Docker supporte 5 types de réseaux : bridge (défaut, réseau privé), host (partage la stack réseau de l'hôte), overlay (multi-host pour Swarm), macvlan (assigne une MAC au conteneur), none (pas de réseau).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 52,
+      "question": "Quel est l'avantage du réseau 'host' par rapport au réseau 'bridge' ?",
+      "options": [
+        "Meilleure isolation",
+        "Performance réseau maximale (pas de NAT)",
+        "Plus facile à configurer",
+        "Compatible avec tous les orchestrateurs"
+      ],
+      "answer": 1,
+      "explanation": "En mode 'host', le conteneur partage directement la stack réseau de l'hôte (pas de NAT, pas de port mapping). Performance maximale mais perte d'isolation. Utile pour des applications nécessitant des performances réseau extrêmes.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 53,
+      "question": "Comment créer un réseau Docker personnalisé de type bridge ?",
+      "options": [
+        "docker network create mynetwork",
+        "docker create network mynetwork",
+        "docker network new mynetwork",
+        "docker network add mynetwork"
+      ],
+      "answer": 0,
+      "explanation": "'docker network create mynetwork' crée un réseau bridge par défaut. Options : --driver (type de réseau), --subnet (plage IP personnalisée), --gateway. Les réseaux custom offrent une meilleure isolation et DNS automatique.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 54,
+      "question": "Comment les conteneurs sur le même réseau Docker custom communiquent-ils entre eux ?",
+      "options": [
+        "Via leurs adresses IP uniquement",
+        "Via le DNS automatique Docker (nom du conteneur)",
+        "Uniquement via des ports exposés",
+        "Via le gateway du réseau"
+      ],
+      "answer": 1,
+      "explanation": "Sur un réseau custom, Docker fournit un DNS intégré qui résout automatiquement les noms de conteneurs en IPs. Exemple : depuis le conteneur 'web', on peut faire 'ping db' pour joindre le conteneur 'db'. Le réseau bridge par défaut n'a pas cette fonctionnalité.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 55,
+      "question": "À quoi sert le réseau 'overlay' dans Docker ?",
+      "options": [
+        "Créer un réseau plus rapide que bridge",
+        "Permettre la communication entre conteneurs sur différents hôtes Docker",
+        "Ajouter une couche de sécurité",
+        "Remplacer le réseau bridge"
+      ],
+      "answer": 1,
+      "explanation": "Les réseaux overlay permettent la communication entre conteneurs sur différents hôtes Docker (cluster Swarm ou Docker EE). Ils utilisent VXLAN pour encapsuler le trafic. Essentiels pour l'orchestration multi-hôtes.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 56,
+      "question": "Comment connecter un conteneur existant à un réseau Docker ?",
+      "options": [
+        "docker network attach mynetwork container_id",
+        "docker network connect mynetwork container_id",
+        "docker connect mynetwork container_id",
+        "docker network join mynetwork container_id"
+      ],
+      "answer": 1,
+      "explanation": "'docker network connect' connecte un conteneur en cours d'exécution à un réseau. Un conteneur peut être connecté à plusieurs réseaux simultanément. Pour déconnecter : 'docker network disconnect'.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 57,
+      "question": "Comment publier tous les ports exposés d'un conteneur vers des ports aléatoires de l'hôte ?",
+      "options": [
+        "docker run -p all image",
+        "docker run -P image",
+        "docker run --publish-all image",
+        "docker run -P et --publish-all sont corrects"
+      ],
+      "answer": 3,
+      "explanation": "L'option -P (majuscule) ou --publish-all publie tous les ports EXPOSE du Dockerfile vers des ports aléatoires de l'hôte. Utile pour les tests. 'docker port container' affiche le mapping créé.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 58,
+      "question": "Comment inspecter la configuration réseau d'un conteneur ?",
+      "options": [
+        "docker network show container_id",
+        "docker inspect container_id",
+        "docker network inspect container_id",
+        "docker container network container_id"
+      ],
+      "answer": 1,
+      "explanation": "'docker inspect container_id' affiche toutes les infos du conteneur, y compris la configuration réseau (NetworkSettings). Pour filtrer : docker inspect -f '{{.NetworkSettings.Networks}}' container_id",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 59,
+      "question": "Quelle est la différence entre un volume nommé et un bind mount ?",
+      "options": [
+        "Aucune différence technique",
+        "Volume nommé est géré par Docker, bind mount pointe vers un chemin spécifique de l'hôte",
+        "Bind mount est plus rapide",
+        "Volume nommé ne persiste pas les données"
+      ],
+      "answer": 1,
+      "explanation": "Les volumes nommés sont gérés par Docker (dans /var/lib/docker/volumes) et indépendants du filesystem de l'hôte. Les bind mounts pointent vers un chemin absolu spécifique de l'hôte. Volumes recommandés pour la portabilité.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 60,
+      "question": "Comment créer un volume Docker avant de le monter dans un conteneur ?",
+      "options": [
+        "docker volume new myvolume",
+        "docker volume create myvolume",
+        "docker create volume myvolume",
+        "docker volume add myvolume"
+      ],
+      "answer": 1,
+      "explanation": "'docker volume create myvolume' crée un volume nommé. Options : --driver (driver de stockage), --opt (options du driver). Le volume persiste même si tous les conteneurs l'utilisant sont supprimés.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 61,
+      "question": "Comment lister tous les volumes Docker et identifier ceux qui ne sont plus utilisés ?",
+      "options": [
+        "docker volume ls -f dangling=true",
+        "docker volume list --unused",
+        "docker volume show --orphan",
+        "docker volume ps -a"
+      ],
+      "answer": 0,
+      "explanation": "'docker volume ls' liste tous les volumes. Le filtre '-f dangling=true' affiche uniquement les volumes non utilisés (aucun conteneur ne les référence). 'docker volume prune' les supprime tous.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 62,
+      "question": "Qu'est-ce qu'un tmpfs mount dans Docker ?",
+      "options": [
+        "Un volume permanent stocké en RAM",
+        "Un volume temporaire en RAM qui disparaît à l'arrêt du conteneur",
+        "Un système de fichiers compressé",
+        "Un volume partagé entre conteneurs"
+      ],
+      "answer": 1,
+      "explanation": "Un tmpfs mount stocke les données en RAM (pas sur disque). Très rapide mais non persistant : les données disparaissent à l'arrêt du conteneur. Utile pour des données sensibles temporaires ou pour la performance (cache, sessions).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 63,
+      "question": "Comment sauvegarder les données d'un volume Docker ?",
+      "options": [
+        "docker volume backup myvolume",
+        "docker run --rm -v myvolume:/data -v $(pwd):/backup alpine tar czf /backup/backup.tar.gz /data",
+        "docker volume export myvolume",
+        "docker cp myvolume ./backup"
+      ],
+      "answer": 1,
+      "explanation": "Il faut monter le volume dans un conteneur temporaire avec un bind mount vers l'hôte, puis archiver les données. Exemple : docker run --rm -v myvolume:/data -v $(pwd):/backup alpine tar czf /backup/backup.tar.gz -C /data .",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 64,
+      "question": "Quel est l'avantage des volume drivers (plugins) dans Docker ?",
+      "options": [
+        "Accélérer les I/O",
+        "Permettre l'utilisation de solutions de stockage externes (NFS, cloud, etc.)",
+        "Chiffrer automatiquement les données",
+        "Réduire la taille des volumes"
+      ],
+      "answer": 1,
+      "explanation": "Les volume drivers permettent d'utiliser des backends de stockage externes : NFS, AWS EBS, Azure Disk, Ceph, etc. Essentiels en production pour la haute disponibilité et la persistance des données au-delà d'un hôte Docker unique.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 65,
+      "question": "Quelle est la meilleure pratique pour exécuter des processus dans un conteneur ?",
+      "options": [
+        "Toujours utiliser root",
+        "Créer et utiliser un utilisateur non-root",
+        "Utiliser sudo dans le conteneur",
+        "Désactiver tous les utilisateurs"
+      ],
+      "answer": 1,
+      "explanation": "Par sécurité, créer un utilisateur non-root dans le Dockerfile (RUN adduser) et l'utiliser (USER username). Limite les dégâts en cas de compromission du conteneur. Le processus ne doit pas tourner en root sauf absolue nécessité.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 66,
+      "question": "À quoi servent les Linux Capabilities dans le contexte Docker ?",
+      "options": [
+        "Augmenter les performances",
+        "Donner des privilèges spécifiques sans accorder root complet",
+        "Gérer le réseau",
+        "Chiffrer les données"
+      ],
+      "answer": 1,
+      "explanation": "Les capabilities permettent d'accorder des privilèges spécifiques (bind sur port <1024, changer l'heure système, etc.) sans donner tous les droits root. Options Docker : --cap-add, --cap-drop. Principe du moindre privilège.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 67,
+      "question": "Comment empêcher un conteneur de modifier son système de fichiers ?",
+      "options": [
+        "docker run --readonly image",
+        "docker run --read-only image",
+        "docker run --immutable image",
+        "docker run --locked image"
+      ],
+      "answer": 1,
+      "explanation": "L'option --read-only monte le système de fichiers du conteneur en lecture seule. Le conteneur ne peut écrire que dans les volumes montés et tmpfs. Renforce la sécurité et garantit l'immutabilité du conteneur.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 68,
+      "question": "Comment scanner une image Docker pour détecter des vulnérabilités ?",
+      "options": [
+        "docker scan image_name",
+        "docker security scan image_name",
+        "docker vulnerability image_name",
+        "docker inspect --security image_name"
+      ],
+      "answer": 0,
+      "explanation": "'docker scan' (intégré avec Snyk) analyse les vulnérabilités des packages dans une image. Alternatives : Trivy, Clair, Anchore. Essentiel dans les pipelines CI/CD pour bloquer les images vulnérables avant le déploiement.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 69,
+      "question": "Comment gérer les secrets dans Docker Compose (sans Swarm) ?",
+      "options": [
+        "Via la section 'secrets' avec des fichiers",
+        "Docker Compose ne supporte pas les secrets",
+        "Uniquement avec des variables d'environnement",
+        "Automatiquement avec le runtime"
+      ],
+      "answer": 0,
+      "explanation": "Dans Compose v3.1+, déclarer les secrets dans la section 'secrets:' (pointant vers des fichiers) et les référencer dans les services. Montés en read-only dans /run/secrets/. Moins sécurisé que Swarm secrets mais mieux que des ENV.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 70,
+      "question": "Que fait la commande 'docker inspect' ?",
+      "options": [
+        "Affiche les logs d'un conteneur",
+        "Retourne des informations détaillées en JSON sur un objet Docker",
+        "Scanne les vulnérabilités",
+        "Mesure les performances"
+      ],
+      "answer": 1,
+      "explanation": "'docker inspect' retourne toutes les métadonnées d'un objet (conteneur, image, volume, réseau) en JSON. Utile pour debugging. On peut filtrer avec --format ou -f : docker inspect -f '{{.State.Status}}' container",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 71,
+      "question": "Comment débugger un conteneur qui crash immédiatement au démarrage ?",
+      "options": [
+        "docker logs container_id",
+        "docker run --rm -it image /bin/sh pour override l'ENTRYPOINT",
+        "docker inspect container_id",
+        "Toutes ces méthodes peuvent aider"
+      ],
+      "answer": 3,
+      "explanation": "Approche multi-étapes : 1) docker logs pour voir l'erreur, 2) docker inspect pour la config, 3) docker run -it --entrypoint /bin/sh image pour explorer interactivement, 4) docker events pour les événements système.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 72,
+      "question": "À quoi sert 'docker top container_id' ?",
+      "options": [
+        "Afficher les processus en cours d'exécution dans le conteneur",
+        "Montrer l'utilisation CPU",
+        "Lister les ports ouverts",
+        "Afficher les logs en temps réel"
+      ],
+      "answer": 0,
+      "explanation": "'docker top' affiche les processus actifs dans le conteneur (comme 'ps aux' dans le conteneur). Montre PID, utilisateur, commande. Utile pour vérifier quels processus tournent sans entrer dans le conteneur.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 73,
+      "question": "Comment limiter la mémoire utilisable par un conteneur ?",
+      "options": [
+        "docker run -m 512m image",
+        "docker run --memory 512m image",
+        "docker run --memory-limit 512m image",
+        "-m et --memory sont corrects"
+      ],
+      "answer": 3,
+      "explanation": "Les options -m et --memory limitent la RAM (ex : -m 512m). Sans limite, un conteneur peut consommer toute la RAM de l'hôte. Aussi utile : --memory-swap (RAM + swap), --memory-reservation (soft limit), --oom-kill-disable.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 74,
+      "question": "Quelle commande permet de voir les événements Docker en temps réel ?",
+      "options": [
+        "docker events",
+        "docker log",
+        "docker monitor",
+        "docker watch"
+      ],
+      "answer": 0,
+      "explanation": "'docker events' affiche en temps réel tous les événements du daemon : création/suppression de conteneurs, pull d'images, création de réseaux, etc. Utile pour debugging et monitoring. Options : --filter, --since, --until.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 75,
+      "question": "Comment exporter un conteneur vers une archive tar ?",
+      "options": [
+        "docker export container_id > backup.tar",
+        "docker save container_id > backup.tar",
+        "docker backup container_id",
+        "docker archive container_id"
+      ],
+      "answer": 0,
+      "explanation": "'docker export' exporte le système de fichiers d'un conteneur (snapshot) vers tar. Différent de 'docker save' qui sauvegarde une image avec ses layers et métadonnées. Export perd l'historique des layers.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 76,
+      "question": "Quel est le rôle de containerd dans l'architecture Docker ?",
+      "options": [
+        "Gérer les réseaux Docker",
+        "Runtime de conteneurs de haut niveau qui gère le cycle de vie des conteneurs",
+        "Interface CLI pour Docker",
+        "Gestionnaire de volumes"
+      ],
+      "answer": 1,
+      "explanation": "containerd est le runtime de conteneurs core qui gère le cycle de vie complet des conteneurs (création, démarrage, arrêt). Docker daemon communique avec containerd, qui lui-même utilise runc pour créer les conteneurs. containerd est devenu un projet CNCF indépendant.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 77,
+      "question": "Qu'est-ce que runc dans l'écosystème Docker ?",
+      "options": [
+        "Un outil de build d'images",
+        "Un runtime de bas niveau qui crée et exécute les conteneurs selon la spec OCI",
+        "Un orchestrateur de conteneurs",
+        "Un système de réseau virtuel"
+      ],
+      "answer": 1,
+      "explanation": "runc est le runtime OCI (Open Container Initiative) de bas niveau qui crée effectivement les conteneurs en utilisant les namespaces et cgroups Linux. C'est l'implémentation de référence de la spec OCI runtime. containerd appelle runc pour créer les conteneurs.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 78,
+      "question": "Quels sont les namespaces Linux utilisés par Docker pour l'isolation des conteneurs ?",
+      "options": [
+        "PID, NET, MNT uniquement",
+        "PID, NET, MNT, UTS, IPC, USER, CGROUP",
+        "USER, GROUP, FILE",
+        "PROCESS, NETWORK, STORAGE"
+      ],
+      "answer": 1,
+      "explanation": "Docker utilise 7 namespaces Linux : PID (processus), NET (réseau), MNT (points de montage), UTS (hostname), IPC (communication inter-processus), USER (UIDs/GIDs), CGROUP (hiérarchie cgroups). Chaque namespace isole un aspect spécifique du système.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 79,
+      "question": "À quoi servent les cgroups (control groups) dans Docker ?",
+      "options": [
+        "Gérer les permissions des fichiers",
+        "Limiter et isoler l'utilisation des ressources (CPU, mémoire, I/O)",
+        "Créer des réseaux isolés",
+        "Chiffrer les communications"
+      ],
+      "answer": 1,
+      "explanation": "Les cgroups permettent de limiter, comptabiliser et isoler l'utilisation des ressources système (CPU, mémoire, I/O disque/réseau, etc.) par groupe de processus. Docker les utilise pour implémenter les limites de ressources (--memory, --cpus, etc.).",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 80,
+      "question": "Quel est le système de fichiers de stockage par défaut (storage driver) dans Docker moderne ?",
+      "options": [
+        "aufs",
+        "devicemapper",
+        "overlay2",
+        "btrfs"
+      ],
+      "answer": 2,
+      "explanation": "overlay2 est le storage driver par défaut et recommandé pour Docker moderne (nécessite kernel Linux 4.0+). Il utilise OverlayFS, un union filesystem performant intégré au kernel. Plus rapide et efficace qu'aufs ou devicemapper.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 81,
+      "question": "Comment fonctionne le système de layers avec overlay2 ?",
+      "options": [
+        "Chaque layer est une copie complète du système de fichiers",
+        "Les layers sont empilés, le plus haut masque les fichiers des layers inférieurs (union mount)",
+        "Les layers sont fusionnés en un seul système de fichiers",
+        "Chaque conteneur a son propre système de fichiers indépendant"
+      ],
+      "answer": 1,
+      "explanation": "overlay2 empile les layers en lecture seule (lowerdir) et ajoute un layer en écriture au sommet (upperdir). Les modifications sont écrites dans upperdir via copy-on-write (CoW). Le view unifié (merged) montre l'union de tous les layers.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 82,
+      "question": "Qu'est-ce qu'un Docker Swarm ?",
+      "options": [
+        "Un outil de build distribué",
+        "Un orchestrateur de conteneurs natif Docker pour le clustering",
+        "Un système de monitoring",
+        "Un réseau overlay"
+      ],
+      "answer": 1,
+      "explanation": "Docker Swarm est l'orchestrateur natif Docker qui transforme un groupe de machines Docker en un cluster unifié. Il gère le déploiement, la mise à l'échelle, la haute disponibilité et le load balancing des services conteneurisés.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 83,
+      "question": "Quelle est la différence entre un 'service' et une 'task' dans Docker Swarm ?",
+      "options": [
+        "Ce sont des synonymes",
+        "Un service définit l'état désiré, une task est une instance de conteneur qui exécute le service",
+        "Un service est global, une task est locale",
+        "Une task contient plusieurs services"
+      ],
+      "answer": 1,
+      "explanation": "Un service Swarm définit l'image, le nombre de replicas, les contraintes, etc. (état désiré). Une task est l'unité atomique d'exécution : un conteneur unique tournant sur un nœud. Le service crée et gère N tasks (replicas).",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 84,
+      "question": "Comment fonctionne le routing mesh dans Docker Swarm ?",
+      "options": [
+        "Il route le trafic vers le manager uniquement",
+        "Il permet d'accéder à un service depuis n'importe quel nœud du cluster, même si le service n'y tourne pas",
+        "Il gère uniquement le trafic interne",
+        "Il nécessite un load balancer externe"
+      ],
+      "answer": 1,
+      "explanation": "Le routing mesh utilise IPVS pour router automatiquement les requêtes entrantes vers un conteneur actif du service, peu importe sur quel nœud la requête arrive. Chaque nœud écoute sur le port publié et route via l'overlay network.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 85,
+      "question": "Quelle est la différence entre 'replicated' et 'global' mode pour un service Swarm ?",
+      "options": [
+        "replicated déploie N instances, global déploie une instance par nœud",
+        "replicated est plus rapide que global",
+        "global nécessite plus de ressources",
+        "Aucune différence en production"
+      ],
+      "answer": 0,
+      "explanation": "Mode replicated : on spécifie le nombre exact de replicas (ex: 5 instances réparties dans le cluster). Mode global : une instance par nœud automatiquement. Global est utile pour des agents de monitoring, log collectors, etc.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 86,
+      "question": "Comment gérer les secrets de manière sécurisée dans Docker Swarm ?",
+      "options": [
+        "Via des variables d'environnement",
+        "Avec 'docker secret create', stockés chiffrés dans Raft et montés en tmpfs read-only",
+        "Dans des fichiers de configuration",
+        "Via des volumes partagés"
+      ],
+      "answer": 1,
+      "explanation": "Docker Swarm secrets sont chiffrés au repos dans le Raft store, transmis chiffrés via TLS mutuel, et montés en mémoire (tmpfs) en read-only dans /run/secrets/. Jamais en ENV ni sur disque. Best practice pour passwords, certificats, tokens.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 87,
+      "question": "Qu'est-ce que Docker Configs dans Swarm et comment diffère-t-il des Secrets ?",
+      "options": [
+        "Configs est identique à Secrets",
+        "Configs stocke des données non-sensibles en clair, Secrets stocke des données sensibles chiffrées",
+        "Configs est obsolète",
+        "Configs nécessite un volume externe"
+      ],
+      "answer": 1,
+      "explanation": "Docker Configs gère des fichiers de configuration non-sensibles (nginx.conf, app.config) stockés en clair mais versionnés et distribués via Raft. Secrets pour données sensibles (chiffrées). Configs peut être mis à jour sans rebuild d'image.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 88,
+      "question": "Quelle est la meilleure stratégie de tagging d'images pour la production ?",
+      "options": [
+        "Toujours utiliser 'latest'",
+        "Utiliser des tags sémantiques immuables (SHA, version semver) + tags mutables (latest, staging)",
+        "Tags aléatoires uniquement",
+        "Pas de tags en production"
+      ],
+      "answer": 1,
+      "explanation": "Best practice : tags immuables (SHA git, semver précis type 1.2.3) pour la traçabilité et reproductibilité + tags mutables (latest, stable, v1) pour la découverte. Éviter 'latest' en prod. Toujours référencer par SHA digest pour la sécurité maximale.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 89,
+      "question": "Comment mettre en place un registry Docker privé sécurisé ?",
+      "options": [
+        "docker run registry:2",
+        "Utiliser registry:2 avec TLS (certificats), authentification (htpasswd ou token), et scanner de vulnérabilités",
+        "Docker Hub uniquement",
+        "Registry ne peut pas être sécurisé"
+      ],
+      "answer": 1,
+      "explanation": "Production registry nécessite : TLS avec certificats valides, authentification (basic auth htpasswd, token server, ou LDAP), scanning de vulnérabilités (Trivy, Clair), backup, monitoring, et optionnellement signature d'images (Notary/Cosign).",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 90,
+      "question": "Qu'est-ce que BuildKit et quels sont ses avantages ?",
+      "options": [
+        "Un orchestrateur Docker",
+        "Un nouveau moteur de build concurrent avec cache avancé et multi-stage parallèle",
+        "Un outil de monitoring",
+        "Un réseau virtuel"
+      ],
+      "answer": 1,
+      "explanation": "BuildKit (activé avec DOCKER_BUILDKIT=1) est le nouveau moteur de build Docker : exécution parallèle des stages indépendants, cache distribué, export/import de cache, syntaxe Dockerfile étendue (RUN --mount), secrets de build sécurisés, builds sans privilèges.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 91,
+      "question": "Comment optimiser le cache de build Docker pour CI/CD ?",
+      "options": [
+        "Désactiver le cache",
+        "Utiliser --cache-from pour réutiliser le cache d'images précédentes + registry cache",
+        "Rebuilder toujours from scratch",
+        "Le cache est automatique en CI/CD"
+      ],
+      "answer": 1,
+      "explanation": "En CI/CD (environnements éphémères), le cache local n'existe pas. Solutions : --cache-from pour réutiliser les layers d'une image registry, BuildKit cache backends (inline, registry, S3), ou persistent build cache volumes dans CI.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 92,
+      "question": "Quelles techniques permettent de réduire drastiquement la taille d'une image Docker ?",
+      "options": [
+        "Utiliser des images Alpine ou Distroless, multi-stage builds, .dockerignore",
+        "Compresser l'image finale",
+        "Utiliser plus de layers",
+        "Éviter les volumes"
+      ],
+      "answer": 0,
+      "explanation": "Techniques clés : images de base minimales (Alpine ~5MB, Distroless ~20MB vs Ubuntu ~70MB), multi-stage builds (éliminer build tools), combiner RUN avec && et nettoyer dans la même layer, .dockerignore, éviter les fichiers inutiles.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 93,
+      "question": "Comment scanner automatiquement les images pour vulnérabilités dans une pipeline CI/CD ?",
+      "options": [
+        "Manuellement via Docker Hub",
+        "Intégrer Trivy, Snyk ou Clair dans la CI avec fail on critical vulnerabilities",
+        "Le scanning n'est pas possible en CI/CD",
+        "Uniquement en production"
+      ],
+      "answer": 1,
+      "explanation": "Best practice DevSecOps : intégrer un scanner (Trivy, Grype, Snyk, Anchore) dans le pipeline. Scanner après build, bloquer le déploiement si vulnérabilités critiques (policy as code). Générer des rapports SBOM (Software Bill of Materials).",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 94,
+      "question": "Qu'est-ce que le image signing et comment l'implémenter ?",
+      "options": [
+        "Ajouter des métadonnées à l'image",
+        "Signer cryptographiquement les images avec Notary/Cosign pour vérifier l'authenticité et l'intégrité",
+        "Chiffrer l'image entière",
+        "Utiliser des tags spéciaux"
+      ],
+      "answer": 1,
+      "explanation": "Image signing (Docker Content Trust/Notary ou Sigstore/Cosign) garantit que l'image n'a pas été modifiée et provient d'une source de confiance. Critique pour supply chain security. Kubernetes peut enforcer que seules les images signées soient déployées.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 95,
+      "question": "Comment limiter les ressources CPU d'un conteneur de manière avancée ?",
+      "options": [
+        "docker run --cpus=2 pour 2 CPUs",
+        "Utiliser --cpus, --cpu-shares, --cpuset-cpus pour contrôle granulaire",
+        "Ce n'est pas possible",
+        "Via des variables d'environnement"
+      ],
+      "answer": 1,
+      "explanation": "Options CPU : --cpus (limite absolue, ex: 1.5), --cpu-shares (poids relatif, défaut 1024), --cpuset-cpus (pinning sur CPUs spécifiques: '0,1'), --cpu-quota et --cpu-period (contrôle via CFS). Combinaison selon les besoins.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 96,
+      "question": "Qu'est-ce que l'option --memory-reservation et comment diffère-t-elle de --memory ?",
+      "options": [
+        "Ce sont des alias",
+        "--memory est une limite hard, --memory-reservation est une limite soft (hint pour réclamation)",
+        "--memory-reservation est plus stricte",
+        "--memory-reservation double la RAM disponible"
+      ],
+      "answer": 1,
+      "explanation": "--memory est une limite hard (OOM kill si dépassée). --memory-reservation est une soft limit : Docker tente de récupérer la mémoire si l'hôte est sous pression, mais autorise le dépassement. Utile pour optimiser la densité de conteneurs.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 97,
+      "question": "Comment optimiser les I/O disque pour les conteneurs en production ?",
+      "options": [
+        "Utiliser overlay2, volumes avec performance drivers, limiter I/O avec --device-read/write-bps",
+        "Utiliser uniquement des bind mounts",
+        "L'optimisation I/O n'est pas possible",
+        "Désactiver les volumes"
+      ],
+      "answer": 0,
+      "explanation": "Optimisations I/O : storage driver performant (overlay2), volumes avec drivers optimisés (NVMe, SSD), limites I/O (--device-read-bps, --device-write-iops), éviter logs excessifs, utiliser tmpfs pour données temporaires, ajuster --storage-opt.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 98,
+      "question": "Comment activer et configurer les logs structurés JSON pour tous les conteneurs ?",
+      "options": [
+        "docker run --log-driver json-file --log-opt max-size=10m --log-opt max-file=3",
+        "Via /etc/docker/daemon.json avec log-driver et log-opts globaux",
+        "Ce n'est pas possible",
+        "Les logs sont toujours en JSON"
+      ],
+      "answer": 1,
+      "explanation": "Configurer globalement dans /etc/docker/daemon.json : {\"log-driver\":\"json-file\",\"log-opts\":{\"max-size\":\"10m\",\"max-file\":\"3\"}}. Autres drivers : syslog, journald, gelf, fluentd, splunk. Rotation automatique essentielle pour éviter les disques pleins.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 99,
+      "question": "Qu'est-ce que Docker-in-Docker (DinD) et quels sont ses cas d'usage ?",
+      "options": [
+        "Exécuter Docker CLI dans un conteneur",
+        "Exécuter un daemon Docker complet dans un conteneur pour builds isolés ou CI/CD",
+        "Un outil de debugging",
+        "Un mode réseau spécial"
+      ],
+      "answer": 1,
+      "explanation": "DinD (docker:dind) exécute un daemon Docker dans un conteneur. Utilisé en CI/CD pour builds isolés, tests d'images, environnements de développement. Nécessite --privileged. Alternative : monter le socket Docker de l'hôte (moins sécurisé mais plus simple).",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 100,
+      "question": "Comment exécuter Docker en mode rootless et quels sont les avantages/limitations ?",
+      "options": [
+        "Avec sudo systemctl --user start docker",
+        "Installer Docker Rootless mode (dockerd tourne avec UID non-root) pour sécurité accrue",
+        "Ce n'est pas possible",
+        "Via un utilisateur 'docker' système"
+      ],
+      "answer": 1,
+      "explanation": "Docker Rootless exécute daemon et conteneurs sans root via user namespaces. Avantages : sécurité (pas de privilèges root), isolation. Limitations : pas de ports <1024, overlay2 peut nécessiter fuse-overlayfs, certaines fonctionnalités désactivées. Installation via dockerd-rootless-setuptool.sh.",
+      "difficulty": "advanced"
+    }
+  ]
 }
