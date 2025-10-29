@@ -1,6 +1,26 @@
 {
   "themes": [
     {
+      "id": "ansible",
+      "title": "Ansible",
+      "description": "90 questions couvrant tous les niveaux d'Ansible : fondamentaux, playbooks, rôles et optimisation",
+      "icon": "DEVOPS",
+      "difficulty": "Progressive",
+      "questions_count": 90,
+      "file": "ansible.json",
+      "has_difficulty": true
+    },
+    {
+      "id": "aws",
+      "title": "AWS (Amazon Web Services)",
+      "description": "100 questions couvrant AWS du fondamental à l'architecture production",
+      "icon": "CLOUD",
+      "difficulty": "Progressive",
+      "questions_count": 100,
+      "file": "aws.json",
+      "has_difficulty": true
+    },
+    {
       "id": "aws_saa_c03",
       "title": "AWS SAA C03 Dump",
       "description": "Questions d'examen AWS Solutions Architect Associate C03",
@@ -10,9 +30,69 @@
       "file": "aws_saa_c03.json"
     },
     {
+      "id": "azure",
+      "title": "Microsoft Azure",
+      "description": "100 questions sur Azure : concepts, VMs, stockage, réseau et services cloud",
+      "icon": "CLOUD",
+      "difficulty": "Progressive",
+      "questions_count": 100,
+      "file": "azure.json",
+      "has_difficulty": true
+    },
+    {
+      "id": "cicd",
+      "title": "CI/CD",
+      "description": "80 questions sur l'intégration et le déploiement continus : Git, pipelines, tests et déploiement",
+      "icon": "DEVOPS",
+      "difficulty": "Progressive",
+      "questions_count": 80,
+      "file": "cicd.json",
+      "has_difficulty": true
+    },
+    {
+      "id": "database",
+      "title": "Databases",
+      "description": "70 questions sur les bases de données SQL et NoSQL pour DevOps",
+      "icon": "DATABASE",
+      "difficulty": "Progressive",
+      "questions_count": 70,
+      "file": "database.json",
+      "has_difficulty": true
+    },
+    {
+      "id": "docker",
+      "title": "Docker",
+      "description": "100 questions sur Docker : conteneurisation, images, réseaux, volumes et orchestration",
+      "icon": "DEVOPS",
+      "difficulty": "Progressive",
+      "questions_count": 100,
+      "file": "docker.json",
+      "has_difficulty": true
+    },
+    {
+      "id": "gcp",
+      "title": "Google Cloud Platform",
+      "description": "100 questions sur GCP : Compute Engine, Cloud Storage, networking et services cloud",
+      "icon": "CLOUD",
+      "difficulty": "Progressive",
+      "questions_count": 100,
+      "file": "gcp.json",
+      "has_difficulty": true
+    },
+    {
+      "id": "git",
+      "title": "Git & Version Control",
+      "description": "70 questions sur Git et le contrôle de version : commits, branches, merge et workflows",
+      "icon": "DEVOPS",
+      "difficulty": "Progressive",
+      "questions_count": 70,
+      "file": "git.json",
+      "has_difficulty": true
+    },
+    {
       "id": "kubernetes",
       "title": "Kubernetes",
-      "description": "Testez vos connaissances sur Kubernetes",
+      "description": "150 questions sur Kubernetes : architecture, pods, services, déploiements et administration",
       "icon": "K8S",
       "difficulty": "Progressive",
       "questions_count": 150,
@@ -20,22 +100,54 @@
       "has_difficulty": true
     },
     {
-      "id": "docker",
-      "title": "Docker",
-      "description": "Questions de conteneurisation avec Docker",
-      "icon": "DEVOPS",
-      "difficulty": "Intermediate",
-      "questions_count": 50,
-      "file": "docker.json"
+      "id": "linux",
+      "title": "Linux & Shell Scripting",
+      "description": "80 questions sur Linux et le shell scripting : administration système, bash et troubleshooting",
+      "icon": "SERVER",
+      "difficulty": "Progressive",
+      "questions_count": 80,
+      "file": "linux.json",
+      "has_difficulty": true
     },
     {
-      "id": "gcp",
-      "title": "Google Cloud Platform",
-      "description": "Questions sur les services Google Cloud Platform",
-      "icon": "CLOUD",
-      "difficulty": "Intermediate",
-      "questions_count": 50,
-      "file": "gcp.json"
+      "id": "monitoring",
+      "title": "Monitoring & Observabilité",
+      "description": "90 questions sur le monitoring : métriques, logs, traces, Prometheus, Grafana et alerting",
+      "icon": "MONITORING",
+      "difficulty": "Progressive",
+      "questions_count": 90,
+      "file": "monitoring.json",
+      "has_difficulty": true
+    },
+    {
+      "id": "network",
+      "title": "Networking DevOps",
+      "description": "80 questions sur le networking : protocoles, DNS, load balancing et sécurité réseau",
+      "icon": "NETWORK",
+      "difficulty": "Progressive",
+      "questions_count": 80,
+      "file": "network.json",
+      "has_difficulty": true
+    },
+    {
+      "id": "security_secret",
+      "title": "Security & Secrets Management",
+      "description": "70 questions sur la sécurité et la gestion des secrets : encryption, Vault, certificats et best practices",
+      "icon": "SECURITY",
+      "difficulty": "Progressive",
+      "questions_count": 70,
+      "file": "security_secret.json",
+      "has_difficulty": true
+    },
+    {
+      "id": "terraform",
+      "title": "Terraform",
+      "description": "100 questions sur Terraform : HCL, providers, state management et modules",
+      "icon": "DEVOPS",
+      "difficulty": "Progressive",
+      "questions_count": 100,
+      "file": "terraform.json",
+      "has_difficulty": true
     }
   ]
 }
