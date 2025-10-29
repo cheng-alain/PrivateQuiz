@@ -1,0 +1,1306 @@
+{
+  "title": "Microsoft Azure",
+  "description": "100 questions couvrant tous les niveaux d'Azure : 30 questions de base sur les concepts Azure, VMs, Storage et Networking, 45 questions intermédiaires sur AKS, RBAC avancé, Load Balancing et Azure Monitor, et 25 questions avancées sur AKS production, sécurité avancée, HA/DR et optimisation des coûts",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Qu'est-ce qu'une Azure Region ?",
+      "options": [
+        "Un datacenter unique Azure",
+        "Un ensemble de datacenters au sein d'une latence définie et connectés via un réseau régional dédié",
+        "Un groupe de ressources géographiquement distribuées",
+        "Une zone de disponibilité unique"
+      ],
+      "answer": 1,
+      "explanation": "Une Azure Region est un ensemble de datacenters déployés dans un périmètre défini par la latence et connectés via un réseau régional dédié à faible latence. Chaque région contient au minimum une Availability Zone.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 2,
+      "question": "Quelle est la hiérarchie correcte des ressources Azure du niveau le plus élevé au plus bas ?",
+      "options": [
+        "Subscription → Management Group → Resource Group → Resource",
+        "Management Group → Subscription → Resource Group → Resource",
+        "Resource Group → Subscription → Management Group → Resource",
+        "Management Group → Resource Group → Subscription → Resource"
+      ],
+      "answer": 1,
+      "explanation": "La hiérarchie Azure est : Management Group (niveau le plus élevé) → Subscription → Resource Group → Resource (niveau le plus bas). Les Management Groups permettent de gérer plusieurs subscriptions.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 3,
+      "question": "Qu'est-ce qu'Azure Active Directory (AAD) ?",
+      "options": [
+        "Un service de gestion de fichiers dans le cloud",
+        "Un service d'identité et d'accès basé sur le cloud",
+        "Un service de base de données relationnelle",
+        "Un service de sauvegarde automatique"
+      ],
+      "answer": 1,
+      "explanation": "Azure Active Directory est le service d'identité et d'accès basé sur le cloud de Microsoft, qui permet aux employés de se connecter et d'accéder aux ressources internes et externes.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 4,
+      "question": "Quel outil permet d'exécuter des commandes Azure directement depuis le navigateur sans installation locale ?",
+      "options": [
+        "Azure PowerShell Desktop",
+        "Azure CLI local uniquement",
+        "Azure Cloud Shell",
+        "Azure Desktop App"
+      ],
+      "answer": 2,
+      "explanation": "Azure Cloud Shell est un shell interactif, authentifié et accessible via navigateur pour la gestion des ressources Azure. Il propose Bash et PowerShell et est accessible directement depuis le portail Azure.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 5,
+      "question": "Qu'est-ce qu'un Azure Resource Group ?",
+      "options": [
+        "Un conteneur logique pour les ressources Azure déployées dans une région spécifique",
+        "Un groupe d'utilisateurs Azure AD",
+        "Un type de machine virtuelle",
+        "Un service de backup"
+      ],
+      "answer": 0,
+      "explanation": "Un Resource Group est un conteneur logique qui contient les ressources associées pour une solution Azure. Il facilite la gestion, la surveillance et la facturation des ressources liées.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 6,
+      "question": "Que sont les Azure Region Pairs ?",
+      "options": [
+        "Deux régions dans le même datacenter",
+        "Deux régions au sein de la même géographie, distantes d'au moins 300 miles pour la réplication et le disaster recovery",
+        "Deux subscriptions Azure liées",
+        "Deux Resource Groups connectés"
+      ],
+      "answer": 1,
+      "explanation": "Les Region Pairs sont deux régions au sein de la même géographie (ex: East US et West US), distantes d'au moins 300 miles, utilisées pour la réplication géographique et le disaster recovery avec mise à jour séquentielle.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 7,
+      "question": "Qu'est-ce qu'Azure Resource Manager (ARM) ?",
+      "options": [
+        "Un outil de monitoring",
+        "La couche de gestion pour Azure qui fournit un point d'accès unifié pour déployer, gérer et surveiller les ressources",
+        "Un service de base de données",
+        "Un type de machine virtuelle"
+      ],
+      "answer": 1,
+      "explanation": "Azure Resource Manager (ARM) est le service de déploiement et de gestion pour Azure. Il fournit une couche de gestion cohérente qui permet de créer, mettre à jour et supprimer des ressources dans votre compte Azure.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 8,
+      "question": "Quelle est la différence entre Azure Free Tier et Azure Credits ?",
+      "options": [
+        "Aucune différence, c'est la même chose",
+        "Free Tier offre des services gratuits limités en permanence, Azure Credits fournit un crédit monétaire temporaire pour tester les services",
+        "Free Tier est payant, Azure Credits est gratuit",
+        "Azure Credits n'existe pas"
+      ],
+      "answer": 1,
+      "explanation": "Le Free Tier offre des services gratuits limités (ex: 750h de B1S VM/mois) en permanence. Azure Credits (ex: 200$ pour 30 jours) est un crédit temporaire offert aux nouveaux comptes pour explorer tous les services Azure.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 9,
+      "question": "Quelle série de VM Azure est optimisée pour les charges de travail à usage général avec un ratio équilibré CPU/mémoire ?",
+      "options": [
+        "Série F (compute optimized)",
+        "Série D (general purpose)",
+        "Série M (memory optimized)",
+        "Série N (GPU)"
+      ],
+      "answer": 1,
+      "explanation": "La série D (Dv3, Dv4, Dsv3, etc.) est optimisée pour les charges de travail à usage général avec un ratio équilibré entre CPU et mémoire, adaptée à la plupart des applications d'entreprise.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 10,
+      "question": "Qu'est-ce qu'un Managed Disk dans Azure ?",
+      "options": [
+        "Un disque physique dans le datacenter",
+        "Un disque virtuel géré par Azure qui simplifie la gestion en éliminant le besoin de gérer les storage accounts",
+        "Un disque temporaire attaché à la VM",
+        "Un service de sauvegarde"
+      ],
+      "answer": 1,
+      "explanation": "Les Managed Disks sont des disques virtuels gérés par Azure Storage. Azure gère automatiquement les storage accounts sous-jacents, simplifiant ainsi la gestion et offrant une meilleure disponibilité et durabilité.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 11,
+      "question": "Quelle est la différence entre Standard HDD et Premium SSD pour les Managed Disks ?",
+      "options": [
+        "Aucune différence de performance",
+        "Standard HDD offre un stockage économique avec des performances modérées, Premium SSD offre des performances élevées avec faible latence pour les workloads I/O intensifs",
+        "Premium SSD est moins cher",
+        "Standard HDD est plus rapide"
+      ],
+      "answer": 1,
+      "explanation": "Standard HDD (disques durs magnétiques) offre un coût faible pour les workloads peu exigeants. Premium SSD (SSD) offre des performances élevées, faible latence et est requis pour les VMs Premium-capable et workloads production critiques.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 12,
+      "question": "Qu'est-ce qu'un Network Security Group (NSG) dans Azure ?",
+      "options": [
+        "Un groupe d'utilisateurs réseau",
+        "Un firewall qui contient des règles de sécurité permettant de filtrer le trafic réseau entrant et sortant vers les ressources Azure",
+        "Un type de Load Balancer",
+        "Un service VPN"
+      ],
+      "answer": 1,
+      "explanation": "Un NSG (Network Security Group) contient des règles de sécurité qui autorisent ou refusent le trafic réseau entrant ou sortant. Les NSGs peuvent être associés à des subnets ou des interfaces réseau de VMs.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 13,
+      "question": "Quelle est la différence entre Availability Sets et Availability Zones pour les VMs Azure ?",
+      "options": [
+        "Aucune différence",
+        "Availability Sets protègent contre les défaillances matérielles au sein d'un datacenter (fault/update domains), Availability Zones protègent contre les défaillances au niveau du datacenter entier",
+        "Availability Zones sont moins fiables",
+        "Availability Sets sont plus coûteux"
+      ],
+      "answer": 1,
+      "explanation": "Availability Sets (Fault Domains + Update Domains) protègent contre les pannes matérielles/maintenance dans un datacenter. Availability Zones (AZ) sont des datacenters physiquement séparés au sein d'une région, offrant une protection contre les pannes au niveau du datacenter.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 14,
+      "question": "Qu'est-ce qu'Azure Bastion ?",
+      "options": [
+        "Un service de Load Balancing",
+        "Un service managé qui fournit un accès RDP/SSH sécurisé aux VMs directement via le portail Azure sans exposer les VMs à Internet",
+        "Un service de stockage",
+        "Un type de VM"
+      ],
+      "answer": 1,
+      "explanation": "Azure Bastion est un service PaaS entièrement managé qui fournit une connectivité RDP/SSH sécurisée et transparente vers vos VMs directement depuis le portail Azure via SSL, sans besoin d'IP publique sur les VMs.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 15,
+      "question": "Qu'est-ce qu'un VM Scale Set (VMSS) ?",
+      "options": [
+        "Un groupe de VMs identiques avec auto-scaling et load balancing intégrés",
+        "Un type de disque virtuel",
+        "Un service de monitoring",
+        "Un groupe de ressources"
+      ],
+      "answer": 0,
+      "explanation": "VM Scale Sets permettent de créer et gérer un groupe de VMs identiques avec auto-scaling et load balancing. Idéal pour les applications hautement disponibles et évolutives avec une distribution automatique du trafic.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 16,
+      "question": "Que sont les Spot VMs dans Azure ?",
+      "options": [
+        "Des VMs avec IP publique fixe",
+        "Des VMs qui utilisent la capacité Azure inutilisée à prix réduit (jusqu'à -90%) mais peuvent être évincées quand Azure a besoin de la capacité",
+        "Des VMs toujours disponibles",
+        "Des VMs premium"
+      ],
+      "answer": 1,
+      "explanation": "Les Spot VMs permettent d'utiliser la capacité Azure inutilisée à un coût considérablement réduit. Elles sont idéales pour les workloads interruptibles (batch, dev/test, big data) mais peuvent être évincées avec un préavis de 30 secondes.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 17,
+      "question": "Quels sont les types de blobs disponibles dans Azure Blob Storage ?",
+      "options": [
+        "Uniquement Block blobs",
+        "Block blobs, Append blobs et Page blobs",
+        "Uniquement Page blobs",
+        "File blobs et Directory blobs"
+      ],
+      "answer": 1,
+      "explanation": "Azure Blob Storage offre trois types : Block blobs (optimisés pour l'upload de gros volumes de données), Append blobs (optimisés pour les opérations d'ajout, ex: logs), et Page blobs (optimisés pour les opérations random read/write, ex: VHD disks).",
+      "difficulty": "easy"
+    },
+    {
+      "id": 18,
+      "question": "Quels sont les tiers d'accès disponibles pour Azure Blob Storage ?",
+      "options": [
+        "Uniquement Hot",
+        "Hot, Cool et Archive",
+        "Fast et Slow uniquement",
+        "Premium et Standard uniquement"
+      ],
+      "answer": 1,
+      "explanation": "Azure Blob Storage offre trois tiers d'accès : Hot (accès fréquent, coût de stockage élevé, coût d'accès bas), Cool (accès peu fréquent, stockage à 30+ jours), et Archive (accès rare, stockage à 180+ jours, latence de récupération en heures).",
+      "difficulty": "easy"
+    },
+    {
+      "id": 19,
+      "question": "Qu'est-ce qu'Azure Files ?",
+      "options": [
+        "Un service de stockage objet",
+        "Des partages de fichiers managés dans le cloud accessibles via SMB et NFS",
+        "Un service de base de données",
+        "Un type de VM"
+      ],
+      "answer": 1,
+      "explanation": "Azure Files offre des partages de fichiers managés dans le cloud accessibles via les protocoles SMB (Server Message Block) et NFS. Ils peuvent être montés de manière concurrente par des déploiements cloud ou on-premises.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 20,
+      "question": "Quelle option de réplication Azure Storage offre la plus haute disponibilité en cas de catastrophe régionale ?",
+      "options": [
+        "LRS (Locally Redundant Storage)",
+        "ZRS (Zone Redundant Storage)",
+        "GRS (Geo-Redundant Storage) ou GZRS (Geo-Zone-Redundant Storage)",
+        "RA-LRS"
+      ],
+      "answer": 2,
+      "explanation": "GRS réplique vos données vers une région secondaire éloignée (région paired), offrant une durabilité de 16 neuf (99.99999999999999%). GZRS combine ZRS dans la région primaire et GRS, offrant la protection maximale contre les catastrophes régionales.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 21,
+      "question": "Qu'est-ce qu'une Shared Access Signature (SAS) dans Azure Storage ?",
+      "options": [
+        "Un token qui fournit un accès délégué sécurisé aux ressources de stockage sans partager les clés du compte",
+        "Un type de cryptage",
+        "Un service de monitoring",
+        "Un groupe de ressources"
+      ],
+      "answer": 0,
+      "explanation": "Une SAS (Shared Access Signature) est un URI signé qui pointe vers une ou plusieurs ressources de stockage et inclut un token contenant des paramètres de requête spéciaux. Elle permet un accès délégué granulaire sans exposer les clés du compte.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 22,
+      "question": "Quelle est la différence entre Azure SQL Database et SQL Server sur Azure VM ?",
+      "options": [
+        "Aucune différence",
+        "Azure SQL Database est un PaaS managé sans gestion d'OS/patching, SQL Server sur VM est un IaaS avec contrôle total de l'OS et du serveur SQL",
+        "SQL Server sur VM est plus performant",
+        "Azure SQL Database ne supporte pas SQL"
+      ],
+      "answer": 1,
+      "explanation": "Azure SQL Database est un service PaaS entièrement managé (pas de gestion d'OS, patching automatique, HA intégrée). SQL Server sur VM (IaaS) offre un contrôle total sur l'OS et SQL Server mais nécessite plus de gestion (patching, backups, HA).",
+      "difficulty": "easy"
+    },
+    {
+      "id": 23,
+      "question": "Quels sont les deux modèles d'achat pour Azure SQL Database ?",
+      "options": [
+        "Standard et Premium uniquement",
+        "DTU (Database Transaction Unit) et vCore (virtual core)",
+        "Pay-as-you-go et Reserved uniquement",
+        "Basic et Advanced"
+      ],
+      "answer": 1,
+      "explanation": "Azure SQL Database offre deux modèles : DTU (mesure combinée de CPU, mémoire, I/O - simple mais moins flexible) et vCore (ressources CPU et mémoire configurables séparément - plus de contrôle et prévisibilité).",
+      "difficulty": "easy"
+    },
+    {
+      "id": 24,
+      "question": "Qu'est-ce qu'un Elastic Pool dans Azure SQL Database ?",
+      "options": [
+        "Un type de VM",
+        "Une solution permettant de partager des ressources (DTU ou vCore) entre plusieurs bases de données pour optimiser les coûts",
+        "Un service de Load Balancing",
+        "Un type de stockage"
+      ],
+      "answer": 1,
+      "explanation": "Un Elastic Pool permet de regrouper plusieurs bases de données Azure SQL qui partagent un ensemble de ressources (DTU ou vCore) à prix fixe. Idéal pour des bases avec des patterns d'utilisation variables et complémentaires.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 25,
+      "question": "Qu'est-ce qu'un Virtual Network (VNet) dans Azure ?",
+      "options": [
+        "Un service de stockage",
+        "Un réseau privé isolé logiquement dans Azure permettant aux ressources de communiquer en toute sécurité",
+        "Un type de VM",
+        "Un service de monitoring"
+      ],
+      "answer": 1,
+      "explanation": "Un VNet (Virtual Network) est le bloc de construction fondamental pour votre réseau privé dans Azure. Il permet aux ressources Azure (VMs, AKS, etc.) de communiquer entre elles, avec Internet, et avec des réseaux on-premises de manière sécurisée.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 26,
+      "question": "Quelle est la différence entre NSG (Network Security Group) et ASG (Application Security Group) ?",
+      "options": [
+        "Aucune différence",
+        "NSG contient des règles de filtrage réseau basées sur IP/port, ASG permet de regrouper des VMs et de définir des règles basées sur ces groupes logiques",
+        "ASG est plus lent",
+        "NSG n'existe plus"
+      ],
+      "answer": 1,
+      "explanation": "Les NSG filtrent le trafic basé sur des règles IP/port. Les ASG permettent de regrouper logiquement des interfaces réseau et de définir des règles NSG basées sur ces groupes (ex: 'web-servers' vers 'db-servers'), simplifiant la gestion des règles.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 27,
+      "question": "Quelle est la différence entre Basic et Standard Public IP dans Azure ?",
+      "options": [
+        "Aucune différence de fonctionnalités",
+        "Standard offre zone-redundancy, static allocation, support pour Standard Load Balancer, et meilleure sécurité (closed by default), Basic n'offre pas ces fonctionnalités",
+        "Basic est plus cher",
+        "Standard est obsolète"
+      ],
+      "answer": 1,
+      "explanation": "Standard Public IP offre : zone-redundancy, allocation statique uniquement, support Standard Load Balancer/Application Gateway, secure by default (NSG requis). Basic offre allocation dynamique/statique mais sans zone-redundancy ni sécurité renforcée.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 28,
+      "question": "Qu'est-ce que le VNet Peering dans Azure ?",
+      "options": [
+        "Un service de monitoring",
+        "Une connexion qui permet à deux VNets de communiquer directement via le backbone Azure avec des adresses IP privées",
+        "Un type de VM",
+        "Un service de stockage"
+      ],
+      "answer": 1,
+      "explanation": "Le VNet Peering connecte deux VNets, permettant aux ressources de communiquer comme si elles étaient dans le même réseau via le backbone privé Azure. Il existe le peering régional (même région) et global (entre régions).",
+      "difficulty": "easy"
+    },
+    {
+      "id": 29,
+      "question": "Qu'est-ce qu'Azure DNS ?",
+      "options": [
+        "Un service de stockage",
+        "Un service d'hébergement de domaines DNS qui fournit la résolution de noms en utilisant l'infrastructure Microsoft Azure",
+        "Un type de VM",
+        "Un service de base de données"
+      ],
+      "answer": 1,
+      "explanation": "Azure DNS est un service d'hébergement pour domaines DNS, fournissant la résolution de noms en utilisant l'infrastructure Azure. Il offre une haute disponibilité, des performances élevées, et s'intègre avec les autres services Azure.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 30,
+      "question": "Que permet la geo-replication dans Azure SQL Database ?",
+      "options": [
+        "Sauvegarder localement uniquement",
+        "Créer jusqu'à 4 répliques secondaires lisibles dans différentes régions Azure pour la haute disponibilité et le disaster recovery",
+        "Dupliquer uniquement dans la même région",
+        "Rien, elle n'existe pas"
+      ],
+      "answer": 1,
+      "explanation": "La geo-replication active permet de créer jusqu'à 4 répliques secondaires lisibles en continu dans des régions Azure différentes. Elle offre un RTO faible pour le disaster recovery et permet d'offloader les workloads de lecture.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 31,
+      "question": "Quelle est la différence entre Azure AD et Active Directory Domain Services (AD DS) ?",
+      "options": [
+        "Aucune différence",
+        "Azure AD est un service d'identité cloud moderne (OAuth, SAML, OpenID), AD DS est un service d'annuaire traditionnel on-premises (Kerberos, LDAP, Group Policy)",
+        "AD DS est plus récent",
+        "Azure AD n'utilise pas d'authentification"
+      ],
+      "answer": 1,
+      "explanation": "Azure AD est conçu pour le cloud avec des protocoles modernes (OAuth 2.0, SAML, OpenID Connect) et gère les identités pour les applications cloud/SaaS. AD DS est un annuaire traditionnel Windows avec Kerberos, LDAP et Group Policy pour les réseaux on-premises.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 32,
+      "question": "Qu'est-ce qu'un Service Principal dans Azure AD ?",
+      "options": [
+        "Un utilisateur humain",
+        "Une identité créée pour les applications, services hébergés et outils automatisés pour accéder aux ressources Azure",
+        "Un groupe d'utilisateurs",
+        "Un type de VM"
+      ],
+      "answer": 1,
+      "explanation": "Un Service Principal est une identité de sécurité utilisée par des applications, services et outils d'automatisation pour accéder à des ressources Azure spécifiques. Il est créé lors de l'enregistrement d'une application dans Azure AD.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 33,
+      "question": "Qu'est-ce que l'authentification multifacteur (MFA) dans Azure AD ?",
+      "options": [
+        "Utiliser plusieurs mots de passe",
+        "Une méthode d'authentification nécessitant deux formes d'identification ou plus (quelque chose que vous savez, avez, ou êtes)",
+        "Se connecter plusieurs fois",
+        "Utiliser plusieurs comptes"
+      ],
+      "answer": 1,
+      "explanation": "MFA nécessite au moins deux des trois facteurs d'authentification : quelque chose que vous connaissez (mot de passe), quelque chose que vous possédez (téléphone, token), quelque chose que vous êtes (biométrie). Cela réduit considérablement les risques de compromission.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 34,
+      "question": "Quels sont les rôles RBAC built-in les plus courants dans Azure ?",
+      "options": [
+        "Admin et User uniquement",
+        "Owner (contrôle total), Contributor (créer/gérer ressources mais pas donner accès), Reader (lecture seule), User Access Administrator (gérer accès utilisateurs)",
+        "Root et Guest uniquement",
+        "Master et Slave"
+      ],
+      "answer": 1,
+      "explanation": "Les 4 rôles fondamentaux sont : Owner (accès complet + gestion des permissions), Contributor (créer/gérer toutes ressources sauf permissions), Reader (voir toutes ressources mais pas modifier), User Access Administrator (gérer accès utilisateurs aux ressources Azure).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 35,
+      "question": "À quels niveaux peut-on assigner des rôles RBAC dans Azure ?",
+      "options": [
+        "Uniquement au niveau Resource Group",
+        "Management Group, Subscription, Resource Group, et Resource individuel",
+        "Uniquement au niveau Subscription",
+        "Uniquement au niveau Resource"
+      ],
+      "answer": 1,
+      "explanation": "Les rôles RBAC peuvent être assignés à 4 niveaux de scope : Management Group (plusieurs subscriptions), Subscription (toutes les ressources d'une subscription), Resource Group (toutes les ressources du RG), et Resource individuel. L'héritage est descendant.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 36,
+      "question": "Quelle est la différence entre System-assigned et User-assigned Managed Identity ?",
+      "options": [
+        "Aucune différence",
+        "System-assigned est liée au cycle de vie d'une ressource spécifique (1:1), User-assigned est indépendante et peut être partagée entre plusieurs ressources (1:N)",
+        "User-assigned est moins sécurisée",
+        "System-assigned ne fonctionne pas"
+      ],
+      "answer": 1,
+      "explanation": "System-assigned Managed Identity est créée avec la ressource et supprimée avec elle (ex: une VM). User-assigned Managed Identity est créée indépendamment et peut être assignée à plusieurs ressources, persistant même après la suppression des ressources.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 37,
+      "question": "Quel est un cas d'usage typique pour Managed Identity ?",
+      "options": [
+        "Créer des VMs plus rapidement",
+        "Permettre à une VM ou AKS d'accéder à Key Vault ou ACR sans gérer de secrets/credentials dans le code",
+        "Accélérer le réseau",
+        "Réduire les coûts de stockage"
+      ],
+      "answer": 1,
+      "explanation": "Managed Identity élimine le besoin de gérer des credentials dans le code. Exemples : une VM accède à Key Vault pour récupérer des secrets, un cluster AKS pull des images depuis ACR, une Function App accède à Azure SQL - tout cela sans credentials hardcodés.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 38,
+      "question": "Quelle est la différence entre Azure AD roles et Azure RBAC roles ?",
+      "options": [
+        "Aucune différence, c'est la même chose",
+        "Azure AD roles gèrent les permissions dans Azure AD (users, groups, applications), Azure RBAC roles gèrent l'accès aux ressources Azure (VMs, Storage, etc.)",
+        "Azure RBAC n'existe pas",
+        "Azure AD roles sont obsolètes"
+      ],
+      "answer": 1,
+      "explanation": "Azure AD roles contrôlent les permissions dans Azure Active Directory (Global Admin, User Admin, etc.). Azure RBAC roles contrôlent l'accès aux ressources Azure (Owner, Contributor, Reader sur VMs, Storage, etc.). Ce sont deux systèmes de permissions distincts.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 39,
+      "question": "Qu'est-ce qu'AKS (Azure Kubernetes Service) ?",
+      "options": [
+        "Un service de stockage",
+        "Un service Kubernetes managé qui simplifie le déploiement et la gestion de clusters Kubernetes en gérant le control plane",
+        "Un type de VM",
+        "Un service de base de données"
+      ],
+      "answer": 1,
+      "explanation": "AKS est un service Kubernetes managé où Azure gère le control plane (API server, scheduler, controller manager) gratuitement. Vous payez uniquement les worker nodes (VMs). Azure gère les upgrades, le patching, et la haute disponibilité du control plane.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 40,
+      "question": "Quelle est la différence entre system node pools et user node pools dans AKS ?",
+      "options": [
+        "Aucune différence",
+        "System node pools hébergent les pods système critiques (CoreDNS, metrics-server), user node pools hébergent les workloads applicatifs",
+        "User node pools sont plus rapides",
+        "System node pools n'existent pas"
+      ],
+      "answer": 1,
+      "explanation": "System node pools hébergent les pods système critiques (kube-system namespace) et doivent toujours avoir au moins un node. User node pools hébergent vos applications et peuvent être scaled à zéro. Un cluster AKS doit avoir au moins un system node pool.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 41,
+      "question": "Qu'est-ce qu'Azure Container Registry (ACR) ?",
+      "options": [
+        "Un service de VM",
+        "Un registre Docker privé managé pour stocker et gérer des images de conteneurs",
+        "Un service de base de données",
+        "Un type de Load Balancer"
+      ],
+      "answer": 1,
+      "explanation": "ACR est un registre Docker privé managé basé sur Docker Registry 2.0. Il permet de stocker et gérer des images de conteneurs pour tous types de déploiements. Il offre la geo-replication, la sécurité intégrée avec Azure AD, et l'intégration native avec AKS.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 42,
+      "question": "Qu'est-ce qu'Azure Container Instances (ACI) ?",
+      "options": [
+        "Un service Kubernetes complet",
+        "Un service serverless pour exécuter des conteneurs isolés sans gérer de VMs ni de cluster",
+        "Un service de stockage",
+        "Un type de VM"
+      ],
+      "answer": 1,
+      "explanation": "ACI permet d'exécuter des conteneurs dans Azure sans gérer de VMs ou adopter un orchestrateur. C'est idéal pour des jobs ponctuels, batch processing, ou dev/test. Facturation à la seconde basée sur CPU/mémoire alloués.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 43,
+      "question": "Quelle est la différence entre Kubenet et Azure CNI pour le networking AKS ?",
+      "options": [
+        "Aucune différence",
+        "Kubenet utilise des IPs internes au cluster avec NAT, Azure CNI donne une IP VNet à chaque pod (intégration VNet complète mais consomme plus d'IPs)",
+        "Azure CNI est obsolète",
+        "Kubenet est plus rapide"
+      ],
+      "answer": 1,
+      "explanation": "Kubenet : chaque node reçoit une IP VNet, les pods reçoivent des IPs d'un subnet séparé avec NAT (économise des IPs VNet). Azure CNI : chaque pod reçoit une IP du VNet directement (nécessite plus d'IPs mais permet l'accès direct aux pods depuis le VNet).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 44,
+      "question": "Que sont les Network Policies dans AKS ?",
+      "options": [
+        "Des règles de firewall au niveau pod permettant de contrôler le trafic entre pods",
+        "Des règles NSG uniquement",
+        "Un service de Load Balancing",
+        "Un type de stockage"
+      ],
+      "answer": 0,
+      "explanation": "Les Network Policies sont des règles Kubernetes qui contrôlent le trafic entre pods (micro-segmentation). AKS supporte Calico et Azure Network Policy. Par défaut, tout trafic entre pods est autorisé. Les Network Policies permettent d'implémenter le principe du moindre privilège.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 45,
+      "question": "Comment AKS peut-il accéder à ACR de manière sécurisée ?",
+      "options": [
+        "Avec un mot de passe uniquement",
+        "Via Managed Identity (System-assigned ou User-assigned) avec le rôle AcrPull sur l'ACR",
+        "Impossible de connecter AKS et ACR",
+        "Uniquement avec des tokens"
+      ],
+      "answer": 1,
+      "explanation": "La méthode recommandée est d'utiliser Managed Identity pour AKS avec le rôle 'AcrPull' sur l'ACR. AKS peut utiliser soit une System-assigned managed identity, soit une User-assigned managed identity pour s'authentifier et pull les images sans credentials.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 46,
+      "question": "Comment intégrer Azure AD avec AKS pour le RBAC Kubernetes ?",
+      "options": [
+        "C'est impossible",
+        "En activant Azure AD integration, permettant d'utiliser les identités Azure AD et les groupes pour les RoleBindings Kubernetes",
+        "Uniquement avec des Service Principals",
+        "Via des mots de passe"
+      ],
+      "answer": 1,
+      "explanation": "L'intégration Azure AD pour AKS (Azure AD-integrated RBAC) permet d'utiliser les utilisateurs et groupes Azure AD dans les RoleBindings Kubernetes. Les admins peuvent accorder des permissions K8s basées sur l'identité Azure AD, unifiant la gestion des identités.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 47,
+      "question": "Qu'est-ce que les Virtual Nodes dans AKS ?",
+      "options": [
+        "Des nodes virtuels standards",
+        "Une intégration permettant de scaler rapidement vers Azure Container Instances (ACI) pour des workloads burst",
+        "Un type de VM",
+        "Un service de stockage"
+      ],
+      "answer": 1,
+      "explanation": "Virtual Nodes permettent à AKS de scaler rapidement en déployant des pods sur Azure Container Instances (serverless). Utile pour les workloads burst ou sporadiques. Les pods démarrent en secondes sans provisionner de VMs. Basé sur le projet open-source Virtual Kubelet.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 48,
+      "question": "Quelle est la stratégie recommandée pour upgrader un cluster AKS ?",
+      "options": [
+        "Tout upgrader en une fois",
+        "Upgrader d'abord le control plane, puis les node pools un par un pour minimiser l'impact",
+        "Ne jamais upgrader",
+        "Supprimer et recréer le cluster"
+      ],
+      "answer": 1,
+      "explanation": "La stratégie recommandée : 1) Upgrade du control plane (opération managée par Azure, sans downtime), 2) Upgrade des node pools individuellement (permet de tester et contrôler l'impact). On peut upgrader un node pool à la fois ou utiliser plusieurs node pools pour un blue-green deployment.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 49,
+      "question": "Quelle est la différence entre Azure Load Balancer et Application Gateway ?",
+      "options": [
+        "Aucune différence",
+        "Load Balancer opère en Layer 4 (TCP/UDP) pour tout type de trafic, Application Gateway opère en Layer 7 (HTTP/HTTPS) avec des fonctionnalités avancées comme URL routing et WAF",
+        "Application Gateway est moins cher",
+        "Load Balancer est obsolète"
+      ],
+      "answer": 1,
+      "explanation": "Azure Load Balancer est un load balancer Layer 4 (transport) pour TCP/UDP. Application Gateway est un load balancer Layer 7 (application) pour HTTP/HTTPS avec : URL-based routing, SSL termination, WAF (Web Application Firewall), session affinity, et autoscaling.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 50,
+      "question": "Qu'est-ce qu'Azure Front Door ?",
+      "options": [
+        "Un service de stockage",
+        "Un load balancer global Layer 7 avec CDN intégré, offrant routing intelligent, SSL offload, et WAF pour les applications globales",
+        "Un type de VM",
+        "Un service de base de données"
+      ],
+      "answer": 1,
+      "explanation": "Azure Front Door est un CDN + load balancer global avec routing intelligent basé sur les performances. Il offre : acceleration des applications globales, SSL offload, WAF, caching, health probes, et failover automatique entre régions.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 51,
+      "question": "Qu'est-ce qu'Azure Traffic Manager ?",
+      "options": [
+        "Un load balancer Layer 4",
+        "Un load balancer DNS qui route le trafic vers différents endpoints Azure ou externes basé sur des méthodes de routing (performance, priority, geographic, etc.)",
+        "Un service de stockage",
+        "Un type de VM"
+      ],
+      "answer": 1,
+      "explanation": "Traffic Manager est un load balancer basé sur DNS (Layer 7) qui distribue le trafic à travers des endpoints globaux basé sur des méthodes de routing : Performance (latence), Priority (failover), Geographic (géolocalisation), Weighted (distribution pondérée), Subnet, ou MultiValue.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 52,
+      "question": "Qu'est-ce qu'un Backend Pool dans le contexte d'Azure Load Balancing ?",
+      "options": [
+        "Un type de stockage",
+        "Un groupe de ressources (VMs, VMSS, IP addresses) qui reçoivent le trafic distribué par le load balancer",
+        "Un service de base de données",
+        "Un groupe d'utilisateurs"
+      ],
+      "answer": 1,
+      "explanation": "Un Backend Pool est une collection de ressources (VMs, VM Scale Sets, IP addresses) vers lesquelles le load balancer distribue le trafic. Les health probes déterminent quels membres du backend pool sont sains et peuvent recevoir du trafic.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 53,
+      "question": "Que sont les Health Probes dans Azure Load Balancer ?",
+      "options": [
+        "Des services de monitoring avancés",
+        "Des vérifications périodiques pour déterminer si les instances du backend pool sont saines et peuvent recevoir du trafic",
+        "Des types de VMs",
+        "Des services de stockage"
+      ],
+      "answer": 1,
+      "explanation": "Les Health Probes vérifient périodiquement l'état de santé des instances backend (TCP, HTTP, HTTPS). Si une instance échoue au probe, elle est retirée temporairement de la rotation. Les probes incluent : interval, timeout, et threshold (nombre d'échecs avant de marquer unhealthy).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 54,
+      "question": "Qu'est-ce qu'Azure CDN ?",
+      "options": [
+        "Un service de base de données",
+        "Un réseau de distribution de contenu (Content Delivery Network) qui met en cache le contenu statique sur des serveurs edge à travers le monde pour réduire la latence",
+        "Un type de VM",
+        "Un service de monitoring"
+      ],
+      "answer": 1,
+      "explanation": "Azure CDN met en cache le contenu statique (images, CSS, JS, vidéos) sur des serveurs edge distribués globalement. Cela réduit la latence, améliore les performances, et réduit la charge sur l'origine. Azure CDN offre plusieurs providers : Microsoft, Akamai, Verizon.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 55,
+      "question": "Comment configure-t-on l'autoscaling pour un VM Scale Set ?",
+      "options": [
+        "C'est automatique sans configuration",
+        "En définissant des règles basées sur des métriques (CPU, mémoire, custom metrics) ou un schedule, avec min/max instances et scale-out/scale-in rules",
+        "Uniquement manuellement",
+        "L'autoscaling n'existe pas pour VMSS"
+      ],
+      "answer": 1,
+      "explanation": "L'autoscaling VMSS utilise : 1) Des règles metric-based (ex: CPU > 70% pendant 5min → scale out), 2) Schedule-based (ex: scale up le matin), 3) Min/max instance count, 4) Cooldown periods pour éviter le flapping. Intégration avec Azure Monitor.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 56,
+      "question": "Quelle est la différence entre Regional et Global VNet Peering ?",
+      "options": [
+        "Aucune différence",
+        "Regional peering connecte des VNets dans la même région Azure, Global peering connecte des VNets entre différentes régions Azure",
+        "Global peering est gratuit",
+        "Regional peering n'existe pas"
+      ],
+      "answer": 1,
+      "explanation": "Regional VNet Peering connecte des VNets dans la même région (latence ultra-faible). Global VNet Peering connecte des VNets entre régions différentes. Les deux utilisent le backbone privé Azure, mais le global peering a un coût plus élevé et une latence supérieure.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 57,
+      "question": "Qu'est-ce qu'Azure VPN Gateway ?",
+      "options": [
+        "Un service de stockage",
+        "Une passerelle qui permet des connexions VPN chiffrées entre votre réseau on-premises et Azure (Site-to-Site) ou des clients distants et Azure (Point-to-Site)",
+        "Un type de VM",
+        "Un service de base de données"
+      ],
+      "answer": 1,
+      "explanation": "VPN Gateway fournit des connexions cross-premises chiffrées via Internet : Site-to-Site (réseau on-premises vers Azure), Point-to-Site (clients individuels vers Azure), et VNet-to-VNet (entre VNets Azure). Utilise IPsec/IKE pour le chiffrement.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 58,
+      "question": "Qu'est-ce qu'Azure ExpressRoute ?",
+      "options": [
+        "Un service VPN standard",
+        "Une connexion privée dédiée entre votre infrastructure on-premises et Azure via un connectivity provider, n'utilisant pas l'Internet public",
+        "Un type de VM rapide",
+        "Un service de stockage"
+      ],
+      "answer": 1,
+      "explanation": "ExpressRoute est une connexion privée dédiée entre votre datacenter et Azure via un provider (pas via Internet public). Offre : bande passante jusqu'à 100 Gbps, latence prévisible, sécurité accrue, SLA 99.95%, idéal pour migrations cloud et workloads hybrides.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 59,
+      "question": "Qu'est-ce qu'Azure Firewall ?",
+      "options": [
+        "Un NSG avancé",
+        "Un firewall managé cloud-native avec threat intelligence, FQDN filtering, NAT, et haute disponibilité intégrée",
+        "Un service de stockage",
+        "Un type de VM"
+      ],
+      "answer": 1,
+      "explanation": "Azure Firewall est un service de sécurité réseau managé et cloud-native avec : stateful firewall, threat intelligence, FQDN filtering pour le trafic sortant, DNAT/SNAT, haute disponibilité intégrée, logging vers Azure Monitor, et intégration Azure Firewall Manager.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 60,
+      "question": "Quelle est la différence entre Service Endpoints et Private Endpoints ?",
+      "options": [
+        "Aucune différence",
+        "Service Endpoints permettent l'accès aux services Azure via le backbone Azure (mais gardent une IP publique), Private Endpoints donnent une IP privée VNet au service (accès 100% privé)",
+        "Private Endpoints sont moins sécurisés",
+        "Service Endpoints n'existent pas"
+      ],
+      "answer": 1,
+      "explanation": "Service Endpoints : route le trafic via le backbone Azure optimisé, le service garde une IP publique. Private Endpoints : injectent une interface réseau privée dans votre VNet avec IP privée, le service devient entièrement privé (pas d'exposition Internet). Private Endpoints offrent une sécurité supérieure.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 61,
+      "question": "Qu'est-ce qu'Azure NAT Gateway ?",
+      "options": [
+        "Un service de Load Balancing",
+        "Un service managé qui fournit une connectivité Internet sortante pour les ressources dans un subnet avec des IPs publiques statiques",
+        "Un type de VM",
+        "Un service de stockage"
+      ],
+      "answer": 1,
+      "explanation": "NAT Gateway est un service managé qui permet aux ressources dans un subnet d'accéder à Internet (trafic sortant) en utilisant des IP publiques statiques. Il offre : haute disponibilité, scalabilité (jusqu'à 64k connexions par IP), et une solution simplifiée pour SNAT.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 62,
+      "question": "Qu'est-ce qu'Azure Monitor ?",
+      "options": [
+        "Un service de stockage uniquement",
+        "Une solution complète pour collecter, analyser et agir sur les données de télémétrie de vos applications et infrastructure Azure et on-premises",
+        "Un type de VM",
+        "Un service de base de données"
+      ],
+      "answer": 1,
+      "explanation": "Azure Monitor est la plateforme unifiée de monitoring qui collecte : Metrics (métriques de performance), Logs (données de diagnostic), Traces (APM), et permet d'analyser, visualiser (dashboards), et créer des alertes. Il inclut Application Insights et Log Analytics.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 63,
+      "question": "Qu'est-ce qu'un Log Analytics Workspace ?",
+      "options": [
+        "Un type de VM",
+        "Un conteneur unique où les données de log sont collectées, agrégées et analysées, servant de data store pour Azure Monitor Logs",
+        "Un service de stockage Blob",
+        "Un service de base de données SQL"
+      ],
+      "answer": 1,
+      "explanation": "Un Log Analytics Workspace est un environnement unique pour les données Azure Monitor Logs avec : son propre data repository, configuration, et permissions. Les ressources Azure envoient leurs logs vers un workspace où ils peuvent être interrogés avec KQL (Kusto Query Language).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 64,
+      "question": "Qu'est-ce que KQL (Kusto Query Language) ?",
+      "options": [
+        "Un langage de programmation général",
+        "Un langage de requête read-only pour interroger les données dans Azure Monitor Logs et Application Insights",
+        "Un type de base de données",
+        "Un protocole réseau"
+      ],
+      "answer": 1,
+      "explanation": "KQL (Kusto Query Language) est un langage de requête puissant et read-only pour explorer et analyser les logs dans Azure Monitor. Syntaxe proche de SQL avec des opérateurs spécialisés (summarize, render, join, etc.) pour l'analyse de logs et time-series.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 65,
+      "question": "Quels types d'alertes peut-on créer dans Azure Monitor ?",
+      "options": [
+        "Uniquement des alertes email",
+        "Metric alerts (basées sur des seuils de métriques), Log alerts (basées sur des requêtes KQL), et Activity log alerts (basées sur des événements Azure)",
+        "Uniquement des alertes SMS",
+        "Aucune alerte n'est possible"
+      ],
+      "answer": 1,
+      "explanation": "Azure Monitor offre 3 types d'alertes : 1) Metric Alerts (ex: CPU > 80%), 2) Log Alerts (basées sur requêtes KQL sur Log Analytics), 3) Activity Log Alerts (événements control plane : création/suppression de ressources, health events). Chaque alerte peut déclencher des Action Groups.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 66,
+      "question": "Qu'est-ce qu'un Action Group dans Azure Monitor ?",
+      "options": [
+        "Un groupe de VMs",
+        "Une collection d'actions de notification (email, SMS, webhook, Logic App, etc.) déclenchées par des alertes Azure Monitor",
+        "Un type de stockage",
+        "Un groupe d'utilisateurs"
+      ],
+      "answer": 1,
+      "explanation": "Un Action Group est une collection réutilisable d'actions de notification configurées par le propriétaire de la subscription. Actions disponibles : Email, SMS, Push notification, Voice call, Webhook, ITSM, Logic App, Azure Function, Automation Runbook.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 67,
+      "question": "Qu'est-ce qu'Application Insights ?",
+      "options": [
+        "Un service de stockage",
+        "Un service APM (Application Performance Management) pour monitorer les applications avec telemetry automatique, détection d'anomalies, et distributed tracing",
+        "Un type de VM",
+        "Un service de base de données"
+      ],
+      "answer": 1,
+      "explanation": "Application Insights est un service APM qui fournit : monitoring de performance, détection automatique d'anomalies, distributed tracing, live metrics, usage analytics, et availability tests. S'intègre avec .NET, Java, Node.js, Python via des SDKs.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 68,
+      "question": "Qu'est-ce qu'un ARM Template ?",
+      "options": [
+        "Un type de VM",
+        "Un fichier JSON déclaratif qui définit l'infrastructure et la configuration à déployer dans Azure (Infrastructure as Code)",
+        "Un service de monitoring",
+        "Un service de stockage"
+      ],
+      "answer": 1,
+      "explanation": "Les ARM Templates sont des fichiers JSON qui définissent déclarativement les ressources Azure à déployer. Ils supportent : paramètres, variables, fonctions, outputs, et déploiement idempotent. C'est la méthode IaC native d'Azure avec support de What-If previews.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 69,
+      "question": "Qu'est-ce que Bicep dans Azure ?",
+      "options": [
+        "Un type de VM",
+        "Un langage de domaine spécifique (DSL) qui simplifie l'écriture de templates ARM avec une syntaxe plus concise et lisible",
+        "Un service de base de données",
+        "Un protocole réseau"
+      ],
+      "answer": 1,
+      "explanation": "Bicep est un DSL transparent par-dessus ARM templates offrant une syntaxe simplifiée et plus lisible. Il se compile en ARM templates JSON. Avantages : typage fort, IntelliSense, modules réutilisables, et syntaxe plus concise que JSON. Bicep est le successeur recommandé des ARM templates.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 70,
+      "question": "Comment Azure CLI et Azure PowerShell diffèrent-ils ?",
+      "options": [
+        "Aucune différence",
+        "Azure CLI est cross-platform avec une syntaxe Bash-style, Azure PowerShell utilise la syntaxe PowerShell cmdlet (Verb-Noun) et s'intègre mieux avec Windows",
+        "Azure CLI n'existe plus",
+        "Azure PowerShell est obsolète"
+      ],
+      "answer": 1,
+      "explanation": "Azure CLI : cross-platform (Linux, Mac, Windows), syntaxe bash-style (az group create), output JSON par défaut. Azure PowerShell : module PowerShell cross-platform, syntaxe cmdlet (New-AzResourceGroup), objets PowerShell. Les deux offrent les mêmes fonctionnalités, le choix dépend de vos préférences.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 71,
+      "question": "Quelle est la différence entre Azure DevOps et GitHub Actions pour CI/CD ?",
+      "options": [
+        "Aucune différence",
+        "Azure DevOps offre une suite complète (Boards, Repos, Pipelines, Artifacts, Test Plans), GitHub Actions est intégré à GitHub et axé sur CI/CD avec marketplace d'actions",
+        "GitHub Actions n'existe pas",
+        "Azure DevOps est obsolète"
+      ],
+      "answer": 1,
+      "explanation": "Azure DevOps est une suite complète ALM avec Boards (Agile), Repos (Git), Pipelines (CI/CD), Artifacts (package management), Test Plans. GitHub Actions est le système CI/CD natif de GitHub avec workflows YAML et marketplace d'actions. Les deux s'intègrent bien avec Azure.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 72,
+      "question": "Quels sont les types de disques Azure et leurs cas d'usage ?",
+      "options": [
+        "Un seul type de disque",
+        "Standard HDD (économique, non-critique), Standard SSD (workloads légers), Premium SSD (production avec faible latence), Ultra Disk (workloads extrêmes I/O intensifs comme SAP HANA)",
+        "Uniquement HDD",
+        "Tous les disques ont les mêmes performances"
+      ],
+      "answer": 1,
+      "explanation": "4 types : Standard HDD (économique, < 500 IOPS), Standard SSD (workloads légers, jusqu'à 6000 IOPS), Premium SSD (production, jusqu'à 20000 IOPS, < 2ms latence), Ultra Disk (workloads critiques, jusqu'à 160000 IOPS, < 1ms latence, IOPS/throughput configurables).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 73,
+      "question": "Qu'est-ce qu'Azure NetApp Files ?",
+      "options": [
+        "Un service de VM",
+        "Un service de stockage de fichiers NFS/SMB enterprise-grade managé par NetApp avec performances élevées pour les workloads exigeants",
+        "Un type de base de données",
+        "Un service de monitoring"
+      ],
+      "answer": 1,
+      "explanation": "Azure NetApp Files est un service de partage de fichiers NFS/SMB enterprise-grade basé sur l'appliance NetApp ONTAP. Offre : performances ultra-élevées (jusqu'à 4.5 GB/s par volume), snapshots instantanés, réplication cross-region, et support SAP HANA, HPC, databases.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 74,
+      "question": "Qu'est-ce que Blob Lifecycle Management dans Azure Storage ?",
+      "options": [
+        "Un service de monitoring",
+        "Des règles automatiques pour transitionner des blobs entre tiers (Hot → Cool → Archive) ou les supprimer basé sur l'âge ou la date du dernier accès",
+        "Un type de VM",
+        "Un service de base de données"
+      ],
+      "answer": 1,
+      "explanation": "Lifecycle Management permet d'automatiser la gestion des blobs avec des règles : transition vers Cool après N jours sans accès, vers Archive après M jours, suppression après X jours. Réduit les coûts en optimisant le stockage selon les patterns d'accès.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 75,
+      "question": "Qu'est-ce que Blob Versioning dans Azure Storage ?",
+      "options": [
+        "Un service de monitoring",
+        "Une fonctionnalité qui maintient automatiquement les versions précédentes d'un blob lors de modifications, permettant de restaurer des versions antérieures",
+        "Un type de chiffrement",
+        "Un service de backup"
+      ],
+      "answer": 1,
+      "explanation": "Blob Versioning maintient automatiquement les versions antérieures des blobs lors de modifications ou suppressions. Chaque modification crée une nouvelle version avec un version ID unique. Permet de récupérer des données accidentellement modifiées ou supprimées. Complète la fonctionnalité Soft Delete.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 76,
+      "question": "Comment fonctionne Azure Policy for AKS avec Gatekeeper/OPA ?",
+      "options": [
+        "Azure Policy n'est pas compatible avec AKS",
+        "Azure Policy installe Gatekeeper (implémentation OPA) dans AKS et synchronise les policies Azure vers des ConstraintTemplates Kubernetes pour enforcer des règles de sécurité",
+        "Uniquement avec des scripts manuels",
+        "Via NSG uniquement"
+      ],
+      "answer": 1,
+      "explanation": "Azure Policy for AKS déploie l'add-on Gatekeeper (Open Policy Agent) dans le cluster. Les policies Azure (ex: 'interdire les conteneurs privileged') sont converties en ConstraintTemplates et Constraints OPA. Gatekeeper valide les ressources K8s via admission webhooks et reporte la compliance à Azure.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 77,
+      "question": "Qu'est-ce qu'Azure AD Workload Identity et pourquoi remplace-t-elle AAD Pod Identity ?",
+      "options": [
+        "Ce sont exactement la même chose",
+        "Workload Identity utilise le standard Kubernetes Service Account Token Volume Projection avec OIDC, offrant une intégration native sans composants personnalisés contrairement à AAD Pod Identity",
+        "AAD Pod Identity est plus moderne",
+        "Workload Identity n'existe pas"
+      ],
+      "answer": 1,
+      "explanation": "Azure AD Workload Identity utilise les standards Kubernetes (Service Account Token Volume Projection + OIDC federation) pour lier des pods à des Azure AD identities. Elle remplace AAD Pod Identity (deprecated) car elle est : plus simple (pas de NMI/MIC pods), plus sécurisée, et suit les standards K8s.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 78,
+      "question": "Qu'est-ce qu'un Private AKS cluster ?",
+      "options": [
+        "Un cluster dans un VNet privé uniquement",
+        "Un cluster où le Kubernetes API server n'a pas d'endpoint public, accessible uniquement via Private Link depuis le VNet ou réseaux connectés",
+        "Un cluster sans internet",
+        "Un cluster gratuit"
+      ],
+      "answer": 1,
+      "explanation": "Un Private AKS cluster expose le Kubernetes API server uniquement via un Private Endpoint (pas d'IP publique). L'accès se fait via le VNet, VPN, ou ExpressRoute. Améliore la sécurité en éliminant l'exposition Internet. Nécessite une configuration réseau appropriée pour l'accès et les nodes.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 79,
+      "question": "Comment fonctionne Authorized IP Ranges dans AKS ?",
+      "options": [
+        "C'est un NSG standard",
+        "Une whitelist d'IP/CIDR ranges qui peuvent accéder au Kubernetes API server public endpoint, bloquant tout autre trafic",
+        "Ça ne fonctionne qu'avec les Private Clusters",
+        "C'est obsolète"
+      ],
+      "answer": 1,
+      "explanation": "Authorized IP Ranges permet de définir une whitelist d'IP publiques/CIDR autorisées à accéder au Kubernetes API server. Tout trafic hors de ces ranges est bloqué. Améliore la sécurité pour les clusters non-private. Note : incompatible avec Private Clusters qui n'ont pas d'endpoint public.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 80,
+      "question": "Qu'est-ce que l'Azure CNI Overlay mode et quand l'utiliser ?",
+      "options": [
+        "C'est identique à Kubenet",
+        "Un mode CNI qui attribue des IPs privées aux pods depuis un espace d'adressage overlay séparé, économisant les IPs VNet tout en gardant les avantages d'Azure CNI",
+        "C'est plus lent que Kubenet",
+        "Il n'existe pas"
+      ],
+      "answer": 1,
+      "explanation": "Azure CNI Overlay alloue des IPs pods depuis un CIDR overlay (10.244.0.0/16 par défaut) au lieu du VNet, économisant les IPs VNet comme Kubenet. Contrairement à Kubenet, il offre : Network Policies natives, performances supérieures, et compatibilité avec plus de fonctionnalités AKS. Recommandé pour les grands clusters.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 81,
+      "question": "Comment configurer le Cluster Autoscaler dans AKS ?",
+      "options": [
+        "C'est automatique sans configuration",
+        "En activant l'autoscaling sur les node pools avec min/max nodes, le Cluster Autoscaler ajoute des nodes quand les pods sont en pending (manque de ressources) et en retire quand ils sont sous-utilisés",
+        "Via des scripts manuels uniquement",
+        "L'autoscaling n'existe pas pour AKS"
+      ],
+      "answer": 1,
+      "explanation": "Le Cluster Autoscaler AKS scale les node pools basé sur les ressources : scale-out quand des pods sont unschedulable (pending) par manque de ressources, scale-in quand des nodes sont sous-utilisés (< 50% pendant 10min par défaut). Configuration : min/max nodes par node pool, scan interval, scale-down settings.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 82,
+      "question": "Quelle est la différence entre Horizontal Pod Autoscaler (HPA) et Vertical Pod Autoscaler (VPA) ?",
+      "options": [
+        "Aucune différence",
+        "HPA scale le nombre de replicas (pods) horizontalement basé sur des métriques, VPA ajuste les requests/limits CPU/mémoire des pods existants verticalement",
+        "VPA scale les pods, HPA les ressources",
+        "HPA est obsolète"
+      ],
+      "answer": 1,
+      "explanation": "HPA (Horizontal Pod Autoscaler) ajoute/retire des pod replicas basé sur CPU, mémoire ou custom metrics (scale OUT/IN). VPA (Vertical Pod Autoscaler) ajuste les resource requests/limits des pods existants (scale UP/DOWN). HPA est plus courant, VPA est utile pour les workloads stateful.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 83,
+      "question": "Comment utiliser Spot node pools dans AKS pour optimiser les coûts ?",
+      "options": [
+        "Les Spot node pools ne sont pas disponibles pour AKS",
+        "En créant un node pool avec --priority Spot, permettant de réduire les coûts jusqu'à 90% pour des workloads tolérant les interruptions avec taints/tolerations appropriés",
+        "C'est automatique pour tous les pods",
+        "Les Spot nodes sont plus chers"
+      ],
+      "answer": 1,
+      "explanation": "Les Spot node pools AKS utilisent des Azure Spot VMs (jusqu'à -90% du coût). Les nodes ont un taint kubernetes.azure.com/scalesetpriority=spot:NoSchedule. Les pods doivent avoir les tolerations correspondantes. Idéal pour : batch jobs, CI/CD, dev/test, workloads stateless avec résilience.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 84,
+      "question": "Qu'est-ce qu'Azure Hybrid Benefit et comment l'utiliser avec AKS ?",
+      "options": [
+        "Un service de backup",
+        "Un programme permettant d'utiliser vos licences Windows Server et SQL Server existantes sur Azure pour réduire les coûts, applicable aux node pools Windows dans AKS",
+        "Un type de VM",
+        "Un service de monitoring"
+      ],
+      "answer": 1,
+      "explanation": "Azure Hybrid Benefit permet d'utiliser vos licences Windows Server on-premises avec Software Assurance sur Azure pour économiser jusqu'à 40%. Pour AKS : applicable aux node pools Windows, réduisant significativement le coût des Windows nodes. S'active au niveau du node pool lors de la création.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 85,
+      "question": "Qu'est-ce qu'une architecture multi-region active-active dans Azure ?",
+      "options": [
+        "Avoir des ressources dans plusieurs Resource Groups",
+        "Déployer des applications dans plusieurs régions Azure où toutes les régions traitent activement du trafic simultanément avec un load balancer global",
+        "Avoir plusieurs VMs dans une région",
+        "Utiliser plusieurs subscriptions"
+      ],
+      "answer": 1,
+      "explanation": "Architecture active-active : toutes les régions traitent du trafic production simultanément avec Azure Front Door ou Traffic Manager pour la distribution. Offre : meilleure disponibilité (pas de single point of failure), performances globales optimales, pas de capacité idle. Requiert : data replication, consistent state management.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 86,
+      "question": "Qu'est-ce qu'Azure Site Recovery (ASR) ?",
+      "options": [
+        "Un service de backup uniquement",
+        "Une solution de disaster recovery qui réplique des workloads VMs vers une région secondaire et automatise le failover en cas de catastrophe",
+        "Un type de VM",
+        "Un service de monitoring"
+      ],
+      "answer": 1,
+      "explanation": "Azure Site Recovery (ASR) réplique en continu des VMs Azure vers une région secondaire (ou on-premises vers Azure). En cas de disaster : failover orchestré automatique vers la région secondaire. Offre : RPO < 5 min (app-consistent snapshots), RTO < 2h, test DR sans impact production.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 87,
+      "question": "Quelles sont les stratégies de Disaster Recovery classiques dans Azure ?",
+      "options": [
+        "Uniquement la sauvegarde",
+        "Backup & Restore (RPO/RTO élevés, coût faible), Pilot Light (données répliquées, services minimum), Warm Standby (environnement réduit actif), Active-Active (full production multi-region)",
+        "Une seule stratégie existe",
+        "DR n'est pas possible dans Azure"
+      ],
+      "answer": 1,
+      "explanation": "4 stratégies DR : 1) Backup & Restore (RPO/RTO heures, plus économique), 2) Pilot Light (données répliquées, infra minimale, RPO minutes/RTO heures), 3) Warm Standby (environnement scaled-down actif, RPO secondes/RTO minutes), 4) Active-Active (full production multi-region, RPO/RTO minimum, coût maximum).",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 88,
+      "question": "Comment fonctionne la geo-replication dans Azure SQL Database pour le DR ?",
+      "options": [
+        "Ce n'est pas possible",
+        "Active geo-replication crée des répliques secondaires lisibles asynchrones dans jusqu'à 4 régions avec failover automatique ou manuel, offrant RPO < 5s et RTO < 30s",
+        "Uniquement des backups manuels",
+        "Réplication synchrone uniquement"
+      ],
+      "answer": 1,
+      "explanation": "Active geo-replication Azure SQL : réplication asynchrone continue vers jusqu'à 4 régions secondaires. Secondaires lisibles pour offload lecture. Auto-failover groups pour failover automatique transparent. Offre : RPO < 5 secondes, RTO < 30 secondes, 99.99% SLA avec geo-replication.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 89,
+      "question": "Comment Azure Front Door facilite-t-il le multi-region failover ?",
+      "options": [
+        "Front Door ne gère pas le failover",
+        "Front Door route automatiquement le trafic vers les backends sains basé sur les health probes, détectant les pannes et redirigeant vers des régions alternatives en < 30 secondes",
+        "Le failover est manuel uniquement",
+        "Nécessite Traffic Manager"
+      ],
+      "answer": 1,
+      "explanation": "Azure Front Door effectue des health probes continues sur tous les backends (multi-region). En cas de panne d'une région : détection en ~30 secondes, trafic automatiquement redirigé vers les régions saines. Offre : failover automatique transparent, priorité configurable, weighted routing pour progressive rollout.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 90,
+      "question": "Qu'est-ce qu'Azure Key Vault et ses cas d'usage principaux ?",
+      "options": [
+        "Un service de stockage de fichiers",
+        "Un service managé pour stocker et accéder de manière sécurisée aux secrets (passwords, connection strings), clés de chiffrement, et certificats SSL/TLS",
+        "Un type de VM",
+        "Un service de base de données"
+      ],
+      "answer": 1,
+      "explanation": "Azure Key Vault stocke de manière sécurisée : Secrets (API keys, connection strings), Keys (clés de chiffrement pour Azure services), Certificates (SSL/TLS). Offre : chiffrement hardware (HSM), audit logging, intégration Azure AD, RBAC granulaire, soft delete. Élimine les secrets hardcodés.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 91,
+      "question": "Qu'est-ce que Soft Delete dans Azure Key Vault ?",
+      "options": [
+        "Suppression définitive immédiate",
+        "Une fonctionnalité de protection qui retient les secrets/keys/certificates supprimés pendant 90 jours, permettant leur récupération avant la purge définitive",
+        "Un type de chiffrement",
+        "Un service de monitoring"
+      ],
+      "answer": 1,
+      "explanation": "Soft Delete (activé par défaut) retient les objets supprimés pendant 90 jours (configurable 7-90 jours) avant purge définitive. Permet de récupérer des secrets accidentellement supprimés. Purge Protection (optionnel) empêche même l'admin de purger pendant la rétention, protégeant contre les attaques.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 92,
+      "question": "Quelle est la différence entre Access Policies et RBAC dans Key Vault ?",
+      "options": [
+        "Aucune différence",
+        "Access Policies (legacy) définissent des permissions au niveau vault entier, RBAC (recommandé) offre des permissions granulaires au niveau individual secret/key/certificate via Azure RBAC standard",
+        "RBAC n'est pas supporté",
+        "Access Policies sont plus sécurisées"
+      ],
+      "answer": 1,
+      "explanation": "Access Policies (modèle legacy) : permissions au niveau vault entier (Get, List, Set sur tous les secrets). Azure RBAC (recommandé depuis 2021) : permissions granulaires avec rôles intégrés (Key Vault Secrets User, Officer, etc.) au niveau individuel ou groupe. RBAC offre meilleure gouvernance et intégration.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 93,
+      "question": "Qu'est-ce qu'Azure Managed HSM dans Key Vault ?",
+      "options": [
+        "Un type de VM",
+        "Un service de HSM (Hardware Security Module) dédié single-tenant avec FIPS 140-2 Level 3 validation pour les clés les plus sensibles",
+        "Un service de stockage",
+        "Un service de monitoring"
+      ],
+      "answer": 1,
+      "explanation": "Managed HSM est un HSM dédié single-tenant (vs multi-tenant dans standard Key Vault) offrant : FIPS 140-2 Level 3 (vs Level 2), contrôle exclusif des clés, Security Domain pour ownership des clés. Coût plus élevé (~$5/h) mais requis pour compliance exigeante (finance, santé).",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 94,
+      "question": "Qu'est-ce que Microsoft Defender for Cloud (anciennement Azure Security Center) ?",
+      "options": [
+        "Un antivirus uniquement",
+        "Une plateforme unifiée de sécurité cloud offrant : security posture management (CSPM), workload protection (CWPP), compliance assessment, et threat protection",
+        "Un service de backup",
+        "Un type de VM"
+      ],
+      "answer": 1,
+      "explanation": "Microsoft Defender for Cloud (ex-Azure Security Center + Azure Defender) offre : Secure Score (posture assessment), recommendations, compliance dashboards (PCI-DSS, ISO, etc.), threat protection pour VMs/containers/SQL/Storage, vulnerability assessment, et Just-in-Time VM access.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 95,
+      "question": "Qu'est-ce qu'Azure Sentinel ?",
+      "options": [
+        "Un service de stockage",
+        "Une solution SIEM/SOAR cloud-native pour la détection, investigation, et réponse aux menaces avec ML et automation",
+        "Un type de VM",
+        "Un service de base de données"
+      ],
+      "answer": 1,
+      "explanation": "Azure Sentinel est un SIEM (Security Information Event Management) et SOAR (Security Orchestration Automated Response) cloud-native. Offre : collecte de logs à large échelle, détection de menaces avec ML, hunting avec KQL, investigation (incident graph), playbooks d'automatisation (Logic Apps).",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 96,
+      "question": "Qu'est-ce qu'Azure Policy et comment assure-t-elle la governance ?",
+      "options": [
+        "Un service de backup",
+        "Un service qui évalue les ressources Azure contre des règles définies (policies) pour assurer la compliance, empêcher les déploiements non-conformes, et automatiser la remediation",
+        "Un type de VM",
+        "Un service de monitoring"
+      ],
+      "answer": 1,
+      "explanation": "Azure Policy définit et enforce des règles organisationnelles via des policies (ex: 'VMs doivent avoir des Managed Disks', 'ressources uniquement dans certaines régions'). Modes : Audit (report), Deny (empêcher), Modify/DeployIfNotExists (remediation). S'applique à tous les niveaux de scope.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 97,
+      "question": "Qu'est-ce que Customer-Managed Keys (CMK) avec Key Vault ?",
+      "options": [
+        "Des clés générées par Microsoft uniquement",
+        "Un modèle où vous contrôlez et gérez vos propres clés de chiffrement stockées dans Key Vault, utilisées par les services Azure pour chiffrer vos données",
+        "Un type de stockage",
+        "Un service de monitoring"
+      ],
+      "answer": 1,
+      "explanation": "Par défaut, Azure chiffre les données at-rest avec des Microsoft-Managed Keys (MMK). CMK (Customer-Managed Keys) vous donne le contrôle total : vous créez et gérez les clés dans Key Vault, Azure les utilise pour chiffrer. Offre : control complet, rotation de clés, révocation, audit. Requis pour certaines compliance.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 98,
+      "question": "Qu'est-ce qu'Azure Functions et ses use cases ?",
+      "options": [
+        "Un service de VM managé",
+        "Une plateforme serverless event-driven pour exécuter du code à la demande sans gérer l'infrastructure, idéale pour les microservices et intégrations",
+        "Un service de stockage",
+        "Un service de base de données"
+      ],
+      "answer": 1,
+      "explanation": "Azure Functions est une solution serverless compute event-driven : vous écrivez le code, Azure gère l'infrastructure. Triggers : HTTP, Timer, Queue, Blob, EventHub, etc. Use cases : APIs serverless, processing de fichiers, jobs planifiés, intégrations, webhooks. Plans : Consumption (pay-per-execution), Premium, Dedicated.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 99,
+      "question": "Qu'est-ce qu'Azure Container Apps ?",
+      "options": [
+        "Identique à AKS",
+        "Une plateforme serverless managée pour conteneurs avec auto-scaling, HTTPS ingress, et intégration Dapr, sans gérer Kubernetes",
+        "Un service de stockage",
+        "Un type de VM"
+      ],
+      "answer": 1,
+      "explanation": "Azure Container Apps est une plateforme serverless pour conteneurs construite sur Kubernetes mais abstraite. Offre : auto-scaling (even to zero), HTTPS ingress, Dapr integration, revisioning, split traffic. Plus simple qu'AKS pour microservices, APIs, event processing. Entre Azure Functions et AKS en complexité/flexibilité.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 100,
+      "question": "Comment optimiser les coûts Azure avec Reserved Instances et Azure Hybrid Benefit ?",
+      "options": [
+        "Ces options n'existent pas",
+        "Reserved Instances offrent jusqu'à 72% de réduction pour un engagement 1-3 ans, Azure Hybrid Benefit permet d'utiliser vos licences existantes pour économiser jusqu'à 40% supplémentaires",
+        "Elles augmentent les coûts",
+        "Uniquement pour les VMs Windows"
+      ],
+      "answer": 1,
+      "explanation": "Reserved Instances (RI) : engagement 1 ou 3 ans sur compute (VMs, SQL Database, Cosmos DB, etc.) pour 40-72% de réduction vs pay-as-you-go. Azure Hybrid Benefit : utilisez vos licences Windows/SQL Server existantes avec Software Assurance pour 40% de réduction supplémentaire. Combinables pour jusqu'à 80% d'économies.",
+      "difficulty": "advanced"
+    }
+  ]
+}

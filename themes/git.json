@@ -1,0 +1,916 @@
+{
+  "title": "Git & Version Control",
+  "description": "70 questions couvrant tous les niveaux de Git et du contrôle de version : 20 questions de base sur les concepts fondamentaux et commandes essentielles, 35 questions intermédiaires sur le branching avancé, rebase, stash et hooks, et 15 questions avancées sur les Git internals, reflog et les workflows d'équipe complexes",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Qu'est-ce que Git ?",
+      "options": [
+        "Un système de contrôle de version distribué",
+        "Un hébergeur de code en ligne",
+        "Un langage de programmation",
+        "Un système de gestion de base de données"
+      ],
+      "answer": 0,
+      "explanation": "Git est un système de contrôle de version distribué (VCS) créé par Linus Torvalds en 2005. Chaque développeur possède une copie complète de l'historique du projet, permettant de travailler hors ligne et offrant plus de flexibilité qu'un VCS centralisé.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 2,
+      "question": "Quelle est la différence entre Git et GitHub ?",
+      "options": [
+        "Git est un outil, GitHub est une plateforme d'hébergement",
+        "Git est payant, GitHub est gratuit",
+        "Git fonctionne en ligne, GitHub hors ligne",
+        "Il n'y a aucune différence"
+      ],
+      "answer": 0,
+      "explanation": "Git est un système de contrôle de version local qui peut fonctionner sans connexion internet. GitHub, GitLab et Bitbucket sont des plateformes web qui hébergent des repositories Git et ajoutent des fonctionnalités collaboratives (pull requests, issues, CI/CD).",
+      "difficulty": "easy"
+    },
+    {
+      "id": 3,
+      "question": "Quelles sont les trois zones principales dans Git ?",
+      "options": [
+        "Working directory, staging area, repository",
+        "Local, remote, cloud",
+        "Development, testing, production",
+        "Master, develop, feature"
+      ],
+      "answer": 0,
+      "explanation": "Les trois zones de Git sont : le working directory (répertoire de travail où on modifie les fichiers), la staging area/index (zone de préparation des commits), et le repository local (base de données des commits).",
+      "difficulty": "easy"
+    },
+    {
+      "id": 4,
+      "question": "Qu'est-ce qu'un commit dans Git ?",
+      "options": [
+        "Un snapshot de l'état du projet à un instant T",
+        "Une synchronisation avec le serveur distant",
+        "Une sauvegarde automatique",
+        "Une branche temporaire"
+      ],
+      "answer": 0,
+      "explanation": "Un commit est un instantané (snapshot) de l'état des fichiers du projet. Chaque commit possède un identifiant unique (hash SHA-1), un message descriptif, un auteur, une date et pointe vers son commit parent.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 5,
+      "question": "Que représente HEAD dans Git ?",
+      "options": [
+        "Un pointeur vers le commit actuellement chargé",
+        "La première ligne d'un fichier",
+        "Le serveur principal du repository",
+        "La version la plus récente sur le serveur"
+      ],
+      "answer": 0,
+      "explanation": "HEAD est un pointeur qui indique sur quel commit (généralement via une branche) vous travaillez actuellement. La plupart du temps, HEAD pointe vers une branche, qui elle-même pointe vers un commit.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 6,
+      "question": "Qu'est-ce qu'une branche dans Git ?",
+      "options": [
+        "Un pointeur mobile vers un commit",
+        "Une copie complète du repository",
+        "Un dossier séparé sur le disque",
+        "Un serveur distant"
+      ],
+      "answer": 0,
+      "explanation": "Une branche est simplement un pointeur léger et mobile vers un commit. Créer une branche ne duplique pas les fichiers, ce qui rend les branches très rapides et peu coûteuses en espace disque dans Git.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 7,
+      "question": "Quelle commande permet d'initialiser un nouveau repository Git ?",
+      "options": [
+        "git init",
+        "git start",
+        "git create",
+        "git new"
+      ],
+      "answer": 0,
+      "explanation": "La commande 'git init' crée un nouveau repository Git dans le répertoire courant en créant un sous-dossier .git qui contient tous les fichiers nécessaires au fonctionnement de Git.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 8,
+      "question": "Comment cloner un repository distant ?",
+      "options": [
+        "git clone <url>",
+        "git copy <url>",
+        "git download <url>",
+        "git pull <url>"
+      ],
+      "answer": 0,
+      "explanation": "La commande 'git clone <url>' télécharge une copie complète d'un repository distant, incluant tout l'historique des commits. Elle configure automatiquement le remote 'origin' pointant vers le repository source.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 9,
+      "question": "Quelle commande ajoute des fichiers à la staging area ?",
+      "options": [
+        "git add",
+        "git stage",
+        "git commit",
+        "git prepare"
+      ],
+      "answer": 0,
+      "explanation": "La commande 'git add' ajoute les modifications de fichiers à la staging area (index), les préparant pour le prochain commit. On peut utiliser 'git add .' pour ajouter tous les fichiers modifiés du répertoire courant.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 10,
+      "question": "Comment créer un commit avec un message ?",
+      "options": [
+        "git commit -m \"message\"",
+        "git save -m \"message\"",
+        "git push -m \"message\"",
+        "git add -m \"message\""
+      ],
+      "answer": 0,
+      "explanation": "La commande 'git commit -m \"message\"' crée un nouveau commit avec les fichiers présents dans la staging area et le message descriptif fourni. Sans l'option -m, Git ouvre un éditeur de texte pour saisir le message.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 11,
+      "question": "Quelle commande affiche l'état actuel du working directory ?",
+      "options": [
+        "git status",
+        "git state",
+        "git info",
+        "git check"
+      ],
+      "answer": 0,
+      "explanation": "La commande 'git status' montre les fichiers modifiés, les fichiers en staging area, les fichiers non trackés, et la branche courante. C'est une des commandes les plus utilisées pour comprendre l'état de son travail.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 12,
+      "question": "Comment visualiser l'historique des commits ?",
+      "options": [
+        "git log",
+        "git history",
+        "git commits",
+        "git show-all"
+      ],
+      "answer": 0,
+      "explanation": "La commande 'git log' affiche l'historique des commits de la branche courante, du plus récent au plus ancien, avec les hash, auteurs, dates et messages de commit. De nombreuses options permettent de personnaliser l'affichage.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 13,
+      "question": "Quelle commande montre les différences non stagées ?",
+      "options": [
+        "git diff",
+        "git changes",
+        "git compare",
+        "git status -v"
+      ],
+      "answer": 0,
+      "explanation": "La commande 'git diff' montre les modifications dans le working directory qui ne sont pas encore dans la staging area. 'git diff --staged' montre les différences entre la staging area et le dernier commit.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 14,
+      "question": "Comment envoyer les commits locaux vers un repository distant ?",
+      "options": [
+        "git push",
+        "git upload",
+        "git send",
+        "git sync"
+      ],
+      "answer": 0,
+      "explanation": "La commande 'git push' envoie les commits de la branche locale vers le repository distant. La syntaxe complète est 'git push <remote> <branch>', mais 'git push' suffit si une branche upstream est configurée.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 15,
+      "question": "Quelle commande récupère et fusionne les changements du remote ?",
+      "options": [
+        "git pull",
+        "git fetch",
+        "git download",
+        "git sync"
+      ],
+      "answer": 0,
+      "explanation": "La commande 'git pull' est un raccourci qui effectue 'git fetch' (téléchargement des changements) suivi de 'git merge' (fusion avec la branche locale). C'est équivalent à 'git fetch && git merge origin/branch'.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 16,
+      "question": "Comment créer une nouvelle branche ?",
+      "options": [
+        "git branch <nom>",
+        "git create-branch <nom>",
+        "git new <nom>",
+        "git add-branch <nom>"
+      ],
+      "answer": 0,
+      "explanation": "La commande 'git branch <nom>' crée une nouvelle branche pointant vers le commit actuel, mais ne bascule pas dessus. Pour créer et basculer en une commande, on utilise 'git checkout -b <nom>' ou 'git switch -c <nom>'.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 17,
+      "question": "Comment basculer sur une autre branche ?",
+      "options": [
+        "git checkout <branche>",
+        "git switch <branche>",
+        "Les deux réponses sont correctes",
+        "git change <branche>"
+      ],
+      "answer": 2,
+      "explanation": "Historiquement on utilisait 'git checkout <branche>', mais Git a introduit 'git switch <branche>' pour clarifier les commandes. Les deux fonctionnent, mais 'git switch' est plus moderne et explicite pour changer de branche.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 18,
+      "question": "Que fait la syntaxe de pattern '*.log' dans .gitignore ?",
+      "options": [
+        "Ignore tous les fichiers avec l'extension .log",
+        "Ignore uniquement le fichier nommé *.log",
+        "Ignore tous les fichiers sauf les .log",
+        "Crée une erreur de syntaxe"
+      ],
+      "answer": 0,
+      "explanation": "Le pattern '*.log' dans .gitignore utilise un wildcard pour ignorer tous les fichiers se terminant par .log, quel que soit leur nom. Le fichier .gitignore utilise des patterns glob pour définir quels fichiers Git doit ignorer.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 19,
+      "question": "Quel pattern .gitignore permet d'ignorer tous les fichiers d'un dossier ?",
+      "options": [
+        "node_modules/",
+        "node_modules/*",
+        "node_modules",
+        "Toutes ces réponses fonctionnent"
+      ],
+      "answer": 0,
+      "explanation": "Le pattern 'node_modules/' avec un slash final est la syntaxe recommandée pour ignorer un dossier et tout son contenu. 'node_modules' sans slash fonctionnerait aussi, mais ajouter le slash clarifie qu'il s'agit d'un répertoire.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 20,
+      "question": "Quel est le cycle de travail basique dans Git ?",
+      "options": [
+        "Modifier → add → commit → push",
+        "Modifier → commit → add → push",
+        "add → commit → modify → push",
+        "push → modify → add → commit"
+      ],
+      "answer": 0,
+      "explanation": "Le workflow Git standard est : 1) Modifier les fichiers dans le working directory, 2) 'git add' pour stager les changements, 3) 'git commit' pour créer un snapshot, 4) 'git push' pour partager avec le remote. C'est le cycle fondamental du développement avec Git.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 21,
+      "question": "Qu'est-ce que GitFlow ?",
+      "options": [
+        "Une stratégie de branching avec master, develop, feature, release et hotfix",
+        "Un outil de déploiement continu",
+        "Une alternative à Git",
+        "Un protocole de communication réseau"
+      ],
+      "answer": 0,
+      "explanation": "GitFlow est un modèle de branching proposé par Vincent Driessen qui définit des branches spécifiques : master (production), develop (intégration), feature/* (nouvelles fonctionnalités), release/* (préparation des releases) et hotfix/* (corrections urgentes en production).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 22,
+      "question": "Quelle est la différence entre GitHub Flow et GitFlow ?",
+      "options": [
+        "GitHub Flow est plus simple avec seulement main et feature branches",
+        "GitHub Flow nécessite plus de branches que GitFlow",
+        "GitHub Flow est un fork de GitFlow",
+        "Il n'y a aucune différence"
+      ],
+      "answer": 0,
+      "explanation": "GitHub Flow est une stratégie simplifiée : une branche main stable et des feature branches éphémères. Chaque feature est mergée via pull request après validation. C'est plus adapté au déploiement continu que GitFlow qui est plus structuré.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 23,
+      "question": "Qu'est-ce qu'un merge fast-forward ?",
+      "options": [
+        "Déplacement du pointeur de branche sans créer de commit de merge",
+        "Un merge très rapide grâce au cache",
+        "Un merge qui ignore les conflits",
+        "Une fusion automatique sans validation"
+      ],
+      "answer": 0,
+      "explanation": "Un fast-forward merge se produit quand la branche cible n'a pas divergé de la branche source. Git déplace simplement le pointeur de branche en avant sans créer de commit de merge, gardant un historique linéaire.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 24,
+      "question": "Pourquoi utiliser 'git merge --no-ff' ?",
+      "options": [
+        "Pour forcer la création d'un commit de merge même si fast-forward est possible",
+        "Pour accélérer le merge",
+        "Pour éviter les conflits",
+        "Pour merger sans créer de commit"
+      ],
+      "answer": 0,
+      "explanation": "L'option '--no-ff' (no fast-forward) force Git à créer un commit de merge même quand un fast-forward serait possible. Cela préserve l'information qu'une branche feature a existé et permet de mieux visualiser l'historique des fonctionnalités.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 25,
+      "question": "Comment résoudre un conflit de merge ?",
+      "options": [
+        "Éditer manuellement les fichiers, les stager, puis commit",
+        "Utiliser git merge --force",
+        "Supprimer les fichiers en conflit",
+        "Redémarrer le repository"
+      ],
+      "answer": 0,
+      "explanation": "Lors d'un conflit, Git marque les fichiers avec <<<<<<<, =======, et >>>>>>>. Il faut éditer manuellement pour choisir quelle version garder, puis 'git add' les fichiers résolus et 'git commit' pour finaliser le merge.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 26,
+      "question": "Quelle est la différence entre 'git checkout -b' et 'git switch -c' ?",
+      "options": [
+        "Aucune différence fonctionnelle, switch est plus moderne",
+        "checkout est plus rapide",
+        "switch ne fonctionne pas avec les tags",
+        "checkout est deprecated"
+      ],
+      "answer": 0,
+      "explanation": "Les deux commandes créent et basculent sur une nouvelle branche. 'git switch -c' a été introduit dans Git 2.23 pour séparer les responsabilités : 'switch' pour les branches, 'restore' pour les fichiers, alors que 'checkout' faisait les deux.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 27,
+      "question": "Quelle est la différence entre 'git branch -d' et 'git branch -D' ?",
+      "options": [
+        "-d supprime seulement si la branche est mergée, -D force la suppression",
+        "-d est plus rapide que -D",
+        "-D sauvegarde une copie avant suppression",
+        "-d supprime localement, -D supprime sur le remote"
+      ],
+      "answer": 0,
+      "explanation": "'git branch -d' est un delete 'safe' qui refuse de supprimer une branche non mergée pour éviter la perte de commits. 'git branch -D' force la suppression même si des commits ne sont pas mergés (équivalent à -d --force).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 28,
+      "question": "Que sont les remote tracking branches ?",
+      "options": [
+        "Des références locales vers l'état des branches distantes",
+        "Des branches hébergées sur le serveur",
+        "Des branches qui se synchronisent automatiquement",
+        "Des branches temporaires"
+      ],
+      "answer": 0,
+      "explanation": "Les remote tracking branches (ex: origin/main) sont des références locales en lecture seule qui reflètent l'état des branches distantes au moment du dernier fetch. Elles servent de pont entre vos branches locales et les branches distantes.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 29,
+      "question": "Quelle est la différence entre 'git fetch' et 'git pull' ?",
+      "options": [
+        "fetch télécharge seulement, pull télécharge et merge",
+        "fetch est plus lent que pull",
+        "pull nécessite des droits supplémentaires",
+        "fetch modifie les fichiers locaux"
+      ],
+      "answer": 0,
+      "explanation": "'git fetch' télécharge les changements du remote sans modifier votre working directory ni vos branches. 'git pull' fait un fetch suivi d'un merge automatique, ce qui équivaut à 'git fetch && git merge origin/branch'.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 30,
+      "question": "À quoi sert 'git push -u origin branch' ?",
+      "options": [
+        "Définit la branche upstream pour les futurs push/pull",
+        "Upload tous les fichiers untracked",
+        "Crée une copie de sauvegarde",
+        "Active le mode debug"
+      ],
+      "answer": 0,
+      "explanation": "L'option '-u' (ou '--set-upstream') configure la branche distante comme upstream de la branche locale. Après cela, un simple 'git push' ou 'git pull' saura automatiquement vers/depuis quelle branche distante opérer.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 31,
+      "question": "Quelle est la principale différence entre merge et rebase ?",
+      "options": [
+        "Merge préserve l'historique, rebase le réécrit linéairement",
+        "Rebase est plus sûr que merge",
+        "Merge est plus rapide que rebase",
+        "Rebase ne fonctionne qu'avec master"
+      ],
+      "answer": 0,
+      "explanation": "Merge crée un commit de fusion préservant l'historique complet des deux branches. Rebase réapplique les commits d'une branche sur une autre, créant un historique linéaire mais réécrivant les commits (nouveaux SHA).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 32,
+      "question": "Qu'est-ce que le rebase interactif ?",
+      "options": [
+        "Un outil pour réorganiser, fusionner ou modifier plusieurs commits",
+        "Un rebase qui demande confirmation à chaque étape",
+        "Un rebase avec interface graphique",
+        "Un rebase en temps réel"
+      ],
+      "answer": 0,
+      "explanation": "'git rebase -i' ouvre un éditeur permettant de réorganiser, squash, edit, reword ou drop des commits. C'est l'outil de réécriture d'historique le plus puissant pour nettoyer des commits avant de les partager.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 33,
+      "question": "Que signifie 'squash' dans un rebase interactif ?",
+      "options": [
+        "Fusionner plusieurs commits en un seul",
+        "Supprimer un commit",
+        "Renommer un commit",
+        "Déplacer un commit"
+      ],
+      "answer": 0,
+      "explanation": "Squash combine un commit avec le précédent, fusionnant leurs changements en un seul commit. C'est utile pour nettoyer l'historique en regroupant plusieurs petits commits de travail en un commit atomique cohérent.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 34,
+      "question": "Que fait 'reword' dans un rebase interactif ?",
+      "options": [
+        "Permet de modifier le message d'un commit",
+        "Réécrit complètement le commit",
+        "Supprime le contenu du commit",
+        "Fusionne deux commits"
+      ],
+      "answer": 0,
+      "explanation": "Reword permet de changer uniquement le message d'un commit sans modifier son contenu. Git appliquera le commit normalement puis ouvrira un éditeur pour modifier le message.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 35,
+      "question": "Quelle est la règle d'or du rebase ?",
+      "options": [
+        "Ne jamais rebaser des commits déjà pushés/partagés",
+        "Toujours rebaser avant de merger",
+        "Rebaser uniquement le vendredi",
+        "Faire un backup avant chaque rebase"
+      ],
+      "answer": 0,
+      "explanation": "Ne jamais rebaser des commits publics car cela réécrit l'historique avec de nouveaux SHA. Les collaborateurs qui ont basé leur travail sur les anciens commits auront des divergences et conflits. Rebase seulement des commits locaux non partagés.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 36,
+      "question": "Que fait 'git pull --rebase' ?",
+      "options": [
+        "Fetch puis rebase au lieu de merge",
+        "Pull plus rapide",
+        "Pull avec backup automatique",
+        "Pull en mode force"
+      ],
+      "answer": 0,
+      "explanation": "'git pull --rebase' effectue un fetch suivi d'un rebase plutôt qu'un merge. Cela réapplique vos commits locaux au-dessus des commits distants, maintenant un historique linéaire sans commits de merge. Utile pour garder un historique propre.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 37,
+      "question": "Comment résoudre des conflits pendant un rebase ?",
+      "options": [
+        "Résoudre, git add, puis git rebase --continue",
+        "Utiliser git merge --continue",
+        "Recommencer avec git rebase --reset",
+        "Utiliser git rebase --force"
+      ],
+      "answer": 0,
+      "explanation": "Lors d'un conflit pendant rebase : 1) Résoudre manuellement les conflits, 2) 'git add' les fichiers résolus, 3) 'git rebase --continue' pour continuer. On peut aussi utiliser '--skip' pour sauter le commit ou '--abort' pour annuler le rebase.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 38,
+      "question": "Que signifie 'git log --oneline' ?",
+      "options": [
+        "Affiche chaque commit sur une seule ligne avec SHA court et message",
+        "Affiche seulement les commits de la dernière heure",
+        "Affiche les commits en ligne de commande uniquement",
+        "Montre un seul commit"
+      ],
+      "answer": 0,
+      "explanation": "'git log --oneline' condense l'affichage en montrant un SHA court (7 caractères) et le message de commit sur une ligne. C'est très pratique pour avoir une vue d'ensemble rapide de l'historique.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 39,
+      "question": "À quoi sert 'git log --graph' ?",
+      "options": [
+        "Visualise l'historique sous forme de graphe ASCII",
+        "Crée un fichier graphique de l'historique",
+        "Affiche les statistiques des commits",
+        "Montre la performance de Git"
+      ],
+      "answer": 0,
+      "explanation": "'git log --graph' affiche l'historique des branches et merges sous forme de graphe ASCII, montrant visuellement comment les branches divergent et se rejoignent. Souvent combiné avec --oneline et --all pour une vue complète.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 40,
+      "question": "Que fait 'git log -p' ?",
+      "options": [
+        "Affiche le diff (patch) de chaque commit",
+        "Affiche seulement les commits principaux",
+        "Montre les commits poussés",
+        "Liste les commits en attente"
+      ],
+      "answer": 0,
+      "explanation": "'git log -p' (ou --patch) affiche non seulement l'historique des commits mais aussi le diff complet de chaque commit, montrant exactement quelles lignes ont été ajoutées ou supprimées. Très utile pour review détaillée.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 41,
+      "question": "À quoi sert 'git blame' ?",
+      "options": [
+        "Affiche qui a modifié chaque ligne d'un fichier et quand",
+        "Liste les erreurs dans le code",
+        "Trouve les bugs automatiquement",
+        "Affiche les conflits de merge"
+      ],
+      "answer": 0,
+      "explanation": "'git blame <fichier>' montre pour chaque ligne : le SHA du commit qui l'a modifiée, l'auteur, la date et le contenu. C'est utile pour comprendre l'historique d'une ligne de code et retrouver le contexte d'une modification.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 42,
+      "question": "Comment chercher un mot dans les messages de commit ?",
+      "options": [
+        "git log --grep=\"mot\"",
+        "git search \"mot\"",
+        "git find \"mot\"",
+        "git commit --search=\"mot\""
+      ],
+      "answer": 0,
+      "explanation": "'git log --grep=\"pattern\"' filtre l'historique pour ne montrer que les commits dont le message contient le pattern. On peut aussi utiliser '--author' pour filtrer par auteur ou '-S' pour chercher dans le code lui-même.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 43,
+      "question": "Quelle est la différence entre 'git reset --soft' et 'git reset --mixed' ?",
+      "options": [
+        "soft garde les changements en staging, mixed les met dans working directory",
+        "soft est plus rapide que mixed",
+        "mixed supprime les fichiers, soft les garde",
+        "soft fonctionne en local, mixed en remote"
+      ],
+      "answer": 0,
+      "explanation": "'git reset --soft' déplace HEAD mais garde les changements dans la staging area. '--mixed' (par défaut) déplace HEAD et unstage les changements (les met dans working directory). Utile pour réorganiser des commits.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 44,
+      "question": "Que fait 'git reset --hard' ?",
+      "options": [
+        "Déplace HEAD et supprime tous les changements non commités",
+        "Crée un commit solide et permanent",
+        "Optimise les performances de Git",
+        "Force un push vers le remote"
+      ],
+      "answer": 0,
+      "explanation": "'git reset --hard' est destructif : il déplace HEAD vers le commit spécifié et réinitialise la staging area et le working directory pour correspondre exactement à ce commit. Tous les changements non commités sont perdus. À utiliser avec précaution.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 45,
+      "question": "Quelle est la différence entre 'git reset' et 'git revert' ?",
+      "options": [
+        "reset réécrit l'historique, revert crée un nouveau commit d'annulation",
+        "revert est plus rapide que reset",
+        "reset fonctionne sur les branches, revert sur les commits",
+        "revert supprime les fichiers"
+      ],
+      "answer": 0,
+      "explanation": "'git reset' réécrit l'historique en déplaçant HEAD (dangereux pour les commits partagés). 'git revert' crée un nouveau commit qui inverse les changements d'un commit précédent, préservant l'historique. Revert est safe pour les commits publics.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 46,
+      "question": "Que fait 'git checkout -- fichier' ?",
+      "options": [
+        "Annule les modifications non stagées du fichier",
+        "Crée une nouvelle branche pour le fichier",
+        "Supprime le fichier du repository",
+        "Commit le fichier"
+      ],
+      "answer": 0,
+      "explanation": "'git checkout -- <fichier>' restaure le fichier à l'état du dernier commit, annulant toutes les modifications dans le working directory. Attention : c'est destructif, les changements sont perdus. Dans les versions récentes, 'git restore' est préféré.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 47,
+      "question": "Quelle est la nouvelle commande pour restaurer des fichiers ?",
+      "options": [
+        "git restore",
+        "git recover",
+        "git undo",
+        "git revert"
+      ],
+      "answer": 0,
+      "explanation": "'git restore' a été introduit dans Git 2.23 pour clarifier les opérations sur les fichiers. 'git restore <fichier>' restaure depuis le dernier commit, 'git restore --staged' unstage, et 'git restore --source' restaure depuis un commit spécifique.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 48,
+      "question": "À quoi sert 'git commit --amend' ?",
+      "options": [
+        "Modifier le dernier commit (message ou contenu)",
+        "Créer un commit de correction",
+        "Valider un commit en attente",
+        "Fusionner deux commits"
+      ],
+      "answer": 0,
+      "explanation": "'git commit --amend' remplace le dernier commit par un nouveau incluant les changements stagés. Utile pour corriger un message de commit ou ajouter des fichiers oubliés. Attention : ne jamais amend un commit déjà pushé.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 49,
+      "question": "Que fait 'git clean' ?",
+      "options": [
+        "Supprime les fichiers non trackés",
+        "Nettoie l'historique Git",
+        "Optimise la base de données Git",
+        "Supprime les branches mergées"
+      ],
+      "answer": 0,
+      "explanation": "'git clean' supprime les fichiers non trackés du working directory. '-n' fait un dry-run, '-f' force la suppression, '-d' inclut les dossiers, et '-x' inclut aussi les fichiers ignorés par .gitignore. Commande destructive à utiliser prudemment.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 50,
+      "question": "À quoi sert 'git stash' ?",
+      "options": [
+        "Mettre de côté temporairement des modifications non commitées",
+        "Créer une sauvegarde du repository",
+        "Cacher des fichiers sensibles",
+        "Compresser l'historique Git"
+      ],
+      "answer": 0,
+      "explanation": "'git stash' sauvegarde temporairement les modifications du working directory et staging area dans une pile, revenant à un état propre. Utile pour changer de branche rapidement sans commiter des travaux en cours.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 51,
+      "question": "Quelle est la différence entre 'git stash pop' et 'git stash apply' ?",
+      "options": [
+        "pop applique et supprime le stash, apply garde le stash",
+        "pop est plus rapide que apply",
+        "apply fonctionne sur tous les stash, pop sur un seul",
+        "pop crée un commit, apply non"
+      ],
+      "answer": 0,
+      "explanation": "'git stash pop' applique le stash le plus récent et le supprime de la pile. 'git stash apply' applique le stash mais le garde dans la pile, permettant de le réutiliser. Apply est plus safe si on n'est pas sûr du résultat.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 52,
+      "question": "Comment lister tous les stash ?",
+      "options": [
+        "git stash list",
+        "git stash show",
+        "git stash --all",
+        "git stash info"
+      ],
+      "answer": 0,
+      "explanation": "'git stash list' affiche tous les stash sauvegardés avec leur index (stash@{0}, stash@{1}, etc.) et leur message. On peut appliquer un stash spécifique avec 'git stash apply stash@{n}'.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 53,
+      "question": "Que fait 'git stash -u' ?",
+      "options": [
+        "Stash aussi les fichiers untracked",
+        "Unstash automatiquement",
+        "Upload le stash vers le remote",
+        "Active le mode urgent"
+      ],
+      "answer": 0,
+      "explanation": "Par défaut, 'git stash' ne sauvegarde que les fichiers trackés. L'option '-u' (ou '--include-untracked') inclut aussi les fichiers non trackés. '-a' (--all) inclut même les fichiers ignorés par .gitignore.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 54,
+      "question": "Quelle est la différence entre un tag annotated et lightweight ?",
+      "options": [
+        "Annotated stocke métadonnées (auteur, date, message), lightweight est juste un pointeur",
+        "Annotated est plus léger que lightweight",
+        "Lightweight contient plus d'informations",
+        "Il n'y a aucune différence"
+      ],
+      "answer": 0,
+      "explanation": "Un tag lightweight est simplement un pointeur vers un commit. Un tag annotated est un objet Git complet avec auteur, date, message et peut être signé GPG. Les tags annotated ('git tag -a') sont recommandés pour les releases.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 55,
+      "question": "Comment pousser tous les tags vers le remote ?",
+      "options": [
+        "git push --tags",
+        "git push --all-tags",
+        "git tag --push",
+        "git upload tags"
+      ],
+      "answer": 0,
+      "explanation": "'git push --tags' pousse tous les tags vers le repository distant. Par défaut, 'git push' ne pousse pas les tags. On peut aussi pousser un tag spécifique avec 'git push origin <tagname>'.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 56,
+      "question": "Qu'est-ce qu'un hook Git côté client ?",
+      "options": [
+        "Un script qui s'exécute automatiquement lors d'événements Git locaux",
+        "Une extension du client Git",
+        "Un plugin pour l'IDE",
+        "Un serveur de développement local"
+      ],
+      "answer": 0,
+      "explanation": "Les hooks client-side sont des scripts dans .git/hooks qui s'exécutent automatiquement lors d'événements locaux : pre-commit (avant commit), pre-push (avant push), commit-msg (validation du message), post-merge, etc. Utiles pour automatiser des validations.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 57,
+      "question": "Citez un use case typique du hook 'pre-commit' ?",
+      "options": [
+        "Lancer des linters ou formateurs de code",
+        "Envoyer une notification email",
+        "Créer un backup du code",
+        "Déployer en production"
+      ],
+      "answer": 0,
+      "explanation": "Le hook 'pre-commit' s'exécute avant la création du commit. Il est couramment utilisé pour lancer des linters (ESLint, Pylint), formateurs (Prettier, Black), ou des tests unitaires. Si le script retourne un code d'erreur, le commit est annulé.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 58,
+      "question": "Qu'est-ce qu'un hook server-side ?",
+      "options": [
+        "Un script qui s'exécute sur le serveur Git lors d'événements réseau",
+        "Un serveur web pour Git",
+        "Un hook qui nécessite internet",
+        "Un backup automatique"
+      ],
+      "answer": 0,
+      "explanation": "Les hooks server-side s'exécutent sur le serveur Git : pre-receive (avant d'accepter un push, peut rejeter), update (par branche), post-receive (après un push réussi, pour notifications ou déploiement). Utiles pour enforcer des policies ou automatiser des workflows.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 59,
+      "question": "Que sont les Git objects ?",
+      "options": [
+        "Les structures de données fondamentales : blob, tree, commit, tag",
+        "Les fichiers du projet",
+        "Les branches et tags",
+        "Les commandes Git"
+      ],
+      "answer": 0,
+      "explanation": "Git stocke tout dans 4 types d'objets : blob (contenu des fichiers), tree (structure de répertoires), commit (snapshot avec métadonnées et pointeur vers un tree), et tag (référence annotée à un commit). Tous sont identifiés par un hash SHA-1.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 60,
+      "question": "Qu'est-ce qu'un blob dans Git ?",
+      "options": [
+        "Un objet contenant le contenu brut d'un fichier",
+        "Une branche temporaire",
+        "Un commit volumineux",
+        "Un fichier binaire"
+      ],
+      "answer": 0,
+      "explanation": "Un blob (Binary Large Object) est un objet Git qui stocke le contenu d'un fichier sans métadonnées (pas de nom, permissions, etc.). Chaque version unique d'un fichier est un blob distinct, identifié par le hash SHA-1 de son contenu.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 61,
+      "question": "Que contient l'objet 'tree' dans Git ?",
+      "options": [
+        "La structure de répertoire avec pointeurs vers blobs et autres trees",
+        "L'arbre des commits",
+        "La liste des branches",
+        "L'historique complet"
+      ],
+      "answer": 0,
+      "explanation": "Un tree est un objet qui représente un répertoire : il contient des entrées avec nom de fichier/dossier, mode (permissions), type (blob ou tree) et hash SHA-1. C'est la représentation d'une arborescence de fichiers à un instant donné.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 62,
+      "question": "Que trouve-t-on dans le dossier .git/ ?",
+      "options": [
+        "Tous les objets, refs, config, hooks et index de Git",
+        "Seulement les fichiers de configuration",
+        "Les fichiers du projet",
+        "Les logs d'exécution"
+      ],
+      "answer": 0,
+      "explanation": "Le dossier .git/ contient toute la base de données Git : objects/ (blobs, trees, commits), refs/ (branches, tags), config (configuration locale), hooks/ (scripts), index (staging area), HEAD (pointeur courant), et logs/ (historique des mouvements).",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 63,
+      "question": "Que sont les refs dans Git ?",
+      "options": [
+        "Des fichiers contenant des hash SHA-1 pointant vers des commits",
+        "Des références bibliographiques",
+        "Des copies de fichiers",
+        "Des variables de configuration"
+      ],
+      "answer": 0,
+      "explanation": "Les refs sont des pointeurs vers des commits, stockés dans .git/refs/. Il y a refs/heads/ (branches locales), refs/remotes/ (branches distantes), refs/tags/ (tags). HEAD est une ref spéciale. C'est le mécanisme qui rend les branches si légères.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 64,
+      "question": "Qu'est-ce qu'un packfile ?",
+      "options": [
+        "Un fichier compressé contenant plusieurs objets Git",
+        "Un package de dépendances",
+        "Un fichier de configuration",
+        "Un backup automatique"
+      ],
+      "answer": 0,
+      "explanation": "Les packfiles sont des fichiers compressés (.pack) créés par 'git gc' pour optimiser le stockage. Git compresse plusieurs objets ensemble et utilise des deltas pour stocker seulement les différences entre versions similaires, réduisant drastiquement la taille du repository.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 65,
+      "question": "Qu'est-ce que le garbage collection dans Git ?",
+      "options": [
+        "Un processus qui nettoie les objets non référencés et optimise le stockage",
+        "Suppression des vieux commits",
+        "Nettoyage des fichiers temporaires",
+        "Suppression des branches mergées"
+      ],
+      "answer": 0,
+      "explanation": "'git gc' (garbage collection) nettoie les objets inaccessibles, compacte les fichiers loose objects en packfiles, supprime les refs obsolètes et optimise la base de données. Git l'exécute automatiquement, mais on peut le lancer manuellement avec 'git gc --aggressive'.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 66,
+      "question": "À quoi sert 'git reflog' ?",
+      "options": [
+        "Enregistre tous les mouvements de HEAD, même après reset ou rebase",
+        "Affiche les logs formatés",
+        "Crée des références permanentes",
+        "Log les erreurs Git"
+      ],
+      "answer": 0,
+      "explanation": "'git reflog' est un journal local de tous les mouvements de HEAD : commits, checkouts, resets, rebases, etc. Il permet de retrouver des commits 'perdus' après un reset --hard ou un rebase foireux. Chaque entrée a un alias comme HEAD@{1}, HEAD@{2}.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 67,
+      "question": "Comment récupérer un commit après un 'git reset --hard' catastrophique ?",
+      "options": [
+        "Utiliser git reflog pour trouver le SHA et git reset vers ce commit",
+        "Impossible de récupérer",
+        "Restaurer depuis un backup",
+        "Utiliser git revert"
+      ],
+      "answer": 0,
+      "explanation": "Le reflog garde l'historique des mouvements de HEAD. Après un reset --hard accidentel : 1) 'git reflog' pour trouver le SHA du commit perdu, 2) 'git reset --hard <SHA>' pour revenir à cet état. Le reflog conserve les entrées ~90 jours par défaut.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 68,
+      "question": "Que fait 'git cherry-pick' ?",
+      "options": [
+        "Applique un commit spécifique d'une branche vers une autre",
+        "Sélectionne les meilleurs commits",
+        "Nettoie les commits inutiles",
+        "Fusionne deux branches"
+      ],
+      "answer": 0,
+      "explanation": "'git cherry-pick <SHA>' applique les changements d'un commit spécifique sur la branche courante, créant un nouveau commit avec un nouveau SHA. Utile pour appliquer un hotfix d'une branche à une autre sans merger toute la branche.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 69,
+      "question": "À quoi sert 'git rebase --onto' ?",
+      "options": [
+        "Déplacer une série de commits d'une base à une autre",
+        "Créer une nouvelle branche",
+        "Optimiser les performances",
+        "Merger plusieurs branches"
+      ],
+      "answer": 0,
+      "explanation": "'git rebase --onto <newbase> <oldbase> <branch>' déplace des commits de <oldbase> à <newbase>. Exemple : 'git rebase --onto main feature1 feature2' déplace les commits uniques de feature2 (depuis feature1) directement sur main. Très puissant pour restructurer l'historique.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 70,
+      "question": "Qu'est-ce que Trunk-Based Development ?",
+      "options": [
+        "Stratégie où tout le monde commit sur une branche principale avec des feature branches très courtes",
+        "Développement basé sur des containers",
+        "Une alternative à Git",
+        "Un système de déploiement"
+      ],
+      "answer": 0,
+      "explanation": "Trunk-Based Development est une pratique où les développeurs travaillent sur une branche principale (trunk/main) avec des feature branches de très courte durée (quelques heures/jours max). Favorise l'intégration continue, réduit les conflits et accélère le feedback. Nécessite de bons tests automatisés.",
+      "difficulty": "advanced"
+    }
+  ]
+}

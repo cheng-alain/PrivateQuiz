@@ -1,0 +1,1306 @@
+{
+  "title": "AWS (Amazon Web Services) pour DevOps",
+  "description": "100 questions couvrant AWS du fondamental à l'architecture production : 30 questions sur les bases (concepts cloud, EC2, S3, RDS, VPC, IAM), 45 questions intermédiaires (containers ECS/EKS, load balancing, IAM avancé, CloudWatch, networking avancé, automation), et 25 questions avancées (EKS production avec IRSA, HA/DR multi-region, security avancée avec KMS/GuardDuty, serverless Lambda, cost optimization)",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Qu'est-ce qu'une région AWS (AWS Region) ?",
+      "options": [
+        "Un datacenter unique hébergeant des serveurs",
+        "Une zone géographique contenant plusieurs Availability Zones",
+        "Un groupe de serveurs dans un même building",
+        "Un réseau privé virtuel entre datacenters"
+      ],
+      "answer": 1,
+      "explanation": "Une région AWS est une zone géographique physique (ex: eu-west-1 à Dublin, us-east-1 en Virginie) contenant plusieurs Availability Zones isolées. Chaque région est complètement indépendante pour garantir la résilience.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 2,
+      "question": "Quelle est la différence entre une Availability Zone (AZ) et une région ?",
+      "options": [
+        "Les AZ sont des régions plus petites",
+        "Une région contient plusieurs AZ, chaque AZ est un datacenter isolé",
+        "Les AZ sont pour le stockage, les régions pour le compute",
+        "Il n'y a pas de différence, ce sont des synonymes"
+      ],
+      "answer": 1,
+      "explanation": "Une région AWS contient plusieurs Availability Zones (généralement 3 à 6). Chaque AZ est un ou plusieurs datacenters avec alimentation, réseau et connectivité redondants, isolés des autres AZ pour assurer la haute disponibilité.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 3,
+      "question": "Qu'est-ce qu'un utilisateur Root dans AWS ?",
+      "options": [
+        "Un utilisateur avec des permissions sudo sur les instances EC2",
+        "L'utilisateur créé lors de l'ouverture du compte AWS avec accès complet",
+        "Un rôle IAM pour les administrateurs système",
+        "Un utilisateur Linux root sur les instances"
+      ],
+      "answer": 1,
+      "explanation": "Le Root user est le compte créé à l'ouverture d'un compte AWS, avec accès complet et illimité à toutes les ressources. AWS recommande de ne jamais l'utiliser au quotidien et d'activer MFA dessus.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 4,
+      "question": "Qu'est-ce qu'IAM (Identity and Access Management) ?",
+      "options": [
+        "Un service de surveillance des identités suspectes",
+        "Un service de gestion centralisée des utilisateurs, groupes et permissions AWS",
+        "Un système d'authentification pour les applications web",
+        "Un service de chiffrement des identités"
+      ],
+      "answer": 1,
+      "explanation": "IAM permet de gérer de manière centralisée l'accès aux services AWS : création d'utilisateurs, groupes, rôles, et définition de permissions via des politiques (policies) pour contrôler qui peut faire quoi dans AWS.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 5,
+      "question": "Quels sont les trois moyens principaux d'interagir avec AWS ?",
+      "options": [
+        "SSH, FTP, et HTTP",
+        "Management Console (web), AWS CLI, et AWS SDK",
+        "Terraform, Ansible, et Puppet",
+        "Docker, Kubernetes, et ECS"
+      ],
+      "answer": 1,
+      "explanation": "AWS propose trois interfaces principales : la Console de gestion (interface web), l'AWS CLI (ligne de commande), et les SDK dans différents langages (Python boto3, JavaScript, etc.) pour l'automatisation programmatique.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 6,
+      "question": "Qu'est-ce que le AWS Free Tier ?",
+      "options": [
+        "Un abonnement premium gratuit pendant 6 mois",
+        "Une offre incluant des services gratuits permanents et 12 mois d'essai pour d'autres",
+        "Un tier de performance réduite pour les tests",
+        "Une région AWS spéciale pour les étudiants"
+      ],
+      "answer": 1,
+      "explanation": "Le Free Tier AWS offre : des services toujours gratuits (ex: 1 million de requêtes Lambda/mois), des services gratuits 12 mois (ex: 750h EC2 t2.micro/mois), et des essais courts pour certains services. Parfait pour apprendre sans coût.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 7,
+      "question": "Qu'est-ce que le Shared Responsibility Model d'AWS ?",
+      "options": [
+        "AWS et le client partagent les coûts à 50/50",
+        "AWS sécurise le cloud (infra), le client sécurise dans le cloud (ses données/apps)",
+        "AWS et le client partagent les accès administrateur",
+        "Un modèle de pricing où AWS paie une partie"
+      ],
+      "answer": 1,
+      "explanation": "Modèle de responsabilité partagée : AWS gère la sécurité DU cloud (infrastructure physique, réseau, hyperviseur), le client gère la sécurité DANS le cloud (OS, données, applications, IAM, chiffrement, Security Groups).",
+      "difficulty": "easy"
+    },
+    {
+      "id": 8,
+      "question": "Combien de piliers compose le AWS Well-Architected Framework ?",
+      "options": [
+        "3 piliers : Performance, Coût, Sécurité",
+        "5 piliers : Operational Excellence, Security, Reliability, Performance, Cost Optimization",
+        "7 piliers incluant Compliance et Governance",
+        "4 piliers : Compute, Storage, Database, Network"
+      ],
+      "answer": 1,
+      "explanation": "Le Well-Architected Framework repose sur 5 piliers : Operational Excellence (opérations), Security (sécurité), Reliability (fiabilité), Performance Efficiency (performance), Cost Optimization (optimisation des coûts). Framework de best practices pour architecturer sur AWS.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 9,
+      "question": "Qu'est-ce qu'une instance EC2 ?",
+      "options": [
+        "Un conteneur Docker managé par AWS",
+        "Un serveur virtuel dans le cloud AWS avec compute, mémoire et réseau",
+        "Un cluster Kubernetes managé",
+        "Une base de données relationnelle"
+      ],
+      "answer": 1,
+      "explanation": "EC2 (Elastic Compute Cloud) fournit des serveurs virtuels (instances) dans le cloud. Vous choisissez le type d'instance (CPU, RAM), l'OS (AMI), le stockage (EBS), et le réseau (VPC, Security Groups).",
+      "difficulty": "easy"
+    },
+    {
+      "id": 10,
+      "question": "Quelle famille d'instances EC2 est optimisée pour les workloads intensifs en CPU ?",
+      "options": [
+        "Famille T (t3, t3a) - burstable",
+        "Famille C (c5, c6i) - compute optimized",
+        "Famille R (r5, r6i) - memory optimized",
+        "Famille M (m5, m6i) - balanced"
+      ],
+      "answer": 1,
+      "explanation": "Les instances de famille C (Compute optimized) comme c5, c6i sont conçues pour les workloads intensifs en CPU : encodage vidéo, calcul scientifique, serveurs de jeu, batch processing. Ratio CPU/RAM élevé.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 11,
+      "question": "Qu'est-ce qu'une AMI (Amazon Machine Image) ?",
+      "options": [
+        "Un snapshot d'une instance EC2 incluant OS, configuration et données",
+        "Une image Docker pour ECS",
+        "Un template CloudFormation",
+        "Un backup RDS automatique"
+      ],
+      "answer": 0,
+      "explanation": "Une AMI est un template utilisé pour lancer des instances EC2. Elle contient l'OS (Linux, Windows), la configuration système, et éventuellement des applications pré-installées. AWS fournit des AMI publiques, et on peut créer les siennes (custom AMI).",
+      "difficulty": "easy"
+    },
+    {
+      "id": 12,
+      "question": "Quelle est la différence entre Security Groups et Network ACLs (NACLs) ?",
+      "options": [
+        "Security Groups sont stateful (niveau instance), NACLs sont stateless (niveau subnet)",
+        "Security Groups pour EC2, NACLs pour RDS uniquement",
+        "NACLs remplacent les Security Groups depuis 2020",
+        "Pas de différence, ce sont deux noms pour la même chose"
+      ],
+      "answer": 0,
+      "explanation": "Security Groups : firewall stateful au niveau instance (règles allow uniquement, return traffic automatique). NACLs : firewall stateless au niveau subnet (règles allow ET deny, évaluation par numéro d'ordre, return traffic doit être explicite).",
+      "difficulty": "easy"
+    },
+    {
+      "id": 13,
+      "question": "À quoi servent les Key Pairs dans EC2 ?",
+      "options": [
+        "À chiffrer les volumes EBS",
+        "À s'authentifier en SSH sur les instances Linux (clé privée/publique)",
+        "À connecter deux VPC ensemble",
+        "À créer des certificats SSL pour HTTPS"
+      ],
+      "answer": 1,
+      "explanation": "Les Key Pairs EC2 sont des paires de clés SSH (publique/privée). AWS stocke la clé publique, vous téléchargez la clé privée (.pem). Utilisé pour se connecter en SSH aux instances Linux. Critique : ne jamais perdre la clé privée !",
+      "difficulty": "easy"
+    },
+    {
+      "id": 14,
+      "question": "Qu'est-ce qu'un volume EBS (Elastic Block Store) ?",
+      "options": [
+        "Un stockage objet comme S3",
+        "Un disque réseau persistant attachable aux instances EC2",
+        "Un file system partagé pour plusieurs instances",
+        "Une base de données NoSQL"
+      ],
+      "answer": 1,
+      "explanation": "EBS fournit des volumes de stockage block persistants pour EC2. Comme un disque dur réseau, il reste même si l'instance est arrêtée. Types : gp3 (SSD général), io2 (SSD haute performance), st1 (HDD throughput), sc1 (HDD cold).",
+      "difficulty": "easy"
+    },
+    {
+      "id": 15,
+      "question": "Quels sont les différents états possibles d'une instance EC2 ?",
+      "options": [
+        "running, stopped, terminated uniquement",
+        "pending, running, stopping, stopped, shutting-down, terminated",
+        "online, offline, suspended",
+        "active, inactive, deleted"
+      ],
+      "answer": 1,
+      "explanation": "États EC2 : pending (démarrage), running (actif, facturation compute+stockage), stopping (arrêt en cours), stopped (arrêté, facturation stockage EBS uniquement), shutting-down (terminaison en cours), terminated (détruit, facturation nulle).",
+      "difficulty": "easy"
+    },
+    {
+      "id": 16,
+      "question": "Qu'est-ce qu'une Elastic IP dans EC2 ?",
+      "options": [
+        "Une IP privée qui change à chaque redémarrage",
+        "Une IP publique statique que vous pouvez attacher/détacher d'instances",
+        "Une IP qui s'adapte automatiquement au trafic",
+        "Une IP interne pour les communications VPC"
+      ],
+      "answer": 1,
+      "explanation": "Une Elastic IP est une adresse IPv4 publique statique que vous réservez dans votre compte AWS. Elle peut être attachée à une instance et reste la même même si l'instance redémarre. Utile pour avoir une IP fixe. Facturation si non attachée à une instance running.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 17,
+      "question": "Qu'est-ce qu'un bucket S3 ?",
+      "options": [
+        "Un conteneur pour stocker des objets (fichiers) dans S3",
+        "Un groupe de serveurs EC2",
+        "Un cluster de bases de données",
+        "Un réseau privé virtuel"
+      ],
+      "answer": 0,
+      "explanation": "Un bucket S3 est un conteneur de stockage objet. Il contient des objets (fichiers) identifiés par une clé (chemin). Le nom du bucket doit être globalement unique dans AWS. Peut stocker des quantités illimitées de données.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 18,
+      "question": "Quelles sont les principales storage classes de S3 ?",
+      "options": [
+        "Fast, Medium, Slow",
+        "Standard, Intelligent-Tiering, Infrequent Access (IA), Glacier",
+        "Hot, Warm, Cold",
+        "Premium, Standard, Economy"
+      ],
+      "answer": 1,
+      "explanation": "Storage classes S3 : Standard (accès fréquent), Intelligent-Tiering (automatique), Standard-IA et One Zone-IA (accès peu fréquent), Glacier Instant/Flexible/Deep Archive (archivage long terme). Prix décroissant, temps d'accès croissant.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 19,
+      "question": "Qu'est-ce que le versioning dans S3 ?",
+      "options": [
+        "La numérotation automatique des fichiers",
+        "La conservation de multiples versions d'un objet dans le même bucket",
+        "La création de copies dans différentes régions",
+        "Le système de tags pour organiser les objets"
+      ],
+      "answer": 1,
+      "explanation": "Le versioning S3 permet de conserver toutes les versions d'un objet (même après suppression). Chaque upload crée une nouvelle version. Protège contre les suppressions accidentelles et permet de restaurer des versions antérieures. Se configure au niveau bucket.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 20,
+      "question": "Quels types de chiffrement S3 existent pour protéger les données au repos ?",
+      "options": [
+        "SSL/TLS uniquement",
+        "SSE-S3 (clés S3), SSE-KMS (clés KMS), SSE-C (clés client)",
+        "BitLocker et LUKS",
+        "PGP et GPG"
+      ],
+      "answer": 1,
+      "explanation": "Chiffrement at rest S3 : SSE-S3 (clés gérées par S3, AES-256), SSE-KMS (clés gérées par KMS, audit via CloudTrail), SSE-C (vous fournissez la clé). Pour le chiffrement in transit, HTTPS/TLS est utilisé.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 21,
+      "question": "Quelle est la différence entre une bucket policy et une ACL dans S3 ?",
+      "options": [
+        "Pas de différence, ce sont des synonymes",
+        "Bucket policy : permissions JSON complexes. ACL : permissions simples niveau objet/bucket",
+        "ACL pour IAM users, bucket policy pour anonymous",
+        "Bucket policy est deprecated"
+      ],
+      "answer": 1,
+      "explanation": "Bucket policies : permissions JSON au niveau bucket, granulaires, peuvent référencer des principals IAM. ACLs : permissions simples (read, write) au niveau bucket ou objet, legacy. AWS recommande d'utiliser bucket policies + IAM plutôt que ACLs.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 22,
+      "question": "Quelle est la durabilité (durability) de S3 Standard ?",
+      "options": [
+        "99.9% (3 nines)",
+        "99.99% (4 nines)",
+        "99.999999999% (11 nines)",
+        "100%"
+      ],
+      "answer": 2,
+      "explanation": "S3 Standard offre une durabilité de 99.999999999% (11 9's), ce qui signifie qu'en stockant 10 millions d'objets, vous pourriez perdre 1 objet tous les 10 000 ans en moyenne. Réplication automatique sur plusieurs AZ.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 23,
+      "question": "Quel format d'URL peut être utilisé pour accéder à un objet S3 ?",
+      "options": [
+        "ftp://bucket.s3.amazonaws.com/key",
+        "https://bucket.s3.region.amazonaws.com/key ou https://s3.region.amazonaws.com/bucket/key",
+        "ssh://s3.aws.com/bucket/key",
+        "s3://key uniquement"
+      ],
+      "answer": 1,
+      "explanation": "URLs S3 : format virtual-hosted style (https://bucket.s3.region.amazonaws.com/key) ou path style (https://s3.region.amazonaws.com/bucket/key). Le protocole s3:// est utilisé dans les outils CLI/SDK mais n'est pas une vraie URL HTTP.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 24,
+      "question": "Qu'est-ce que RDS (Relational Database Service) ?",
+      "options": [
+        "Un service de stockage de fichiers relationnels",
+        "Un service managé de bases de données relationnelles (PostgreSQL, MySQL, etc.)",
+        "Un service de réplication de données",
+        "Un service NoSQL document"
+      ],
+      "answer": 1,
+      "explanation": "RDS est un service managé de bases de données relationnelles. AWS gère les patches, backups, réplication, monitoring. Moteurs supportés : PostgreSQL, MySQL, MariaDB, Oracle, SQL Server, Aurora (compatible MySQL/PostgreSQL).",
+      "difficulty": "easy"
+    },
+    {
+      "id": 25,
+      "question": "Quels sont les avantages d'utiliser RDS plutôt qu'installer une base de données sur EC2 ?",
+      "options": [
+        "RDS est moins cher que EC2",
+        "RDS gère automatiquement backups, patches, réplication, monitoring",
+        "RDS offre plus de contrôle sur la configuration",
+        "RDS permet d'installer n'importe quel moteur de BDD"
+      ],
+      "answer": 1,
+      "explanation": "RDS avantages : automated backups, automated patching, Multi-AZ pour HA automatique, Read Replicas faciles, monitoring CloudWatch intégré, snapshots, scaling vertical simple. Trade-off : moins de contrôle qu'une BDD sur EC2.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 26,
+      "question": "Qu'est-ce qu'un déploiement RDS Multi-AZ ?",
+      "options": [
+        "Une base de données répartie sur plusieurs régions",
+        "Une réplication synchrone vers une instance standby dans une autre AZ pour haute disponibilité",
+        "Plusieurs bases de données pour load balancing des lectures",
+        "Un cluster de 3 instances minimum"
+      ],
+      "answer": 1,
+      "explanation": "RDS Multi-AZ : AWS maintient une copie synchrone de la BDD dans une autre AZ. En cas de panne de l'AZ primaire, failover automatique vers le standby (downtime ~1-2 min). Utilisé pour HA, pas pour scaling des lectures.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 27,
+      "question": "Quelle est la différence entre les backups automatiques RDS et les snapshots manuels ?",
+      "options": [
+        "Pas de différence, ce sont la même chose",
+        "Backups automatiques : rétention limitée (1-35j), point-in-time recovery. Snapshots : rétention illimitée",
+        "Snapshots sont plus rapides que les backups",
+        "Backups automatiques sont payants, snapshots gratuits"
+      ],
+      "answer": 1,
+      "explanation": "Automated backups RDS : quotidiens pendant fenêtre de backup, rétention 1-35 jours, point-in-time recovery (restauration à n'importe quelle seconde), supprimés avec l'instance. Snapshots manuels : rétention illimitée, persistent après suppression de l'instance.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 28,
+      "question": "Qu'est-ce qu'un VPC (Virtual Private Cloud) ?",
+      "options": [
+        "Un réseau physique privé dans un datacenter AWS",
+        "Un réseau virtuel privé isolé dans votre compte AWS",
+        "Un VPN entre votre datacenter et AWS",
+        "Un groupe de sécurité pour EC2"
+      ],
+      "answer": 1,
+      "explanation": "Un VPC est un réseau virtuel isolé dans AWS. Vous définissez votre plage d'IP (CIDR block), créez des subnets, configurez des route tables, des gateways. C'est votre réseau privé dans le cloud, totalement isolé des autres VPC par défaut.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 29,
+      "question": "Quelle est la différence entre un subnet public et un subnet privé dans un VPC ?",
+      "options": [
+        "Subnet public a une route vers Internet Gateway, privé n'en a pas",
+        "Subnet public est dans une région, privé dans une AZ",
+        "Subnet public est gratuit, privé est payant",
+        "Pas de différence technique, juste une convention de nommage"
+      ],
+      "answer": 0,
+      "explanation": "Subnet public : route table avec route vers Internet Gateway (IGW), instances ont des IP publiques, accès direct Internet. Subnet privé : pas de route vers IGW, instances ont uniquement IP privée, accès Internet via NAT Gateway si nécessaire.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 30,
+      "question": "Qu'est-ce qu'un Internet Gateway (IGW) dans un VPC ?",
+      "options": [
+        "Un firewall qui filtre le trafic Internet",
+        "Un composant qui permet aux ressources du VPC de communiquer avec Internet",
+        "Un load balancer pour distribuer le trafic",
+        "Un serveur proxy pour les requêtes HTTP"
+      ],
+      "answer": 1,
+      "explanation": "Un Internet Gateway (IGW) est un composant VPC horizontal scalable, redondant et hautement disponible qui permet la communication entre les instances du VPC et Internet. Attaché au VPC, configuré dans la route table des subnets publics avec route 0.0.0.0/0 → IGW.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 31,
+      "question": "Quelle est la différence entre une policy AWS managée et une policy customer managed dans IAM ?",
+      "options": [
+        "Pas de différence, juste le nom du créateur",
+        "AWS managed : créée/maintenue par AWS, réutilisable. Customer managed : créée par vous, personnalisée",
+        "AWS managed sont gratuites, customer managed payantes",
+        "Customer managed sont plus puissantes"
+      ],
+      "answer": 1,
+      "explanation": "AWS managed policies : créées et maintenues par AWS (ex: AdministratorAccess, ReadOnlyAccess), mises à jour automatiquement par AWS. Customer managed policies : créées par vous, versionées, personnalisables. Les deux sont réutilisables sur plusieurs users/groups/roles.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 32,
+      "question": "Quelle est la structure de base d'une policy IAM JSON ?",
+      "options": [
+        "{ \"users\": [], \"permissions\": [] }",
+        "{ \"Version\": \"2012-10-17\", \"Statement\": [{ \"Effect\": \"Allow/Deny\", \"Action\": [], \"Resource\": [] }] }",
+        "{ \"rules\": [], \"conditions\": [] }",
+        "{ \"principals\": [], \"actions\": [] }"
+      ],
+      "answer": 1,
+      "explanation": "Structure IAM policy : Version (toujours '2012-10-17'), Statement (array d'instructions), chaque statement contient Effect (Allow/Deny), Action (API calls autorisées), Resource (ARN des ressources), optionnellement Condition (contexte).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 33,
+      "question": "Quelle est la différence entre un IAM User et un IAM Role ?",
+      "options": [
+        "User pour humains, Role pour services AWS et applications",
+        "User est permanent, Role est temporaire uniquement",
+        "User peut avoir des policies, Role ne peut pas",
+        "Pas de différence, ce sont des synonymes"
+      ],
+      "answer": 0,
+      "explanation": "IAM User : identité long-terme pour une personne ou application (credentials statiques). IAM Role : identité assumable temporairement par Users, applications, ou services AWS (credentials temporaires via STS). Roles n'ont pas de credentials permanents.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 34,
+      "question": "Comment fonctionne AssumeRole dans IAM pour l'accès cross-account ?",
+      "options": [
+        "On partage le mot de passe du root account",
+        "Un role dans compte B avec trust policy vers compte A, l'utilisateur A assume le role pour accéder aux ressources B",
+        "On crée un VPN entre les deux comptes",
+        "Impossible de faire du cross-account"
+      ],
+      "answer": 1,
+      "explanation": "Cross-account access : (1) Compte B crée un IAM role avec trust policy autorisant le compte A. (2) Utilisateur dans compte A appelle sts:AssumeRole. (3) STS retourne des credentials temporaires pour accéder aux ressources du compte B selon les permissions du role.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 35,
+      "question": "Qu'est-ce qu'un service-linked role dans IAM ?",
+      "options": [
+        "Un role créé par vous pour lier deux services",
+        "Un role prédéfini par AWS lié à un service spécifique, créé automatiquement",
+        "Un role pour connecter AWS à des services tiers",
+        "Un role partagé entre plusieurs services"
+      ],
+      "answer": 1,
+      "explanation": "Service-linked role : role IAM prédéfini créé automatiquement par un service AWS pour effectuer des actions en votre nom. Ex: AWSServiceRoleForAutoScaling pour Auto Scaling. Vous ne pouvez pas modifier ses permissions (gérées par AWS).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 36,
+      "question": "Quelles sont les best practices IAM recommandées par AWS ?",
+      "options": [
+        "Utiliser root account quotidiennement, désactiver MFA pour la simplicité",
+        "Activer MFA, principe du moindre privilège, ne pas utiliser root, rotation des credentials, utiliser roles pour EC2",
+        "Partager les access keys entre développeurs, utiliser un seul user admin",
+        "Donner à tous les users AdministratorAccess par défaut"
+      ],
+      "answer": 1,
+      "explanation": "IAM best practices : activer MFA (surtout root), ne jamais utiliser root au quotidien, principe du moindre privilège (least privilege), rotation des access keys, utiliser roles IAM pour EC2/Lambda (pas de credentials hardcodées), audit avec CloudTrail.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 37,
+      "question": "Pourquoi utiliser un IAM role plutôt que des access keys pour une application sur EC2 ?",
+      "options": [
+        "Les roles sont plus rapides",
+        "Les roles fournissent des credentials temporaires auto-renouvelées, pas besoin de stocker des clés dans l'instance",
+        "Les access keys ne fonctionnent pas sur EC2",
+        "Les roles sont obligatoires depuis 2023"
+      ],
+      "answer": 1,
+      "explanation": "IAM role pour EC2 via instance profile : credentials temporaires récupérées via metadata service, rotation automatique par AWS (plus sûr), pas de stockage de clés statiques dans l'instance. Access keys = risque de fuite, rotation manuelle, stockage dans le code/config.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 38,
+      "question": "À quoi sert l'IAM Policy Simulator ?",
+      "options": [
+        "À simuler des attaques de sécurité sur IAM",
+        "À tester et valider l'effet de policies IAM avant de les appliquer",
+        "À générer automatiquement des policies",
+        "À simuler la charge sur les services AWS"
+      ],
+      "answer": 1,
+      "explanation": "IAM Policy Simulator (https://policysim.aws.amazon.com) : outil pour tester les policies IAM. Vous choisissez un user/role, une action AWS (ex: s3:GetObject), et voyez si l'accès est autorisé ou refusé selon les policies attachées. Utile pour débugger des permissions.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 39,
+      "question": "Qu'est-ce qu'ECR (Elastic Container Registry) ?",
+      "options": [
+        "Un service de gestion de conteneurs en production",
+        "Un registry Docker privé managé par AWS pour stocker/gérer des images Docker",
+        "Un orchestrateur de conteneurs comme Kubernetes",
+        "Un service de scanning de vulnérabilités uniquement"
+      ],
+      "answer": 1,
+      "explanation": "ECR est un registry Docker privé, fully-managed, sécurisé, et hautement disponible. Stockez, gérez et déployez vos images Docker/OCI. Intégration native avec ECS, EKS, Lambda. Scanning de vulnérabilités intégré, chiffrement at rest, IAM pour contrôle d'accès.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 40,
+      "question": "Qu'est-ce qu'ECS (Elastic Container Service) ?",
+      "options": [
+        "Un registry pour images Docker",
+        "Un service d'orchestration de conteneurs propriétaire AWS (alternative à Kubernetes)",
+        "Un service de compilation de conteneurs",
+        "Un service de monitoring de conteneurs"
+      ],
+      "answer": 1,
+      "explanation": "ECS est le service d'orchestration de conteneurs propriétaire d'AWS. Il permet de déployer, gérer et scaler des applications conteneurisées. Moins complexe que Kubernetes, intégration AWS native (IAM, CloudWatch, ALB), deux modes : EC2 (vous gérez les instances) et Fargate (serverless).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 41,
+      "question": "Que sont les Task Definitions dans ECS ?",
+      "options": [
+        "Les instances EC2 qui exécutent les conteneurs",
+        "Un template JSON/YAML décrivant un ou plusieurs conteneurs (image, CPU, RAM, ports, etc.)",
+        "Les load balancers pour ECS",
+        "Les politiques de scaling automatique"
+      ],
+      "answer": 1,
+      "explanation": "Task Definition : blueprint pour votre application dans ECS. Définit : images Docker, CPU/mémoire par conteneur, ports, variables d'environnement, volumes, IAM role, networking mode, logs. Comme un docker-compose.yml mais pour ECS. Versionée.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 42,
+      "question": "Quelle est la différence entre un ECS Service et une ECS Task ?",
+      "options": [
+        "Service = 1 conteneur, Task = plusieurs conteneurs",
+        "Service maintient un nombre désiré de Tasks en cours d'exécution et peut faire du load balancing",
+        "Task est deprecated, Service est le nouveau nom",
+        "Service est pour production, Task pour dev"
+      ],
+      "answer": 1,
+      "explanation": "ECS Task : une instance running d'une Task Definition (un ou plusieurs conteneurs). ECS Service : maintient un nombre spécifié de Tasks en cours, redémarre automatiquement les Tasks qui échouent, peut s'intégrer à un ALB/NLB pour load balancing.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 43,
+      "question": "Qu'est-ce qu'un ECS Cluster ?",
+      "options": [
+        "Un groupe de conteneurs qui communiquent",
+        "Un regroupement logique de Tasks ou Services, lancés sur EC2 ou Fargate",
+        "Un load balancer pour ECS",
+        "Un subnet VPC dédié à ECS"
+      ],
+      "answer": 1,
+      "explanation": "Un Cluster ECS est un groupement logique de ressources (instances EC2 ou capacity Fargate) sur lesquelles vos Tasks s'exécutent. Un cluster peut contenir plusieurs Services et Tasks. Isolation logique, pas de coût pour le cluster lui-même.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 44,
+      "question": "Quelle est la différence entre ECS launch type EC2 et Fargate ?",
+      "options": [
+        "EC2 est moins cher, Fargate plus cher",
+        "EC2 : vous gérez les instances. Fargate : serverless, AWS gère l'infrastructure",
+        "Fargate ne supporte que Linux, EC2 supporte Windows",
+        "EC2 est deprecated en faveur de Fargate"
+      ],
+      "answer": 1,
+      "explanation": "ECS EC2 launch type : vous provisionnez/gérez les instances EC2 du cluster (patching, scaling, etc.), plus de contrôle. Fargate : serverless, vous définissez juste les besoins CPU/RAM par Task, AWS gère tout l'infra sous-jacente. Fargate = moins d'ops, EC2 = plus de contrôle/optimisation coûts.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 45,
+      "question": "Qu'est-ce qu'AWS Fargate ?",
+      "options": [
+        "Un nouveau type d'instance EC2 pour conteneurs",
+        "Un compute engine serverless pour conteneurs (ECS et EKS), AWS gère l'infrastructure",
+        "Un registry pour images de conteneurs",
+        "Un service de CI/CD pour Docker"
+      ],
+      "answer": 1,
+      "explanation": "Fargate : compute engine serverless pour lancer des conteneurs sans gérer de serveurs. Compatible ECS et EKS. Vous spécifiez CPU/RAM, Fargate provisionne automatiquement. Paiement à la seconde, pas de gestion d'instances. Idéal pour workloads variables ou pour réduire l'overhead opérationnel.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 46,
+      "question": "Qu'est-ce qu'EKS (Elastic Kubernetes Service) ?",
+      "options": [
+        "Un fork de Kubernetes créé par AWS",
+        "Un service Kubernetes managé par AWS (control plane géré)",
+        "Un registry pour images Kubernetes",
+        "Un outil de monitoring Kubernetes"
+      ],
+      "answer": 1,
+      "explanation": "EKS est un service Kubernetes managé. AWS gère le control plane (API server, etcd, scheduler, controller manager) avec HA multi-AZ. Vous gérez les worker nodes (EC2 managed node groups ou Fargate). Kubernetes vanilla certifié CNCF, compatible avec l'écosystème K8s.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 47,
+      "question": "Qu'est-ce qu'un Application Load Balancer (ALB) ?",
+      "options": [
+        "Un load balancer Layer 4 (TCP/UDP)",
+        "Un load balancer Layer 7 (HTTP/HTTPS) avec routing avancé par path, host, headers",
+        "Un load balancer pour bases de données",
+        "Un service de DNS"
+      ],
+      "answer": 1,
+      "explanation": "ALB : load balancer Layer 7 (application). Route le trafic HTTP/HTTPS vers des targets (instances, IP, Lambda, containers) en fonction de règles : path (/api/*, /images/*), host header (api.example.com), headers, query strings. Support WebSocket, HTTP/2, certificats SSL.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 48,
+      "question": "Quelle est la différence entre ALB et NLB (Network Load Balancer) ?",
+      "options": [
+        "ALB pour HTTP/HTTPS (Layer 7), NLB pour TCP/UDP (Layer 4, ultra haute performance)",
+        "NLB est une version plus récente d'ALB",
+        "ALB est interne, NLB est externe",
+        "Pas de différence technique"
+      ],
+      "answer": 0,
+      "explanation": "ALB : Layer 7, HTTP/HTTPS, routing intelligent (path, host), SSL termination, WebSockets. NLB : Layer 4, TCP/UDP/TLS, ultra-haute performance (millions de req/sec), latence ultra-faible (~100µs), static IP, passthrough SSL. NLB pour workloads non-HTTP ou extrême performance.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 49,
+      "question": "Qu'est-ce qu'un Target Group dans le contexte des load balancers AWS ?",
+      "options": [
+        "Un groupe de load balancers identiques",
+        "Un ensemble de targets (instances, IPs, Lambda) vers lesquels le load balancer route le trafic",
+        "Un groupe IAM pour gérer les permissions",
+        "Un subnet où sont déployés les load balancers"
+      ],
+      "answer": 1,
+      "explanation": "Target Group : ensemble de targets (instances EC2, IPs privées, fonctions Lambda, ou containers) enregistrées auprès d'un load balancer. Le LB route les requêtes vers les targets du group selon l'algorithme (round robin, least outstanding requests). Health checks configurés au niveau du target group.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 50,
+      "question": "Comment fonctionnent les Health Checks dans un load balancer AWS ?",
+      "options": [
+        "Le load balancer ping les targets toutes les heures",
+        "Le load balancer envoie régulièrement des requêtes aux targets et arrête d'envoyer du trafic aux unhealthy",
+        "Les health checks sont optionnels",
+        "Les targets s'auto-déclarent healthy ou unhealthy"
+      ],
+      "answer": 1,
+      "explanation": "Health checks : le load balancer envoie périodiquement (ex: toutes les 30s) une requête à un path spécifique (ex: /health) sur chaque target. Si le target répond avec un code HTTP de succès (200), il est healthy. Sinon, après plusieurs échecs, il devient unhealthy et ne reçoit plus de trafic.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 51,
+      "question": "Qu'est-ce qu'un Auto Scaling Group (ASG) ?",
+      "options": [
+        "Un groupe de load balancers qui scale automatiquement",
+        "Un groupe d'instances EC2 qui scale automatiquement selon des règles définies",
+        "Un service de scaling pour RDS",
+        "Un groupe IAM pour gérer le scaling"
+      ],
+      "answer": 1,
+      "explanation": "ASG (Auto Scaling Group) : groupe d'instances EC2 qui scale horizontalement (ajoute/retire des instances) automatiquement selon des conditions : CPU élevé, nombre de requêtes, schedule, etc. Définit min/desired/max capacity, launch template, health checks, intégration avec ALB/NLB.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 52,
+      "question": "Quels types de scaling policies existent pour les Auto Scaling Groups ?",
+      "options": [
+        "Manual scaling uniquement",
+        "Target tracking, Step scaling, Scheduled scaling, Predictive scaling",
+        "Vertical scaling et horizontal scaling",
+        "Fast et Slow scaling"
+      ],
+      "answer": 1,
+      "explanation": "Scaling policies : Target tracking (maintient une métrique à une valeur cible, ex: CPU à 50%), Step scaling (ajoute X instances si métrique dépasse Y), Scheduled scaling (scale à des horaires précis), Predictive scaling (machine learning pour prédire la charge). Dynamic scaling = réactif, Scheduled = proactif.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 53,
+      "question": "Qu'est-ce que la cooldown period dans un Auto Scaling Group ?",
+      "options": [
+        "Le temps avant de démarrer le premier scaling",
+        "Une période après un scaling où ASG ne scale pas à nouveau (attendre stabilisation)",
+        "Le temps de refroidissement des serveurs",
+        "Un paramètre pour RDS uniquement"
+      ],
+      "answer": 1,
+      "explanation": "Cooldown period : temps d'attente après une activité de scaling avant que ASG ne scale à nouveau (par défaut 300s). Permet aux nouvelles instances de démarrer et à la métrique de se stabiliser avant d'évaluer si un autre scaling est nécessaire. Évite le scaling thrashing (oscillations).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 54,
+      "question": "Qu'est-ce qu'une NAT Gateway dans un VPC ?",
+      "options": [
+        "Un firewall pour protéger le VPC",
+        "Un service managé permettant aux instances dans un subnet privé d'accéder à Internet sans exposer leur IP",
+        "Un service de traduction de noms de domaine",
+        "Un load balancer pour le trafic sortant"
+      ],
+      "answer": 1,
+      "explanation": "NAT Gateway : service managé HA qui permet aux instances d'un subnet privé d'initier des connexions sortantes vers Internet (updates, API calls) sans être directement accessibles depuis Internet. Déployée dans un subnet public, route 0.0.0.0/0 → NAT Gateway depuis le subnet privé.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 55,
+      "question": "Quelle est la différence entre NAT Gateway et NAT Instance ?",
+      "options": [
+        "Pas de différence, juste des noms différents",
+        "NAT Gateway : service managé, HA, pas de gestion. NAT Instance : EC2 que vous gérez (deprecated)",
+        "NAT Instance est plus performante",
+        "NAT Gateway n'existe plus depuis 2023"
+      ],
+      "answer": 1,
+      "explanation": "NAT Gateway : service AWS managé, HA au niveau AZ, auto-scaling, pas de maintenance. NAT Instance : instance EC2 configurée manuellement en NAT, vous gérez OS/patches/HA. AWS recommande NAT Gateway (plus simple, plus fiable), NAT Instance est legacy.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 56,
+      "question": "Qu'est-ce que le VPC Peering ?",
+      "options": [
+        "Une connexion entre deux instances EC2",
+        "Une connexion réseau entre deux VPCs permettant le routage de trafic privé",
+        "Un load balancer inter-VPC",
+        "Un service de DNS entre VPCs"
+      ],
+      "answer": 1,
+      "explanation": "VPC Peering : connexion réseau privée entre deux VPCs (même région ou cross-region, même compte ou cross-account). Le trafic reste sur le réseau AWS privé (pas Internet). Non-transitive : si A↔B et B↔C, alors A ne peut pas communiquer avec C sans peering direct A↔C.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 57,
+      "question": "Qu'est-ce qu'AWS Transit Gateway ?",
+      "options": [
+        "Un load balancer global",
+        "Un hub central permettant de connecter plusieurs VPCs et on-premises en hub-and-spoke",
+        "Un service de migration de données",
+        "Un routeur Internet"
+      ],
+      "answer": 1,
+      "explanation": "Transit Gateway : hub de connectivité régional pour interconnecter des VPCs et réseaux on-premises. Alternative scalable au VPC Peering (qui devient complexe avec N VPCs : N*(N-1)/2 connexions). Topologie hub-and-spoke : tous les VPCs se connectent au Transit Gateway.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 58,
+      "question": "À quoi servent les VPC Endpoints (PrivateLink) ?",
+      "options": [
+        "À créer des connexions VPN",
+        "À accéder aux services AWS privément depuis le VPC sans passer par Internet",
+        "À exposer des API publiquement",
+        "À créer des subnets additionnels"
+      ],
+      "answer": 1,
+      "explanation": "VPC Endpoints (PrivateLink) : permet d'accéder aux services AWS (S3, DynamoDB, etc.) ou à vos propres services privément via le réseau AWS, sans Internet Gateway, NAT, VPN ou Direct Connect. Deux types : Interface Endpoints (ENI privée) et Gateway Endpoints (route table, pour S3/DynamoDB uniquement).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 59,
+      "question": "Qu'est-ce qu'une Elastic Network Interface (ENI) ?",
+      "options": [
+        "Une interface réseau physique dans un datacenter AWS",
+        "Une interface réseau virtuelle qu'on peut attacher à une instance EC2",
+        "Un load balancer élastique",
+        "Un service de DNS"
+      ],
+      "answer": 1,
+      "explanation": "ENI (Elastic Network Interface) : interface réseau virtuelle dans un VPC, avec IP privée, éventuellement IP publique, Security Groups. Peut être attachée/détachée d'instances EC2, permettant de déplacer une IP vers une autre instance. Utile pour HA, licensing basée sur MAC address, multi-homing.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 60,
+      "question": "Qu'est-ce qu'Amazon Route 53 ?",
+      "options": [
+        "Un service de routage réseau dans les VPCs",
+        "Un service DNS managé avec routing policies avancées et health checks",
+        "Un service de load balancing",
+        "Un service de VPN"
+      ],
+      "answer": 1,
+      "explanation": "Route 53 : service DNS managé hautement disponible et scalable. Enregistrement de domaines, gestion de zones DNS, routing policies (simple, weighted, latency, failover, geolocation, geoproximity), health checks, intégration avec CloudFront, ELB, S3.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 61,
+      "question": "Que sont les CloudWatch Metrics ?",
+      "options": [
+        "Des logs textuels d'applications",
+        "Des mesures numériques horodatées représentant les performances des ressources AWS",
+        "Des alertes de sécurité",
+        "Des snapshots de configurations"
+      ],
+      "answer": 1,
+      "explanation": "CloudWatch Metrics : mesures numériques horodatées (time-series data) des ressources AWS. Ex: CPUUtilization EC2, NetworkIn, RequestCount ALB. Métriques standard (gratuites, résolution 5min) ou détaillées (payantes, résolution 1min). Possibilité de publier des custom metrics.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 62,
+      "question": "Quelle est la différence entre les métriques standard et custom dans CloudWatch ?",
+      "options": [
+        "Standard sont gratuites, custom sont payantes",
+        "Standard : publiées automatiquement par AWS (CPU, réseau). Custom : publiées par votre code (ex: nombre de users connectés)",
+        "Custom sont plus précises",
+        "Standard uniquement pour EC2, custom pour tout"
+      ],
+      "answer": 1,
+      "explanation": "Métriques standard : automatiquement collectées par AWS pour ses services (EC2, RDS, ELB, etc.), gratuites, résolution 5min (1min avec detailed monitoring payant). Custom metrics : publiées par votre application via API PutMetricData, payantes, peuvent représenter n'importe quelle donnée business.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 63,
+      "question": "Qu'est-ce qu'une CloudWatch Alarm ?",
+      "options": [
+        "Un log d'erreur dans une application",
+        "Une notification déclenchée quand une métrique dépasse/descend sous un seuil défini",
+        "Un backup automatique",
+        "Un firewall rule"
+      ],
+      "answer": 1,
+      "explanation": "CloudWatch Alarm : surveille une métrique et déclenche des actions quand la métrique dépasse un seuil sur une période donnée. Actions possibles : notification SNS, Auto Scaling, EC2 action (stop/terminate/reboot), Systems Manager action. États : OK, ALARM, INSUFFICIENT_DATA.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 64,
+      "question": "À quoi servent les CloudWatch Logs ?",
+      "options": [
+        "À stocker des snapshots d'instances",
+        "À centraliser, monitorer et analyser les logs de vos applications et services AWS",
+        "À faire des backups de bases de données",
+        "À créer des métriques uniquement"
+      ],
+      "answer": 1,
+      "explanation": "CloudWatch Logs : service pour ingérer, stocker, et analyser les logs. Log Groups (conteneur logique), Log Streams (séquence d'events d'une source). Utilisé pour logs applicatifs, VPC Flow Logs, CloudTrail logs, Lambda logs. Peut créer des metric filters pour transformer logs en métriques.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 65,
+      "question": "Qu'est-ce que le CloudWatch Agent ?",
+      "options": [
+        "Un service AWS automatique sans installation",
+        "Un agent installé sur EC2/on-premises pour collecter des métriques système et logs custom",
+        "Un dashboard web pour CloudWatch",
+        "Un service de CI/CD"
+      ],
+      "answer": 1,
+      "explanation": "CloudWatch Agent : agent logiciel installé sur instances EC2 ou serveurs on-premises. Collecte des métriques système (mémoire, disk, processus - non disponibles par défaut) et envoie des logs custom à CloudWatch Logs. Configuration via SSM Parameter Store ou fichier de config.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 66,
+      "question": "Quelle est la différence entre CloudWatch et CloudTrail ?",
+      "options": [
+        "Pas de différence, ce sont des synonymes",
+        "CloudWatch : performance monitoring (métriques, logs). CloudTrail : audit des API calls AWS",
+        "CloudTrail est deprecated",
+        "CloudWatch pour compute, CloudTrail pour storage"
+      ],
+      "answer": 1,
+      "explanation": "CloudWatch : monitoring des performances et santé des ressources (métriques, logs, alarms, dashboards). CloudTrail : audit et gouvernance, enregistre tous les API calls AWS (qui a fait quoi, quand, depuis où). CloudWatch = opérations, CloudTrail = compliance/sécurité.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 67,
+      "question": "Qu'est-ce qu'AWS CloudFormation ?",
+      "options": [
+        "Un service de compilation de code",
+        "Un service d'Infrastructure as Code pour provisionner des ressources AWS via templates",
+        "Un service de CI/CD",
+        "Un service de monitoring"
+      ],
+      "answer": 1,
+      "explanation": "CloudFormation : service IaC d'AWS. Vous définissez votre infrastructure dans un template (JSON ou YAML), CloudFormation crée les ressources dans l'ordre correct. Versionnable, répétable, rollback automatique en cas d'erreur. Stacks pour gérer des groupes de ressources ensemble.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 68,
+      "question": "Quelle est la structure de base d'un template CloudFormation ?",
+      "options": [
+        "{ \"services\": [], \"dependencies\": [] }",
+        "AWSTemplateFormatVersion, Description, Parameters, Resources (obligatoire), Outputs",
+        "{ \"instances\": [], \"networks\": [] }",
+        "{ \"modules\": [], \"variables\": [] }"
+      ],
+      "answer": 1,
+      "explanation": "Template CloudFormation : AWSTemplateFormatVersion (version du format), Description, Metadata, Parameters (inputs), Mappings (static values), Conditions, Resources (obligatoire - ressources à créer), Outputs (valeurs retournées). Format JSON ou YAML.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 69,
+      "question": "Qu'est-ce qu'un CloudFormation Stack ?",
+      "options": [
+        "Une pile de serveurs EC2",
+        "Un ensemble de ressources AWS créées et gérées comme une unité à partir d'un template",
+        "Un load balancer en stack",
+        "Un groupe de logs CloudWatch"
+      ],
+      "answer": 1,
+      "explanation": "Stack : unité de déploiement CloudFormation. Création/update/suppression des ressources ensemble. Possibilité de créer des nested stacks (stacks dans stacks) pour réutiliser des templates. StackSets pour déployer dans multiple comptes/régions.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 70,
+      "question": "À quoi sert AWS Systems Manager Parameter Store ?",
+      "options": [
+        "À stocker des paramètres de configuration et secrets de manière sécurisée",
+        "À gérer les paramètres des instances EC2 uniquement",
+        "À stocker des métriques CloudWatch",
+        "À configurer les load balancers"
+      ],
+      "answer": 0,
+      "explanation": "Parameter Store (Systems Manager) : stockage hiérarchique sécurisé de données de configuration et secrets. Supporte plaintext ou encrypted (via KMS), versionning, policies (expiration, notification). Gratuit (Standard tier), intégration IAM pour contrôle d'accès. Alternative légère à Secrets Manager.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 71,
+      "question": "Qu'est-ce que Session Manager dans AWS Systems Manager ?",
+      "options": [
+        "Un gestionnaire de sessions utilisateur web",
+        "Un service permettant d'accéder aux instances EC2 via navigateur/CLI sans SSH, clés, ou bastion",
+        "Un load balancer de sessions",
+        "Un service de gestion de sessions RDS"
+      ],
+      "answer": 1,
+      "explanation": "Session Manager : permet de se connecter aux instances EC2 (et on-premises avec hybrid activation) via le navigateur AWS Console ou CLI, sans ouvrir le port 22 SSH, sans gérer des clés SSH, sans bastion host. Logs des sessions dans CloudWatch/S3, audit via CloudTrail.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 72,
+      "question": "Qu'est-ce qu'Amazon EFS (Elastic File System) ?",
+      "options": [
+        "Un stockage block comme EBS",
+        "Un file system NFS managé, scalable, partageable entre plusieurs instances EC2",
+        "Un stockage objet comme S3",
+        "Un service de backup"
+      ],
+      "answer": 1,
+      "explanation": "EFS : file system NFS v4 managé, élastique (auto-scaling), partageable entre plusieurs instances EC2 simultanément (même multi-AZ). Cas d'usage : shared content, home directories, CMS. Performance modes : General Purpose ou Max I/O. Storage classes : Standard et Infrequent Access.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 73,
+      "question": "Qu'est-ce qu'Amazon FSx ?",
+      "options": [
+        "Un service de fax virtuel",
+        "Une famille de file systems managés : FSx for Windows File Server et FSx for Lustre",
+        "Un service de stockage objet",
+        "Un service de backup uniquement"
+      ],
+      "answer": 1,
+      "explanation": "FSx : services de file systems managés. FSx for Windows : fully-managed native Windows file system (SMB, AD integration, NTFS). FSx for Lustre : high-performance file system pour HPC, ML, video processing (intégration S3). FSx for NetApp ONTAP et FSx for OpenZFS aussi disponibles.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 74,
+      "question": "Qu'est-ce qu'une S3 Lifecycle Policy ?",
+      "options": [
+        "Une policy IAM pour S3",
+        "Des règles pour automatiquement transitionner des objets entre storage classes ou les supprimer",
+        "Une règle de versioning",
+        "Une policy de chiffrement"
+      ],
+      "answer": 1,
+      "explanation": "Lifecycle Policies : règles pour automatiser la gestion du cycle de vie des objets S3. Ex: après 30j → S3 Standard-IA, après 90j → Glacier, après 365j → suppression. Basé sur l'age de l'objet, le prefix, les tags. Réduit les coûts automatiquement.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 75,
+      "question": "Qu'est-ce que S3 Cross-Region Replication (CRR) ?",
+      "options": [
+        "Un backup manuel vers une autre région",
+        "Une réplication automatique asynchrone des objets vers un bucket dans une autre région",
+        "Un load balancing inter-région",
+        "Un service de CDN"
+      ],
+      "answer": 1,
+      "explanation": "CRR : réplication automatique et asynchrone des objets d'un bucket source vers un bucket destination dans une autre région AWS. Nécessite versioning activé sur les deux buckets. Utilisé pour compliance, latence réduite, disaster recovery. Same-Region Replication (SRR) existe aussi.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 76,
+      "question": "Dans EKS, quelle est la différence entre managed node groups et self-managed node groups ?",
+      "options": [
+        "Pas de différence pratique",
+        "Managed : AWS automatise provisioning, updates, scaling des nodes EC2. Self-managed : vous gérez tout manuellement",
+        "Managed node groups sont gratuits",
+        "Self-managed sont deprecated"
+      ],
+      "answer": 1,
+      "explanation": "Managed node groups (EKS) : AWS crée/update/scale automatiquement les instances EC2 worker nodes, rolling updates sans downtime, intégration ASG. Self-managed : vous créez manuellement les instances, configurez kubelet, gérez updates. Managed = moins d'ops, recommandé.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 77,
+      "question": "Qu'est-ce qu'IRSA (IAM Roles for Service Accounts) dans EKS ?",
+      "options": [
+        "Un service de backup pour EKS",
+        "Un mécanisme permettant d'assigner des IAM roles à des Kubernetes Service Accounts pour fine-grained permissions",
+        "Un load balancer pour EKS",
+        "Un système de logs pour pods"
+      ],
+      "answer": 1,
+      "explanation": "IRSA : permet d'associer un IAM role à un Kubernetes Service Account. Les pods utilisant ce Service Account obtiennent automatiquement des credentials AWS temporaires pour accéder aux services AWS (S3, DynamoDB, etc.) sans access keys stockées. Sécurité fine-grained, best practice EKS.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 78,
+      "question": "Qu'est-ce que le VPC CNI plugin dans EKS et pourquoi est-il important ?",
+      "options": [
+        "Un plugin optionnel pour les logs",
+        "Le plugin réseau donnant des IPs VPC natives aux pods pour networking performant et Security Groups support",
+        "Un plugin de monitoring",
+        "Un load balancer interne"
+      ],
+      "answer": 1,
+      "explanation": "VPC CNI plugin : plugin réseau par défaut d'EKS. Assigne des IPs du VPC (ENIs) directement aux pods (pas de NAT). Avantages : pods sont first-class citizens du VPC, support Security Groups for Pods, performance réseau native. Inconvénient : consommation d'IPs VPC plus élevée.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 79,
+      "question": "Comment fonctionnent les Security Groups for Pods dans EKS ?",
+      "options": [
+        "Les pods héritent automatiquement des Security Groups des nodes",
+        "On peut assigner des Security Groups AWS directement à des pods spécifiques via SecurityGroupPolicy CRD",
+        "Les Security Groups ne s'appliquent pas aux pods",
+        "Feature deprecated depuis 2023"
+      ],
+      "answer": 1,
+      "explanation": "Security Groups for Pods : feature EKS permettant d'appliquer des Security Groups AWS au niveau pod (pas seulement node). Via SecurityGroupPolicy CRD, vous assignez des SGs à des pods basés sur labels. Nécessite VPC CNI plugin, instances Nitro, trunk ENI support.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 80,
+      "question": "Qu'est-ce que le AWS Load Balancer Controller pour EKS (anciennement ALB Ingress Controller) ?",
+      "options": [
+        "Un load balancer interne Kubernetes",
+        "Un controller Kubernetes qui crée automatiquement des ALB/NLB AWS pour les Ingress/Services K8s",
+        "Un service de monitoring des load balancers",
+        "Un plugin de sécurité"
+      ],
+      "answer": 1,
+      "explanation": "AWS Load Balancer Controller : controller K8s (déployé dans le cluster) qui surveille les ressources Ingress et Services K8s et provisionne automatiquement des ALB (pour Ingress) ou NLB (pour LoadBalancer Services). Remplace l'ancien ALB Ingress Controller, supporte aussi TargetGroupBinding.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 81,
+      "question": "Qu'est-ce que l'EBS CSI Driver dans EKS et pourquoi est-il nécessaire ?",
+      "options": [
+        "Un driver optionnel pour les logs",
+        "Un driver permettant aux pods K8s d'utiliser des volumes EBS comme PersistentVolumes",
+        "Un service de backup",
+        "Un load balancer pour storage"
+      ],
+      "answer": 1,
+      "explanation": "EBS CSI Driver : Container Storage Interface driver pour EBS. Depuis K8s 1.23, in-tree EBS support est deprecated. Le CSI driver (installé via add-on EKS ou Helm) permet de créer des PersistentVolumes EBS dynamiquement, avec features modernes : snapshots, resize, topology awareness.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 82,
+      "question": "Quels sont les 4 modèles de stratégie de Disaster Recovery (DR) sur AWS, du plus simple au plus complexe ?",
+      "options": [
+        "Backup, Mirror, Replicate, Distribute",
+        "Backup & Restore, Pilot Light, Warm Standby, Multi-Site Active-Active",
+        "Cold, Warm, Hot, Ultra-Hot",
+        "Single-Region, Multi-Region, Multi-Cloud, Hybrid"
+      ],
+      "answer": 1,
+      "explanation": "Stratégies DR AWS : (1) Backup & Restore (RTO/RPO heures/jours, backups vers S3/Glacier), (2) Pilot Light (infra minimale active, scale en cas de DR, RTO/RPO heures), (3) Warm Standby (scaled-down replica active, RTO/RPO minutes), (4) Multi-Site Active-Active (full capacity multi-region, RTO/RPO secondes).",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 83,
+      "question": "Comment implémenter une architecture multi-region pour RTO < 1 heure sur AWS ?",
+      "options": [
+        "Utiliser uniquement des backups S3",
+        "Warm Standby : region secondaire avec infra scaled-down, RDS cross-region read replica, Route53 failover, scripts automation pour scale-up rapide",
+        "Backup & Restore suffit",
+        "Multi-Site Active-Active obligatoire"
+      ],
+      "answer": 1,
+      "explanation": "Pour RTO < 1h, Warm Standby recommandé : région secondaire avec infra déployée mais scaled-down (smaller instances, ASG min=1), RDS cross-region read replica (promote en master en cas de DR), données dans S3 répliquées via CRR, Route53 health checks + failover routing, CloudFormation/Terraform pour scale-up rapide.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 84,
+      "question": "Comment utiliser RDS Read Replicas pour la Disaster Recovery cross-region ?",
+      "options": [
+        "Les read replicas sont uniquement pour scaling, pas pour DR",
+        "Créer un read replica cross-region, le promouvoir en instance standalone en cas de DR dans la région primaire",
+        "RDS ne supporte pas cross-region",
+        "Utiliser uniquement Multi-AZ"
+      ],
+      "answer": 1,
+      "explanation": "RDS cross-region read replica pour DR : créer un read replica asynchrone dans une région secondaire. En cas de disaster dans la région primaire, promouvoir le replica en instance RDS standalone (devient read-write). RTO ~10-15 min, RPO selon lag de réplication (secondes à minutes).",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 85,
+      "question": "Comment Route53 peut-il être utilisé pour le failover automatique dans une architecture multi-region ?",
+      "options": [
+        "Route53 ne supporte pas le failover",
+        "Route53 health checks surveillent la région primaire, failover routing policy redirige automatiquement vers région secondaire si primaire est down",
+        "Route53 fait uniquement du load balancing, pas du failover",
+        "Nécessite un load balancer global"
+      ],
+      "answer": 1,
+      "explanation": "Route53 failover : créer un health check surveillant un endpoint de la région primaire (ALB, CloudWatch alarm, etc.). Configurer un DNS record avec failover routing policy : primary (région principale) et secondary (région DR). Si health check échoue, Route53 répond automatiquement avec l'IP de la région secondaire.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 86,
+      "question": "Qu'est-ce que S3 Cross-Region Replication (CRR) apporte pour la Disaster Recovery ?",
+      "options": [
+        "Rien, S3 est déjà durable",
+        "Réplication automatique des objets vers une autre région, protection contre disaster régional, RPO secondes à minutes",
+        "CRR est uniquement pour la performance",
+        "CRR est deprecated"
+      ],
+      "answer": 1,
+      "explanation": "S3 CRR pour DR : réplication asynchrone automatique vers bucket dans une autre région. Protection contre disaster régional complet (ex: catastrophe naturelle), corruption de données, suppression accidentelle (avec versioning). RPO typiquement < 15 minutes. Critical pour assets statiques, backups, données business.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 87,
+      "question": "Qu'est-ce que KMS (Key Management Service) dans AWS ?",
+      "options": [
+        "Un service de gestion de mots de passe",
+        "Un service managé de création et gestion de clés de chiffrement (CMKs) pour chiffrer données",
+        "Un service de clustering Kubernetes",
+        "Un système de monitoring"
+      ],
+      "answer": 1,
+      "explanation": "KMS : service managé pour créer et contrôler les clés de chiffrement. Utilisé pour chiffrer données dans S3, EBS, RDS, etc. CMK (Customer Master Key, maintenant appelée KMS key) ne quitte jamais KMS. Support AWS managed keys, customer managed keys, symmetric et asymmetric keys. Audit via CloudTrail.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 88,
+      "question": "Qu'est-ce que l'envelope encryption dans KMS ?",
+      "options": [
+        "Chiffrement d'emails uniquement",
+        "Technique où KMS chiffre une data key, qui elle-même chiffre les données (performance + sécurité)",
+        "Un type de clé KMS spécial",
+        "Une policy de chiffrement"
+      ],
+      "answer": 1,
+      "explanation": "Envelope encryption : best practice pour chiffrer de grandes quantités de données. (1) KMS génère une data key, (2) Data key chiffre les données localement, (3) KMS chiffre la data key avec CMK, (4) Stockage : données chiffrées + data key chiffrée. Déchiffrement inverse. Avantages : performance (pas d'envoi de toutes les données à KMS), network efficiency.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 89,
+      "question": "Quelle est la différence entre AWS Secrets Manager et Systems Manager Parameter Store pour stocker des secrets ?",
+      "options": [
+        "Pas de différence, ce sont des synonymes",
+        "Secrets Manager : rotation automatique, secrets complexes, audit, plus cher. Parameter Store : simpler, moins cher, pas de rotation auto native",
+        "Secrets Manager est deprecated",
+        "Parameter Store uniquement pour EC2"
+      ],
+      "answer": 1,
+      "explanation": "Secrets Manager : conçu pour secrets (DB credentials, API keys), rotation automatique intégrée (Lambda), versioning, fine-grained access control, cross-region replication, plus cher. Parameter Store : plus générique (configs + secrets), rotation manuelle ou via Lambda custom, moins cher (gratuit en Standard tier). Secrets Manager si rotation automatique critique.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 90,
+      "question": "Qu'est-ce qu'Amazon GuardDuty ?",
+      "options": [
+        "Un firewall pour VPC",
+        "Un service de threat detection utilisant ML pour analyser CloudTrail, VPC Flow Logs, DNS logs",
+        "Un service de backup",
+        "Un gestionnaire de secrets"
+      ],
+      "answer": 1,
+      "explanation": "GuardDuty : service de détection de menaces intelligent. Analyse en continu CloudTrail events, VPC Flow Logs, DNS logs, S3 logs via ML pour identifier activités malveillantes (compromission d'instances, reconnaissance, exfiltration de données, crypto-mining). Findings publiés dans EventBridge, intégration Security Hub.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 91,
+      "question": "Qu'est-ce qu'AWS WAF (Web Application Firewall) ?",
+      "options": [
+        "Un firewall réseau Layer 4",
+        "Un firewall applicatif Layer 7 protégeant contre attaques web (SQL injection, XSS, bots) via rules",
+        "Un antivirus pour EC2",
+        "Un service de chiffrement"
+      ],
+      "answer": 1,
+      "explanation": "WAF : firewall applicatif protégeant les applications web contre exploits web courants. Rules basées sur : IP addresses, HTTP headers, HTTP body, URI strings, SQL injection patterns, XSS patterns. Déployé devant CloudFront, ALB, API Gateway. Rate-based rules pour protection DDoS application layer.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 92,
+      "question": "Comment AWS Config aide-t-il pour la compliance et la sécurité ?",
+      "options": [
+        "Config configure automatiquement les ressources",
+        "Config enregistre l'historique des configurations AWS, évalue la compliance via rules, alerte sur déviances",
+        "Config est un service de monitoring des performances",
+        "Config gère les secrets"
+      ],
+      "answer": 1,
+      "explanation": "AWS Config : enregistre et évalue les configurations des ressources AWS. Tracking des changements de config dans le temps, compliance checking via Config Rules (managed ou custom), remediation automatique possible via Systems Manager Automation, aggregation multi-account/region. Essentiel pour audit et governance.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 93,
+      "question": "Qu'est-ce qu'AWS Lambda ?",
+      "options": [
+        "Un service de stockage serverless",
+        "Un service de compute serverless exécutant du code en réponse à des événements sans gérer de serveurs",
+        "Un service de base de données",
+        "Un load balancer"
+      ],
+      "answer": 1,
+      "explanation": "Lambda : compute serverless event-driven. Vous uploadez du code (Node.js, Python, Java, Go, .NET, Ruby, custom runtime), Lambda l'exécute en réponse à des triggers (S3, DynamoDB, API Gateway, EventBridge, etc.). Auto-scaling automatique, paiement à la requête et durée d'exécution (ms), pas de gestion de serveurs.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 94,
+      "question": "Quels sont les principaux triggers/sources d'événements possibles pour AWS Lambda ?",
+      "options": [
+        "Uniquement HTTP via API Gateway",
+        "S3 (upload), DynamoDB Streams, Kinesis, SQS, SNS, EventBridge, API Gateway, ALB, IoT, CloudWatch, etc.",
+        "Uniquement CloudWatch Events",
+        "Lambda ne supporte pas les triggers"
+      ],
+      "answer": 1,
+      "explanation": "Lambda triggers : S3 (object created/deleted), DynamoDB Streams (changes), Kinesis Data Streams, SQS, SNS, EventBridge (scheduled/event-driven), API Gateway (REST/HTTP APIs), ALB (request/response), CloudFront (Lambda@Edge), Cognito, CloudFormation, CodeCommit, CloudWatch Logs/Events, Alexa, IoT, etc.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 95,
+      "question": "Qu'est-ce qu'Amazon API Gateway ?",
+      "options": [
+        "Un load balancer pour APIs",
+        "Un service managé pour créer, publier, maintenir, monitorer et sécuriser des APIs REST/HTTP/WebSocket",
+        "Un service de génération de code API",
+        "Un firewall pour APIs uniquement"
+      ],
+      "answer": 1,
+      "explanation": "API Gateway : service fully-managed pour créer des APIs. Types : REST APIs (RESTful, caching, API keys), HTTP APIs (léger, moins cher, performance), WebSocket APIs (bidirectionnel). Features : throttling, API keys, request/response transformation, CORS, authorization (IAM, Lambda authorizers, Cognito), integration avec Lambda, HTTP backends, AWS services.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 96,
+      "question": "Qu'est-ce qu'AWS Step Functions ?",
+      "options": [
+        "Un service de monitoring",
+        "Un service d'orchestration de workflows serverless via state machines (coordination de Lambda, ECS, Batch, etc.)",
+        "Un service de CI/CD",
+        "Un load balancer"
+      ],
+      "answer": 1,
+      "explanation": "Step Functions : orchestration de workflows serverless. Définissez des state machines (via Amazon States Language JSON) coordonnant des services AWS (Lambda, ECS, Batch, SNS, SQS, Glue, SageMaker, etc.). Support des patterns : séquence, parallel, choice, retry/catch, wait. Visualisation graphique, error handling robuste, workflows long-running (Standard) ou high-throughput (Express).",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 97,
+      "question": "Qu'est-ce qu'Amazon DynamoDB et quand l'utiliser ?",
+      "options": [
+        "Une base de données relationnelle comme RDS",
+        "Une base de données NoSQL key-value/document fully-managed, millisecond latency, serverless scaling",
+        "Un service de file storage",
+        "Un service de cache uniquement"
+      ],
+      "answer": 1,
+      "explanation": "DynamoDB : base NoSQL fully-managed (key-value et document), performance prévisible single-digit millisecond, scaling automatique, serverless. Use cases : sessions web, mobile backends, gaming, IoT, real-time. Tables, items (rows), attributes. Primary key : partition key seul ou partition key + sort key. GSI/LSI pour queries flexibles.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 98,
+      "question": "Quelle est la différence entre On-Demand, Reserved Instances et Spot Instances pour EC2 ?",
+      "options": [
+        "Pas de différence de prix, juste des noms différents",
+        "On-Demand : prix plein, aucun engagement. Reserved : discount (~75%) avec engagement 1-3 ans. Spot : discount (~90%) mais interruptible",
+        "Spot est le plus cher",
+        "Reserved sont interruptibles"
+      ],
+      "answer": 1,
+      "explanation": "Pricing EC2 : On-Demand (pay-as-you-go, no commitment, flexible), Reserved Instances (commitment 1 ou 3 ans, 40-75% discount, Standard vs Convertible), Spot Instances (enchères sur unused capacity, jusqu'à 90% discount, AWS peut interrompre avec 2min notice, idéal pour workloads fault-tolerant). Savings Plans (flexible alternative aux RIs).",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 99,
+      "question": "Comment optimiser les coûts d'une infrastructure AWS avec 1000+ instances EC2 ?",
+      "options": [
+        "Utiliser uniquement du On-Demand",
+        "Mix : Reserved pour baseline stable, Spot pour workloads fault-tolerant (batch, CI), ASG avec Spot Fleet, S3 Intelligent-Tiering, rightsizing via Cost Explorer/Compute Optimizer",
+        "Tout migrer vers Lambda",
+        "Utiliser uniquement Spot Instances"
+      ],
+      "answer": 1,
+      "explanation": "Optimisation coûts à grande échelle : (1) Reserved Instances/Savings Plans pour workloads prévisibles (baseline), (2) Spot Instances pour workloads tolérants aux interruptions (70-90% discount), (3) ASG avec Spot Fleet mixing on-demand/spot, (4) Rightsizing via AWS Compute Optimizer, (5) S3 Intelligent-Tiering, (6) Scheduled scaling, (7) AWS Cost Explorer/Budgets pour monitoring.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 100,
+      "question": "Qu'est-ce que S3 Intelligent-Tiering et comment aide-t-il à optimiser les coûts ?",
+      "options": [
+        "Une storage class manuelle",
+        "Une storage class qui analyse les patterns d'accès et déplace automatiquement les objets entre tiers pour optimiser coûts sans impact performance",
+        "Un service de monitoring S3",
+        "Une feature de chiffrement S3"
+      ],
+      "answer": 1,
+      "explanation": "S3 Intelligent-Tiering : storage class qui monitore les patterns d'accès et déplace automatiquement les objets entre 4 tiers (Frequent Access, Infrequent Access, Archive Instant Access, Archive Access, Deep Archive Access) sans overhead opérationnel ni impact performance. Idéal quand les patterns d'accès sont inconnus ou changeants. Petit coût de monitoring mais économies significatives si données rarement accédées.",
+      "difficulty": "advanced"
+    }
+  ]
+}

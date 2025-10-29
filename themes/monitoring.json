@@ -1,0 +1,1176 @@
+{
+  "title": "Monitoring & Observabilité",
+  "description": "90 questions couvrant le monitoring et l'observabilité en production : 25 questions sur les fondamentaux (concepts, Prometheus basique, Grafana, métriques système), 45 questions intermédiaires (PromQL, Alertmanager, dashboards avancés, logs avec Loki/ELK, instrumentation), et 20 questions avancées (architecture HA, optimisation, distributed tracing, observabilité Kubernetes, best practices SLO/SLI)",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Quels sont les trois piliers fondamentaux de l'observabilité ?",
+      "options": [
+        "CPU, Mémoire, Disque",
+        "Métriques, Logs, Traces",
+        "Monitoring, Alerting, Reporting",
+        "Prometheus, Grafana, Loki"
+      ],
+      "answer": 1,
+      "explanation": "Les trois piliers de l'observabilité moderne sont : les Métriques (données quantitatives agrégées), les Logs (événements discrets avec contexte), et les Traces (suivi des requêtes distribuées). Ces trois dimensions complémentaires permettent de comprendre le comportement d'un système en production.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 2,
+      "question": "Quelle est la différence principale entre le monitoring et l'observabilité ?",
+      "options": [
+        "Le monitoring est payant, l'observabilité est gratuite",
+        "Le monitoring surveille des métriques prédéfinies, l'observabilité permet d'explorer l'inconnu",
+        "Le monitoring est pour le dev, l'observabilité pour les ops",
+        "Il n'y a aucune différence, ce sont des synonymes"
+      ],
+      "answer": 1,
+      "explanation": "Le monitoring traditionnel consiste à surveiller des métriques et seuils prédéfinis (connus-inconnus). L'observabilité va plus loin en permettant de poser des questions arbitraires sur le système et d'explorer des problèmes inattendus (inconnus-inconnus) grâce à des données riches et corrélées.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 3,
+      "question": "Quel modèle de collecte utilise Prometheus pour récupérer les métriques ?",
+      "options": [
+        "Push model - les applications envoient les métriques",
+        "Pull model - Prometheus interroge les endpoints",
+        "Stream model - flux continu de données",
+        "Queue model - file d'attente de messages"
+      ],
+      "answer": 1,
+      "explanation": "Prometheus utilise un pull model : le serveur Prometheus scrape (interroge) régulièrement les endpoints HTTP des targets pour collecter les métriques. Ce modèle offre plusieurs avantages : découverte automatique des cibles, détection des targets down, et contrôle centralisé de la fréquence de scraping.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 4,
+      "question": "Qu'est-ce qu'une métrique de type 'time series' ?",
+      "options": [
+        "Une métrique qui mesure le temps d'exécution",
+        "Une suite de valeurs horodatées pour une même métrique",
+        "Une métrique qui expire après un certain temps",
+        "Une métrique synchronisée avec NTP"
+      ],
+      "answer": 1,
+      "explanation": "Une time series (série temporelle) est une séquence de points de données indexés dans le temps. Dans Prometheus, chaque time series est identifiée par son nom de métrique et un ensemble de labels (key-value pairs). Par exemple : http_requests_total{method='GET', status='200'} avec des valeurs à t1, t2, t3...",
+      "difficulty": "easy"
+    },
+    {
+      "id": 5,
+      "question": "Que signifie SLO dans le contexte de l'observabilité ?",
+      "options": [
+        "System Load Optimization",
+        "Service Level Objective",
+        "Server Logging Operation",
+        "Secure Login Option"
+      ],
+      "answer": 1,
+      "explanation": "SLO (Service Level Objective) est un objectif quantifiable de fiabilité d'un service. Par exemple : '99.9% des requêtes doivent répondre en moins de 200ms'. Les SLO sont mesurés via des SLI (Service Level Indicators) et encadrés par des SLA (Service Level Agreements) contractuels.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 6,
+      "question": "Quelle est la différence entre un événement et une métrique ?",
+      "options": [
+        "Un événement est textuel, une métrique est numérique",
+        "Un événement est unique et discret, une métrique est agrégée et continue",
+        "Un événement est plus important qu'une métrique",
+        "Il n'y a pas de différence"
+      ],
+      "answer": 1,
+      "explanation": "Un événement (log entry) est une occurrence discrète avec contexte (timestamp, message, metadata) capturant ce qui s'est passé. Une métrique est une mesure numérique agrégée dans le temps (compteur, gauge). Exemple : 'User login failed' est un événement, 'failed_login_count=5' est une métrique.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 7,
+      "question": "Qu'est-ce que le sampling dans l'observabilité ?",
+      "options": [
+        "Prendre des échantillons de code pour les analyser",
+        "Ne collecter qu'une portion représentative des données (ex: 1% des traces)",
+        "Tester le monitoring sur un échantillon d'utilisateurs",
+        "Archiver les anciennes métriques"
+      ],
+      "answer": 1,
+      "explanation": "Le sampling consiste à ne collecter qu'un sous-ensemble des données pour réduire le volume et les coûts tout en conservant une vision représentative. C'est particulièrement utilisé pour le distributed tracing où enregistrer 100% des traces serait prohibitif. On peut sampler de façon aléatoire, par taux fixe, ou intelligemment (garder les erreurs, sampler le succès).",
+      "difficulty": "easy"
+    },
+    {
+      "id": 8,
+      "question": "Qu'est-ce que Prometheus ?",
+      "options": [
+        "Un système de logging distribué",
+        "Un système de monitoring et d'alerting open-source basé sur les time series",
+        "Un orchestrateur de conteneurs",
+        "Un système de traçage distribué"
+      ],
+      "answer": 1,
+      "explanation": "Prometheus est un système de monitoring et d'alerting open-source créé par SoundCloud en 2012 et maintenant projet CNCF graduated. Il collecte et stocke les métriques sous forme de time series, offre un langage de requête puissant (PromQL), et intègre un système d'alerting (Alertmanager).",
+      "difficulty": "easy"
+    },
+    {
+      "id": 9,
+      "question": "Quels sont les principaux composants de l'architecture Prometheus ?",
+      "options": [
+        "Master, Worker, Agent",
+        "Server, Exporters, Pushgateway, Alertmanager",
+        "Collector, Aggregator, Visualizer",
+        "Frontend, Backend, Database"
+      ],
+      "answer": 1,
+      "explanation": "L'architecture Prometheus comprend : le Prometheus Server (scraping, stockage, requêtes PromQL), les Exporters (exposent les métriques des applications), le Pushgateway (pour les jobs éphémères), l'Alertmanager (gestion des alertes), et optionnellement des outils de visualisation comme Grafana.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 10,
+      "question": "Quels sont les quatre types de métriques dans Prometheus ?",
+      "options": [
+        "Integer, Float, String, Boolean",
+        "Counter, Gauge, Histogram, Summary",
+        "Low, Medium, High, Critical",
+        "System, Application, Business, Custom"
+      ],
+      "answer": 1,
+      "explanation": "Les 4 types de métriques Prometheus sont : Counter (valeur qui ne fait qu'augmenter, ex: requêtes totales), Gauge (valeur qui monte et descend, ex: CPU%), Histogram (distribution de valeurs en buckets, ex: latence), Summary (statistiques calculées côté client, ex: quantiles).",
+      "difficulty": "easy"
+    },
+    {
+      "id": 11,
+      "question": "Qu'est-ce qu'un 'target' dans Prometheus ?",
+      "options": [
+        "Un objectif de performance à atteindre",
+        "Un endpoint HTTP à scraper pour collecter des métriques",
+        "Une métrique cible à surveiller",
+        "Un serveur de destination pour les alertes"
+      ],
+      "answer": 1,
+      "explanation": "Une target est un endpoint (URL) que Prometheus scrape pour collecter des métriques. Chaque target expose des métriques au format Prometheus (généralement via HTTP sur /metrics). Les targets sont découvertes via la configuration statique ou la service discovery (Kubernetes, Consul, etc.).",
+      "difficulty": "easy"
+    },
+    {
+      "id": 12,
+      "question": "Qu'est-ce que la 'service discovery' dans Prometheus ?",
+      "options": [
+        "Un mécanisme pour trouver automatiquement les services à monitorer",
+        "Un service de recherche de logs",
+        "Un outil de debugging réseau",
+        "Un système de DNS dynamique"
+      ],
+      "answer": 0,
+      "explanation": "La service discovery permet à Prometheus de découvrir automatiquement les targets à scraper sans configuration manuelle. Prometheus supporte plusieurs mécanismes : Kubernetes (pods, services), Consul, EC2, Azure, file-based, etc. Cela permet de s'adapter dynamiquement aux changements d'infrastructure.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 13,
+      "question": "Quel est le format standard d'exposition des métriques Prometheus ?",
+      "options": [
+        "JSON avec timestamps",
+        "Format texte ligne par ligne : metric_name{labels} value timestamp",
+        "XML structuré",
+        "Binaire protobuf"
+      ],
+      "answer": 1,
+      "explanation": "Le format d'exposition Prometheus est un format texte simple : 'metric_name{label1=\"value1\",label2=\"value2\"} metric_value timestamp'. Exemple : 'http_requests_total{method=\"GET\",status=\"200\"} 1234 1609459200'. Ce format est lisible, facile à générer et à parser.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 14,
+      "question": "Qu'est-ce que le Node Exporter ?",
+      "options": [
+        "Un outil pour exporter des données de Kubernetes",
+        "Un exporter Prometheus pour collecter les métriques système Linux",
+        "Un module Node.js pour le monitoring",
+        "Un outil pour déployer des applications"
+      ],
+      "answer": 1,
+      "explanation": "Le Node Exporter est un exporter officiel Prometheus qui collecte les métriques hardware et OS des machines Linux : CPU, mémoire, disque, réseau, filesystem, etc. Il expose ces métriques au format Prometheus sur le port 9100 par défaut. C'est un composant essentiel pour monitorer l'infrastructure.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 15,
+      "question": "Quel est le fichier de configuration principal de Prometheus ?",
+      "options": [
+        "config.yaml",
+        "prometheus.yml",
+        "settings.conf",
+        "monitoring.ini"
+      ],
+      "answer": 1,
+      "explanation": "Le fichier prometheus.yml est le fichier de configuration principal de Prometheus. Il définit : global settings (scrape_interval, evaluation_interval), les scrape_configs (targets à scraper), les rule_files (alerting et recording rules), et les alerting configs (Alertmanager endpoints).",
+      "difficulty": "easy"
+    },
+    {
+      "id": 16,
+      "question": "Qu'est-ce que Grafana ?",
+      "options": [
+        "Un système de collecte de métriques",
+        "Une plateforme de visualisation et d'analytique pour les métriques",
+        "Un système de gestion de logs",
+        "Un orchestrateur de conteneurs"
+      ],
+      "answer": 1,
+      "explanation": "Grafana est une plateforme open-source de visualisation et d'analytique. Elle permet de créer des dashboards interactifs en se connectant à diverses sources de données (Prometheus, InfluxDB, Elasticsearch, etc.). Grafana est devenu le standard de facto pour visualiser les métriques Prometheus.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 17,
+      "question": "Qu'est-ce qu'une 'data source' dans Grafana ?",
+      "options": [
+        "Un fichier contenant des données à afficher",
+        "Une connexion configurée vers un système de stockage de données (Prometheus, Loki, etc.)",
+        "Un utilisateur qui fournit des données",
+        "Un script de collecte de données"
+      ],
+      "answer": 1,
+      "explanation": "Une data source dans Grafana est une connexion configurée vers un backend de données (Prometheus, Loki, InfluxDB, Elasticsearch, MySQL, etc.). Chaque data source a ses paramètres de connexion (URL, auth) et son propre langage de requête. Un dashboard peut utiliser plusieurs data sources.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 18,
+      "question": "Qu'est-ce qu'un 'panel' dans Grafana ?",
+      "options": [
+        "Un panneau de configuration du serveur",
+        "Un élément de visualisation individuel dans un dashboard (graphique, gauge, table, etc.)",
+        "Un groupe d'utilisateurs",
+        "Un plugin d'extension"
+      ],
+      "answer": 1,
+      "explanation": "Un panel est l'unité de base de visualisation dans Grafana. Chaque panel affiche une requête de données sous forme de graphique (Time series, Bar chart), statistique (Stat, Gauge), tableau, ou autre visualisation. Un dashboard Grafana est composé de multiples panels organisés en grille.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 19,
+      "question": "Que sont les 'variables' dans un dashboard Grafana ?",
+      "options": [
+        "Des valeurs aléatoires pour les tests",
+        "Des paramètres dynamiques (ex: $environment, $instance) utilisables dans les requêtes et titres",
+        "Des bugs dans le code",
+        "Des métriques temporaires"
+      ],
+      "answer": 1,
+      "explanation": "Les variables Grafana (template variables) sont des paramètres dynamiques qui rendent les dashboards réutilisables et interactifs. Par exemple, une variable $instance permet de filtrer toutes les requêtes du dashboard pour une instance spécifique. Les variables peuvent être des listes déroulantes, des requêtes, des intervalles de temps, etc.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 20,
+      "question": "Quels sont les principaux types de visualisations dans Grafana ?",
+      "options": [
+        "Seulement des graphiques linéaires",
+        "Time series, Stat, Gauge, Bar chart, Table, Heatmap, Pie chart, etc.",
+        "Uniquement du texte",
+        "3D et réalité virtuelle"
+      ],
+      "answer": 1,
+      "explanation": "Grafana offre de nombreux types de visualisations : Time series (graphiques temporels), Stat (valeurs unique avec seuils), Gauge (jauge circulaire/linéaire), Bar chart, Table, Heatmap, Pie chart, Logs (pour Loki), Text, News, etc. Chaque type est optimisé pour un usage spécifique.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 21,
+      "question": "Qu'est-ce que le 'time range' dans Grafana ?",
+      "options": [
+        "La durée de vie d'un dashboard",
+        "La période temporelle des données affichées (ex: last 6 hours, last 30 days)",
+        "Le fuseau horaire du serveur",
+        "L'intervalle de rafraîchissement"
+      ],
+      "answer": 1,
+      "explanation": "Le time range définit la fenêtre temporelle des données affichées dans un dashboard Grafana. On peut sélectionner des périodes relatives (Last 5m, Last 24h, Today) ou absolues (date de début et fin). Le time range peut être ajusté globalement pour tout le dashboard ou overridé par panel.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 22,
+      "question": "Quelle métrique système mesure la charge CPU sur Linux ?",
+      "options": [
+        "cpu_temperature",
+        "cpu_usage_percent et load_average",
+        "cpu_speed",
+        "cpu_cores"
+      ],
+      "answer": 1,
+      "explanation": "Pour mesurer la charge CPU, on utilise principalement : le CPU usage (pourcentage d'utilisation par core ou global) et le load average (nombre moyen de processus en attente/en cours sur 1, 5, 15 min). Node Exporter expose ces métriques : node_cpu_seconds_total, node_load1, node_load5, node_load15.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 23,
+      "question": "Quelles sont les principales métriques de mémoire à surveiller ?",
+      "options": [
+        "Seulement la RAM totale",
+        "Memory used, available, free, cached, buffers, swap",
+        "Uniquement le swap",
+        "La vitesse de la RAM en MHz"
+      ],
+      "answer": 1,
+      "explanation": "Les métriques mémoire essentielles incluent : Total (RAM totale), Used (utilisée), Available (disponible pour les applis sans swap), Free (complètement libre), Cached (cache de fichiers), Buffers (buffers kernel), et Swap used/free. Node Exporter expose : node_memory_MemTotal_bytes, node_memory_MemAvailable_bytes, etc.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 24,
+      "question": "Que mesure la métrique IOPS ?",
+      "options": [
+        "La vitesse du réseau en bits/s",
+        "Les opérations d'entrée/sortie disque par seconde",
+        "Le nombre de processus actifs",
+        "La température du CPU"
+      ],
+      "answer": 1,
+      "explanation": "IOPS (Input/Output Operations Per Second) mesure le nombre d'opérations de lecture/écriture disque par seconde. C'est une métrique clé pour évaluer les performances du stockage. Node Exporter expose : node_disk_reads_completed_total, node_disk_writes_completed_total pour calculer les IOPS.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 25,
+      "question": "Quelles métriques réseau sont importantes à surveiller ?",
+      "options": [
+        "Seulement la vitesse de connexion",
+        "Bandwidth (bytes transmit/receive), packets, errors, drops",
+        "Uniquement le ping",
+        "Le nombre de câbles réseau"
+      ],
+      "answer": 1,
+      "explanation": "Les métriques réseau clés incluent : Bandwidth (node_network_transmit_bytes_total, node_network_receive_bytes_total), Packets (transmit/receive), Errors (node_network_transmit_errs_total), Drops (paquets abandonnés), et état des interfaces. Ces métriques révèlent les saturations, pertes de paquets et problèmes réseau.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 26,
+      "question": "Comment sélectionner toutes les métriques avec le label job='api' en PromQL ?",
+      "options": [
+        "metrics[job='api']",
+        "{job='api'}",
+        "SELECT * WHERE job='api'",
+        "job:api"
+      ],
+      "answer": 1,
+      "explanation": "En PromQL, on utilise des accolades pour les label matchers : {job='api'} sélectionne toutes les métriques ayant le label job='api'. On peut aussi combiner avec un nom de métrique : http_requests_total{job='api'} pour une métrique spécifique.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 27,
+      "question": "Quelle est la différence entre '=' et '=~' dans les sélecteurs PromQL ?",
+      "options": [
+        "Aucune différence",
+        "'=' est une égalité exacte, '=~' est un match regex",
+        "'=' est plus rapide que '=~'",
+        "'=~' est obsolète"
+      ],
+      "answer": 1,
+      "explanation": "Dans PromQL : '=' est une correspondance exacte ({env='prod'}), '=~' est un match regex ({env=~'prod|staging'}), '!=' est une non-égalité, '!~' est un non-match regex. Les regex utilisent la syntaxe RE2 et doivent matcher entièrement la valeur du label.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 28,
+      "question": "Quelle est la différence entre un instant vector et un range vector en PromQL ?",
+      "options": [
+        "Instant = temps réel, Range = historique",
+        "Instant = une seule valeur par série, Range = multiple valeurs sur une période [5m]",
+        "Instant = rapide, Range = lent",
+        "Ils sont identiques"
+      ],
+      "answer": 1,
+      "explanation": "Un instant vector contient une seule valeur par time series à un timestamp donné (ex: http_requests_total). Un range vector contient plusieurs valeurs sur une plage de temps, noté avec crochets (ex: http_requests_total[5m]). Les range vectors sont nécessaires pour les fonctions rate(), irate(), etc.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 29,
+      "question": "Que fait la fonction sum() en PromQL ?",
+      "options": [
+        "Additionne deux métriques",
+        "Agrège plusieurs time series en sommant leurs valeurs",
+        "Calcule la somme cumulée dans le temps",
+        "Compte le nombre de séries"
+      ],
+      "answer": 1,
+      "explanation": "sum() est une fonction d'agrégation qui additionne les valeurs de toutes les time series sélectionnées. Exemple : sum(http_requests_total) retourne une seule série avec la somme de toutes les requêtes. On peut grouper avec by/without : sum by(job) (http_requests_total) pour sommer par job.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 30,
+      "question": "Quelle est la différence entre rate() et irate() ?",
+      "options": [
+        "rate() est plus précis que irate()",
+        "rate() calcule le taux moyen, irate() calcule le taux instantané sur les deux derniers points",
+        "irate() est obsolète",
+        "Ils sont identiques"
+      ],
+      "answer": 1,
+      "explanation": "rate() calcule le taux moyen par seconde sur toute la range (ex: rate(requests[5m]) moyenne sur 5 min). irate() calcule le taux instantané entre les deux derniers points de la range, plus réactif mais plus volatile. rate() est recommandé pour les alertes et graphiques, irate() pour des graphiques très réactifs.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 31,
+      "question": "Que fait la fonction increase() en PromQL ?",
+      "options": [
+        "Augmente la valeur d'une métrique de 1",
+        "Calcule l'augmentation totale d'un counter sur la période spécifiée",
+        "Multiplie la métrique par un facteur",
+        "Ajoute une nouvelle série"
+      ],
+      "answer": 1,
+      "explanation": "increase() calcule l'augmentation totale d'un counter sur la range spécifiée. increase(http_requests[5m]) retourne le nombre total de requêtes ajoutées dans les 5 dernières minutes. C'est équivalent à rate() * secondes_de_la_range. Utile pour voir l'augmentation absolue plutôt que le taux.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 32,
+      "question": "Comment calculer la moyenne de toutes les séries avec avg() ?",
+      "options": [
+        "avg(metric_name)",
+        "average(metric_name)",
+        "mean(metric_name)",
+        "avg() without() (metric_name)"
+      ],
+      "answer": 0,
+      "explanation": "avg(metric_name) calcule la moyenne de toutes les time series. On peut grouper : avg by(label) (metric_name) pour moyenner par groupe de labels. Exemple : avg(node_cpu_seconds_total) retourne le CPU moyen de tous les nodes, avg by(instance) pour moyenne par instance.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 33,
+      "question": "Que fait l'opérateur 'by' dans les agrégations PromQL ?",
+      "options": [
+        "Multiplie les valeurs",
+        "Spécifie les labels à conserver lors de l'agrégation",
+        "Divise les séries",
+        "Trie les résultats"
+      ],
+      "answer": 1,
+      "explanation": "L'opérateur 'by' spécifie quels labels conserver lors de l'agrégation. sum by(job, instance) (metric) conserve job et instance, supprime les autres labels, et crée une série par combinaison unique de job+instance. C'est l'inverse de 'without' qui spécifie les labels à supprimer.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 34,
+      "question": "À quoi sert la fonction offset en PromQL ?",
+      "options": [
+        "Corriger un décalage horaire",
+        "Décaler la requête dans le temps (ex: comparer avec la semaine dernière)",
+        "Ajouter un délai avant l'évaluation",
+        "Compenser une erreur de mesure"
+      ],
+      "answer": 1,
+      "explanation": "offset permet de décaler temporellement une requête. http_requests_total offset 1w retourne les valeurs d'il y a 1 semaine. Très utile pour comparer : sum(rate(requests[5m])) / sum(rate(requests[5m] offset 1w)) compare le taux actuel avec celui d'il y a 1 semaine.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 35,
+      "question": "Quels sont les opérateurs arithmétiques en PromQL ?",
+      "options": [
+        "Seulement + et -",
+        "+, -, *, /, %, ^",
+        "add, sub, mul, div",
+        "sum, diff, prod, quot"
+      ],
+      "answer": 1,
+      "explanation": "PromQL supporte les opérateurs arithmétiques : + (addition), - (soustraction), * (multiplication), / (division), % (modulo), ^ (puissance). Ils s'appliquent entre instant vectors et scalars, ou entre deux instant vectors avec matching de labels. Exemple : memory_used / memory_total * 100 pour le % de mémoire.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 36,
+      "question": "Que sont les 'recording rules' dans Prometheus ?",
+      "options": [
+        "Des règles pour enregistrer les logs",
+        "Des requêtes PromQL pré-calculées et stockées comme nouvelles métriques",
+        "Des règles de rétention des données",
+        "Des règles de backup"
+      ],
+      "answer": 1,
+      "explanation": "Les recording rules permettent de pré-calculer des requêtes PromQL coûteuses et de stocker le résultat comme nouvelle métrique. Exemple : calculer sum(rate(http_requests[5m])) by(job) toutes les 30s et le stocker comme job:http_requests:rate5m. Cela accélère les dashboards et alertes qui utilisent ces calculs complexes.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 37,
+      "question": "Comment utiliser histogram_quantile() en PromQL ?",
+      "options": [
+        "histogram_quantile(0.95, metric_name)",
+        "histogram_quantile(0.95, rate(http_request_duration_seconds_bucket[5m]))",
+        "quantile(0.95, histogram(metric))",
+        "histogram(metric, 0.95)"
+      ],
+      "answer": 1,
+      "explanation": "histogram_quantile() calcule des quantiles à partir d'histogrammes Prometheus. Syntaxe : histogram_quantile(φ, rate(metric_bucket[range])). Exemple : histogram_quantile(0.95, rate(http_request_duration_seconds_bucket[5m])) calcule le 95e percentile de latence. φ est entre 0 et 1 (0.95 = 95e percentile).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 38,
+      "question": "Quel est le rôle d'Alertmanager dans l'écosystème Prometheus ?",
+      "options": [
+        "Collecter les métriques",
+        "Gérer les alertes : grouping, throttling, silencing, routing vers différents receivers",
+        "Visualiser les dashboards",
+        "Stocker les données long-terme"
+      ],
+      "answer": 1,
+      "explanation": "Alertmanager reçoit les alertes de Prometheus et les gère intelligemment : grouping (regroupe les alertes similaires), throttling/inhibition (évite le spam), silencing (désactive temporairement), routing (envoie vers les bons receivers : email, Slack, PagerDuty), et deduplication. Il sépare la logique d'alerting de la notification.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 39,
+      "question": "Comment définir une alerting rule dans Prometheus ?",
+      "options": [
+        "Dans un fichier .yml avec : alert, expr, for, labels, annotations",
+        "Via l'interface web de Prometheus",
+        "En ligne de commande avec promtool",
+        "Directement dans Alertmanager"
+      ],
+      "answer": 0,
+      "explanation": "Les alerting rules sont définies dans des fichiers YAML référencés dans prometheus.yml. Structure : groups > rules > alert (nom), expr (requête PromQL), for (durée avant firing), labels (métadonnées), annotations (description, summary). Exemple : alert: HighErrorRate, expr: rate(errors[5m]) > 0.05, for: 5m.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 40,
+      "question": "Quelle est la différence entre 'labels' et 'annotations' dans une alerte ?",
+      "options": [
+        "Aucune différence",
+        "Labels identifient l'alerte et servent au routing, annotations fournissent du contexte (description, runbook)",
+        "Labels sont obligatoires, annotations optionnelles",
+        "Labels sont pour Prometheus, annotations pour Alertmanager"
+      ],
+      "answer": 1,
+      "explanation": "Les labels (severity, team) sont utilisés pour identifier et router les alertes dans Alertmanager. Les annotations (summary, description, runbook_url) fournissent du contexte humain et ne participent pas au routing. Labels sont indexés et utilisés pour le matching, annotations sont du texte libre pour la notification.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 41,
+      "question": "Qu'est-ce que le 'routing' dans Alertmanager ?",
+      "options": [
+        "Le routage réseau des métriques",
+        "La logique de distribution des alertes vers différents receivers selon les labels",
+        "Le load balancing des requêtes",
+        "Le chemin de stockage des données"
+      ],
+      "answer": 1,
+      "explanation": "Le routing tree d'Alertmanager définit comment distribuer les alertes vers différents receivers (équipes, canaux) selon leurs labels. Exemple : alertes {severity='critical'} → PagerDuty, {team='frontend'} → Slack #frontend. Le routing tree est hiérarchique avec des routes enfants et des matchers.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 42,
+      "question": "Que fait le 'grouping' dans Alertmanager ?",
+      "options": [
+        "Groupe les métriques par label",
+        "Regroupe plusieurs alertes similaires en une seule notification",
+        "Organise les dashboards Grafana",
+        "Crée des groupes d'utilisateurs"
+      ],
+      "answer": 1,
+      "explanation": "Le grouping regroupe plusieurs alertes similaires en une seule notification pour éviter le spam. Configuré avec group_by: ['cluster', 'alertname'], il regroupe toutes les alertes ayant le même cluster et alertname. group_wait/group_interval/repeat_interval contrôlent les délais d'envoi.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 43,
+      "question": "Qu'est-ce que l'inhibition dans Alertmanager ?",
+      "options": [
+        "Désactiver complètement les alertes",
+        "Supprimer certaines alertes si d'autres alertes plus importantes sont actives",
+        "Ralentir le taux d'alertes",
+        "Bloquer les notifications la nuit"
+      ],
+      "answer": 1,
+      "explanation": "L'inhibition supprime automatiquement certaines alertes (target) si d'autres (source) sont déjà actives. Exemple : si NodeDown fire, inhiber tous les ServiceDown du même node. Configuré avec inhibit_rules : source_matchers, target_matchers, equal (labels à matcher). Évite les alertes redondantes.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 44,
+      "question": "Quels sont les différents canaux de notification (receivers) supportés par Alertmanager ?",
+      "options": [
+        "Seulement email",
+        "Email, Slack, PagerDuty, Webhook, OpsGenie, VictorOps, WeChat, Pushover, etc.",
+        "Uniquement SMS",
+        "Slack uniquement"
+      ],
+      "answer": 1,
+      "explanation": "Alertmanager supporte de nombreux receivers : email, Slack, PagerDuty (on-call), Webhook (custom), OpsGenie, VictorOps, WeChat, Pushover, Discord, MS Teams (via webhook), etc. Chaque receiver a sa configuration spécifique (API keys, URLs, templates). On peut combiner plusieurs receivers par route.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 45,
+      "question": "Quels sont les 3 états d'une alerte Prometheus ?",
+      "options": [
+        "On, Off, Pending",
+        "Inactive, Pending, Firing",
+        "Green, Yellow, Red",
+        "Low, Medium, High"
+      ],
+      "answer": 1,
+      "explanation": "Les 3 états d'une alerte : Inactive (condition false), Pending (condition true mais durée 'for' non atteinte), Firing (condition true et durée 'for' dépassée, alerte envoyée à Alertmanager). La transition Pending→Firing permet d'éviter les alertes sur des pics temporaires.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 46,
+      "question": "Comment organiser les dashboards Grafana avec des 'rows' ?",
+      "options": [
+        "Les rows sont obsolètes",
+        "Les rows permettent de grouper des panels et de les replier/déplier",
+        "Les rows sont des lignes de données",
+        "Les rows servent au responsive design"
+      ],
+      "answer": 1,
+      "explanation": "Les rows (lignes) dans Grafana permettent d'organiser les panels en sections repliables. Exemple : une row 'System Metrics' avec panels CPU/Memory/Disk, une row 'Application Metrics'. Les rows peuvent être repliées pour une navigation plus claire dans les grands dashboards.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 47,
+      "question": "Que sont les 'query variables' dans Grafana ?",
+      "options": [
+        "Des requêtes SQL",
+        "Des variables dont les valeurs proviennent d'une requête sur la data source",
+        "Des erreurs de requête",
+        "Des variables statiques"
+      ],
+      "answer": 1,
+      "explanation": "Les query variables exécutent une requête pour obtenir leurs valeurs. Exemple : query variable $instance avec la requête PromQL label_values(node_cpu_seconds_total, instance) retourne toutes les instances disponibles. Les query variables se mettent à jour dynamiquement et peuvent être chaînées ($region → $cluster → $instance).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 48,
+      "question": "Comment utiliser le templating avec $variable dans Grafana ?",
+      "options": [
+        "Impossible d'utiliser des variables dans les requêtes",
+        "Utiliser $variable ou ${variable} dans les requêtes, titres, et expressions",
+        "Seulement dans les titres de panels",
+        "Variables réservées à l'administration"
+      ],
+      "answer": 1,
+      "explanation": "Les variables Grafana s'utilisent avec $ dans : les requêtes (rate(http_requests{instance='$instance'})), les titres ('CPU Usage - $instance'), les expressions, les liens. ${variable} est la syntaxe sécurisée pour éviter l'ambiguïté. Les variables supportent multi-select et regex.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 49,
+      "question": "Que sont les 'annotations' dans Grafana ?",
+      "options": [
+        "Des commentaires dans le code du dashboard",
+        "Des marqueurs temporels affichés sur les graphiques (déploiements, incidents)",
+        "Des notes pour les utilisateurs",
+        "Des alertes Grafana"
+      ],
+      "answer": 1,
+      "explanation": "Les annotations sont des marqueurs d'événements affichés sur les time series graphs. Elles peuvent provenir de requêtes (ex: requête PromQL retournant les timestamps de déploiements) ou d'APIs externes. Très utile pour corréler les métriques avec les événements (deployments, incidents, releases).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 50,
+      "question": "Comment fonctionne l'alerting dans Grafana (vs Prometheus/Alertmanager) ?",
+      "options": [
+        "Identique à Prometheus",
+        "Grafana Alerting unifie alerting multi-source et peut remplacer Alertmanager",
+        "Grafana ne fait pas d'alerting",
+        "Seulement pour les data sources non-Prometheus"
+      ],
+      "answer": 1,
+      "explanation": "Grafana Unified Alerting (depuis v8) permet de créer des alertes sur n'importe quelle data source (Prometheus, Loki, CloudWatch, etc.) avec une UI unifiée. Il peut utiliser son propre Alertmanager ou pointer vers un Alertmanager externe. Grafana Alerting supporte les mêmes concepts : rules, labels, silences, contact points (receivers).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 51,
+      "question": "Qu'est-ce que le 'provisioning' de dashboards dans Grafana ?",
+      "options": [
+        "Créer des dashboards manuellement",
+        "Déployer des dashboards via fichiers YAML/JSON (infrastructure as code)",
+        "Supprimer des anciens dashboards",
+        "Partager des dashboards par email"
+      ],
+      "answer": 1,
+      "explanation": "Le provisioning permet de déployer automatiquement des dashboards, data sources, et alertes via des fichiers de configuration (YAML/JSON) au démarrage de Grafana. Cela permet de versionner les dashboards dans Git, de les déployer via CI/CD, et de garantir la cohérence entre environnements (IaC pour monitoring).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 52,
+      "question": "Comment gérer les permissions des dashboards Grafana ?",
+      "options": [
+        "Grafana n'a pas de permissions",
+        "Via folders, teams, et permissions par rôle (Viewer, Editor, Admin)",
+        "Uniquement au niveau serveur",
+        "Permissions binaires on/off"
+      ],
+      "answer": 1,
+      "explanation": "Grafana gère les permissions via : Folders (organisation logique), Teams (groupes d'utilisateurs), Roles (Viewer, Editor, Admin). On peut définir des permissions par dashboard/folder pour chaque team/user : View (consulter), Edit (modifier), Admin (gérer permissions). Les organisations (orgs) isolent complètement les ressources.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 53,
+      "question": "Que sont les 'panel plugins' dans Grafana ?",
+      "options": [
+        "Des bugs dans les panels",
+        "Des visualisations tierces ou custom (worldmap, flowchart, 3D graphs, etc.)",
+        "Des paramètres de configuration",
+        "Des thèmes de couleurs"
+      ],
+      "answer": 1,
+      "explanation": "Les panel plugins étendent Grafana avec des visualisations custom. Plugins populaires : Worldmap (carte géographique), Flowchart, Pie Chart v2, Boom Table, Clock, Plotly. On peut installer des plugins depuis grafana.com/plugins ou développer ses propres plugins en React. Installés via grafana-cli ou Docker volume.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 54,
+      "question": "Qu'est-ce que Loki dans l'écosystème Grafana ?",
+      "options": [
+        "Un fork de Prometheus",
+        "Un système de log aggregation horizontal comme Prometheus pour les logs",
+        "Un outil de distributed tracing",
+        "Un dashboard template"
+      ],
+      "answer": 1,
+      "explanation": "Grafana Loki est un système de log aggregation inspiré de Prometheus : indexation des labels (pas du contenu), stockage compressé, requêtes avec LogQL (similaire à PromQL). Architecture : Promtail (agent), Loki (serveur), Grafana (visualisation). Loki est beaucoup plus économe que Elasticsearch car il n'indexe que les labels.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 55,
+      "question": "Comment fonctionne l'indexation dans Loki ?",
+      "options": [
+        "Full-text indexing comme Elasticsearch",
+        "Indexation uniquement des labels (metadata), pas du contenu des logs",
+        "Aucune indexation",
+        "Indexation en temps réel de tout"
+      ],
+      "answer": 1,
+      "explanation": "Contrairement à Elasticsearch, Loki n'indexe QUE les labels (metadata comme job, instance, filename) et non le contenu des logs. Cela réduit drastiquement les coûts et la complexité. Les logs sont compressés et stockés par chunks. Les requêtes filtrent d'abord par labels (rapide), puis grep dans les chunks (parallélisé).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 56,
+      "question": "Qu'est-ce que LogQL ?",
+      "options": [
+        "Un langage SQL pour les logs",
+        "Le langage de requête de Loki, similaire à PromQL",
+        "Un format de log structuré",
+        "Un protocole réseau"
+      ],
+      "answer": 1,
+      "explanation": "LogQL est le langage de requête de Loki, inspiré de PromQL. Structure : log stream selector {job='app'} | log pipeline (filters, parsers, metrics). Exemples : {job='nginx'} |= 'error' (contient error), {job='app'} | json | status >= 400 (parse JSON et filtre). LogQL peut aussi générer des métriques : rate({job='app'}[5m]).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 57,
+      "question": "Qu'est-ce que Promtail ?",
+      "options": [
+        "Un outil de monitoring Prometheus",
+        "L'agent de collecte de logs pour Loki",
+        "Un exporter Prometheus",
+        "Un dashboard Grafana"
+      ],
+      "answer": 1,
+      "explanation": "Promtail est l'agent officiel de Grafana Loki pour collecter et envoyer les logs. Il lit les fichiers logs (tailing), applique des labels (service discovery, relabeling), parse les logs (regex, JSON), et envoie à Loki via HTTP. Alternatives : Fluentd, Fluent Bit, Vector avec plugin Loki.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 58,
+      "question": "Quelle est l'architecture de base d'un stack ELK ?",
+      "options": [
+        "ElasticSearch only",
+        "Elasticsearch (stockage/search), Logstash (ingestion/parsing), Kibana (visualisation)",
+        "Seulement Kibana",
+        "ELK est obsolète"
+      ],
+      "answer": 1,
+      "explanation": "ELK Stack : Elasticsearch (base NoSQL distribuée pour stocker et searcher), Logstash (pipeline d'ingestion : input, filter, output), Kibana (UI de visualisation et exploration). Variante EFK remplace Logstash par Fluentd/Fluent Bit (plus légers). Beats (Filebeat, Metricbeat) sont des agents légers alternatifs.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 59,
+      "question": "Pourquoi le parsing des logs est-il important ?",
+      "options": [
+        "Pour colorier les logs",
+        "Pour structurer les logs non-structurés et extraire des champs (timestamp, severity, message)",
+        "Pour compresser les logs",
+        "Ce n'est pas important"
+      ],
+      "answer": 1,
+      "explanation": "Le parsing transforme des logs textuels non-structurés en données structurées avec champs extraits (timestamp, level, user, latency, etc.). Cela permet : le filtrage précis, l'agrégation, les statistiques, les alertes sur des champs. Tools : Logstash grok, Promtail regex/JSON, Fluentd parsers.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 60,
+      "question": "Qu'est-ce qu'un 'index pattern' dans Elasticsearch/Kibana ?",
+      "options": [
+        "Un template de document",
+        "Un pattern de nom d'index pour regrouper et rechercher les logs (ex: logs-*)",
+        "Un algorithme d'indexation",
+        "Un format de timestamp"
+      ],
+      "answer": 1,
+      "explanation": "Un index pattern dans Kibana définit quels indices Elasticsearch interroger. Exemple : 'logs-*' matche tous les indices logs-2025-01-01, logs-2025-01-02, etc. Les index patterns supportent les wildcards et permettent de définir le time field pour les séries temporelles. Kibana crée des visualisations basées sur l'index pattern.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 61,
+      "question": "Quelle est la différence principale entre Loki et Elasticsearch pour les logs ?",
+      "options": [
+        "Aucune différence majeure",
+        "Loki indexe seulement les labels (léger, économique), Elasticsearch indexe tout le contenu (puissant, coûteux)",
+        "Loki est plus lent",
+        "Elasticsearch ne fait que des logs"
+      ],
+      "answer": 1,
+      "explanation": "Philosophie opposée : Loki indexe UNIQUEMENT les labels (job, instance) et grep dans les chunks compressés → peu de RAM/disk, rapide sur labels, lent sur grep complexe. Elasticsearch indexe TOUT le contenu en full-text → très puissant pour recherche textuelle, mais très coûteux en ressources. Loki : simplicity & cost. ES : power & features.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 62,
+      "question": "Que représente la méthodologie RED ?",
+      "options": [
+        "Redundancy, Encryption, Disaster recovery",
+        "Rate, Errors, Duration - métriques clés pour les services",
+        "Read, Execute, Delete",
+        "Redis, ElasticSearch, Docker"
+      ],
+      "answer": 1,
+      "explanation": "RED est une méthodologie de monitoring services : Rate (requêtes/sec), Errors (taux d'erreur), Duration (latence/temps de réponse). Ces 3 métriques donnent une vue complète de la santé d'un service. Exemple : http_requests_total (rate), http_errors_total (errors), http_request_duration_seconds (duration). Popularisée par Tom Wilkie.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 63,
+      "question": "Que représente la méthodologie USE ?",
+      "options": [
+        "User, System, External",
+        "Utilization, Saturation, Errors - métriques pour les ressources",
+        "Upload, Storage, Export",
+        "Unix, Security, Encryption"
+      ],
+      "answer": 1,
+      "explanation": "USE est une méthodologie de monitoring ressources (créée par Brendan Gregg) : Utilization (% d'utilisation moyenne), Saturation (queue length, travail en attente), Errors (erreurs). S'applique aux ressources : CPU, Memory, Disk, Network. Exemple CPU : utilization=80%, saturation=load_avg=4, errors=0.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 64,
+      "question": "Quels sont les 'Four Golden Signals' de Google SRE ?",
+      "options": [
+        "CPU, Memory, Disk, Network",
+        "Latency, Traffic, Errors, Saturation",
+        "Availability, Performance, Security, Cost",
+        "Speed, Reliability, Efficiency, Scalability"
+      ],
+      "answer": 1,
+      "explanation": "Les Four Golden Signals (Google SRE Book) : Latency (temps de réponse), Traffic (demande, requêtes/sec), Errors (taux d'erreur), Saturation (utilisation des ressources limitantes). Si vous ne mesurez que 4 choses, mesurez celles-ci. Similaire à RED mais ajoute Saturation. Foundation du monitoring moderne.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 65,
+      "question": "Qu'est-ce que le blackbox monitoring ?",
+      "options": [
+        "Monitoring dans le noir",
+        "Monitoring externe du comportement observable (sans connaître l'implémentation)",
+        "Monitoring de boîtes noires physiques",
+        "Un type de hacking"
+      ],
+      "answer": 1,
+      "explanation": "Blackbox monitoring teste les services de l'extérieur, comme le ferait un utilisateur, sans connaître l'implémentation interne. Exemple : blackbox_exporter de Prometheus fait des checks HTTP/TCP/ICMP/DNS. Avantages : détecte les problèmes côté utilisateur, teste les SLOs. Complémentaire au whitebox monitoring (métriques internes).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 66,
+      "question": "Qu'est-ce que le whitebox monitoring ?",
+      "options": [
+        "Monitoring de serveurs blancs",
+        "Monitoring interne avec instrumentation du code (métriques, logs, traces)",
+        "Monitoring en environnement de test",
+        "Monitoring visible publiquement"
+      ],
+      "answer": 1,
+      "explanation": "Whitebox monitoring instrument le code applicatif pour exposer des métriques internes : compteurs de requêtes, temps de traitement, états internes, métriques métier. Nécessite l'intégration de client libraries (Prometheus client, OpenTelemetry). Avantages : détails fins, debugging, compréhension profonde. Complémentaire au blackbox (vue externe).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 67,
+      "question": "Quels sont les exporters Prometheus les plus courants ?",
+      "options": [
+        "Seulement Node Exporter",
+        "Node, Blackbox, MySQL, Postgres, Redis, HAProxy, Nginx, JMX, cAdvisor",
+        "Uniquement pour Kubernetes",
+        "Grafana Exporter"
+      ],
+      "answer": 1,
+      "explanation": "Exporters courants : Node Exporter (OS/hardware), Blackbox (probes HTTP/TCP/ICMP), MySQL/Postgres/MongoDB (databases), Redis/Memcached (cache), HAProxy/Nginx (load balancers), JMX Exporter (Java apps), cAdvisor (containers), SNMP Exporter (réseau), Windows Exporter. Plus de 100 exporters tiers disponibles.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 68,
+      "question": "Comment instrumenter une application avec les client libraries Prometheus ?",
+      "options": [
+        "Installer un agent externe",
+        "Importer la library, créer des métriques (Counter, Gauge, Histogram), les incrémenter dans le code, exposer /metrics",
+        "Utiliser un proxy",
+        "Ce n'est pas possible"
+      ],
+      "answer": 1,
+      "explanation": "Instrumentation avec client libraries (Go, Python, Java, etc.) : 1) Importer la library, 2) Créer des métriques (http_requests_total = Counter(), request_duration = Histogram()), 3) Incrémenter dans le code (http_requests_total.inc(), request_duration.observe(0.5)), 4) Exposer HTTP endpoint /metrics. Prometheus scrappe cet endpoint.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 69,
+      "question": "Qu'est-ce que le Pushgateway et quand l'utiliser ?",
+      "options": [
+        "Un gateway pour pousser les alertes",
+        "Un composant Prometheus pour les jobs batch/éphémères qui ne peuvent être scrapés",
+        "Un reverse proxy",
+        "Un système de cache"
+      ],
+      "answer": 1,
+      "explanation": "Le Pushgateway permet aux jobs éphémères (batch, cron, scripts courts) de PUSH leurs métriques car ils ne vivent pas assez longtemps pour être scrapés. Le job push vers le Pushgateway, puis Prometheus scrape le Pushgateway. À utiliser SEULEMENT pour batch jobs, pas pour services long-running (use case limité).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 70,
+      "question": "Quelles sont les limitations du Pushgateway ?",
+      "options": [
+        "Aucune limitation",
+        "Single point of failure, pas de service discovery, métriques obsolètes persistent, pas de timestamp",
+        "Trop rapide",
+        "Trop complexe"
+      ],
+      "answer": 1,
+      "explanation": "Limitations Pushgateway : SPOF (si down, perte de métriques), pas de détection automatique des sources (static), les métriques persistent même si le job est mort (stale data), pas de timestamp custom (timestamp = quand Prometheus scrape). Ne convient PAS aux services long-running. Utiliser avec précaution.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 71,
+      "question": "Qu'est-ce que la Federation dans Prometheus ?",
+      "options": [
+        "Une fédération de serveurs web",
+        "Permettre à un Prometheus de scraper des métriques depuis d'autres serveurs Prometheus",
+        "Un système d'authentification",
+        "Un protocole réseau"
+      ],
+      "answer": 1,
+      "explanation": "Federation permet à un Prometheus de scraper le endpoint /federate d'autres serveurs Prometheus pour agréger des métriques. Deux types : hierarchical (Prometheus régionaux → Prometheus global) et cross-service (Prometheus scrape des métriques spécifiques d'autres Prometheus). Utile pour scale-out et vue globale.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 72,
+      "question": "Qu'est-ce que Thanos dans l'écosystème Prometheus ?",
+      "options": [
+        "Un villain Marvel",
+        "Un système open-source pour Prometheus HA, long-term storage, et query global",
+        "Un fork de Prometheus",
+        "Un système de logs"
+      ],
+      "answer": 1,
+      "explanation": "Thanos est un ensemble de composants qui étendent Prometheus : Sidecar (upload vers object storage), Store Gateway (query object storage), Compactor (downsampling), Querier (query global multi-Prometheus), Ruler (alerting/recording global). Thanos résout : long-term storage illimité (S3), haute dispo, vue globale multi-cluster.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 73,
+      "question": "Quelles sont les solutions de long-term storage pour Prometheus ?",
+      "options": [
+        "Prometheus stocke tout éternellement",
+        "Thanos, Cortex, M3DB, VictoriaMetrics - stockage object storage (S3) illimité",
+        "Seulement des disques locaux",
+        "MySQL ou PostgreSQL"
+      ],
+      "answer": 1,
+      "explanation": "Le stockage local Prometheus est limité (rétention 15-30 jours typique). Solutions long-term : Thanos (CNCF, object storage S3/GCS), Cortex (CNCF, multi-tenant), M3DB (Uber, distributed), VictoriaMetrics (compact, rapide). Toutes utilisent object storage (S3, GCS, Azure Blob) pour stockage illimité à bas coût.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 74,
+      "question": "Qu'est-ce que le Prometheus Operator pour Kubernetes ?",
+      "options": [
+        "Un opérateur humain qui gère Prometheus",
+        "Un controller K8s qui gère Prometheus, Alertmanager, et ServiceMonitors via CRDs",
+        "Un plugin kubectl",
+        "Un dashboard Grafana"
+      ],
+      "answer": 1,
+      "explanation": "Prometheus Operator est un controller Kubernetes qui gère le cycle de vie de Prometheus via des CRDs : Prometheus (instance), ServiceMonitor (définit quoi scraper), PrometheusRule (alerting rules), Alertmanager. Il automatise : déploiement, configuration, discovery, scaling. Fait partie de kube-prometheus-stack (Helm chart complet).",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 75,
+      "question": "Comment implémenter la haute disponibilité pour Prometheus ?",
+      "options": [
+        "Un seul Prometheus suffit",
+        "Plusieurs replicas Prometheus identiques + Thanos/Cortex pour deduplication, ou Prometheus avec remote_write vers TSDB HA",
+        "Load balancer devant Prometheus",
+        "RAID sur les disques"
+      ],
+      "answer": 1,
+      "explanation": "HA Prometheus : 1) Deux+ replicas Prometheus identiques scrapant les mêmes targets, 2) Thanos Querier ou Cortex pour deduplication et query unifié, 3) OU remote_write vers un TSDB distribué HA (Thanos, Cortex, M3). Les replicas évitent SPOF, la deduplication évite les doublons. Alertmanager en cluster gère la deduplication des alertes.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 76,
+      "question": "Qu'est-ce que la 'cardinality' dans Prometheus et pourquoi est-ce critique ?",
+      "options": [
+        "Le nombre de métriques différentes",
+        "Le nombre de time series uniques (metric_name + combinaisons de labels), impacte RAM et performance",
+        "La précision des métriques",
+        "Le nombre de serveurs Prometheus"
+      ],
+      "answer": 1,
+      "explanation": "Cardinality = nombre de time series uniques. Chaque combinaison unique de metric_name + labels crée une série. Haute cardinality (millions de séries) = explosion de RAM et lenteur. Causes : labels avec valeurs illimitées (user_id, IP, URL). Best practice : utiliser des labels avec faible cardinalité (env, service, instance), éviter timestamps/IDs/emails dans labels.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 77,
+      "question": "Comment optimiser les requêtes PromQL pour de meilleures performances ?",
+      "options": [
+        "Ajouter plus de RAM",
+        "Utiliser recording rules, limiter les labels, éviter regex, optimiser les agrégations, réduire les ranges",
+        "Augmenter le scrape interval",
+        "Utiliser seulement des Gauges"
+      ],
+      "answer": 1,
+      "explanation": "Optimisations PromQL : 1) Recording rules pour pré-calculer les queries coûteuses, 2) Sélecteurs précis (labels exacts vs regex), 3) Agrégations pushdown (sum before rate), 4) Limiter les time ranges [5m] vs [1h], 5) Éviter topk/bottomk sur millions de séries, 6) Utiliser subqueries avec précaution, 7) Monitorer query performance.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 78,
+      "question": "Comment gérer la rétention et optimiser le stockage Prometheus ?",
+      "options": [
+        "Garder tout éternellement",
+        "Configurer retention time/size, utiliser remote_write vers long-term storage, downsampling avec Thanos",
+        "Supprimer manuellement les vieux fichiers",
+        "Utiliser RAID"
+      ],
+      "answer": 1,
+      "explanation": "Optimisation stockage : 1) --storage.tsdb.retention.time (ex: 15d) et --storage.tsdb.retention.size, 2) Remote write vers long-term storage (Thanos, Cortex) pour historique, 3) Downsampling (Thanos Compactor) : raw → 5m → 1h, 4) Contrôler cardinality, 5) Compaction automatique, 6) Monitoring du disque et de la WAL.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 79,
+      "question": "Pourquoi utiliser des recording rules pour l'optimisation ?",
+      "options": [
+        "Pour enregistrer les logs",
+        "Pour pré-calculer des agrégations coûteuses et les stocker comme nouvelles métriques",
+        "Pour enregistrer les alertes",
+        "Pour le backup"
+      ],
+      "answer": 1,
+      "explanation": "Recording rules pré-calculent des expressions PromQL complexes à intervalles réguliers et stockent le résultat comme nouvelles time series. Bénéfices : 1) Dashboards ultra-rapides (query précompilée), 2) Alertes performantes, 3) Downsampling custom, 4) Réduction de charge query. Exemple : calculer le p95 toutes les 30s au lieu de le recalculer à chaque dashboard load.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 80,
+      "question": "Qu'est-ce que le distributed tracing ?",
+      "options": [
+        "Tracer des logs distribués",
+        "Suivre une requête à travers tous les services d'une architecture microservices",
+        "Un système de monitoring",
+        "Un protocole réseau"
+      ],
+      "answer": 1,
+      "explanation": "Le distributed tracing suit le chemin d'une requête à travers une architecture distribuée (microservices). Chaque service crée des 'spans' (étapes) avec timing et metadata. Les spans sont liés par trace_id et parent_id formant une 'trace' complète. Permet de : identifier les goulots, comprendre les dépendances, débugger les latences inter-services.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 81,
+      "question": "Quelle est l'architecture de Jaeger pour le distributed tracing ?",
+      "options": [
+        "Un seul composant monolithique",
+        "Agent (sidecar), Collector (ingestion), Storage (Cassandra/ES), Query (API), UI (frontend)",
+        "Seulement un serveur central",
+        "Client-serveur simple"
+      ],
+      "answer": 1,
+      "explanation": "Architecture Jaeger : 1) Agent (UDP sidecar par node, buffer local), 2) Collector (reçoit spans, valide, traite, écrit storage), 3) Storage backend (Cassandra, Elasticsearch, Kafka), 4) Query service (API gRPC), 5) UI (React frontend). Le client library instrumente le code et envoie spans à l'agent local.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 82,
+      "question": "Qu'est-ce qu'OpenTelemetry (OTel) ?",
+      "options": [
+        "Un opérateur télécom",
+        "Un standard CNCF unifié pour instrumentation observabilité (métriques, logs, traces)",
+        "Un dashboard de monitoring",
+        "Un protocole de sécurité"
+      ],
+      "answer": 1,
+      "explanation": "OpenTelemetry (CNCF) est un framework d'observabilité unifié : APIs, SDKs, et outils pour instrumenter, générer, collecter et exporter télémétrie (traces, métriques, logs). Il remplace OpenTracing et OpenCensus. Vendor-neutral, supporte tous les backends (Jaeger, Prometheus, Datadog, etc.). Auto-instrumentation disponible pour la plupart des langages/frameworks.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 83,
+      "question": "Quelles sont les stratégies de sampling pour le distributed tracing ?",
+      "options": [
+        "Tout capturer ou rien",
+        "Head-based (probabilistic, rate limiting), Tail-based (intelligent après la trace), adaptive",
+        "Sampling aléatoire uniquement",
+        "Pas de sampling nécessaire"
+      ],
+      "answer": 1,
+      "explanation": "Stratégies de sampling : 1) Head-based (décision au début) : probabilistic (1%), rate limiting (100 traces/sec), 2) Tail-based (décision après) : garder toutes les erreurs, sampler les succès, décision basée sur latence, 3) Adaptive : ajuster le taux selon le trafic. Le sampling est critique pour réduire le volume (et coût) tout en conservant les traces importantes.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 84,
+      "question": "Qu'est-ce que kube-state-metrics dans Kubernetes ?",
+      "options": [
+        "Métriques de l'état du cluster",
+        "Service qui génère des métriques sur l'état des objets Kubernetes (Deployments, Pods, Nodes, etc.)",
+        "Un dashboard Grafana",
+        "Un plugin kubectl"
+      ],
+      "answer": 1,
+      "explanation": "kube-state-metrics est un service qui écoute l'API Server K8s et génère des métriques Prometheus sur l'état des ressources : kube_deployment_status_replicas, kube_pod_status_phase, kube_node_status_condition. Différent de kubelet metrics (ressources container), kube-state-metrics donne l'état déclaratif et le statut des objets K8s.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 85,
+      "question": "Qu'est-ce que cAdvisor et comment s'intègre-t-il au monitoring Kubernetes ?",
+      "options": [
+        "Un outil de CI/CD",
+        "Container Advisor : daemon qui collecte les métriques de ressources des containers, intégré au kubelet",
+        "Un scanner de sécurité",
+        "Un orchestrateur"
+      ],
+      "answer": 1,
+      "explanation": "cAdvisor (Container Advisor) collecte les métriques de ressources, performance et health des containers. Intégré au kubelet K8s, il expose métriques sur :10250/metrics/cadvisor : container_cpu_usage_seconds_total, container_memory_working_set_bytes. Prometheus scrape ces métriques pour monitorer CPU/Memory/Network par container/pod.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 86,
+      "question": "Que sont ServiceMonitor et PodMonitor dans Prometheus Operator ?",
+      "options": [
+        "Des types de services K8s",
+        "Des CRDs qui définissent comment Prometheus doit scraper des Services ou Pods via label selectors",
+        "Des commandes kubectl",
+        "Des plugins monitoring"
+      ],
+      "answer": 1,
+      "explanation": "ServiceMonitor et PodMonitor sont des CRDs Prometheus Operator : ServiceMonitor scrape des Services K8s (via label selector + port), PodMonitor scrape directement des Pods. Ils génèrent automatiquement la configuration Prometheus. Exemple : ServiceMonitor avec selector: app=myapp scrape tous les Services labelisés app=myapp sur le port metrics.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 87,
+      "question": "Comment monitorer les control plane components de Kubernetes (API server, scheduler, controller-manager, etcd) ?",
+      "options": [
+        "Impossible à monitorer",
+        "Exposer et scraper leurs endpoints /metrics, créer ServiceMonitors spécifiques, attention aux certificats",
+        "Utiliser seulement kube-state-metrics",
+        "Via kubectl uniquement"
+      ],
+      "answer": 1,
+      "explanation": "Monitoring control plane : 1) API Server : /metrics sur 6443 (TLS), métriques requests, latency, 2) etcd : /metrics sur 2379, métriques cluster health, 3) Scheduler/Controller-Manager : /metrics sur 10259/10257. Dans les clusters managés (EKS, GKE), l'accès peut être limité. Utiliser ServiceMonitors avec TLS config appropriée.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 88,
+      "question": "Comment définir et mesurer des SLI (Service Level Indicators) ?",
+      "options": [
+        "Les SLI sont automatiques",
+        "Identifier les métriques critiques user-facing (availability, latency, error rate), définir comment les mesurer",
+        "Utiliser des métriques système seulement",
+        "Les SLI sont des alertes"
+      ],
+      "answer": 1,
+      "explanation": "SLI = métriques quantifiables de la qualité du service. Processus : 1) Identifier ce qui compte pour l'utilisateur (latency, availability, throughput), 2) Définir comment mesurer (ex: % de requêtes < 200ms), 3) Implémenter la mesure (PromQL, logs), 4) Définir SLO (ex: 99.9% des requêtes < 200ms), 5) Calculer error budget (1 - SLO). Les SLI doivent être user-centric.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 89,
+      "question": "Qu'est-ce qu'un error budget et comment l'utiliser ?",
+      "options": [
+        "Un budget pour les bugs",
+        "La marge d'erreur tolérée (1 - SLO), utilisée pour équilibrer vitesse et fiabilité",
+        "Un compte bancaire pour les erreurs",
+        "Le nombre maximum de bugs"
+      ],
+      "answer": 1,
+      "explanation": "Error budget = 100% - SLO. Si SLO = 99.9% uptime, error budget = 0.1% = 43 min/mois de downtime acceptable. Usage : 1) Budget épuisé → freeze features, focus fiabilité, 2) Budget disponible → prendre des risques (déploiements fréquents, expérimentations), 3) Mesurer burn rate (vitesse consommation budget). Aligne business et engineering sur la fiabilité.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 90,
+      "question": "Quelles sont les best practices pour l'on-call et la réponse aux incidents ?",
+      "options": [
+        "Répondre quand on a le temps",
+        "Alertes actionnables, runbooks détaillés, rotation équitable, post-mortems blameless, mesure MTTD/MTTR",
+        "Ignorer les alertes non critiques",
+        "Alerter sur tout"
+      ],
+      "answer": 1,
+      "explanation": "Best practices on-call : 1) Alertes actionnables uniquement (stop alert fatigue), 2) Runbooks avec steps de résolution, 3) Rotation on-call équitable avec handoff, 4) Escalation policy claire, 5) Post-mortems blameless (focus système, pas personne), 6) Mesurer MTTD (temps détection) et MTTR (temps résolution), 7) Automatiser le toil, 8) Respecter work-life balance. Culture SRE.",
+      "difficulty": "advanced"
+    }
+  ]
+}

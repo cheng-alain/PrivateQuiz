@@ -1,0 +1,1176 @@
+{
+  "title": "Ansible",
+  "description": "90 questions couvrant tous les niveaux d'Ansible : 25 questions faciles sur les fondamentaux, la syntaxe de base et les commandes ad-hoc, 40 questions intermédiaires sur les playbooks avancés, les rôles, les variables et les modules, et 25 questions avancées sur l'architecture, les inventaires dynamiques, les custom plugins et l'optimisation production",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Qu'est-ce qu'Ansible ?",
+      "options": [
+        "Un outil d'orchestration agentless basé sur SSH",
+        "Un système de conteneurisation comme Docker",
+        "Un orchestrateur de conteneurs comme Kubernetes",
+        "Un langage de programmation pour l'infrastructure"
+      ],
+      "answer": 0,
+      "explanation": "Ansible est un outil d'automatisation IT open-source, agentless (sans agent), utilisant SSH pour se connecter aux machines distantes. Il utilise une approche push-based et des playbooks YAML pour décrire l'infrastructure as code.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 2,
+      "question": "Quel est le principal avantage de l'architecture agentless d'Ansible ?",
+      "options": [
+        "Pas besoin d'installer d'agent sur les machines gérées",
+        "Performance supérieure aux outils avec agents",
+        "Support natif de tous les systèmes d'exploitation",
+        "Chiffrement automatique des données"
+      ],
+      "answer": 0,
+      "explanation": "L'architecture agentless d'Ansible signifie qu'aucun logiciel supplémentaire n'est requis sur les machines gérées (managed nodes). Ansible utilise simplement SSH (ou WinRM pour Windows) qui est déjà présent sur la plupart des systèmes.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 3,
+      "question": "Qu'est-ce que l'idempotence dans Ansible ?",
+      "options": [
+        "La capacité d'exécuter une tâche plusieurs fois avec le même résultat",
+        "Le chiffrement des données sensibles",
+        "La parallélisation des tâches",
+        "La gestion automatique des erreurs"
+      ],
+      "answer": 0,
+      "explanation": "L'idempotence signifie qu'une opération peut être exécutée plusieurs fois sans changer le résultat au-delà de la première application. Dans Ansible, cela garantit qu'exécuter un playbook plusieurs fois produira le même état final sans effets secondaires non désirés.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 4,
+      "question": "Quelle est la différence entre un inventory, un playbook et un role ?",
+      "options": [
+        "Inventory = liste d'hôtes, Playbook = orchestration de tâches, Role = ensemble réutilisable de tâches",
+        "Inventory = variables, Playbook = exécution, Role = modules",
+        "Inventory = fichier YAML, Playbook = fichier JSON, Role = fichier INI",
+        "Inventory = configuration, Playbook = installation, Role = monitoring"
+      ],
+      "answer": 0,
+      "explanation": "L'inventory définit les hôtes cibles et leurs groupes. Un playbook orchestre l'exécution de tâches sur ces hôtes. Un role est une structure réutilisable qui encapsule des tâches, variables, handlers et templates pour une fonction spécifique.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 5,
+      "question": "Quel format de fichier Ansible utilise-t-il principalement pour les playbooks ?",
+      "options": [
+        "JSON",
+        "YAML",
+        "XML",
+        "TOML"
+      ],
+      "answer": 1,
+      "explanation": "Ansible utilise YAML (Yet Another Markup Language) pour ses playbooks, inventaires et autres fichiers de configuration. YAML est privilégié pour sa lisibilité et sa simplicité par rapport à JSON ou XML.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 6,
+      "question": "Quels sont les deux composants principaux de l'architecture Ansible ?",
+      "options": [
+        "Master et Slave",
+        "Control node et Managed nodes",
+        "Server et Client",
+        "Controller et Worker"
+      ],
+      "answer": 1,
+      "explanation": "L'architecture Ansible comprend le control node (machine où Ansible est installé et depuis laquelle les commandes sont exécutées) et les managed nodes (machines cibles gérées par Ansible via SSH).",
+      "difficulty": "easy"
+    },
+    {
+      "id": 7,
+      "question": "Quel format d'inventory peut être utilisé dans Ansible ?",
+      "options": [
+        "Seulement INI",
+        "Seulement YAML",
+        "INI ou YAML",
+        "Seulement JSON"
+      ],
+      "answer": 2,
+      "explanation": "Ansible supporte deux formats principaux pour les fichiers inventory : le format INI (traditionnel, plus simple) et le format YAML (plus structuré et expressif). Les deux peuvent être utilisés selon les besoins.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 8,
+      "question": "Comment définir un groupe d'hôtes dans un inventory INI ?",
+      "options": [
+        "group: webservers",
+        "[webservers]",
+        "{webservers}",
+        "webservers[]"
+      ],
+      "answer": 1,
+      "explanation": "Dans un inventory au format INI, les groupes sont définis entre crochets [nom_du_groupe], suivis des hôtes appartenant à ce groupe sur les lignes suivantes.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 9,
+      "question": "Quelle variable d'inventory permet de spécifier l'adresse IP d'un hôte différente de son nom ?",
+      "options": [
+        "ansible_ip",
+        "ansible_address",
+        "ansible_host",
+        "ansible_target"
+      ],
+      "answer": 2,
+      "explanation": "La variable ansible_host permet de définir l'adresse IP ou le hostname réel à utiliser pour se connecter à un hôte, même si l'alias utilisé dans l'inventory est différent.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 10,
+      "question": "Quelle est la différence entre un inventory statique et dynamique ?",
+      "options": [
+        "Statique = fichier texte, Dynamique = généré par script",
+        "Statique = INI, Dynamique = YAML",
+        "Statique = local, Dynamique = distant",
+        "Statique = sans variables, Dynamique = avec variables"
+      ],
+      "answer": 0,
+      "explanation": "Un inventory statique est un fichier texte (INI ou YAML) maintenu manuellement. Un inventory dynamique est généré à la volée par un script ou plugin qui interroge une source externe (cloud provider, CMDB, etc.).",
+      "difficulty": "easy"
+    },
+    {
+      "id": 11,
+      "question": "Quelle commande ad-hoc permet de tester la connectivité avec tous les hôtes ?",
+      "options": [
+        "ansible all -m test",
+        "ansible all -m ping",
+        "ansible all -m connect",
+        "ansible all --check"
+      ],
+      "answer": 1,
+      "explanation": "La commande 'ansible all -m ping' utilise le module ping pour tester la connectivité SSH avec tous les hôtes de l'inventory. C'est souvent la première commande exécutée pour valider la configuration.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 12,
+      "question": "Quelle option permet d'exécuter une commande ad-hoc avec les privilèges sudo ?",
+      "options": [
+        "-s ou --sudo",
+        "-b ou --become",
+        "-p ou --privilege",
+        "-r ou --root"
+      ],
+      "answer": 1,
+      "explanation": "L'option -b ou --become permet d'exécuter une commande avec élévation de privilèges (become_user par défaut root). C'est l'équivalent de sudo dans les commandes ad-hoc.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 13,
+      "question": "Quelle est la différence entre les modules 'command' et 'shell' ?",
+      "options": [
+        "Aucune différence",
+        "shell supporte les pipes, redirections et variables d'environnement",
+        "command est plus rapide",
+        "shell est idempotent, command ne l'est pas"
+      ],
+      "answer": 1,
+      "explanation": "Le module 'shell' exécute les commandes via un shell (/bin/sh), supportant ainsi les pipes, redirections, variables et autres fonctionnalités shell. Le module 'command' exécute directement la commande sans shell, ce qui est plus sécurisé mais plus limité.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 14,
+      "question": "Quelle option de commande ad-hoc permet de spécifier un inventory personnalisé ?",
+      "options": [
+        "-h ou --hosts",
+        "-i ou --inventory",
+        "-f ou --file",
+        "-c ou --config"
+      ],
+      "answer": 1,
+      "explanation": "L'option -i ou --inventory permet de spécifier un fichier inventory différent de celui par défaut (/etc/ansible/hosts). Exemple : ansible all -i custom_inventory.ini -m ping",
+      "difficulty": "easy"
+    },
+    {
+      "id": 15,
+      "question": "Quelle est la différence entre 'ansible' et 'ansible-playbook' ?",
+      "options": [
+        "ansible pour les commandes ad-hoc, ansible-playbook pour exécuter des playbooks",
+        "ansible pour les inventaires, ansible-playbook pour les rôles",
+        "Aucune différence, ce sont des alias",
+        "ansible pour le développement, ansible-playbook pour la production"
+      ],
+      "answer": 0,
+      "explanation": "La commande 'ansible' est utilisée pour exécuter des commandes ad-hoc simples (une tâche à la fois). La commande 'ansible-playbook' est utilisée pour exécuter des playbooks complets contenant plusieurs tâches orchestrées.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 16,
+      "question": "Quels sont les trois éléments essentiels d'un playbook Ansible ?",
+      "options": [
+        "name, hosts, tasks",
+        "inventory, variables, modules",
+        "roles, handlers, templates",
+        "become, when, loop"
+      ],
+      "answer": 0,
+      "explanation": "Un playbook basique nécessite au minimum : 'name' (description du play), 'hosts' (cibles d'exécution), et 'tasks' (liste des tâches à exécuter). D'autres éléments comme vars, handlers sont optionnels.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 17,
+      "question": "Quel module permet d'installer un package sur une distribution Debian/Ubuntu ?",
+      "options": [
+        "yum",
+        "package",
+        "apt",
+        "dnf"
+      ],
+      "answer": 2,
+      "explanation": "Le module 'apt' est spécifique aux distributions basées sur Debian (Debian, Ubuntu, etc.). Pour Red Hat/CentOS, on utilise 'yum' ou 'dnf'. Le module 'package' est générique et détecte automatiquement le gestionnaire de paquets.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 18,
+      "question": "Quel module permet de gérer l'état d'un service (start, stop, restart) ?",
+      "options": [
+        "systemd",
+        "service",
+        "daemon",
+        "process"
+      ],
+      "answer": 1,
+      "explanation": "Le module 'service' permet de gérer l'état des services système (démarrer, arrêter, redémarrer, activer au boot). Il fonctionne avec différents init systems (systemd, sysvinit, upstart).",
+      "difficulty": "easy"
+    },
+    {
+      "id": 19,
+      "question": "Que fait la directive 'notify' dans une tâche ?",
+      "options": [
+        "Affiche un message à l'utilisateur",
+        "Déclenche l'exécution d'un handler",
+        "Envoie un email de notification",
+        "Log un événement"
+      ],
+      "answer": 1,
+      "explanation": "La directive 'notify' dans une tâche déclenche l'exécution d'un handler (défini dans la section 'handlers') uniquement si la tâche a provoqué un changement. C'est utile pour redémarrer des services après modification de configuration.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 20,
+      "question": "Quelle option de ansible-playbook permet d'exécuter en mode 'dry-run' (simulation) ?",
+      "options": [
+        "--dry-run",
+        "--simulate",
+        "-C ou --check",
+        "--test"
+      ],
+      "answer": 2,
+      "explanation": "L'option -C ou --check (check mode) permet d'exécuter un playbook en mode simulation sans effectuer de réels changements. Cela permet de prévisualiser ce qui serait modifié avant l'exécution réelle.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 21,
+      "question": "Quelle directive permet d'exécuter une tâche conditionnellement ?",
+      "options": [
+        "if",
+        "when",
+        "condition",
+        "check"
+      ],
+      "answer": 1,
+      "explanation": "La directive 'when' permet d'exécuter une tâche conditionnellement en fonction d'une expression. Exemple : when: ansible_os_family == 'Debian' pour exécuter uniquement sur les systèmes Debian.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 22,
+      "question": "Quelle directive permet de boucler sur une liste d'éléments ?",
+      "options": [
+        "foreach",
+        "iterate",
+        "loop",
+        "repeat"
+      ],
+      "answer": 2,
+      "explanation": "La directive 'loop' (anciennement with_items) permet d'itérer sur une liste d'éléments. Chaque élément est accessible via la variable 'item' dans la tâche. Exemple : loop: ['nginx', 'mysql', 'php']",
+      "difficulty": "easy"
+    },
+    {
+      "id": 23,
+      "question": "À quel moment les handlers sont-ils exécutés dans un playbook ?",
+      "options": [
+        "Immédiatement après la tâche qui les notifie",
+        "À la fin de toutes les tâches du play",
+        "Au début du playbook",
+        "De manière asynchrone en arrière-plan"
+      ],
+      "answer": 1,
+      "explanation": "Les handlers sont exécutés à la fin de toutes les tâches du play, même s'ils ont été notifiés plusieurs fois. Cela permet de regrouper les redémarrages de services par exemple, évitant ainsi plusieurs redémarrages inutiles.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 24,
+      "question": "Quel module permet de créer un utilisateur sur un système Linux ?",
+      "options": [
+        "account",
+        "user",
+        "create_user",
+        "adduser"
+      ],
+      "answer": 1,
+      "explanation": "Le module 'user' permet de gérer les comptes utilisateurs (création, modification, suppression). Il supporte de nombreux paramètres comme name, uid, groups, shell, password, etc.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 25,
+      "question": "Quel module permet de créer un groupe sur un système Linux ?",
+      "options": [
+        "group",
+        "create_group",
+        "groupadd",
+        "team"
+      ],
+      "answer": 0,
+      "explanation": "Le module 'group' permet de gérer les groupes système (création, modification, suppression). Il prend en paramètres le name, gid (optionnel), et state (present/absent).",
+      "difficulty": "easy"
+    },
+    {
+      "id": 26,
+      "question": "Où sont définies les variables group_vars pour un groupe 'webservers' ?",
+      "options": [
+        "Dans le fichier inventory",
+        "Dans group_vars/webservers.yml ou group_vars/webservers/",
+        "Dans le playbook uniquement",
+        "Dans /etc/ansible/group_vars/"
+      ],
+      "answer": 1,
+      "explanation": "Les variables group_vars pour un groupe sont définies soit dans un fichier group_vars/nom_du_groupe.yml, soit dans un répertoire group_vars/nom_du_groupe/ contenant plusieurs fichiers YAML. Ces variables s'appliquent à tous les hôtes du groupe.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 27,
+      "question": "Quelle est la priorité des variables dans Ansible (de la plus faible à la plus forte) ?",
+      "options": [
+        "role defaults < inventory vars < group_vars < host_vars < playbook vars < extra vars",
+        "playbook vars < group_vars < host_vars < extra vars < role defaults < inventory vars",
+        "inventory vars < group_vars < playbook vars < host_vars < role defaults < extra vars",
+        "extra vars < playbook vars < host_vars < group_vars < inventory vars < role defaults"
+      ],
+      "answer": 0,
+      "explanation": "La précédence des variables dans Ansible (du moins au plus prioritaire) : role defaults < inventory vars < group_vars < host_vars < playbook vars < extra vars (-e). Les extra vars (-e en ligne de commande) ont toujours la priorité la plus élevée.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 28,
+      "question": "Qu'est-ce que le 'facts gathering' dans Ansible ?",
+      "options": [
+        "La collecte automatique d'informations sur les machines gérées",
+        "La génération de logs",
+        "La vérification des erreurs",
+        "La sauvegarde de l'état du système"
+      ],
+      "answer": 0,
+      "explanation": "Le facts gathering est le processus par lequel Ansible collecte automatiquement des informations (facts) sur les machines gérées au début de chaque play : OS, IP, CPU, mémoire, etc. Ces facts sont accessibles via des variables comme ansible_os_family, ansible_distribution.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 29,
+      "question": "Comment sauvegarder le résultat d'une tâche dans une variable ?",
+      "options": [
+        "Avec la directive 'save'",
+        "Avec la directive 'register'",
+        "Avec la directive 'store'",
+        "Avec la directive 'var'"
+      ],
+      "answer": 1,
+      "explanation": "La directive 'register' permet de sauvegarder le résultat d'une tâche dans une variable. Cette variable contient stdout, stderr, rc (return code), et d'autres informations qui peuvent être utilisées dans les tâches suivantes.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 30,
+      "question": "Quel module permet d'afficher des messages de debug ?",
+      "options": [
+        "print",
+        "log",
+        "debug",
+        "echo"
+      ],
+      "answer": 2,
+      "explanation": "Le module 'debug' permet d'afficher des messages et des valeurs de variables pendant l'exécution d'un playbook. Il est très utile pour le débogage : debug: msg='La valeur est {{ ma_variable }}'",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 31,
+      "question": "Comment créer ou modifier une variable pendant l'exécution d'un playbook ?",
+      "options": [
+        "Avec le module 'var'",
+        "Avec le module 'set_fact'",
+        "Avec le module 'create_var'",
+        "Avec la directive 'define'"
+      ],
+      "answer": 1,
+      "explanation": "Le module 'set_fact' permet de créer ou modifier des variables pendant l'exécution d'un playbook. Ces facts personnalisés peuvent ensuite être utilisés dans les tâches suivantes et ont la même portée que les facts système.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 32,
+      "question": "Qu'est-ce que Jinja2 dans le contexte d'Ansible ?",
+      "options": [
+        "Un module de sécurité",
+        "Un moteur de templates",
+        "Un type d'inventory",
+        "Un protocole de communication"
+      ],
+      "answer": 1,
+      "explanation": "Jinja2 est le moteur de templates utilisé par Ansible. Il permet d'utiliser des variables, conditions, boucles et filtres dans les fichiers de configuration et les playbooks. Syntaxe : {{ variable }}, {% if %}, {% for %}.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 33,
+      "question": "Quel filtre Jinja2 permet de définir une valeur par défaut si une variable n'est pas définie ?",
+      "options": [
+        "{{ variable | fallback('default') }}",
+        "{{ variable | default('default') }}",
+        "{{ variable | else('default') }}",
+        "{{ variable | or('default') }}"
+      ],
+      "answer": 1,
+      "explanation": "Le filtre 'default' permet de définir une valeur par défaut si la variable n'est pas définie ou est vide. Exemple : {{ ma_variable | default('valeur_par_defaut') }}. On peut aussi utiliser default(omit) pour omettre le paramètre.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 34,
+      "question": "Quel filtre Jinja2 rend une variable obligatoire (fail si non définie) ?",
+      "options": [
+        "{{ variable | required }}",
+        "{{ variable | mandatory }}",
+        "{{ variable | must }}",
+        "{{ variable | needed }}"
+      ],
+      "answer": 1,
+      "explanation": "Le filtre 'mandatory' provoque l'échec du playbook si la variable n'est pas définie. C'est utile pour s'assurer que des variables critiques sont bien fournies : {{ api_key | mandatory }}",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 35,
+      "question": "À quoi servent les blocks dans un playbook Ansible ?",
+      "options": [
+        "À grouper des tâches pour appliquer des directives communes",
+        "À chiffrer des données sensibles",
+        "À paralléliser l'exécution",
+        "À créer des fonctions réutilisables"
+      ],
+      "answer": 0,
+      "explanation": "Les blocks permettent de grouper plusieurs tâches pour leur appliquer des directives communes (when, become, tags, etc.). Ils permettent aussi la gestion d'erreurs avec 'rescue' et 'always', similaire aux try/catch/finally.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 36,
+      "question": "Quelle section d'un block s'exécute en cas d'erreur dans les tâches du block ?",
+      "options": [
+        "error",
+        "catch",
+        "rescue",
+        "fallback"
+      ],
+      "answer": 2,
+      "explanation": "La section 'rescue' d'un block s'exécute uniquement si une tâche du block échoue. La section 'always' s'exécute toujours, qu'il y ait eu erreur ou non. Cela ressemble au try/catch/finally des langages de programmation.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 37,
+      "question": "À quoi servent les tags dans Ansible ?",
+      "options": [
+        "À documenter les playbooks",
+        "À exécuter sélectivement certaines tâches",
+        "À versionner les playbooks",
+        "À chiffrer les données"
+      ],
+      "answer": 1,
+      "explanation": "Les tags permettent de marquer des tâches, rôles ou plays pour les exécuter sélectivement. On peut utiliser --tags pour exécuter uniquement certains tags, ou --skip-tags pour les exclure. Exemple : ansible-playbook site.yml --tags 'configuration'",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 38,
+      "question": "Quelle est la différence entre 'include' et 'import' ?",
+      "options": [
+        "include est dynamique (runtime), import est statique (parse time)",
+        "include pour les rôles, import pour les tâches",
+        "Aucune différence, ce sont des synonymes",
+        "include est déprécié, import est la nouvelle syntaxe"
+      ],
+      "answer": 0,
+      "explanation": "include_* (include_tasks, include_role) est évalué dynamiquement à l'exécution, permettant l'utilisation de variables. import_* (import_tasks, import_playbook, import_role) est statique et traité lors du parsing, offrant de meilleures performances mais moins de flexibilité.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 39,
+      "question": "Comment boucler sur une liste jusqu'à ce qu'une condition soit vraie ?",
+      "options": [
+        "Avec 'loop' et 'when'",
+        "Avec 'until' et 'retries'",
+        "Avec 'while'",
+        "Avec 'repeat_until'"
+      ],
+      "answer": 1,
+      "explanation": "La directive 'until' permet de répéter une tâche jusqu'à ce qu'une condition soit vraie. On utilise 'retries' pour le nombre max de tentatives et 'delay' pour l'intervalle entre tentatives. Utile pour attendre qu'un service soit disponible.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 40,
+      "question": "Comment créer une condition complexe avec plusieurs critères AND/OR ?",
+      "options": [
+        "Avec when: condition1 and condition2 or condition3",
+        "Avec when: (condition1 && condition2) || condition3",
+        "Avec when: condition1 and (condition2 or condition3)",
+        "Les trois syntaxes ci-dessus sont valides"
+      ],
+      "answer": 2,
+      "explanation": "Dans Ansible, on utilise 'and' et 'or' pour les conditions complexes (pas && et ||). Les parenthèses permettent de contrôler la priorité. Exemple : when: (ansible_os_family == 'Debian') and (ansible_distribution_version >= '20.04')",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 41,
+      "question": "Qu'est-ce que 'delegate_to' ?",
+      "options": [
+        "Déléguer l'exécution d'une tâche à un autre hôte",
+        "Déléguer les privilèges sudo",
+        "Déléguer la gestion des erreurs",
+        "Déléguer l'exécution à un rôle"
+      ],
+      "answer": 0,
+      "explanation": "La directive 'delegate_to' permet d'exécuter une tâche sur un hôte différent de celui défini dans hosts. Utile pour des actions centralisées comme mettre à jour un load balancer ou une base de données depuis le control node.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 42,
+      "question": "À quoi sert la directive 'run_once' ?",
+      "options": [
+        "À exécuter une tâche une seule fois pour tous les hôtes du groupe",
+        "À exécuter une tâche une seule fois par jour",
+        "À éviter les tâches idempotentes",
+        "À limiter le nombre de tentatives à 1"
+      ],
+      "answer": 0,
+      "explanation": "La directive 'run_once: true' exécute une tâche une seule fois même si elle est appliquée à plusieurs hôtes. C'est utile pour des opérations qui ne doivent être faites qu'une fois, comme une migration de base de données ou un déploiement centralisé.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 43,
+      "question": "Qu'est-ce que le 'serial' dans un playbook ?",
+      "options": [
+        "Le numéro de série du playbook",
+        "Le nombre d'hôtes traités simultanément par batch",
+        "Le mode de connexion série",
+        "Le format de sérialisation des données"
+      ],
+      "answer": 1,
+      "explanation": "La directive 'serial' définit le nombre d'hôtes à traiter simultanément par batch. Par exemple, serial: 2 traite 2 hôtes à la fois. Utile pour les déploiements progressifs (rolling updates) afin de maintenir la disponibilité du service.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 44,
+      "question": "Quelle est la différence entre les stratégies 'linear' et 'free' ?",
+      "options": [
+        "linear = séquentiel, free = parallèle total",
+        "linear = tous les hôtes attendent la fin de chaque tâche, free = chaque hôte continue indépendamment",
+        "linear = rapide, free = lent",
+        "Aucune différence pratique"
+      ],
+      "answer": 1,
+      "explanation": "Strategy 'linear' (par défaut) : tous les hôtes doivent terminer une tâche avant de passer à la suivante. Strategy 'free' : chaque hôte avance à son rythme sans attendre les autres. 'free' est plus rapide mais peut créer des états incohérents.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 45,
+      "question": "Quelle est la structure de base d'un rôle Ansible ?",
+      "options": [
+        "tasks/, handlers/, vars/, defaults/",
+        "tasks/, handlers/, files/, templates/, vars/, defaults/, meta/",
+        "playbooks/, inventories/, roles/",
+        "src/, config/, deploy/"
+      ],
+      "answer": 1,
+      "explanation": "Un rôle Ansible a une structure standardisée : tasks/ (tâches principales), handlers/ (gestionnaires), files/ (fichiers statiques), templates/ (templates Jinja2), vars/ (variables), defaults/ (valeurs par défaut), meta/ (métadonnées et dépendances), et optionnellement tests/.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 46,
+      "question": "Quelle commande permet de créer la structure d'un nouveau rôle ?",
+      "options": [
+        "ansible-role init role_name",
+        "ansible-galaxy init role_name",
+        "ansible create-role role_name",
+        "mkdir role_name && cd role_name"
+      ],
+      "answer": 1,
+      "explanation": "La commande 'ansible-galaxy init nom_du_role' crée automatiquement la structure complète d'un rôle avec tous les répertoires et fichiers nécessaires (tasks, handlers, vars, defaults, meta, etc.).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 47,
+      "question": "Quelle est la différence entre defaults/ et vars/ dans un rôle ?",
+      "options": [
+        "Aucune différence",
+        "defaults/ a la priorité la plus faible, vars/ a une priorité plus élevée",
+        "defaults/ pour les chaînes, vars/ pour les nombres",
+        "defaults/ est obligatoire, vars/ est optionnel"
+      ],
+      "answer": 1,
+      "explanation": "Les variables dans defaults/ ont la priorité la plus faible et peuvent être facilement écrasées par l'utilisateur. Les variables dans vars/ ont une priorité plus élevée et sont destinées aux variables internes du rôle qui ne devraient normalement pas être modifiées.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 48,
+      "question": "Comment définir des dépendances entre rôles ?",
+      "options": [
+        "Dans le fichier playbook.yml",
+        "Dans le fichier meta/main.yml du rôle",
+        "Dans le fichier dependencies.yml",
+        "Dans le fichier tasks/main.yml"
+      ],
+      "answer": 1,
+      "explanation": "Les dépendances entre rôles sont définies dans le fichier meta/main.yml de chaque rôle, dans la section 'dependencies'. Les rôles dépendants sont automatiquement exécutés avant le rôle principal.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 49,
+      "question": "Comment rendre un rôle réutilisable avec des paramètres ?",
+      "options": [
+        "En utilisant des variables dans defaults/ et vars/",
+        "En passant des paramètres via la clé 'vars:' lors de l'appel du rôle",
+        "Les deux méthodes ci-dessus",
+        "Les rôles ne peuvent pas avoir de paramètres"
+      ],
+      "answer": 2,
+      "explanation": "Un rôle peut être paramétré de deux façons : en définissant des variables dans defaults/ (écrasables facilement) et vars/, ou en passant des paramètres directement lors de l'appel du rôle dans le playbook avec la clé 'vars:'.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 50,
+      "question": "Que contient le fichier meta/main.yml d'un rôle ?",
+      "options": [
+        "Les tâches principales",
+        "Les métadonnées (description, auteur, licence) et les dépendances",
+        "Les variables",
+        "Les handlers"
+      ],
+      "answer": 1,
+      "explanation": "Le fichier meta/main.yml contient les métadonnées du rôle (author, description, license, supported platforms) et les dépendances vers d'autres rôles. C'est aussi là qu'on définit les tags de rôle et les allow_duplicates.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 51,
+      "question": "Quel module permet de gérer les packages de manière agnostique au système d'exploitation ?",
+      "options": [
+        "yum",
+        "apt",
+        "package",
+        "install"
+      ],
+      "answer": 2,
+      "explanation": "Le module 'package' est générique et détecte automatiquement le gestionnaire de paquets du système (apt, yum, dnf, zypper, etc.). C'est utile pour créer des playbooks multi-OS, même si les modules spécifiques offrent plus d'options.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 52,
+      "question": "Quels modules permettent de gérer les conteneurs Docker ?",
+      "options": [
+        "docker_container et docker_image",
+        "container et image",
+        "docker_run et docker_pull",
+        "docker et image"
+      ],
+      "answer": 0,
+      "explanation": "Les modules 'docker_container' (gérer les conteneurs), 'docker_image' (gérer les images), 'docker_network', 'docker_volume', etc. permettent de gérer Docker dans Ansible. Ils nécessitent la bibliothèque Python 'docker'.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 53,
+      "question": "Quel module permet de cloner un dépôt Git ?",
+      "options": [
+        "git_clone",
+        "git",
+        "scm",
+        "repo"
+      ],
+      "answer": 1,
+      "explanation": "Le module 'git' permet de cloner des dépôts, faire des pull, checkout des branches/tags spécifiques, etc. Il nécessite que git soit installé sur les managed nodes. Paramètres principaux : repo, dest, version.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 54,
+      "question": "Quel module permet de synchroniser des fichiers entre deux machines (similaire à rsync) ?",
+      "options": [
+        "rsync",
+        "sync",
+        "synchronize",
+        "copy"
+      ],
+      "answer": 2,
+      "explanation": "Le module 'synchronize' utilise rsync en arrière-plan pour synchroniser efficacement des fichiers et répertoires entre machines. Il offre plus d'options que le module 'copy' pour les grosses synchronisations (delete, archive mode, etc.).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 55,
+      "question": "Quel module permet de faire des requêtes HTTP/REST ?",
+      "options": [
+        "http",
+        "rest",
+        "uri",
+        "request"
+      ],
+      "answer": 2,
+      "explanation": "Le module 'uri' permet de faire des requêtes HTTP/HTTPS avec différentes méthodes (GET, POST, PUT, DELETE, etc.). Il peut gérer l'authentification, les headers, les certificats SSL et valider les codes de retour.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 56,
+      "question": "Quel module permet de télécharger un fichier depuis une URL ?",
+      "options": [
+        "download",
+        "fetch_url",
+        "get_url",
+        "wget"
+      ],
+      "answer": 2,
+      "explanation": "Le module 'get_url' télécharge un fichier depuis une URL HTTP/HTTPS/FTP vers un managed node. Il supporte la validation de checksum, l'authentification, et ne re-télécharge pas si le fichier n'a pas changé (idempotent).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 57,
+      "question": "Quelle est la différence entre les modules 'template' et 'copy' ?",
+      "options": [
+        "template traite les variables Jinja2, copy ne le fait pas",
+        "template est pour les fichiers texte, copy pour les binaires",
+        "Aucune différence",
+        "template est plus rapide"
+      ],
+      "answer": 0,
+      "explanation": "Le module 'template' traite les fichiers avec Jinja2, remplaçant les variables et expressions avant de les copier. Le module 'copy' copie les fichiers tels quels sans traitement. Pour les fichiers de configuration, on utilise généralement 'template'.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 58,
+      "question": "Quel module permet de modifier une ligne spécifique dans un fichier ?",
+      "options": [
+        "edit_line",
+        "modify_file",
+        "lineinfile",
+        "sed"
+      ],
+      "answer": 2,
+      "explanation": "Le module 'lineinfile' permet de s'assurer qu'une ligne particulière est présente ou absente dans un fichier. Il peut utiliser des regex pour trouver/remplacer des lignes. C'est utile pour modifier des fichiers de config sans les remplacer entièrement.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 59,
+      "question": "Quel module permet d'insérer ou supprimer un bloc de lignes dans un fichier ?",
+      "options": [
+        "blockmanager",
+        "blockinfile",
+        "insertblock",
+        "file_block"
+      ],
+      "answer": 1,
+      "explanation": "Le module 'blockinfile' permet d'insérer, mettre à jour ou supprimer un bloc multi-lignes dans un fichier. Il utilise des marqueurs (markers) pour identifier le bloc. Pratique pour ajouter des sections de configuration.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 60,
+      "question": "Qu'est-ce qu'Ansible Vault ?",
+      "options": [
+        "Un système de sauvegarde",
+        "Un système de chiffrement pour protéger les données sensibles",
+        "Un coffre-fort pour stocker les playbooks",
+        "Un système de gestion de versions"
+      ],
+      "answer": 1,
+      "explanation": "Ansible Vault est un système de chiffrement intégré qui permet de protéger les données sensibles (mots de passe, clés API, certificats) dans les playbooks et variables. Les fichiers sont chiffrés avec AES256.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 61,
+      "question": "Quelle commande permet de créer un nouveau fichier chiffré avec Vault ?",
+      "options": [
+        "ansible-vault new",
+        "ansible-vault create",
+        "ansible-vault encrypt",
+        "ansible-vault init"
+      ],
+      "answer": 1,
+      "explanation": "La commande 'ansible-vault create fichier.yml' crée un nouveau fichier chiffré et ouvre un éditeur pour y ajouter du contenu. Le fichier est automatiquement chiffré à la sauvegarde.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 62,
+      "question": "Comment éditer un fichier déjà chiffré avec Vault ?",
+      "options": [
+        "ansible-vault open",
+        "ansible-vault edit",
+        "ansible-vault modify",
+        "ansible-vault decrypt puis éditer puis encrypt"
+      ],
+      "answer": 1,
+      "explanation": "La commande 'ansible-vault edit fichier.yml' déchiffre temporairement le fichier, ouvre un éditeur, puis re-chiffre automatiquement à la sauvegarde. C'est plus sûr que de déchiffrer/éditer/rechiffrer manuellement.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 63,
+      "question": "Comment exécuter un playbook qui utilise des fichiers Vault ?",
+      "options": [
+        "ansible-playbook playbook.yml --vault-password-file vault_pass.txt",
+        "ansible-playbook playbook.yml --ask-vault-pass",
+        "ansible-playbook playbook.yml --vault-id @prompt",
+        "Toutes les réponses ci-dessus"
+      ],
+      "answer": 3,
+      "explanation": "Plusieurs méthodes existent : --ask-vault-pass (demande interactivement), --vault-password-file (lit depuis un fichier), --vault-id (supporte plusieurs vaults). On peut aussi définir ANSIBLE_VAULT_PASSWORD_FILE en variable d'environnement.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 64,
+      "question": "Qu'est-ce que les Vault IDs multiples permettent de faire ?",
+      "options": [
+        "Utiliser différents mots de passe pour différents fichiers/variables",
+        "Chiffrer plusieurs fois le même fichier",
+        "Partager le vault avec plusieurs utilisateurs",
+        "Créer des sauvegardes du vault"
+      ],
+      "answer": 0,
+      "explanation": "Les Vault IDs multiples permettent d'utiliser différents mots de passe vault pour différents fichiers ou variables. Par exemple, un vault 'dev' pour le développement et un vault 'prod' pour la production, chacun avec son propre mot de passe.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 65,
+      "question": "Quelle commande permet de chiffrer un fichier existant en clair ?",
+      "options": [
+        "ansible-vault create",
+        "ansible-vault encrypt",
+        "ansible-vault lock",
+        "ansible-vault secure"
+      ],
+      "answer": 1,
+      "explanation": "La commande 'ansible-vault encrypt fichier.yml' chiffre un fichier existant en clair. Pour chiffrer plusieurs fichiers : ansible-vault encrypt fichier1.yml fichier2.yml. On peut aussi utiliser --output pour créer une copie chiffrée.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 66,
+      "question": "Quelle est la différence entre Ansible Engine et Ansible Tower/AWX ?",
+      "options": [
+        "Engine = CLI, Tower/AWX = interface web avec RBAC, planification, API",
+        "Engine = gratuit, Tower/AWX = payant",
+        "Engine = pour Linux, Tower/AWX = pour Windows",
+        "Aucune différence"
+      ],
+      "answer": 0,
+      "explanation": "Ansible Engine est le moteur d'automatisation CLI open-source. Tower (commercial) et AWX (open-source) ajoutent une interface web, RBAC, planification de jobs, inventaires dynamiques centralisés, API REST, audit et reporting.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 67,
+      "question": "Qu'est-ce que le SSH pipelining dans Ansible ?",
+      "options": [
+        "Une méthode pour exécuter plusieurs commandes SSH en parallèle",
+        "Une optimisation qui évite de créer des fichiers temporaires sur les managed nodes",
+        "Un protocole de communication chiffré",
+        "Une technique de compression des données"
+      ],
+      "answer": 1,
+      "explanation": "Le SSH pipelining envoie directement les modules Python via stdin SSH au lieu de copier des fichiers temporaires sur les managed nodes. Cela améliore les performances mais nécessite que requiretty soit désactivé dans sudoers.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 68,
+      "question": "Qu'est-ce que ControlMaster SSH et comment améliore-t-il les performances ?",
+      "options": [
+        "Un système de contrôle des permissions SSH",
+        "Une fonctionnalité SSH qui réutilise les connexions existantes",
+        "Un serveur SSH maître pour la redondance",
+        "Un protocole de chiffrement avancé"
+      ],
+      "answer": 1,
+      "explanation": "ControlMaster permet de réutiliser une connexion SSH existante pour plusieurs sessions, évitant ainsi la surcharge de l'établissement de connexion pour chaque tâche. Ansible l'active par défaut via ssh_args dans ansible.cfg.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 69,
+      "question": "Comment augmenter le parallélisme d'exécution dans Ansible ?",
+      "options": [
+        "Augmenter la valeur de 'forks' dans ansible.cfg",
+        "Utiliser la strategy 'free'",
+        "Activer le SSH pipelining",
+        "Toutes les réponses ci-dessus"
+      ],
+      "answer": 3,
+      "explanation": "Le parallélisme peut être amélioré en augmentant 'forks' (nombre de processus parallèles, défaut=5), en utilisant strategy 'free' (hôtes indépendants), et en activant SSH pipelining. On peut aussi utiliser async pour des tâches longues.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 70,
+      "question": "Qu'est-ce que le fact caching et pourquoi l'utiliser ?",
+      "options": [
+        "Un système de mise en cache des facts pour éviter de les recollector à chaque exécution",
+        "Un système de sauvegarde des playbooks",
+        "Un système de compression des données",
+        "Un système de réplication des inventaires"
+      ],
+      "answer": 0,
+      "explanation": "Le fact caching sauvegarde les facts collectés (via Redis, JSON files, memcached) pour éviter de les recollector à chaque exécution. Cela améliore significativement les performances, surtout avec de nombreux hôtes.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 71,
+      "question": "Comment désactiver le gathering des facts pour améliorer les performances ?",
+      "options": [
+        "gather_facts: false dans le play",
+        "gather_facts: no dans le play",
+        "Les deux syntaxes ci-dessus sont valides",
+        "On ne peut pas désactiver le gathering"
+      ],
+      "answer": 2,
+      "explanation": "On peut désactiver le gathering avec 'gather_facts: false' ou 'gather_facts: no' au niveau du play. C'est recommandé si les facts ne sont pas nécessaires, économisant ainsi plusieurs secondes par exécution.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 72,
+      "question": "Qu'est-ce qu'un script d'inventory dynamique ?",
+      "options": [
+        "Un script qui génère un inventory au format JSON à partir d'une source externe",
+        "Un script qui modifie l'inventory en temps réel",
+        "Un script qui valide l'inventory",
+        "Un script qui chiffre l'inventory"
+      ],
+      "answer": 0,
+      "explanation": "Un script d'inventory dynamique est un exécutable (Python, Bash, etc.) qui interroge une source externe (cloud provider, CMDB, LDAP) et retourne un inventory au format JSON. Il doit supporter les arguments --list et --host.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 73,
+      "question": "Quel format JSON doit retourner un script d'inventory dynamique avec --list ?",
+      "options": [
+        "Une simple liste d'hôtes",
+        "Un objet avec des groupes contenant des listes d'hôtes et optionnellement _meta/hostvars",
+        "Un tableau de dictionnaires",
+        "N'importe quel format JSON valide"
+      ],
+      "answer": 1,
+      "explanation": "Le script doit retourner un objet JSON avec des clés de groupes contenant des listes d'hôtes, et optionnellement une clé '_meta' avec 'hostvars' pour les variables. Format : {'group1': {'hosts': [...], 'vars': {...}}, '_meta': {'hostvars': {...}}}",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 74,
+      "question": "Quels sont les principaux plugins d'inventory dynamique cloud supportés nativement ?",
+      "options": [
+        "AWS EC2, Azure, GCP, OpenStack",
+        "Seulement AWS EC2",
+        "Seulement AWS et Azure",
+        "Aucun, il faut tout coder"
+      ],
+      "answer": 0,
+      "explanation": "Ansible inclut des plugins d'inventory pour les principaux cloud providers : aws_ec2, azure_rm, gcp_compute, openstack, vmware, etc. Ils utilisent des fichiers de config YAML se terminant par .aws_ec2.yml, .azure_rm.yml, etc.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 75,
+      "question": "Comment récupérer des variables depuis un inventory dynamique AWS EC2 ?",
+      "options": [
+        "Les tags EC2 sont automatiquement disponibles comme variables",
+        "Via le paramètre 'compose' dans le fichier de config du plugin",
+        "En utilisant hostvars dans le JSON",
+        "Toutes les réponses ci-dessus"
+      ],
+      "answer": 3,
+      "explanation": "Les plugins cloud rendent les tags et métadonnées disponibles automatiquement. On peut aussi utiliser 'compose' pour créer des variables personnalisées, et 'keyed_groups' pour créer des groupes dynamiques basés sur les attributs des instances.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 76,
+      "question": "Peut-on combiner un inventory statique et dynamique ?",
+      "options": [
+        "Non, c'est soit l'un soit l'autre",
+        "Oui, en utilisant un répertoire comme inventory contenant les deux types",
+        "Oui, mais seulement avec Tower/AWX",
+        "Oui, mais ils doivent être dans des fichiers séparés"
+      ],
+      "answer": 1,
+      "explanation": "Ansible peut utiliser un répertoire comme inventory. Il chargera automatiquement tous les fichiers statiques (INI/YAML) et exécutera tous les scripts/plugins d'inventory dynamique, fusionnant les résultats.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 77,
+      "question": "Comment développer un module Ansible custom en Python ?",
+      "options": [
+        "Créer un script Python avec from ansible.module_utils.basic import AnsibleModule",
+        "Hériter de la classe AnsibleModule",
+        "Utiliser le décorateur @ansible_module",
+        "Importer ansible.module et définir une fonction main()"
+      ],
+      "answer": 0,
+      "explanation": "Un module custom import AnsibleModule, définit les paramètres avec argument_spec, traite la logique métier, et retourne le résultat via module.exit_json() ou module.fail_json(). Le module doit être dans library/ ou un chemin configuré.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 78,
+      "question": "Quelle est la différence entre un action plugin et un module ?",
+      "options": [
+        "Action plugin s'exécute sur le control node, module sur le managed node",
+        "Action plugin est plus rapide",
+        "Module est plus sécurisé",
+        "Aucune différence"
+      ],
+      "answer": 0,
+      "explanation": "Un action plugin s'exécute sur le control node avant d'envoyer la tâche au managed node. Il peut modifier les paramètres, prendre des décisions, ou même éviter d'envoyer quoi que ce soit au managed node. Exemples : template, copy utilisent des action plugins.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 79,
+      "question": "Qu'est-ce qu'un callback plugin et à quoi sert-il ?",
+      "options": [
+        "Un plugin qui modifie l'output et les logs d'Ansible",
+        "Un plugin qui gère les erreurs",
+        "Un plugin qui se connecte aux managed nodes",
+        "Un plugin qui parse les inventaires"
+      ],
+      "answer": 0,
+      "explanation": "Les callback plugins modifient l'affichage et le logging des résultats d'exécution. Exemples : json (output JSON), yaml (output YAML), logstash (envoie vers ELK), slack (notifications). On les active dans ansible.cfg avec stdout_callback.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 80,
+      "question": "Qu'est-ce qu'un lookup plugin et donnez un exemple ?",
+      "options": [
+        "Un plugin qui récupère des données depuis des sources externes, ex: file, env, pipe",
+        "Un plugin qui cherche des hôtes dans l'inventory",
+        "Un plugin qui trouve des modules",
+        "Un plugin qui valide la syntaxe"
+      ],
+      "answer": 0,
+      "explanation": "Les lookup plugins récupèrent des données depuis diverses sources : file (lire un fichier), env (variables d'environnement), pipe (exécuter une commande), password (générer un mot de passe), etc. Syntaxe : {{ lookup('file', '/path/to/file') }}",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 81,
+      "question": "Comment créer un filter plugin Jinja2 custom ?",
+      "options": [
+        "Créer un fichier Python dans filter_plugins/ avec une classe FilterModule",
+        "Modifier directement Jinja2",
+        "Utiliser un module custom",
+        "Ce n'est pas possible"
+      ],
+      "answer": 0,
+      "explanation": "Un filter plugin custom est un fichier Python dans filter_plugins/ contenant une classe FilterModule avec une méthode filters() qui retourne un dictionnaire de filtres. Ces filtres peuvent ensuite être utilisés dans les templates et playbooks.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 82,
+      "question": "Quels sont les concepts principaux d'Ansible Tower/AWX ?",
+      "options": [
+        "Jobs, Job Templates, Inventories, Credentials, Projects",
+        "Playbooks, Roles, Tasks",
+        "Nodes, Clusters, Pods",
+        "Pipelines, Stages, Deployments"
+      ],
+      "answer": 0,
+      "explanation": "Tower/AWX organise l'automatisation autour de : Projects (repos Git de playbooks), Inventories (hôtes), Credentials (authentification), Job Templates (configuration d'exécution), et Jobs (exécutions). S'ajoutent Workflows, Schedules, Notifications, etc.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 83,
+      "question": "Comment fonctionne le RBAC dans Ansible Tower ?",
+      "options": [
+        "Permissions par utilisateur/équipe sur les Organizations, Projects, Inventories, Credentials",
+        "Seulement admin ou user",
+        "Basé uniquement sur les groupes Linux",
+        "Pas de RBAC dans Tower"
+      ],
+      "answer": 0,
+      "explanation": "Tower implémente un RBAC granulaire avec des Organizations (isolation multi-tenant), Teams (groupes d'utilisateurs), et des Roles (admin, execute, use, etc.) assignables sur chaque ressource (project, inventory, credential, job template).",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 84,
+      "question": "Qu'est-ce qu'un Workflow dans Tower/AWX ?",
+      "options": [
+        "Un enchaînement conditionnel de plusieurs Job Templates",
+        "Un playbook complexe",
+        "Un système de notification",
+        "Un type d'inventory"
+      ],
+      "answer": 0,
+      "explanation": "Un Workflow permet d'enchaîner plusieurs Job Templates avec des conditions (success, failure, always). On peut créer des pipelines complexes : provisionner → configurer → déployer → tester, avec des branchements conditionnels selon les résultats.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 85,
+      "question": "Qu'est-ce que privilege escalation (become) dans Ansible ?",
+      "options": [
+        "La capacité d'exécuter des commandes avec des privilèges élevés (sudo, su, etc.)",
+        "L'augmentation de la priorité des processus",
+        "L'amélioration des performances",
+        "La montée de version d'Ansible"
+      ],
+      "answer": 0,
+      "explanation": "Privilege escalation permet d'exécuter des tâches avec des privilèges élevés via 'become'. On peut configurer become_method (sudo, su, pbrun, etc.), become_user (root par défaut), et become_flags. Contrôlable au niveau play, block ou tâche.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 86,
+      "question": "Comment intégrer Ansible avec HashiCorp Vault pour la gestion des secrets ?",
+      "options": [
+        "Via le lookup plugin 'hashi_vault'",
+        "Via un module custom",
+        "Via Ansible Vault uniquement",
+        "Ce n'est pas possible"
+      ],
+      "answer": 0,
+      "explanation": "Le lookup plugin 'hashi_vault' permet de récupérer des secrets depuis HashiCorp Vault. Syntaxe : {{ lookup('hashi_vault', 'secret=secret/data/mysecret:password') }}. Nécessite la configuration du serveur Vault et un token d'authentification.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 87,
+      "question": "Qu'est-ce qu'Ansible Mitogen et quel est son avantage ?",
+      "options": [
+        "Une stratégie qui améliore drastiquement les performances (jusqu'à 7x plus rapide)",
+        "Un nouveau protocole de communication",
+        "Un système de monitoring",
+        "Un fork d'Ansible"
+      ],
+      "answer": 0,
+      "explanation": "Mitogen est une stratégie de connexion alternative qui remplace le mécanisme SSH standard d'Ansible. Elle réduit la latence et le nombre de connexions, améliorant les performances jusqu'à 7x. Installation : pip install mitogen, puis strategy: mitogen_linear.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 88,
+      "question": "Qu'est-ce que Molecule et à quoi sert-il ?",
+      "options": [
+        "Un framework de test pour les rôles Ansible",
+        "Un système de packaging",
+        "Un orchestrateur de conteneurs",
+        "Un outil de monitoring"
+      ],
+      "answer": 0,
+      "explanation": "Molecule est un framework de test pour développer et tester les rôles Ansible. Il automatise la création d'instances (Docker, Vagrant, cloud), l'exécution du rôle, et les tests (TestInfra, Ansible). Workflow : create → converge → verify → destroy.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 89,
+      "question": "Comment déboguer un playbook Ansible avec différents niveaux de verbosité ?",
+      "options": [
+        "Utiliser -v, -vv, -vvv, -vvvv pour augmenter la verbosité",
+        "Utiliser --debug",
+        "Utiliser --verbose=niveau",
+        "Utiliser ANSIBLE_DEBUG=1"
+      ],
+      "answer": 0,
+      "explanation": "Ansible supporte 4 niveaux de verbosité : -v (basique), -vv (plus de détails), -vvv (détails de connexion), -vvvv (détails complets incluant invocations de modules). Utile pour déboguer les problèmes de connexion, de modules, ou de performance.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 90,
+      "question": "Quelles sont les stratégies avancées pour optimiser les performances de playbooks en production ?",
+      "options": [
+        "Augmenter forks, activer pipelining, désactiver gather_facts si inutile, utiliser fact caching",
+        "Utiliser strategy: free, async pour tâches longues, profiling avec callback timer",
+        "Optimiser les boucles, éviter les command/shell au profit de modules dédiés",
+        "Toutes les réponses ci-dessus"
+      ],
+      "answer": 3,
+      "explanation": "L'optimisation production combine : augmenter forks (parallélisme), SSH pipelining et ControlMaster, fact caching (Redis), strategy: free, désactiver gather_facts, async pour tâches longues, callback timer pour profiling, et utiliser des modules dédiés plutôt que command/shell.",
+      "difficulty": "advanced"
+    }
+  ]
+}

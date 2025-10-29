@@ -1,0 +1,1046 @@
+{
+  "title": "Networking DevOps",
+  "description": "80 questions couvrant tous les niveaux du networking DevOps : 25 questions de base sur les fondamentaux réseau, protocoles et DNS, 35 questions intermédiaires sur le load balancing, proxy, VPN, firewalls, container et cloud networking, et 20 questions avancées sur Kubernetes networking, service mesh, BGP et troubleshooting avancé",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Combien de couches composent le modèle OSI ?",
+      "options": [
+        "4 couches",
+        "5 couches",
+        "7 couches",
+        "9 couches"
+      ],
+      "answer": 2,
+      "explanation": "Le modèle OSI (Open Systems Interconnection) comprend 7 couches : Physique, Liaison de données, Réseau, Transport, Session, Présentation et Application. Le modèle TCP/IP en a 4.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 2,
+      "question": "Quelle est la plage d'adresses IP privées définie dans la RFC 1918 pour les réseaux de classe A ?",
+      "options": [
+        "192.168.0.0/16",
+        "172.16.0.0/12",
+        "10.0.0.0/8",
+        "169.254.0.0/16"
+      ],
+      "answer": 2,
+      "explanation": "La RFC 1918 définit trois plages d'IP privées : 10.0.0.0/8 (classe A), 172.16.0.0/12 (classe B) et 192.168.0.0/16 (classe C). Ces adresses ne sont pas routables sur Internet.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 3,
+      "question": "Que signifie la notation CIDR 192.168.1.0/24 ?",
+      "options": [
+        "24 adresses IP disponibles",
+        "Un masque de sous-réseau avec 24 bits à 1 (255.255.255.0)",
+        "24 réseaux disponibles",
+        "Un masque de 24 octets"
+      ],
+      "answer": 1,
+      "explanation": "La notation /24 indique que les 24 premiers bits sont utilisés pour le réseau, correspondant au masque 255.255.255.0. Cela laisse 8 bits pour les hôtes, soit 256 adresses (254 utilisables).",
+      "difficulty": "easy"
+    },
+    {
+      "id": 4,
+      "question": "Quel est le rôle du NAT (Network Address Translation) ?",
+      "options": [
+        "Crypter les communications réseau",
+        "Traduire les adresses IP privées en adresses publiques",
+        "Créer des tunnels VPN",
+        "Gérer les noms de domaine"
+      ],
+      "answer": 1,
+      "explanation": "Le NAT permet de traduire des adresses IP privées (non routables sur Internet) en adresses IP publiques, permettant ainsi à plusieurs machines d'un réseau local de partager une seule IP publique.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 5,
+      "question": "À quoi correspond l'adresse 127.0.0.1 ?",
+      "options": [
+        "L'adresse de broadcast du réseau local",
+        "L'adresse de la passerelle par défaut",
+        "L'adresse de loopback (localhost)",
+        "L'adresse du serveur DNS"
+      ],
+      "answer": 2,
+      "explanation": "127.0.0.1 est l'adresse de loopback (localhost) qui pointe vers la machine locale elle-même. Toute la plage 127.0.0.0/8 est réservée pour le loopback.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 6,
+      "question": "Quelle est la différence entre unicast, broadcast et multicast ?",
+      "options": [
+        "Unicast = un destinataire, Broadcast = tous, Multicast = groupe spécifique",
+        "Tous trois désignent la même chose",
+        "Unicast = groupe, Broadcast = un, Multicast = tous",
+        "Ce sont des protocoles de routage différents"
+      ],
+      "answer": 0,
+      "explanation": "Unicast envoie à un seul destinataire, broadcast à tous les hôtes du réseau, et multicast à un groupe spécifique d'hôtes qui se sont inscrits pour recevoir le trafic.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 7,
+      "question": "Quel protocole IPv6 remplace ARP utilisé en IPv4 ?",
+      "options": [
+        "ICMPv6 avec Neighbor Discovery Protocol (NDP)",
+        "DHCPv6",
+        "RIPng",
+        "OSPFv3"
+      ],
+      "answer": 0,
+      "explanation": "En IPv6, le protocole ARP est remplacé par le Neighbor Discovery Protocol (NDP) qui fait partie d'ICMPv6 et gère la découverte des voisins sur le lien local.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 8,
+      "question": "Combien d'adresses IP utilisables y a-t-il dans un réseau /28 ?",
+      "options": [
+        "14 adresses",
+        "16 adresses",
+        "30 adresses",
+        "32 adresses"
+      ],
+      "answer": 0,
+      "explanation": "Un /28 laisse 4 bits pour les hôtes, soit 2^4 = 16 adresses totales. En retirant l'adresse réseau et l'adresse broadcast, il reste 14 adresses utilisables.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 9,
+      "question": "Quelle est la principale différence entre TCP et UDP ?",
+      "options": [
+        "TCP est plus rapide qu'UDP",
+        "TCP garantit la livraison des paquets, UDP non",
+        "UDP fonctionne sur IPv6, pas TCP",
+        "TCP utilise des ports, UDP non"
+      ],
+      "answer": 1,
+      "explanation": "TCP est un protocole orienté connexion qui garantit la livraison, l'ordre et l'intégrité des données. UDP est sans connexion, plus rapide mais sans garantie de livraison.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 10,
+      "question": "Quel port utilise HTTPS par défaut ?",
+      "options": [
+        "80",
+        "8080",
+        "443",
+        "8443"
+      ],
+      "answer": 2,
+      "explanation": "HTTPS utilise le port 443 par défaut. HTTP utilise le port 80. Ces ports peuvent être changés mais ce sont les standards.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 11,
+      "question": "Quel port est utilisé par SSH ?",
+      "options": [
+        "21",
+        "22",
+        "23",
+        "25"
+      ],
+      "answer": 1,
+      "explanation": "SSH (Secure Shell) utilise le port 22 par défaut. Le port 21 est pour FTP, 23 pour Telnet, et 25 pour SMTP.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 12,
+      "question": "Quelles sont les trois étapes du three-way handshake TCP ?",
+      "options": [
+        "CONNECT, ACK, DISCONNECT",
+        "SYN, SYN-ACK, ACK",
+        "HELLO, WELCOME, OK",
+        "REQUEST, RESPONSE, CLOSE"
+      ],
+      "answer": 1,
+      "explanation": "Le three-way handshake TCP établit une connexion en trois étapes : SYN (synchronize) du client, SYN-ACK du serveur, puis ACK (acknowledge) du client.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 13,
+      "question": "Quel protocole utilise la commande 'ping' ?",
+      "options": [
+        "TCP",
+        "UDP",
+        "ICMP",
+        "ARP"
+      ],
+      "answer": 2,
+      "explanation": "La commande ping utilise le protocole ICMP (Internet Control Message Protocol) pour tester la connectivité réseau en envoyant des Echo Request et recevant des Echo Reply.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 14,
+      "question": "Quel est le port par défaut de MySQL ?",
+      "options": [
+        "3306",
+        "5432",
+        "27017",
+        "6379"
+      ],
+      "answer": 0,
+      "explanation": "MySQL utilise le port 3306 par défaut. PostgreSQL utilise 5432, MongoDB 27017, et Redis 6379.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 15,
+      "question": "Que fait l'enregistrement DNS de type A ?",
+      "options": [
+        "Associe un domaine à une adresse IPv4",
+        "Associe un domaine à une adresse IPv6",
+        "Définit les serveurs de mail",
+        "Crée un alias vers un autre domaine"
+      ],
+      "answer": 0,
+      "explanation": "Un enregistrement A (Address) mappe un nom de domaine vers une adresse IPv4. L'enregistrement AAAA est utilisé pour IPv6.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 16,
+      "question": "Quelle est la différence entre un enregistrement CNAME et un enregistrement A ?",
+      "options": [
+        "CNAME pointe vers un autre domaine, A vers une IP",
+        "CNAME est pour IPv6, A pour IPv4",
+        "Il n'y a aucune différence",
+        "CNAME est obsolète"
+      ],
+      "answer": 0,
+      "explanation": "Un enregistrement A pointe directement vers une adresse IP, tandis qu'un CNAME (Canonical Name) crée un alias pointant vers un autre nom de domaine.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 17,
+      "question": "Que signifie TTL dans le contexte DNS ?",
+      "options": [
+        "Total Transfer Limit",
+        "Time To Live - durée de mise en cache",
+        "Transfer To Location",
+        "Terminal Text Length"
+      ],
+      "answer": 1,
+      "explanation": "TTL (Time To Live) indique la durée pendant laquelle un enregistrement DNS peut être mis en cache avant qu'une nouvelle requête soit nécessaire. Exprimé en secondes.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 18,
+      "question": "Quel est l'ordre de résolution DNS typique sous Linux ?",
+      "options": [
+        "Serveurs DNS puis /etc/hosts",
+        "/etc/hosts puis cache DNS puis serveurs DNS",
+        "Cache navigateur uniquement",
+        "Serveurs DNS uniquement"
+      ],
+      "answer": 1,
+      "explanation": "L'ordre typique est : 1) /etc/hosts, 2) cache DNS local, 3) serveurs DNS configurés. Cet ordre peut être configuré dans /etc/nsswitch.conf.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 19,
+      "question": "Quelle est l'adresse IP du serveur DNS public de Google ?",
+      "options": [
+        "1.1.1.1",
+        "8.8.8.8",
+        "9.9.9.9",
+        "4.4.4.4"
+      ],
+      "answer": 1,
+      "explanation": "Google Public DNS utilise 8.8.8.8 et 8.8.4.4. Cloudflare utilise 1.1.1.1 et 1.0.0.1. Quad9 utilise 9.9.9.9.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 20,
+      "question": "Quel type d'enregistrement DNS définit les serveurs de messagerie ?",
+      "options": [
+        "A",
+        "CNAME",
+        "MX",
+        "TXT"
+      ],
+      "answer": 2,
+      "explanation": "Les enregistrements MX (Mail eXchanger) spécifient les serveurs de messagerie responsables d'accepter les emails pour un domaine, avec un niveau de priorité.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 21,
+      "question": "Quelle commande permet de tester la connectivité réseau vers un hôte ?",
+      "options": [
+        "netstat",
+        "ping",
+        "ifconfig",
+        "route"
+      ],
+      "answer": 1,
+      "explanation": "La commande ping envoie des paquets ICMP Echo Request pour tester la connectivité et mesurer la latence réseau vers un hôte distant.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 22,
+      "question": "Quelle commande permet de tracer le chemin réseau vers une destination ?",
+      "options": [
+        "ping",
+        "netstat",
+        "traceroute (ou tracepath)",
+        "nslookup"
+      ],
+      "answer": 2,
+      "explanation": "traceroute (Linux/Mac) ou tracert (Windows) affiche le chemin que prennent les paquets pour atteindre une destination, montrant chaque saut (hop) intermédiaire.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 23,
+      "question": "Quelle commande permet d'interroger les serveurs DNS ?",
+      "options": [
+        "ping",
+        "dig ou nslookup",
+        "netstat",
+        "ifconfig"
+      ],
+      "answer": 1,
+      "explanation": "dig (Domain Information Groper) et nslookup sont utilisés pour interroger les serveurs DNS et obtenir des informations sur les enregistrements DNS. dig est plus moderne et verbeux.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 24,
+      "question": "Quelle commande affiche les connexions réseau actives et les ports en écoute ?",
+      "options": [
+        "netstat ou ss",
+        "ping",
+        "traceroute",
+        "dig"
+      ],
+      "answer": 0,
+      "explanation": "netstat (legacy) et ss (socket statistics, plus moderne) affichent les connexions réseau actives, les ports en écoute, les tables de routage et les statistiques d'interface.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 25,
+      "question": "Quelle commande permet de télécharger le contenu d'une URL en ligne de commande ?",
+      "options": [
+        "download",
+        "get",
+        "curl ou wget",
+        "fetch"
+      ],
+      "answer": 2,
+      "explanation": "curl et wget sont des outils en ligne de commande pour transférer des données via URL. curl est plus versatile pour tester des APIs, wget est optimisé pour le téléchargement récursif.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 26,
+      "question": "Quel est le principal objectif du load balancing ?",
+      "options": [
+        "Crypter les données",
+        "Distribuer le trafic entre plusieurs serveurs",
+        "Compresser les données",
+        "Gérer les certificats SSL"
+      ],
+      "answer": 1,
+      "explanation": "Le load balancing distribue le trafic réseau ou les requêtes entre plusieurs serveurs pour optimiser l'utilisation des ressources, maximiser le débit, minimiser le temps de réponse et éviter la surcharge.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 27,
+      "question": "Quel algorithme de load balancing distribue les requêtes de manière séquentielle ?",
+      "options": [
+        "Least Connections",
+        "IP Hash",
+        "Round Robin",
+        "Weighted Response Time"
+      ],
+      "answer": 2,
+      "explanation": "Round Robin distribue les requêtes de manière cyclique et séquentielle entre les serveurs disponibles. C'est l'algorithme le plus simple mais il ne prend pas en compte la charge actuelle des serveurs.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 28,
+      "question": "Quelle est la différence entre Layer 4 et Layer 7 load balancing ?",
+      "options": [
+        "Layer 4 est plus lent que Layer 7",
+        "Layer 4 opère au niveau TCP/UDP, Layer 7 au niveau HTTP/application",
+        "Layer 7 ne peut pas gérer SSL",
+        "Il n'y a aucune différence"
+      ],
+      "answer": 1,
+      "explanation": "Layer 4 load balancing opère au niveau transport (TCP/UDP) en se basant sur IP et port. Layer 7 opère au niveau application, permettant des décisions basées sur le contenu HTTP (URL, headers, cookies).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 29,
+      "question": "Que sont les health checks dans le contexte du load balancing ?",
+      "options": [
+        "Des vérifications de sécurité",
+        "Des tests périodiques pour vérifier la disponibilité des serveurs backend",
+        "Des analyses de performance réseau",
+        "Des audits de code"
+      ],
+      "answer": 1,
+      "explanation": "Les health checks sont des vérifications automatiques et périodiques effectuées par le load balancer pour s'assurer que les serveurs backend sont opérationnels avant de leur envoyer du trafic.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 30,
+      "question": "Qu'est-ce que la session persistence (sticky sessions) ?",
+      "options": [
+        "Le stockage des sessions en base de données",
+        "S'assurer qu'un utilisateur est toujours dirigé vers le même serveur backend",
+        "La compression des données de session",
+        "Le cryptage des cookies de session"
+      ],
+      "answer": 1,
+      "explanation": "La session persistence (ou sticky sessions) garantit que les requêtes d'un même utilisateur sont toujours dirigées vers le même serveur backend, typiquement via des cookies ou IP hash.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 31,
+      "question": "Quel algorithme de load balancing dirige le trafic vers le serveur ayant le moins de connexions actives ?",
+      "options": [
+        "Round Robin",
+        "Least Connections",
+        "IP Hash",
+        "Random"
+      ],
+      "answer": 1,
+      "explanation": "L'algorithme Least Connections dirige les nouvelles requêtes vers le serveur ayant le moins de connexions actives, utile quand les requêtes ont des durées variables.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 32,
+      "question": "Dans AWS, quelle est la différence entre ALB et NLB ?",
+      "options": [
+        "ALB est Layer 7 (HTTP), NLB est Layer 4 (TCP/UDP)",
+        "ALB est plus rapide que NLB",
+        "NLB ne supporte pas SSL",
+        "ALB ne peut pas faire de health checks"
+      ],
+      "answer": 0,
+      "explanation": "Application Load Balancer (ALB) opère au Layer 7 avec routage basé sur le contenu HTTP. Network Load Balancer (NLB) opère au Layer 4, offrant de meilleures performances et gestion du TCP/UDP pur.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 33,
+      "question": "Quelle est la différence entre un forward proxy et un reverse proxy ?",
+      "options": [
+        "Forward proxy protège les clients, reverse proxy protège les serveurs",
+        "Forward proxy est plus rapide",
+        "Reverse proxy ne peut pas faire de cache",
+        "Il n'y a aucune différence"
+      ],
+      "answer": 0,
+      "explanation": "Un forward proxy agit au nom des clients pour accéder à Internet. Un reverse proxy se place devant les serveurs pour protéger, load balancer et cacher le contenu pour les clients.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 34,
+      "question": "Quel est un use case typique d'un reverse proxy ?",
+      "options": [
+        "Contourner les restrictions réseau",
+        "SSL termination et caching",
+        "Anonymiser les utilisateurs",
+        "Bloquer les publicités"
+      ],
+      "answer": 1,
+      "explanation": "Les reverse proxies sont utilisés pour SSL termination (déchiffrement), caching (performance), load balancing, compression, et protection des serveurs backend. Nginx et HAProxy sont des exemples courants.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 35,
+      "question": "Que contient le header X-Forwarded-For ?",
+      "options": [
+        "Le nom du proxy",
+        "L'adresse IP originale du client",
+        "Le chemin de la requête",
+        "Le user agent"
+      ],
+      "answer": 1,
+      "explanation": "X-Forwarded-For est un header HTTP ajouté par les proxies pour préserver l'adresse IP originale du client, car le serveur backend voit normalement l'IP du proxy.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 36,
+      "question": "Comment Nginx peut-il être utilisé comme reverse proxy ?",
+      "options": [
+        "Uniquement pour servir des fichiers statiques",
+        "Avec la directive proxy_pass dans la configuration",
+        "Il ne peut pas fonctionner comme reverse proxy",
+        "Seulement en mode forward proxy"
+      ],
+      "answer": 1,
+      "explanation": "Nginx utilise la directive proxy_pass dans sa configuration pour fonctionner comme reverse proxy, redirigeant les requêtes vers des serveurs backend tout en gérant SSL, cache et load balancing.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 37,
+      "question": "Qu'est-ce qu'un VPN site-to-site ?",
+      "options": [
+        "Une connexion VPN pour utilisateurs distants",
+        "Une connexion sécurisée permanente entre deux réseaux",
+        "Un VPN gratuit",
+        "Un protocole de routage"
+      ],
+      "answer": 1,
+      "explanation": "Un VPN site-to-site crée une connexion sécurisée et permanente entre deux réseaux (par exemple deux bureaux d'une entreprise), permettant aux ressources de communiquer comme si elles étaient sur le même réseau local.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 38,
+      "question": "Quel protocole VPN est considéré comme le plus moderne et performant ?",
+      "options": [
+        "PPTP",
+        "L2TP",
+        "OpenVPN",
+        "WireGuard"
+      ],
+      "answer": 3,
+      "explanation": "WireGuard est le protocole VPN le plus moderne, offrant une meilleure performance, une cryptographie plus forte et une base de code beaucoup plus simple qu'OpenVPN ou IPSec.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 39,
+      "question": "Quelle option SSH crée un tunnel local (port forwarding) ?",
+      "options": [
+        "ssh -D",
+        "ssh -L",
+        "ssh -R",
+        "ssh -T"
+      ],
+      "answer": 1,
+      "explanation": "ssh -L crée un local port forwarding (tunnel local). ssh -D crée un SOCKS proxy dynamique. ssh -R crée un remote port forwarding. Exemple : ssh -L 8080:localhost:80 user@server",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 40,
+      "question": "Qu'est-ce que le VPC peering dans le cloud ?",
+      "options": [
+        "Le backup d'un VPC",
+        "La connexion réseau entre deux VPCs",
+        "Le monitoring d'un VPC",
+        "La suppression d'un VPC"
+      ],
+      "answer": 1,
+      "explanation": "Le VPC peering permet de connecter deux VPCs (dans la même région ou entre régions) pour qu'ils puissent communiquer via des adresses IP privées, comme s'ils faisaient partie du même réseau.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 41,
+      "question": "Quelle est la différence entre un firewall stateful et stateless ?",
+      "options": [
+        "Stateful garde l'état des connexions, stateless examine chaque paquet indépendamment",
+        "Stateful est plus rapide",
+        "Stateless est plus sécurisé",
+        "Il n'y a aucune différence"
+      ],
+      "answer": 0,
+      "explanation": "Un firewall stateful suit l'état des connexions (établies, nouvelles, reliées) et peut prendre des décisions basées sur le contexte. Un firewall stateless examine chaque paquet individuellement sans contexte.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 42,
+      "question": "Dans iptables, quelle chaîne traite les paquets destinés à la machine locale ?",
+      "options": [
+        "FORWARD",
+        "OUTPUT",
+        "INPUT",
+        "PREROUTING"
+      ],
+      "answer": 2,
+      "explanation": "La chaîne INPUT traite les paquets entrants destinés à la machine locale. OUTPUT gère les paquets sortants, et FORWARD gère les paquets routés à travers la machine.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 43,
+      "question": "Quelle est la différence entre Security Groups et Network ACLs dans AWS ?",
+      "options": [
+        "Security Groups sont stateful, Network ACLs sont stateless",
+        "Security Groups sont plus lents",
+        "Network ACLs ne peuvent pas bloquer le trafic",
+        "Il n'y a aucune différence"
+      ],
+      "answer": 0,
+      "explanation": "Security Groups sont stateful (le retour est automatiquement autorisé) et s'appliquent aux instances. Network ACLs sont stateless (nécessitent des règles entrée/sortie explicites) et s'appliquent aux subnets.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 44,
+      "question": "Que signifient les règles Ingress et Egress ?",
+      "options": [
+        "Ingress = trafic entrant, Egress = trafic sortant",
+        "Ingress = TCP, Egress = UDP",
+        "Ingress = crypté, Egress = non crypté",
+        "Ce sont des protocoles de routage"
+      ],
+      "answer": 0,
+      "explanation": "Ingress fait référence au trafic entrant vers une ressource, tandis qu'Egress désigne le trafic sortant. Ces termes sont utilisés dans les firewalls, security groups et network policies.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 45,
+      "question": "Comment bloquer tout le trafic entrant sauf SSH avec iptables ?",
+      "options": [
+        "iptables -P INPUT DROP && iptables -A INPUT -p tcp --dport 22 -j ACCEPT",
+        "iptables -A INPUT -j DROP",
+        "iptables -P INPUT ACCEPT",
+        "iptables -D INPUT -p tcp"
+      ],
+      "answer": 0,
+      "explanation": "On définit la policy par défaut INPUT à DROP, puis on ajoute une règle explicite pour accepter SSH (port 22). Il faut aussi permettre les connexions établies avec -m state --state ESTABLISHED,RELATED.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 46,
+      "question": "Quel mode de réseau Docker permet aux conteneurs de partager la stack réseau de l'hôte ?",
+      "options": [
+        "bridge",
+        "host",
+        "none",
+        "overlay"
+      ],
+      "answer": 1,
+      "explanation": "Le mode 'host' supprime l'isolation réseau entre le conteneur et l'hôte Docker, le conteneur utilise directement la stack réseau de l'hôte. Utile pour les performances mais réduit l'isolation.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 47,
+      "question": "Quel est le mode réseau Docker par défaut ?",
+      "options": [
+        "host",
+        "none",
+        "bridge",
+        "overlay"
+      ],
+      "answer": 2,
+      "explanation": "Le mode bridge est le mode par défaut. Docker crée un réseau bridge (docker0) permettant aux conteneurs de communiquer entre eux et avec l'extérieur via NAT.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 48,
+      "question": "Comment créer un réseau Docker personnalisé ?",
+      "options": [
+        "docker create network mynet",
+        "docker network create mynet",
+        "docker net new mynet",
+        "docker add network mynet"
+      ],
+      "answer": 1,
+      "explanation": "La commande 'docker network create mynet' crée un réseau bridge personnalisé. Les conteneurs sur le même réseau personnalisé peuvent se résoudre par nom via DNS automatique.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 49,
+      "question": "Que fait la commande 'docker run -p 8080:80' ?",
+      "options": [
+        "Crée un volume sur le port 8080",
+        "Mappe le port 8080 de l'hôte vers le port 80 du conteneur",
+        "Change le port du conteneur en 8080",
+        "Configure le protocole HTTP"
+      ],
+      "answer": 1,
+      "explanation": "L'option -p (publish) mappe un port de l'hôte vers un port du conteneur. Format : -p HOST_PORT:CONTAINER_PORT. Ici, localhost:8080 redirige vers le port 80 du conteneur.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 50,
+      "question": "Comment les conteneurs Docker sur le même réseau personnalisé se découvrent-ils ?",
+      "options": [
+        "Par adresse IP uniquement",
+        "Via DNS intégré utilisant le nom du conteneur",
+        "Ils ne peuvent pas communiquer",
+        "Via un fichier hosts partagé"
+      ],
+      "answer": 1,
+      "explanation": "Docker fournit un DNS intégré pour les réseaux personnalisés. Les conteneurs peuvent se résoudre mutuellement par leur nom de conteneur (ou alias réseau), facilitant la communication inter-conteneur.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 51,
+      "question": "Dans Docker Compose, comment les services communiquent-ils entre eux ?",
+      "options": [
+        "Ils ne peuvent pas communiquer",
+        "Via un réseau bridge par défaut, en utilisant le nom du service comme hostname",
+        "Uniquement par IP",
+        "Via des fichiers partagés"
+      ],
+      "answer": 1,
+      "explanation": "Docker Compose crée automatiquement un réseau bridge pour tous les services du fichier compose. Les services peuvent se contacter en utilisant le nom du service comme hostname (résolution DNS).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 52,
+      "question": "Quel mode réseau Docker est utilisé pour Docker Swarm ?",
+      "options": [
+        "bridge",
+        "host",
+        "overlay",
+        "macvlan"
+      ],
+      "answer": 2,
+      "explanation": "Le mode overlay crée un réseau distribué entre plusieurs hôtes Docker, essentiel pour Docker Swarm. Il permet aux conteneurs sur différents nœuds de communiquer de manière sécurisée.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 53,
+      "question": "Qu'est-ce qu'un VPC (Virtual Private Cloud) ?",
+      "options": [
+        "Un serveur virtuel",
+        "Un réseau privé virtuel isolé dans le cloud",
+        "Un type de load balancer",
+        "Un protocole de cryptage"
+      ],
+      "answer": 1,
+      "explanation": "Un VPC est un réseau privé virtuel isolé logiquement dans le cloud (AWS, GCP, Azure). Il permet de contrôler l'environnement réseau : IP ranges, subnets, route tables, gateways, et security.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 54,
+      "question": "Quelle est la différence entre un subnet public et privé dans un VPC ?",
+      "options": [
+        "Public a une route vers Internet Gateway, privé non",
+        "Public est plus rapide",
+        "Privé est crypté, public non",
+        "Il n'y a aucune différence"
+      ],
+      "answer": 0,
+      "explanation": "Un subnet public a une route dans sa route table vers un Internet Gateway, permettant l'accès direct à Internet. Un subnet privé n'a pas cette route et utilise typiquement un NAT Gateway pour l'accès sortant.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 55,
+      "question": "Quel composant permet aux instances dans un subnet privé d'accéder à Internet ?",
+      "options": [
+        "Internet Gateway",
+        "NAT Gateway ou NAT Instance",
+        "VPN Gateway",
+        "Route Table"
+      ],
+      "answer": 1,
+      "explanation": "Un NAT Gateway (ou NAT Instance) dans un subnet public permet aux instances des subnets privés d'initier des connexions sortantes vers Internet tout en restant inaccessibles depuis l'extérieur.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 56,
+      "question": "Qu'est-ce qu'une Route Table dans un VPC ?",
+      "options": [
+        "Une table de load balancing",
+        "Un ensemble de règles déterminant où diriger le trafic réseau",
+        "Un registre de logs réseau",
+        "Une table de DNS"
+      ],
+      "answer": 1,
+      "explanation": "Une Route Table contient des règles (routes) qui déterminent où diriger le trafic réseau sortant d'un subnet. Chaque subnet doit être associé à une route table.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 57,
+      "question": "Qu'est-ce qu'un Internet Gateway (IGW) ?",
+      "options": [
+        "Un firewall",
+        "Un composant VPC permettant la communication entre le VPC et Internet",
+        "Un load balancer",
+        "Un serveur DNS"
+      ],
+      "answer": 1,
+      "explanation": "Un Internet Gateway est un composant VPC hautement disponible et scalable qui permet la communication bidirectionnelle entre les ressources du VPC et Internet. Un seul IGW par VPC.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 58,
+      "question": "Qu'est-ce qu'une Elastic IP dans AWS ?",
+      "options": [
+        "Une IP qui change automatiquement",
+        "Une adresse IP publique statique que vous pouvez attribuer à vos instances",
+        "Une IP privée",
+        "Une IP temporaire"
+      ],
+      "answer": 1,
+      "explanation": "Une Elastic IP est une adresse IPv4 publique statique que vous possédez jusqu'à ce que vous la libériez. Elle peut être associée/dissociée dynamiquement à des instances ou NAT Gateways.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 59,
+      "question": "Quelle est la taille maximale d'un bloc CIDR pour un VPC dans AWS ?",
+      "options": [
+        "/8",
+        "/12",
+        "/16",
+        "/28"
+      ],
+      "answer": 2,
+      "explanation": "Dans AWS, un VPC peut avoir un bloc CIDR allant de /16 (65,536 IPs) à /28 (16 IPs). La pratique courante est d'utiliser /16 pour avoir maximum de flexibilité dans la création de subnets.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 60,
+      "question": "Qu'est-ce qu'AWS Transit Gateway ?",
+      "options": [
+        "Un type de NAT Gateway",
+        "Un hub central permettant de connecter plusieurs VPCs et réseaux on-premise",
+        "Un load balancer régional",
+        "Un firewall managé"
+      ],
+      "answer": 1,
+      "explanation": "Transit Gateway agit comme un hub de réseau cloud permettant de connecter VPCs, VPN et Direct Connect. Il simplifie l'architecture réseau en évitant les connexions VPC peering multiples.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 61,
+      "question": "Qu'est-ce que CNI (Container Network Interface) dans Kubernetes ?",
+      "options": [
+        "Un protocole de sécurité",
+        "Une spécification et ensemble de bibliothèques pour configurer le réseau des conteneurs",
+        "Un load balancer",
+        "Un système de fichiers"
+      ],
+      "answer": 1,
+      "explanation": "CNI est une spécification standardisée et un ensemble de plugins pour configurer le réseau des conteneurs dans Kubernetes. Les plugins CNI (Calico, Flannel, Cilium, Weave) implémentent le modèle réseau de K8s.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 62,
+      "question": "Quelle est la différence entre overlay et underlay networking dans Kubernetes ?",
+      "options": [
+        "Overlay encapsule les paquets, underlay utilise le réseau physique directement",
+        "Overlay est plus rapide",
+        "Underlay est obsolète",
+        "Il n'y a aucune différence"
+      ],
+      "answer": 0,
+      "explanation": "Overlay network (Flannel VXLAN, Calico IPIP) encapsule les paquets dans des paquets de l'hôte, ajoutant de l'overhead mais simplifiant le routage. Underlay (Calico BGP) utilise le réseau physique directement, offrant de meilleures performances.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 63,
+      "question": "Comment fonctionne la communication Pod-to-Pod dans Kubernetes ?",
+      "options": [
+        "Via NAT et port forwarding",
+        "Chaque Pod reçoit une IP unique et peut communiquer directement sans NAT",
+        "Les Pods ne peuvent pas communiquer directement",
+        "Via un load balancer obligatoire"
+      ],
+      "answer": 1,
+      "explanation": "Dans le modèle réseau Kubernetes, chaque Pod obtient sa propre IP et peut communiquer avec tous les autres Pods sans NAT, quelque soit le nœud. C'est le plugin CNI qui implémente ce modèle.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 64,
+      "question": "Quelle est la différence entre les types de Service Kubernetes : ClusterIP, NodePort et LoadBalancer ?",
+      "options": [
+        "ClusterIP = interne uniquement, NodePort = expose sur chaque nœud, LoadBalancer = expose via cloud LB",
+        "Ils font tous la même chose",
+        "ClusterIP est obsolète",
+        "LoadBalancer ne fonctionne pas dans le cloud"
+      ],
+      "answer": 0,
+      "explanation": "ClusterIP expose le service uniquement dans le cluster. NodePort expose sur un port statique de chaque nœud (30000-32767). LoadBalancer provisionne un load balancer externe (cloud) pointant vers le service.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 65,
+      "question": "Quels sont les modes de fonctionnement de kube-proxy ?",
+      "options": [
+        "userspace, iptables, IPVS",
+        "TCP, UDP, HTTP",
+        "bridge, host, overlay",
+        "L4, L7, mesh"
+      ],
+      "answer": 0,
+      "explanation": "kube-proxy peut fonctionner en trois modes : userspace (legacy, lent), iptables (défaut, règles NAT) et IPVS (plus performant, utilise Linux Virtual Server pour load balancing avancé).",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 66,
+      "question": "Que font les NetworkPolicies dans Kubernetes ?",
+      "options": [
+        "Gèrent les DNS",
+        "Définissent les règles de firewall entre Pods (Ingress/Egress)",
+        "Configurent les routes",
+        "Gèrent les certificats SSL"
+      ],
+      "answer": 1,
+      "explanation": "NetworkPolicies sont des objets Kubernetes qui spécifient comment des groupes de Pods peuvent communiquer entre eux et avec d'autres endpoints réseau. Elles agissent comme un firewall au niveau Pod.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 67,
+      "question": "Qu'est-ce qu'un Ingress Controller dans Kubernetes ?",
+      "options": [
+        "Un type de Service",
+        "Un composant qui implémente les règles Ingress pour exposer les services HTTP/HTTPS",
+        "Un plugin CNI",
+        "Un outil de monitoring"
+      ],
+      "answer": 1,
+      "explanation": "Un Ingress Controller (Nginx, Traefik, HAProxy) est un reverse proxy qui implémente les règles définies dans les ressources Ingress, permettant le routage HTTP/HTTPS basé sur des règles (host, path).",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 68,
+      "question": "Comment fonctionne le DNS dans Kubernetes ?",
+      "options": [
+        "Il n'y a pas de DNS",
+        "CoreDNS crée automatiquement des enregistrements DNS pour les Services et Pods",
+        "Il faut configurer manuellement tous les DNS",
+        "Le DNS ne fonctionne qu'avec les Ingress"
+      ],
+      "answer": 1,
+      "explanation": "CoreDNS (ou kube-dns) crée automatiquement des enregistrements DNS pour les Services (my-service.my-namespace.svc.cluster.local) et optionnellement pour les Pods, permettant la découverte de services.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 69,
+      "question": "Qu'est-ce qu'un Service Mesh ?",
+      "options": [
+        "Un type de load balancer",
+        "Une couche d'infrastructure dédiée pour gérer la communication service-to-service",
+        "Un plugin réseau",
+        "Un système de monitoring"
+      ],
+      "answer": 1,
+      "explanation": "Un Service Mesh (Istio, Linkerd) est une couche d'infrastructure dédiée qui gère la communication entre microservices, offrant mTLS, observabilité, traffic management, et resilience patterns via des sidecars.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 70,
+      "question": "Quel est le pattern utilisé par les Service Mesh comme Istio ?",
+      "options": [
+        "Gateway pattern",
+        "Sidecar pattern (proxy à côté de chaque conteneur)",
+        "Singleton pattern",
+        "Observer pattern"
+      ],
+      "answer": 1,
+      "explanation": "Les Service Mesh utilisent le sidecar pattern : un proxy (Envoy pour Istio) est déployé à côté de chaque conteneur applicatif, interceptant et gérant tout le trafic réseau entrant/sortant.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 71,
+      "question": "Que sont les VirtualService et DestinationRule dans Istio ?",
+      "options": [
+        "Des types de Services Kubernetes",
+        "VirtualService définit les règles de routage, DestinationRule configure le trafic vers les destinations",
+        "Des plugins réseau",
+        "Des outils de monitoring"
+      ],
+      "answer": 1,
+      "explanation": "VirtualService définit comment router les requêtes vers les services (path, headers, weights). DestinationRule configure les policies pour le trafic vers ces services (load balancing, circuit breaker, TLS).",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 72,
+      "question": "Qu'est-ce que mTLS (mutual TLS) dans un Service Mesh ?",
+      "options": [
+        "Un protocole de routage",
+        "Une authentification TLS bidirectionnelle où client et serveur s'authentifient mutuellement",
+        "Un type de load balancing",
+        "Un système de logs"
+      ],
+      "answer": 1,
+      "explanation": "mTLS (mutual TLS) assure que le client et le serveur s'authentifient mutuellement avec des certificats. Les Service Mesh comme Istio et Linkerd l'activent automatiquement pour toutes les communications inter-services.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 73,
+      "question": "Qu'est-ce que BGP (Border Gateway Protocol) ?",
+      "options": [
+        "Un protocole de transport",
+        "Le protocole de routage utilisé entre Autonomous Systems sur Internet",
+        "Un protocole VPN",
+        "Un système de DNS"
+      ],
+      "answer": 1,
+      "explanation": "BGP est le protocole de routage externe qui connecte les différents Autonomous Systems (AS) d'Internet. Il échange des informations sur l'accessibilité des réseaux IP entre AS voisins.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 74,
+      "question": "Qu'est-ce qu'un Autonomous System (AS) dans le contexte BGP ?",
+      "options": [
+        "Un serveur autonome",
+        "Un ensemble de réseaux IP sous le contrôle d'une seule organisation partageant une politique de routage",
+        "Un système d'exploitation",
+        "Un type de firewall"
+      ],
+      "answer": 1,
+      "explanation": "Un AS est un ensemble de réseaux IP et routeurs sous le contrôle d'une organisation unique, présentant une politique de routage commune vers Internet. Identifié par un numéro ASN unique.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 75,
+      "question": "Comment MetalLB utilise-t-il BGP dans Kubernetes ?",
+      "options": [
+        "Pour le DNS",
+        "Pour annoncer les IPs des Services LoadBalancer aux routeurs via BGP",
+        "Pour le monitoring",
+        "Pour le stockage"
+      ],
+      "answer": 1,
+      "explanation": "MetalLB en mode BGP permet d'obtenir des LoadBalancer IPs dans Kubernetes bare-metal en annonçant ces IPs aux routeurs du réseau via BGP, rendant les services accessibles depuis l'extérieur du cluster.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 76,
+      "question": "Que permet de faire tcpdump ?",
+      "options": [
+        "Monitorer la CPU",
+        "Capturer et analyser les paquets réseau en temps réel",
+        "Gérer les containers",
+        "Tester les performances disque"
+      ],
+      "answer": 1,
+      "explanation": "tcpdump est un outil en ligne de commande puissant pour capturer et analyser le trafic réseau en temps réel. Il utilise libpcap pour capturer les paquets et peut filtrer avec BPF (Berkeley Packet Filter).",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 77,
+      "question": "Quelle commande tcpdump capture le trafic HTTP sur le port 80 ?",
+      "options": [
+        "tcpdump http",
+        "tcpdump port 80",
+        "tcpdump -i eth0 tcp port 80",
+        "tcpdump --http"
+      ],
+      "answer": 2,
+      "explanation": "La commande 'tcpdump -i eth0 tcp port 80' capture le trafic TCP sur le port 80 de l'interface eth0. On peut ajouter -w file.pcap pour sauvegarder la capture pour analyse avec Wireshark.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 78,
+      "question": "Que fait l'outil 'mtr' (My TraceRoute) ?",
+      "options": [
+        "Monitore la mémoire",
+        "Combine ping et traceroute pour diagnostiquer les problèmes réseau en continu",
+        "Gère les routes statiques",
+        "Configure le DNS"
+      ],
+      "answer": 1,
+      "explanation": "mtr combine les fonctionnalités de ping et traceroute en envoyant continuellement des paquets pour analyser la latence et la perte de paquets à chaque hop, idéal pour diagnostiquer les problèmes réseau.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 79,
+      "question": "Qu'est-ce qu'un CDN (Content Delivery Network) ?",
+      "options": [
+        "Un système de DNS",
+        "Un réseau distribué de serveurs qui cache et livre du contenu depuis des locations proches des utilisateurs",
+        "Un type de VPN",
+        "Un protocole de routage"
+      ],
+      "answer": 1,
+      "explanation": "Un CDN (CloudFlare, Akamai, CloudFront) est un réseau de serveurs distribués géographiquement qui cache le contenu statique près des utilisateurs, réduisant la latence, améliorant les performances et la disponibilité.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 80,
+      "question": "Que sont les Edge Locations dans un CDN ?",
+      "options": [
+        "Des datacenters principaux",
+        "Des points de présence distribués où le contenu est caché proche des utilisateurs finaux",
+        "Des serveurs de base de données",
+        "Des load balancers"
+      ],
+      "answer": 1,
+      "explanation": "Les Edge Locations sont des points de présence (PoP) du CDN distribués mondialement où le contenu est mis en cache. Quand un utilisateur fait une requête, il est servi depuis l'edge location la plus proche, réduisant la latence.",
+      "difficulty": "advanced"
+    }
+  ]
+}

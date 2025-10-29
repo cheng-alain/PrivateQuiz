@@ -1,0 +1,916 @@
+{
+  "title": "Databases",
+  "description": "70 questions couvrant tous les aspects des bases de données pour DevOps : 20 questions faciles sur les concepts fondamentaux, SQL de base et types de databases, 35 questions intermédiaires sur l'administration PostgreSQL/MySQL, backup/restore, replication et performance, et 15 questions avancées sur la haute disponibilité, sharding et opérations à grande échelle",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Quelle est la principale différence entre SQL et NoSQL ?",
+      "options": [
+        "SQL est plus rapide que NoSQL",
+        "SQL utilise un schéma structuré et relationnel, NoSQL est plus flexible et souvent sans schéma",
+        "NoSQL ne peut pas stocker de données textuelles",
+        "SQL est uniquement pour le cloud"
+      ],
+      "answer": 1,
+      "explanation": "Les bases SQL (relationnelles) utilisent un schéma structuré avec des tables et relations, tandis que les bases NoSQL offrent plus de flexibilité avec des modèles variés (document, clé-valeur, colonnes, graphes) et souvent sans schéma fixe.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 2,
+      "question": "Que signifie l'acronyme ACID en bases de données ?",
+      "options": [
+        "Availability, Consistency, Isolation, Durability",
+        "Atomicity, Consistency, Isolation, Durability",
+        "Atomicity, Concurrency, Integration, Distribution",
+        "Authentication, Coordination, Integration, Deployment"
+      ],
+      "answer": 1,
+      "explanation": "ACID représente les propriétés fondamentales des transactions en bases de données relationnelles : Atomicity (tout ou rien), Consistency (cohérence des données), Isolation (transactions indépendantes), Durability (persistance des données validées).",
+      "difficulty": "easy"
+    },
+    {
+      "id": 3,
+      "question": "Qu'est-ce qu'une clé primaire (Primary Key) ?",
+      "options": [
+        "Un mot de passe pour accéder à la base de données",
+        "Un identifiant unique pour chaque ligne d'une table",
+        "Une clé de chiffrement pour sécuriser les données",
+        "Un index automatique sur toutes les colonnes"
+      ],
+      "answer": 1,
+      "explanation": "Une clé primaire (Primary Key) est un champ ou ensemble de champs qui identifie de manière unique chaque enregistrement dans une table. Elle ne peut pas contenir de valeurs NULL et doit être unique.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 4,
+      "question": "Quelle propriété de BASE correspond à 'Eventually consistent' ?",
+      "options": [
+        "Basically Available",
+        "Soft state",
+        "Eventually consistent",
+        "Toutes les réponses ci-dessus font partie de BASE"
+      ],
+      "answer": 2,
+      "explanation": "BASE signifie Basically Available, Soft state, Eventually consistent. C'est un modèle alternatif à ACID utilisé par les systèmes NoSQL distribués, privilégiant la disponibilité à la cohérence immédiate.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 5,
+      "question": "Qu'est-ce qu'une Foreign Key (clé étrangère) ?",
+      "options": [
+        "Une clé utilisée pour les connexions internationales",
+        "Un champ qui référence la Primary Key d'une autre table pour établir une relation",
+        "Une clé de chiffrement externe",
+        "Un index secondaire sur une table"
+      ],
+      "answer": 1,
+      "explanation": "Une Foreign Key est un champ (ou ensemble de champs) dans une table qui référence la Primary Key d'une autre table, établissant ainsi une relation entre les deux tables et garantissant l'intégrité référentielle.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 6,
+      "question": "Qu'est-ce que la normalisation en bases de données ?",
+      "options": [
+        "Le processus de conversion de toutes les données en minuscules",
+        "L'organisation des données pour réduire la redondance et améliorer l'intégrité",
+        "La sauvegarde automatique des données",
+        "Le chiffrement des données sensibles"
+      ],
+      "answer": 1,
+      "explanation": "La normalisation est le processus d'organisation des données dans une base relationnelle pour minimiser la redondance et éviter les anomalies de mise à jour, en divisant les tables selon des formes normales (1NF, 2NF, 3NF, etc.).",
+      "difficulty": "easy"
+    },
+    {
+      "id": 7,
+      "question": "Quelle est la différence entre une base schéma et schema-less ?",
+      "options": [
+        "Schema-less n'a pas de structure du tout",
+        "Schéma impose une structure fixe des données, schema-less permet une structure flexible",
+        "Schema-less est plus lent que schéma",
+        "Il n'y a pas de différence"
+      ],
+      "answer": 1,
+      "explanation": "Les bases avec schéma (SQL) imposent une structure définie à l'avance (colonnes, types). Les bases schema-less (certains NoSQL) permettent d'ajouter des champs dynamiquement sans modifier la structure, offrant plus de flexibilité.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 8,
+      "question": "Quelle commande SQL permet de récupérer des données d'une table ?",
+      "options": [
+        "GET",
+        "FETCH",
+        "SELECT",
+        "RETRIEVE"
+      ],
+      "answer": 2,
+      "explanation": "SELECT est la commande SQL standard pour interroger et récupérer des données d'une ou plusieurs tables. Syntaxe de base : SELECT colonnes FROM table WHERE conditions.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 9,
+      "question": "Quelle clause SQL permet de filtrer les résultats ?",
+      "options": [
+        "FILTER",
+        "WHERE",
+        "IF",
+        "CONDITION"
+      ],
+      "answer": 1,
+      "explanation": "La clause WHERE permet de filtrer les enregistrements selon des conditions spécifiques. Exemple : SELECT * FROM users WHERE age > 18.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 10,
+      "question": "Que fait la commande SQL INSERT ?",
+      "options": [
+        "Modifie des données existantes",
+        "Supprime des données",
+        "Ajoute de nouvelles lignes dans une table",
+        "Crée une nouvelle table"
+      ],
+      "answer": 2,
+      "explanation": "INSERT INTO permet d'ajouter de nouveaux enregistrements dans une table. Syntaxe : INSERT INTO table (colonnes) VALUES (valeurs).",
+      "difficulty": "easy"
+    },
+    {
+      "id": 11,
+      "question": "Quel type de JOIN retourne toutes les lignes de la table de gauche ?",
+      "options": [
+        "INNER JOIN",
+        "RIGHT JOIN",
+        "LEFT JOIN",
+        "OUTER JOIN"
+      ],
+      "answer": 2,
+      "explanation": "LEFT JOIN (ou LEFT OUTER JOIN) retourne toutes les lignes de la table de gauche, et les lignes correspondantes de la table de droite. Si pas de correspondance, les colonnes de droite contiennent NULL.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 12,
+      "question": "Quelle fonction SQL calcule la moyenne d'une colonne ?",
+      "options": [
+        "MEAN()",
+        "AVG()",
+        "AVERAGE()",
+        "CALC()"
+      ],
+      "answer": 1,
+      "explanation": "AVG() est la fonction d'agrégation SQL qui calcule la moyenne arithmétique des valeurs d'une colonne numérique. Exemple : SELECT AVG(salary) FROM employees.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 13,
+      "question": "Que fait la clause DISTINCT en SQL ?",
+      "options": [
+        "Trie les résultats",
+        "Élimine les doublons dans les résultats",
+        "Compte le nombre de lignes",
+        "Groupe les résultats"
+      ],
+      "answer": 1,
+      "explanation": "DISTINCT élimine les lignes dupliquées des résultats de requête, ne retournant que des valeurs uniques. Exemple : SELECT DISTINCT country FROM customers.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 14,
+      "question": "Quel opérateur SQL permet de rechercher un motif dans une chaîne ?",
+      "options": [
+        "MATCH",
+        "LIKE",
+        "FIND",
+        "SEARCH"
+      ],
+      "answer": 1,
+      "explanation": "LIKE permet la recherche de motifs avec des wildcards : % (plusieurs caractères) et _ (un caractère). Exemple : SELECT * FROM users WHERE email LIKE '%@gmail.com'.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 15,
+      "question": "PostgreSQL et MySQL sont des exemples de quel type de base de données ?",
+      "options": [
+        "NoSQL Document Store",
+        "Relational (SQL)",
+        "Key-Value Store",
+        "Graph Database"
+      ],
+      "answer": 1,
+      "explanation": "PostgreSQL et MySQL sont des systèmes de gestion de bases de données relationnelles (RDBMS) qui utilisent SQL comme langage de requête et organisent les données en tables avec des relations.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 16,
+      "question": "MongoDB est un exemple de quel type de base NoSQL ?",
+      "options": [
+        "Key-Value Store",
+        "Document Store",
+        "Column-Family Store",
+        "Graph Database"
+      ],
+      "answer": 1,
+      "explanation": "MongoDB est une base de données orientée documents qui stocke les données au format BSON (Binary JSON). Chaque document peut avoir une structure différente, offrant flexibilité et scalabilité.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 17,
+      "question": "Redis est principalement utilisé comme quel type de base de données ?",
+      "options": [
+        "Document Store",
+        "Relational Database",
+        "Key-Value Store / Cache",
+        "Graph Database"
+      ],
+      "answer": 2,
+      "explanation": "Redis est un store clé-valeur en mémoire (in-memory), très rapide, utilisé principalement comme cache, session store, ou pour des structures de données comme listes, sets, sorted sets, et pub/sub.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 18,
+      "question": "Quel type de base de données est optimal pour stocker et interroger des relations complexes entre entités ?",
+      "options": [
+        "Relational SQL",
+        "Document Store",
+        "Graph Database",
+        "Key-Value Store"
+      ],
+      "answer": 2,
+      "explanation": "Les Graph Databases (comme Neo4j) sont optimisées pour stocker et interroger des relations complexes entre entités (nœuds et arêtes), idéales pour réseaux sociaux, recommandations, détection de fraude.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 19,
+      "question": "Cassandra et HBase sont des exemples de quel type de NoSQL ?",
+      "options": [
+        "Document Store",
+        "Key-Value Store",
+        "Column-Family Store",
+        "Graph Database"
+      ],
+      "answer": 2,
+      "explanation": "Cassandra et HBase sont des bases de données Column-Family (wide-column stores), optimisées pour stocker et lire de grandes quantités de données distribuées avec un accès rapide par clé.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 20,
+      "question": "Dans quel cas privilégierait-on une base NoSQL plutôt que SQL ?",
+      "options": [
+        "Besoin de transactions ACID strictes et relations complexes",
+        "Données structurées avec schéma stable",
+        "Besoin de scalabilité horizontale massive et données semi-structurées",
+        "Requêtes SQL complexes avec multiples JOINs"
+      ],
+      "answer": 2,
+      "explanation": "NoSQL est privilégié pour : scalabilité horizontale massive, données semi-structurées ou non structurées, schéma flexible, haute disponibilité distribuée, et lectures/écritures à très haute volumétrie. SQL reste préférable pour transactions complexes et intégrité stricte.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 21,
+      "question": "Quelle commande permet de se connecter à une base PostgreSQL en ligne de commande ?",
+      "options": [
+        "postgresql connect",
+        "psql -h hostname -U username -d database",
+        "pg_connect database",
+        "postgres --login"
+      ],
+      "answer": 1,
+      "explanation": "psql est le client en ligne de commande pour PostgreSQL. Options courantes : -h (host), -U (user), -d (database), -p (port). Exemple : psql -h localhost -U postgres -d mydb.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 22,
+      "question": "Comment créer un nouvel utilisateur dans PostgreSQL ?",
+      "options": [
+        "ADD USER username",
+        "CREATE USER username WITH PASSWORD 'password'",
+        "INSERT USER username",
+        "NEW USER username"
+      ],
+      "answer": 1,
+      "explanation": "CREATE USER (ou CREATE ROLE) permet de créer un utilisateur PostgreSQL. Syntaxe : CREATE USER username WITH PASSWORD 'password' LOGIN; Les options incluent SUPERUSER, CREATEDB, CREATEROLE, etc.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 23,
+      "question": "Quel fichier configure l'authentification des connexions dans PostgreSQL ?",
+      "options": [
+        "postgresql.conf",
+        "pg_hba.conf",
+        "auth.conf",
+        "access.conf"
+      ],
+      "answer": 1,
+      "explanation": "pg_hba.conf (Host-Based Authentication) contrôle qui peut se connecter à PostgreSQL, depuis où, et avec quelle méthode d'authentification (trust, md5, scram-sha-256, peer, etc.).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 24,
+      "question": "Comment accorder tous les privilèges sur une base de données à un utilisateur PostgreSQL ?",
+      "options": [
+        "ALLOW ALL ON DATABASE dbname TO user",
+        "GRANT ALL PRIVILEGES ON DATABASE dbname TO user",
+        "PERMIT user ON dbname",
+        "AUTHORIZE user FOR dbname"
+      ],
+      "answer": 1,
+      "explanation": "GRANT ALL PRIVILEGES ON DATABASE dbname TO username; accorde tous les privilèges. Pour des permissions plus fines : GRANT SELECT, INSERT, UPDATE ON table TO user;",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 25,
+      "question": "Quel est le rôle de la commande VACUUM dans PostgreSQL ?",
+      "options": [
+        "Sauvegarder la base de données",
+        "Récupérer l'espace disque des lignes supprimées et mettre à jour les statistiques",
+        "Vider complètement une table",
+        "Optimiser les index uniquement"
+      ],
+      "answer": 1,
+      "explanation": "VACUUM récupère l'espace des tuples morts (supprimés/mis à jour), évite le transaction ID wraparound, et met à jour les statistiques pour l'optimiseur. VACUUM FULL réécrit la table complètement (plus lourd).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 26,
+      "question": "Quelle extension PostgreSQL permet de gérer des données géospatiales ?",
+      "options": [
+        "GeoSQL",
+        "PostGIS",
+        "SpatialDB",
+        "GeoExtension"
+      ],
+      "answer": 1,
+      "explanation": "PostGIS est l'extension PostgreSQL de référence pour les données géospatiales (points, lignes, polygones). Elle ajoute des types (geometry, geography) et des fonctions pour requêtes spatiales (ST_Distance, ST_Contains, etc.).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 27,
+      "question": "Comment lister toutes les bases de données dans psql ?",
+      "options": [
+        "SHOW DATABASES",
+        "\\l ou \\list",
+        "LIST DATABASES",
+        "GET DATABASES"
+      ],
+      "answer": 1,
+      "explanation": "Dans psql, \\l ou \\list affiche toutes les bases de données. Autres commandes utiles : \\dt (tables), \\du (users), \\dn (schemas), \\df (functions), \\q (quit).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 28,
+      "question": "Quel fichier contient la configuration principale de PostgreSQL ?",
+      "options": [
+        "pg_config.conf",
+        "postgresql.conf",
+        "postgres.ini",
+        "server.conf"
+      ],
+      "answer": 1,
+      "explanation": "postgresql.conf contient les paramètres de configuration PostgreSQL : shared_buffers, work_mem, max_connections, port, logging, etc. Localisation : généralement dans le répertoire de données (PGDATA).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 29,
+      "question": "Comment se connecter à une base MySQL en ligne de commande ?",
+      "options": [
+        "mysql connect database",
+        "mysql -h hostname -u username -p database",
+        "mysqlclient --database",
+        "db_connect mysql"
+      ],
+      "answer": 1,
+      "explanation": "mysql -h hostname -u username -p database lance le client MySQL. Options : -h (host), -u (user), -p (prompt password), -P (port). Sans -p, le mot de passe peut être en clair (déconseillé).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 30,
+      "question": "Quelle commande MySQL affiche toutes les bases de données ?",
+      "options": [
+        "LIST DATABASES",
+        "SHOW DATABASES",
+        "GET DATABASES",
+        "\\l"
+      ],
+      "answer": 1,
+      "explanation": "SHOW DATABASES; liste toutes les bases. Autres commandes : SHOW TABLES; (tables), SHOW COLUMNS FROM table; (colonnes), SHOW GRANTS FOR user; (privilèges).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 31,
+      "question": "Quelle est la différence principale entre InnoDB et MyISAM dans MySQL ?",
+      "options": [
+        "InnoDB est plus rapide pour toutes les opérations",
+        "InnoDB supporte les transactions ACID et les clés étrangères, MyISAM non",
+        "MyISAM est le seul engine moderne recommandé",
+        "Il n'y a pas de différence significative"
+      ],
+      "answer": 1,
+      "explanation": "InnoDB est le storage engine par défaut MySQL, supportant transactions ACID, foreign keys, row-level locking, et crash recovery. MyISAM est plus ancien, sans transactions, avec table-level locking (moins utilisé aujourd'hui).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 32,
+      "question": "Quel fichier configure les paramètres MySQL/MariaDB ?",
+      "options": [
+        "mysql.conf",
+        "my.cnf ou my.ini",
+        "mariadb.config",
+        "server.cnf"
+      ],
+      "answer": 1,
+      "explanation": "my.cnf (Linux/Unix) ou my.ini (Windows) contient la configuration MySQL/MariaDB. Sections courantes : [mysqld] (serveur), [client] (client), [mysql] (CLI). Paramètres : max_connections, innodb_buffer_pool_size, etc.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 33,
+      "question": "Comment créer un backup logique d'une base MySQL ?",
+      "options": [
+        "mysql_backup database",
+        "mysqldump -u user -p database > backup.sql",
+        "BACKUP DATABASE database",
+        "mysql --export database"
+      ],
+      "answer": 1,
+      "explanation": "mysqldump crée un backup logique (dump SQL). Syntaxe : mysqldump -u user -p database > backup.sql. Options : --all-databases, --single-transaction (InnoDB), --master-data (replication).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 34,
+      "question": "Comment révoquer un privilège sur une table MySQL ?",
+      "options": [
+        "REMOVE privilege ON table FROM user",
+        "REVOKE privilege ON table FROM user",
+        "DELETE privilege FROM user",
+        "DENY privilege TO user"
+      ],
+      "answer": 1,
+      "explanation": "REVOKE retire des privilèges. Syntaxe : REVOKE SELECT, INSERT ON database.table FROM 'user'@'host'; Ensuite : FLUSH PRIVILEGES; pour appliquer immédiatement.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 35,
+      "question": "Quels sont les trois principaux types de backup ?",
+      "options": [
+        "Local, Remote, Cloud",
+        "Full, Incremental, Differential",
+        "Manual, Automatic, Scheduled",
+        "Hot, Cold, Warm"
+      ],
+      "answer": 1,
+      "explanation": "Full backup (sauvegarde complète), Incremental (changements depuis dernier backup), Differential (changements depuis dernier full backup). Stratégie courante : full hebdomadaire + incremental quotidien.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 36,
+      "question": "Quelle est la différence entre backup logique et physique ?",
+      "options": [
+        "Logique est plus rapide que physique",
+        "Logique exporte en SQL/texte, physique copie les fichiers de données bruts",
+        "Physique ne fonctionne que sur MySQL",
+        "Il n'y a pas de différence"
+      ],
+      "answer": 1,
+      "explanation": "Backup logique (pg_dump, mysqldump) exporte en SQL, portable, plus lent. Backup physique (copie fichiers, snapshots) copie les fichiers de données, plus rapide, mais spécifique à la version/plateforme.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 37,
+      "question": "Qu'est-ce que le Point-in-Time Recovery (PITR) ?",
+      "options": [
+        "Restauration à une date et heure exactes",
+        "Sauvegarde en temps réel",
+        "Réplication synchrone",
+        "Backup incrémental"
+      ],
+      "answer": 0,
+      "explanation": "PITR permet de restaurer la base à un moment précis (ex: avant un incident). Nécessite : backup complet + WAL/binary logs continus. PostgreSQL : pg_basebackup + WAL archiving. MySQL : full backup + binary logs.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 38,
+      "question": "Que signifie RTO (Recovery Time Objective) ?",
+      "options": [
+        "Le temps maximum entre deux backups",
+        "Le temps maximum acceptable pour restaurer un système après incident",
+        "Le nombre de backups à conserver",
+        "La fréquence de test des backups"
+      ],
+      "answer": 1,
+      "explanation": "RTO est le temps maximal acceptable de downtime après un incident. RPO (Recovery Point Objective) est la quantité maximale de données perdues acceptables (en temps). Ex: RTO=1h, RPO=15min.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 39,
+      "question": "Pourquoi est-il crucial de tester régulièrement les backups ?",
+      "options": [
+        "Pour compresser les fichiers de backup",
+        "Pour vérifier qu'ils sont restaurables et que la procédure fonctionne",
+        "Pour augmenter la vitesse de backup",
+        "C'est optionnel"
+      ],
+      "answer": 1,
+      "explanation": "Tester les backups régulièrement est CRITIQUE : vérifie l'intégrité des données, la validité du processus de restore, le RTO réel, et identifie les problèmes avant un incident réel. 'Untested backups = no backups'.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 40,
+      "question": "Comment créer un backup physique PostgreSQL avec pg_basebackup ?",
+      "options": [
+        "pg_backup --physical",
+        "pg_basebackup -D /backup_dir -Ft -z -P",
+        "psql --backup",
+        "BACKUP DATABASE TO '/backup'"
+      ],
+      "answer": 1,
+      "explanation": "pg_basebackup fait un backup physique : pg_basebackup -D /backup_dir -Ft -z -P. Options : -D (destination), -Ft (tar format), -z (compression), -P (progress). Nécessite wal_level >= replica.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 41,
+      "question": "Comment restaurer un backup mysqldump ?",
+      "options": [
+        "mysql_restore backup.sql",
+        "mysql -u user -p database < backup.sql",
+        "RESTORE DATABASE FROM backup.sql",
+        "mysqladmin restore backup.sql"
+      ],
+      "answer": 1,
+      "explanation": "Pour restaurer : mysql -u user -p database < backup.sql. Créer d'abord la base si nécessaire : CREATE DATABASE database; Vérifier ensuite les données et permissions.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 42,
+      "question": "Qu'est-ce que la réplication Master-Slave ?",
+      "options": [
+        "Deux bases identiques actives simultanément",
+        "Un master en écriture, un ou plusieurs slaves en lecture seule (répliqués)",
+        "Sauvegarde automatique",
+        "Partitionnement des données"
+      ],
+      "answer": 1,
+      "explanation": "Master-Slave (ou Primary-Replica) : le master reçoit les écritures, les slaves répliquent les données et servent les lectures. Avantages : scalabilité lecture, HA, analytics sur slave sans impacter le master.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 43,
+      "question": "Quelle est la différence entre réplication synchrone et asynchrone ?",
+      "options": [
+        "Synchrone réplique en temps réel, asynchrone avec délai",
+        "Asynchrone est plus fiable",
+        "Synchrone ne fonctionne qu'avec MySQL",
+        "Il n'y a pas de différence"
+      ],
+      "answer": 0,
+      "explanation": "Synchrone : transaction validée sur master ET replica avant commit (cohérence forte, latence). Asynchrone : transaction validée sur master immédiatement, réplication différée (performance, risque perte données si crash master).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 44,
+      "question": "Qu'est-ce que le replication lag ?",
+      "options": [
+        "Le délai entre l'écriture sur le master et sa disponibilité sur le slave",
+        "La vitesse de réplication",
+        "Le nombre de slaves",
+        "Le type de réplication"
+      ],
+      "answer": 0,
+      "explanation": "Replication lag est le retard entre master et slave. Causes : réseau lent, slave sous-dimensionné, volume élevé d'écritures. Monitoring : pg_stat_replication (PostgreSQL), SHOW SLAVE STATUS (MySQL).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 45,
+      "question": "Comment configurer la streaming replication dans PostgreSQL ?",
+      "options": [
+        "Automatique par défaut",
+        "Configurer wal_level=replica, max_wal_senders, créer replication slot, pg_basebackup puis standby.signal",
+        "Simple GRANT REPLICATION",
+        "Installer une extension"
+      ],
+      "answer": 1,
+      "explanation": "Étapes : 1) Master : wal_level=replica, max_wal_senders>0, pg_hba.conf replication entry. 2) Backup avec pg_basebackup. 3) Standby : créer standby.signal, configurer primary_conninfo dans postgresql.conf. 4) Démarrer standby.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 46,
+      "question": "Qu'est-ce que la réplication binlog dans MySQL ?",
+      "options": [
+        "Réplication de fichiers binaires uniquement",
+        "Réplication basée sur les logs binaires (changements SQL enregistrés et rejoués)",
+        "Compression des données",
+        "Backup automatique"
+      ],
+      "answer": 1,
+      "explanation": "MySQL binary log replication : master enregistre les modifications dans binary logs, slaves les lisent et rejouent. Formats : STATEMENT (SQL), ROW (lignes modifiées), MIXED. Configuration : server-id, log_bin, binlog_format.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 47,
+      "question": "Qu'est-ce qu'un index B-tree et quand l'utiliser ?",
+      "options": [
+        "Index pour données binaires uniquement",
+        "Structure arborescente équilibrée, idéale pour recherches par égalité et plages",
+        "Index uniquement pour texte",
+        "Index géospatial"
+      ],
+      "answer": 1,
+      "explanation": "B-tree est l'index par défaut dans la plupart des RDBMS. Équilibré, performant pour : =, <, >, <=, >=, BETWEEN, ORDER BY. Supporte multi-colonnes. Moins efficace pour LIKE '%pattern' (ne commence pas par début).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 48,
+      "question": "Comment créer un index sur une colonne PostgreSQL ?",
+      "options": [
+        "ADD INDEX column",
+        "CREATE INDEX index_name ON table(column)",
+        "INDEX table.column",
+        "ALTER TABLE ADD INDEX"
+      ],
+      "answer": 1,
+      "explanation": "CREATE INDEX index_name ON table(column); Options : CREATE UNIQUE INDEX (unicité), CREATE INDEX CONCURRENTLY (sans lock), index multi-colonnes : ON table(col1, col2). Drop : DROP INDEX index_name;",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 49,
+      "question": "Quand un index peut-il dégrader les performances ?",
+      "options": [
+        "Jamais, les index améliorent toujours les performances",
+        "Sur tables avec beaucoup d'écritures (INSERT/UPDATE/DELETE), ou index inutilisés",
+        "Seulement sur les petites tables",
+        "Uniquement avec MySQL"
+      ],
+      "answer": 1,
+      "explanation": "Index ralentissent les écritures (INSERT/UPDATE/DELETE) car doivent être mis à jour. Coût : espace disque, maintenance. Éviter : sur petites tables, colonnes avec faible cardinalité, index redondants ou jamais utilisés. Équilibrer lecture vs écriture.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 50,
+      "question": "À quoi sert la commande EXPLAIN dans PostgreSQL/MySQL ?",
+      "options": [
+        "Expliquer la syntaxe SQL",
+        "Afficher le plan d'exécution d'une requête et identifier les optimisations possibles",
+        "Documenter le schéma",
+        "Créer un rapport de performance"
+      ],
+      "answer": 1,
+      "explanation": "EXPLAIN montre le plan d'exécution (query plan) : sequential scan vs index scan, joins, coût estimé. EXPLAIN ANALYZE (PostgreSQL) exécute la requête et affiche le temps réel. Identifie les goulots : missing index, sequential scans coûteux.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 51,
+      "question": "Qu'est-ce que le slow query log et pourquoi l'activer ?",
+      "options": [
+        "Log de toutes les requêtes",
+        "Log des requêtes dépassant un seuil de temps, pour identifier les requêtes à optimiser",
+        "Log des erreurs SQL",
+        "Log de réplication"
+      ],
+      "answer": 1,
+      "explanation": "Slow query log enregistre les requêtes dépassant long_query_time (MySQL) ou log_min_duration_statement (PostgreSQL). Permet d'identifier les requêtes lentes à optimiser : indexes manquants, full table scans, requêtes complexes inefficaces.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 52,
+      "question": "Quels sont les principaux types de données Redis ?",
+      "options": [
+        "Seulement des chaînes de caractères",
+        "String, List, Set, Sorted Set, Hash",
+        "Tables et colonnes comme SQL",
+        "Documents JSON uniquement"
+      ],
+      "answer": 1,
+      "explanation": "Types Redis : String (texte/binaire), List (liste ordonnée), Set (ensemble unique non ordonné), Sorted Set (set avec score pour tri), Hash (map clé-valeur). Aussi : Bitmaps, HyperLogLog, Streams, Geospatial.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 53,
+      "question": "Pour quels cas d'usage Redis est-il particulièrement adapté ?",
+      "options": [
+        "Remplacer complètement une base SQL",
+        "Cache, session store, pub/sub, leaderboards, rate limiting",
+        "Stockage de fichiers volumineux",
+        "Analyses complexes avec SQL"
+      ],
+      "answer": 1,
+      "explanation": "Redis excelle pour : cache (réduire latence DB), session store (web apps), pub/sub (messaging), leaderboards (sorted sets), rate limiting, counters, queues. In-memory = très rapide mais limité par RAM.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 54,
+      "question": "Quelles sont les deux méthodes de persistance Redis ?",
+      "options": [
+        "Backup et Archive",
+        "RDB (snapshots) et AOF (append-only file)",
+        "Sync et Async",
+        "Memory et Disk"
+      ],
+      "answer": 1,
+      "explanation": "RDB (Redis Database) : snapshots périodiques, compact, restauration rapide, perte possible de données. AOF (Append Only File) : log de toutes écritures, plus durable, fichier plus gros. Combinaison possible pour équilibrer performance/durabilité.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 55,
+      "question": "Comment se connecter à Redis en CLI ?",
+      "options": [
+        "redis connect",
+        "redis-cli -h hostname -p port",
+        "psql redis",
+        "mysql -r redis"
+      ],
+      "answer": 1,
+      "explanation": "redis-cli -h hostname -p port -a password. Commandes basiques : SET key value, GET key, DEL key, EXISTS key, KEYS pattern, PING, INFO. -h (host), -p (port défaut 6379), -a (auth).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 56,
+      "question": "Qu'est-ce qu'une architecture Primary-Standby (Hot Standby) pour la haute disponibilité ?",
+      "options": [
+        "Deux bases actives simultanément",
+        "Un primary actif, un standby répliqué prêt à prendre le relais en cas de panne",
+        "Sauvegarde à froid",
+        "Partitionnement horizontal"
+      ],
+      "answer": 1,
+      "explanation": "Hot Standby : primary actif (lecture/écriture), standby répliqué en temps réel (peut servir lectures). En cas de panne primary, failover : standby devient primary. Warm standby : répliqué mais pas de lectures. Cold standby : backup restore manuel.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 57,
+      "question": "Qu'est-ce que Patroni pour PostgreSQL ?",
+      "options": [
+        "Un outil de backup",
+        "Un système de haute disponibilité automatisant failover et leader election",
+        "Une extension géospatiale",
+        "Un client graphique"
+      ],
+      "answer": 1,
+      "explanation": "Patroni est un template HA pour PostgreSQL : gère automatiquement failover, leader election (via etcd/Consul/ZooKeeper), configuration dynamique, switchover sans downtime. Alternative à repmgr. Intégré avec Kubernetes via operators.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 58,
+      "question": "Qu'est-ce que Galera Cluster pour MySQL/MariaDB ?",
+      "options": [
+        "Un outil de monitoring",
+        "Une solution de réplication multi-master synchrone pour haute disponibilité",
+        "Un type de storage engine",
+        "Un système de backup"
+      ],
+      "answer": 1,
+      "explanation": "Galera Cluster : réplication multi-master synchrone pour MySQL/MariaDB. Tous les nœuds peuvent recevoir écritures. Certification-based replication garantit cohérence. Active-Active HA, automatic failover, mais complexité réseau et gestion conflits.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 59,
+      "question": "Qu'est-ce que PgBouncer et pourquoi l'utiliser ?",
+      "options": [
+        "Un outil de backup PostgreSQL",
+        "Un connection pooler pour PostgreSQL réduisant la charge et améliorant performance",
+        "Une extension de monitoring",
+        "Un système de réplication"
+      ],
+      "answer": 1,
+      "explanation": "PgBouncer est un connection pooler léger pour PostgreSQL. Réduit connexions DB (coûteuses), améliore performance. Modes : session pooling, transaction pooling, statement pooling. Critique pour apps avec nombreuses connexions courtes (web apps).",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 60,
+      "question": "Comment implémenter un failover automatique dans une architecture HA ?",
+      "options": [
+        "Manuellement uniquement",
+        "Via outils comme Patroni, repmgr, ou solutions cloud natives avec health checks et leader election",
+        "Redémarrer le serveur",
+        "Restaurer un backup"
+      ],
+      "answer": 1,
+      "explanation": "Failover automatique nécessite : monitoring health checks, consensus/leader election (etcd, Consul, ZooKeeper), promotion automatique standby → primary, redirection trafic (DNS, VIP, load balancer). Outils : Patroni, repmgr (PostgreSQL), orchestrators cloud (RDS Multi-AZ).",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 61,
+      "question": "Qu'est-ce que le sharding horizontal (horizontal sharding) ?",
+      "options": [
+        "Diviser une table verticalement par colonnes",
+        "Distribuer les lignes d'une table sur plusieurs serveurs/bases selon une clé",
+        "Réplication des données",
+        "Compression des données"
+      ],
+      "answer": 1,
+      "explanation": "Sharding horizontal : diviser une table en partitions distribuées sur plusieurs serveurs (shards) selon une clé (user_id, region, hash). Scalabilité horizontale massive. Défis : requêtes cross-shard, transactions distribuées, repartitioning.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 62,
+      "question": "Quels sont les principaux défis du sharding ?",
+      "options": [
+        "Aucun défi, c'est simple",
+        "JOINs cross-shard, transactions distribuées, gestion de la clé de sharding, repartitioning",
+        "Uniquement le coût",
+        "Uniquement la complexité de backup"
+      ],
+      "answer": 1,
+      "explanation": "Défis du sharding : JOINs entre shards (inefficaces), transactions distribuées (complexes), choix clé sharding (éviter hotspots), resharding (répartition difficile), complexité opérationnelle. Nécessite architecture applicative adaptée.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 63,
+      "question": "Qu'est-ce que Citus et à quoi sert-il ?",
+      "options": [
+        "Un outil de backup",
+        "Une extension PostgreSQL pour sharding et distribution de données",
+        "Un système de monitoring",
+        "Un client PostgreSQL"
+      ],
+      "answer": 1,
+      "explanation": "Citus transforme PostgreSQL en base distribuée : sharding transparent, parallélisation requêtes sur plusieurs nœuds. Distribution tables et colocated JOINs. Permet scalabilité PostgreSQL horizontale pour multi-tenant apps et analytics temps réel.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 64,
+      "question": "Comment optimiser le paramètre shared_buffers dans PostgreSQL ?",
+      "options": [
+        "Toujours le mettre au maximum",
+        "Généralement 25-40% de la RAM totale, tester selon workload",
+        "Le laisser à la valeur par défaut toujours",
+        "Le mettre à 0 pour performance"
+      ],
+      "answer": 1,
+      "explanation": "shared_buffers = cache PostgreSQL. Recommandation : 25-40% RAM sur serveur dédié (ex: 10GB sur 32GB RAM). Trop bas : cache insuffisant. Trop haut : OS page cache moins efficace. Équilibrer avec effective_cache_size, work_mem. Benchmarker selon workload.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 65,
+      "question": "Qu'est-ce que work_mem dans PostgreSQL et comment l'ajuster ?",
+      "options": [
+        "Mémoire totale du serveur",
+        "Mémoire par opération de tri/hash, ajuster selon requêtes complexes mais attention au nombre de connexions",
+        "Mémoire pour WAL",
+        "Mémoire pour les connexions"
+      ],
+      "answer": 1,
+      "explanation": "work_mem : mémoire par opération de tri/hash/merge join. Trop bas : sorts disk (lent). Trop haut : OOM si nombreuses connexions parallèles. Calcul : (RAM - shared_buffers) / (max_connections * ops_par_query). Typique : 4-64MB. Ajuster par session pour requêtes lourdes.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 66,
+      "question": "Comment dimensionner un connection pool ?",
+      "options": [
+        "Toujours mettre le maximum de connexions possibles",
+        "Formule : (CPU cores * 2) + disques effectifs en I/O, ajuster selon latence et throughput",
+        "1 connexion par utilisateur",
+        "100 connexions minimum"
+      ],
+      "answer": 1,
+      "explanation": "Connection pool sizing : formule classique (CPU cores * 2) + effective_spindle_count. Mais dépend de : workload (CPU vs I/O bound), latence requêtes, connection overhead. Trop de connexions = context switching. Monitorer : connection wait time, idle connections. Pooler comme PgBouncer améliore.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 67,
+      "question": "Comment déployer une base de données dans Kubernetes avec un StatefulSet ?",
+      "options": [
+        "Utiliser un simple Deployment",
+        "StatefulSet + PersistentVolumeClaims pour garantir identité stable et stockage persistant",
+        "Ne jamais déployer de DB dans Kubernetes",
+        "Utiliser des DaemonSets"
+      ],
+      "answer": 1,
+      "explanation": "StatefulSet pour DB dans K8s : identité réseau stable (pod-0, pod-1), ordre création/suppression, PersistentVolumeClaims (stockage persistant par pod). Crucial pour : données persistantes, réplication ordonnée, snapshots. Utiliser operators (postgres-operator, mysql-operator) recommandé.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 68,
+      "question": "Quels sont les principaux challenges de déployer des bases de données dans Kubernetes ?",
+      "options": [
+        "Aucun challenge",
+        "Persistance données, performance I/O, backups, failover, complexité opérationnelle",
+        "Seulement le coût",
+        "Uniquement la configuration réseau"
+      ],
+      "answer": 1,
+      "explanation": "Challenges DB dans K8s : persistance (PV/PVC lifecycle), performance I/O (network storage latency), stateful nature vs K8s design, backups/restore complexe, failover automatique, resource limits, noisy neighbors. Operators aident mais complexité opérationnelle élevée. Souvent mieux : managed DB externe.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 69,
+      "question": "Qu'est-ce que le théorème CAP et comment influence-t-il le choix d'une base de données ?",
+      "options": [
+        "Consistency, Availability, Partitioning - on ne peut garantir les 3 simultanément dans un système distribué",
+        "Cost, Access, Performance",
+        "Capacity, Allocation, Processing",
+        "Cache, API, Protocol"
+      ],
+      "answer": 0,
+      "explanation": "CAP : dans un système distribué, impossible de garantir simultanément Consistency (cohérence), Availability (disponibilité), Partition tolerance (tolérance aux pannes réseau). Choix : CP (Consistency+Partition, ex: HBase), AP (Availability+Partition, ex: Cassandra), CA (impossible en distribué). Influence architecture.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 70,
+      "question": "Comment fonctionne l'architecture de Cassandra avec le consistent hashing ?",
+      "options": [
+        "Architecture centralisée comme SQL",
+        "Architecture peer-to-peer avec consistent hashing distribuant données uniformément, gossip protocol pour découverte",
+        "Master-slave classique",
+        "Sharding manuel"
+      ],
+      "answer": 1,
+      "explanation": "Cassandra : architecture peer-to-peer (pas de master). Consistent hashing distribue données uniformément sur ring de nœuds. Gossip protocol : découverte nœuds, health checks. Réplication configurable (replication factor). Tunable consistency (CL: ONE, QUORUM, ALL). Trade-off : availability vs consistency (CAP).",
+      "difficulty": "advanced"
+    }
+  ]
+}

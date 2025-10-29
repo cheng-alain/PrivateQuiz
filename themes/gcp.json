@@ -1,605 +1,1306 @@
 {
-    "title": "Google Cloud Platform",
-    "questions": [
-        {
-            "id": 1,
-            "question": "Quel service GCP est principalement utilis\u00e9 pour ex\u00e9cuter des conteneurs sans g\u00e9rer l'infrastructure sous-jacente ?",
-            "options": [
-                "Compute Engine",
-                "App Engine",
-                "Cloud Run",
-                "Cloud Functions"
-            ],
-            "correct": 2,
-            "explanation": "Cloud Run permet d'ex\u00e9cuter des conteneurs serverless, sans g\u00e9rer de VM ni de clusters Kubernetes."
-        },
-        {
-            "id": 2,
-            "question": "Quelle est la diff\u00e9rence principale entre GKE (Google Kubernetes Engine) et Cloud Run ?",
-            "options": [
-                "GKE est pour les conteneurs, Cloud Run pour les VM",
-                "GKE n\u00e9cessite la gestion de clusters, Cloud Run est serverless",
-                "Cloud Run est payant, GKE est gratuit",
-                "GKE est r\u00e9serv\u00e9 au machine learning"
-            ],
-            "correct": 1,
-            "explanation": "Avec GKE, vous devez g\u00e9rer vos clusters Kubernetes. Cloud Run est totalement manag\u00e9 et serverless."
-        },
-        {
-            "id": 3,
-            "question": "Quel service utiliser pour stocker des fichiers non structur\u00e9s comme des images ou des backups ?",
-            "options": [
-                "Cloud SQL",
-                "BigQuery",
-                "Cloud Storage",
-                "Firestore"
-            ],
-            "correct": 2,
-            "explanation": "Cloud Storage est le service adapt\u00e9 pour le stockage objet de fichiers non structur\u00e9s."
-        },
-        {
-            "id": 4,
-            "question": "Quel service GCP est une base de donn\u00e9es relationnelle manag\u00e9e ?",
-            "options": [
-                "Cloud SQL",
-                "Firestore",
-                "Bigtable",
-                "Datastore"
-            ],
-            "correct": 0,
-            "explanation": "Cloud SQL est le service de base de donn\u00e9es relationnelle (MySQL, PostgreSQL, SQL Server)."
-        },
-        {
-            "id": 5,
-            "question": "Si vous devez analyser de tr\u00e8s grandes quantit\u00e9s de donn\u00e9es en SQL, quel service choisir ?",
-            "options": [
-                "Cloud Storage",
-                "Cloud SQL",
-                "BigQuery",
-                "Firestore"
-            ],
-            "correct": 2,
-            "explanation": "BigQuery est le data warehouse serverless de GCP pour analyser de grandes quantit\u00e9s de donn\u00e9es."
-        },
-        {
-            "id": 6,
-            "question": "Quelle commande permet de d\u00e9ployer une application sur App Engine ?",
-            "options": [
-                "gcloud app deploy",
-                "gcloud compute instances create",
-                "gcloud run deploy",
-                "kubectl apply -f"
-            ],
-            "correct": 0,
-            "explanation": "La commande standard pour d\u00e9ployer sur App Engine est `gcloud app deploy`."
-        },
-        {
-            "id": 7,
-            "question": "Quel service permet d'automatiser les pipelines CI/CD sur GCP ?",
-            "options": [
-                "Cloud Composer",
-                "Cloud Build",
-                "Dataflow",
-                "Pub/Sub"
-            ],
-            "correct": 1,
-            "explanation": "Cloud Build permet d'ex\u00e9cuter des builds, tests et d\u00e9ploiements en CI/CD."
-        },
-        {
-            "id": 8,
-            "question": "Pour une application event-driven (par exemple r\u00e9agir \u00e0 un fichier d\u00e9pos\u00e9 dans Cloud Storage), quel service utiliser ?",
-            "options": [
-                "Cloud Run",
-                "Cloud Functions",
-                "App Engine",
-                "Compute Engine"
-            ],
-            "correct": 1,
-            "explanation": "Cloud Functions est id\u00e9al pour r\u00e9agir \u00e0 des \u00e9v\u00e9nements d\u00e9clench\u00e9s par Pub/Sub ou Cloud Storage."
-        },
-        {
-            "id": 9,
-            "question": "Quel service est le mieux adapt\u00e9 pour orchestrer des workflows complexes de donn\u00e9es ?",
-            "options": [
-                "Cloud Composer",
-                "Cloud Build",
-                "Dataflow",
-                "Cloud Functions"
-            ],
-            "correct": 0,
-            "explanation": "Cloud Composer (bas\u00e9 sur Apache Airflow) est utilis\u00e9 pour orchestrer des workflows complexes."
-        },
-        {
-            "id": 10,
-            "question": "Quelle est la commande pour activer une API GCP avec l\u2019outil gcloud ?",
-            "options": [
-                "gcloud enable api <nom-api>",
-                "gcloud services enable <nom-api>",
-                "gcloud projects enable <nom-api>",
-                "gcloud apis activate <nom-api>"
-            ],
-            "correct": 1,
-            "explanation": "La commande correcte est `gcloud services enable <nom-api>`."
-        },
-        {
-            "id": 11,
-            "question": "Quel service GCP est con\u00e7u pour le messaging asynchrone entre microservices ?",
-            "options": [
-                "Pub/Sub",
-                "Cloud Tasks",
-                "Dataflow",
-                "Spanner"
-            ],
-            "correct": 0,
-            "explanation": "Pub/Sub est le service de messagerie asynchrone permettant une communication fiable entre microservices."
-        },
-        {
-            "id": 12,
-            "question": "Si vous avez besoin d\u2019une base de donn\u00e9es NoSQL \u00e9volutive pour stocker des donn\u00e9es en temps r\u00e9el, quel service choisir ?",
-            "options": [
-                "Cloud SQL",
-                "Firestore",
-                "BigQuery",
-                "Cloud Storage"
-            ],
-            "correct": 1,
-            "explanation": "Firestore est une base de donn\u00e9es NoSQL orient\u00e9e documents, id\u00e9ale pour des applications temps r\u00e9el."
-        },
-        {
-            "id": 13,
-            "question": "Quelle est la m\u00e9thode recommand\u00e9e pour g\u00e9rer les identit\u00e9s et permissions dans GCP ?",
-            "options": [
-                "IAM (Identity and Access Management)",
-                "ACLs uniquement",
-                "Cloud DNS",
-                "Secrets Manager"
-            ],
-            "correct": 0,
-            "explanation": "IAM est le service GCP centralis\u00e9 pour g\u00e9rer les identit\u00e9s et permissions."
-        },
-        {
-            "id": 14,
-            "question": "Quel service permet de g\u00e9rer et stocker des secrets (comme des cl\u00e9s API) de mani\u00e8re s\u00e9curis\u00e9e ?",
-            "options": [
-                "KMS",
-                "Secrets Manager",
-                "IAM",
-                "Cloud Logging"
-            ],
-            "correct": 1,
-            "explanation": "Secrets Manager est con\u00e7u pour g\u00e9rer et s\u00e9curiser les secrets comme les cl\u00e9s API ou credentials."
-        },
-        {
-            "id": 15,
-            "question": "Pour monitorer vos services et cr\u00e9er des alertes, quel service GCP est le plus adapt\u00e9 ?",
-            "options": [
-                "Cloud Trace",
-                "Cloud Logging",
-                "Cloud Monitoring",
-                "Cloud Profiler"
-            ],
-            "correct": 2,
-            "explanation": "Cloud Monitoring permet de cr\u00e9er des dashboards, des m\u00e9triques et des alertes sur vos services GCP."
-        },
-        {
-            "id": 16,
-            "question": "Comment s'appelle l'outil d'Infrastructure as Code (IaC) natif de Google Cloud ?",
-            "options": [
-                "Terraform",
-                "Cloud Formation",
-                "Cloud Deployment Manager",
-                "Ansible"
-            ],
-            "correct": 2,
-            "explanation": "Cloud Deployment Manager est l'outil IaC natif de GCP, mais il est maintenant en mode maintenance. Google recommande d\u00e9sormais Terraform."
-        },
-        {
-            "id": 17,
-            "question": "Pour une base de donn\u00e9es relationnelle, distribu\u00e9e globalement et \u00e0 tr\u00e8s haute disponibilit\u00e9, quel service est le plus indiqu\u00e9 ?",
-            "options": [
-                "Cloud SQL",
-                "Bigtable",
-                "Spanner",
-                "Firestore"
-            ],
-            "correct": 2,
-            "explanation": "Cloud Spanner est con\u00e7u pour \u00eatre une base de donn\u00e9es relationnelle, distribu\u00e9e globalement, avec une forte coh\u00e9rence et une tr\u00e8s haute disponibilit\u00e9."
-        },
-        {
-            "id": 18,
-            "question": "Quel service utiliser pour vous prot\u00e9ger contre les attaques DDoS et WAF (Web Application Firewall) ?",
-            "options": [
-                "Cloud Armor",
-                "Cloud NAT",
-                "VPC Firewall",
-                "Cloud IDS"
-            ],
-            "correct": 0,
-            "explanation": "Cloud Armor est le service qui fournit une protection contre les attaques DDoS et des fonctionnalit\u00e9s de WAF."
-        },
-        {
-            "id": 19,
-            "question": "Vous souhaitez stocker et g\u00e9rer des images Docker. Quel service remplace maintenant Container Registry ?",
-            "options": [
-                "Cloud Build",
-                "Artifact Registry",
-                "Cloud Source Repositories",
-                "GKE Hub"
-            ],
-            "correct": 1,
-            "explanation": "Artifact Registry est la nouvelle g\u00e9n\u00e9ration de registre sur GCP, il remplace et \u00e9tend les fonctionnalit\u00e9s de Container Registry."
-        },
-        {
-            "id": 20,
-            "question": "Quelle est la meilleure pratique pour accorder des permissions \u00e0 une VM Compute Engine ?",
-            "options": [
-                "Utiliser des cl\u00e9s SSH stock\u00e9es dans les m\u00e9tadonn\u00e9es",
-                "Cr\u00e9er un utilisateur local sur la VM avec un mot de passe fort",
-                "Attacher un compte de service (Service Account) \u00e0 la VM",
-                "Stocker les credentials dans un bucket Cloud Storage"
-            ],
-            "correct": 2,
-            "explanation": "La m\u00e9thode recommand\u00e9e et la plus s\u00e9curis\u00e9e est d'attacher un compte de service avec les permissions IAM n\u00e9cessaires \u00e0 l'instance."
-        },
-        {
-            "id": 21,
-            "question": "Quel service de load balancing choisir pour distribuer du trafic HTTP/HTTPS globalement vers des backends dans plusieurs r\u00e9gions ?",
-            "options": [
-                "Global External HTTPS Load Balancer",
-                "Regional External TCP/UDP Load Balancer",
-                "Internal TCP/UDP Load Balancer",
-                "SSL Proxy"
-            ],
-            "correct": 0,
-            "explanation": "Le Global External HTTPS Load Balancer est con\u00e7u pour le trafic HTTP/S et utilise une seule adresse IP anycast pour distribuer le trafic vers la r\u00e9gion la plus proche de l'utilisateur."
-        },
-        {
-            "id": 22,
-            "question": "Pour mettre en place un r\u00e9seau priv\u00e9 (VPC) qui s'\u00e9tend sur plusieurs r\u00e9gions, que devez-vous configurer ?",
-            "options": [
-                "Cr\u00e9er un VPC par r\u00e9gion et les connecter via VPC Peering",
-                "Cr\u00e9er un VPC en mode 'Global'",
-                "Utiliser Cloud Interconnect",
-                "Utiliser Cloud VPN"
-            ],
-            "correct": 1,
-            "explanation": "Les VPCs sur GCP sont des ressources globales. En cr\u00e9ant un VPC, vous pouvez ensuite cr\u00e9er des subnets dans n'importe quelle r\u00e9gion sans configuration suppl\u00e9mentaire de peering."
-        },
-        {
-            "id": 23,
-            "question": "Quel outil de la suite 'Cloud Operations' (anciennement Stackdriver) est utilis\u00e9 pour l'analyse centralis\u00e9e des logs ?",
-            "options": [
-                "Cloud Monitoring",
-                "Cloud Trace",
-                "Cloud Debugger",
-                "Cloud Logging"
-            ],
-            "correct": 3,
-            "explanation": "Cloud Logging est le service centralis\u00e9 pour l'ingestion, le stockage, l'analyse et l'alerte sur les donn\u00e9es de logs."
-        },
-        {
-            "id": 24,
-            "question": "Vous avez une application qui a besoin d'un syst\u00e8me de fichiers partag\u00e9 (type NFS) pour plusieurs VMs Compute Engine. Quel service utiliser ?",
-            "options": [
-                "Cloud Storage FUSE",
-                "Filestore",
-                "Persistent Disk en mode Multi-Writer",
-                "Local SSD"
-            ],
-            "correct": 1,
-            "explanation": "Filestore est le service manag\u00e9 de GCP qui fournit des partages de fichiers NFS pour les applications n\u00e9cessitant un stockage de fichiers partag\u00e9."
-        },
-        {
-            "id": 25,
-            "question": "Qu'est-ce que 'Identity-Aware Proxy' (IAP) ?",
-            "options": [
-                "Un service de gestion de cl\u00e9s de chiffrement",
-                "Un proxy qui contr\u00f4le l'acc\u00e8s aux applications en fonction de l'identit\u00e9 de l'utilisateur",
-                "Un service de d\u00e9tection d'intrusions r\u00e9seau",
-                "Un service de gestion des comptes de service"
-            ],
-            "correct": 1,
-            "explanation": "IAP permet de mettre en place une politique d'acc\u00e8s centralis\u00e9e pour vos applications, bas\u00e9e sur l'identit\u00e9 et le contexte, sans avoir besoin d'un VPN."
-        },
-        {
-            "id": 26,
-            "question": "Quel service est le mieux adapt\u00e9 pour des traitements de donn\u00e9es en streaming et en batch \u00e0 grande \u00e9chelle ?",
-            "options": [
-                "Cloud Functions",
-                "Dataflow",
-                "Dataproc",
-                "Cloud Composer"
-            ],
-            "correct": 1,
-            "explanation": "Dataflow, bas\u00e9 sur Apache Beam, est un service serverless optimis\u00e9 pour les pipelines de traitement de donn\u00e9es, que ce soit en streaming ou en batch."
-        },
-        {
-            "id": 27,
-            "question": "Si vous souhaitez ex\u00e9cuter des clusters Hadoop ou Spark de mani\u00e8re manag\u00e9e, quel service devriez-vous choisir ?",
-            "options": [
-                "Dataflow",
-                "Dataproc",
-                "BigQuery",
-                "Compute Engine"
-            ],
-            "correct": 1,
-            "explanation": "Dataproc est le service manag\u00e9 de GCP pour ex\u00e9cuter des clusters Apache Hadoop et Apache Spark de mani\u00e8re simple et \u00e9conomique."
-        },
-        {
-            "id": 28,
-            "question": "Comment pouvez-vous vous connecter de mani\u00e8re s\u00e9curis\u00e9e et priv\u00e9e \u00e0 vos services GCP depuis votre r\u00e9seau on-premise ?",
-            "options": [
-                "VPC Peering",
-                "Cloud NAT",
-                "Cloud Interconnect ou Cloud VPN",
-                "Cloud Armor"
-            ],
-            "correct": 2,
-            "explanation": "Cloud VPN permet de cr\u00e9er un tunnel s\u00e9curis\u00e9 sur l'internet public, tandis que Cloud Interconnect offre une connexion priv\u00e9e \u00e0 haute disponibilit\u00e9."
-        },
-        {
-            "id": 29,
-            "question": "Quel r\u00f4le IAM pr\u00e9d\u00e9fini offre le plus de permissions sans \u00eatre propri\u00e9taire du projet ?",
-            "options": [
-                "Viewer",
-                "Browser",
-                "Editor",
-                "Owner"
-            ],
-            "correct": 2,
-            "explanation": "Le r\u00f4le 'Editor' (\u00c9diteur) permet de modifier la plupart des ressources d'un projet, mais ne permet pas de g\u00e9rer les permissions IAM, contrairement au r\u00f4le 'Owner' (Propri\u00e9taire)."
-        },
-        {
-            "id": 30,
-            "question": "Quelle est une strat\u00e9gie cl\u00e9 pour optimiser les co\u00fbts sur Compute Engine ?",
-            "options": [
-                "Utiliser syst\u00e9matiquement les plus grosses instances possibles",
-                "Laisser les instances allum\u00e9es 24/7 pour \u00e9viter les frais de red\u00e9marrage",
-                "Utiliser des VMs pr\u00e9emptives pour les charges de travail tol\u00e9rantes aux pannes",
-                "Ne jamais utiliser les 'Sustained use discounts' (remises pour usage soutenu)"
-            ],
-            "correct": 2,
-            "explanation": "Les VMs pr\u00e9emptives (Preemptible VMs) offrent une r\u00e9duction de co\u00fbt tr\u00e8s importante (jusqu'\u00e0 80%) pour les charges de travail qui peuvent \u00eatre interrompues."
-        },
-        {
-            "id": 31,
-            "question": "\u00c0 quoi sert VPC Service Controls ?",
-            "options": [
-                "\u00c0 cr\u00e9er des r\u00e8gles de pare-feu",
-                "\u00c0 se prot\u00e9ger contre l'exfiltration de donn\u00e9es en cr\u00e9ant un p\u00e9rim\u00e8tre de service",
-                "\u00c0 g\u00e9rer les adresses IP des VMs",
-                "\u00c0 optimiser les co\u00fbts du r\u00e9seau VPC"
-            ],
-            "correct": 1,
-            "explanation": "VPC Service Controls permet de d\u00e9finir un p\u00e9rim\u00e8tre de s\u00e9curit\u00e9 autour de vos services GCP pour emp\u00eacher le vol ou la copie de donn\u00e9es sensibles."
-        },
-        {
-            "id": 32,
-            "question": "Pour acc\u00e9l\u00e9rer la distribution de contenu web \u00e0 vos utilisateurs dans le monde entier, quel service est le plus appropri\u00e9 ?",
-            "options": [
-                "Cloud NAT",
-                "Cloud VPN",
-                "Cloud CDN (Content Delivery Network)",
-                "Cloud DNS"
-            ],
-            "correct": 2,
-            "explanation": "Cloud CDN met en cache le contenu \u00e0 proximit\u00e9 des utilisateurs, ce qui r\u00e9duit la latence et am\u00e9liore les performances de chargement."
-        },
-        {
-            "id": 33,
-            "question": "Vous avez besoin d'un cache en m\u00e9moire (type Redis ou Memcached) enti\u00e8rement manag\u00e9. Quel service choisir ?",
-            "options": [
-                "Cloud SQL",
-                "Firestore",
-                "Memorystore",
-                "Bigtable"
-            ],
-            "correct": 2,
-            "explanation": "Memorystore est le service GCP qui fournit des instances Redis et Memcached enti\u00e8rement manag\u00e9es pour des applications n\u00e9cessitant un cache \u00e0 faible latence."
-        },
-        {
-            "id": 34,
-            "question": "Quel service utiliser pour h\u00e9berger des d\u00e9p\u00f4ts de code Git priv\u00e9s sur GCP ?",
-            "options": [
-                "Cloud Storage",
-                "Cloud Source Repositories",
-                "Artifact Registry",
-                "Cloud Build"
-            ],
-            "correct": 1,
-            "explanation": "Cloud Source Repositories fournit des d\u00e9p\u00f4ts Git priv\u00e9s, enti\u00e8rement h\u00e9berg\u00e9s sur Google Cloud."
-        },
-        {
-            "id": 35,
-            "question": "Quelle est la meilleure pratique pour isoler les environnements de d\u00e9veloppement, de test et de production sur GCP ?",
-            "options": [
-                "Utiliser des labels diff\u00e9rents pour chaque environnement dans un seul projet",
-                "Utiliser des VPCs s\u00e9par\u00e9s dans un seul projet",
-                "Utiliser des projets GCP distincts pour chaque environnement",
-                "Utiliser des comptes de service diff\u00e9rents dans un seul projet"
-            ],
-            "correct": 2,
-            "explanation": "Utiliser des projets distincts offre le meilleur niveau d'isolation pour les ressources, les permissions IAM et la facturation, ce qui est une pratique recommand\u00e9e."
-        },
-        {
-            "id": 36,
-            "question": "Pour analyser vos co\u00fbts GCP en d\u00e9tail, o\u00f9 pouvez-vous exporter vos donn\u00e9es de facturation ?",
-            "options": [
-                "Cloud Storage",
-                "BigQuery",
-                "Cloud SQL",
-                "Firestore"
-            ],
-            "correct": 1,
-            "explanation": "L'export de la facturation vers BigQuery est la m\u00e9thode la plus puissante pour analyser et visualiser vos co\u00fbts avec des requ\u00eates SQL."
-        },
-        {
-            "id": 37,
-            "question": "Pour une s\u00e9curit\u00e9 maximale de vos cl\u00e9s de chiffrement, quel service propose des modules de s\u00e9curit\u00e9 mat\u00e9riels (HSM) d\u00e9di\u00e9s ?",
-            "options": [
-                "Secret Manager",
-                "Cloud KMS (Key Management Service)",
-                "Cloud HSM",
-                "Cloud Armor"
-            ],
-            "correct": 2,
-            "explanation": "Cloud HSM est un service Cloud KMS qui utilise des HSM certifi\u00e9s FIPS 140-2 Level 3 pour prot\u00e9ger vos cl\u00e9s."
-        },
-        {
-            "id": 38,
-            "question": "Quelle est la plateforme unifi\u00e9e de GCP pour le d\u00e9veloppement, le d\u00e9ploiement et la gestion de mod\u00e8les de Machine Learning ?",
-            "options": [
-                "BigQuery ML",
-                "AutoML",
-                "Vertex AI",
-                "AI Hub"
-            ],
-            "correct": 2,
-            "explanation": "Vertex AI unifie les services de ML de Google Cloud en une seule plateforme pour simplifier le MLOps."
-        },
-        {
-            "id": 39,
-            "question": "Dans la hi\u00e9rarchie des ressources GCP, quel est le r\u00f4le principal d'un 'Projet' ?",
-            "options": [
-                "C'est une simple \u00e9tiquette d'organisation",
-                "Il repr\u00e9sente une \u00e9quipe de d\u00e9veloppeurs",
-                "C'est l'entit\u00e9 de base pour l'organisation, la facturation et l'utilisation des services GCP",
-                "Il sert uniquement \u00e0 cr\u00e9er des VPCs"
-            ],
-            "correct": 2,
-            "explanation": "Le projet est le conteneur principal o\u00f9 toutes les ressources GCP sont cr\u00e9\u00e9es, o\u00f9 la facturation est activ\u00e9e et o\u00f9 les permissions IAM sont appliqu\u00e9es."
-        },
-        {
-            "id": 40,
-            "question": "Quel service permet de d\u00e9velopper, d\u00e9ployer et g\u00e9rer des APIs sur GCP, y compris la gestion des cl\u00e9s et le monitoring ?",
-            "options": [
-                "Cloud Functions",
-                "Apigee API Management",
-                "Cloud Endpoints",
-                "Cloud Load Balancing"
-            ],
-            "correct": 1,
-            "explanation": "Apigee API Management est la solution compl\u00e8te d'entreprise pour g\u00e9rer des APIs avec fonctionnalit\u00e9s avanc\u00e9es (analytics, mon\u00e9tisation, s\u00e9curit\u00e9). Cloud Endpoints est plus simple et adapt\u00e9 aux APIs internes."
-        },
-        {
-            "id": 41,
-            "question": "Qu'est-ce que Google Cloud Anthos ?",
-            "options": [
-                "Un service de stockage de blocs",
-                "Une base de donn\u00e9es NoSQL",
-                "Une plateforme hybride et multi-cloud pour moderniser les applications bas\u00e9es sur GKE",
-                "Un outil de CI/CD"
-            ],
-            "correct": 2,
-            "explanation": "Anthos permet d'ex\u00e9cuter Kubernetes et d'autres services GCP dans votre propre datacenter ou sur d'autres clouds comme AWS et Azure."
-        },
-        {
-            "id": 42,
-            "question": "Pour ex\u00e9cuter une t\u00e2che \u00e0 intervalle r\u00e9gulier (par exemple, tous les lundis \u00e0 9h), quel service est le plus simple et adapt\u00e9 ?",
-            "options": [
-                "Cloud Functions avec un trigger Pub/Sub",
-                "Cloud Composer",
-                "Une boucle `while` dans une VM",
-                "Cloud Scheduler"
-            ],
-            "correct": 3,
-            "explanation": "Cloud Scheduler est un service de cron manag\u00e9 qui permet de d\u00e9clencher des services comme Cloud Functions, Pub/Sub ou des requ\u00eates HTTP \u00e0 des heures planifi\u00e9es."
-        },
-        {
-            "id": 43,
-            "question": "Quelle est la principale diff\u00e9rence entre Cloud Tasks et Pub/Sub ?",
-            "options": [
-                "Cloud Tasks est pour le messaging asynchrone, Pub/Sub pour les t\u00e2ches synchrones",
-                "Cloud Tasks est con\u00e7u pour la livraison de t\u00e2ches \u00e0 un endpoint HTTP (push), tandis que Pub/Sub est un syst\u00e8me de messagerie (publish/subscribe)",
-                "Pub/Sub est plus cher que Cloud Tasks",
-                "Il n'y a pas de diff\u00e9rence majeure"
-            ],
-            "correct": 1,
-            "explanation": "Utilisez Cloud Tasks lorsque vous voulez ex\u00e9cuter une t\u00e2che sp\u00e9cifique via une requ\u00eate HTTP. Utilisez Pub/Sub pour d\u00e9coupler des services et diffuser des \u00e9v\u00e9nements \u00e0 plusieurs abonn\u00e9s."
-        },
-        {
-            "id": 44,
-            "question": "Dans quel cas d'usage le service Cloud Bigtable excelle-t-il particuli\u00e8rement ?",
-            "options": [
-                "H\u00e9berger un site WordPress",
-                "Analyser des donn\u00e9es avec des jointures SQL complexes",
-                "Stocker de tr\u00e8s grandes quantit\u00e9s de donn\u00e9es analytiques ou de s\u00e9ries temporelles avec un d\u00e9bit \u00e9lev\u00e9 en lecture/\u00e9criture",
-                "G\u00e9rer les donn\u00e9es d'une application mobile simple"
-            ],
-            "correct": 2,
-            "explanation": "Bigtable est une base de donn\u00e9es NoSQL (wide-column) con\u00e7ue pour des charges de travail \u00e0 tr\u00e8s grande \u00e9chelle, comme celles que l'on trouve dans l'IoT, la finance ou l'analytique."
-        },
-        {
-            "id": 45,
-            "question": "Quel service permet de d\u00e9finir des contraintes sur l'utilisation des ressources GCP \u00e0 l'\u00e9chelle d'une organisation (par exemple, restreindre les r\u00e9gions o\u00f9 des VMs peuvent \u00eatre cr\u00e9\u00e9es) ?",
-            "options": [
-                "IAM",
-                "Organization Policy Service",
-                "VPC Firewall Rules",
-                "Cloud Audit Logs"
-            ],
-            "correct": 1,
-            "explanation": "Le service de strat\u00e9gies d'organisation permet aux administrateurs de faire respecter des garde-fous \u00e0 l'\u00e9chelle de l'organisation ou des dossiers pour contr\u00f4ler les ressources."
-        },
-        {
-            "id": 46,
-            "question": "Quel service fournit des journaux d'audit sur ce que les administrateurs de Google font sur vos ressources GCP (par exemple, lors d'une demande de support) ?",
-            "options": [
-                "Cloud Audit Logs",
-                "Cloud Logging",
-                "Access Transparency",
-                "Eventarc"
-            ],
-            "correct": 2,
-            "explanation": "Access Transparency vous donne une visibilit\u00e9 sur les acc\u00e8s du personnel de Google \u00e0 vos donn\u00e9es, assurant que ces acc\u00e8s sont l\u00e9gitimes."
-        },
-        {
-            "id": 47,
-            "question": "Quelle est la commande `gcloud` pour changer le projet actuellement actif dans votre configuration locale ?",
-            "options": [
-                "gcloud projects set <PROJECT_ID>",
-                "gcloud config set project <PROJECT_ID>",
-                "gcloud set project <PROJECT_ID>",
-                "gcloud config activate <PROJECT_ID>"
-            ],
-            "correct": 1,
-            "explanation": "La commande `gcloud config set project <PROJECT_ID>` met \u00e0 jour la propri\u00e9t\u00e9 'project' dans votre configuration gcloud active."
-        },
-        {
-            "id": 48,
-            "question": "\u00c0 quoi servent les 'labels' (\u00e9tiquettes) dans GCP ?",
-            "options": [
-                "\u00c0 d\u00e9finir les permissions des utilisateurs",
-                "\u00c0 cr\u00e9er des r\u00e8gles de pare-feu",
-                "\u00c0 organiser les ressources GCP et \u00e0 filtrer les co\u00fbts dans la facturation",
-                "\u00c0 nommer les instances de VM"
-            ],
-            "correct": 2,
-            "explanation": "Les labels sont des paires cl\u00e9-valeur qui vous permettent d'organiser vos ressources, de les rechercher et de r\u00e9partir les co\u00fbts (par exemple, par \u00e9quipe ou par environnement)."
-        },
-        {
-            "id": 49,
-            "question": "Votre entreprise d\u00e9ploie une application sur GKE et souhaite que les mises \u00e0 jour se fassent progressivement, en envoyant d'abord le trafic \u00e0 une petite partie des nouveaux pods. Quelle strat\u00e9gie de d\u00e9ploiement est la plus appropri\u00e9e ?",
-            "options": [
-                "Recreate",
-                "Blue/Green",
-                "Canary (D\u00e9ploiement canari)",
-                "A/B Testing"
-            ],
-            "correct": 2,
-            "explanation": "Un d\u00e9ploiement canari consiste \u00e0 d\u00e9ployer la nouvelle version sur un petit sous-ensemble de pods pour tester son comportement en production avant un d\u00e9ploiement complet."
-        },
-        {
-            "id": 50,
-            "question": "Qu'est-ce que le 'Cloud Shell' ?",
-            "options": [
-                "Une librairie de templates pour Deployment Manager",
-                "Une VM Debian avec le SDK Google Cloud pr\u00e9-install\u00e9, accessible depuis le navigateur",
-                "Un service de monitoring de la s\u00e9curit\u00e9",
-                "Le nom de l'interface utilisateur de la console GCP"
-            ],
-            "correct": 1,
-            "explanation": "Cloud Shell fournit un acc\u00e8s en ligne de commande instantan\u00e9 \u00e0 vos ressources GCP directement depuis votre navigateur, avec tous les outils n\u00e9cessaires d\u00e9j\u00e0 configur\u00e9s."
-        }
-    ]
+  "title": "Google Cloud Platform (GCP)",
+  "description": "100 questions couvrant tous les niveaux de GCP : 30 questions faciles sur les concepts fondamentaux, Compute Engine, Cloud Storage, Cloud SQL et VPC basics, 45 questions intermédiaires sur IAM avancé, GKE, Load Balancing, networking avancé et Cloud Operations, et 25 questions avancées sur GKE production, haute disponibilité, sécurité avancée et services serverless",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Qu'est-ce que GCP (Google Cloud Platform) ?",
+      "options": [
+        "Une plateforme de cloud computing fournie par Google",
+        "Un système d'exploitation pour serveurs",
+        "Un langage de programmation cloud-native",
+        "Un service de messagerie d'entreprise"
+      ],
+      "answer": 0,
+      "explanation": "GCP est la plateforme de cloud computing de Google offrant des services de calcul, stockage, base de données, machine learning et bien plus, avec une infrastructure mondiale.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 2,
+      "question": "Quelle est la différence entre une Région et une Zone dans GCP ?",
+      "options": [
+        "Une Région est un datacenter unique, une Zone est un groupe de datacenters",
+        "Une Région est une localisation géographique contenant plusieurs Zones",
+        "Les termes sont interchangeables",
+        "Une Zone est plus grande qu'une Région"
+      ],
+      "answer": 1,
+      "explanation": "Une Région GCP est une localisation géographique spécifique (ex: us-central1) qui contient plusieurs Zones isolées (ex: us-central1-a, us-central1-b) pour la haute disponibilité.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 3,
+      "question": "Qu'est-ce qu'un GCP Project ?",
+      "options": [
+        "Un conteneur pour une application spécifique uniquement",
+        "Une unité organisationnelle qui regroupe des ressources GCP",
+        "Un type de machine virtuelle",
+        "Un service de gestion de code source"
+      ],
+      "answer": 1,
+      "explanation": "Un GCP Project est l'unité de base d'organisation dans GCP. Il regroupe toutes les ressources, gère la facturation et les permissions IAM de manière isolée.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 4,
+      "question": "Quels sont les trois rôles IAM primitifs de base dans GCP ?",
+      "options": [
+        "Admin, User, Guest",
+        "Owner, Editor, Viewer",
+        "Root, Developer, Reader",
+        "Master, Contributor, Observer"
+      ],
+      "answer": 1,
+      "explanation": "Les rôles primitifs sont Owner (contrôle total), Editor (peut modifier les ressources), et Viewer (lecture seule). Ces rôles sont larges et il est recommandé d'utiliser des rôles prédéfinis plus granulaires.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 5,
+      "question": "Qu'est-ce qu'un Service Account dans GCP ?",
+      "options": [
+        "Un compte utilisateur avec un email Gmail",
+        "Un compte spécial utilisé par les applications et services GCP",
+        "Un compte de facturation",
+        "Un compte d'administrateur système"
+      ],
+      "answer": 1,
+      "explanation": "Un Service Account est une identité spéciale pour les applications et services (pas pour les humains) permettant d'authentifier et d'autoriser l'accès aux ressources GCP de manière programmatique.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 6,
+      "question": "Quel est l'outil en ligne de commande principal pour interagir avec GCP ?",
+      "options": [
+        "aws-cli",
+        "gcloud",
+        "gcpctl",
+        "google-cli"
+      ],
+      "answer": 1,
+      "explanation": "gcloud est l'outil CLI officiel de GCP qui permet de gérer les ressources, configurer les services et automatiser les tâches depuis la ligne de commande.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 7,
+      "question": "Qu'est-ce que Cloud Shell ?",
+      "options": [
+        "Un terminal SSH vers vos VM",
+        "Un environnement de ligne de commande basé sur navigateur avec gcloud préinstallé",
+        "Un service de stockage de fichiers",
+        "Un éditeur de code pour mobile"
+      ],
+      "answer": 1,
+      "explanation": "Cloud Shell est un environnement de développement interactif accessible depuis le navigateur, avec gcloud CLI, kubectl et d'autres outils préinstallés, offrant 5GB de stockage persistant.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 8,
+      "question": "Quelle est la hiérarchie correcte des ressources dans GCP ?",
+      "options": [
+        "Project → Organization → Folder → Resources",
+        "Organization → Folder → Project → Resources",
+        "Resources → Project → Folder → Organization",
+        "Folder → Organization → Resources → Project"
+      ],
+      "answer": 1,
+      "explanation": "La hiérarchie GCP est : Organization (racine) → Folder (groupement optionnel) → Project (conteneur de ressources) → Resources (VM, storage, etc.). Les politiques héritent du haut vers le bas.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 9,
+      "question": "Qu'est-ce que Compute Engine (GCE) ?",
+      "options": [
+        "Un service de base de données",
+        "Un service d'Infrastructure as a Service (IaaS) pour machines virtuelles",
+        "Un service de stockage d'objets",
+        "Un service de conteneurisation"
+      ],
+      "answer": 1,
+      "explanation": "Compute Engine est le service IaaS de GCP permettant de créer et gérer des machines virtuelles sur l'infrastructure Google avec une configuration personnalisable.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 10,
+      "question": "Quelles sont les principales familles de types de machines dans Compute Engine ?",
+      "options": [
+        "Standard, Premium, Enterprise",
+        "N1, N2, E2, C2, M1",
+        "Basic, Advanced, Professional",
+        "Type-A, Type-B, Type-C"
+      ],
+      "answer": 1,
+      "explanation": "GCP offre plusieurs familles : N1/N2 (usage général), E2 (économique), C2/C3 (compute-optimized), M1/M2 (memory-optimized), chacune adaptée à différents workloads.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 11,
+      "question": "Qu'est-ce qu'un Custom Machine Type dans Compute Engine ?",
+      "options": [
+        "Une machine avec un système d'exploitation personnalisé",
+        "Une machine où vous pouvez spécifier exactement le nombre de vCPU et la mémoire",
+        "Une machine préinstallée avec vos applications",
+        "Une machine avec un stockage personnalisé uniquement"
+      ],
+      "answer": 1,
+      "explanation": "Les Custom Machine Types permettent de configurer précisément les vCPU et la RAM selon vos besoins, plutôt que d'utiliser des tailles prédéfinies, optimisant ainsi les coûts.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 12,
+      "question": "Quelle est la différence entre une Image et un Snapshot dans GCE ?",
+      "options": [
+        "Aucune différence, les termes sont interchangeables",
+        "Une Image sert à créer des instances, un Snapshot sauvegarde l'état d'un disque",
+        "Un Snapshot est plus rapide à créer qu'une Image",
+        "Une Image ne peut pas être utilisée pour le backup"
+      ],
+      "answer": 1,
+      "explanation": "Une Image est un template pour créer de nouvelles VM (contient OS et config), tandis qu'un Snapshot est une copie incrémentale de Persistent Disk pour backup et restauration.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 13,
+      "question": "Qu'est-ce qu'un Startup Script dans Compute Engine ?",
+      "options": [
+        "Un script qui démarre la machine virtuelle",
+        "Un script bash ou PowerShell exécuté au démarrage de la VM",
+        "Un script pour configurer le réseau",
+        "Un script de facturation"
+      ],
+      "answer": 1,
+      "explanation": "Les Startup Scripts sont des scripts stockés dans les métadonnées de l'instance qui s'exécutent automatiquement au démarrage, permettant d'automatiser la configuration initiale.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 14,
+      "question": "Quels sont les types de Persistent Disks disponibles dans GCE ?",
+      "options": [
+        "HDD, SSD, NVMe",
+        "Standard, SSD, Balanced",
+        "Fast, Medium, Slow",
+        "Premium, Standard, Archive"
+      ],
+      "answer": 1,
+      "explanation": "GCP offre trois types : Standard (HDD, économique), SSD (haute performance), et Balanced (compromis performance/coût avec SSD-backed storage).",
+      "difficulty": "easy"
+    },
+    {
+      "id": 15,
+      "question": "Qu'est-ce qu'une Preemptible VM ?",
+      "options": [
+        "Une VM qui ne peut pas être arrêtée",
+        "Une VM à bas coût que GCP peut interrompre à tout moment",
+        "Une VM avec priorité élevée",
+        "Une VM réservée pour 1 an"
+      ],
+      "answer": 1,
+      "explanation": "Les Preemptible VMs sont jusqu'à 80% moins chères mais peuvent être interrompues par GCP à tout moment (max 24h). Idéales pour les workloads tolérants aux pannes et batch processing.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 16,
+      "question": "Comment se connecter en SSH à une instance Compute Engine ?",
+      "options": [
+        "Uniquement via l'IP publique",
+        "Via gcloud compute ssh, la Console GCP, ou SSH traditionnel",
+        "Uniquement via Cloud Shell",
+        "SSH n'est pas supporté sur GCP"
+      ],
+      "answer": 1,
+      "explanation": "GCP offre plusieurs méthodes : gcloud compute ssh (gère automatiquement les clés), bouton SSH dans la Console, ou SSH standard avec gestion manuelle des clés et OS Login.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 17,
+      "question": "Qu'est-ce que Cloud Storage (GCS) ?",
+      "options": [
+        "Un service de stockage de blocs",
+        "Un service de stockage d'objets hautement disponible et durable",
+        "Un service de base de données",
+        "Un service de stockage de fichiers partagés"
+      ],
+      "answer": 1,
+      "explanation": "Cloud Storage est un service de stockage d'objets scalable offrant une durabilité de 11 9's, idéal pour stocker des données non structurées, backups, contenus statiques et data lakes.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 18,
+      "question": "Quelles sont les storage classes de Cloud Storage ?",
+      "options": [
+        "Hot, Warm, Cold",
+        "Standard, Nearline, Coldline, Archive",
+        "Fast, Medium, Slow, Frozen",
+        "Primary, Secondary, Backup"
+      ],
+      "answer": 1,
+      "explanation": "Les classes sont : Standard (accès fréquent), Nearline (accès < 1x/mois), Coldline (accès < 1x/trimestre), Archive (accès < 1x/an). Prix décroissant mais coûts d'accès croissants.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 19,
+      "question": "Qu'est-ce que le versioning dans Cloud Storage ?",
+      "options": [
+        "La numérotation des buckets",
+        "La conservation des versions précédentes des objets",
+        "La gestion des versions de l'API",
+        "Un système de tags"
+      ],
+      "answer": 1,
+      "explanation": "Le versioning préserve, récupère et restaure chaque version d'un objet dans un bucket, protégeant contre les suppressions et écrasements accidentels.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 20,
+      "question": "Qu'est-ce qu'une Lifecycle Policy dans Cloud Storage ?",
+      "options": [
+        "Une politique de sécurité",
+        "Des règles automatisant les actions sur les objets selon leur âge ou conditions",
+        "Une politique de facturation",
+        "Une politique de réplication"
+      ],
+      "answer": 1,
+      "explanation": "Les Lifecycle Policies permettent d'automatiser des actions (changer de storage class, supprimer) basées sur l'âge, nombre de versions, ou dates de création/modification des objets.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 21,
+      "question": "Quel est l'outil CLI pour interagir avec Cloud Storage ?",
+      "options": [
+        "gcloud storage",
+        "gsutil",
+        "gcs-cli",
+        "cloudstore"
+      ],
+      "answer": 1,
+      "explanation": "gsutil est l'outil Python CLI pour Cloud Storage permettant de copier, lister, déplacer des objets et gérer les buckets. Note : gcloud storage est la nouvelle version en développement.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 22,
+      "question": "Quelle est la durabilité annuelle des données dans Cloud Storage ?",
+      "options": [
+        "99.9% (3 nines)",
+        "99.99% (4 nines)",
+        "99.999999999% (11 nines)",
+        "100%"
+      ],
+      "answer": 2,
+      "explanation": "Cloud Storage offre une durabilité de 99.999999999% (11 9's) grâce à la réplication automatique des données sur plusieurs emplacements, assurant une perte de données quasi impossible.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 23,
+      "question": "Qu'est-ce que Cloud SQL ?",
+      "options": [
+        "Un service de base de données NoSQL",
+        "Un service de base de données relationnelle managé",
+        "Un langage de requête SQL propriétaire",
+        "Un service d'analytics"
+      ],
+      "answer": 1,
+      "explanation": "Cloud SQL est un service de base de données relationnelle entièrement géré supportant PostgreSQL, MySQL et SQL Server, avec backups automatiques, réplication et haute disponibilité.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 24,
+      "question": "Quels moteurs de base de données sont supportés par Cloud SQL ?",
+      "options": [
+        "Oracle, DB2, MariaDB",
+        "PostgreSQL, MySQL, SQL Server",
+        "MongoDB, Cassandra, Redis",
+        "SQLite uniquement"
+      ],
+      "answer": 1,
+      "explanation": "Cloud SQL supporte trois moteurs : PostgreSQL, MySQL et SQL Server. Chacun est entièrement géré avec patches automatiques, backups et réplication.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 25,
+      "question": "Qu'est-ce qu'une configuration High Availability (HA) dans Cloud SQL ?",
+      "options": [
+        "Une base de données distribuée sur plusieurs régions",
+        "Une configuration avec instance primaire et standby dans différentes zones",
+        "Un backup automatique quotidien",
+        "Une réplication en lecture seule"
+      ],
+      "answer": 1,
+      "explanation": "La configuration HA Cloud SQL crée une instance standby dans une zone différente avec réplication synchrone. En cas de panne, le failover automatique bascule sur le standby.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 26,
+      "question": "Quelle est la différence entre un backup automatique et un snapshot on-demand dans Cloud SQL ?",
+      "options": [
+        "Aucune différence",
+        "Les backups automatiques sont programmés et gérés par GCP, les snapshots sont manuels",
+        "Les snapshots sont plus rapides",
+        "Les backups automatiques sont gratuits"
+      ],
+      "answer": 1,
+      "explanation": "Les backups automatiques sont quotidiens et gérés par GCP (fenêtre configurable), conservés selon la politique. Les snapshots on-demand sont manuels, utiles avant des changements majeurs.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 27,
+      "question": "Qu'est-ce qu'un VPC (Virtual Private Cloud) dans GCP ?",
+      "options": [
+        "Un datacenter virtuel",
+        "Un réseau privé virtuel global dans GCP",
+        "Un service de VPN",
+        "Un type de machine virtuelle"
+      ],
+      "answer": 1,
+      "explanation": "Un VPC est un réseau privé virtuel global dans GCP. Contrairement à AWS, les VPCs GCP sont globaux par défaut, avec des subnets régionaux, offrant plus de flexibilité.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 28,
+      "question": "Quelle est la portée (scope) d'un subnet dans GCP ?",
+      "options": [
+        "Global",
+        "Régional",
+        "Zonal",
+        "Project-wide"
+      ],
+      "answer": 1,
+      "explanation": "Les subnets GCP sont régionaux, s'étendant sur toutes les zones d'une région. Cela permet à des ressources dans différentes zones de la même région d'utiliser le même subnet.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 29,
+      "question": "Comment fonctionne le Default VPC dans un nouveau projet GCP ?",
+      "options": [
+        "Il n'y a pas de VPC par défaut",
+        "Un VPC avec un subnet par région est automatiquement créé",
+        "Un VPC vide sans subnets est créé",
+        "Il faut toujours créer son VPC manuellement"
+      ],
+      "answer": 1,
+      "explanation": "Chaque nouveau projet GCP reçoit automatiquement un Default VPC avec un subnet dans chaque région, des firewall rules de base, et des routes par défaut pour faciliter le démarrage rapide.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 30,
+      "question": "Qu'est-ce qu'une Firewall Rule dans GCP ?",
+      "options": [
+        "Un appareil physique de sécurité",
+        "Une règle définissant le trafic réseau autorisé ou refusé",
+        "Un service de détection d'intrusion",
+        "Un système de backup"
+      ],
+      "answer": 1,
+      "explanation": "Les Firewall Rules dans GCP sont des règles stateful au niveau VPC permettant d'autoriser ou de bloquer le trafic selon IP, protocole, port, avec des tags ou service accounts pour cibler les ressources.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 31,
+      "question": "Quelle est la différence entre les rôles IAM primitifs et les rôles prédéfinis ?",
+      "options": [
+        "Les rôles primitifs sont plus sécurisés",
+        "Les rôles prédéfinis offrent une granularité fine, les primitifs sont très larges",
+        "Les rôles prédéfinis sont deprecated",
+        "Il n'y a pas de différence"
+      ],
+      "answer": 1,
+      "explanation": "Les rôles primitifs (Owner/Editor/Viewer) donnent des permissions très larges et sont legacy. Les rôles prédéfinis offrent des permissions granulaires par service (ex: roles/compute.admin) selon le principe du moindre privilège.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 32,
+      "question": "Qu'est-ce qu'un Custom IAM Role ?",
+      "options": [
+        "Un rôle qui ne peut pas être modifié",
+        "Un rôle que vous créez avec un ensemble personnalisé de permissions",
+        "Un rôle pour les utilisateurs externes uniquement",
+        "Un rôle temporaire"
+      ],
+      "answer": 1,
+      "explanation": "Les Custom Roles permettent de créer des rôles avec exactement les permissions nécessaires en combinant des permissions spécifiques, offrant un contrôle granulaire au-delà des rôles prédéfinis.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 33,
+      "question": "Comment fonctionnent les Service Account keys ?",
+      "options": [
+        "Ce sont des mots de passe stockés dans GCP",
+        "Des clés publiques/privées permettant l'authentification programmatique",
+        "Des clés de chiffrement uniquement",
+        "Des tokens temporaires"
+      ],
+      "answer": 1,
+      "explanation": "Les Service Account keys sont des paires de clés (JSON ou P12) permettant aux applications externes d'authentifier un service account. Best practice : éviter les clés et utiliser Workload Identity ou IAM auto.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 34,
+      "question": "Qu'est-ce que le Default Service Account d'un projet ?",
+      "options": [
+        "Un compte utilisateur par défaut",
+        "Un service account automatiquement créé et utilisé par certains services GCP",
+        "Un compte de facturation",
+        "Un compte temporaire"
+      ],
+      "answer": 1,
+      "explanation": "Chaque projet a un Default Service Account (PROJECT_ID@PROJECT_ID.iam.gserviceaccount.com) utilisé automatiquement par Compute Engine et App Engine. Il a des permissions Editor par défaut (trop larges).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 35,
+      "question": "Qu'est-ce que Service Account Impersonation ?",
+      "options": [
+        "Créer une copie d'un service account",
+        "Permettre à un utilisateur ou service d'agir temporairement en tant qu'un service account",
+        "Supprimer un service account",
+        "Partager les clés d'un service account"
+      ],
+      "answer": 1,
+      "explanation": "L'impersonation permet à une identité (user ou SA) d'obtenir temporairement les permissions d'un autre service account via roles/iam.serviceAccountTokenCreator, évitant le partage de clés.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 36,
+      "question": "Comment fonctionnent les IAM Policies et Bindings ?",
+      "options": [
+        "Une policy est un document JSON listant qui (member) a quel rôle (role) sur une ressource",
+        "Les bindings sont des connexions réseau",
+        "Les policies sont uniquement au niveau organisation",
+        "Il n'y a pas de différence entre policy et binding"
+      ],
+      "answer": 0,
+      "explanation": "Une IAM Policy contient des bindings. Chaque binding associe un ou plusieurs members (users, groups, service accounts) à un role pour une ressource. Format : {role: 'roles/...', members: ['user:...', 'serviceAccount:...']}.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 37,
+      "question": "Qu'est-ce qu'une Organization Policy dans GCP ?",
+      "options": [
+        "Une politique de facturation",
+        "Des contraintes pour restreindre la configuration des ressources dans l'organisation",
+        "Une politique de sécurité réseau",
+        "Une politique de backup"
+      ],
+      "answer": 1,
+      "explanation": "Les Organization Policies permettent de définir des contraintes (constraints) sur l'ensemble de l'organisation, comme interdire l'IP publique, restreindre les régions autorisées, ou forcer l'utilisation de Shared VPC.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 38,
+      "question": "Qu'est-ce que IAM Recommender ?",
+      "options": [
+        "Un outil pour recommander des utilisateurs",
+        "Un service ML qui recommande de supprimer les permissions inutilisées",
+        "Un service de recommendation de produits",
+        "Un outil de facturation"
+      ],
+      "answer": 1,
+      "explanation": "IAM Recommender utilise le machine learning pour analyser l'utilisation des permissions et recommander la suppression des rôles non utilisés, appliquant le principe du moindre privilège automatiquement.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 39,
+      "question": "Qu'est-ce que Google Kubernetes Engine (GKE) ?",
+      "options": [
+        "Un service de conteneurs Docker simple",
+        "Un service Kubernetes managé par Google",
+        "Un service de machines virtuelles",
+        "Un service de stockage"
+      ],
+      "answer": 1,
+      "explanation": "GKE est le service Kubernetes managé de Google, offrant une intégration native avec l'infrastructure GCP, la gestion automatisée du control plane, l'auto-scaling, et la sécurité avancée.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 40,
+      "question": "Quelle est la différence entre un cluster GKE Standard et Autopilot ?",
+      "options": [
+        "Autopilot est plus cher",
+        "Autopilot est entièrement managé (nodes, scaling), Standard donne plus de contrôle",
+        "Standard est deprecated",
+        "Ils sont identiques"
+      ],
+      "answer": 1,
+      "explanation": "GKE Autopilot gère complètement les nodes, scaling, networking et sécurité (paiement par pod). Standard offre plus de contrôle et flexibilité sur la config des nodes mais nécessite plus de gestion.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 41,
+      "question": "Qu'est-ce qu'un Node Pool dans GKE ?",
+      "options": [
+        "Un groupe de containers",
+        "Un groupe de machines (nodes) avec la même configuration dans un cluster",
+        "Un pool de stockage",
+        "Un load balancer"
+      ],
+      "answer": 1,
+      "explanation": "Un Node Pool est un groupe de nodes (VM) dans un cluster GKE partageant la même configuration (type machine, OS, labels). Permet d'avoir différents types de nodes pour différents workloads.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 42,
+      "question": "Qu'est-ce que Workload Identity dans GKE ?",
+      "options": [
+        "Un système d'authentification utilisateur",
+        "Une méthode pour lier un Kubernetes Service Account à un GCP Service Account",
+        "Un type de load balancer",
+        "Un service de monitoring"
+      ],
+      "answer": 1,
+      "explanation": "Workload Identity permet aux pods Kubernetes d'utiliser un GCP Service Account pour accéder aux services GCP de manière sécurisée, sans clés, en liant un KSA à un GSA.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 43,
+      "question": "Qu'est-ce qu'un VPC-native cluster dans GKE ?",
+      "options": [
+        "Un cluster sans VPC",
+        "Un cluster utilisant des alias IPs et intégré nativement au VPC",
+        "Un cluster legacy",
+        "Un cluster public uniquement"
+      ],
+      "answer": 1,
+      "explanation": "Les VPC-native clusters (recommandés) utilisent des alias IP ranges pour pods et services, permettant une meilleure intégration VPC, des routes IP natives, et l'accès à Private Google Access.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 44,
+      "question": "Quelle est la différence entre Container Registry et Artifact Registry ?",
+      "options": [
+        "Container Registry est pour Docker, Artifact Registry pour tout type d'artifact",
+        "Il n'y a pas de différence",
+        "Artifact Registry est deprecated",
+        "Container Registry est plus récent"
+      ],
+      "answer": 0,
+      "explanation": "Container Registry (legacy, gcr.io) est spécifique aux images Docker. Artifact Registry (recommandé) supporte Docker, Maven, npm, Python, Helm, etc. avec meilleure sécurité et features.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 45,
+      "question": "Qu'est-ce que les Release Channels dans GKE ?",
+      "options": [
+        "Des canaux de communication",
+        "Des canaux de mise à jour : Rapid, Regular, Stable",
+        "Des méthodes de déploiement",
+        "Des types de load balancers"
+      ],
+      "answer": 1,
+      "explanation": "Les Release Channels contrôlent la cadence des mises à jour Kubernetes : Rapid (nouvelles features rapidement), Regular (équilibre), Stable (production-ready, testé). Simplifie la gestion des versions.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 46,
+      "question": "Qu'est-ce que Binary Authorization dans GKE ?",
+      "options": [
+        "Un système de backup",
+        "Un service de sécurité vérifiant que seules des images signées/approuvées sont déployées",
+        "Un type de chiffrement",
+        "Un service de monitoring"
+      ],
+      "answer": 1,
+      "explanation": "Binary Authorization est un service de sécurité deploy-time qui enforce que seules les images de conteneurs signées cryptographiquement et validées selon des policies peuvent être déployées dans GKE.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 47,
+      "question": "Quels types de Load Balancers globaux GCP existent ?",
+      "options": [
+        "HTTP et TCP uniquement",
+        "HTTP(S) Load Balancer (L7), SSL Proxy et TCP Proxy (L4)",
+        "Uniquement Network Load Balancer",
+        "Application et Network Load Balancer"
+      ],
+      "answer": 1,
+      "explanation": "GCP offre des LB globaux : HTTP(S) LB (Layer 7, URL-based routing), SSL Proxy (TLS L4), TCP Proxy (non-TLS L4). Ils utilisent l'infrastructure globale Google avec anycast IPs.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 48,
+      "question": "Quelle est la différence entre Global et Regional Load Balancers ?",
+      "options": [
+        "Les globaux sont plus chers",
+        "Les globaux distribuent le trafic mondialement, les régionaux dans une région",
+        "Les régionaux sont deprecated",
+        "Pas de différence"
+      ],
+      "answer": 1,
+      "explanation": "Les Global LBs (HTTP(S), TCP/SSL Proxy) routent le trafic à la région backend la plus proche avec une seule anycast IP. Les Regional LBs (Network, Internal) restent dans une région spécifique.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 49,
+      "question": "Qu'est-ce qu'un Backend Service dans GCP Load Balancing ?",
+      "options": [
+        "Un service de base de données",
+        "Une configuration définissant comment distribuer le trafic vers les backends",
+        "Un service de stockage",
+        "Un type de VM"
+      ],
+      "answer": 1,
+      "explanation": "Un Backend Service définit comment le trafic est distribué vers un groupe de backends (Instance Groups, NEGs), incluant health checks, session affinity, timeout, et distribution du trafic.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 50,
+      "question": "Comment fonctionnent les Health Checks dans GCP Load Balancing ?",
+      "options": [
+        "Ils vérifient la facturation",
+        "Ils vérifient périodiquement si les backends sont sains et retirent les unhealthy",
+        "Ils gèrent les certificats SSL",
+        "Ils moniteur la bande passante"
+      ],
+      "answer": 1,
+      "explanation": "Les Health Checks envoient des requêtes périodiques (HTTP, HTTPS, TCP, SSL, gRPC) aux backends. Si un backend fail, il est retiré du pool jusqu'à ce qu'il redevienne healthy.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 51,
+      "question": "Qu'est-ce que Cloud CDN ?",
+      "options": [
+        "Un service de base de données",
+        "Un Content Delivery Network qui cache le contenu proche des utilisateurs",
+        "Un service de stockage",
+        "Un service de compute"
+      ],
+      "answer": 1,
+      "explanation": "Cloud CDN utilise le réseau edge global de Google pour cacher le contenu statique et dynamique proche des utilisateurs, réduisant la latence et les coûts de bande passante (intégré avec HTTP(S) LB).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 52,
+      "question": "Qu'est-ce que Cloud Armor ?",
+      "options": [
+        "Un service de chiffrement",
+        "Un service de protection DDoS et WAF pour les applications web",
+        "Un système de backup",
+        "Un service de monitoring"
+      ],
+      "answer": 1,
+      "explanation": "Cloud Armor est un service de sécurité edge offrant protection DDoS, WAF (Web Application Firewall), rate limiting, et règles de sécurité personnalisées pour protéger les applications derrière HTTP(S) LB.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 53,
+      "question": "Qu'est-ce qu'un Managed Instance Group (MIG) ?",
+      "options": [
+        "Un groupe de conteneurs",
+        "Un groupe de VM identiques créées depuis un instance template avec autoscaling",
+        "Un service de base de données",
+        "Un type de VPC"
+      ],
+      "answer": 1,
+      "explanation": "Un MIG est un ensemble de VM identiques créées depuis un instance template, offrant autoscaling, autohealing, rolling updates, et load balancing automatique pour des applications stateless.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 54,
+      "question": "Comment fonctionne l'Autoscaling dans un MIG ?",
+      "options": [
+        "Basé uniquement sur l'heure de la journée",
+        "Basé sur des métriques (CPU, load balancing, custom) pour ajouter/retirer des VMs",
+        "Manuel uniquement",
+        "Aléatoire"
+      ],
+      "answer": 1,
+      "explanation": "L'autoscaling MIG ajoute ou retire automatiquement des instances basé sur des métriques : CPU utilization, HTTP load balancing serving capacity, Stackdriver metrics, ou Cloud Pub/Sub queue depth.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 55,
+      "question": "Qu'est-ce que l'Autohealing dans un MIG ?",
+      "options": [
+        "Mise à jour automatique des VM",
+        "Détection et recréation automatique des VMs non saines via health checks",
+        "Backup automatique",
+        "Patching automatique"
+      ],
+      "answer": 1,
+      "explanation": "L'autohealing utilise des health checks pour détecter les instances failing. Si une VM échoue aux health checks, le MIG la supprime automatiquement et en crée une nouvelle identique.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 56,
+      "question": "Qu'est-ce que Cloud NAT ?",
+      "options": [
+        "Un service de DNS",
+        "Un service permettant aux VMs privées d'accéder à Internet sans IP publique",
+        "Un type de VPN",
+        "Un load balancer"
+      ],
+      "answer": 1,
+      "explanation": "Cloud NAT est un service régional permettant aux instances avec seulement des IPs privées d'initier des connexions sortantes vers Internet (software-defined, pas un gateway VM).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 57,
+      "question": "Qu'est-ce que le VPC Peering ?",
+      "options": [
+        "Partager des VMs entre VPCs",
+        "Connecter deux VPCs pour communiquer via des IPs privées RFC 1918",
+        "Un type de VPN",
+        "Un service de DNS"
+      ],
+      "answer": 1,
+      "explanation": "Le VPC Peering connecte deux VPCs (même ou différents projets/organisations) permettant une communication privée via IPs internes. Les routes sont échangées automatiquement, pas de single point of failure.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 58,
+      "question": "Qu'est-ce qu'un Shared VPC ?",
+      "options": [
+        "Un VPC public",
+        "Un VPC centralisé partagé entre plusieurs projets d'une organisation",
+        "Un VPC temporaire",
+        "Un VPC cloud hybride"
+      ],
+      "answer": 1,
+      "explanation": "Un Shared VPC permet à un host project de partager son VPC avec des service projects. Les ressources des service projects utilisent les subnets du host project, centralisant la gestion réseau.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 59,
+      "question": "Qu'est-ce que Cloud VPN ?",
+      "options": [
+        "Un service d'accès distant",
+        "Un service de connexion sécurisée IPsec site-to-site vers GCP",
+        "Un service de proxy",
+        "Un firewall"
+      ],
+      "answer": 1,
+      "explanation": "Cloud VPN établit des tunnels IPsec sécurisés entre votre réseau on-premises et GCP VPC. Cloud VPN HA (SLA 99.99%) offre deux interfaces pour haute disponibilité.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 60,
+      "question": "Qu'est-ce que Cloud Interconnect ?",
+      "options": [
+        "Un service VPN",
+        "Une connexion réseau privée dédiée entre votre datacenter et GCP",
+        "Un load balancer",
+        "Un service DNS"
+      ],
+      "answer": 1,
+      "explanation": "Cloud Interconnect offre une connexion physique dédiée (Dedicated) ou via un provider (Partner) entre votre réseau et GCP, avec plus de bande passante et moins de latence que VPN.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 61,
+      "question": "Qu'est-ce que Private Google Access ?",
+      "options": [
+        "Un VPN Google",
+        "Permet aux VMs avec IPs privées uniquement d'accéder aux APIs Google",
+        "Un service d'authentification",
+        "Un firewall"
+      ],
+      "answer": 1,
+      "explanation": "Private Google Access permet aux instances sans IP publique d'accéder aux APIs et services Google (Cloud Storage, BigQuery, etc.) via des IPs privées, sans passer par Internet.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 62,
+      "question": "Qu'est-ce que Cloud DNS ?",
+      "options": [
+        "Un service de CDN",
+        "Un service DNS managé, scalable et haute performance",
+        "Un service de VPN",
+        "Un load balancer"
+      ],
+      "answer": 1,
+      "explanation": "Cloud DNS est le service DNS managé de GCP, offrant 100% uptime SLA, anycast name servers, DNSSEC, private DNS zones, et intégration avec GCP et domaines externes.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 63,
+      "question": "Qu'est-ce que Cloud Monitoring (anciennement Stackdriver Monitoring) ?",
+      "options": [
+        "Un service de backup",
+        "Un service de surveillance collectant des métriques sur les ressources GCP et externes",
+        "Un service de sécurité",
+        "Un service de stockage"
+      ],
+      "answer": 1,
+      "explanation": "Cloud Monitoring collecte des métriques depuis GCP, AWS, on-prem et applications. Il offre des dashboards personnalisables, alerting, uptime checks, et SLO monitoring pour l'observabilité.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 64,
+      "question": "Comment créer des Alerting Policies dans Cloud Monitoring ?",
+      "options": [
+        "Uniquement via la console",
+        "Via la console, gcloud, ou l'API, basées sur des conditions de métriques",
+        "Elles se créent automatiquement",
+        "Uniquement via Terraform"
+      ],
+      "answer": 1,
+      "explanation": "Les Alerting Policies se créent via Console, gcloud, API ou Terraform. Elles définissent des conditions (seuils, absence de données) et des notification channels (email, SMS, PagerDuty, Slack, webhooks).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 65,
+      "question": "Qu'est-ce que Cloud Logging (anciennement Stackdriver Logging) ?",
+      "options": [
+        "Un service de monitoring uniquement",
+        "Un service de collecte, stockage, analyse et alerting sur les logs",
+        "Un service de backup",
+        "Un service de base de données"
+      ],
+      "answer": 1,
+      "explanation": "Cloud Logging collecte les logs depuis GCP et sources externes. Il offre le Log Explorer pour recherche, log-based metrics, export vers BigQuery/Cloud Storage, et rétention configurable.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 66,
+      "question": "Qu'est-ce qu'un Log Sink dans Cloud Logging ?",
+      "options": [
+        "Une archive de logs",
+        "Une configuration d'export de logs vers une destination (BigQuery, Storage, Pub/Sub)",
+        "Un filtre de logs",
+        "Un service de monitoring"
+      ],
+      "answer": 1,
+      "explanation": "Un Log Sink exporte les logs selon un filtre vers des destinations : BigQuery (analyse), Cloud Storage (archivage long terme), Pub/Sub (streaming), ou autre projet. Permet compliance et analytics.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 67,
+      "question": "Qu'est-ce que Cloud Trace ?",
+      "options": [
+        "Un service de logging",
+        "Un service de distributed tracing pour analyser la latence des requêtes",
+        "Un service de monitoring",
+        "Un service de sécurité"
+      ],
+      "answer": 1,
+      "explanation": "Cloud Trace collecte des données de latence sur les applications distribuées, affichant comment les requêtes se propagent à travers les microservices. Aide à identifier les bottlenecks de performance.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 68,
+      "question": "Qu'est-ce que Cloud Profiler ?",
+      "options": [
+        "Un service de logs",
+        "Un profiler de performance continu analysant CPU et mémoire des applications",
+        "Un service de monitoring réseau",
+        "Un service de sécurité"
+      ],
+      "answer": 1,
+      "explanation": "Cloud Profiler est un profiler continu low-overhead analysant la consommation CPU et mémoire des applications en production, aidant à optimiser le code et réduire les coûts.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 69,
+      "question": "Qu'est-ce que Cloud Deployment Manager ?",
+      "options": [
+        "Un service de CI/CD",
+        "Un service d'Infrastructure as Code natif GCP utilisant YAML/Jinja2/Python",
+        "Un service de déploiement d'applications",
+        "Un service de monitoring"
+      ],
+      "answer": 1,
+      "explanation": "Cloud Deployment Manager est le service IaC natif GCP utilisant des templates YAML avec Jinja2 ou Python pour déclarer et déployer des ressources GCP de manière reproductible et versionnée.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 70,
+      "question": "Qu'est-ce que Cloud Build ?",
+      "options": [
+        "Un service de déploiement uniquement",
+        "Un service CI/CD serverless exécutant des builds dans le cloud",
+        "Un service de monitoring",
+        "Un service de stockage"
+      ],
+      "answer": 1,
+      "explanation": "Cloud Build est un service CI/CD serverless exécutant vos builds à partir de code source (repos ou Cloud Storage), supportant Docker, buildpacks, et custom builders, avec build triggers automatiques.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 71,
+      "question": "Quels sont les types de Persistent Disks et leurs caractéristiques de performance ?",
+      "options": [
+        "Tous identiques",
+        "Standard (HDD, 0.75 IOPS/GB), Balanced (SSD, 6 IOPS/GB), SSD (30 IOPS/GB)",
+        "Uniquement SSD",
+        "Premium et Standard uniquement"
+      ],
+      "answer": 1,
+      "explanation": "Standard PD (HDD) : ~0.75 IOPS/GB, économique. Balanced PD (SSD-backed) : 6 IOPS/GB, bon compromis. SSD PD : 30 IOPS/GB, haute performance. Le throughput scale aussi avec la taille.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 72,
+      "question": "Qu'est-ce que Filestore ?",
+      "options": [
+        "Un service de stockage d'objets",
+        "Un service de stockage de fichiers NFS managé haute performance",
+        "Un service de base de données",
+        "Un service de backup"
+      ],
+      "answer": 1,
+      "explanation": "Filestore est un service NFS (Network File System) managé, haute performance et fully managed, idéal pour les applications nécessitant un filesystem partagé (lift-and-shift, media rendering, etc.).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 73,
+      "question": "Qu'est-ce que le Transfer Service de Cloud Storage ?",
+      "options": [
+        "Un service de backup",
+        "Un service pour transférer des données vers Cloud Storage depuis Internet, on-prem ou autres clouds",
+        "Un service de réplication",
+        "Un CDN"
+      ],
+      "answer": 1,
+      "explanation": "Storage Transfer Service transfère de grandes quantités de données vers Cloud Storage depuis AWS S3, Azure Blob, URLs HTTP(S), ou on-prem (Transfer Appliance). Schedulable et géré.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 74,
+      "question": "Qu'est-ce que les Retention Policies dans Cloud Storage ?",
+      "options": [
+        "Des politiques de facturation",
+        "Des politiques empêchant la suppression/modification d'objets pendant une durée",
+        "Des politiques de réplication",
+        "Des politiques de chiffrement"
+      ],
+      "answer": 1,
+      "explanation": "Les Retention Policies configurent une durée minimale pendant laquelle les objets ne peuvent pas être supprimés ou modifiés (compliance, WORM). Utile pour regulatory requirements.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 75,
+      "question": "Comment fonctionnent les Persistent Disk Snapshots ?",
+      "options": [
+        "Copies complètes à chaque fois",
+        "Snapshots incrémentaux : premier snapshot est full, suivants sont incrémentaux",
+        "Uniquement manuels",
+        "Limités à une zone"
+      ],
+      "answer": 1,
+      "explanation": "Les PD Snapshots sont incrémentaux et globaux. Le premier est complet, les suivants sauvegardent seulement les blocs modifiés. Restauration possible dans n'importe quelle zone/région.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 76,
+      "question": "Quelle est la différence entre GKE Autopilot et Standard en termes de gestion des nodes ?",
+      "options": [
+        "Identique",
+        "Autopilot gère complètement les nodes (provisioning, scaling, upgrades), Standard nécessite une gestion manuelle",
+        "Standard est plus automatisé",
+        "Autopilot n'a pas de nodes"
+      ],
+      "answer": 1,
+      "explanation": "Autopilot : GCP gère entièrement les nodes, node pools, scaling, upgrades, sécurité. Standard : vous configurez/gérez node pools, machine types, OS, scaling policies. Autopilot = moins de gestion, Standard = plus de contrôle.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 77,
+      "question": "Comment configurer Workload Identity entre un Kubernetes Service Account et un GCP Service Account ?",
+      "options": [
+        "Automatiquement sans configuration",
+        "Créer le GSA, annoter le KSA, lier avec IAM binding iam.workloadIdentityUser",
+        "Uniquement via des clés JSON",
+        "Impossible"
+      ],
+      "answer": 1,
+      "explanation": "Setup Workload Identity : 1) Enable sur cluster, 2) Créer GCP SA, 3) Créer K8s SA avec annotation (iam.gke.io/gcp-service-account), 4) IAM binding : gcloud iam service-accounts add-iam-policy-binding avec role roles/iam.workloadIdentityUser.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 78,
+      "question": "Qu'est-ce qu'un Private GKE Cluster ?",
+      "options": [
+        "Un cluster sans accès Internet",
+        "Un cluster où les nodes n'ont que des IPs privées et le control plane endpoint peut être privé",
+        "Un cluster gratuit",
+        "Un cluster avec un seul node"
+      ],
+      "answer": 1,
+      "explanation": "Un Private GKE Cluster : nodes avec IPs privées uniquement, control plane endpoint privé (optionnel), authorized networks pour restreindre l'accès API. Améliore la sécurité en évitant l'exposition Internet.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 79,
+      "question": "Qu'est-ce que Binary Authorization et comment l'implémenter dans GKE ?",
+      "options": [
+        "Un système de backup",
+        "Un système enforce-only permettant le déploiement d'images signées via attestations",
+        "Un service de monitoring",
+        "Un type de chiffrement"
+      ],
+      "answer": 1,
+      "explanation": "Binary Authorization vérifie les signatures cryptographiques (attestations) des images. Setup : 1) Enable API, 2) Créer attestors et clés, 3) Créer policy (always allow, always deny, require attestations), 4) Activer sur GKE cluster.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 80,
+      "question": "Qu'est-ce que Shielded GKE Nodes ?",
+      "options": [
+        "Des nodes avec firewall",
+        "Des nodes avec Secure Boot, vTPM et integrity monitoring activés",
+        "Des nodes chiffrés",
+        "Des nodes en lecture seule"
+      ],
+      "answer": 1,
+      "explanation": "Shielded GKE Nodes utilisent Shielded VM features : Secure Boot (boot trusted), vTPM (measured boot), Integrity Monitoring (détection de modifications). Protège contre rootkits et boot-level malware.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 81,
+      "question": "Comment optimiser les coûts d'un cluster GKE en production ?",
+      "options": [
+        "Utiliser les nodes les plus gros uniquement",
+        "Combiner Spot VMs, Autopilot, cluster autoscaler, right-sizing, et node auto-provisioning",
+        "Désactiver l'autoscaling",
+        "Utiliser uniquement des Preemptible VMs"
+      ],
+      "answer": 1,
+      "explanation": "Optimisation coûts GKE : 1) Spot/Preemptible VMs (80% moins cher), 2) Autopilot (paiement par pod), 3) Cluster Autoscaler, 4) Vertical Pod Autoscaler (right-sizing), 5) Node auto-provisioning, 6) Committed Use Discounts.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 82,
+      "question": "Qu'est-ce qu'une architecture multi-region dans GCP ?",
+      "options": [
+        "Plusieurs VMs dans une région",
+        "Déployer des ressources dans plusieurs régions pour haute disponibilité et disaster recovery",
+        "Un type de VPN",
+        "Un service de réplication"
+      ],
+      "answer": 1,
+      "explanation": "Une architecture multi-region déploie l'application dans plusieurs régions géographiques pour survivre à une panne régionale complète. Utilise Global Load Balancer, Cloud SQL cross-region replicas, multi-region Cloud Storage.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 83,
+      "question": "Quelle est la différence entre Cold, Warm et Hot Standby pour le Disaster Recovery ?",
+      "options": [
+        "Basé sur la température du datacenter",
+        "Cold : backup seul, Warm : infra minimale prête, Hot : infra complète active",
+        "Termes identiques",
+        "Basé sur la vitesse réseau"
+      ],
+      "answer": 1,
+      "explanation": "Cold Standby : backups uniquement, RTO/RPO élevés, coût bas. Warm Standby : infra minimale déployée, bascule rapide, coût moyen. Hot Standby : infra complète active (active-active), RTO/RPO très bas, coût élevé.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 84,
+      "question": "Comment configurer Cloud SQL pour la haute disponibilité multi-region ?",
+      "options": [
+        "Automatique par défaut",
+        "Activer HA régional puis créer des read replicas cross-region",
+        "Impossible",
+        "Utiliser uniquement des backups"
+      ],
+      "answer": 1,
+      "explanation": "HA Cloud SQL : 1) Enable Regional HA (instance primaire + standby dans différentes zones), 2) Créer Cross-Region Read Replicas pour DR, 3) Promote replica en primaire si panne régionale (RPO ~0, RTO minutes).",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 85,
+      "question": "Qu'est-ce que Cloud Storage Dual-Region et Multi-Region ?",
+      "options": [
+        "Identiques",
+        "Dual-Region : 2 régions spécifiques, Multi-Region : continent entier",
+        "Dual-Region est deprecated",
+        "Multi-Region est plus lent"
+      ],
+      "answer": 1,
+      "explanation": "Dual-Region : données répliquées entre 2 régions spécifiques (ex: us-central1 et us-east1), optimise latence et HA. Multi-Region : réplication sur continent entier (us, eu, asia), haute disponibilité géographique.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 86,
+      "question": "Comment implémenter un failover global avec HTTP(S) Load Balancer ?",
+      "options": [
+        "Impossible",
+        "Configurer multiple backend services dans différentes régions avec health checks",
+        "Uniquement manuel",
+        "Utiliser DNS uniquement"
+      ],
+      "answer": 1,
+      "explanation": "Failover Global : 1) HTTP(S) LB global, 2) Backend services dans multiple régions, 3) Health checks sur chaque backend, 4) LB route automatiquement vers backends healthy, évitant les régions down. Anycast IP globale.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 87,
+      "question": "Qu'est-ce que Cloud KMS (Key Management Service) ?",
+      "options": [
+        "Un service de stockage de secrets",
+        "Un service de gestion de clés cryptographiques (création, rotation, contrôle d'accès)",
+        "Un service de monitoring",
+        "Un service de base de données"
+      ],
+      "answer": 1,
+      "explanation": "Cloud KMS gère les clés de chiffrement : création, stockage, rotation automatique, destruction, et contrôle d'accès IAM. Supporte clés symétriques (encrypt/decrypt) et asymétriques (sign/verify).",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 88,
+      "question": "Qu'est-ce que CMEK (Customer-Managed Encryption Keys) ?",
+      "options": [
+        "Chiffrement par défaut GCP",
+        "Utiliser vos propres clés KMS pour chiffrer des ressources GCP au lieu des clés Google",
+        "Un service de backup",
+        "Un type de firewall"
+      ],
+      "answer": 1,
+      "explanation": "CMEK permet d'utiliser vos clés Cloud KMS pour chiffrer des ressources (Compute disks, Cloud Storage, BigQuery). Vous contrôlez la rotation, l'accès et pouvez révoquer l'accès aux données chiffrées.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 89,
+      "question": "Qu'est-ce que Secret Manager ?",
+      "options": [
+        "Un service KMS",
+        "Un service de stockage, gestion et accès sécurisé aux secrets (API keys, passwords, certs)",
+        "Un service d'authentification",
+        "Un service de monitoring"
+      ],
+      "answer": 1,
+      "explanation": "Secret Manager stocke les secrets (API keys, passwords, certificates) de manière sécurisée avec versioning, audit logging, et IAM. Alternative sécurisée au hardcoding ou stockage dans env vars.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 90,
+      "question": "Qu'est-ce que VPC Service Controls ?",
+      "options": [
+        "Un firewall traditionnel",
+        "Un périmètre de sécurité pour isoler les ressources GCP et prévenir l'exfiltration de données",
+        "Un service de VPN",
+        "Un load balancer"
+      ],
+      "answer": 1,
+      "explanation": "VPC Service Controls crée un périmètre de sécurité autour des services GCP (BigQuery, Cloud Storage) pour protéger contre l'exfiltration de données et l'accès non autorisé, même avec des credentials volés.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 91,
+      "question": "Qu'est-ce que Cloud Armor Advanced et ses capacités WAF ?",
+      "options": [
+        "Un firewall réseau simple",
+        "Un WAF avec règles personnalisées, OWASP Top 10, rate limiting, et bot management",
+        "Un service de backup",
+        "Un CDN"
+      ],
+      "answer": 1,
+      "explanation": "Cloud Armor Advanced offre : WAF (préconfigured rules OWASP Top 10), custom rules (expressions CEL), rate limiting, bot management, adaptive protection ML, et geo-filtering pour protéger les applications web.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 92,
+      "question": "Qu'est-ce que Security Command Center (SCC) ?",
+      "options": [
+        "Un firewall",
+        "Une plateforme de sécurité centralisée pour asset discovery, vulnerability scanning, et threat detection",
+        "Un service de monitoring",
+        "Un service de backup"
+      ],
+      "answer": 1,
+      "explanation": "SCC est le hub de sécurité GCP : asset inventory, vulnerability detection (Web Security Scanner), threat detection, compliance monitoring, et intégration avec Cloud DLP, Event Threat Detection, et Container Threat Detection.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 93,
+      "question": "Comment implémenter le principe du moindre privilège avec Binary Authorization ?",
+      "options": [
+        "Désactiver tous les déploiements",
+        "Require attestations spécifiques par namespace/environnement avec différents attestors",
+        "Autoriser tout par défaut",
+        "Utiliser uniquement un attestor global"
+      ],
+      "answer": 1,
+      "explanation": "Best practice Binary Authorization : multiple attestors (build, security scan, QA), policies différentes par env (dev : lenient, prod : strict), require attestations multiples en prod, différents signers pour séparation des responsabilités.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 94,
+      "question": "Qu'est-ce que Cloud Functions ?",
+      "options": [
+        "Un service de VM",
+        "Un service serverless event-driven pour exécuter du code en réponse à des événements",
+        "Un service de base de données",
+        "Un service de monitoring"
+      ],
+      "answer": 1,
+      "explanation": "Cloud Functions est un service FaaS (Function as a Service) serverless exécutant du code (Node.js, Python, Go, Java) en réponse à des événements (HTTP, Cloud Storage, Pub/Sub) sans gérer de serveurs.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 95,
+      "question": "Qu'est-ce que Cloud Run ?",
+      "options": [
+        "Un service de VM",
+        "Un service serverless pour exécuter des conteneurs avec auto-scaling et pay-per-use",
+        "Un service de base de données",
+        "Un service de stockage"
+      ],
+      "answer": 1,
+      "explanation": "Cloud Run exécute des conteneurs stateless serverless avec auto-scaling (0 à N), requests-based billing, intégration HTTPS automatique, et supporte n'importe quel langage/binary conteneurisé.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 96,
+      "question": "Quelle est la différence entre App Engine Standard et Flexible ?",
+      "options": [
+        "Identiques",
+        "Standard : sandbox restrictif, démarrage rapide ; Flexible : conteneurs Docker, plus flexible",
+        "Flexible est deprecated",
+        "Standard est plus cher"
+      ],
+      "answer": 1,
+      "explanation": "Standard : sandbox spécifique au langage, démarrage <1s, scale to zero, coût bas. Flexible : Docker containers, n'importe quel runtime, accès SSH, démarrage minutes, min 1 instance. Standard pour web apps simples, Flexible pour plus de contrôle.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 97,
+      "question": "Qu'est-ce que Cloud Pub/Sub ?",
+      "options": [
+        "Un service de base de données",
+        "Un service de messaging asynchrone pub/sub pour événements et data streaming",
+        "Un service de stockage",
+        "Un load balancer"
+      ],
+      "answer": 1,
+      "explanation": "Cloud Pub/Sub est un service de messaging asynchrone : publishers envoient des messages à des topics, subscribers reçoivent via push/pull. At-least-once delivery, ordering optionnel, global, idéal pour microservices et data pipelines.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 98,
+      "question": "Qu'est-ce que BigQuery ?",
+      "options": [
+        "Une base de données SQL classique",
+        "Un data warehouse serverless et analytics engine pour requêtes SQL sur pétabytes de données",
+        "Un service de stockage d'objets",
+        "Un service de monitoring"
+      ],
+      "answer": 1,
+      "explanation": "BigQuery est un data warehouse serverless permettant des requêtes SQL ultra-rapides sur des pétabytes de données. Séparation compute/storage, pricing par requête, intégrations ML, streaming, et partitionnement automatique.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 99,
+      "question": "Qu'est-ce que Cloud Dataflow ?",
+      "options": [
+        "Un service de réseau",
+        "Un service de traitement de données batch et streaming managé basé sur Apache Beam",
+        "Un service de stockage",
+        "Un service de monitoring"
+      ],
+      "answer": 1,
+      "explanation": "Cloud Dataflow exécute des pipelines Apache Beam pour processing batch et streaming à grande échelle. Fully managed, auto-scaling, unifie batch et stream processing. Idéal pour ETL, analytics, ML preprocessing.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 100,
+      "question": "Qu'est-ce que Cloud Dataproc ?",
+      "options": [
+        "Un service de base de données",
+        "Un service managé pour clusters Apache Hadoop et Spark",
+        "Un service de stockage",
+        "Un service de réseau"
+      ],
+      "answer": 1,
+      "explanation": "Cloud Dataproc est un service fully managed pour clusters Hadoop, Spark, Hive, Pig. Création de clusters en <90s, auto-scaling, pricing par seconde, intégration avec Cloud Storage. Idéal pour lift-and-shift de workloads Hadoop/Spark.",
+      "difficulty": "advanced"
+    }
+  ]
 }

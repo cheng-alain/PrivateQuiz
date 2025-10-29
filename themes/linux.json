@@ -1,0 +1,1046 @@
+{
+  "title": "Linux & Shell Scripting",
+  "description": "80 questions couvrant l'administration système Linux et le shell scripting : 25 questions sur les fondamentaux (navigation, permissions, commandes de base), 35 questions intermédiaires (scripting, text processing, administration système, networking), et 20 questions avancées (scripting avancé, performance tuning, troubleshooting complexe)",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Quelle commande permet de lister tous les fichiers d'un répertoire, y compris les fichiers cachés ?",
+      "options": [
+        "ls -a",
+        "ls -h",
+        "ls -l",
+        "ls -r"
+      ],
+      "answer": 0,
+      "explanation": "L'option -a (all) de la commande ls affiche tous les fichiers, y compris les fichiers cachés qui commencent par un point (.). L'option -l affiche en format long, -h rend la taille lisible, et -r inverse l'ordre.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 2,
+      "question": "Que signifie le symbole ~ (tilde) dans le système de fichiers Linux ?",
+      "options": [
+        "Le répertoire racine /",
+        "Le répertoire personnel de l'utilisateur courant",
+        "Le répertoire temporaire /tmp",
+        "Le répertoire précédent"
+      ],
+      "answer": 1,
+      "explanation": "Le tilde (~) est un raccourci vers le répertoire personnel (home directory) de l'utilisateur courant, généralement /home/username. C'est très pratique pour naviguer rapidement vers son home.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 3,
+      "question": "Quelle commande permet de créer un nouveau répertoire ?",
+      "options": [
+        "makedir",
+        "mkdir",
+        "createdir",
+        "newdir"
+      ],
+      "answer": 1,
+      "explanation": "La commande mkdir (make directory) crée un ou plusieurs répertoires. On peut utiliser l'option -p pour créer des répertoires parents si nécessaire.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 4,
+      "question": "Comment afficher les 10 dernières lignes d'un fichier ?",
+      "options": [
+        "head -10 fichier",
+        "tail -10 fichier",
+        "last -10 fichier",
+        "end -10 fichier"
+      ],
+      "answer": 1,
+      "explanation": "La commande tail affiche les dernières lignes d'un fichier. Par défaut elle affiche 10 lignes, mais on peut spécifier un nombre différent avec -n. La commande head affiche les premières lignes.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 5,
+      "question": "Que fait la commande 'cp -r' ?",
+      "options": [
+        "Copie un fichier en le renommant",
+        "Copie récursivement des répertoires et leur contenu",
+        "Copie uniquement les fichiers réguliers",
+        "Crée une copie compressée"
+      ],
+      "answer": 1,
+      "explanation": "L'option -r (ou -R) pour recursive permet à cp de copier des répertoires entiers avec tout leur contenu, y compris les sous-répertoires.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 6,
+      "question": "Quelle commande permet de déterminer le type d'un fichier ?",
+      "options": [
+        "type fichier",
+        "file fichier",
+        "filetype fichier",
+        "info fichier"
+      ],
+      "answer": 1,
+      "explanation": "La commande file analyse un fichier et détermine son type (texte, binaire, image, etc.) en examinant son contenu plutôt que son extension.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 7,
+      "question": "Quel répertoire contient les fichiers de configuration système sous Linux ?",
+      "options": [
+        "/var",
+        "/etc",
+        "/usr",
+        "/opt"
+      ],
+      "answer": 1,
+      "explanation": "/etc (et cetera) contient les fichiers de configuration système. /var contient des données variables (logs, cache), /usr contient les programmes utilisateur, et /opt contient les logiciels optionnels.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 8,
+      "question": "Que signifie le wildcard * dans une commande shell ?",
+      "options": [
+        "Correspond exactement à un caractère",
+        "Correspond à zéro ou plusieurs caractères",
+        "Correspond à une plage de caractères",
+        "Correspond à un répertoire uniquement"
+      ],
+      "answer": 1,
+      "explanation": "L'astérisque (*) est un wildcard qui correspond à n'importe quelle séquence de caractères (y compris aucun caractère). Par exemple, *.txt correspond à tous les fichiers se terminant par .txt.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 9,
+      "question": "Que signifie la permission 'rwx' sur un fichier ?",
+      "options": [
+        "Read, Write, eXecute",
+        "Recursive, Write, eXtract",
+        "Read, Watch, eXtend",
+        "Remote, Write, eXit"
+      ],
+      "answer": 0,
+      "explanation": "rwx signifie Read (lecture), Write (écriture) et eXecute (exécution). Ces permissions peuvent être définies pour le propriétaire (user), le groupe (group) et les autres (others).",
+      "difficulty": "easy"
+    },
+    {
+      "id": 10,
+      "question": "Quelle commande change les permissions d'un fichier en notation octale 755 ?",
+      "options": [
+        "chmod 755 fichier",
+        "chown 755 fichier",
+        "chgrp 755 fichier",
+        "permission 755 fichier"
+      ],
+      "answer": 0,
+      "explanation": "chmod (change mode) modifie les permissions. 755 signifie rwxr-xr-x (propriétaire: rwx, groupe: r-x, autres: r-x). chown change le propriétaire, chgrp change le groupe.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 11,
+      "question": "Comment donner les permissions d'exécution à tous les utilisateurs sur un fichier script.sh ?",
+      "options": [
+        "chmod +x script.sh",
+        "chmod x script.sh",
+        "chown +x script.sh",
+        "execute script.sh"
+      ],
+      "answer": 0,
+      "explanation": "chmod +x ajoute la permission d'exécution (x) pour tous (user, group, others). On peut aussi utiliser chmod a+x pour être explicite (a = all).",
+      "difficulty": "easy"
+    },
+    {
+      "id": 12,
+      "question": "Que fait la commande 'chown user:group fichier' ?",
+      "options": [
+        "Change uniquement le propriétaire",
+        "Change uniquement le groupe",
+        "Change le propriétaire et le groupe",
+        "Change les permissions"
+      ],
+      "answer": 2,
+      "explanation": "chown user:group change à la fois le propriétaire (user) et le groupe (group) d'un fichier. On peut aussi utiliser chown user fichier pour changer uniquement le propriétaire.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 13,
+      "question": "Quelle est la signification de la permission 644 en octal ?",
+      "options": [
+        "rw-r--r-- (propriétaire: rw, groupe: r, autres: r)",
+        "rwxr-xr-x (propriétaire: rwx, groupe: rx, autres: rx)",
+        "rw-rw-r-- (propriétaire: rw, groupe: rw, autres: r)",
+        "r--r--r-- (tous: lecture seule)"
+      ],
+      "answer": 0,
+      "explanation": "644 = 6 (110 binaire = rw-) pour le propriétaire, 4 (100 = r--) pour le groupe, 4 (100 = r--) pour les autres. C'est la permission standard pour les fichiers de données.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 14,
+      "question": "Comment afficher les permissions d'un fichier avec la commande ls ?",
+      "options": [
+        "ls -p fichier",
+        "ls -l fichier",
+        "ls -a fichier",
+        "ls -d fichier"
+      ],
+      "answer": 1,
+      "explanation": "ls -l affiche le format long incluant les permissions, le propriétaire, le groupe, la taille et la date de modification. La première colonne montre les permissions (ex: -rwxr-xr-x).",
+      "difficulty": "easy"
+    },
+    {
+      "id": 15,
+      "question": "Quelle commande recherche tous les fichiers .log dans le répertoire courant et ses sous-répertoires ?",
+      "options": [
+        "find . -name '*.log'",
+        "search . -name '*.log'",
+        "locate . -name '*.log'",
+        "grep . -name '*.log'"
+      ],
+      "answer": 0,
+      "explanation": "find recherche des fichiers selon des critères. L'option -name permet de filtrer par nom (avec wildcards). Le point (.) signifie 'répertoire courant'. Les guillemets protègent le wildcard.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 16,
+      "question": "Comment rechercher la chaîne 'error' dans un fichier log.txt ?",
+      "options": [
+        "find 'error' log.txt",
+        "grep 'error' log.txt",
+        "search 'error' log.txt",
+        "locate 'error' log.txt"
+      ],
+      "answer": 1,
+      "explanation": "grep recherche des patterns de texte dans des fichiers. Par défaut, il affiche les lignes contenant le pattern. On peut utiliser -i pour ignorer la casse, -v pour inverser, -r pour récursif.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 17,
+      "question": "Que fait la commande 'which python' ?",
+      "options": [
+        "Affiche la version de Python",
+        "Affiche le chemin complet de l'exécutable python",
+        "Lance l'interpréteur Python",
+        "Liste tous les paquets Python installés"
+      ],
+      "answer": 1,
+      "explanation": "which recherche l'exécutable d'une commande dans les répertoires du PATH et affiche son chemin complet. C'est utile pour savoir quelle version d'un programme sera exécutée.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 18,
+      "question": "Que fait le symbole | (pipe) dans 'cat fichier.txt | grep error' ?",
+      "options": [
+        "Sépare deux commandes indépendantes",
+        "Redirige la sortie de cat vers l'entrée de grep",
+        "Exécute les deux commandes en parallèle",
+        "Crée un fichier temporaire"
+      ],
+      "answer": 1,
+      "explanation": "Le pipe (|) redirige la sortie standard (stdout) d'une commande vers l'entrée standard (stdin) d'une autre. C'est fondamental en Unix pour chaîner des commandes et créer des pipelines.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 19,
+      "question": "Comment lister tous les processus en cours d'exécution ?",
+      "options": [
+        "ps aux",
+        "list processes",
+        "show proc",
+        "proc -all"
+      ],
+      "answer": 0,
+      "explanation": "ps aux affiche tous les processus de tous les utilisateurs. 'a' = tous les utilisateurs, 'u' = format orienté utilisateur, 'x' = inclut les processus sans terminal. On peut aussi utiliser ps -ef.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 20,
+      "question": "Quelle commande permet de visualiser les processus en temps réel avec leur utilisation CPU/mémoire ?",
+      "options": [
+        "ps -r",
+        "top",
+        "proc",
+        "monitor"
+      ],
+      "answer": 1,
+      "explanation": "top affiche les processus en temps réel avec leur utilisation des ressources, triés par défaut par utilisation CPU. On peut interagir avec (k pour kill, r pour renice, q pour quitter). htop est une alternative plus conviviale.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 21,
+      "question": "Comment terminer un processus avec le PID 1234 ?",
+      "options": [
+        "kill 1234",
+        "stop 1234",
+        "terminate 1234",
+        "end 1234"
+      ],
+      "answer": 0,
+      "explanation": "kill envoie un signal à un processus. Par défaut, il envoie SIGTERM (15) qui demande une terminaison propre. kill -9 1234 envoie SIGKILL pour forcer l'arrêt immédiat.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 22,
+      "question": "Que fait le symbole & à la fin d'une commande (ex: ./script.sh &) ?",
+      "options": [
+        "Execute la commande avec privilèges root",
+        "Execute la commande en arrière-plan (background)",
+        "Execute la commande deux fois",
+        "Redirige les erreurs vers /dev/null"
+      ],
+      "answer": 1,
+      "explanation": "Le & à la fin d'une commande l'exécute en arrière-plan, libérant le terminal pour d'autres commandes. On peut ramener un processus en avant-plan avec 'fg' ou voir les jobs avec 'jobs'.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 23,
+      "question": "Comment arrêter proprement un processus en avant-plan dans le terminal ?",
+      "options": [
+        "Ctrl+C",
+        "Ctrl+D",
+        "Ctrl+Z",
+        "Ctrl+X"
+      ],
+      "answer": 0,
+      "explanation": "Ctrl+C envoie le signal SIGINT (interruption) au processus en avant-plan, le terminant proprement. Ctrl+Z suspend le processus (SIGTSTP), Ctrl+D signale EOF (fin de fichier).",
+      "difficulty": "easy"
+    },
+    {
+      "id": 24,
+      "question": "Comment accéder au manuel d'une commande, par exemple 'ls' ?",
+      "options": [
+        "help ls",
+        "man ls",
+        "doc ls",
+        "info ls"
+      ],
+      "answer": 1,
+      "explanation": "man (manual) affiche la page de manuel complète d'une commande. On navigue avec les flèches, espace, q pour quitter. man man affiche le manuel du système de manuel lui-même.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 25,
+      "question": "Quelle option affiche généralement l'aide rapide d'une commande ?",
+      "options": [
+        "--manual",
+        "--help",
+        "--doc",
+        "--info"
+      ],
+      "answer": 1,
+      "explanation": "La plupart des commandes supportent --help ou -h pour afficher une aide rapide avec les options principales. C'est plus concis que man et ne nécessite pas de navigateur de page.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 26,
+      "question": "Quelle est la première ligne d'un script bash pour indiquer l'interpréteur à utiliser ?",
+      "options": [
+        "#!bash",
+        "#!/bin/bash",
+        "#bash",
+        "interpreter: bash"
+      ],
+      "answer": 1,
+      "explanation": "Le shebang #!/bin/bash indique au système d'utiliser l'interpréteur bash pour exécuter le script. Il doit être sur la première ligne. On peut aussi utiliser #!/usr/bin/env bash pour plus de portabilité.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 27,
+      "question": "Comment déclarer et utiliser une variable en bash ?",
+      "options": [
+        "var name='value' puis echo name",
+        "name='value' puis echo $name",
+        "set name='value' puis echo name",
+        "let name='value' puis echo name"
+      ],
+      "answer": 1,
+      "explanation": "En bash, on déclare une variable sans espace autour du = : name='value'. Pour accéder à sa valeur, on utilise $ : echo $name ou ${name}. Pas d'espace autour du = est crucial.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 28,
+      "question": "Comment accéder au premier argument passé à un script bash ?",
+      "options": [
+        "$arg1",
+        "$1",
+        "$argv[0]",
+        "$@[0]"
+      ],
+      "answer": 1,
+      "explanation": "$1 accède au premier argument, $2 au deuxième, etc. $0 est le nom du script, $# le nombre d'arguments, $@ tous les arguments, et $* tous les arguments comme une chaîne.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 29,
+      "question": "Quelle est la syntaxe correcte d'un if en bash pour tester si un fichier existe ?",
+      "options": [
+        "if [ -f fichier ]; then ... fi",
+        "if (-f fichier) then ... end",
+        "if exists(fichier) then ... fi",
+        "if test fichier then ... fi"
+      ],
+      "answer": 0,
+      "explanation": "En bash, on utilise [ -f fichier ] pour tester l'existence d'un fichier régulier. -d teste un répertoire, -e teste l'existence (fichier ou répertoire). Les espaces après [ et avant ] sont obligatoires.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 30,
+      "question": "Comment écrire une boucle for qui itère sur les fichiers .txt du répertoire courant ?",
+      "options": [
+        "for file in *.txt; do ... done",
+        "for (file : *.txt) { ... }",
+        "foreach file in *.txt; do ... done",
+        "for file = *.txt; do ... done"
+      ],
+      "answer": 0,
+      "explanation": "En bash, 'for variable in liste; do commandes; done' itère sur une liste. Le wildcard *.txt est étendu par le shell en liste de fichiers. On accède à la variable avec $file.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 31,
+      "question": "Que contient la variable $? après l'exécution d'une commande ?",
+      "options": [
+        "Le PID du processus",
+        "Le code de retour (exit code) de la dernière commande",
+        "Le nombre d'arguments",
+        "La sortie de la commande"
+      ],
+      "answer": 1,
+      "explanation": "$? contient le code de retour de la dernière commande exécutée. 0 signifie succès, toute autre valeur (1-255) indique une erreur. C'est fondamental pour le contrôle de flux dans les scripts.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 32,
+      "question": "Comment définir une fonction en bash ?",
+      "options": [
+        "function nom() { commandes; }",
+        "def nom() { commandes; }",
+        "func nom { commandes; }",
+        "create function nom { commandes; }"
+      ],
+      "answer": 0,
+      "explanation": "En bash, on définit une fonction avec 'function nom() { commandes; }' ou simplement 'nom() { commandes; }'. On l'appelle ensuite par son nom. Les arguments sont accessibles via $1, $2, etc.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 33,
+      "question": "Comment lire une entrée utilisateur dans une variable en bash ?",
+      "options": [
+        "input variable",
+        "read variable",
+        "scan variable",
+        "get variable"
+      ],
+      "answer": 1,
+      "explanation": "La commande read lit depuis stdin et stocke dans une variable : 'read nom' ou 'read -p \"Entrez votre nom: \" nom' pour afficher un prompt. -s masque l'entrée (pour les mots de passe).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 34,
+      "question": "Que fait la commande 'exit 1' dans un script ?",
+      "options": [
+        "Quitte le script avec le code de succès",
+        "Quitte le script avec le code d'erreur 1",
+        "Pause le script pendant 1 seconde",
+        "Redémarre le script"
+      ],
+      "answer": 1,
+      "explanation": "exit termine le script avec un code de retour. exit 0 indique succès, exit 1 (ou toute valeur non-nulle) indique une erreur. Ce code est récupérable via $? par le processus parent.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 35,
+      "question": "Quelle est la différence entre $@ et $* dans un script bash ?",
+      "options": [
+        "Aucune différence",
+        "$@ préserve les arguments individuels entre guillemets, $* les combine",
+        "$* préserve les arguments individuels, $@ les combine",
+        "$@ compte les arguments, $* les affiche"
+      ],
+      "answer": 1,
+      "explanation": "\"$@\" développe chaque argument comme une chaîne séparée préservant les espaces : \"arg1\" \"arg2\". \"$*\" combine tous les arguments en une seule chaîne : \"arg1 arg2\". Toujours utiliser \"$@\" dans les boucles.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 36,
+      "question": "Comment extraire toutes les lignes contenant 'ERROR' dans /var/log/app.log, en ignorant la casse ?",
+      "options": [
+        "grep ERROR /var/log/app.log",
+        "grep -i ERROR /var/log/app.log",
+        "grep -v ERROR /var/log/app.log",
+        "grep -r ERROR /var/log/app.log"
+      ],
+      "answer": 1,
+      "explanation": "L'option -i (ignore case) de grep rend la recherche insensible à la casse, trouvant 'ERROR', 'error', 'Error', etc. -v inverse la recherche, -r recherche récursivement dans les répertoires.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 37,
+      "question": "Comment remplacer toutes les occurrences de 'foo' par 'bar' dans un fichier avec sed ?",
+      "options": [
+        "sed 's/foo/bar/' fichier",
+        "sed 's/foo/bar/g' fichier",
+        "sed 'replace foo bar' fichier",
+        "sed -r 's/foo/bar/' fichier"
+      ],
+      "answer": 1,
+      "explanation": "sed 's/foo/bar/g' utilise la commande de substitution (s). Le flag 'g' (global) remplace toutes les occurrences sur chaque ligne, pas seulement la première. Sans 'g', seule la première occurrence par ligne est remplacée.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 38,
+      "question": "Comment afficher uniquement la deuxième colonne d'un fichier CSV avec awk ?",
+      "options": [
+        "awk '{ print $2 }' fichier.csv",
+        "awk 'print column 2' fichier.csv",
+        "awk -F',' '{ print $2 }' fichier.csv",
+        "awk -c 2 fichier.csv"
+      ],
+      "answer": 2,
+      "explanation": "awk -F',' définit le séparateur de champ comme virgule (par défaut c'est l'espace). { print $2 } affiche le deuxième champ. $1 est le premier champ, $0 la ligne entière, $NF le dernier champ.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 39,
+      "question": "Comment compter le nombre de lignes dans un fichier ?",
+      "options": [
+        "count fichier",
+        "wc -l fichier",
+        "lines fichier",
+        "nl fichier"
+      ],
+      "answer": 1,
+      "explanation": "wc (word count) avec l'option -l compte les lignes. wc -w compte les mots, wc -c compte les octets, wc -m compte les caractères. Sans option, wc affiche lignes, mots et octets.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 40,
+      "question": "Que fait la redirection 2>&1 dans une commande ?",
+      "options": [
+        "Redirige stdout vers stderr",
+        "Redirige stderr vers stdout",
+        "Redirige tout vers /dev/null",
+        "Duplique la sortie"
+      ],
+      "answer": 1,
+      "explanation": "2>&1 redirige stderr (descripteur 2) vers stdout (descripteur 1). C'est utile pour capturer à la fois stdout et stderr : commande > fichier 2>&1 écrit tout dans fichier. L'ordre est important.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 41,
+      "question": "Comment ajouter du texte à la fin d'un fichier sans l'écraser ?",
+      "options": [
+        "echo 'texte' > fichier",
+        "echo 'texte' >> fichier",
+        "echo 'texte' >! fichier",
+        "echo 'texte' append fichier"
+      ],
+      "answer": 1,
+      "explanation": ">> (append) ajoute à la fin du fichier sans l'écraser. > (overwrite) écrase le contenu existant. C'est une distinction fondamentale en shell pour la manipulation de fichiers.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 42,
+      "question": "Comment trier les lignes d'un fichier et éliminer les doublons ?",
+      "options": [
+        "sort fichier | uniq",
+        "unique fichier",
+        "sort -u fichier",
+        "Les deux réponses 1 et 3 sont correctes"
+      ],
+      "answer": 3,
+      "explanation": "sort | uniq trie puis élimine les lignes adjacentes identiques. sort -u combine les deux opérations. uniq seul nécessite que le fichier soit déjà trié pour fonctionner correctement.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 43,
+      "question": "Comment copier la sortie d'une commande à la fois dans un fichier et sur stdout ?",
+      "options": [
+        "commande > fichier",
+        "commande | tee fichier",
+        "commande >> fichier",
+        "commande | copy fichier"
+      ],
+      "answer": 1,
+      "explanation": "tee lit depuis stdin, écrit dans un ou plusieurs fichiers ET vers stdout. C'est comme un 'T' en plomberie. Très utile pour logger tout en voyant la sortie : commande | tee log.txt",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 44,
+      "question": "Comment démarrer un service avec systemd ?",
+      "options": [
+        "service start nginx",
+        "systemctl start nginx",
+        "start nginx",
+        "init nginx start"
+      ],
+      "answer": 1,
+      "explanation": "systemctl est l'outil de gestion des services pour systemd. systemctl start démarre un service, stop l'arrête, restart le redémarre, status affiche son état, enable l'active au boot.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 45,
+      "question": "Comment activer un service pour qu'il démarre automatiquement au boot ?",
+      "options": [
+        "systemctl enable service",
+        "systemctl autostart service",
+        "systemctl boot service",
+        "systemctl startup service"
+      ],
+      "answer": 0,
+      "explanation": "systemctl enable crée les liens symboliques nécessaires pour que le service démarre au boot. disable les supprime. is-enabled vérifie l'état. enable n'démarre pas le service immédiatement, il faut aussi faire start.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 46,
+      "question": "Comment voir les logs d'un service spécifique avec journalctl ?",
+      "options": [
+        "journalctl -u service_name",
+        "journalctl --service=service_name",
+        "journalctl service_name",
+        "systemctl logs service_name"
+      ],
+      "answer": 0,
+      "explanation": "journalctl -u (ou --unit) filtre les logs par service. -f suit les logs en temps réel (comme tail -f), --since=\"1 hour ago\" filtre par temps, -p err filtre par priorité.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 47,
+      "question": "Comment installer un paquet avec apt sur Debian/Ubuntu ?",
+      "options": [
+        "apt get package_name",
+        "apt install package_name",
+        "apt-get package_name",
+        "install package_name"
+      ],
+      "answer": 1,
+      "explanation": "apt install (ou apt-get install) installe un paquet. apt remove le supprime, apt update met à jour la liste des paquets, apt upgrade met à jour les paquets installés. apt est plus moderne et convivial que apt-get.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 48,
+      "question": "Comment créer un nouvel utilisateur nommé 'devops' ?",
+      "options": [
+        "newuser devops",
+        "useradd devops",
+        "adduser devops",
+        "create user devops"
+      ],
+      "answer": 1,
+      "explanation": "useradd crée un utilisateur (niveau bas). adduser est un script plus convivial qui crée aussi le home, demande le mot de passe, etc. Pour définir/changer le mot de passe : passwd devops.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 49,
+      "question": "Comment ajouter un utilisateur au groupe 'docker' ?",
+      "options": [
+        "usermod -aG docker username",
+        "addgroup username docker",
+        "useradd -g docker username",
+        "groupadd username docker"
+      ],
+      "answer": 0,
+      "explanation": "usermod -aG (append to Group) ajoute l'utilisateur à un groupe supplémentaire sans retirer ses autres groupes. Sans -a, l'utilisateur serait retiré de tous ses autres groupes. L'utilisateur doit se reconnecter pour que ça prenne effet.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 50,
+      "question": "Quelle est la syntaxe d'une entrée crontab pour exécuter un script tous les jours à 3h du matin ?",
+      "options": [
+        "0 3 * * * /path/to/script.sh",
+        "3 0 * * * /path/to/script.sh",
+        "* 3 * * * /path/to/script.sh",
+        "0 3 1 * * /path/to/script.sh"
+      ],
+      "answer": 0,
+      "explanation": "Format crontab : minute heure jour mois jour_semaine commande. 0 3 * * * signifie minute=0, heure=3, tous les jours/mois/jours_semaine. * = tous. On édite avec crontab -e.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 51,
+      "question": "Comment voir l'espace disque utilisé et disponible sur toutes les partitions montées ?",
+      "options": [
+        "disk -h",
+        "df -h",
+        "du -h",
+        "space -h"
+      ],
+      "answer": 1,
+      "explanation": "df (disk free) affiche l'espace disque par système de fichiers. -h rend les tailles lisibles (human-readable). du (disk usage) affiche l'espace utilisé par répertoire. lsblk liste les périphériques de bloc.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 52,
+      "question": "Comment tester la connectivité vers un serveur distant ?",
+      "options": [
+        "test server.com",
+        "ping server.com",
+        "connect server.com",
+        "check server.com"
+      ],
+      "answer": 1,
+      "explanation": "ping envoie des paquets ICMP pour tester la connectivité réseau. ping -c 4 limite à 4 paquets. traceroute/tracepath montre le chemin réseau. ping peut être bloqué par des firewalls.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 53,
+      "question": "Comment afficher les ports en écoute et les connexions établies ?",
+      "options": [
+        "netstat -tulpn",
+        "ports -a",
+        "listening",
+        "connections"
+      ],
+      "answer": 0,
+      "explanation": "netstat -tulpn affiche TCP (-t) et UDP (-u) en écoute (-l) avec le programme (-p) en format numérique (-n). ss est une alternative moderne plus rapide : ss -tulpn. lsof -i montre aussi les connexions.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 54,
+      "question": "Comment afficher l'adresse IP d'une interface réseau avec la commande ip ?",
+      "options": [
+        "ip show",
+        "ip addr show",
+        "ip address",
+        "ip get"
+      ],
+      "answer": 1,
+      "explanation": "ip addr show (ou ip a) affiche les adresses IP de toutes les interfaces. ip link show affiche les interfaces sans les adresses. ip route show affiche la table de routage. ip remplace ifconfig (déprécié).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 55,
+      "question": "Comment télécharger un fichier depuis une URL avec curl ?",
+      "options": [
+        "curl URL",
+        "curl -O URL",
+        "curl --download URL",
+        "curl --get URL"
+      ],
+      "answer": 1,
+      "explanation": "curl -O télécharge le fichier avec son nom d'origine. curl -o nom URL spécifie un nom. curl URL sans option affiche le contenu dans stdout. wget URL télécharge aussi mais avec une syntaxe différente.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 56,
+      "question": "Comment créer une archive tar compressée avec gzip d'un répertoire ?",
+      "options": [
+        "tar -cvf archive.tar.gz directory/",
+        "tar -czvf archive.tar.gz directory/",
+        "tar -xzvf archive.tar.gz directory/",
+        "gzip -c directory/ > archive.tar.gz"
+      ],
+      "answer": 1,
+      "explanation": "tar -czvf crée (c) une archive compressée gzip (z) verbeux (v) dans un fichier (f). -xzvf extrait. -jcvf utilise bzip2. L'extension .tar.gz ou .tgz indique tar+gzip.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 57,
+      "question": "Comment extraire une archive tar.gz ?",
+      "options": [
+        "tar -xzvf archive.tar.gz",
+        "untar archive.tar.gz",
+        "extract archive.tar.gz",
+        "tar -cvf archive.tar.gz"
+      ],
+      "answer": 0,
+      "explanation": "tar -xzvf extrait (x) une archive compressée gzip (z) de manière verbeuse (v) depuis un fichier (f). -C /path/to/dir extrait dans un répertoire spécifique. tar -tf liste le contenu sans extraire.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 58,
+      "question": "Comment compresser un fichier avec gzip ?",
+      "options": [
+        "gzip fichier",
+        "compress fichier",
+        "zip fichier",
+        "tar fichier"
+      ],
+      "answer": 0,
+      "explanation": "gzip fichier compresse et crée fichier.gz (le fichier original est supprimé). gzip -k garde l'original. gunzip ou gzip -d décompresse. bzip2 offre une meilleure compression mais est plus lent.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 59,
+      "question": "Comment compresser plusieurs fichiers dans une archive zip ?",
+      "options": [
+        "zip archive.zip file1 file2 file3",
+        "compress archive.zip file1 file2 file3",
+        "gzip archive.zip file1 file2 file3",
+        "tar -z archive.zip file1 file2 file3"
+      ],
+      "answer": 0,
+      "explanation": "zip crée une archive zip (compatible Windows). zip -r archive.zip directory/ inclut récursivement un répertoire. unzip extrait. zip est différent de gzip qui ne compresse qu'un fichier à la fois.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 60,
+      "question": "Comment extraire une archive zip ?",
+      "options": [
+        "unzip archive.zip",
+        "extract archive.zip",
+        "zip -x archive.zip",
+        "tar -x archive.zip"
+      ],
+      "answer": 0,
+      "explanation": "unzip extrait une archive zip. -l liste le contenu sans extraire, -d /path/ extrait dans un répertoire spécifique. unzip -q est silencieux (quiet).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 61,
+      "question": "Comment déclarer un array (tableau) en bash et y accéder ?",
+      "options": [
+        "array=(val1 val2 val3); echo ${array[0]}",
+        "array[val1, val2, val3]; echo array[0]",
+        "set array val1 val2 val3; echo $array[0]",
+        "declare array=(val1 val2 val3); echo array[0]"
+      ],
+      "answer": 0,
+      "explanation": "array=(val1 val2) déclare un tableau. ${array[0]} accède au premier élément (index 0). ${array[@]} donne tous les éléments. ${#array[@]} donne la longueur. array+=(val4) ajoute un élément.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 62,
+      "question": "Que fait le code suivant : VAR=${1:-default} ?",
+      "options": [
+        "Assigne $1 à VAR, ou 'default' si $1 est non défini ou vide",
+        "Compare $1 à 'default'",
+        "Soustrait 'default' de $1",
+        "Concatène $1 et 'default'"
+      ],
+      "answer": 0,
+      "explanation": "${var:-default} retourne la valeur de var, ou 'default' si var est non défini ou vide. ${var:=default} assigne aussi la valeur par défaut. ${var:?error} affiche une erreur si var est vide. C'est du parameter expansion.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 63,
+      "question": "Comment extraire une sous-chaîne en bash : les 5 premiers caractères de $STR ?",
+      "options": [
+        "${STR:0:5}",
+        "substr($STR, 0, 5)",
+        "$STR[0:5]",
+        "substring($STR, 0, 5)"
+      ],
+      "answer": 0,
+      "explanation": "${variable:offset:length} extrait une sous-chaîne. ${STR:0:5} prend 5 caractères depuis l'index 0. ${STR:2} prend depuis l'index 2 jusqu'à la fin. ${STR: -3} prend les 3 derniers caractères.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 64,
+      "question": "Que fait 'set -euo pipefail' au début d'un script bash ?",
+      "options": [
+        "Active le mode debug",
+        "Arrête le script si une commande échoue, si une variable n'existe pas, ou si un pipe échoue",
+        "Définit des options d'encodage",
+        "Active le mode strict du parsing"
+      ],
+      "answer": 1,
+      "explanation": "set -e arrête si une commande retourne non-zéro. set -u traite les variables non définies comme erreur. set -o pipefail fait échouer un pipe si une commande du pipe échoue. C'est une best practice pour des scripts robustes.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 65,
+      "question": "Comment capturer à la fois stdout et stderr d'une commande dans des variables séparées ?",
+      "options": [
+        "{ stdout=$(commande); stderr=$(commande 2>&1); }",
+        "{ stdout=$(commande 2>&1 1>&3); } 3>&1",
+        "{ stdout=$(commande); } { stderr=$(commande 2>&1); }",
+        "Impossible en bash natif"
+      ],
+      "answer": 1,
+      "explanation": "Pour capturer stdout et stderr séparément, on utilise la redirection de descripteurs : { stdout=$(cmd 2>&3); } 3>&1 1>&2 | { stderr=$(cat); } est une technique avancée. Process substitution peut aussi aider.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 66,
+      "question": "Comment parser les options dans un script bash de manière robuste ?",
+      "options": [
+        "Utiliser if pour chaque argument",
+        "Utiliser getopts dans une boucle while",
+        "Utiliser getopt (externe)",
+        "Les réponses 2 et 3 sont valides"
+      ],
+      "answer": 3,
+      "explanation": "getopts est un builtin bash pour parser les options courtes (-a -b). getopt (externe) supporte aussi les options longues (--option). getopts est plus portable. Exemple : while getopts 'a:b:' opt; do case $opt in ...",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 67,
+      "question": "Comment définir un trap pour exécuter du code de nettoyage à la sortie du script ?",
+      "options": [
+        "trap 'cleanup_function' EXIT",
+        "onexit cleanup_function",
+        "atexit cleanup_function",
+        "finally { cleanup_function }"
+      ],
+      "answer": 0,
+      "explanation": "trap 'commandes' SIGNAL exécute des commandes quand un signal est reçu. trap 'cleanup' EXIT s'exécute toujours à la sortie (succès ou erreur). trap 'handler' INT capture Ctrl+C. C'est essentiel pour le nettoyage de ressources.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 68,
+      "question": "Comment debugger un script bash ligne par ligne ?",
+      "options": [
+        "bash script.sh",
+        "bash -x script.sh",
+        "bash -d script.sh",
+        "debug script.sh"
+      ],
+      "answer": 1,
+      "explanation": "bash -x active le mode trace qui affiche chaque commande avant exécution avec un +. set -x dans le script active le trace. set +x le désactive. PS4 peut être personnalisé pour le format du trace. shellcheck vérifie les erreurs statiques.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 69,
+      "question": "Dans 'top', que signifie un load average de 2.5 sur un système à 4 CPU ?",
+      "options": [
+        "Le système est surchargé de 250%",
+        "62.5% de charge CPU (2.5/4)",
+        "2.5 processus attendent en moyenne les CPU",
+        "Le CPU est utilisé à 2.5 GHz"
+      ],
+      "answer": 2,
+      "explanation": "Load average indique le nombre moyen de processus en attente ou en cours d'exécution. Sur un système à 4 CPU, 2.5 signifie utilisation modérée (~62%). >4 indiquerait une surcharge. Les 3 valeurs sont pour 1, 5 et 15 minutes.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 70,
+      "question": "Comment interpréter la mémoire 'available' vs 'free' dans 'free -h' ?",
+      "options": [
+        "C'est la même chose",
+        "'available' inclut la mémoire récupérable (cache/buffers), 'free' est vraiment libre",
+        "'free' inclut le cache, 'available' est vraiment libre",
+        "'available' est pour les programmes, 'free' pour le système"
+      ],
+      "answer": 1,
+      "explanation": "'available' est la mémoire utilisable pour de nouvelles applications (inclut le cache récupérable). 'free' est la mémoire vraiment inutilisée. Linux utilise la RAM libre pour le cache, mais la libère si nécessaire. Regarder 'available' est plus pertinent.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 71,
+      "question": "Que mesure 'iostat' et comment l'interpréter ?",
+      "options": [
+        "Uniquement l'utilisation CPU",
+        "Les I/O disque et CPU : await (latence), %util (utilisation)",
+        "Uniquement le trafic réseau",
+        "La température des composants"
+      ],
+      "answer": 1,
+      "explanation": "iostat affiche les statistiques CPU et I/O disque. %util indique le pourcentage d'utilisation du disque. await est le temps d'attente moyen. r/s et w/s sont les opérations de lecture/écriture par seconde. %iowait dans la section CPU montre le temps d'attente I/O.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 72,
+      "question": "Comment utiliser 'sar' pour analyser les performances historiques ?",
+      "options": [
+        "sar -A affiche tout",
+        "sar -f /var/log/sa/saXX pour lire les logs historiques",
+        "sar -u pour CPU, -r pour mémoire, -n DEV pour réseau",
+        "Toutes ces réponses sont correctes"
+      ],
+      "answer": 3,
+      "explanation": "sar (System Activity Reporter) collecte et affiche les stats système. sar -u = CPU, -r = mémoire, -b = I/O, -n DEV = réseau. Les données sont dans /var/log/sa/. sar 1 10 affiche 10 échantillons à 1 seconde d'intervalle.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 73,
+      "question": "Comment identifier quel processus utilise un fichier ou port spécifique ?",
+      "options": [
+        "ps aux | grep fichier",
+        "lsof /path/to/file ou lsof -i :port",
+        "netstat -p",
+        "find /proc -name fichier"
+      ],
+      "answer": 1,
+      "explanation": "lsof (list open files) montre quels processus utilisent quels fichiers/ports. lsof /path/file liste les processus utilisant ce fichier. lsof -i :8080 montre qui utilise le port 8080. lsof -u user filtre par utilisateur.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 74,
+      "question": "Comment capturer et analyser le trafic réseau avec tcpdump ?",
+      "options": [
+        "tcpdump -i eth0 port 80",
+        "tcpdump -i any -w capture.pcap",
+        "tcpdump -i eth0 -c 100 host 192.168.1.1",
+        "Toutes ces réponses sont correctes"
+      ],
+      "answer": 3,
+      "explanation": "tcpdump capture les paquets réseau. -i interface spécifie l'interface (any = toutes). -w écrit dans un fichier. -c N capture N paquets. port, host, net sont des filtres. -r lit un fichier pcap. Nécessite root.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 75,
+      "question": "Comment debugger une résolution DNS qui ne fonctionne pas ?",
+      "options": [
+        "ping domain.com",
+        "dig domain.com ou nslookup domain.com",
+        "Vérifier /etc/resolv.conf et /etc/hosts",
+        "Les réponses 2 et 3"
+      ],
+      "answer": 3,
+      "explanation": "dig ou nslookup interrogent les serveurs DNS. dig +trace montre la résolution complète. Vérifier /etc/resolv.conf (serveurs DNS) et /etc/hosts (résolution locale). host est une alternative. systemd-resolve --status sur systemd.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 76,
+      "question": "Comment diagnostiquer des problèmes iptables/firewall ?",
+      "options": [
+        "iptables -L -n -v pour lister les règles",
+        "iptables -L INPUT -v pour voir les règles INPUT avec compteurs",
+        "Vérifier les logs : journalctl -k | grep iptables",
+        "Toutes ces réponses"
+      ],
+      "answer": 3,
+      "explanation": "iptables -L liste les règles. -n évite la résolution DNS. -v montre les compteurs de paquets. iptables -S affiche en format de commandes. Les règles avec LOG target écrivent dans les logs kernel. nftables est le successeur moderne.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 77,
+      "question": "Qu'est-ce que le processus init/systemd (PID 1) et son rôle ?",
+      "options": [
+        "Le premier processus lancé au boot, parent de tous les autres",
+        "Le gestionnaire de services et dépendances",
+        "Il adopte les processus orphelins",
+        "Toutes ces réponses"
+      ],
+      "answer": 3,
+      "explanation": "Le processus PID 1 (systemd sur les systèmes modernes, init sur les anciens) est le premier processus lancé par le kernel. Il démarre les services, gère les dépendances, et adopte les processus orphelins. systemctl est l'interface de systemd.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 78,
+      "question": "Comment investiguer un système qui ne boot pas (mode rescue) ?",
+      "options": [
+        "Booter sur un live CD/USB",
+        "Utiliser systemd.unit=rescue.target au boot",
+        "Vérifier /var/log/boot.log et journalctl -xb",
+        "Toutes ces approches sont valides"
+      ],
+      "answer": 3,
+      "explanation": "Pour un système qui ne boot pas : boot en mode rescue (single-user), ou depuis un live CD. journalctl -xb montre les logs du dernier boot. dmesg montre les messages kernel. Vérifier fstab, GRUB, services critiques.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 79,
+      "question": "Comment diagnostiquer un disque plein alors que df ne montre pas 100% ?",
+      "options": [
+        "Vérifier les inodes : df -i",
+        "Chercher les fichiers supprimés mais ouverts : lsof | grep deleted",
+        "Vérifier les points de montage cachés",
+        "Toutes ces raisons sont possibles"
+      ],
+      "answer": 3,
+      "explanation": "Un disque peut sembler plein si : les inodes sont épuisés (df -i), des fichiers supprimés sont toujours ouverts par des processus (lsof +L1), ou des fichiers sont cachés sous un point de montage. du vs df peut révéler des différences.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 80,
+      "question": "Comment analyser un core dump pour débugger un crash d'application ?",
+      "options": [
+        "gdb /path/to/binary core",
+        "Activer les core dumps : ulimit -c unlimited",
+        "Les core dumps sont dans /var/crash ou selon kernel.core_pattern",
+        "Toutes ces réponses"
+      ],
+      "answer": 3,
+      "explanation": "Les core dumps capturent l'état mémoire lors d'un crash. ulimit -c unlimited les active. Leur emplacement est défini par /proc/sys/kernel/core_pattern. gdb binary corefile permet l'analyse. bt affiche la stack trace dans gdb.",
+      "difficulty": "advanced"
+    }
+  ]
+}

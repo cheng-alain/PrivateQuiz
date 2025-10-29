@@ -1,0 +1,1046 @@
+{
+  "title": "CI/CD",
+  "description": "80 questions couvrant tous les niveaux de CI/CD : 20 questions de base sur les concepts fondamentaux, version control et build, 40 questions intermédiaires sur les pipelines, testing, outils spécifiques et sécurité, et 20 questions avancées sur l'architecture, GitOps, performance et production",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Quelle est la différence entre Continuous Delivery et Continuous Deployment ?",
+      "options": [
+        "Il n'y a aucune différence, ce sont des synonymes",
+        "Continuous Delivery nécessite une approbation manuelle avant la production, Continuous Deployment est entièrement automatisé",
+        "Continuous Deployment concerne uniquement les tests, Continuous Delivery concerne le déploiement",
+        "Continuous Delivery est plus rapide que Continuous Deployment"
+      ],
+      "answer": 1,
+      "explanation": "Continuous Delivery automatise le processus jusqu'à la production mais nécessite une validation manuelle avant le déploiement final. Continuous Deployment va plus loin en automatisant également cette dernière étape, déployant automatiquement en production après validation des tests.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 2,
+      "question": "Qu'est-ce qu'un artifact dans un pipeline CI/CD ?",
+      "options": [
+        "Un fichier de configuration du pipeline",
+        "Un produit compilé ou packagé généré par le pipeline (binaire, image Docker, archive, etc.)",
+        "Un rapport de test automatisé",
+        "Une variable d'environnement"
+      ],
+      "answer": 1,
+      "explanation": "Un artifact est le résultat tangible d'une étape de build : application compilée, image Docker, package npm/jar, etc. Ces artifacts sont stockés et peuvent être réutilisés dans les étapes suivantes du pipeline ou déployés en production.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 3,
+      "question": "Quel est le principe du Trunk-Based Development ?",
+      "options": [
+        "Créer une branche par fonctionnalité qui vit plusieurs semaines",
+        "Travailler directement sur la branche principale avec des commits fréquents et de petites modifications",
+        "Utiliser trois branches principales : develop, staging, production",
+        "Ne jamais merger de code non testé"
+      ],
+      "answer": 1,
+      "explanation": "Le Trunk-Based Development consiste à travailler sur une seule branche principale (trunk/main) avec des commits très fréquents et des modifications incrémentales. Cela réduit les conflits de merge et accélère l'intégration continue.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 4,
+      "question": "Qu'est-ce que le Semantic Versioning (SemVer) ?",
+      "options": [
+        "Un système de versioning avec trois nombres : MAJOR.MINOR.PATCH",
+        "Un système basé sur la date de release : YYYY.MM.DD",
+        "Un système utilisant uniquement des nombres séquentiels",
+        "Un système de tags Git automatiques"
+      ],
+      "answer": 0,
+      "explanation": "Semantic Versioning utilise le format MAJOR.MINOR.PATCH où MAJOR change pour des modifications incompatibles, MINOR pour des ajouts rétro-compatibles, et PATCH pour des corrections de bugs. Exemple : 2.4.1.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 5,
+      "question": "Qu'est-ce qu'un déploiement Blue-Green ?",
+      "options": [
+        "Un déploiement progressif remplaçant 10% des instances à la fois",
+        "Un déploiement avec deux environnements identiques où le trafic bascule instantanément du Blue (ancien) au Green (nouveau)",
+        "Un système de monitoring avec deux dashboards",
+        "Un déploiement utilisant deux clouds différents"
+      ],
+      "answer": 1,
+      "explanation": "Le déploiement Blue-Green maintient deux environnements de production identiques. Le nouveau code est déployé sur l'environnement inactif (Green), testé, puis le trafic bascule instantanément. Cela permet un rollback immédiat si nécessaire.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 6,
+      "question": "Quel est l'objectif principal de l'Infrastructure as Code (IaC) dans CI/CD ?",
+      "options": [
+        "Remplacer les administrateurs système",
+        "Versionner, automatiser et rendre reproductible le provisioning d'infrastructure",
+        "Accélérer uniquement les builds",
+        "Réduire les coûts cloud"
+      ],
+      "answer": 1,
+      "explanation": "L'IaC permet de définir l'infrastructure sous forme de code versionné, facilitant l'automatisation du provisioning dans les pipelines CI/CD, garantissant la reproductibilité et permettant le code review des changements d'infrastructure.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 7,
+      "question": "Qu'est-ce que GitOps ?",
+      "options": [
+        "Une CLI Git avancée",
+        "Un paradigme où Git est la source de vérité pour l'infrastructure et les déploiements, avec réconciliation automatique",
+        "Un système de backup Git",
+        "Un outil de merge automatique"
+      ],
+      "answer": 1,
+      "explanation": "GitOps utilise Git comme source de vérité unique. Les changements d'infrastructure et d'applications sont commités dans Git, et un agent (ArgoCD, Flux) réconcilie automatiquement l'état réel avec l'état désiré défini dans Git.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 8,
+      "question": "Quelle est la fonction principale d'un pipeline CI/CD ?",
+      "options": [
+        "Sauvegarder le code source",
+        "Automatiser le processus Build → Test → Deploy",
+        "Gérer les permissions utilisateurs",
+        "Monitorer les applications en production"
+      ],
+      "answer": 1,
+      "explanation": "Un pipeline CI/CD automatise les étapes de build (compilation), test (validation) et deploy (mise en production), réduisant les erreurs manuelles et accélérant la livraison de valeur.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 9,
+      "question": "Qu'est-ce qu'un Git hook ?",
+      "options": [
+        "Une branche protégée",
+        "Un script exécuté automatiquement à certains moments du workflow Git (commit, push, merge, etc.)",
+        "Un système de backup automatique",
+        "Une commande Git avancée"
+      ],
+      "answer": 1,
+      "explanation": "Les Git hooks sont des scripts qui s'exécutent automatiquement lors d'événements Git. Par exemple, pre-commit peut lancer un linter avant chaque commit, pre-push peut exécuter des tests avant un push.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 10,
+      "question": "Quelle est la différence entre merge et rebase dans Git ?",
+      "options": [
+        "Merge crée un commit de fusion, rebase réécrit l'historique en appliquant les commits de manière linéaire",
+        "Rebase est plus rapide que merge",
+        "Merge est utilisé pour les branches, rebase pour les tags",
+        "Il n'y a aucune différence"
+      ],
+      "answer": 0,
+      "explanation": "Merge combine deux branches avec un commit de fusion préservant l'historique complet. Rebase réapplique les commits d'une branche sur une autre, créant un historique linéaire mais réécrivant l'historique (à éviter sur les branches partagées).",
+      "difficulty": "easy"
+    },
+    {
+      "id": 11,
+      "question": "Qu'est-ce qu'une protected branch ?",
+      "options": [
+        "Une branche chiffrée",
+        "Une branche avec des règles empêchant les push directs et nécessitant des pull requests et validations",
+        "Une branche sauvegardée automatiquement",
+        "Une branche visible uniquement par les admins"
+      ],
+      "answer": 1,
+      "explanation": "Une protected branch (comme main ou production) impose des règles : interdiction de push direct, obligation de pull requests, reviews requises, tests passants, etc. Cela garantit la qualité du code sur les branches critiques.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 12,
+      "question": "À quoi servent les tags Git dans un workflow CI/CD ?",
+      "options": [
+        "À colorer les commits",
+        "À marquer des versions spécifiques du code pour releases et déploiements",
+        "À protéger des branches",
+        "À accélérer les clones Git"
+      ],
+      "answer": 1,
+      "explanation": "Les tags Git marquent des points précis de l'historique, typiquement pour identifier des versions (v1.2.3). Les pipelines CI/CD peuvent se déclencher sur les tags pour automatiser les releases et déploiements de versions.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 13,
+      "question": "Qu'est-ce que le build process ?",
+      "options": [
+        "La sauvegarde du code",
+        "L'ensemble des étapes pour transformer le code source en artifact déployable (compilation, tests unitaires, packaging)",
+        "Le téléchargement des dépendances",
+        "La configuration des serveurs"
+      ],
+      "answer": 1,
+      "explanation": "Le build process englobe toutes les étapes nécessaires pour passer du code source à un artifact prêt à être déployé : compilation, résolution des dépendances, exécution des tests unitaires, packaging, création d'image Docker, etc.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 14,
+      "question": "Qu'est-ce qu'un artifact repository ?",
+      "options": [
+        "Un dépôt Git",
+        "Un système de stockage centralisé pour artifacts binaires (Nexus, Artifactory, registries Docker)",
+        "Un serveur de base de données",
+        "Un système de fichiers partagé"
+      ],
+      "answer": 1,
+      "explanation": "Un artifact repository stocke et gère les artifacts binaires produits par les builds : packages npm, jars Java, images Docker, etc. Des outils comme Nexus, Artifactory ou les registries Docker assurent versioning, sécurité et distribution.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 15,
+      "question": "Pourquoi utilise-t-on Docker dans les pipelines CI/CD ?",
+      "options": [
+        "Pour remplacer Git",
+        "Pour créer des environnements de build et de déploiement reproductibles et isolés",
+        "Pour accélérer uniquement les tests",
+        "Pour stocker les logs"
+      ],
+      "answer": 1,
+      "explanation": "Docker garantit la reproductibilité en encapsulant l'application et ses dépendances. Les pipelines CI/CD buildent des images Docker pour assurer que l'environnement de test soit identique à la production, éliminant les 'works on my machine'.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 16,
+      "question": "Qu'est-ce que le cache dans un pipeline CI/CD ?",
+      "options": [
+        "Un système de sauvegarde",
+        "Un mécanisme de stockage temporaire de dépendances ou artifacts pour accélérer les builds suivants",
+        "Une base de données",
+        "Un système de logs"
+      ],
+      "answer": 1,
+      "explanation": "Le cache stocke des éléments réutilisables entre builds (node_modules, .m2, layers Docker, etc.) pour éviter de retélécharger ou recompiler. Cela réduit drastiquement les temps de build, surtout pour les dépendances volumineuses.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 17,
+      "question": "Qu'est-ce qu'un build matrix ?",
+      "options": [
+        "Un tableau de bord de monitoring",
+        "Une stratégie pour exécuter des builds sur plusieurs configurations en parallèle (OS, versions, etc.)",
+        "Une matrice de permissions",
+        "Un système de dépendances"
+      ],
+      "answer": 1,
+      "explanation": "Un build matrix permet de tester une application sur plusieurs environnements simultanément : différentes versions de langages, OS (Linux/Windows/Mac), architectures (x86/ARM). GitHub Actions et GitLab CI supportent nativement ce pattern.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 18,
+      "question": "Pourquoi versionner les artifacts produits par CI/CD ?",
+      "options": [
+        "Pour occuper plus d'espace disque",
+        "Pour tracer les déploiements, faciliter les rollbacks et respecter la conformité",
+        "Pour accélérer les builds",
+        "Pour réduire les coûts"
+      ],
+      "answer": 1,
+      "explanation": "Versionner les artifacts permet de savoir exactement quelle version est déployée, facilite les rollbacks vers des versions stables, aide aux audits de conformité et assure la reproductibilité des déploiements.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 19,
+      "question": "Qu'est-ce qu'un déploiement Canary ?",
+      "options": [
+        "Un déploiement sur des serveurs jaunes",
+        "Un déploiement progressif où une nouvelle version est testée sur un petit pourcentage d'utilisateurs avant généralisation",
+        "Un déploiement de nuit uniquement",
+        "Un déploiement avec backup automatique"
+      ],
+      "answer": 1,
+      "explanation": "Le déploiement Canary expose la nouvelle version à un petit sous-ensemble d'utilisateurs (ex: 5%) pour détecter les problèmes avant de généraliser. Si les métriques sont bonnes, on augmente progressivement le trafic vers la nouvelle version.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 20,
+      "question": "Que signifie 'Dependencies Management' dans un build ?",
+      "options": [
+        "Gérer les permissions des développeurs",
+        "Gérer les bibliothèques et packages externes dont l'application dépend (npm, maven, pip, etc.)",
+        "Gérer les serveurs de production",
+        "Gérer les branches Git"
+      ],
+      "answer": 1,
+      "explanation": "Dependencies Management concerne la gestion des bibliothèques tierces : téléchargement, résolution de versions, gestion des conflits, sécurité. Des outils comme npm, maven, pip, poetry automatisent cela dans les pipelines CI/CD.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 21,
+      "question": "Qu'est-ce que Pipeline as Code ?",
+      "options": [
+        "Un système de monitoring",
+        "La définition du pipeline CI/CD sous forme de code versionné (Jenkinsfile, .gitlab-ci.yml, .github/workflows)",
+        "Un langage de programmation",
+        "Un système de base de données"
+      ],
+      "answer": 1,
+      "explanation": "Pipeline as Code permet de définir le pipeline dans un fichier texte versionné avec le code source (Jenkinsfile, .gitlab-ci.yml). Cela facilite le versioning, le code review, la réutilisabilité et l'évolution du pipeline avec l'application.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 22,
+      "question": "Dans GitLab CI, comment définir des dépendances entre stages ?",
+      "options": [
+        "Avec le mot-clé 'needs' pour dépendances explicites ou l'ordre des stages pour dépendances séquentielles",
+        "Les stages sont toujours parallèles",
+        "Avec des variables d'environnement",
+        "Ce n'est pas possible"
+      ],
+      "answer": 0,
+      "explanation": "GitLab CI exécute les stages séquentiellement par défaut (build → test → deploy). Le mot-clé 'needs' permet de définir des dépendances explicites entre jobs spécifiques, permettant du parallélisme au sein des stages.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 23,
+      "question": "Comment sécuriser les secrets dans un pipeline CI/CD ?",
+      "options": [
+        "Les mettre en dur dans le code",
+        "Utiliser des variables d'environnement sécurisées, secret managers (Vault, AWS Secrets Manager) et injection au runtime",
+        "Les encoder en base64",
+        "Les mettre dans un fichier .env commité"
+      ],
+      "answer": 1,
+      "explanation": "Les secrets ne doivent jamais être dans le code. On utilise des systèmes de gestion de secrets (Vault, cloud providers) avec injection sécurisée au runtime, ou des variables CI/CD chiffrées et masquées dans les logs.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 24,
+      "question": "Qu'est-ce qu'un manual gate dans un pipeline ?",
+      "options": [
+        "Un test automatique",
+        "Un point d'arrêt nécessitant une approbation manuelle avant de continuer (ex: validation avant prod)",
+        "Un système de cache",
+        "Un rollback automatique"
+      ],
+      "answer": 1,
+      "explanation": "Un manual gate est un point de contrôle dans le pipeline nécessitant une intervention humaine pour valider la suite. Typiquement utilisé avant un déploiement en production pour qu'un responsable approuve explicitement le release.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 25,
+      "question": "Comment optimiser la parallélisation dans un pipeline ?",
+      "options": [
+        "Exécuter tous les jobs séquentiellement",
+        "Identifier les jobs indépendants et les exécuter simultanément (tests unitaires, linting, builds multi-plateformes)",
+        "Utiliser un seul runner",
+        "Désactiver le cache"
+      ],
+      "answer": 1,
+      "explanation": "La parallélisation accélère les pipelines en exécutant simultanément les jobs sans dépendances : tests unitaires sur plusieurs modules, linting, builds pour différentes plateformes, scans de sécurité. Cela réduit le temps total du pipeline.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 26,
+      "question": "Qu'est-ce que le 'failure handling' dans un pipeline ?",
+      "options": [
+        "Ignorer les erreurs",
+        "Définir le comportement en cas d'échec : retry, allow_failure, rollback, notifications",
+        "Supprimer les logs d'erreur",
+        "Redémarrer le serveur"
+      ],
+      "answer": 1,
+      "explanation": "Le failure handling gère les échecs : retry automatique pour erreurs transitoires, allow_failure pour jobs non bloquants, rollback automatique en cas d'échec de déploiement, notifications aux équipes. Cela améliore la résilience du pipeline.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 27,
+      "question": "Quelle est la différence entre cache et artifacts dans GitLab CI ?",
+      "options": [
+        "Aucune différence",
+        "Cache est pour accélérer les builds (dépendances), artifacts pour transmettre des fichiers entre stages/jobs",
+        "Cache est plus rapide que artifacts",
+        "Artifacts est uniquement pour les images Docker"
+      ],
+      "answer": 1,
+      "explanation": "Le cache optimise les temps de build en stockant des dépendances réutilisables (node_modules, .m2) entre pipelines. Les artifacts transmettent des résultats de build entre stages d'un même pipeline (binaires, rapports de tests, images).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 28,
+      "question": "Qu'est-ce que le pattern de pipeline template/réutilisable ?",
+      "options": [
+        "Un pipeline qu'on ne peut pas modifier",
+        "Un pipeline ou des jobs définis une fois et réutilisés par plusieurs projets (DRY, standardisation)",
+        "Un pipeline de backup",
+        "Un pipeline en read-only"
+      ],
+      "answer": 1,
+      "explanation": "Les templates permettent de définir des pipelines ou jobs standards réutilisables (build Node.js, deploy K8s, security scan). Cela évite la duplication (DRY), standardise les pratiques et facilite la maintenance centralisée.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 29,
+      "question": "Quels sont les types de tests à intégrer dans un pipeline CI/CD ?",
+      "options": [
+        "Uniquement les tests unitaires",
+        "Tests unitaires, intégration, end-to-end, smoke tests, performance, sécurité (SAST/DAST)",
+        "Uniquement les tests manuels",
+        "Aucun test, le déploiement suffit"
+      ],
+      "answer": 1,
+      "explanation": "Un pipeline complet intègre plusieurs niveaux de tests : unitaires (rapides), intégration (composants), e2e (scénarios utilisateur), smoke (santé post-déploiement), performance, et sécurité (SAST/DAST/SCA) pour une validation exhaustive.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 30,
+      "question": "Qu'est-ce qu'un quality gate ?",
+      "options": [
+        "Un serveur de qualité",
+        "Un ensemble de critères de qualité (coverage, bugs, vulnérabilités) devant être satisfaits pour continuer le pipeline",
+        "Un test manuel",
+        "Un système de monitoring"
+      ],
+      "answer": 1,
+      "explanation": "Un quality gate définit des seuils de qualité obligatoires : minimum de code coverage (80%), nombre maximal de bugs critiques (0), absence de vulnérabilités haute sévérité. Le pipeline échoue si ces critères ne sont pas remplis.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 31,
+      "question": "Qu'est-ce que SAST (Static Application Security Testing) ?",
+      "options": [
+        "Un test de performance",
+        "Une analyse statique du code source pour détecter des vulnérabilités de sécurité sans exécuter l'application",
+        "Un test d'intégration",
+        "Un déploiement sécurisé"
+      ],
+      "answer": 1,
+      "explanation": "SAST analyse le code source sans l'exécuter pour identifier des vulnérabilités : injections SQL, XSS, secrets hardcodés, etc. Des outils comme SonarQube, Snyk, Checkmarx s'intègrent dans les pipelines CI/CD.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 32,
+      "question": "Qu'est-ce que DAST (Dynamic Application Security Testing) ?",
+      "options": [
+        "Une analyse statique du code",
+        "Un test de sécurité sur l'application en cours d'exécution pour détecter des vulnérabilités runtime",
+        "Un test unitaire",
+        "Un scan de dépendances"
+      ],
+      "answer": 1,
+      "explanation": "DAST teste l'application en cours d'exécution en simulant des attaques réelles (injection, XSS, CSRF) sans accès au code source. Complémentaire à SAST, il détecte des vulnérabilités de configuration et de runtime.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 33,
+      "question": "Qu'est-ce que SCA (Software Composition Analysis) ?",
+      "options": [
+        "Un test de performance",
+        "L'analyse des dépendances open-source pour identifier des vulnérabilités connues (CVE)",
+        "Un test d'intégration",
+        "Un système de cache"
+      ],
+      "answer": 1,
+      "explanation": "SCA scanne les dépendances et bibliothèques tierces pour détecter des vulnérabilités connues (CVE), des licences incompatibles, et des versions obsolètes. Des outils comme Snyk, Dependabot, OWASP Dependency-Check automatisent cela.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 34,
+      "question": "Pourquoi paralléliser les tests dans un pipeline ?",
+      "options": [
+        "Pour complexifier le pipeline",
+        "Pour réduire drastiquement le temps d'exécution en distribuant les tests sur plusieurs runners",
+        "Pour augmenter les coûts",
+        "Ce n'est pas recommandé"
+      ],
+      "answer": 1,
+      "explanation": "La parallélisation des tests (par modules, fichiers, ou suites) réduit significativement le feedback time. Au lieu de 30min séquentielles, 6 runners parallèles peuvent exécuter les tests en 5min, accélérant le développement.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 35,
+      "question": "Qu'est-ce qu'un flaky test et comment le gérer ?",
+      "options": [
+        "Un test qui échoue toujours",
+        "Un test non déterministe qui passe/échoue aléatoirement, à gérer par isolation, retry, ou quarantine",
+        "Un test de performance",
+        "Un test obsolète"
+      ],
+      "answer": 1,
+      "explanation": "Un flaky test échoue aléatoirement à cause de race conditions, timeouts, dépendances externes. On les gère en les isolant, ajoutant des retries, les mettant en quarantaine, ou mieux : en les corrigeant pour garantir la fiabilité du pipeline.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 36,
+      "question": "Dans GitLab CI, à quoi sert le mot-clé 'rules' ?",
+      "options": [
+        "À définir des permissions",
+        "À contrôler conditionnellement l'exécution des jobs (branches, tags, changements de fichiers, etc.)",
+        "À créer des règles de sécurité",
+        "À gérer les dépendances"
+      ],
+      "answer": 1,
+      "explanation": "Le mot-clé 'rules' dans GitLab CI permet d'exécuter des jobs selon des conditions : branche spécifique, présence de tag, changements dans certains fichiers, variables, etc. Plus flexible que 'only/except', c'est le standard moderne.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 37,
+      "question": "Qu'est-ce qu'un GitLab Runner ?",
+      "options": [
+        "Un développeur qui utilise GitLab",
+        "Un agent qui exécute les jobs CI/CD définis dans .gitlab-ci.yml",
+        "Un système de monitoring",
+        "Un type de branche Git"
+      ],
+      "answer": 1,
+      "explanation": "Un GitLab Runner est un agent qui récupère et exécute les jobs du pipeline. Il peut être shared (multi-projets), specific (projet dédié), ou group (groupe de projets). On peut utiliser des runners hébergés ou self-hosted.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 38,
+      "question": "Dans GitLab CI, quelle est la différence entre 'cache' et 'dependencies' ?",
+      "options": [
+        "Aucune différence",
+        "Cache optimise les builds entre pipelines, dependencies spécifie quels artifacts d'autres jobs récupérer",
+        "Dependencies est obsolète",
+        "Cache est plus rapide"
+      ],
+      "answer": 1,
+      "explanation": "Le cache accélère les builds entre pipelines en stockant des fichiers réutilisables. Le mot-clé 'dependencies' spécifie de quels jobs précédents récupérer les artifacts dans le pipeline actuel (alternative : 'needs' avec artifacts:true).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 39,
+      "question": "Comment fonctionne le cache distribué dans GitLab CI ?",
+      "options": [
+        "Le cache est local uniquement",
+        "Le cache peut être partagé via S3, GCS ou stockage distribué pour réutilisation entre runners",
+        "GitLab n'a pas de système de cache",
+        "Le cache est uniquement en mémoire"
+      ],
+      "answer": 1,
+      "explanation": "GitLab CI peut stocker le cache dans un backend distribué (S3, GCS, Azure) permettant à n'importe quel runner de réutiliser le cache. Cela optimise les builds sur des runners différents ou des pipelines parallèles.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 40,
+      "question": "Dans GitHub Actions, qu'est-ce qu'un workflow ?",
+      "options": [
+        "Un type de branche",
+        "Un processus automatisé défini en YAML qui s'exécute sur des événements (push, PR, schedule, etc.)",
+        "Un système de permissions",
+        "Un runner GitHub"
+      ],
+      "answer": 1,
+      "explanation": "Un workflow GitHub Actions est un processus automatisé défini dans .github/workflows/*.yml. Il contient des jobs composés de steps, et se déclenche sur des événements (push, pull_request, schedule, workflow_dispatch, etc.).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 41,
+      "question": "Qu'est-ce que la GitHub Actions Marketplace ?",
+      "options": [
+        "Un magasin en ligne GitHub",
+        "Un catalogue d'actions réutilisables créées par la communauté pour workflows CI/CD",
+        "Un système de paiement",
+        "Un registry Docker"
+      ],
+      "answer": 1,
+      "explanation": "GitHub Actions Marketplace propose des milliers d'actions réutilisables : checkout code, setup Node.js, deploy to AWS, scan security, etc. Cela accélère la création de workflows en utilisant des composants éprouvés.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 42,
+      "question": "Dans GitHub Actions, à quoi sert une 'matrix strategy' ?",
+      "options": [
+        "À créer des matrices mathématiques",
+        "À exécuter un job sur plusieurs configurations en parallèle (OS, versions, etc.)",
+        "À gérer des permissions",
+        "À optimiser le stockage"
+      ],
+      "answer": 1,
+      "explanation": "La matrix strategy dans GitHub Actions permet de tester sur plusieurs configurations simultanément : différentes versions de Node (14, 16, 18), OS (ubuntu, windows, macos), etc. GitHub crée automatiquement un job par combinaison.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 43,
+      "question": "Comment réutiliser des workflows GitHub Actions entre repositories ?",
+      "options": [
+        "Ce n'est pas possible",
+        "Avec les 'reusable workflows' appelés via 'uses' dans un job",
+        "En copiant-collant le YAML",
+        "Via des submodules Git"
+      ],
+      "answer": 1,
+      "explanation": "GitHub Actions supporte les reusable workflows : un workflow peut être appelé depuis un autre via 'uses: org/repo/.github/workflows/workflow.yml@ref'. Cela permet de centraliser la logique commune et standardiser les pratiques.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 44,
+      "question": "Qu'est-ce qu'un Jenkinsfile ?",
+      "options": [
+        "Un fichier de configuration serveur Jenkins",
+        "La définition Pipeline as Code pour Jenkins (Declarative ou Scripted Pipeline)",
+        "Un plugin Jenkins",
+        "Un système de logs"
+      ],
+      "answer": 1,
+      "explanation": "Le Jenkinsfile définit le pipeline CI/CD en code (Groovy) versionné avec l'application. Il existe deux syntaxes : Declarative (plus structurée, recommandée) et Scripted (plus flexible). Cela remplace les pipelines configurés via UI.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 45,
+      "question": "Qu'est-ce qu'un Jenkins Agent ?",
+      "options": [
+        "Un administrateur Jenkins",
+        "Un nœud (machine/conteneur) qui exécute les jobs Jenkins orchestrés par le master",
+        "Un plugin de sécurité",
+        "Un système de monitoring"
+      ],
+      "answer": 1,
+      "explanation": "Un Jenkins Agent est un worker qui exécute les jobs. L'architecture master-agent permet de distribuer les builds : le master orchestre, les agents (statiques ou dynamiques dans K8s) exécutent. Cela permet le scaling et l'isolation.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 46,
+      "question": "Comment fonctionne ArgoCD dans un workflow GitOps ?",
+      "options": [
+        "ArgoCD build les applications",
+        "ArgoCD surveille un repo Git et synchronise automatiquement l'état du cluster K8s avec le repo",
+        "ArgoCD est un registry Docker",
+        "ArgoCD remplace kubectl"
+      ],
+      "answer": 1,
+      "explanation": "ArgoCD est un contrôleur GitOps pour Kubernetes. Il surveille un repo Git contenant les manifests K8s et réconcilie continuellement l'état du cluster avec le repo. Les déploiements se font via Git commits, pas kubectl apply.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 47,
+      "question": "Qu'est-ce qu'un multi-stage Docker build et pourquoi l'utiliser en CI/CD ?",
+      "options": [
+        "Un build qui prend plusieurs jours",
+        "Un Dockerfile avec plusieurs FROM pour builder et créer une image finale minimale (réduction de taille, sécurité)",
+        "Un système de cache Docker",
+        "Un build qui échoue plusieurs fois"
+      ],
+      "answer": 1,
+      "explanation": "Un multi-stage build utilise plusieurs FROM dans un Dockerfile : un stage pour compiler (avec tous les outils), et un stage final minimal avec uniquement le binaire. Cela réduit drastiquement la taille de l'image finale et la surface d'attaque.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 48,
+      "question": "Quelles sont les stratégies de tagging Docker images en CI/CD ?",
+      "options": [
+        "Utiliser uniquement 'latest'",
+        "Combiner git commit SHA, semantic version, branch name, et 'latest' conditionnellement",
+        "Ne jamais tagger les images",
+        "Utiliser des nombres aléatoires"
+      ],
+      "answer": 1,
+      "explanation": "Une bonne stratégie combine plusieurs tags : git SHA (traçabilité), semantic version (releases), branch name (feature branches), et 'latest' uniquement pour main. Exemple : myapp:1.2.3, myapp:abc123f, myapp:main, myapp:latest.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 49,
+      "question": "Comment déployer sur Kubernetes depuis un pipeline CI/CD ?",
+      "options": [
+        "Uniquement avec kubectl apply",
+        "Via kubectl, Helm, Kustomize, ou GitOps (ArgoCD/Flux) selon le niveau d'abstraction souhaité",
+        "Ce n'est pas possible",
+        "Uniquement via l'interface web K8s"
+      ],
+      "answer": 1,
+      "explanation": "Plusieurs options : kubectl apply (bas niveau), Helm (templating et versioning), Kustomize (overlays), ou GitOps avec ArgoCD/Flux (recommandé, déclaratif). Le choix dépend de la complexité et des besoins de l'organisation.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 50,
+      "question": "Qu'est-ce que Kustomize et comment l'utiliser en CI/CD ?",
+      "options": [
+        "Un outil de customisation de clusters",
+        "Un outil de gestion de configuration K8s par overlays (base + variants) sans templating",
+        "Un plugin Kubernetes",
+        "Un système de monitoring"
+      ],
+      "answer": 1,
+      "explanation": "Kustomize gère les configurations K8s via composition : une base commune et des overlays (dev, staging, prod) qui patchent la base. Intégré à kubectl, il évite le templating complexe de Helm tout en permettant la réutilisabilité.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 51,
+      "question": "Qu'est-ce qu'un rolling update Kubernetes et comment le valider en CI/CD ?",
+      "options": [
+        "Un update qui échoue",
+        "Une mise à jour progressive des pods avec validation via readiness/liveness probes",
+        "Un rollback automatique",
+        "Un update manuel"
+      ],
+      "answer": 1,
+      "explanation": "Un rolling update remplace progressivement les pods (un par un ou par batch) en vérifiant leur santé via readiness probes. Le pipeline CI/CD peut monitorer le rollout (kubectl rollout status) et rollback automatiquement en cas d'échec.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 52,
+      "question": "Comment gérer les secrets Kubernetes dans un pipeline CI/CD ?",
+      "options": [
+        "Les commiter dans Git",
+        "Utiliser External Secrets Operator, Sealed Secrets, ou Vault pour chiffrement et rotation automatique",
+        "Les mettre en base64 dans les manifests",
+        "Ne pas utiliser de secrets"
+      ],
+      "answer": 1,
+      "explanation": "Ne jamais commiter les secrets. Solutions : External Secrets Operator (synchronise depuis Vault/AWS Secrets Manager), Sealed Secrets (chiffre les secrets pour Git), ou injection directe via Vault. Le pipeline déploie des références chiffrées, pas les secrets.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 53,
+      "question": "Qu'est-ce que HashiCorp Vault et son rôle en CI/CD ?",
+      "options": [
+        "Un système de sauvegarde",
+        "Un gestionnaire de secrets centralisé avec chiffrement, rotation automatique et audit trail",
+        "Un registry Docker",
+        "Un outil de monitoring"
+      ],
+      "answer": 1,
+      "explanation": "Vault stocke et gère les secrets (API keys, DB passwords, certificates) de manière centralisée et sécurisée. Les pipelines CI/CD s'authentifient auprès de Vault pour récupérer dynamiquement les secrets au runtime, évitant leur exposition.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 54,
+      "question": "Comment injecter des credentials dans un pipeline de manière sécurisée ?",
+      "options": [
+        "Les mettre dans des variables d'environnement en clair",
+        "Via injection au runtime depuis un secret manager avec durée de vie limitée et principe du moindre privilège",
+        "Les encoder en base64",
+        "Les partager par email"
+      ],
+      "answer": 1,
+      "explanation": "Injection sécurisée : récupération au runtime depuis Vault/cloud secret manager, credentials temporaires (STS tokens), masquage dans les logs, principe du moindre privilège (seuls les jobs nécessaires y accèdent), et rotation automatique.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 55,
+      "question": "Qu'est-ce que le signing d'artifacts et pourquoi est-ce important ?",
+      "options": [
+        "Ajouter une signature visuelle",
+        "Signer cryptographiquement les artifacts pour garantir leur intégrité et provenance (supply chain security)",
+        "Compresser les artifacts",
+        "Versionner les artifacts"
+      ],
+      "answer": 1,
+      "explanation": "Le signing (avec GPG, Sigstore/cosign) prouve l'authenticité et l'intégrité des artifacts. En cas de compromission du registry ou man-in-the-middle, la signature invalide alerte de la falsification, protégeant la supply chain.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 56,
+      "question": "Qu'est-ce que RBAC dans une plateforme CI/CD ?",
+      "options": [
+        "Un type de test",
+        "Role-Based Access Control : gestion des permissions basée sur les rôles (qui peut déclencher/modifier/voir quels pipelines)",
+        "Un système de cache",
+        "Un protocole réseau"
+      ],
+      "answer": 1,
+      "explanation": "RBAC définit les permissions par rôles : dev (déclenche pipelines), maintainer (modifie pipelines), viewer (lecture seule). Cela garantit la séparation des responsabilités et limite les risques de modifications non autorisées.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 57,
+      "question": "Pourquoi auditer les logs de pipelines CI/CD ?",
+      "options": [
+        "Pour occuper de l'espace disque",
+        "Pour traçabilité, conformité, détection d'incidents de sécurité, et analyse post-mortem",
+        "Ce n'est pas nécessaire",
+        "Uniquement pour le debugging"
+      ],
+      "answer": 1,
+      "explanation": "Les audit logs tracent qui a fait quoi et quand : déclenchements, modifications de pipeline, accès aux secrets, déploiements. Essentiel pour conformité (SOC2, HIPAA), investigation d'incidents, et détection de comportements anormaux.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 58,
+      "question": "Qu'est-ce que le principe du moindre privilège en CI/CD ?",
+      "options": [
+        "Donner tous les accès à tous",
+        "Accorder uniquement les permissions minimales nécessaires pour chaque job/utilisateur",
+        "Supprimer tous les accès",
+        "Utiliser un seul compte admin"
+      ],
+      "answer": 1,
+      "explanation": "Chaque job/runner ne doit avoir que les permissions strictement nécessaires : un job de test ne doit pas pouvoir déployer en prod, un job de build ne doit pas accéder aux secrets de production. Cela limite l'impact d'une compromission.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 59,
+      "question": "Comment scaler des self-hosted runners/agents CI/CD ?",
+      "options": [
+        "Ajouter manuellement des serveurs",
+        "Via auto-scaling dans K8s, cloud autoscaling groups, ou des solutions comme KEDA",
+        "On ne peut pas scaler les runners",
+        "Redémarrer les serveurs existants"
+      ],
+      "answer": 1,
+      "explanation": "Les runners self-hosted peuvent scaler automatiquement : GitLab Runner Autoscaler, GitHub Actions runners dans K8s avec KEDA (Kubernetes Event-Driven Autoscaling), ou cloud auto-scaling groups. Cela optimise coûts et performance.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 60,
+      "question": "Quelles sont les considérations de sécurité pour des runners self-hosted ?",
+      "options": [
+        "Aucune, ils sont automatiquement sécurisés",
+        "Isolation, updates réguliers, network segmentation, principe du moindre privilège, monitoring",
+        "Utiliser uniquement des runners publics",
+        "Les désactiver"
+      ],
+      "answer": 1,
+      "explanation": "Runners self-hosted nécessitent : isolation (VM/conteneurs dédiés par job), mises à jour régulières, segmentation réseau, pas de secrets en dur, principe du moindre privilège, monitoring des activités, et rotation régulière des tokens.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 61,
+      "question": "Qu'est-ce qu'un distributed build system ?",
+      "options": [
+        "Un build sur plusieurs jours",
+        "Un système qui distribue les étapes de build sur plusieurs machines pour parallélisation massive",
+        "Un système de backup",
+        "Un build cloud uniquement"
+      ],
+      "answer": 1,
+      "explanation": "Les distributed builds (Bazel, Buck, Gradle Enterprise) distribuent la compilation sur plusieurs machines, avec cache partagé intelligent. Pour des monorepos massifs, cela réduit drastiquement les temps de build (minutes vs heures).",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 62,
+      "question": "Comment orchestrer des pipelines multi-repos ?",
+      "options": [
+        "Ce n'est pas possible",
+        "Via pipeline orchestrators (Jenkins Organization Folders, GitLab Multi-project pipelines, Tekton Triggers) ou event-driven",
+        "Exécuter manuellement chaque pipeline",
+        "Merger tous les repos"
+      ],
+      "answer": 1,
+      "explanation": "L'orchestration multi-repos déclenche des pipelines dépendants : un changement dans le repo shared-lib déclenche les builds de tous les services qui l'utilisent. Solutions : Jenkins Organization Folders, GitLab multi-project pipelines, ou webhooks event-driven.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 63,
+      "question": "Quelle est la meilleure stratégie pour des monorepos en CI/CD ?",
+      "options": [
+        "Builder tout à chaque commit",
+        "Change detection pour ne builder que les packages modifiés et leurs dépendants (affected builds)",
+        "Ne jamais utiliser de monorepos",
+        "Builder aléatoirement"
+      ],
+      "answer": 1,
+      "explanation": "Dans un monorepo, le change detection (Nx, Turborepo, Bazel) analyse les fichiers modifiés et la dependency graph pour ne builder/tester que ce qui est affecté. Sur un monorepo de 100 packages, un changement peut ne déclencher que 3 builds.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 64,
+      "question": "Qu'est-ce qu'une ArgoCD Application CRD ?",
+      "options": [
+        "Un type de conteneur",
+        "Une Custom Resource Definition définissant une application GitOps (source Git, destination cluster, sync policy)",
+        "Un système de base de données",
+        "Un plugin ArgoCD"
+      ],
+      "answer": 1,
+      "explanation": "L'Application CRD d'ArgoCD définit déclarativement une application : repo Git source, path des manifests, cluster destination, namespace, sync policy (auto/manual), health checks. ArgoCD réconcilie continuellement cette définition.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 65,
+      "question": "Qu'est-ce qu'une sync wave dans ArgoCD ?",
+      "options": [
+        "Un algorithme de synchronisation",
+        "Un mécanisme d'orchestration de déploiement par phases numérotées (namespaces → CRDs → apps)",
+        "Un type de cache",
+        "Un système de rollback"
+      ],
+      "answer": 1,
+      "explanation": "Les sync waves (annotation argocd.argoproj.io/sync-wave) ordonnent les déploiements : wave 0 (namespaces), wave 1 (CRDs), wave 2 (operators), wave 3 (applications). ArgoCD attend que chaque wave soit healthy avant la suivante.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 66,
+      "question": "Qu'est-ce que Flagger pour progressive delivery ?",
+      "options": [
+        "Un système de feature flags",
+        "Un opérateur K8s automatisant les déploiements canary/blue-green avec métriques et rollback automatique",
+        "Un outil de monitoring",
+        "Un registry d'images"
+      ],
+      "answer": 1,
+      "explanation": "Flagger automatise les progressive deliveries sur K8s : déploiement canary avec augmentation progressive du trafic (5% → 10% → 50% → 100%) basée sur des métriques (error rate, latency). Rollback automatique si les métriques se dégradent.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 67,
+      "question": "Comment implémenter un multi-cluster GitOps ?",
+      "options": [
+        "Installer ArgoCD sur chaque cluster",
+        "Un ArgoCD central avec cluster secrets pour gérer plusieurs clusters, ou ArgoCD par cluster avec ApplicationSet",
+        "Ce n'est pas possible",
+        "Utiliser kubectl sur chaque cluster"
+      ],
+      "answer": 1,
+      "explanation": "Multi-cluster GitOps : soit un ArgoCD central avec des secrets de connexion vers chaque cluster (hub-and-spoke), soit un ArgoCD par cluster avec ApplicationSet pour déploiements coordonnés. Le pattern hub-and-spoke est généralement préféré.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 68,
+      "question": "Quelles sont les stratégies avancées de cache en CI/CD ?",
+      "options": [
+        "Désactiver le cache",
+        "Cache multi-niveaux (local, distribué, CDN), cache fingerprinting, warm cache, et partial cache restore",
+        "Utiliser uniquement le cache local",
+        "Le cache n'est pas important"
+      ],
+      "answer": 1,
+      "explanation": "Stratégies avancées : cache local (runner) + distribué (S3), fingerprinting basé sur hash de fichiers pour invalidation précise, warm cache pre-populé, partial restore (récupérer un cache proche si exact match absent), et compression optimisée.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 69,
+      "question": "Comment optimiser les build times dans un pipeline ?",
+      "options": [
+        "Ajouter plus de stages",
+        "Parallélisation, cache intelligent, incremental builds, artifact reuse, et compilation distribuée",
+        "Exécuter moins de tests",
+        "Utiliser des machines plus lentes"
+      ],
+      "answer": 1,
+      "explanation": "Optimisations : parallélisation massive, cache multi-niveaux, incremental builds (recompiler uniquement le changé), réutilisation d'artifacts entre branches, build distribution (Bazel), layer caching Docker, et élimination des étapes redondantes.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 70,
+      "question": "Qu'est-ce qu'un zero-downtime deployment ?",
+      "options": [
+        "Un déploiement instantané",
+        "Un déploiement sans interruption de service via rolling updates, load balancer switch, ou blue-green",
+        "Un déploiement sans tests",
+        "Un déploiement manuel"
+      ],
+      "answer": 1,
+      "explanation": "Zero-downtime signifie que les utilisateurs ne voient aucune interruption pendant le déploiement. Techniques : rolling updates avec readiness probes, blue-green deployment avec switch load balancer, ou canary avec redirection progressive du trafic.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 71,
+      "question": "Comment gérer les database migrations dans un pipeline CI/CD ?",
+      "options": [
+        "Les exécuter manuellement",
+        "Via outils de migration (Flyway, Liquibase) avec rollback capability et exécution avant le déploiement de l'app",
+        "Ne jamais changer le schéma",
+        "Les ignorer"
+      ],
+      "answer": 1,
+      "explanation": "Les migrations DB doivent être versionnées (Flyway, Liquibase), idempotentes, et exécutées automatiquement dans le pipeline AVANT le déploiement de l'app. Supporter les rollbacks et les backward-compatible changes pour zero-downtime.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 72,
+      "question": "Qu'est-ce que l'intégration de feature flags en CI/CD ?",
+      "options": [
+        "Des flags pour activer/désactiver les pipelines",
+        "Des toggles permettant d'activer/désactiver des features en production sans redéploiement",
+        "Des variables d'environnement",
+        "Des tags Git"
+      ],
+      "answer": 1,
+      "explanation": "Les feature flags (LaunchDarkly, Unleash, OpenFeature) permettent de déployer du code désactivé en production, puis l'activer progressivement par configuration. Cela découple déploiement et release, facilite le testing en prod et les rollbacks instantanés.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 73,
+      "question": "Qu'est-ce que le chaos engineering dans les pipelines ?",
+      "options": [
+        "Créer du désordre aléatoire",
+        "Injecter des pannes contrôlées (latence, erreurs) dans les tests pour valider la résilience de l'application",
+        "Supprimer des tests",
+        "Un système de monitoring"
+      ],
+      "answer": 1,
+      "explanation": "Le chaos engineering (Chaos Mesh, Litmus) injecte des pannes dans les environnements de test/staging : latence réseau, crash de pods, saturation CPU. Cela valide que l'application gère correctement les conditions dégradées avant la production.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 74,
+      "question": "Que sont les DORA metrics ?",
+      "options": [
+        "Des métriques de sécurité",
+        "4 métriques clés : Deployment Frequency, Lead Time for Changes, MTTR, Change Failure Rate",
+        "Des métriques de coût",
+        "Des métriques de code quality"
+      ],
+      "answer": 1,
+      "explanation": "Les DORA metrics mesurent la performance DevOps : Deployment Frequency (fréquence de déploiement), Lead Time for Changes (temps commit→prod), Mean Time to Recovery (temps de restauration après incident), Change Failure Rate (% de déploiements échoués).",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 75,
+      "question": "Comment mesurer le Lead Time for Changes dans un pipeline ?",
+      "options": [
+        "Avec un chronomètre",
+        "Temps entre le premier commit d'une feature et son déploiement en production (trackable via pipeline metadata)",
+        "Temps de build uniquement",
+        "Temps de test uniquement"
+      ],
+      "answer": 1,
+      "explanation": "Lead Time for Changes = temps entre le premier commit d'un changement et sa mise en production. On le mesure en trackant les commits, PR, et déploiements via les APIs CI/CD et Git. Les équipes élites visent <1 heure, les équipes performantes <1 jour.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 76,
+      "question": "Qu'est-ce que Policy as Code dans CI/CD ?",
+      "options": [
+        "Des règles de formatting",
+        "Définir des politiques de sécurité/compliance en code (OPA, Sentinel) appliquées automatiquement dans les pipelines",
+        "Des variables d'environnement",
+        "Des templates de pipeline"
+      ],
+      "answer": 1,
+      "explanation": "Policy as Code (Open Policy Agent, Sentinel) définit des règles en code : images Docker doivent être signées, pas de resources sans resource limits, secrets chiffrés, etc. Ces politiques sont évaluées automatiquement dans les pipelines, bloquant les violations.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 77,
+      "question": "Comment automatiser la compliance (SOC2, HIPAA) dans CI/CD ?",
+      "options": [
+        "Audits manuels uniquement",
+        "Policy as Code, audit logs automatiques, scanning de sécurité, contrôles d'accès RBAC, et documentation automatique",
+        "Ce n'est pas possible",
+        "Désactiver les pipelines"
+      ],
+      "answer": 1,
+      "explanation": "Compliance automation : policy as code pour validation automatique, audit logs complets et immuables, scans de sécurité obligatoires (SAST/DAST/SCA), RBAC strict, signatures cryptographiques, et génération automatique de documentation de conformité.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 78,
+      "question": "Qu'est-ce qu'un Software Bill of Materials (SBOM) ?",
+      "options": [
+        "Une facture logicielle",
+        "Un inventaire exhaustif de tous les composants d'une application (dépendances, versions, licences) pour supply chain security",
+        "Un système de facturation",
+        "Un rapport de tests"
+      ],
+      "answer": 1,
+      "explanation": "Un SBOM liste tous les composants d'une application : bibliothèques, versions, licences, origines. Généré automatiquement dans le pipeline (Syft, CycloneDX), il permet d'identifier rapidement les applications vulnérables lors de CVE (ex: Log4Shell).",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 79,
+      "question": "Comment implémenter des progressive delivery avec métriques ?",
+      "options": [
+        "Déployer et espérer",
+        "Déploiement canary avec monitoring automatique (error rate, latency, business metrics) et rollback automatique si dégradation",
+        "Déploiement manuel seulement",
+        "Ne pas monitorer"
+      ],
+      "answer": 1,
+      "explanation": "Progressive delivery avancée : déploiement canary (5% → 25% → 50% → 100%) avec monitoring automatique des métriques SLI (error rate, p95 latency, business KPIs). Si dégradation détectée, rollback automatique via Flagger/Argo Rollouts + Prometheus.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 80,
+      "question": "Qu'est-ce que la stratégie polyrepo vs monorepo et leur impact sur CI/CD ?",
+      "options": [
+        "Aucune différence",
+        "Polyrepo (un repo par service) simplifie les permissions mais complexifie les changements multi-services ; monorepo facilite les refactoring atomiques mais nécessite selective builds",
+        "Monorepo est toujours meilleur",
+        "Polyrepo est toujours meilleur"
+      ],
+      "answer": 1,
+      "explanation": "Polyrepo : isolation, ownership clair, pipelines simples mais coordination difficile et duplication. Monorepo : refactoring atomiques, visibilité totale, tooling partagé mais nécessite change detection et caching sophistiqués pour scaler les pipelines. Trade-offs selon contexte.",
+      "difficulty": "advanced"
+    }
+  ]
+}

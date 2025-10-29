@@ -1,0 +1,1306 @@
+{
+  "title": "Terraform",
+  "description": "100 questions couvrant tous les niveaux de Terraform : 30 questions de base sur les fondamentaux HCL, commandes et ressources simples, 45 questions intermédiaires sur les modules, state management, variables et fonctions avancées, et 25 questions avancées sur l'architecture production, CI/CD et optimisation",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Qu'est-ce que Terraform ?",
+      "options": [
+        "Un outil d'Infrastructure as Code (IaC) open-source",
+        "Un système d'orchestration de conteneurs",
+        "Un langage de programmation pour le cloud",
+        "Un système de gestion de base de données"
+      ],
+      "answer": 0,
+      "explanation": "Terraform est un outil open-source d'Infrastructure as Code (IaC) développé par HashiCorp, permettant de définir et provisionner l'infrastructure cloud de manière déclarative via des fichiers de configuration.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 2,
+      "question": "Quelle est la différence principale entre une approche déclarative et impérative ?",
+      "options": [
+        "Déclarative décrit l'état souhaité, impérative décrit les étapes",
+        "Déclarative est plus rapide que impérative",
+        "Impérative est utilisée uniquement pour le cloud",
+        "Il n'y a aucune différence"
+      ],
+      "answer": 0,
+      "explanation": "L'approche déclarative (utilisée par Terraform) décrit l'état final souhaité de l'infrastructure, tandis que l'approche impérative décrit les étapes exactes pour y parvenir. Terraform calcule automatiquement les actions nécessaires.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 3,
+      "question": "Quel est le langage de configuration utilisé par Terraform ?",
+      "options": [
+        "YAML",
+        "JSON",
+        "HCL (HashiCorp Configuration Language)",
+        "XML"
+      ],
+      "answer": 2,
+      "explanation": "Terraform utilise HCL (HashiCorp Configuration Language), un langage déclaratif conçu pour être lisible par l'humain tout en étant compatible avec JSON.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 4,
+      "question": "Qu'est-ce qu'un Provider dans Terraform ?",
+      "options": [
+        "Un plugin qui permet d'interagir avec une API (AWS, Azure, GCP, etc.)",
+        "Un fichier de configuration des variables",
+        "Un module réutilisable",
+        "Un type de ressource spécifique"
+      ],
+      "answer": 0,
+      "explanation": "Un Provider est un plugin Terraform qui permet d'interagir avec les APIs de différents fournisseurs cloud (AWS, Azure, GCP) ou services (GitHub, Datadog, etc.).",
+      "difficulty": "easy"
+    },
+    {
+      "id": 5,
+      "question": "Quelle commande initialise un répertoire de travail Terraform ?",
+      "options": [
+        "terraform start",
+        "terraform init",
+        "terraform begin",
+        "terraform setup"
+      ],
+      "answer": 1,
+      "explanation": "La commande 'terraform init' initialise le répertoire de travail, télécharge les providers nécessaires et configure le backend pour le state.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 6,
+      "question": "Que fait la commande 'terraform plan' ?",
+      "options": [
+        "Elle applique les changements à l'infrastructure",
+        "Elle affiche un aperçu des changements sans les appliquer",
+        "Elle détruit toutes les ressources",
+        "Elle valide uniquement la syntaxe"
+      ],
+      "answer": 1,
+      "explanation": "La commande 'terraform plan' crée un plan d'exécution montrant quelles actions Terraform va effectuer pour atteindre l'état désiré, sans appliquer réellement les changements.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 7,
+      "question": "Quelle commande applique les changements d'infrastructure définis dans les fichiers Terraform ?",
+      "options": [
+        "terraform execute",
+        "terraform deploy",
+        "terraform apply",
+        "terraform run"
+      ],
+      "answer": 2,
+      "explanation": "La commande 'terraform apply' applique les changements nécessaires pour atteindre l'état désiré de la configuration. Elle demande généralement une confirmation avant d'exécuter.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 8,
+      "question": "Qu'est-ce que le fichier terraform.tfstate ?",
+      "options": [
+        "Un fichier de configuration des variables",
+        "Un fichier contenant l'état actuel de l'infrastructure gérée",
+        "Un fichier de logs des opérations",
+        "Un fichier de sauvegarde automatique"
+      ],
+      "answer": 1,
+      "explanation": "Le fichier terraform.tfstate contient l'état actuel de l'infrastructure gérée par Terraform, mappant les ressources de configuration aux ressources réelles dans le cloud.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 9,
+      "question": "Quelle commande détruit toutes les ressources gérées par Terraform ?",
+      "options": [
+        "terraform delete",
+        "terraform remove",
+        "terraform destroy",
+        "terraform clean"
+      ],
+      "answer": 2,
+      "explanation": "La commande 'terraform destroy' détruit toutes les ressources gérées par la configuration Terraform actuelle, après demande de confirmation.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 10,
+      "question": "Quelle commande formate automatiquement les fichiers Terraform selon les conventions standards ?",
+      "options": [
+        "terraform format",
+        "terraform fmt",
+        "terraform style",
+        "terraform beautify"
+      ],
+      "answer": 1,
+      "explanation": "La commande 'terraform fmt' formate les fichiers de configuration Terraform selon les conventions de style canoniques recommandées par HashiCorp.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 11,
+      "question": "Que fait la commande 'terraform validate' ?",
+      "options": [
+        "Elle vérifie la syntaxe et la cohérence interne de la configuration",
+        "Elle applique les changements",
+        "Elle teste l'authentification au provider",
+        "Elle optimise les performances"
+      ],
+      "answer": 0,
+      "explanation": "La commande 'terraform validate' vérifie que la configuration est syntaxiquement valide et cohérente en interne, sans accéder aux services distants.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 12,
+      "question": "Comment référencer un attribut d'une ressource dans Terraform ?",
+      "options": [
+        "resource.type.name.attribute",
+        "type.name.attribute",
+        "name.attribute",
+        "${resource.name.attribute}"
+      ],
+      "answer": 1,
+      "explanation": "La syntaxe pour référencer un attribut est 'type.name.attribute', par exemple 'aws_instance.web.id' pour accéder à l'ID d'une instance EC2 nommée 'web'.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 13,
+      "question": "Quelle est la différence entre une 'resource' et une 'data source' ?",
+      "options": [
+        "Une resource crée/modifie, une data source lit des informations existantes",
+        "Une data source est plus rapide qu'une resource",
+        "Une resource est seulement pour AWS",
+        "Il n'y a aucune différence"
+      ],
+      "answer": 0,
+      "explanation": "Une 'resource' crée, met à jour ou supprime de l'infrastructure, tandis qu'une 'data source' permet de récupérer des informations sur des ressources existantes sans les modifier.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 14,
+      "question": "Quel symbole est utilisé pour les commentaires sur une seule ligne en HCL ?",
+      "options": [
+        "//",
+        "#",
+        "Les deux // et # sont valides",
+        "/* */"
+      ],
+      "answer": 2,
+      "explanation": "En HCL, les commentaires sur une seule ligne peuvent utiliser soit '#' soit '//', tandis que '/* */' est utilisé pour les commentaires multi-lignes.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 15,
+      "question": "Quel méta-argument permet de créer plusieurs instances d'une ressource ?",
+      "options": [
+        "multiple",
+        "count",
+        "repeat",
+        "replicas"
+      ],
+      "answer": 1,
+      "explanation": "Le méta-argument 'count' permet de créer plusieurs instances d'une ressource. Par exemple, 'count = 3' créera trois instances identiques de la ressource.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 16,
+      "question": "Que fait le méta-argument 'depends_on' ?",
+      "options": [
+        "Il définit des dépendances explicites entre ressources",
+        "Il crée des variables dépendantes",
+        "Il active le mode debug",
+        "Il définit les versions de providers"
+      ],
+      "answer": 0,
+      "explanation": "Le méta-argument 'depends_on' crée une dépendance explicite entre ressources, forçant Terraform à créer certaines ressources avant d'autres, même si la dépendance n'est pas évidente.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 17,
+      "question": "Quelle commande affiche les valeurs actuelles du state ?",
+      "options": [
+        "terraform display",
+        "terraform show",
+        "terraform print",
+        "terraform view"
+      ],
+      "answer": 1,
+      "explanation": "La commande 'terraform show' affiche l'état actuel ou un plan sauvegardé dans un format lisible par l'humain.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 18,
+      "question": "Comment afficher les valeurs des outputs définis dans la configuration ?",
+      "options": [
+        "terraform output",
+        "terraform show outputs",
+        "terraform print",
+        "terraform get outputs"
+      ],
+      "answer": 0,
+      "explanation": "La commande 'terraform output' affiche les valeurs de tous les outputs définis dans la configuration, ou d'un output spécifique si son nom est fourni.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 19,
+      "question": "Quel type de données HCL représente une liste ordonnée de valeurs ?",
+      "options": [
+        "array",
+        "list",
+        "collection",
+        "sequence"
+      ],
+      "answer": 1,
+      "explanation": "Le type 'list' en HCL représente une collection ordonnée de valeurs du même type, par exemple ['a', 'b', 'c'].",
+      "difficulty": "easy"
+    },
+    {
+      "id": 20,
+      "question": "Quel type de données HCL représente une collection de paires clé-valeur ?",
+      "options": [
+        "dict",
+        "object",
+        "map",
+        "hash"
+      ],
+      "answer": 2,
+      "explanation": "Le type 'map' en HCL représente une collection de paires clé-valeur, par exemple {env = 'prod', region = 'us-east-1'}.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 21,
+      "question": "Que permet le méta-argument 'for_each' ?",
+      "options": [
+        "Créer plusieurs instances d'une ressource à partir d'un map ou set",
+        "Boucler dans les outputs",
+        "Itérer sur les providers",
+        "Créer des conditions"
+      ],
+      "answer": 0,
+      "explanation": "Le méta-argument 'for_each' permet de créer plusieurs instances d'une ressource basées sur un map ou un set, chaque instance ayant des valeurs distinctes.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 22,
+      "question": "Quel argument du lifecycle permet de créer une nouvelle ressource avant de détruire l'ancienne ?",
+      "options": [
+        "prevent_destroy",
+        "create_before_destroy",
+        "ignore_changes",
+        "replace_triggered_by"
+      ],
+      "answer": 1,
+      "explanation": "L'argument 'create_before_destroy = true' dans le bloc lifecycle garantit qu'une nouvelle ressource est créée avant que l'ancienne ne soit détruite, minimisant les temps d'arrêt.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 23,
+      "question": "Quelle est la convention de nommage recommandée pour les ressources Terraform ?",
+      "options": [
+        "camelCase",
+        "PascalCase",
+        "snake_case",
+        "kebab-case"
+      ],
+      "answer": 2,
+      "explanation": "La convention recommandée par HashiCorp est snake_case pour les noms de ressources, variables et modules (exemple: my_ec2_instance).",
+      "difficulty": "easy"
+    },
+    {
+      "id": 24,
+      "question": "Comment ajouter des tags aux ressources AWS dans Terraform ?",
+      "options": [
+        "Via un bloc 'labels'",
+        "Via un argument 'tags' avec un map",
+        "Via un fichier .tags",
+        "Via la commande terraform tag"
+      ],
+      "answer": 1,
+      "explanation": "Les tags AWS sont définis via l'argument 'tags' qui accepte un map de paires clé-valeur, par exemple: tags = { Environment = 'prod', Project = 'web' }.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 25,
+      "question": "Quelle est l'extension standard des fichiers de configuration Terraform ?",
+      "options": [
+        ".tf",
+        ".terraform",
+        ".hcl",
+        ".tfconfig"
+      ],
+      "answer": 0,
+      "explanation": "Les fichiers de configuration Terraform utilisent l'extension .tf (par exemple main.tf, variables.tf, outputs.tf).",
+      "difficulty": "easy"
+    },
+    {
+      "id": 26,
+      "question": "Que signifie IaC (Infrastructure as Code) ?",
+      "options": [
+        "Gestion de l'infrastructure via du code versionnable",
+        "Infrastructure automatique et continue",
+        "Infrastructure as a Cloud",
+        "Internet and Cloud"
+      ],
+      "answer": 0,
+      "explanation": "IaC (Infrastructure as Code) est une approche qui consiste à gérer et provisionner l'infrastructure via des fichiers de configuration versionnés, plutôt que par des processus manuels.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 27,
+      "question": "Quelle commande permet de télécharger et mettre à jour les modules référencés ?",
+      "options": [
+        "terraform get",
+        "terraform init",
+        "terraform modules",
+        "terraform update"
+      ],
+      "answer": 1,
+      "explanation": "La commande 'terraform init' télécharge les modules et providers nécessaires. 'terraform get' était utilisé dans les anciennes versions mais init est maintenant recommandé.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 28,
+      "question": "Que fait l'argument 'prevent_destroy' dans le bloc lifecycle ?",
+      "options": [
+        "Il empêche la destruction accidentelle d'une ressource",
+        "Il force la création avant destruction",
+        "Il ignore les changements",
+        "Il active le backup automatique"
+      ],
+      "answer": 0,
+      "explanation": "L'argument 'prevent_destroy = true' empêche Terraform de détruire la ressource. Si une action nécessiterait la destruction, Terraform retournera une erreur.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 29,
+      "question": "Quel est l'avantage principal de Terraform par rapport aux outils spécifiques au cloud comme CloudFormation ?",
+      "options": [
+        "Terraform est multi-cloud et agnostique",
+        "Terraform est plus rapide",
+        "Terraform est gratuit",
+        "Terraform n'a pas d'avantages"
+      ],
+      "answer": 0,
+      "explanation": "L'avantage principal de Terraform est qu'il est agnostique du cloud et multi-cloud, permettant de gérer l'infrastructure sur AWS, Azure, GCP et bien d'autres avec le même outil et langage.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 30,
+      "question": "Que représente le symbole '=' dans un bloc de ressource HCL ?",
+      "options": [
+        "Une comparaison",
+        "Une affectation d'argument",
+        "Une référence",
+        "Une condition"
+      ],
+      "answer": 1,
+      "explanation": "Dans HCL, le symbole '=' est utilisé pour assigner une valeur à un argument dans un bloc (exemple: instance_type = 't2.micro').",
+      "difficulty": "easy"
+    },
+    {
+      "id": 31,
+      "question": "Quels sont les trois types de variables dans Terraform ?",
+      "options": [
+        "input, output, local",
+        "global, local, temporary",
+        "public, private, protected",
+        "static, dynamic, computed"
+      ],
+      "answer": 0,
+      "explanation": "Terraform utilise trois types de variables : input (variables d'entrée), output (valeurs exposées), et local (valeurs calculées localement non exposées).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 32,
+      "question": "Comment déclare-t-on une variable de type object en Terraform ?",
+      "options": [
+        "type = object({ key1 = string, key2 = number })",
+        "type = struct({ key1 = string, key2 = number })",
+        "type = map(any)",
+        "type = complex"
+      ],
+      "answer": 0,
+      "explanation": "Une variable de type object se déclare avec 'type = object({ ... })', permettant de définir une structure avec des attributs typés, par exemple: object({ name = string, age = number }).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 33,
+      "question": "Quelle est la différence entre list et tuple dans Terraform ?",
+      "options": [
+        "list contient le même type, tuple peut contenir des types différents",
+        "list est modifiable, tuple est immutable",
+        "tuple est plus rapide que list",
+        "Il n'y a aucune différence"
+      ],
+      "answer": 0,
+      "explanation": "Un 'list' contient des éléments du même type (list(string)), tandis qu'un 'tuple' peut contenir des éléments de types différents avec des positions fixes, par exemple tuple([string, number, bool]).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 34,
+      "question": "Comment définir une valeur par défaut pour une variable ?",
+      "options": [
+        "default = value",
+        "value = default",
+        "initial = value",
+        "preset = value"
+      ],
+      "answer": 0,
+      "explanation": "Dans le bloc variable, on utilise l'argument 'default' pour définir une valeur par défaut : variable 'example' { default = 'value' }.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 35,
+      "question": "Comment valider qu'une variable respecte certaines conditions ?",
+      "options": [
+        "En utilisant un bloc 'validation'",
+        "En utilisant un bloc 'constraint'",
+        "En utilisant un bloc 'check'",
+        "En utilisant un bloc 'assert'"
+      ],
+      "answer": 0,
+      "explanation": "Le bloc 'validation' permet de définir des règles de validation avec une condition et un message d'erreur : validation { condition = ..., error_message = ... }.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 36,
+      "question": "Quelle extension de fichier est utilisée pour définir des valeurs de variables ?",
+      "options": [
+        ".tfvars",
+        ".vars",
+        ".tfvar",
+        ".variables"
+      ],
+      "answer": 0,
+      "explanation": "Les fichiers .tfvars (terraform.tfvars ou *.auto.tfvars) sont utilisés pour définir les valeurs des variables déclarées dans les fichiers .tf.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 37,
+      "question": "Comment passer une variable via la ligne de commande ?",
+      "options": [
+        "-var 'name=value'",
+        "--variable name=value",
+        "-v name=value",
+        "--var name value"
+      ],
+      "answer": 0,
+      "explanation": "On utilise le flag '-var' pour passer une variable en ligne de commande : terraform apply -var 'instance_type=t2.large'.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 38,
+      "question": "Quel préfixe de variable d'environnement Terraform reconnaît-il automatiquement ?",
+      "options": [
+        "TF_VAR_",
+        "TERRAFORM_VAR_",
+        "VAR_",
+        "TF_"
+      ],
+      "answer": 0,
+      "explanation": "Terraform reconnaît automatiquement les variables d'environnement avec le préfixe TF_VAR_. Par exemple, TF_VAR_region définira la variable 'region'.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 39,
+      "question": "Comment marquer une variable comme sensible pour masquer sa valeur dans les logs ?",
+      "options": [
+        "sensitive = true",
+        "secret = true",
+        "hidden = true",
+        "protected = true"
+      ],
+      "answer": 0,
+      "explanation": "L'argument 'sensitive = true' dans le bloc variable masque la valeur dans les logs et outputs de Terraform pour protéger les données sensibles.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 40,
+      "question": "Quel est l'ordre de priorité des sources de valeurs de variables (du plus faible au plus fort) ?",
+      "options": [
+        "default → env → tfvars → CLI",
+        "CLI → tfvars → env → default",
+        "env → default → tfvars → CLI",
+        "tfvars → env → CLI → default"
+      ],
+      "answer": 0,
+      "explanation": "L'ordre de priorité est : valeurs par défaut < variables d'environnement < fichiers .tfvars < arguments CLI (-var). Les arguments CLI ont la plus haute priorité.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 41,
+      "question": "Quelle est la différence entre une variable 'output' normale et 'sensitive' ?",
+      "options": [
+        "Une output sensitive masque sa valeur dans les logs",
+        "Une output sensitive est cryptée dans le state",
+        "Une output sensitive n'est pas stockée",
+        "Il n'y a aucune différence"
+      ],
+      "answer": 0,
+      "explanation": "Un output marqué comme 'sensitive = true' masque sa valeur dans les logs et le terminal, mais elle reste stockée en clair dans le state file.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 42,
+      "question": "Qu'est-ce qu'un module Terraform ?",
+      "options": [
+        "Un conteneur réutilisable de ressources Terraform",
+        "Un plugin pour étendre Terraform",
+        "Un fichier de configuration spécial",
+        "Une commande Terraform"
+      ],
+      "answer": 0,
+      "explanation": "Un module est un conteneur de ressources Terraform réutilisables. Tout dossier contenant des fichiers .tf est techniquement un module.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 43,
+      "question": "Quels sont les trois fichiers standards recommandés dans un module ?",
+      "options": [
+        "main.tf, variables.tf, outputs.tf",
+        "config.tf, vars.tf, results.tf",
+        "module.tf, inputs.tf, outputs.tf",
+        "terraform.tf, variables.tf, exports.tf"
+      ],
+      "answer": 0,
+      "explanation": "La structure recommandée pour un module inclut : main.tf (ressources principales), variables.tf (déclarations de variables), outputs.tf (valeurs exposées).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 44,
+      "question": "Comment référencer un module local dans Terraform ?",
+      "options": [
+        "source = './modules/vpc'",
+        "source = 'local://modules/vpc'",
+        "module = './modules/vpc'",
+        "path = './modules/vpc'"
+      ],
+      "answer": 0,
+      "explanation": "Pour référencer un module local, on utilise un chemin relatif ou absolu dans l'argument 'source' : source = './modules/vpc' ou source = '/absolute/path'.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 45,
+      "question": "Comment référencer un module depuis le Terraform Registry ?",
+      "options": [
+        "source = 'terraform-aws-modules/vpc/aws'",
+        "source = 'registry.terraform.io/vpc/aws'",
+        "source = 'https://registry.terraform.io/vpc'",
+        "registry = 'terraform-aws-modules/vpc/aws'"
+      ],
+      "answer": 0,
+      "explanation": "Les modules du Terraform Registry sont référencés avec la syntaxe 'namespace/name/provider', par exemple: source = 'terraform-aws-modules/vpc/aws'.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 46,
+      "question": "Comment spécifier une version spécifique d'un module ?",
+      "options": [
+        "version = '1.0.0'",
+        "module_version = '1.0.0'",
+        "tag = '1.0.0'",
+        "release = '1.0.0'"
+      ],
+      "answer": 0,
+      "explanation": "L'argument 'version' dans le bloc module permet de spécifier une version précise ou une contrainte de version : version = '~> 1.0' ou version = '1.2.3'.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 47,
+      "question": "Quelle est la différence entre root module et child module ?",
+      "options": [
+        "Root module est le point d'entrée, child modules sont appelés par d'autres modules",
+        "Root module est sur le registry, child est local",
+        "Child module est plus prioritaire que root",
+        "Il n'y a aucune différence"
+      ],
+      "answer": 0,
+      "explanation": "Le root module est le répertoire de travail où on exécute les commandes Terraform. Les child modules sont appelés par le root ou d'autres modules via le bloc 'module'.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 48,
+      "question": "Comment utiliser count avec un module ?",
+      "options": [
+        "On ajoute count = X dans le bloc module",
+        "On utilise for_each uniquement",
+        "C'est impossible avec les modules",
+        "On duplique le bloc module"
+      ],
+      "answer": 0,
+      "explanation": "Le méta-argument 'count' peut être utilisé avec les modules pour créer plusieurs instances : module 'server' { count = 3, source = './server' }.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 49,
+      "question": "Comment utiliser for_each avec un module ?",
+      "options": [
+        "On ajoute for_each = map/set dans le bloc module",
+        "C'est impossible avec les modules",
+        "On utilise uniquement count",
+        "On duplique le fichier .tf"
+      ],
+      "answer": 0,
+      "explanation": "Le méta-argument 'for_each' peut être utilisé avec un map ou set pour créer plusieurs instances de modules avec des configurations différentes.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 50,
+      "question": "Comment accéder à un output d'un module child ?",
+      "options": [
+        "module.module_name.output_name",
+        "module_name.output_name",
+        "output.module_name.output_name",
+        "${module_name.output_name}"
+      ],
+      "answer": 0,
+      "explanation": "Les outputs d'un module child sont accessibles via la syntaxe 'module.module_name.output_name', par exemple: module.vpc.vpc_id.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 51,
+      "question": "Qu'est-ce que le state file Terraform ?",
+      "options": [
+        "Un fichier JSON mappant la config aux ressources réelles",
+        "Un fichier de logs",
+        "Un fichier de backup",
+        "Un fichier de cache temporaire"
+      ],
+      "answer": 0,
+      "explanation": "Le state file (terraform.tfstate) est un fichier JSON qui mappe les ressources définies dans la configuration aux ressources réelles dans le cloud, permettant à Terraform de suivre l'infrastructure.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 52,
+      "question": "Pourquoi est-il recommandé d'utiliser un remote state plutôt qu'un local state ?",
+      "options": [
+        "Pour le locking, la collaboration et la sécurité",
+        "Parce que c'est obligatoire",
+        "Pour des performances meilleures",
+        "Pour économiser de l'espace disque"
+      ],
+      "answer": 0,
+      "explanation": "Le remote state permet le state locking (évite les modifications concurrentes), facilite la collaboration en équipe, et améliore la sécurité avec chiffrement et contrôle d'accès.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 53,
+      "question": "Qu'est-ce que le state locking ?",
+      "options": [
+        "Un mécanisme empêchant les modifications concurrentes du state",
+        "Un cryptage du state file",
+        "Une sauvegarde automatique du state",
+        "Une validation des changements"
+      ],
+      "answer": 0,
+      "explanation": "Le state locking empêche plusieurs utilisateurs d'exécuter des opérations Terraform simultanément sur le même state, évitant ainsi les conflits et corruptions.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 54,
+      "question": "Quel backend AWS est couramment utilisé avec DynamoDB pour le locking ?",
+      "options": [
+        "S3",
+        "RDS",
+        "EFS",
+        "EBS"
+      ],
+      "answer": 0,
+      "explanation": "Le backend S3 est couramment utilisé pour stocker le state, combiné avec DynamoDB pour le state locking. S3 stocke le fichier, DynamoDB gère les verrous.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 55,
+      "question": "Comment lister toutes les ressources dans le state ?",
+      "options": [
+        "terraform state list",
+        "terraform state show",
+        "terraform list",
+        "terraform resources"
+      ],
+      "answer": 0,
+      "explanation": "La commande 'terraform state list' affiche toutes les ressources actuellement trackées dans le state file.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 56,
+      "question": "Comment afficher les détails d'une ressource spécifique dans le state ?",
+      "options": [
+        "terraform state show resource_type.resource_name",
+        "terraform show resource_type.resource_name",
+        "terraform state get resource_type.resource_name",
+        "terraform inspect resource_type.resource_name"
+      ],
+      "answer": 0,
+      "explanation": "La commande 'terraform state show resource_type.resource_name' affiche tous les attributs d'une ressource spécifique du state.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 57,
+      "question": "Comment déplacer une ressource dans le state (renommer) ?",
+      "options": [
+        "terraform state mv source destination",
+        "terraform state rename source destination",
+        "terraform state move source destination",
+        "terraform rename source destination"
+      ],
+      "answer": 0,
+      "explanation": "La commande 'terraform state mv' permet de déplacer ou renommer une ressource dans le state sans la recréer : terraform state mv aws_instance.old aws_instance.new.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 58,
+      "question": "Comment supprimer une ressource du state sans la détruire dans le cloud ?",
+      "options": [
+        "terraform state rm resource_type.resource_name",
+        "terraform state delete resource_type.resource_name",
+        "terraform state remove resource_type.resource_name",
+        "terraform untrack resource_type.resource_name"
+      ],
+      "answer": 0,
+      "explanation": "La commande 'terraform state rm' supprime une ressource du state file mais ne la détruit pas dans le cloud. Utile pour ne plus gérer une ressource avec Terraform.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 59,
+      "question": "Comment importer une ressource existante dans Terraform ?",
+      "options": [
+        "terraform import resource_type.resource_name resource_id",
+        "terraform add resource_type.resource_name resource_id",
+        "terraform state import resource_type.resource_name resource_id",
+        "terraform create resource_type.resource_name resource_id"
+      ],
+      "answer": 0,
+      "explanation": "La commande 'terraform import' permet d'importer une ressource existante dans le state. Il faut d'abord déclarer la ressource dans le code, puis l'importer.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 60,
+      "question": "Que fait la commande 'terraform refresh' ?",
+      "options": [
+        "Elle met à jour le state avec l'état réel de l'infrastructure",
+        "Elle recharge les providers",
+        "Elle nettoie le cache",
+        "Elle réinitialise la configuration"
+      ],
+      "answer": 0,
+      "explanation": "La commande 'terraform refresh' interroge l'infrastructure réelle et met à jour le state file pour refléter les changements effectués en dehors de Terraform (drift detection).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 61,
+      "question": "Qu'est-ce qu'un workspace Terraform ?",
+      "options": [
+        "Un state isolé dans le même répertoire de travail",
+        "Un dossier séparé pour chaque environnement",
+        "Un provider spécifique",
+        "Un module particulier"
+      ],
+      "answer": 0,
+      "explanation": "Un workspace est une instance isolée de state dans le même répertoire de travail. Cela permet de gérer plusieurs environnements (dev, staging, prod) avec la même configuration.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 62,
+      "question": "Comment créer un nouveau workspace ?",
+      "options": [
+        "terraform workspace new workspace_name",
+        "terraform workspace create workspace_name",
+        "terraform new workspace workspace_name",
+        "terraform create workspace workspace_name"
+      ],
+      "answer": 0,
+      "explanation": "La commande 'terraform workspace new workspace_name' crée et bascule vers un nouveau workspace avec son propre state file.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 63,
+      "question": "Comment lister tous les workspaces disponibles ?",
+      "options": [
+        "terraform workspace list",
+        "terraform workspace show",
+        "terraform list workspaces",
+        "terraform workspaces"
+      ],
+      "answer": 0,
+      "explanation": "La commande 'terraform workspace list' affiche tous les workspaces disponibles, avec une astérisque (*) indiquant le workspace actuel.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 64,
+      "question": "Comment accéder au nom du workspace actuel dans la configuration ?",
+      "options": [
+        "terraform.workspace",
+        "workspace.name",
+        "current_workspace",
+        "var.workspace"
+      ],
+      "answer": 0,
+      "explanation": "La variable built-in 'terraform.workspace' contient le nom du workspace actuel et peut être utilisée dans les configurations pour des comportements conditionnels.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 65,
+      "question": "Quelle est une limitation des workspaces ?",
+      "options": [
+        "Tous les workspaces partagent le même backend",
+        "Maximum de 10 workspaces par projet",
+        "Impossible d'utiliser avec des modules",
+        "Ne fonctionne qu'avec AWS"
+      ],
+      "answer": 0,
+      "explanation": "Une limitation des workspaces est que tous partagent le même backend. Pour une isolation complète (différents comptes cloud, équipes), il est préférable d'utiliser des répertoires ou repos séparés.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 66,
+      "question": "Qu'est-ce qu'une expression conditionnelle en Terraform ?",
+      "options": [
+        "condition ? true_val : false_val",
+        "if condition then true_val else false_val",
+        "condition && true_val || false_val",
+        "condition ? true_val"
+      ],
+      "answer": 0,
+      "explanation": "Terraform utilise l'opérateur ternaire pour les expressions conditionnelles : condition ? valeur_si_vrai : valeur_si_faux, similaire à beaucoup de langages de programmation.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 67,
+      "question": "Comment créer une boucle for dans Terraform ?",
+      "options": [
+        "[for item in list : transformation]",
+        "for item in list { transformation }",
+        "foreach item in list : transformation",
+        "loop item in list => transformation"
+      ],
+      "answer": 0,
+      "explanation": "Les for expressions utilisent la syntaxe [for item in list : transformation] pour les listes ou {for key, val in map : key => transformation} pour les maps.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 68,
+      "question": "Que permet l'expression splat [*] ?",
+      "options": [
+        "Extraire un attribut de tous les éléments d'une liste",
+        "Multiplier des valeurs",
+        "Créer des wildcards",
+        "Concaténer des listes"
+      ],
+      "answer": 0,
+      "explanation": "L'expression splat [*] permet d'extraire un attribut spécifique de tous les éléments d'une liste. Par exemple : aws_instance.web[*].id retourne tous les IDs.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 69,
+      "question": "Quelle fonction Terraform lit le contenu d'un fichier ?",
+      "options": [
+        "file(path)",
+        "read(path)",
+        "load(path)",
+        "readfile(path)"
+      ],
+      "answer": 0,
+      "explanation": "La fonction 'file(path)' lit et retourne le contenu d'un fichier en tant que string. Exemple : file('${path.module}/script.sh').",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 70,
+      "question": "Quelle fonction fusionne plusieurs maps en une seule ?",
+      "options": [
+        "merge(map1, map2, ...)",
+        "concat(map1, map2, ...)",
+        "combine(map1, map2, ...)",
+        "join(map1, map2, ...)"
+      ],
+      "answer": 0,
+      "explanation": "La fonction 'merge()' fusionne plusieurs maps en une seule. En cas de clés dupliquées, la dernière valeur prend le dessus : merge(map1, map2).",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 71,
+      "question": "Quelle fonction permet de décoder du JSON ?",
+      "options": [
+        "jsondecode(string)",
+        "json_decode(string)",
+        "parseJSON(string)",
+        "fromJSON(string)"
+      ],
+      "answer": 0,
+      "explanation": "La fonction 'jsondecode()' parse une string JSON et retourne la structure de données correspondante. Inverse de jsonencode().",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 72,
+      "question": "Quelle fonction permet de décoder du YAML ?",
+      "options": [
+        "yamldecode(string)",
+        "yaml_decode(string)",
+        "parseYAML(string)",
+        "fromYAML(string)"
+      ],
+      "answer": 0,
+      "explanation": "La fonction 'yamldecode()' parse une string YAML et retourne la structure de données correspondante. Utile pour lire des fichiers de configuration YAML.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 73,
+      "question": "Qu'est-ce qu'un dynamic block ?",
+      "options": [
+        "Un bloc qui génère des sous-blocs répétitifs dynamiquement",
+        "Un bloc qui change de configuration automatiquement",
+        "Un bloc qui s'exécute en dernier",
+        "Un bloc optionnel"
+      ],
+      "answer": 0,
+      "explanation": "Un dynamic block permet de générer dynamiquement plusieurs blocs imbriqués (nested blocks) basés sur une collection, évitant la répétition de code pour des configurations similaires.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 74,
+      "question": "Qu'est-ce qu'un provisioner 'local-exec' ?",
+      "options": [
+        "Exécute une commande sur la machine qui lance Terraform",
+        "Exécute une commande sur la ressource créée",
+        "Configure le provider local",
+        "Crée des ressources locales"
+      ],
+      "answer": 0,
+      "explanation": "Le provisioner 'local-exec' exécute une commande sur la machine locale (celle qui exécute Terraform), utile pour déclencher des scripts ou webhooks après création de ressources.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 75,
+      "question": "Qu'est-ce qu'un provisioner 'remote-exec' ?",
+      "options": [
+        "Exécute une commande sur la ressource distante via SSH ou WinRM",
+        "Exécute une commande localement",
+        "Configure le backend distant",
+        "Synchronise des fichiers"
+      ],
+      "answer": 0,
+      "explanation": "Le provisioner 'remote-exec' exécute des commandes sur la ressource créée en se connectant via SSH (Linux) ou WinRM (Windows), utile pour la configuration post-création.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 76,
+      "question": "Pourquoi HashiCorp recommande-t-il d'éviter les provisioners ?",
+      "options": [
+        "Ils rendent l'infrastructure moins prévisible et idempotente",
+        "Ils sont trop lents",
+        "Ils sont obsolètes",
+        "Ils coûtent plus cher"
+      ],
+      "answer": 0,
+      "explanation": "Les provisioners sont découragés car ils rendent Terraform moins déclaratif et idempotent. Il est préférable d'utiliser des outils dédiés comme cloud-init, Ansible, ou Packer pour la configuration.",
+      "difficulty": "intermediate"
+    },
+      {
+      "id": 77,
+      "question": "Qu'est-ce que la ressource 'null_resource' ?",
+      "options": [
+        "Une ressource qui n'existe que pour exécuter des provisioners",
+        "Une ressource vide sans effet",
+        "Une ressource pour les tests",
+        "Une ressource supprimée"
+      ],
+      "answer": 0,
+      "explanation": "La ressource 'null_resource' ne crée rien dans le cloud mais permet d'exécuter des provisioners ou de créer des dépendances, utile pour orchestrer des actions externes.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 78,
+      "question": "Quelle est la différence principale entre une data source et une resource ?",
+      "options": [
+        "Une data source lit, une resource crée/modifie/supprime",
+        "Une data source est plus rapide",
+        "Une resource est uniquement pour AWS",
+        "Il n'y a aucune différence"
+      ],
+      "answer": 0,
+      "explanation": "Les data sources permettent de lire des informations sur des ressources existantes (sans les modifier), tandis que les resources créent, modifient et suppriment de l'infrastructure.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 79,
+      "question": "Donnez un exemple de data source AWS couramment utilisée.",
+      "options": [
+        "aws_ami pour récupérer une AMI",
+        "aws_create_instance",
+        "aws_get_vpc",
+        "aws_read_subnet"
+      ],
+      "answer": 0,
+      "explanation": "La data source 'aws_ami' permet de récupérer les informations d'une AMI existante basée sur des filtres (nom, owner, tags), très utile pour trouver la dernière AMI Ubuntu par exemple.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 80,
+      "question": "Quelle data source AWS liste les availability zones disponibles ?",
+      "options": [
+        "aws_availability_zones",
+        "aws_zones",
+        "aws_az_list",
+        "aws_regions"
+      ],
+      "answer": 0,
+      "explanation": "La data source 'aws_availability_zones' retourne la liste des availability zones disponibles dans une région AWS, utile pour déployer des ressources multi-AZ.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 81,
+      "question": "Quel backend distant permet le state locking avec Consul ?",
+      "options": [
+        "consul",
+        "consul-lock",
+        "hashicorp-consul",
+        "kv-consul"
+      ],
+      "answer": 0,
+      "explanation": "Le backend 'consul' permet de stocker le state dans Consul KV store avec support natif du state locking, idéal pour les environnements HashiCorp.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 82,
+      "question": "Comment configurer le chiffrement du state dans un backend S3 ?",
+      "options": [
+        "encrypt = true dans la configuration du backend",
+        "encryption = enabled",
+        "ssl = true",
+        "secure = true"
+      ],
+      "answer": 0,
+      "explanation": "Pour chiffrer le state dans S3, on utilise 'encrypt = true' dans la configuration du backend, qui active le chiffrement côté serveur (SSE) avec AWS KMS.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 83,
+      "question": "Qu'est-ce que la partial configuration d'un backend ?",
+      "options": [
+        "Définir certains paramètres backend via CLI ou fichiers externes",
+        "Un backend incomplet",
+        "Un backend en mode dégradé",
+        "Une configuration par défaut"
+      ],
+      "answer": 0,
+      "explanation": "La partial configuration permet de définir certains paramètres sensibles du backend (comme credentials) via des fichiers ou arguments CLI plutôt que dans le code versionné.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 84,
+      "question": "Comment migrer d'un backend local vers un backend S3 ?",
+      "options": [
+        "Modifier la config backend puis exécuter terraform init",
+        "Utiliser terraform migrate",
+        "Copier manuellement le state",
+        "Recréer toute l'infrastructure"
+      ],
+      "answer": 0,
+      "explanation": "Pour migrer un backend, on modifie la configuration du bloc backend puis on exécute 'terraform init'. Terraform détecte le changement et propose de migrer le state.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 85,
+      "question": "Comment récupérer un state corrompu ?",
+      "options": [
+        "Utiliser terraform state pull et restaurer depuis un backup",
+        "Relancer terraform apply",
+        "Supprimer le state et recommencer",
+        "Utiliser terraform fix"
+      ],
+      "answer": 0,
+      "explanation": "En cas de corruption, on peut utiliser 'terraform state pull' pour récupérer le state et le restaurer depuis une sauvegarde. Les backends distants conservent généralement des versions précédentes.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 86,
+      "question": "Quelle stratégie est recommandée pour gérer dev/staging/prod ?",
+      "options": [
+        "Répertoires séparés avec states isolés",
+        "Un seul répertoire avec des workspaces",
+        "Un fichier par environnement",
+        "Variables d'environnement uniquement"
+      ],
+      "answer": 0,
+      "explanation": "Pour les environnements production, la meilleure pratique est d'utiliser des répertoires ou repos séparés avec des states isolés, offrant une séparation complète et plus de sécurité que les workspaces.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 87,
+      "question": "Qu'est-ce que Terragrunt ?",
+      "options": [
+        "Un wrapper Terraform pour gérer les configurations DRY",
+        "Un nouveau langage pour Terraform",
+        "Un provider cloud",
+        "Un outil de monitoring"
+      ],
+      "answer": 0,
+      "explanation": "Terragrunt est un wrapper open-source autour de Terraform qui aide à maintenir des configurations DRY (Don't Repeat Yourself), gérer les backends distants et orchestrer les dépendances entre modules.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 88,
+      "question": "Quelle est la meilleure pratique pour le versioning de modules ?",
+      "options": [
+        "Utiliser des tags Git sémantiques (v1.0.0) et version pinning",
+        "Toujours utiliser la branche main",
+        "Ne pas versionner les modules",
+        "Versionner uniquement en production"
+      ],
+      "answer": 0,
+      "explanation": "La meilleure pratique est d'utiliser le versioning sémantique avec tags Git (v1.0.0) et de pin les versions dans les configurations (version = '~> 1.0') pour garantir la stabilité.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 89,
+      "question": "Quelle approche est préférable : monorepo ou multirepo pour Terraform ?",
+      "options": [
+        "Ça dépend : monorepo pour petites équipes, multirepo pour grandes organisations",
+        "Toujours monorepo",
+        "Toujours multirepo",
+        "Peu importe"
+      ],
+      "answer": 0,
+      "explanation": "Le choix dépend du contexte : monorepo facilite la collaboration pour petites équipes et projets, multirepo offre meilleure isolation, permissions et CI/CD pour grandes organisations.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 90,
+      "question": "Comment implémenter un workflow d'approval pour terraform apply en CI/CD ?",
+      "options": [
+        "Séparer plan (auto) et apply (manuel) en différentes étapes",
+        "Utiliser terraform approve",
+        "Configurer auto-apply",
+        "C'est impossible"
+      ],
+      "answer": 0,
+      "explanation": "Le workflow typique est de lancer 'terraform plan' automatiquement sur les PRs, sauvegarder le plan, puis exécuter 'terraform apply' manuellement après approval humain, séparé en différentes étapes CI/CD.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 91,
+      "question": "Qu'est-ce que Sentinel dans Terraform Cloud ?",
+      "options": [
+        "Un framework de Policy as Code pour valider les configurations",
+        "Un système de monitoring",
+        "Un provider cloud",
+        "Un outil de backup"
+      ],
+      "answer": 0,
+      "explanation": "Sentinel est un framework de Policy as Code intégré à Terraform Cloud/Enterprise permettant d'écrire des règles (policies) pour valider les configurations avant l'apply (ex: tailles d'instances, tags obligatoires).",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 92,
+      "question": "Qu'est-ce qu'OPA (Open Policy Agent) dans le contexte Terraform ?",
+      "options": [
+        "Un outil open-source de Policy as Code alternatif à Sentinel",
+        "Un provider AWS",
+        "Un module Terraform",
+        "Un backend state"
+      ],
+      "answer": 0,
+      "explanation": "OPA (Open Policy Agent) est un moteur de politique open-source qui peut être utilisé pour valider les configurations Terraform via des policies en langage Rego, alternative open-source à Sentinel.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 93,
+      "question": "Comment optimiser les performances Terraform sur de grandes infrastructures ?",
+      "options": [
+        "Utiliser -parallelism, -target, et diviser le state",
+        "Augmenter la RAM",
+        "Utiliser uniquement local state",
+        "Réduire le nombre de providers"
+      ],
+      "answer": 0,
+      "explanation": "Pour optimiser les performances : augmenter le parallelism (-parallelism=20), utiliser -target pour des changements ciblés, diviser le state en modules plus petits, et utiliser -refresh=false quand approprié.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 94,
+      "question": "Quel flag augmente le nombre d'opérations parallèles de Terraform ?",
+      "options": [
+        "-parallelism=N",
+        "-parallel=N",
+        "-threads=N",
+        "-concurrent=N"
+      ],
+      "answer": 0,
+      "explanation": "Le flag '-parallelism=N' définit le nombre d'opérations que Terraform peut exécuter en parallèle (défaut: 10). Augmenter cette valeur peut accélérer les déploiements sur de grandes infrastructures.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 95,
+      "question": "Qu'est-ce que le -target flag et quand l'utiliser ?",
+      "options": [
+        "Applique les changements uniquement à des ressources spécifiques",
+        "Définit l'environnement cible",
+        "Sélectionne le backend",
+        "Configure le provider"
+      ],
+      "answer": 0,
+      "explanation": "Le flag '-target' permet de limiter les opérations à des ressources spécifiques (ex: terraform apply -target=aws_instance.web). À utiliser avec précaution, principalement pour le debugging ou urgences.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 96,
+      "question": "Comment gérer plusieurs configurations du même provider (multi-region) ?",
+      "options": [
+        "Utiliser l'argument 'alias' dans le bloc provider",
+        "Créer plusieurs fichiers provider.tf",
+        "Utiliser des workspaces",
+        "C'est impossible"
+      ],
+      "answer": 0,
+      "explanation": "Pour utiliser plusieurs configurations du même provider, on utilise l'argument 'alias' : provider 'aws' { alias = 'us-east', region = 'us-east-1' }. Les ressources référencent ensuite le provider via 'provider = aws.us-east'.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 97,
+      "question": "Comment contraindre les versions de providers ?",
+      "options": [
+        "Dans le bloc required_providers avec version constraints",
+        "Dans le fichier .terraform-version",
+        "Via des variables d'environnement",
+        "C'est automatique"
+      ],
+      "answer": 0,
+      "explanation": "Les contraintes de version se définissent dans le bloc terraform { required_providers { aws = { source = 'hashicorp/aws', version = '~> 4.0' } } }, garantissant la compatibilité.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 98,
+      "question": "Comment gérer les secrets sensibles dans Terraform ?",
+      "options": [
+        "Utiliser des outils externes comme Vault ou AWS Secrets Manager via data sources",
+        "Les mettre directement dans les .tf",
+        "Les commiter dans Git",
+        "Utiliser des variables simples"
+      ],
+      "answer": 0,
+      "explanation": "Les secrets doivent être gérés via des outils externes comme HashiCorp Vault, AWS Secrets Manager, ou Azure Key Vault, et récupérés via data sources. Ne jamais commiter de secrets dans le code.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 99,
+      "question": "Qu'est-ce que SOPS dans le contexte Terraform ?",
+      "options": [
+        "Un outil de chiffrement de fichiers secrets pour Git",
+        "Un provider Terraform",
+        "Un backend state",
+        "Un module de sécurité"
+      ],
+      "answer": 0,
+      "explanation": "SOPS (Secrets OPerationS) est un outil qui chiffre les fichiers de secrets (YAML, JSON, ENV) tout en permettant le versioning dans Git. Compatible avec AWS KMS, GCP KMS, Azure Key Vault, et PGP.",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 100,
+      "question": "Quelle est la meilleure pratique pour les credentials de service accounts dans Terraform ?",
+      "options": [
+        "Utiliser le principe du moindre privilège (least privilege) avec IAM roles",
+        "Utiliser des credentials admin pour simplifier",
+        "Utiliser le même compte pour tous les environnements",
+        "Hardcoder les credentials"
+      ],
+      "answer": 0,
+      "explanation": "Appliquer le principe du moindre privilège : créer des IAM roles/service accounts avec uniquement les permissions nécessaires pour chaque environnement et workload, jamais de credentials admin ou hardcodés.",
+      "difficulty": "advanced"
+    }
+  ]
+}
