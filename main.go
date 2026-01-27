@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"log"
 	"math/rand"
-	"net"
 	"net/http"
 	"os"
 	"strconv"
@@ -88,9 +87,7 @@ func main() {
 		IdleTimeout:  60 * time.Second,
 	}
 
-	fmt.Printf("QCM server started at http://%s\n", addr)
-	fmt.Printf("Local access: http://localhost:%s\n", port)
-	fmt.Printf("Network access: http://%s:%s\n", getLocalIP(), port)
+	fmt.Printf("QCM available at http://localhost:%s\n", port)
 	log.Fatal(server.ListenAndServe())
 }
 
@@ -99,22 +96,6 @@ func getEnv(key, defaultValue string) string {
 		return value
 	}
 	return defaultValue
-}
-
-func getLocalIP() string {
-	addrs, err := net.InterfaceAddrs()
-	if err != nil {
-		return "127.0.0.1"
-	}
-
-	for _, address := range addrs {
-		if ipnet, ok := address.(*net.IPNet); ok && !ipnet.IP.IsLoopback() {
-			if ipnet.IP.To4() != nil {
-				return ipnet.IP.String()
-			}
-		}
-	}
-	return "127.0.0.1"
 }
 
 // CORS middleware
@@ -142,8 +123,6 @@ func loadThemes() {
 	if err := json.Unmarshal(data, &themesList); err != nil {
 		log.Fatal("Error parsing themes JSON:", err)
 	}
-
-	fmt.Printf("Loaded %d themes\n", len(themesList.Themes))
 }
 
 func loadQCMData(themeID string) error {
@@ -176,8 +155,6 @@ func loadQCMData(themeID string) error {
 		}
 	}
 	qcmData.Questions = validQuestions
-
-	fmt.Printf("QCM loaded: %s with %d questions\n", qcmData.Title, len(qcmData.Questions))
 	return nil
 }
 
