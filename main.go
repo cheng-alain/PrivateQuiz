@@ -3,7 +3,6 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"log"
 	"math/rand"
 	"net"
@@ -18,7 +17,7 @@ type Question struct {
 	ID          int         `json:"id"`
 	Question    string      `json:"question"`
 	Options     []string    `json:"options"`
-	Correct     interface{} `json:"correct"`
+	Correct     interface{} `json:"answer"`
 	Explanation string      `json:"explanation"`
 	Difficulty  string      `json:"difficulty,omitempty"`
 }
@@ -33,6 +32,7 @@ type Theme struct {
 	Title          string `json:"title"`
 	Description    string `json:"description"`
 	Icon           string `json:"icon"`
+	Category       string `json:"category"`
 	Difficulty     string `json:"difficulty"`
 	QuestionsCount int    `json:"questions_count"`
 	File           string `json:"file"`
@@ -70,26 +70,35 @@ func main() {
 	port := getEnv("PORT", "8080")
 	addr := fmt.Sprintf("%s:%s", host, port)
 
+	// Static files
 	http.Handle("/style.css", http.FileServer(http.Dir("./")))
 	http.Handle("/script.js", http.FileServer(http.Dir("./")))
 
+	// API routes with CORS middleware
 	http.HandleFunc("/", serveHTML)
-	http.HandleFunc("/api/themes", getThemes)
-	http.HandleFunc("/api/qcm", getQCM)
-	http.HandleFunc("/api/check", checkAnswer)
+	http.HandleFunc("/api/themes", corsMiddleware(getThemes))
+	http.HandleFunc("/api/qcm", corsMiddleware(getQCM))
+	http.HandleFunc("/api/check", corsMiddleware(checkAnswer))
+
+	// Server with timeouts
+	server := &http.Server{
+		Addr:         addr,
+		ReadTimeout:  15 * time.Second,
+		WriteTimeout: 15 * time.Second,
+		IdleTimeout:  60 * time.Second,
+	}
 
 	fmt.Printf("QCM server started at http://%s\n", addr)
 	fmt.Printf("Local access: http://localhost:%s\n", port)
 	fmt.Printf("Network access: http://%s:%s\n", getLocalIP(), port)
-	log.Fatal(http.ListenAndServe(addr, nil))
+	log.Fatal(server.ListenAndServe())
 }
 
 func getEnv(key, defaultValue string) string {
-	value := os.Getenv(key)
-	if value == "" {
-		return defaultValue
+	if value := os.Getenv(key); value != "" {
+		return value
 	}
-	return value
+	return defaultValue
 }
 
 func getLocalIP() string {
@@ -108,14 +117,29 @@ func getLocalIP() string {
 	return "127.0.0.1"
 }
 
+// CORS middleware
+func corsMiddleware(next http.HandlerFunc) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Access-Control-Allow-Origin", "*")
+		w.Header().Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+		w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+
+		if r.Method == "OPTIONS" {
+			w.WriteHeader(http.StatusOK)
+			return
+		}
+
+		next(w, r)
+	}
+}
+
 func loadThemes() {
-	data, err := ioutil.ReadFile("themes-list.json")
+	data, err := os.ReadFile("themes-list.json")
 	if err != nil {
 		log.Fatal("Error reading themes-list.json file:", err)
 	}
 
-	err = json.Unmarshal(data, &themesList)
-	if err != nil {
+	if err := json.Unmarshal(data, &themesList); err != nil {
 		log.Fatal("Error parsing themes JSON:", err)
 	}
 
@@ -135,20 +159,19 @@ func loadQCMData(themeID string) error {
 		return fmt.Errorf("theme not found: %s", themeID)
 	}
 
-	data, err := ioutil.ReadFile(fmt.Sprintf("themes/%s", themeFile))
+	data, err := os.ReadFile(fmt.Sprintf("themes/%s", themeFile))
 	if err != nil {
 		return fmt.Errorf("error reading theme file: %v", err)
 	}
 
-	err = json.Unmarshal(data, &qcmData)
-	if err != nil {
+	if err := json.Unmarshal(data, &qcmData); err != nil {
 		return fmt.Errorf("error parsing JSON: %v", err)
 	}
 
-	var validQuestions []Question
+	// Filter out invalid questions
+	validQuestions := make([]Question, 0, len(qcmData.Questions))
 	for _, question := range qcmData.Questions {
-		questionText := strings.TrimSpace(question.Question)
-		if questionText != "" && question.ID > 0 {
+		if strings.TrimSpace(question.Question) != "" && question.ID > 0 {
 			validQuestions = append(validQuestions, question)
 		}
 	}
@@ -158,74 +181,51 @@ func loadQCMData(themeID string) error {
 	return nil
 }
 
-func enableCORS(w http.ResponseWriter) {
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-	w.Header().Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
-	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
-}
-
 func serveHTML(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w, r, "index.html")
 }
 
 func getThemes(w http.ResponseWriter, r *http.Request) {
-	enableCORS(w)
-
-	if r.Method == "OPTIONS" {
-		return
-	}
-
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(themesList)
 }
 
 func getQCM(w http.ResponseWriter, r *http.Request) {
-	enableCORS(w)
-
-	if r.Method == "OPTIONS" {
-		return
-	}
-
 	themeID := r.URL.Query().Get("theme")
 	if themeID == "" {
 		http.Error(w, "Theme parameter is required", http.StatusBadRequest)
 		return
 	}
 
-	err := loadQCMData(themeID)
-	if err != nil {
+	if err := loadQCMData(themeID); err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
 
-	countParam := r.URL.Query().Get("count")
-	randomParam := r.URL.Query().Get("random")
-	difficultyParam := r.URL.Query().Get("difficulty")
-
 	questions := make([]Question, len(qcmData.Questions))
 	copy(questions, qcmData.Questions)
 
-	// Filter by difficulty if specified
-	if difficultyParam != "" && difficultyParam != "all" {
-		var filteredQuestions []Question
+	// Filter by difficulty
+	if difficulty := r.URL.Query().Get("difficulty"); difficulty != "" && difficulty != "all" {
+		filtered := make([]Question, 0)
 		for _, q := range questions {
-			if strings.EqualFold(q.Difficulty, difficultyParam) {
-				filteredQuestions = append(filteredQuestions, q)
+			if strings.EqualFold(q.Difficulty, difficulty) {
+				filtered = append(filtered, q)
 			}
 		}
-		questions = filteredQuestions
+		questions = filtered
 	}
 
-	if randomParam == "true" {
-		rand.Seed(time.Now().UnixNano())
+	// Shuffle if requested
+	if r.URL.Query().Get("random") == "true" {
 		rand.Shuffle(len(questions), func(i, j int) {
 			questions[i], questions[j] = questions[j], questions[i]
 		})
 	}
 
-	if countParam != "" {
-		count, err := strconv.Atoi(countParam)
-		if err == nil && count > 0 && count < len(questions) {
+	// Limit count
+	if countParam := r.URL.Query().Get("count"); countParam != "" {
+		if count, err := strconv.Atoi(countParam); err == nil && count > 0 && count < len(questions) {
 			questions = questions[:count]
 		}
 	}
@@ -241,24 +241,18 @@ func getQCM(w http.ResponseWriter, r *http.Request) {
 }
 
 func checkAnswer(w http.ResponseWriter, r *http.Request) {
-	enableCORS(w)
-
-	if r.Method == "OPTIONS" {
-		return
-	}
-
 	if r.Method != "POST" {
 		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 		return
 	}
 
 	var answer Answer
-	err := json.NewDecoder(r.Body).Decode(&answer)
-	if err != nil {
+	if err := json.NewDecoder(r.Body).Decode(&answer); err != nil {
 		http.Error(w, "Invalid data", http.StatusBadRequest)
 		return
 	}
 
+	// Find question
 	var question Question
 	found := false
 	for _, q := range qcmData.Questions {
@@ -274,59 +268,7 @@ func checkAnswer(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	var isCorrect bool
-
-	switch correctAnswer := question.Correct.(type) {
-	case float64:
-		userAnswer, ok := answer.Answer.(float64)
-		if !ok {
-			http.Error(w, "Invalid answer format", http.StatusBadRequest)
-			return
-		}
-		isCorrect = int(userAnswer) == int(correctAnswer)
-
-	case []interface{}:
-		userAnswers, ok := answer.Answer.([]interface{})
-		if !ok {
-			http.Error(w, "Invalid answer format", http.StatusBadRequest)
-			return
-		}
-
-		var correctInts []int
-		for _, v := range correctAnswer {
-			if num, ok := v.(float64); ok {
-				correctInts = append(correctInts, int(num))
-			}
-		}
-
-		var userInts []int
-		for _, v := range userAnswers {
-			if num, ok := v.(float64); ok {
-				userInts = append(userInts, int(num))
-			}
-		}
-
-		isCorrect = len(userInts) == len(correctInts)
-		if isCorrect {
-			for _, userInt := range userInts {
-				found := false
-				for _, correctInt := range correctInts {
-					if userInt == correctInt {
-						found = true
-						break
-					}
-				}
-				if !found {
-					isCorrect = false
-					break
-				}
-			}
-		}
-
-	default:
-		http.Error(w, "Invalid question format", http.StatusBadRequest)
-		return
-	}
+	isCorrect := checkCorrectAnswer(question.Correct, answer.Answer)
 
 	result := AnswerResult{
 		Correct:       isCorrect,
@@ -336,4 +278,60 @@ func checkAnswer(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(result)
+}
+
+// Helper to check if answer is correct
+func checkCorrectAnswer(correct, userAnswer interface{}) bool {
+	switch correctAnswer := correct.(type) {
+	case float64:
+		if userAns, ok := userAnswer.(float64); ok {
+			return int(userAns) == int(correctAnswer)
+		}
+
+	case []interface{}:
+		userAnswers, ok := userAnswer.([]interface{})
+		if !ok {
+			return false
+		}
+
+		// Convert to int arrays
+		correctInts := toIntArray(correctAnswer)
+		userInts := toIntArray(userAnswers)
+
+		// Check length
+		if len(userInts) != len(correctInts) {
+			return false
+		}
+
+		// Check all user answers are in correct answers
+		for _, userInt := range userInts {
+			if !contains(correctInts, userInt) {
+				return false
+			}
+		}
+		return true
+	}
+
+	return false
+}
+
+// Helper to convert []interface{} to []int
+func toIntArray(arr []interface{}) []int {
+	result := make([]int, 0, len(arr))
+	for _, v := range arr {
+		if num, ok := v.(float64); ok {
+			result = append(result, int(num))
+		}
+	}
+	return result
+}
+
+// Helper to check if slice contains value
+func contains(slice []int, val int) bool {
+	for _, item := range slice {
+		if item == val {
+			return true
+		}
+	}
+	return false
 }
