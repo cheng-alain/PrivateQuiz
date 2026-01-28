@@ -542,6 +542,36 @@ function nextQuestion() {
     displayQuestion();
 }
 
+// Revenir à la question précédente (réinitialisée)
+function previousQuestion() {
+    if (currentQuestionIndex <= 0) return;
+
+    // Récupérer la question précédente
+    const prevQuestionIndex = currentQuestionIndex - 1;
+    const prevQuestion = questions[prevQuestionIndex];
+
+    // Effacer la réponse de l'utilisateur pour cette question
+    // (l'historique reste intact dans answersHistory)
+    delete userAnswers[prevQuestion.id];
+
+    // Décrémenter le score si la réponse précédente était correcte
+    const historyEntry = answersHistory.find(h => h.questionId === prevQuestion.id);
+    if (historyEntry && historyEntry.isCorrect) {
+        score--;
+        updateScore();
+    }
+
+    // Retirer cette question de l'historique (on va la re-répondre)
+    answersHistory = answersHistory.filter(h => h.questionId !== prevQuestion.id);
+
+    // Retirer des wrongAnswers si elle y était
+    wrongAnswers = wrongAnswers.filter(w => w.question !== prevQuestion.question);
+
+    // Revenir à la question précédente
+    currentQuestionIndex--;
+    displayQuestion();
+}
+
 function showCorrection(result) {
     const question = questions[currentQuestionIndex];
     const multipleChoice = isMultipleChoice(question);
