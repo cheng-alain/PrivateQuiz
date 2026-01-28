@@ -109,10 +109,6 @@ function displayThemesOfCategory(categoryName) {
         const themeCard = document.createElement('div');
         themeCard.className = 'theme-card';
 
-        const icon = document.createElement('div');
-        icon.className = 'theme-icon';
-        icon.textContent = theme.icon;
-
         const content = document.createElement('div');
         content.className = 'theme-content';
 
@@ -133,7 +129,6 @@ function displayThemesOfCategory(categoryName) {
         content.appendChild(description);
         content.appendChild(meta);
 
-        themeCard.appendChild(icon);
         themeCard.appendChild(content);
         themeCard.onclick = () => selectTheme(theme);
 
@@ -167,17 +162,12 @@ async function selectTheme(theme) {
 function updateDifficultyThemeInfo() {
     const infoElement = document.getElementById('difficultyThemeInfo');
     if (selectedTheme && infoElement) {
-        const icon = document.createElement('span');
-        icon.className = 'theme-icon-small';
-        icon.textContent = selectedTheme.icon;
-
         const title = document.createElement('span');
         title.className = 'theme-title-small';
         title.textContent = selectedTheme.title;
 
         const container = document.createElement('div');
         container.className = 'selected-theme';
-        container.appendChild(icon);
         container.appendChild(title);
 
         infoElement.innerHTML = '';
@@ -236,17 +226,12 @@ function updateSelectedThemeInfo() {
             difficultyBadge = `<span class="difficulty-badge">${difficultyLabels[selectedDifficulty]}</span>`;
         }
 
-        const icon = document.createElement('span');
-        icon.className = 'theme-icon-small';
-        icon.textContent = selectedTheme.icon;
-
         const title = document.createElement('span');
         title.className = 'theme-title-small';
         title.textContent = selectedTheme.title;
 
         const container = document.createElement('div');
         container.className = 'selected-theme';
-        container.appendChild(icon);
         container.appendChild(title);
         if (difficultyBadge) {
             container.innerHTML += difficultyBadge;

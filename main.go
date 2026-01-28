@@ -30,7 +30,6 @@ type Theme struct {
 	ID             string `json:"id"`
 	Title          string `json:"title"`
 	Description    string `json:"description"`
-	Icon           string `json:"icon"`
 	Category       string `json:"category"`
 	Difficulty     string `json:"difficulty"`
 	QuestionsCount int    `json:"questions_count"`

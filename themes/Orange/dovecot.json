@@ -1,0 +1,45 @@
+{
+  "title": "Dovecot",
+  "description": "3 questions couvrant les bases de Dovecot : présentation générale, protocoles supportés et authentification",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Qu'est-ce que Dovecot ?",
+      "options": [
+        "Un serveur de messagerie IMAP/POP3",
+        "Un serveur SMTP",
+        "Un client de messagerie",
+        "Un outil de supervision réseau"
+      ],
+      "answer": 0,
+      "explanation": "Dovecot est un serveur de messagerie open-source principalement utilisé pour fournir les services IMAP et POP3, permettant aux utilisateurs d'accéder à leurs emails.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 2,
+      "question": "Quels protocoles sont principalement supportés par Dovecot ?",
+      "options": [
+        "SMTP et HTTP",
+        "IMAP et POP3",
+        "FTP et SFTP",
+        "SNMP et LDAP"
+      ],
+      "answer": 1,
+      "explanation": "Dovecot supporte principalement les protocoles IMAP et POP3, qui permettent aux clients de messagerie de récupérer et consulter les emails stockés sur le serveur.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 3,
+      "question": "Quel fichier est couramment utilisé pour configurer Dovecot ?",
+      "options": [
+        "/etc/dovecot/dovecot.conf",
+        "/etc/mail/dovecot.yml",
+        "/usr/local/dovecot/config.json",
+        "/var/mail/dovecot.conf"
+      ],
+      "answer": 0,
+      "explanation": "Le fichier principal de configuration de Dovecot est généralement situé dans /etc/dovecot/dovecot.conf, avec des fichiers supplémentaires inclus depuis conf.d.",
+      "difficulty": "easy"
+    }
+  ]
+}
