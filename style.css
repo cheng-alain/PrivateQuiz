@@ -385,6 +385,61 @@ input[type="number"]:focus {
     transform: none;
 }
 
+/* Bouton Valider */
+.validate-btn {
+    background: rgba(34, 197, 94, 0.8);
+    color: #fff;
+    border: 1px solid #22c55e;
+    padding: 10px 22px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.validate-btn:hover:not(:disabled) {
+    background: rgba(34, 197, 94, 1);
+    transform: translateY(-1px);
+}
+
+.validate-btn:disabled {
+    background: rgba(51, 65, 85, 0.6);
+    border-color: #475569;
+    color: #64748b;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Zone de feedback */
+.feedback-container {
+    margin-top: 20px;
+    padding: 16px;
+    border-radius: 8px;
+    background: rgba(30, 41, 59, 0.8);
+    border: 1px solid #475569;
+}
+
+.feedback-result {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.feedback-result.correct {
+    color: #22c55e;
+}
+
+.feedback-result.incorrect {
+    color: #ef4444;
+}
+
+.feedback-explanation {
+    color: #94a3b8;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
 /* Quiz */
 .quiz-container {
     padding: 32px;
