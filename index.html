@@ -82,19 +82,26 @@
 
         <div class="quiz-container" id="quizContainer">
             <div class="question-header">
+                <button class="home-btn" onclick="goHome()">Accueil</button>
                 <div class="question-counter" id="questionCounter"></div>
-                <div class="score" id="scoreDisplay">Score : 0/0</div>
             </div>
 
             <div class="question-card">
                 <div class="question-text" id="questionText"></div>
                 <div class="question-instruction" id="questionInstruction"></div>
                 <div class="options" id="optionsContainer"></div>
+
+                <!-- Zone de feedback (cachée par défaut) -->
+                <div class="feedback-container" id="feedbackContainer" style="display: none;">
+                    <div class="feedback-result" id="feedbackResult"></div>
+                    <div class="feedback-explanation" id="feedbackExplanation"></div>
+                </div>
             </div>
 
             <div class="navigation">
-                <button class="home-btn" onclick="goHome()">Accueil</button>
-                <button class="nav-btn" id="nextBtn" onclick="nextQuestion()" disabled>Suivant →</button>
+                <button class="nav-btn" id="prevBtn" onclick="previousQuestion()" style="visibility: hidden;">← Précédent</button>
+                <button class="validate-btn" id="validateBtn" onclick="validateAnswer()" disabled>Valider</button>
+                <button class="nav-btn" id="nextBtn" onclick="nextQuestion()" style="display: none;">Suivant →</button>
             </div>
         </div>
 

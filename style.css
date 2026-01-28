@@ -357,6 +357,7 @@ input[type="number"]:focus {
     padding: 14px 28px;
     font-size: 16px;
     letter-spacing: 0.01em;
+    margin-top: 30px;
 }
 
 .back-btn {
@@ -383,6 +384,62 @@ input[type="number"]:focus {
     color: #64748b;
     cursor: not-allowed;
     transform: none;
+}
+
+/* Bouton Valider (même style que les autres boutons) */
+.validate-btn {
+    background: rgba(71, 85, 105, 0.8);
+    color: #e2e8f0;
+    border: 1px solid #64748b;
+    padding: 10px 22px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.validate-btn:hover:not(:disabled) {
+    background: rgba(100, 116, 139, 0.9);
+    border-color: #94a3b8;
+    transform: translateY(-1px);
+}
+
+.validate-btn:disabled {
+    background: rgba(51, 65, 85, 0.6);
+    border-color: #475569;
+    color: #64748b;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Zone de feedback */
+.feedback-container {
+    margin-top: 20px;
+    padding: 16px;
+    border-radius: 8px;
+    background: rgba(30, 41, 59, 0.8);
+    border: 1px solid #475569;
+}
+
+.feedback-result {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.feedback-result.correct {
+    color: #22c55e;
+}
+
+.feedback-result.incorrect {
+    color: #ef4444;
+}
+
+.feedback-explanation {
+    color: #94a3b8;
+    font-size: 14px;
+    line-height: 1.5;
 }
 
 /* Quiz */

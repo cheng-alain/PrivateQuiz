@@ -10,6 +10,10 @@ let selectedTheme = null;
 let selectedDifficulty = null;
 let themes = [];
 
+// Historique des réponses pour chaque question validée
+// Structure: { questionId, userAnswer, isCorrect, timestamp }
+let answersHistory = [];
+
 // Helper: Check if question is multiple choice
 function isMultipleChoice(question) {
     return Array.isArray(question.correct) && question.correct.length > 1;
@@ -317,6 +321,7 @@ function resetQuizState() {
     userAnswers = {};
     score = 0;
     wrongAnswers = [];
+    answersHistory = [];
     updateUI();
 }
 
@@ -371,6 +376,16 @@ function displayQuestion() {
         optionsContainer.appendChild(optionElement);
     });
 
+    // Réinitialiser l'état des boutons et du feedback
+    document.getElementById('feedbackContainer').style.display = 'none';
+    document.getElementById('validateBtn').style.display = 'inline-block';
+    document.getElementById('validateBtn').disabled = true;
+    document.getElementById('nextBtn').style.display = 'none';
+
+    // Afficher le bouton Précédent si on n'est pas à la première question
+    // Utiliser visibility pour garder l'espace et centrer les autres boutons
+    document.getElementById('prevBtn').style.visibility = currentQuestionIndex > 0 ? 'visible' : 'hidden';
+
     updateUI();
 }
 
@@ -417,7 +432,8 @@ function selectOption(optionIndex) {
     updateUI();
 }
 
-async function nextQuestion() {
+// Nouvelle fonction pour valider la réponse et afficher le feedback immédiat
+async function validateAnswer() {
     const question = questions[currentQuestionIndex];
 
     if (userAnswers[question.id] === undefined) return;
@@ -440,24 +456,36 @@ async function nextQuestion() {
 
         const result = await response.json();
 
+        // Mettre à jour le score
         if (result.correct) {
             score++;
-        } else {
+            updateScore();
+        }
+
+        // Stocker dans answersHistory
+        answersHistory.push({
+            questionId: question.id,
+            userAnswer: userAnswers[question.id],
+            isCorrect: result.correct,
+            timestamp: Date.now()
+        });
+
+        // Stocker les mauvaises réponses pour le récap (si réactivé plus tard)
+        if (!result.correct) {
             const multipleChoice = isMultipleChoice(question);
             let userAnswerText, correctAnswerText;
 
             if (multipleChoice) {
                 const userSelectedIndexes = userAnswers[question.id] || [];
                 const correctIndexes = question.correct;
-
                 userAnswerText = userSelectedIndexes.length > 0
                     ? userSelectedIndexes.map(i => question.options[i]).join(', ')
-                    : 'No answer';
+                    : 'Pas de réponse';
                 correctAnswerText = correctIndexes.map(i => question.options[i]).join(', ');
             } else {
                 userAnswerText = userAnswers[question.id] !== undefined
                     ? question.options[userAnswers[question.id]]
-                    : 'No answer';
+                    : 'Pas de réponse';
                 correctAnswerText = question.options[result.correctAnswer];
             }
 
@@ -469,18 +497,80 @@ async function nextQuestion() {
             });
         }
 
+        // Afficher le feedback immédiat
+        showFeedback(result);
+
+        // Afficher la correction visuelle sur les options
         showCorrection(result);
 
-        setTimeout(() => {
-            currentQuestionIndex++;
-            displayQuestion();
-        }, 1000);
+        // Masquer Valider, afficher Suivant
+        document.getElementById('validateBtn').style.display = 'none';
+        document.getElementById('nextBtn').style.display = 'inline-block';
 
     } catch (error) {
         console.error('Error:', error);
-        currentQuestionIndex++;
-        displayQuestion();
     }
+}
+
+// Afficher le feedback (Correct/Incorrect + explication)
+function showFeedback(result) {
+    const feedbackContainer = document.getElementById('feedbackContainer');
+    const feedbackResult = document.getElementById('feedbackResult');
+    const feedbackExplanation = document.getElementById('feedbackExplanation');
+
+    feedbackContainer.style.display = 'block';
+
+    if (result.correct) {
+        feedbackResult.textContent = 'Correct !';
+        feedbackResult.className = 'feedback-result correct';
+    } else {
+        feedbackResult.textContent = 'Incorrect';
+        feedbackResult.className = 'feedback-result incorrect';
+    }
+
+    // Afficher l'explication si disponible
+    if (result.explanation) {
+        feedbackExplanation.textContent = result.explanation;
+        feedbackExplanation.style.display = 'block';
+    } else {
+        feedbackExplanation.style.display = 'none';
+    }
+}
+
+// Fonction simplifiée : passe à la question suivante (validation déjà faite)
+function nextQuestion() {
+    currentQuestionIndex++;
+    displayQuestion();
+}
+
+// Revenir à la question précédente (réinitialisée)
+function previousQuestion() {
+    if (currentQuestionIndex <= 0) return;
+
+    // Récupérer la question précédente
+    const prevQuestionIndex = currentQuestionIndex - 1;
+    const prevQuestion = questions[prevQuestionIndex];
+
+    // Effacer la réponse de l'utilisateur pour cette question
+    // (l'historique reste intact dans answersHistory)
+    delete userAnswers[prevQuestion.id];
+
+    // Décrémenter le score si la réponse précédente était correcte
+    const historyEntry = answersHistory.find(h => h.questionId === prevQuestion.id);
+    if (historyEntry && historyEntry.isCorrect) {
+        score--;
+        updateScore();
+    }
+
+    // Retirer cette question de l'historique (on va la re-répondre)
+    answersHistory = answersHistory.filter(h => h.questionId !== prevQuestion.id);
+
+    // Retirer des wrongAnswers si elle y était
+    wrongAnswers = wrongAnswers.filter(w => w.question !== prevQuestion.question);
+
+    // Revenir à la question précédente
+    currentQuestionIndex--;
+    displayQuestion();
 }
 
 function showCorrection(result) {
@@ -533,14 +623,18 @@ function updateUI() {
         }
     }
 
-    const nextBtn = document.getElementById('nextBtn');
-    if (nextBtn) nextBtn.disabled = !hasAnswer;
+    // Activer/désactiver le bouton Valider selon si une réponse est sélectionnée
+    const validateBtn = document.getElementById('validateBtn');
+    if (validateBtn) validateBtn.disabled = !hasAnswer;
 }
 
 function updateScore() {
-    document.getElementById('scoreDisplay').textContent = `Score: ${score}/${totalQuestions}`;
+    // Score masqué du header - fonction conservée pour usage futur
+    // const scoreElement = document.getElementById('scoreDisplay');
+    // if (scoreElement) scoreElement.textContent = `Score: ${score}/${totalQuestions}`;
 }
 
+// Version simplifiée : affiche juste le score final (feedback immédiat remplace le récap)
 function showResults() {
     document.getElementById('quizContainer').style.display = 'none';
     document.getElementById('results').style.display = 'block';
@@ -550,20 +644,25 @@ function showResults() {
 
     let message = '';
     if (percentage >= 80) {
-        message = '🏆 Excellent ! Tu maîtrises parfaitement le sujet !';
+        message = 'Excellent ! Tu maîtrises parfaitement le sujet !';
     } else if (percentage >= 60) {
-        message = '👍 Bien joué ! Quelques révisions et tu seras parfait !';
+        message = 'Bien joué ! Quelques révisions et tu seras parfait !';
     } else if (percentage >= 40) {
-        message = '📚 Pas mal, mais il reste du travail !';
+        message = 'Pas mal, mais il reste du travail !';
     } else {
-        message = '💪 Ne te décourage pas, continue à apprendre !';
+        message = 'Ne te décourage pas, continue à apprendre !';
     }
 
     document.getElementById('resultMessage').textContent = message;
 
-    displayWrongAnswers();
+    // Masquer la section des mauvaises réponses (feedback immédiat la remplace)
+    document.getElementById('wrongAnswersSection').style.display = 'none';
+
+    // displayWrongAnswers(); // Commenté : le feedback immédiat remplace le récapitulatif
 }
 
+/*
+// ANCIEN RÉCAPITULATIF - Commenté pour usage futur (mode examen)
 function displayWrongAnswers() {
     const wrongAnswersSection = document.getElementById('wrongAnswersSection');
     const wrongAnswersContainer = document.getElementById('wrongAnswersContainer');
@@ -616,6 +715,7 @@ function displayWrongAnswers() {
         });
     }
 }
+*/
 
 function goHome() {
     if (confirm('Es-tu sûr de vouloir quitter le quiz ?')) {
