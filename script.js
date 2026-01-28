@@ -10,6 +10,10 @@ let selectedTheme = null;
 let selectedDifficulty = null;
 let themes = [];
 
+// Historique des réponses pour chaque question validée
+// Structure: { questionId, userAnswer, isCorrect, timestamp }
+let answersHistory = [];
+
 // Helper: Check if question is multiple choice
 function isMultipleChoice(question) {
     return Array.isArray(question.correct) && question.correct.length > 1;
@@ -317,6 +321,7 @@ function resetQuizState() {
     userAnswers = {};
     score = 0;
     wrongAnswers = [];
+    answersHistory = [];
     updateUI();
 }
 
