@@ -628,7 +628,9 @@ function updateUI() {
 }
 
 function updateScore() {
-    document.getElementById('scoreDisplay').textContent = `Score: ${score}/${totalQuestions}`;
+    // Score masqué du header - fonction conservée pour usage futur
+    // const scoreElement = document.getElementById('scoreDisplay');
+    // if (scoreElement) scoreElement.textContent = `Score: ${score}/${totalQuestions}`;
 }
 
 // Version simplifiée : affiche juste le score final (feedback immédiat remplace le récap)
