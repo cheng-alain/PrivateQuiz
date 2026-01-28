@@ -376,6 +376,15 @@ function displayQuestion() {
         optionsContainer.appendChild(optionElement);
     });
 
+    // Réinitialiser l'état des boutons et du feedback
+    document.getElementById('feedbackContainer').style.display = 'none';
+    document.getElementById('validateBtn').style.display = 'inline-block';
+    document.getElementById('validateBtn').disabled = true;
+    document.getElementById('nextBtn').style.display = 'none';
+
+    // Afficher le bouton Précédent si on n'est pas à la première question
+    document.getElementById('prevBtn').style.display = currentQuestionIndex > 0 ? 'inline-block' : 'none';
+
     updateUI();
 }
 
@@ -422,7 +431,8 @@ function selectOption(optionIndex) {
     updateUI();
 }
 
-async function nextQuestion() {
+// Nouvelle fonction pour valider la réponse et afficher le feedback immédiat
+async function validateAnswer() {
     const question = questions[currentQuestionIndex];
 
     if (userAnswers[question.id] === undefined) return;
@@ -445,24 +455,36 @@ async function nextQuestion() {
 
         const result = await response.json();
 
+        // Mettre à jour le score
         if (result.correct) {
             score++;
-        } else {
+            updateScore();
+        }
+
+        // Stocker dans answersHistory
+        answersHistory.push({
+            questionId: question.id,
+            userAnswer: userAnswers[question.id],
+            isCorrect: result.correct,
+            timestamp: Date.now()
+        });
+
+        // Stocker les mauvaises réponses pour le récap (si réactivé plus tard)
+        if (!result.correct) {
             const multipleChoice = isMultipleChoice(question);
             let userAnswerText, correctAnswerText;
 
             if (multipleChoice) {
                 const userSelectedIndexes = userAnswers[question.id] || [];
                 const correctIndexes = question.correct;
-
                 userAnswerText = userSelectedIndexes.length > 0
                     ? userSelectedIndexes.map(i => question.options[i]).join(', ')
-                    : 'No answer';
+                    : 'Pas de réponse';
                 correctAnswerText = correctIndexes.map(i => question.options[i]).join(', ');
             } else {
                 userAnswerText = userAnswers[question.id] !== undefined
                     ? question.options[userAnswers[question.id]]
-                    : 'No answer';
+                    : 'Pas de réponse';
                 correctAnswerText = question.options[result.correctAnswer];
             }
 
@@ -474,18 +496,50 @@ async function nextQuestion() {
             });
         }
 
+        // Afficher le feedback immédiat
+        showFeedback(result);
+
+        // Afficher la correction visuelle sur les options
         showCorrection(result);
 
-        setTimeout(() => {
-            currentQuestionIndex++;
-            displayQuestion();
-        }, 1000);
+        // Masquer Valider, afficher Suivant
+        document.getElementById('validateBtn').style.display = 'none';
+        document.getElementById('nextBtn').style.display = 'inline-block';
 
     } catch (error) {
         console.error('Error:', error);
-        currentQuestionIndex++;
-        displayQuestion();
     }
+}
+
+// Afficher le feedback (Correct/Incorrect + explication)
+function showFeedback(result) {
+    const feedbackContainer = document.getElementById('feedbackContainer');
+    const feedbackResult = document.getElementById('feedbackResult');
+    const feedbackExplanation = document.getElementById('feedbackExplanation');
+
+    feedbackContainer.style.display = 'block';
+
+    if (result.correct) {
+        feedbackResult.textContent = 'Correct !';
+        feedbackResult.className = 'feedback-result correct';
+    } else {
+        feedbackResult.textContent = 'Incorrect';
+        feedbackResult.className = 'feedback-result incorrect';
+    }
+
+    // Afficher l'explication si disponible
+    if (result.explanation) {
+        feedbackExplanation.textContent = result.explanation;
+        feedbackExplanation.style.display = 'block';
+    } else {
+        feedbackExplanation.style.display = 'none';
+    }
+}
+
+// Fonction simplifiée : passe à la question suivante (validation déjà faite)
+function nextQuestion() {
+    currentQuestionIndex++;
+    displayQuestion();
 }
 
 function showCorrection(result) {
@@ -538,8 +592,9 @@ function updateUI() {
         }
     }
 
-    const nextBtn = document.getElementById('nextBtn');
-    if (nextBtn) nextBtn.disabled = !hasAnswer;
+    // Activer/désactiver le bouton Valider selon si une réponse est sélectionnée
+    const validateBtn = document.getElementById('validateBtn');
+    if (validateBtn) validateBtn.disabled = !hasAnswer;
 }
 
 function updateScore() {
