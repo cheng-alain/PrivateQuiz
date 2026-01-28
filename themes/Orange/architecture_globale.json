@@ -29,7 +29,7 @@
     },
     {
       "id": 3,
-      "question": "Quel est le nombre exact de serveurs PPU (Proxy Public) en production ?",
+      "question": "Combien de serveurs PPU sont déployés par ring en production ?",
       "options": [
         "35 PPU",
         "42 PPU",
@@ -37,12 +37,12 @@
         "39 PPU"
       ],
       "answer": 3,
-      "explanation": "Il y a exactement 39 serveurs PPU (Proxy Public) dans l'infrastructure MDA",
+      "explanation": "Il y a exactement 39 serveurs PPU (Proxy Public) par ring",
       "difficulty": "easy"
     },
     {
       "id": 4,
-      "question": "Quel est le nombre exact de serveurs PPR (Proxy Privé) en production ?",
+      "question": "Combien de serveurs PPR sont déployés par ring en production ?",
       "options": [
         "39 PPR",
         "42 PPR",
@@ -50,7 +50,7 @@
         "54 PPR"
       ],
       "answer": 2,
-      "explanation": "Il y a exactement 48 serveurs PPR (Proxy Privé) dans l'infrastructure MDA",
+      "explanation": "Il y a exactement 48 serveurs PPR (Proxy Privé) par ring",
       "difficulty": "easy"
     },
     {
@@ -122,7 +122,7 @@
       "id": 10,
       "question": "Que signifie le trigramme PPU ?",
       "options": [
-        "Proxy Publique (terme technique)",
+        "Proxy Publique ",
         "Proxy Public Unifié",
         "Proxy Public User",
         "Proxy Principal Utilisateur"
@@ -136,7 +136,7 @@
       "question": "Que signifie le trigramme PPR ?",
       "options": [
         "Proxy Public Restreint",
-        "Proxy Privé (terme technique)",
+        "Proxy Privé ",
         "Proxy Principal Réservé",
         "Proxy Protocole Restreint"
       ],
@@ -159,19 +159,6 @@
     },
     {
       "id": 13,
-      "question": "Que signifie le trigramme DMB (ancienne architecture) ?",
-      "options": [
-        "Dovecot Mail Box",
-        "Director Mail Backend",
-        "Database Mail Backend",
-        "Dovecot Mail Backend"
-      ],
-      "answer": 3,
-      "explanation": "DMB signifie Dovecot Mail Backend, l'ancien nom des backends (remplacé par D1B/D2B/D3B dans la nouvelle architecture)",
-      "difficulty": "intermediate"
-    },
-    {
-      "id": 14,
       "question": "Dans la nomenclature 'OPRDMD01AUB', que représente 'OPR' ?",
       "options": [
         "Production (environnement)",
@@ -184,7 +171,7 @@
       "difficulty": "intermediate"
     },
     {
-      "id": 15,
+      "id": 14,
       "question": "Dans la nomenclature 'OPRDMD01AUB', que représente 'AUB' ?",
       "options": [
         "Aubervilliers (site datacenter)",
@@ -197,7 +184,7 @@
       "difficulty": "easy"
     },
     {
-      "id": 16,
+      "id": 15,
       "question": "Quelle est la première couche traversée par un client dans l'architecture MDA ?",
       "options": [
         "Couche PROXY",
@@ -210,7 +197,7 @@
       "difficulty": "easy"
     },
     {
-      "id": 17,
+      "id": 16,
       "question": "Quelle couche assure l'intelligence de routage vers le bon backend utilisateur ?",
       "options": [
         "Couche PROXY",
@@ -223,7 +210,7 @@
       "difficulty": "intermediate"
     },
     {
-      "id": 18,
+      "id": 17,
       "question": "Quelle est la technologie principale utilisée pour le stockage physique des emails ?",
       "options": [
         "Cassandra",
@@ -236,7 +223,7 @@
       "difficulty": "intermediate"
     },
     {
-      "id": 19,
+      "id": 18,
       "question": "Quel composant est responsable de l'authentification LDAP des utilisateurs ?",
       "options": [
         "HAProxy",
@@ -249,7 +236,7 @@
       "difficulty": "intermediate"
     },
     {
-      "id": 20,
+      "id": 19,
       "question": "Quel est le rôle principal de HAProxy dans l'architecture MDA ?",
       "options": [
         "Routage du trafic vers les directeurs",
@@ -262,7 +249,7 @@
       "difficulty": "intermediate"
     },
     {
-      "id": 21,
+      "id": 20,
       "question": "Quel flux traverse complètement les 4 couches de l'architecture ?",
       "options": [
         "CLIENT → PROXY → DIRECTORS → STOCKAGE",
@@ -275,7 +262,7 @@
       "difficulty": "easy"
     },
     {
-      "id": 22,
+      "id": 21,
       "question": "Quel est l'avantage principal de l'architecture bi-site actif-actif ?",
       "options": [
         "Réduction des coûts d'infrastructure",
@@ -288,20 +275,7 @@
       "difficulty": "intermediate"
     },
     {
-      "id": 23,
-      "question": "Dans la nouvelle architecture MVP, quels trigrammes remplacent les DOB ?",
-      "options": [
-        "DMB, DXB, DYB",
-        "DX1, DX2, DX3",
-        "DB1, DB2, DB3",
-        "D1B, D2B, D3B"
-      ],
-      "answer": 3,
-      "explanation": "Les DOB (ancienne architecture) sont remplacés par D1B, D2B et D3B dans la nouvelle architecture MVP avec Cassandra/S-ProxyD",
-      "difficulty": "intermediate"
-    },
-    {
-      "id": 24,
+      "id": 22,
       "question": "Combien de directeurs existe-t-il au total sur un site (tous rings confondus) ?",
       "options": [
         "18 directeurs",
@@ -314,7 +288,7 @@
       "difficulty": "advanced"
     },
     {
-      "id": 25,
+      "id": 23,
       "question": "Quel est le nombre total de directeurs en production (tous sites confondus) ?",
       "options": [
         "48 directeurs",
@@ -327,7 +301,7 @@
       "difficulty": "advanced"
     },
     {
-      "id": 26,
+      "id": 24,
       "question": "Quel composant maintient l'index permettant de localiser les objets dans ScalityRing ?",
       "options": [
         "Redis",
@@ -340,7 +314,7 @@
       "difficulty": "intermediate"
     },
     {
-      "id": 27,
+      "id": 25,
       "question": "Que signifie le trigramme DRA ?",
       "options": [
         "Dovecot REST API",
@@ -353,7 +327,7 @@
       "difficulty": "easy"
     },
     {
-      "id": 28,
+      "id": 26,
       "question": "Combien de serveurs DRA existe-t-il par site ?",
       "options": [
         "3 DRA par site",
@@ -366,7 +340,7 @@
       "difficulty": "intermediate"
     },
     {
-      "id": 29,
+      "id": 27,
       "question": "Quel est le nombre approximatif de backends par site ?",
       "options": [
         "180 backends",
@@ -379,7 +353,7 @@
       "difficulty": "intermediate"
     },
     {
-      "id": 30,
+      "id": 28,
       "question": "Dans quel ordre le trafic d'un client lourd traverse-t-il les composants ?",
       "options": [
         "Load Balancer → PPU → HAProxy → Directeurs → Backends",
@@ -392,20 +366,7 @@
       "difficulty": "intermediate"
     },
     {
-      "id": 31,
-      "question": "Quelle est la principale différence entre l'ancienne architecture DOB et la nouvelle D1B/D2B/D3B ?",
-      "options": [
-        "Le nombre de serveurs uniquement",
-        "Le système de stockage : CDMI/OBOS vers Cassandra/S-ProxyD",
-        "Les protocoles supportés",
-        "L'authentification LDAP"
-      ],
-      "answer": 1,
-      "explanation": "La principale différence est le système de stockage : ancienne architecture utilise CDMI/OBOS, nouvelle architecture utilise Cassandra/S-ProxyD (ScalityRing)",
-      "difficulty": "advanced"
-    },
-    {
-      "id": 32,
+      "id": 29,
       "question": "Que se passe-t-il quand un client se connecte à un PPU d'un site alors que sa boîte est sur l'autre site ?",
       "options": [
         "La connexion échoue",
@@ -418,7 +379,7 @@
       "difficulty": "advanced"
     },
     {
-      "id": 33,
+      "id": 30,
       "question": "Quel serveur Dovecot constitue le cœur de la messagerie, gérant IMAP, LMTP et POP3 ?",
       "options": [
         "Les PPU (Proxy Public)",
@@ -432,3 +393,4 @@
     }
   ]
 }
+

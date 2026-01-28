@@ -154,7 +154,7 @@
         "backend, storage, cache"
       ],
       "answer": 1,
-      "explanation": "Services backends : imap-worker (sessions IMAP), pns-worker (notifications), indexer-worker (sync metacash), lmtp (réception), auth (authentification)",
+      "explanation": "Services backends : imap-worker (sessions IMAP), pns-worker (notifications), indexer-worker (sync metacache), lmtp (réception), auth (authentification)",
       "difficulty": "intermediate"
     },
     {
@@ -266,7 +266,7 @@
       "question": "Où se trouve le métacash sur un backend ?",
       "options": [
         "/var/cache/dovecot/",
-        "/tmp/metacash/",
+        "/tmp/metacache/",
         "/data/dovecot/metacache/",
         "/var/lib/dovecot/metacache/"
       ],

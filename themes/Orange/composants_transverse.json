@@ -7,7 +7,7 @@
       "options": [
         "Dovecot Redis Engine",
         "Database Redis Engine",
-        "Director Redis (terme technique)",
+        "Director Redis ",
         "Dedicated Redis Environment"
       ],
       "answer": 2,
@@ -281,10 +281,10 @@
         "Création massive de boîtes",
         "Backup des bases de données",
         "Synchronisation LDAP",
-        "Campagnes suppression Super Balles (boîtes inactives >10 ans)"
+        "Campagnes suppression SUPERBAL (boîtes inactives >10 ans)"
       ],
       "answer": 3,
-      "explanation": "Les campagnes de suppression Super Balles (Provisioning) envoient des paquets massifs : DRA n'a pas de queue → load 100% → besoin optimisation",
+      "explanation": "Les campagnes de suppression SUPERBAL (Provisioning) envoient des paquets massifs : DRA n'a pas de queue → load 100% → besoin optimisation",
       "difficulty": "advanced"
     },
     {

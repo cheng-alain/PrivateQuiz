@@ -5,7 +5,7 @@
       "id": 1,
       "question": "Que signifie l'acronyme PPU ?",
       "options": [
-        "Proxy Public (terme technique)",
+        "Proxy Public ",
         "Proxy Public Unifié",
         "Proxy Principal Utilisateur",
         "Protocole Public User"
@@ -20,7 +20,7 @@
       "options": [
         "Proxy Public Restreint",
         "Protocole Privé Réseau",
-        "Proxy Privé (terme technique)",
+        "Proxy Privé ",
         "Proxy Principal Réservé"
       ],
       "answer": 2,

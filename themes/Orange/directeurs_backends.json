@@ -226,13 +226,13 @@
       "id": 18,
       "question": "Où est stocké le métacash sur un backend ?",
       "options": [
-        "/var/dovecot/metacash/",
+        "/var/dovecot/metacache/",
         "/opt/dovecot/cache/",
-        "/tmp/metacash/",
-        "/data/dovecot/metacash/"
+        "/tmp/metacache/",
+        "/data/dovecot/metacache/"
       ],
       "answer": 3,
-      "explanation": "Le métacash est stocké dans /data/dovecot/metacash/ avec une organisation par dossiers utilisateurs",
+      "explanation": "Le métacash est stocké dans /data/dovecot/metacache/ avec une organisation par dossiers utilisateurs",
       "difficulty": "intermediate"
     },
     {
@@ -279,7 +279,7 @@
       "question": "Quel service backend est responsable de la synchronisation du métacash avec le stockage distant ?",
       "options": [
         "sync-worker",
-        "metacash-worker",
+        "metacache-worker",
         "storage-sync",
         "indexer-worker"
       ],

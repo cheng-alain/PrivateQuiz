@@ -162,10 +162,10 @@
     {
       "id": "architecture_globale",
       "title": "Architecture Globale MDA",
-      "description": "33 questions sur l'architecture globale de l'infrastructure MDA : couches, sites, nomenclature et composants",
+      "description": "32 questions sur l'architecture globale de l'infrastructure MDA : couches, sites, nomenclature et composants",
       "category": "Orange",
       "difficulty": "Progressive",
-      "questions_count": 33,
+      "questions_count": 32,
       "file": "Orange/architecture_globale.json",
       "has_difficulty": true
     },
