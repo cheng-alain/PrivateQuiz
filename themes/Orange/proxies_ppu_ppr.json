@@ -1,0 +1,369 @@
+{
+  "title": "Proxies PPU et PPR",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Que signifie l'acronyme PPU ?",
+      "options": [
+        "Proxy Public Unifié",
+        "Proxy Public (terme technique)",
+        "Proxy Principal Utilisateur",
+        "Protocole Public User"
+      ],
+      "answer": 1,
+      "explanation": "PPU signifie Proxy Public, qui gère le trafic des clients lourds (Thunderbird, Outlook, iPhone) depuis Internet",
+      "difficulty": "easy"
+    },
+    {
+      "id": 2,
+      "question": "Que signifie l'acronyme PPR ?",
+      "options": [
+        "Proxy Public Restreint",
+        "Proxy Privé (terme technique)",
+        "Protocole Privé Réseau",
+        "Proxy Principal Réservé"
+      ],
+      "answer": 1,
+      "explanation": "PPR signifie Proxy Privé, qui gère le trafic des applications internes Orange (webmail, MTA)",
+      "difficulty": "easy"
+    },
+    {
+      "id": 3,
+      "question": "Quel type de trafic les PPU reçoivent-ils principalement ?",
+      "options": [
+        "Trafic interne des applications webmail",
+        "Trafic des clients lourds (Thunderbird, Outlook, iPhone)",
+        "Trafic des serveurs MTA uniquement",
+        "Trafic des API REST"
+      ],
+      "answer": 1,
+      "explanation": "Les PPU sont des reverse proxies publics qui reçoivent le trafic des clients lourds depuis Internet (Thunderbird, Outlook, iPhone)",
+      "difficulty": "easy"
+    },
+    {
+      "id": 4,
+      "question": "Quels protocoles les PPU supportent-ils ?",
+      "options": [
+        "IMAP, LMTP, SIEVE uniquement",
+        "POP3 et IMAP uniquement",
+        "IMAP, doveadm, SIEVE, LMTP",
+        "Tous les protocoles mail"
+      ],
+      "answer": 1,
+      "explanation": "Les PPU supportent principalement POP3 (port 110) et IMAP (port 143) pour les clients lourds",
+      "difficulty": "easy"
+    },
+    {
+      "id": 5,
+      "question": "Quels protocoles les PPR supportent-ils ?",
+      "options": [
+        "POP3 et IMAP uniquement",
+        "IMAP, SIEVE, LMTP, doveadm, doveadm over HTTP",
+        "IMAP et POP3 uniquement",
+        "Tous les protocoles sauf POP3"
+      ],
+      "answer": 1,
+      "explanation": "Les PPR supportent IMAP (143), SIEVE (4190), LMTP (24), doveadm (2425) et doveadm over HTTP (880). Le POP3 ne passe PAS par les PPR",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 6,
+      "question": "Quel est le port standard pour le protocole IMAP ?",
+      "options": [
+        "110",
+        "143",
+        "25",
+        "4190"
+      ],
+      "answer": 1,
+      "explanation": "Le port standard IMAP est 143 (non sécurisé ou STARTTLS)",
+      "difficulty": "easy"
+    },
+    {
+      "id": 7,
+      "question": "Quel est le port standard pour le protocole POP3 ?",
+      "options": [
+        "25",
+        "110",
+        "143",
+        "995"
+      ],
+      "answer": 1,
+      "explanation": "Le port standard POP3 est 110 (non sécurisé)",
+      "difficulty": "easy"
+    },
+    {
+      "id": 8,
+      "question": "Quel est le port utilisé par le protocole SIEVE sur les PPR ?",
+      "options": [
+        "143",
+        "4190",
+        "24",
+        "2425"
+      ],
+      "answer": 1,
+      "explanation": "Le protocole SIEVE (gestion des filtres utilisateurs) utilise le port 4190 sur les PPR",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 9,
+      "question": "Quel est le port utilisé par le protocole LMTP sur les PPR ?",
+      "options": [
+        "25",
+        "24",
+        "143",
+        "110"
+      ],
+      "answer": 1,
+      "explanation": "Le protocole LMTP (Local Mail Transfer Protocol) utilise le port 24 sur les PPR pour la réception des mails depuis le MTA",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 10,
+      "question": "Quel est le port utilisé par le protocole doveadm sur les PPR ?",
+      "options": [
+        "880",
+        "2425",
+        "143",
+        "4190"
+      ],
+      "answer": 1,
+      "explanation": "Le protocole doveadm (commandes d'administration Dovecot) utilise le port 2425 sur les PPR",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 11,
+      "question": "Quelle est la principale différence d'authentification entre PPU et PPR ?",
+      "options": [
+        "PPU utilise certificats SSL, PPR utilise user/password",
+        "PPU utilise user/password via LDAP, PPR utilise password générique",
+        "Les deux utilisent la même méthode",
+        "PPR n'a aucune authentification"
+      ],
+      "answer": 1,
+      "explanation": "PPU authentifie avec user/password via USD/LDAP. PPR utilise un password générique car l'authentification a déjà eu lieu côté webmail (OXM/OXA)",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 12,
+      "question": "Quel composant est responsable de l'authentification LDAP sur les proxies ?",
+      "options": [
+        "HAProxy",
+        "USD (User Service Directory)",
+        "Les directeurs Dovecot",
+        "Dovecot directement"
+      ],
+      "answer": 1,
+      "explanation": "USD (User Service Directory) est le composant qui gère l'authentification LDAP et retourne le site/ring de stockage de l'utilisateur",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 13,
+      "question": "Que retourne USD après une authentification réussie ?",
+      "options": [
+        "Uniquement l'adresse IP du backend",
+        "Le site de stockage et le ring de stockage",
+        "Le mot de passe chiffré",
+        "La liste de tous les backends disponibles"
+      ],
+      "answer": 1,
+      "explanation": "USD retourne le site de stockage (AUB ou VDR) et le ring de stockage (ring 1, 2 ou 3) associés à l'utilisateur",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 14,
+      "question": "Quel est le rôle principal de HAProxy sur les PPU/PPR ?",
+      "options": [
+        "Authentifier les utilisateurs",
+        "Router le trafic vers les directeurs appropriés",
+        "Stocker les emails",
+        "Gérer la blacklist IP"
+      ],
+      "answer": 1,
+      "explanation": "HAProxy est un reverse proxy qui route le trafic depuis Dovecot vers les directeurs appropriés selon le site et le ring",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 15,
+      "question": "Quelles sont les sources de trafic principales des PPR ?",
+      "options": [
+        "Clients lourds (Thunderbird, Outlook)",
+        "OXM/OXA (webmail), MTA, DRA",
+        "Uniquement le MTA",
+        "Uniquement les applications mobiles"
+      ],
+      "answer": 1,
+      "explanation": "Les PPR reçoivent le trafic de OXM/OXA (webmail), du MTA (réception mails), et du DRA (API REST)",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 16,
+      "question": "Le protocole POP3 passe-t-il par les PPR ?",
+      "options": [
+        "Oui, comme tous les protocoles",
+        "Non, POP3 ne passe pas par les PPR",
+        "Oui, mais uniquement en inter-site",
+        "Oui, mais uniquement pour les webmails"
+      ],
+      "answer": 1,
+      "explanation": "Le protocole POP3 ne passe PAS par les PPR, même s'il est présent dans certaines configurations. POP3 passe uniquement par les PPU",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 17,
+      "question": "Quels protocoles PPR supportent l'inter-site ?",
+      "options": [
+        "Tous les protocoles",
+        "IMAP et doveadm uniquement",
+        "LMTP et SIEVE uniquement",
+        "Aucun protocole"
+      ],
+      "answer": 1,
+      "explanation": "Sur les PPR, seuls les protocoles IMAP et doveadm (utilisés par les DRA) supportent l'inter-site. LMTP et SIEVE sont uni-site",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 18,
+      "question": "Les PPU supportent-ils le trafic inter-site ?",
+      "options": [
+        "Non, uniquement uni-site",
+        "Oui, tous les protocoles PPU supportent l'inter-site",
+        "Uniquement IMAP en inter-site",
+        "Uniquement POP3 en inter-site"
+      ],
+      "answer": 1,
+      "explanation": "Les PPU supportent pleinement l'inter-site : un client peut se connecter à un PPU du site A alors que sa boîte est sur le site B",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 19,
+      "question": "Quel mécanisme de sécurité les PPU utilisent-ils pour bloquer les IPs malveillantes ?",
+      "options": [
+        "Firewall hardware uniquement",
+        "Blacklist IP dynamique via fichier EP Dynam List",
+        "Authentification multi-facteurs",
+        "Certificats SSL obligatoires"
+      ],
+      "answer": 1,
+      "explanation": "Les PPU utilisent une blacklist IP dynamique via le fichier EP Dynam List, alimentée par l'équipe 360 (QRadar + Jenkins)",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 20,
+      "question": "Quel processus automatisé alimente la blacklist IP sur les PPU ?",
+      "options": [
+        "Ansible uniquement",
+        "QRadar analyse les logs, Jenkins déploie la liste",
+        "Centreon détecte et bloque",
+        "USD gère la blacklist"
+      ],
+      "answer": 1,
+      "explanation": "Les logs sont envoyés à QRadar qui les analyse, puis Jenkins récupère et transmet la liste d'IPs suspectes aux PPU",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 21,
+      "question": "Quel est le flux de traitement interne d'un PPU/PPR ?",
+      "options": [
+        "HAProxy → Dovecot → Directeurs",
+        "Dovecot → HAProxy → Directeurs",
+        "Directeurs → Dovecot → HAProxy",
+        "USD → Dovecot → Directeurs"
+      ],
+      "answer": 1,
+      "explanation": "Le flux interne est : Dovecot reçoit le trafic en premier, puis route vers HAProxy (localhost), puis HAProxy route vers les directeurs",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 22,
+      "question": "Où sont stockés les fichiers de configuration Dovecot sur les PPU/PPR ?",
+      "options": [
+        "/etc/haproxy/dovecot.conf",
+        "/etc/dovecot/dovecot.conf",
+        "/var/log/dovecot.conf",
+        "/opt/dovecot/config.conf"
+      ],
+      "answer": 1,
+      "explanation": "Le fichier principal de configuration Dovecot est /etc/dovecot/dovecot.conf",
+      "difficulty": "easy"
+    },
+    {
+      "id": 23,
+      "question": "Où sont stockés les fichiers de configuration HAProxy sur les PPU/PPR ?",
+      "options": [
+        "/etc/dovecot/haproxy.cfg",
+        "/etc/haproxy/haproxy.cfg",
+        "/var/log/haproxy.cfg",
+        "/opt/haproxy/config.cfg"
+      ],
+      "answer": 1,
+      "explanation": "Le fichier principal de configuration HAProxy est /etc/haproxy/haproxy.cfg",
+      "difficulty": "easy"
+    },
+    {
+      "id": 24,
+      "question": "Quelle est la structure d'un fichier de configuration HAProxy sur les proxies ?",
+      "options": [
+        "Frontend uniquement",
+        "Frontend (port d'écoute) + Backend (liste directeurs cibles)",
+        "Backend uniquement",
+        "Une seule section globale"
+      ],
+      "answer": 1,
+      "explanation": "HAProxy utilise des couples frontend/backend : frontend définit le port d'écoute et le protocole, backend liste les serveurs directeurs cibles",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 25,
+      "question": "Combien de cartes réseau (interfaces) possèdent les PPU ?",
+      "options": [
+        "2 interfaces (eth0, eth1)",
+        "3 interfaces (eth0, eth1, eth2)",
+        "4 interfaces",
+        "1 interface uniquement"
+      ],
+      "answer": 1,
+      "explanation": "Les PPU possèdent 3 interfaces : eth0 (Admin), eth1 (Flux interne vers DOD/USD/DTK/SHA), eth2 (Flux entrant depuis VIPs)",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 26,
+      "question": "Quel problème connu affecte les PPU/PPR depuis la mise en place de VIP LDAP ?",
+      "options": [
+        "Authentification impossible",
+        "Environ 50 erreurs/minute 'connection lost from LDAP'",
+        "Perte totale de connexion",
+        "Crash des serveurs USD"
+      ],
+      "answer": 1,
+      "explanation": "Depuis la migration HTTP → HTTPS via VIP LDAP, environ 50 erreurs/minute 'connection lost from LDAP' apparaissent (sans impact client visible)",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 27,
+      "question": "Dans quelle configuration HAProxy sur PPR, que représente le 'backend' ?",
+      "options": [
+        "Les serveurs backends (DOB/DXB)",
+        "Les serveurs directeurs (DMD/DXD)",
+        "Les serveurs USD",
+        "Les serveurs de stockage"
+      ],
+      "answer": 1,
+      "explanation": "Dans la configuration HAProxy des PPR/PPU, le terme 'backend' désigne la liste des serveurs directeurs (DMD/DXD), pas les backends DOB/DXB",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 28,
+      "question": "Quelle est la différence principale de sécurité entre PPU et PPR ?",
+      "options": [
+        "PPU utilise HTTPS, PPR utilise HTTP",
+        "PPU a une blacklist IP dynamique, PPR gère du trafic interne sécurisé",
+        "PPR a une blacklist, PPU n'en a pas",
+        "Aucune différence de sécurité"
+      ],
+      "answer": 1,
+      "explanation": "PPU utilise une blacklist IP dynamique pour bloquer les attaques externes. PPR gère du trafic interne déjà sécurisé (pas besoin de blacklist)",
+      "difficulty": "intermediate"
+    }
+  ]
+}

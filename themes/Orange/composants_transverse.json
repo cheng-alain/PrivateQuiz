@@ -1,0 +1,421 @@
+{
+  "title": "Composants Transverses",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Que signifie le trigramme DRE ?",
+      "options": [
+        "Dovecot Redis Engine",
+        "Director Redis (terme technique)",
+        "Database Redis Engine",
+        "Dedicated Redis Environment"
+      ],
+      "answer": 1,
+      "explanation": "DRE désigne les serveurs Redis dédiés à l'infrastructure MDA, utilisés comme cache clé-valeur ultra-rapide",
+      "difficulty": "easy"
+    },
+    {
+      "id": 2,
+      "question": "Combien de nœuds Redis existe-t-il par site ?",
+      "options": [
+        "2 nœuds",
+        "3 nœuds",
+        "5 nœuds",
+        "9 nœuds"
+      ],
+      "answer": 1,
+      "explanation": "Il y a 3 nœuds Redis par site : 1 master et 2 slaves avec réplication et failover automatique",
+      "difficulty": "easy"
+    },
+    {
+      "id": 3,
+      "question": "Quelle est l'architecture Redis utilisée dans MDA ?",
+      "options": [
+        "Redis standalone",
+        "Cluster Master-Slave avec failover automatique",
+        "Redis Cluster sharding",
+        "Redis Sentinel uniquement"
+      ],
+      "answer": 1,
+      "explanation": "Redis fonctionne en cluster Master-Slave : 1 master actif + 2 slaves en réplication avec failover automatique en cas de panne",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 4,
+      "question": "Quels types de données Redis stocke-t-il principalement ?",
+      "options": [
+        "Les emails complets des utilisateurs",
+        "Sessions, quota, last login, souscriptions PNS",
+        "Les logs d'authentification",
+        "Les configurations Dovecot"
+      ],
+      "answer": 1,
+      "explanation": "Redis stocke : sessions utilisateurs, quotas de boîtes, last login (timestamp), souscriptions PNS, statut INBOX (nombre messages non lus)",
+      "difficulty": "easy"
+    },
+    {
+      "id": 5,
+      "question": "Quel est le nom du proxy utilisé par les backends pour communiquer avec Redis ?",
+      "options": [
+        "HAProxy",
+        "Predixy",
+        "RedisProxy",
+        "Dovecot-proxy"
+      ],
+      "answer": 1,
+      "explanation": "Predixy (ou Predicxi) est le proxy installé sur chaque backend pour gérer les connexions vers Redis",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 6,
+      "question": "Quel est le bug connu de Predixy sous forte charge ?",
+      "options": [
+        "Perte de données Redis",
+        "Multiplication des connexions jusqu'à 30 000 (ne ferme pas les anciennes)",
+        "Crash du service",
+        "Corruption de la base Redis"
+      ],
+      "answer": 1,
+      "explanation": "Bug connu : Predixy ne ferme pas les anciennes connexions sous forte charge, duplication jusqu'à 30 000 connexions → Redis saturé",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 7,
+      "question": "Quelle est la solution préventive mise en place pour éviter le bug Predixy ?",
+      "options": [
+        "Augmenter la RAM Redis",
+        "Cron automatique redémarrant Predixy tous les 3 jours",
+        "Monitoring 24/7 manuel",
+        "Désactiver Predixy"
+      ],
+      "answer": 1,
+      "explanation": "Un cron redémarre automatiquement Predixy tous les 3 jours sur tous les backends pour éviter l'accumulation progressive de connexions",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 8,
+      "question": "En cas d'incident Redis critique, quelle est la solution la plus rapide ?",
+      "options": [
+        "Redémarrer tous les Predixy",
+        "Forcer un failover Redis (bascule master → slave)",
+        "Augmenter les ressources Redis",
+        "Redémarrer tous les backends"
+      ],
+      "answer": 1,
+      "explanation": "Le failover Redis (bascule master → slave) est plus rapide : il ferme automatiquement toutes les connexions et bascule le trafic",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 9,
+      "question": "Que signifie le trigramme DMQ ?",
+      "options": [
+        "Dovecot Mail Queue",
+        "Dovecot Message Queue (RabbitMQ)",
+        "Director Message Queue",
+        "Database Mail Queue"
+      ],
+      "answer": 1,
+      "explanation": "DMQ désigne les serveurs RabbitMQ (Message Queue) utilisés pour gérer les files d'attente de l'infrastructure MDA",
+      "difficulty": "easy"
+    },
+    {
+      "id": 10,
+      "question": "Combien de nœuds RabbitMQ existe-t-il par site actuellement ?",
+      "options": [
+        "3 nœuds",
+        "5 nœuds",
+        "7 nœuds",
+        "9 nœuds"
+      ],
+      "answer": 1,
+      "explanation": "RabbitMQ fonctionne en cluster de 5 nœuds par site (anciennement 3, passage à 5 pour optimisation et performance)",
+      "difficulty": "easy"
+    },
+    {
+      "id": 11,
+      "question": "Combien de queues totales RabbitMQ gère-t-il dans MDA ?",
+      "options": [
+        "6 queues",
+        "12 queues",
+        "24 queues",
+        "48 queues"
+      ],
+      "answer": 1,
+      "explanation": "RabbitMQ gère 12 queues au total pour répartir le trafic (environ 18 backends par queue : 210 backends / 12)",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 12,
+      "question": "Quel type de queues RabbitMQ utilise-t-il maintenant pour améliorer la résilience ?",
+      "options": [
+        "Classic queues",
+        "Quorum queues (répliquées sur tous les nœuds)",
+        "Stream queues",
+        "Priority queues"
+      ],
+      "answer": 1,
+      "explanation": "Les nouvelles queues quorum sont répliquées sur tous les nœuds (1 à 5) avec un leader, offrant meilleure résilience qu'avant (queue sur 1 seul nœud)",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 13,
+      "question": "Quel est le nom de la queue RabbitMQ critique pour les communications légales ?",
+      "options": [
+        "deve_legal_queue",
+        "deve_adm_legal_quorum_q",
+        "legal_critical_queue",
+        "rabbitmq_legal_q"
+      ],
+      "answer": 1,
+      "explanation": "La queue 'deve_adm_legal_quorum_q' est dédiée aux communications légales (Snapchat, interceptions) et est critique pour les engagements contractuels",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 14,
+      "question": "Quel est le rôle principal de RabbitMQ dans l'architecture MDA ?",
+      "options": [
+        "Stocker les emails",
+        "Protéger les backends contre la surcharge via des files d'attente",
+        "Authentifier les utilisateurs",
+        "Router le trafic vers les directeurs"
+      ],
+      "answer": 1,
+      "explanation": "RabbitMQ protège les backends : il stocke les demandes en queue et les backends consomment progressivement, évitant la surcharge",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 15,
+      "question": "Quels sont les principaux types de trafic gérés par RabbitMQ ?",
+      "options": [
+        "Uniquement les notifications PNS",
+        "PNS (notifications), PIM (calendrier), demandes DRA, dépôts/transferts backend",
+        "Uniquement les emails LMTP",
+        "Authentification LDAP"
+      ],
+      "answer": 1,
+      "explanation": "RabbitMQ gère : trafic PNS volumineux (notifications), calendrier PIM, demandes DRA (REST API), dépôts/transferts de mails depuis backends",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 16,
+      "question": "Les clusters RabbitMQ sont-ils actuellement inter-sites ?",
+      "options": [
+        "Oui, cluster unique multi-sites",
+        "Non, pas de communication inter-sites (1 cluster par site)",
+        "Oui, mais uniquement pour les queues PNS",
+        "Non défini"
+      ],
+      "answer": 1,
+      "explanation": "Actuellement, pas de communication inter-sites : trafic AUB → RabbitMQ AUB, trafic VDR → RabbitMQ VDR. POC cluster multi-sites en étude",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 17,
+      "question": "Que signifie le trigramme DRA ?",
+      "options": [
+        "Dovecot Redis API",
+        "Dovecot REST API (Director REST API)",
+        "Database REST Access",
+        "Director Remote Access"
+      ],
+      "answer": 1,
+      "explanation": "DRA signifie Dovecot REST API, l'API REST permettant la gestion administrative des boîtes mails",
+      "difficulty": "easy"
+    },
+    {
+      "id": 18,
+      "question": "Combien de serveurs DRA existe-t-il par site ?",
+      "options": [
+        "2 DRA par site",
+        "3 DRA par site",
+        "5 DRA par site",
+        "9 DRA par site"
+      ],
+      "answer": 1,
+      "explanation": "Il y a 3 serveurs DRA par site (DRA01, DRA02, DRA03) pour assurer la redondance",
+      "difficulty": "easy"
+    },
+    {
+      "id": 19,
+      "question": "Quelle est la stack technique complète d'un DRA ?",
+      "options": [
+        "Dovecot uniquement",
+        "Apache (httpd) → Tomcat → REST API Java (OX) → Dovecot",
+        "Nginx → Node.js → API",
+        "HAProxy → Python → Dovecot"
+      ],
+      "answer": 1,
+      "explanation": "Stack DRA : Apache httpd (reverse proxy) → Tomcat (serveur Java) → REST API Java OpenXchange → Dovecot (exécution via doveadm sur backends)",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 20,
+      "question": "Quelles sont les principales équipes utilisatrices du DRA ?",
+      "options": [
+        "Uniquement l'équipe MDA",
+        "Provisioning, CSR Tool (Abuse), Équipe Légale",
+        "Uniquement les développeurs",
+        "Support client uniquement"
+      ],
+      "answer": 1,
+      "explanation": "Le DRA est utilisé par : Provisioning (création/suppression boîtes), CSR Tool (stats, accès technique), Équipe Abuse (modération), Légal (interceptions)",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 21,
+      "question": "Quelle est la limite actuelle de performance du DRA ?",
+      "options": [
+        "1 000 requêtes/seconde",
+        "6 000 requêtes/seconde (au-delà : KO)",
+        "10 000 requêtes/seconde",
+        "Illimité"
+      ],
+      "answer": 1,
+      "explanation": "Le DRA peut gérer 6 000 suppressions/seconde. Au-delà de 10 000, il devient KO (ressources insuffisantes pour pics de charge)",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 22,
+      "question": "Quelle opération DRA cause des problèmes de performance la nuit ?",
+      "options": [
+        "Création massive de boîtes",
+        "Campagnes suppression Super Balles (boîtes inactives >10 ans)",
+        "Backup des bases de données",
+        "Synchronisation LDAP"
+      ],
+      "answer": 1,
+      "explanation": "Les campagnes de suppression Super Balles (Provisioning) envoient des paquets massifs : DRA n'a pas de queue → load 100% → besoin optimisation",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 23,
+      "question": "Quel est le rôle de Cassandra dans l'architecture MDA ?",
+      "options": [
+        "Stocker les emails physiquement",
+        "Stocker l'index permettant de localiser les objets dans ScalityRing",
+        "Gérer les sessions utilisateurs",
+        "Authentifier les utilisateurs"
+      ],
+      "answer": 1,
+      "explanation": "Cassandra stocke les clés/index permettant aux backends de localiser les objets emails dans ScalityRing (où sont les données physiques)",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 24,
+      "question": "Combien de clusters Cassandra existe-t-il dans l'infrastructure MDA ?",
+      "options": [
+        "1 cluster unique",
+        "2 clusters (1 par site)",
+        "3 clusters (1 par ring)",
+        "6 clusters"
+      ],
+      "answer": 1,
+      "explanation": "Il y a 2 clusters Cassandra : 1 cluster à Aubervilliers (AUB) et 1 cluster à Val-de-Reuil (VDR)",
+      "difficulty": "easy"
+    },
+    {
+      "id": 25,
+      "question": "Combien de nœuds possède chaque cluster Cassandra ?",
+      "options": [
+        "3 nœuds",
+        "5 nœuds",
+        "9 nœuds",
+        "12 nœuds"
+      ],
+      "answer": 2,
+      "explanation": "Chaque cluster Cassandra possède 9 nœuds avec 3 replicas par cluster pour la résilience",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 26,
+      "question": "Combien de replicas par donnée Cassandra maintient-il ?",
+      "options": [
+        "1 replica",
+        "2 replicas",
+        "3 replicas",
+        "5 replicas"
+      ],
+      "answer": 2,
+      "explanation": "Cassandra maintient 3 replicas par cluster pour garantir la haute disponibilité des métadonnées d'index",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 27,
+      "question": "Quelle est la technologie de stockage physique des emails dans MDA ?",
+      "options": [
+        "NFS classique",
+        "ScalityRing (stockage objet)",
+        "Ceph",
+        "NetApp SAN"
+      ],
+      "answer": 1,
+      "explanation": "ScalityRing est la technologie de stockage objet utilisée pour stocker physiquement les emails (plusieurs pétaoctets de données)",
+      "difficulty": "easy"
+    },
+    {
+      "id": 28,
+      "question": "Combien de rings Scality existe-t-il par site ?",
+      "options": [
+        "1 ring",
+        "2 rings",
+        "3 rings",
+        "5 rings"
+      ],
+      "answer": 2,
+      "explanation": "Il y a 3 rings Scality par site (ring 1, ring 2, ring 3) pour répartir le stockage et améliorer la résilience",
+      "difficulty": "easy"
+    },
+    {
+      "id": 29,
+      "question": "Quel composant permet aux backends d'accéder à ScalityRing ?",
+      "options": [
+        "CDMI",
+        "S-ProxyD (proxy HTTP ScalityRing)",
+        "NFS Gateway",
+        "iSCSI Gateway"
+      ],
+      "answer": 1,
+      "explanation": "S-ProxyD est le proxy HTTP Scality qui permet aux backends d'accéder au stockage objet ScalityRing",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 30,
+      "question": "Les backends MDA peuvent-ils accéder à un ring Scality d'un autre site ?",
+      "options": [
+        "Oui, inter-site complet",
+        "Non, pas d'inter-site MDA ↔ rings Scality",
+        "Oui, mais uniquement en lecture",
+        "Oui, mais uniquement en écriture"
+      ],
+      "answer": 1,
+      "explanation": "Il n'y a pas d'inter-site entre les backends MDA et les rings Scality : backends AUB → rings AUB, backends VDR → rings VDR",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 31,
+      "question": "Combien de replicas ScalityRing maintient-il par objet ?",
+      "options": [
+        "1 replica",
+        "2 replicas",
+        "3 replicas",
+        "5 replicas"
+      ],
+      "answer": 2,
+      "explanation": "Chaque ring Scality maintient 3 replicas par objet pour garantir la durabilité des données emails",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 32,
+      "question": "Quel est le workflow complet d'accès à un email par un backend ?",
+      "options": [
+        "Backend → ScalityRing directement",
+        "Backend → Cassandra (index) → ScalityRing (via S-ProxyD)",
+        "Backend → Redis → ScalityRing",
+        "Backend → Directeurs → ScalityRing"
+      ],
+      "answer": 1,
+      "explanation": "Workflow : 1) Backend consulte Cassandra pour localisation objet, 2) Backend récupère objet dans ScalityRing via S-ProxyD, 3) Mise à jour métacash local",
+      "difficulty": "advanced"
+    }
+  ]
+}

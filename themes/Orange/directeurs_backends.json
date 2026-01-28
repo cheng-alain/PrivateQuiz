@@ -1,0 +1,499 @@
+{
+  "title": "Directeurs et Backends",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Quel est le rôle principal des directeurs Dovecot (DMD/DXD) ?",
+      "options": [
+        "Stocker les emails physiquement",
+        "Router intelligemment le trafic vers les backends appropriés",
+        "Authentifier les utilisateurs via LDAP",
+        "Gérer les queues de mails MTA"
+      ],
+      "answer": 1,
+      "explanation": "Les directeurs sont des proxies Dovecot intelligents qui maintiennent une table d'association user ↔ backend et routent le trafic vers le bon backend",
+      "difficulty": "easy"
+    },
+    {
+      "id": 2,
+      "question": "Combien de directeurs existe-t-il par ring ?",
+      "options": [
+        "7 directeurs",
+        "9 directeurs",
+        "12 directeurs",
+        "15 directeurs"
+      ],
+      "answer": 1,
+      "explanation": "Chaque ring possède exactement 9 directeurs (numérotés D01 à D09), ce qui est la recommandation Dovecot",
+      "difficulty": "easy"
+    },
+    {
+      "id": 3,
+      "question": "Sur quel port les directeurs communiquent-ils entre eux pour former un ring ?",
+      "options": [
+        "143",
+        "9143",
+        "2425",
+        "8080"
+      ],
+      "answer": 1,
+      "explanation": "Les directeurs communiquent sur le port 9143 pour former un anneau (ring) et synchroniser leurs tables d'association",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 4,
+      "question": "Que représente le paramètre 'vhost' sur un backend ?",
+      "options": [
+        "Un taux de disponibilité (ex: 50% = 50% disponible)",
+        "Un poids de répartition de charge",
+        "Un nombre maximum d'utilisateurs",
+        "Une vitesse de traitement"
+      ],
+      "answer": 1,
+      "explanation": "Le vhost est un POIDS et non un taux. Il contrôle la probabilité d'assignation de nouvelles sessions à un backend",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 5,
+      "question": "Quelle est la valeur standard du paramètre vhost pour un backend en production normale ?",
+      "options": [
+        "50",
+        "100",
+        "150",
+        "200"
+      ],
+      "answer": 1,
+      "explanation": "En configuration standard, le vhost est à 100 pour une répartition homogène de la charge",
+      "difficulty": "easy"
+    },
+    {
+      "id": 6,
+      "question": "Quelle valeur de vhost permet d'arrêter les nouvelles connexions sur un backend ?",
+      "options": [
+        "-1",
+        "0",
+        "1",
+        "10"
+      ],
+      "answer": 1,
+      "explanation": "Un vhost à 0 empêche l'assignation de nouvelles sessions au backend, c'est la première étape du vidage",
+      "difficulty": "easy"
+    },
+    {
+      "id": 7,
+      "question": "Comment les directeurs déterminent-ils sur quel backend router un utilisateur ?",
+      "options": [
+        "Aléatoirement selon la charge",
+        "Via un hash MD5 de l'identifiant ISE2",
+        "Via consultation LDAP systématique",
+        "Via Cassandra"
+      ],
+      "answer": 1,
+      "explanation": "Les directeurs utilisent un hash MD5 de l'identifiant ISE2 pour déterminer de manière consistante le backend d'un utilisateur",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 8,
+      "question": "Quelle est la durée standard d'une session-assignation sur un directeur ?",
+      "options": [
+        "5 minutes",
+        "15 minutes",
+        "30 minutes",
+        "1 heure"
+      ],
+      "answer": 1,
+      "explanation": "Une session-assignation dure 15 minutes par défaut, sauf si elle est renouvelée par une nouvelle connexion utilisateur",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 9,
+      "question": "Quelle commande permet d'afficher la liste des backends et leur charge sur un directeur ?",
+      "options": [
+        "doveadm backend list",
+        "doveadm director status",
+        "doveadm show backends",
+        "director status"
+      ],
+      "answer": 1,
+      "explanation": "La commande 'doveadm director status' affiche tous les backends avec leur IP, vhost, état et nombre d'utilisateurs",
+      "difficulty": "easy"
+    },
+    {
+      "id": 10,
+      "question": "Quelle commande permet de localiser le backend d'un utilisateur spécifique ?",
+      "options": [
+        "doveadm find user <email>",
+        "doveadm director status <ISE2>",
+        "doveadm locate <email>",
+        "director find <ISE2>"
+      ],
+      "answer": 1,
+      "explanation": "La commande 'doveadm director status <ISE2>' affiche le backend actuel (Current), le backend hashé et la configuration initiale",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 11,
+      "question": "Quelle commande permet de modifier le vhost d'un backend ?",
+      "options": [
+        "doveadm backend update <IP> <VHOST>",
+        "doveadm director update <IP> <VHOST>",
+        "doveadm vhost set <IP> <VHOST>",
+        "director update <IP> <VHOST>"
+      ],
+      "answer": 1,
+      "explanation": "La commande 'doveadm director update <IP_BACKEND> <VHOST>' permet de modifier le poids d'un backend (ex: mise à 0 pour vidage)",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 12,
+      "question": "Quelle commande permet de vider complètement un backend de ses sessions actives ?",
+      "options": [
+        "doveadm backend flush <BACKEND>",
+        "doveadm director flush <BACKEND>",
+        "doveadm director drain <BACKEND>",
+        "doveadm evacuate <BACKEND>"
+      ],
+      "answer": 1,
+      "explanation": "La commande 'doveadm director flush <BACKEND>' force le vidage complet d'un backend (avec option --max-parallel pour contrôler la vitesse)",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 13,
+      "question": "Quel est le rôle du service 'Dovemon' sur les directeurs ?",
+      "options": [
+        "Surveiller les logs Dovecot",
+        "Faire des healthchecks réguliers sur les backends",
+        "Gérer les connexions IMAP",
+        "Synchroniser les rings"
+      ],
+      "answer": 1,
+      "explanation": "Dovemon est un watchdog qui effectue des healthchecks réguliers (IMAP, POP3, LMTP) sur chaque backend et les marque DOWN après 1h de timeout",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 14,
+      "question": "Quel est le rôle principal des backends (DOB/DXB) ?",
+      "options": [
+        "Router le trafic vers les directeurs",
+        "Traiter les protocoles mail (IMAP, POP3, LMTP) et gérer les boîtes",
+        "Authentifier les utilisateurs",
+        "Stocker uniquement les métadonnées"
+      ],
+      "answer": 1,
+      "explanation": "Les backends sont le cœur de la messagerie : ils traitent IMAP, POP3, LMTP, SIEVE, gèrent les boîtes mails et le métacash",
+      "difficulty": "easy"
+    },
+    {
+      "id": 15,
+      "question": "Quels sont les nouveaux trigrammes backends dans l'architecture MVP (nouvelle architecture) ?",
+      "options": [
+        "DMB1, DMB2, DMB3",
+        "D1B, D2B, D3B",
+        "DXB1, DXB2, DXB3",
+        "DOB1, DOB2, DOB3"
+      ],
+      "answer": 1,
+      "explanation": "Dans la nouvelle architecture MVP (Cassandra/S-ProxyD), les backends utilisent les trigrammes D1B, D2B et D3B",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 16,
+      "question": "Quel était le trigramme des backends dans l'ancienne architecture (CDMI/OBOS) ?",
+      "options": [
+        "DMB",
+        "DOB",
+        "DXB",
+        "DSB"
+      ],
+      "answer": 1,
+      "explanation": "DOB (Dovecot BackEnd) était le trigramme de l'ancienne architecture utilisant CDMI/OBOS pour le stockage",
+      "difficulty": "easy"
+    },
+    {
+      "id": 17,
+      "question": "Quelle est la taille du métacash (ZRAM) sur un backend ?",
+      "options": [
+        "120 Go",
+        "240 Go",
+        "280 Go",
+        "512 Go"
+      ],
+      "answer": 1,
+      "explanation": "Le métacash utilise 240 Go de ZRAM (RAM compressée) sur chaque backend pour stocker les métadonnées des boîtes mails",
+      "difficulty": "easy"
+    },
+    {
+      "id": 18,
+      "question": "Où est stocké le métacash sur un backend ?",
+      "options": [
+        "/var/dovecot/metacash/",
+        "/data/dovecot/metacash/",
+        "/opt/dovecot/cache/",
+        "/tmp/metacash/"
+      ],
+      "answer": 1,
+      "explanation": "Le métacash est stocké dans /data/dovecot/metacash/ avec une organisation par dossiers utilisateurs",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 19,
+      "question": "Que contient le métacash d'un backend ?",
+      "options": [
+        "Les emails complets des utilisateurs",
+        "Les métadonnées des emails (index, états, flags)",
+        "Uniquement les pièces jointes",
+        "Les logs des connexions"
+      ],
+      "answer": 1,
+      "explanation": "Le métacash contient les métadonnées : index des emails, états (lu/non lu), flags, filtres Sieve, mais pas le contenu complet des emails",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 20,
+      "question": "Que se passe-t-il si le métacash d'un backend est perdu ?",
+      "options": [
+        "Les emails sont définitivement perdus",
+        "Le métacash peut être reconstruit depuis ScalityRing",
+        "Les utilisateurs ne peuvent plus se connecter",
+        "Les directeurs tombent en cascade"
+      ],
+      "answer": 1,
+      "explanation": "La perte de métacash n'entraîne PAS de perte de données. Le métacash peut être reconstruit depuis le stockage physique (ScalityRing)",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 21,
+      "question": "Quels sont les principaux services Dovecot actifs sur un backend ?",
+      "options": [
+        "Uniquement imap et pop3",
+        "imap-worker, pns-worker, indexer-worker, lmtp, auth",
+        "Uniquement lmtp et sieve",
+        "director et backend-manager"
+      ],
+      "answer": 1,
+      "explanation": "Les principaux services sont : imap-worker (sessions IMAP), pns-worker (notifications), indexer-worker (synchro métacash), lmtp (réception), auth (authentification)",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 22,
+      "question": "Quel service backend est responsable de la synchronisation du métacash avec le stockage distant ?",
+      "options": [
+        "sync-worker",
+        "indexer-worker",
+        "metacash-worker",
+        "storage-sync"
+      ],
+      "answer": 1,
+      "explanation": "Le service 'indexer-worker' est responsable de la synchronisation entre le métacash local et le stockage distant (ScalityRing)",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 23,
+      "question": "Quel service backend est responsable des notifications PNS ?",
+      "options": [
+        "notif-worker",
+        "pns-worker",
+        "push-worker",
+        "notification-service"
+      ],
+      "answer": 1,
+      "explanation": "Le service 'pns-worker' enregistre les activités utilisateur et génère les notifications push via RabbitMQ",
+      "difficulty": "easy"
+    },
+    {
+      "id": 24,
+      "question": "Quelle est la principale raison pour laquelle les backends ne doivent PAS être redémarrés ?",
+      "options": [
+        "Perte des connexions LDAP",
+        "Effacement du métacash en ZRAM et impact sur ScalityRing",
+        "Corruption de Cassandra",
+        "Perte des directeurs associés"
+      ],
+      "answer": 1,
+      "explanation": "Le métacash étant en ZRAM (RAM), il est effacé au reboot. Le rechargement est très coûteux pour le backend et ScalityRing (centaines de milliers de fichiers)",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 25,
+      "question": "En cas d'incident sur un backend, quelle est la PRIORITÉ ABSOLUE ?",
+      "options": [
+        "Analyser les logs pour comprendre",
+        "Vider immédiatement le trafic du backend (vhost 0)",
+        "Redémarrer le service Dovecot",
+        "Contacter l'équipe Scality"
+      ],
+      "answer": 1,
+      "explanation": "La priorité absolue est de vider le trafic du backend (vhost 0 + flush) pour éviter l'accumulation de mails dans les queues MTA",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 26,
+      "question": "Quelle est la procédure correcte de vidage d'un backend avant maintenance ?",
+      "options": [
+        "Redémarrer directement le backend",
+        "vhost 0, attendre 15 min OU flush, puis maintenance",
+        "Arrêter Dovecot, puis redémarrer",
+        "Déconnecter du réseau directement"
+      ],
+      "answer": 1,
+      "explanation": "La procédure est : 1) Mettre vhost à 0, 2) Attendre 15 min OU forcer le flush, 3) Intervenir. Cela évite l'accumulation Q MTA",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 27,
+      "question": "Lors du vidage progressif d'un backend, à quelle vitesse le vhost est-il remonté ?",
+      "options": [
+        "Immédiatement à 100",
+        "Incrémentation automatique toutes les 10 min (ex: 5 → 15 → 30 → 100)",
+        "Manuellement uniquement",
+        "Remontée linéaire en 1 heure"
+      ],
+      "answer": 1,
+      "explanation": "Après vidage, un script remonte automatiquement le vhost progressivement toutes les 10 min (ex: 5 → 15 → 30 → 50 → 100)",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 28,
+      "question": "Combien d'interfaces réseau (ETH) possède un backend ?",
+      "options": [
+        "1 interface",
+        "2 interfaces",
+        "3 interfaces",
+        "4 interfaces"
+      ],
+      "answer": 2,
+      "explanation": "Les backends possèdent 3 interfaces : ETH0 (Admin), ETH1 (Service, ex: -pri1), ETH2 (Sortie vers OBOS/Cassandra, ex: -prv1)",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 29,
+      "question": "Quel composant maintient l'index permettant de localiser les objets dans ScalityRing ?",
+      "options": [
+        "Les directeurs",
+        "Cassandra",
+        "Redis",
+        "Le métacash"
+      ],
+      "answer": 1,
+      "explanation": "Cassandra stocke les clés permettant de localiser les objets physiques dans ScalityRing (3 tiers Cassandra pour 3 rings)",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 30,
+      "question": "Combien de boîtes mails un backend peut-il héberger approximativement ?",
+      "options": [
+        "10 000 à 20 000",
+        "40 000 à 50 000",
+        "80 000 à 100 000",
+        "200 000+"
+      ],
+      "answer": 1,
+      "explanation": "Un backend peut héberger approximativement 40 000 à 50 000 boîtes mails (un peu plus sur les DSB qui sont en fin de vie)",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 31,
+      "question": "Quelle commande permet de vérifier l'état du ring des directeurs ?",
+      "options": [
+        "doveadm director list",
+        "doveadm director ring status",
+        "doveadm ring check",
+        "director status"
+      ],
+      "answer": 1,
+      "explanation": "La commande 'doveadm director ring status' affiche l'état de l'anneau : self, left, right, synced, ping ms, etc.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 32,
+      "question": "Dans un ring de directeurs, chaque directeur communique avec combien de voisins ?",
+      "options": [
+        "1 voisin (suivant uniquement)",
+        "2 voisins (left et right)",
+        "Tous les autres directeurs du ring",
+        "3 voisins"
+      ],
+      "answer": 1,
+      "explanation": "Chaque directeur communique avec 2 voisins : LEFT (précédent) et RIGHT (suivant) pour former l'anneau sur le port 9143",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 33,
+      "question": "Combien de directeurs minimum doivent être disponibles dans un ring pour maintenir le service ?",
+      "options": [
+        "1 directeur suffit",
+        "Au moins 2 directeurs",
+        "Au moins 3 directeurs",
+        "Tous les 9 directeurs obligatoires"
+      ],
+      "answer": 2,
+      "explanation": "Un minimum de 3 directeurs est nécessaire (si 2 autres disponibles quand 1 tombe). Avec moins, le ring peut devenir instable",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 34,
+      "question": "Quelle est la principale différence entre DOB (ancienne architecture) et D1B/D2B/D3B (nouvelle) ?",
+      "options": [
+        "Le nombre de protocoles supportés",
+        "Le système de stockage : CDMI/OBOS vs Cassandra/S-ProxyD",
+        "La taille du métacash",
+        "Le nombre d'utilisateurs par backend"
+      ],
+      "answer": 1,
+      "explanation": "La principale différence est le système de stockage : DOB utilise CDMI/OBOS, D1B/D2B/D3B utilisent Cassandra (index) + S-ProxyD/ScalityRing (stockage)",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 35,
+      "question": "Pourquoi faut-il TOUJOURS utiliser l'identifiant ISE2 avec les commandes director ?",
+      "options": [
+        "Pour des raisons de sécurité uniquement",
+        "Car le hash MD5 est calculé sur l'ISE2, pas sur l'email ou MBID",
+        "Car les directeurs ne connaissent pas les emails",
+        "Car c'est obligatoire dans Dovecot"
+      ],
+      "answer": 1,
+      "explanation": "Les directeurs calculent le hash MD5 sur l'ISE2. Utiliser un email ou MBID donnera un hash différent et donc un mauvais backend",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 36,
+      "question": "Quel est l'impact d'une perte totale d'un ring de directeurs ?",
+      "options": [
+        "Aucun impact, les backends continuent",
+        "Perte du routage intelligent pour 1/3 des utilisateurs",
+        "Tous les emails sont perdus",
+        "Corruption du métacash"
+      ],
+      "answer": 1,
+      "explanation": "La perte d'un ring de directeurs impacte environ 1/3 des utilisateurs (1 ring sur 3) : ils ne peuvent plus être routés vers leurs backends",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 37,
+      "question": "Quelle est la limitation actuelle du paramètre 'delayed_down_delay' de Dovemon ?",
+      "options": [
+        "Il est désactivé",
+        "Il est configuré à 1 heure (trop long pour réagir)",
+        "Il est trop court (5 min)",
+        "Il ne fonctionne pas correctement"
+      ],
+      "answer": 1,
+      "explanation": "Le délai est configuré à 1h pour éviter les re-créations de métacash coûteuses, mais c'est trop long en cas de vrai incident backend",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 38,
+      "question": "Combien de connexions en parallèle sont traitées par défaut lors d'un 'doveadm director flush' ?",
+      "options": [
+        "10 connexions",
+        "50 connexions",
+        "100 connexions",
+        "200 connexions"
+      ],
+      "answer": 2,
+      "explanation": "Par défaut, 'doveadm director flush' traite 100 connexions en parallèle. On peut ajuster avec --max-parallel pour ralentir (ex: 10)",
+      "difficulty": "advanced"
+    }
+  ]
+}

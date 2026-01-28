@@ -139,7 +139,7 @@ function displayThemesOfCategory(categoryName) {
 function goBackToCategories() {
     selectedCategory = null;
     document.getElementById('backToCategoriesBtn').style.display = 'none';
-    document.getElementById('themeTitle').textContent = 'Select Assessment Topic';
+    document.getElementById('themeTitle').textContent = 'Sélectionner un thème';
     displayThemes();
 }
 

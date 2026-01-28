@@ -152,11 +152,81 @@
     {
       "id": "dovecot",
       "title": "Dovecot",
-      "description": "3 questions couvrant les bases de Dovecot : présentation générale, protocoles supportés et authentification",
+      "description": "25 questions sur les commandes doveadm essentielles : localisation utilisateur, gestion backend, métacash, troubleshooting et logs",
       "category": "Orange",
       "difficulty": "Progressive",
-      "questions_count": 3,
+      "questions_count": 25,
       "file": "Orange/dovecot.json",
+      "has_difficulty": true
+    },
+    {
+      "id": "architecture_globale",
+      "title": "Architecture Globale MDA",
+      "description": "33 questions sur l'architecture globale de l'infrastructure MDA : couches, sites, nomenclature et composants",
+      "category": "Orange",
+      "difficulty": "Progressive",
+      "questions_count": 33,
+      "file": "Orange/architecture_globale.json",
+      "has_difficulty": true
+    },
+    {
+      "id": "directeurs_backends",
+      "title": "Directeurs et Backends",
+      "description": "38 questions sur les directeurs Dovecot et backends : rôle, configuration, vhost, commandes doveadm et métacash",
+      "category": "Orange",
+      "difficulty": "Progressive",
+      "questions_count": 38,
+      "file": "Orange/directeurs_backends.json",
+      "has_difficulty": true
+    },
+    {
+      "id": "proxies_ppu_ppr",
+      "title": "Proxies PPU et PPR",
+      "description": "28 questions sur les proxies PPU (public) et PPR (privé) : protocoles, authentification, HAProxy et sécurité",
+      "category": "Orange",
+      "difficulty": "Progressive",
+      "questions_count": 28,
+      "file": "Orange/proxies_ppu_ppr.json",
+      "has_difficulty": true
+    },
+    {
+      "id": "composants_transverse",
+      "title": "Composants Transverses",
+      "description": "32 questions sur Redis, RabbitMQ, DRA, Cassandra et ScalityRing : architecture, configuration et troubleshooting",
+      "category": "Orange",
+      "difficulty": "Progressive",
+      "questions_count": 32,
+      "file": "Orange/composants_transverse.json",
+      "has_difficulty": true
+    },
+    {
+      "id": "supervision_monitoring",
+      "title": "Supervision et Monitoring",
+      "description": "28 questions sur les outils de supervision : Centreon, Kibana/ELK, Grafana, PIMS et méthodologie d'incident",
+      "category": "Orange",
+      "difficulty": "Progressive",
+      "questions_count": 28,
+      "file": "Orange/supervision_monitoring.json",
+      "has_difficulty": true
+    },
+    {
+      "id": "procedures_operations",
+      "title": "Procédures Opérationnelles",
+      "description": "28 questions sur les procédures opérationnelles : SWAN, PiCAB, Ansible, Bastion, environnements et déploiements",
+      "category": "Orange",
+      "difficulty": "Progressive",
+      "questions_count": 28,
+      "file": "Orange/procedures_operations.json",
+      "has_difficulty": true
+    },
+    {
+      "id": "environnements_qualification",
+      "title": "Environnements de Qualification",
+      "description": "22 questions sur les environnements de qualification : QT1, QT2, QF1, QF2, QM, QC, nomenclature et configurations",
+      "category": "Orange",
+      "difficulty": "Progressive",
+      "questions_count": 22,
+      "file": "Orange/environnements_qualification.json",
       "has_difficulty": true
     }
   ]

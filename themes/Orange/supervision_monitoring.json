@@ -1,0 +1,369 @@
+{
+  "title": "Supervision et Monitoring",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Quel est l'outil principal d'alerting temps réel dans l'infrastructure MDA ?",
+      "options": [
+        "Kibana",
+        "Centreon",
+        "Grafana",
+        "PIMS"
+      ],
+      "answer": 1,
+      "explanation": "Centreon est l'outil principal d'alerting temps réel utilisant des agents NRPE sur tous les serveurs",
+      "difficulty": "easy"
+    },
+    {
+      "id": 2,
+      "question": "Quel agent est installé sur tous les serveurs pour Centreon ?",
+      "options": [
+        "Collectd",
+        "NRPE (Nagios Remote Plugin Executor)",
+        "Filebeat",
+        "Rsyslog"
+      ],
+      "answer": 1,
+      "explanation": "NRPE (Nagios Remote Plugin Executor) est l'agent installé automatiquement sur tous les serveurs pour Centreon",
+      "difficulty": "easy"
+    },
+    {
+      "id": 3,
+      "question": "Quelle est la fréquence des checks Centreon par défaut ?",
+      "options": [
+        "Toutes les 1 minute",
+        "Toutes les 5 minutes",
+        "Toutes les 10 minutes",
+        "Toutes les 15 minutes"
+      ],
+      "answer": 1,
+      "explanation": "Les checks Centreon sont configurés pour s'exécuter toutes les 5 minutes selon les templates",
+      "difficulty": "easy"
+    },
+    {
+      "id": 4,
+      "question": "Pourquoi Centreon vérifie-t-il les sous-services Dovecot individuellement ?",
+      "options": [
+        "Pour économiser des ressources",
+        "Car le service parent peut être UP mais un sous-service KO",
+        "C'est obligatoire par Dovecot",
+        "Pour accélérer les checks"
+      ],
+      "answer": 1,
+      "explanation": "Le service Dovecot peut afficher OK mais un sous-service (pns-worker, imap-worker) peut être KO, invisible au niveau parent",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 5,
+      "question": "Quel est l'ordre d'escalade des alertes Centreon ?",
+      "options": [
+        "Équipe MDA → N1/N2 Marrakech",
+        "N1/N2 Marrakech → Équipe MDA",
+        "Directement équipe MDA",
+        "PIMS → Centreon → Équipe MDA"
+      ],
+      "answer": 1,
+      "explanation": "Ordre : Check NRPE → Alerte critique → Escalade N1/N2 Marrakech → Si non résolu → Escalade équipe MDA",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 6,
+      "question": "Que signifie ELK dans le contexte de supervision MDA ?",
+      "options": [
+        "Elastic Load Kubernetes",
+        "Elasticsearch, Logstash, Kibana",
+        "Enterprise Log Keeper",
+        "Error Log Kit"
+      ],
+      "answer": 1,
+      "explanation": "ELK est le stack Elasticsearch (indexation) + Logstash (traitement) + Kibana (visualisation) pour la centralisation des logs",
+      "difficulty": "easy"
+    },
+    {
+      "id": 7,
+      "question": "Quelle est la durée de rétention MAXIMALE des logs dans Kibana ?",
+      "options": [
+        "3 jours",
+        "7 jours",
+        "15 jours",
+        "30 jours"
+      ],
+      "answer": 1,
+      "explanation": "La rétention Kibana est de 7 JOURS MAXIMUM en raison du volume énorme généré par 420 backends",
+      "difficulty": "easy"
+    },
+    {
+      "id": 8,
+      "question": "Quel est le pipeline de collecte des logs vers Kibana ?",
+      "options": [
+        "Serveurs → Kibana directement",
+        "Serveurs → Rsyslog/Filebeat → Kafka → ELK → Kibana",
+        "Serveurs → Centreon → Kibana",
+        "Serveurs → Grafana → Kibana"
+      ],
+      "answer": 1,
+      "explanation": "Pipeline : Serveurs → Rsyslog/Filebeat → Kafka (file d'attente) → ELK → Kibana pour visualisation",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 9,
+      "question": "Pourquoi l'équipe MDA utilise-t-elle Rsyslog plutôt que Filebeat ?",
+      "options": [
+        "Rsyslog est plus rapide",
+        "Rsyslog permet des filtres avancés (n'envoie que logs importants)",
+        "Filebeat n'est pas supporté",
+        "Obligation de la System Team"
+      ],
+      "answer": 1,
+      "explanation": "Rsyslog permet des filtres avancés pour n'envoyer que les logs importants, évitant la surcharge avec 420 backends",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 10,
+      "question": "Quel espace Kibana est dédié à l'équipe MDA ?",
+      "options": [
+        "Default",
+        "Dovecot",
+        "MDA-Logs",
+        "Mail-Infrastructure"
+      ],
+      "answer": 1,
+      "explanation": "L'espace 'Dovecot' est dédié à l'équipe MDA. L'espace 'Default' permet de voir les logs de toutes les équipes",
+      "difficulty": "easy"
+    },
+    {
+      "id": 11,
+      "question": "Quel est l'outil de visualisation des métriques sur le long terme ?",
+      "options": [
+        "Centreon",
+        "Kibana",
+        "Grafana",
+        "PIMS"
+      ],
+      "answer": 2,
+      "explanation": "Grafana est l'outil de visualisation des métriques avec rétention jusqu'à 3 ans (vs 7 jours pour Kibana)",
+      "difficulty": "easy"
+    },
+    {
+      "id": 12,
+      "question": "Quelle est la durée de rétention des métriques dans Grafana ?",
+      "options": [
+        "7 jours",
+        "30 jours",
+        "1 an",
+        "Jusqu'à 3 ans"
+      ],
+      "answer": 3,
+      "explanation": "Grafana conserve les métriques jusqu'à 3 ans, permettant des analyses long terme et comparaisons historiques",
+      "difficulty": "easy"
+    },
+    {
+      "id": 13,
+      "question": "Quelle est l'architecture complète de collecte des métriques Grafana ?",
+      "options": [
+        "Serveur → Grafana directement",
+        "Serveur → Collectd → Grafana",
+        "Serveur (script) → nc → Carbon → Whisper files → Grafana",
+        "Serveur → Prometheus → Grafana"
+      ],
+      "answer": 2,
+      "explanation": "Architecture : Serveur (script métrique) → nc (netcat) → Carbon/Graphite → Whisper files (.wsp) → Grafana pour visualisation",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 14,
+      "question": "Quel agent collecte automatiquement les métriques système (CPU, RAM, I/O) ?",
+      "options": [
+        "NRPE",
+        "Collectd",
+        "Filebeat",
+        "Carbon"
+      ],
+      "answer": 1,
+      "explanation": "Collectd est déployé automatiquement (rôle commun System Team) et collecte CPU, RAM, load, réseau, disque",
+      "difficulty": "easy"
+    },
+    {
+      "id": 15,
+      "question": "Où sont stockés les scripts de métriques personnalisées sur les backends ?",
+      "options": [
+        "/etc/grafana/scripts/",
+        "/opt/operatingbin/init_metrics/",
+        "/var/lib/metrics/",
+        "/usr/local/metrics/"
+      ],
+      "answer": 1,
+      "explanation": "Les scripts métriques personnalisées sont dans /opt/operatingbin/init_metrics/ et installés via rôle Ansible role_metrics",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 16,
+      "question": "Quel outil affiche le dashboard 'Total Mail IQ' montrant les mails en queue MTA ?",
+      "options": [
+        "Centreon",
+        "Kibana",
+        "Grafana",
+        "PIMS"
+      ],
+      "answer": 3,
+      "explanation": "PIMS (géré par MCO Maroc) affiche le dashboard 'Total Mail IQ' qui est l'indicateur principal de santé infrastructure",
+      "difficulty": "easy"
+    },
+    {
+      "id": 17,
+      "question": "Quelle a été la valeur du pic maximal de mails en queue MTA historiquement ?",
+      "options": [
+        "1 million de mails",
+        "5 millions de mails",
+        "20 millions de mails",
+        "50 millions de mails"
+      ],
+      "answer": 2,
+      "explanation": "Le pic maximal historique était de 20 millions de mails en queue MTA, nécessitant 6-7 heures de purge",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 18,
+      "question": "Combien de temps les mails restent-ils en queue MTA avant notification au client ?",
+      "options": [
+        "6 heures",
+        "24 heures",
+        "3 jours",
+        "7 jours"
+      ],
+      "answer": 2,
+      "explanation": "Les mails en queue MTA ont une rétention de 3 jours. Si non livrés après 3 jours → mail de notification au client",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 19,
+      "question": "Que signifie une montée de la Q MTA dans PIMS ?",
+      "options": [
+        "Trop de mails reçus",
+        "Problème backends (n'absorbent pas la charge) ou composants upstream",
+        "Problème réseau uniquement",
+        "Maintenance planifiée"
+      ],
+      "answer": 1,
+      "explanation": "Q MTA monte → Problème backends (n'absorbent pas) OU problème directeurs/composants upstream qui ne traitent pas les mails",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 20,
+      "question": "Quelle est la méthodologie complète en cas d'incident ?",
+      "options": [
+        "Centreon → Agir → Vérifier logs",
+        "Centreon → Q MTA (PIMS) → Grafana (métriques) → Kibana (logs) → Agir",
+        "Kibana → Centreon → Agir",
+        "Grafana → Centreon → PIMS"
+      ],
+      "answer": 1,
+      "explanation": "Méthodologie : 1) Alerte Centreon, 2) Vérifier Q MTA (PIMS), 3) Analyser métriques (Grafana), 4) Chercher cause (Kibana), 5) Agir",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 21,
+      "question": "Quelle action PRIORITAIRE faut-il effectuer quand un backend est en incident ?",
+      "options": [
+        "Analyser les logs Kibana d'abord",
+        "Vider immédiatement le backend du trafic (vhost 0)",
+        "Redémarrer le service Dovecot",
+        "Attendre 15 minutes"
+      ],
+      "answer": 1,
+      "explanation": "PRIORITÉ ABSOLUE : vider immédiatement le backend du trafic pour éviter l'accumulation de mails dans les queues MTA",
+      "difficulty": "easy"
+    },
+    {
+      "id": 22,
+      "question": "Quel problème connu affecte Grafana actuellement ?",
+      "options": [
+        "Rétention trop courte",
+        "Performance médiocre de Graphite/Carbon",
+        "Pas de support Red Hat",
+        "Trop de dashboards"
+      ],
+      "answer": 1,
+      "explanation": "Problème connu : performance médiocre de Graphite/Carbon. Migration vers Prometheus en backlog pour améliorer les performances",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 23,
+      "question": "Pourquoi les logs HAProxy ont-ils été désactivés dans Kibana ?",
+      "options": [
+        "Trop de bugs",
+        "Volume trop important + logs inutilisés",
+        "Demande de la System Team",
+        "Migration vers Grafana"
+      ],
+      "answer": 1,
+      "explanation": "Les logs HAProxy ont été désactivés car : volume trop important + logs jamais consultés (optimisation récente)",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 24,
+      "question": "Quels sont les 4 outils combinés lors d'un incident ?",
+      "options": [
+        "Centreon, Ansible, GitLab, Bastion",
+        "Centreon, Grafana, Kibana, PIMS",
+        "Kibana, Redis, RabbitMQ, Cassandra",
+        "Grafana, Prometheus, Elasticsearch, Carbon"
+      ],
+      "answer": 1,
+      "explanation": "Triade + 1 : Centreon (alertes), Grafana (métriques), Kibana (logs), PIMS (Q MTA santé globale)",
+      "difficulty": "easy"
+    },
+    {
+      "id": 25,
+      "question": "Où se trouvent les fichiers de configuration NRPE sur un serveur ?",
+      "options": [
+        "/etc/centreon/nrpe.d/",
+        "/etc/nrpe.d/",
+        "/var/lib/nrpe/",
+        "/opt/nrpe/config/"
+      ],
+      "answer": 1,
+      "explanation": "Les fichiers de configuration NRPE se trouvent dans /etc/nrpe.d/ et sont appliqués par le rôle Ansible NRPE",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 26,
+      "question": "Quel format de fichier utilise Graphite pour stocker les métriques ?",
+      "options": [
+        ".log",
+        ".wsp (Whisper files)",
+        ".json",
+        ".rrd"
+      ],
+      "answer": 1,
+      "explanation": "Graphite utilise des fichiers .wsp (Whisper files) pour stocker les métriques dans /var/lib/carbon/whisper/",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 27,
+      "question": "Quelle commande permet de vérifier les métriques Whisper en debug ?",
+      "options": [
+        "cat /var/lib/carbon/whisper/[fichier].wsp",
+        "whisper-fetch.py /var/lib/carbon/whisper/[chemin]/[métrique].wsp",
+        "graphite-check [métrique]",
+        "carbon-metrics [fichier]"
+      ],
+      "answer": 1,
+      "explanation": "whisper-fetch.py affiche les points reçus minute par minute pour vérifier la réception des métriques sur Carbon",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 28,
+      "question": "Pourquoi est-il critique d'anticiper les recherches dans Kibana ?",
+      "options": [
+        "Kibana est lent",
+        "Rétention de 7 jours SEULEMENT avec 420 backends générant volume énorme",
+        "Kibana n'indexe qu'une fois par jour",
+        "Les logs sont chiffrés"
+      ],
+      "answer": 1,
+      "explanation": "Avec 420 backends générant un volume énorme, les logs ne sont gardés que 7 jours maximum → ne pas attendre pour chercher !",
+      "difficulty": "intermediate"
+    }
+  ]
+}

@@ -1,0 +1,369 @@
+{
+  "title": "Procédures Opérationnelles",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Que signifie l'acronyme SWAN ?",
+      "options": [
+        "System Wide Automation Network",
+        "Standard Work Authorization (demande de changement)",
+        "Server Workflow Administration",
+        "System Warning Alert Notification"
+      ],
+      "answer": 1,
+      "explanation": "SWAN est l'outil de gestion des changements (Standard Work Authorization) chez Orange pour gérer les demandes de modification en production",
+      "difficulty": "easy"
+    },
+    {
+      "id": 2,
+      "question": "Le SWAN est-il obligatoire pour les modifications en environnement qualif ?",
+      "options": [
+        "Oui, toujours obligatoire",
+        "Non, SWAN obligatoire uniquement en PROD",
+        "Oui, mais uniquement pour QF1/QF2",
+        "Oui, mais uniquement pour les backends"
+      ],
+      "answer": 1,
+      "explanation": "Le SWAN n'est obligatoire QU'EN PRODUCTION. En qualif/préprod, pas de SWAN nécessaire mais communication Mattermost recommandée",
+      "difficulty": "easy"
+    },
+    {
+      "id": 3,
+      "question": "Quelle est la fréquence du PiCAB ?",
+      "options": [
+        "Tous les lundis",
+        "Toutes les 2 semaines (mercredi)",
+        "Tous les vendredis",
+        "1 fois par mois"
+      ],
+      "answer": 1,
+      "explanation": "Le PiCAB (Pre-Implementation CAB) a lieu toutes les 2 semaines le mercredi pour valider les changements à risque fort",
+      "difficulty": "easy"
+    },
+    {
+      "id": 4,
+      "question": "Quand doit-on passer en PiCAB plutôt qu'au point vendredi ?",
+      "options": [
+        "Pour tous les changements",
+        "Pour changements risque fort (redémarrage backends, sortie trafic)",
+        "Uniquement pour les directeurs",
+        "Jamais, le point vendredi suffit"
+      ],
+      "answer": 1,
+      "explanation": "PiCAB obligatoire pour changements risque fort : redémarrage backends, sortie clients du trafic, impact potentiel service",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 5,
+      "question": "Quel est le rôle d'Elisabeth dans la gestion des changements ?",
+      "options": [
+        "Product Owner",
+        "Release Manager (communication Teams Opération)",
+        "Tech Lead",
+        "Scrum Master"
+      ],
+      "answer": 1,
+      "explanation": "Elisabeth est Release Manager, elle gère la communication via Teams Opération et anime le point changement du vendredi",
+      "difficulty": "easy"
+    },
+    {
+      "id": 6,
+      "question": "Sur quel canal faut-il communiquer AVANT et APRÈS chaque changement en production ?",
+      "options": [
+        "Teams",
+        "Mattermost (channel équipe + channel de change)",
+        "Email uniquement",
+        "Slack"
+      ],
+      "answer": 1,
+      "explanation": "Communication obligatoire sur Mattermost : 'SWAN X - je commence ma MEP' puis 'SWAN X - j'ai terminé ma MEP'",
+      "difficulty": "easy"
+    },
+    {
+      "id": 7,
+      "question": "Quel est l'outil principal pour déployer des configurations sur les serveurs ?",
+      "options": [
+        "Chef",
+        "Ansible (via playbooks)",
+        "Puppet",
+        "SaltStack"
+      ],
+      "answer": 1,
+      "explanation": "Ansible est l'outil principal de déploiement, utilisant des playbooks pour installer/configurer les serveurs",
+      "difficulty": "easy"
+    },
+    {
+      "id": 8,
+      "question": "Quel est le rôle du Bastion dans l'infrastructure ?",
+      "options": [
+        "Stocker les backups",
+        "Serveur Ansible central pour connexion et déploiements",
+        "Serveur de monitoring uniquement",
+        "Reverse proxy"
+      ],
+      "answer": 1,
+      "explanation": "Le Bastion est le serveur Ansible central permettant connexion aux serveurs, installations, modifications configs et déploiements",
+      "difficulty": "easy"
+    },
+    {
+      "id": 9,
+      "question": "Quelle fonctionnalité le Bastion offre-t-il pour se connecter rapidement aux serveurs ?",
+      "options": [
+        "SSH automatique",
+        "Fast Connect (alias de connexion rapide)",
+        "VPN intégré",
+        "RDP"
+      ],
+      "answer": 1,
+      "explanation": "Fast Connect permet de taper le nom du serveur et affiche une liste pour connexion directe sans commande SSH complète",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 10,
+      "question": "Quels sont les 2 types d'authentification utilisés depuis le Bastion ?",
+      "options": [
+        "User/password et certificat",
+        "Clé LDAP personnelle et user Ansible avec clé SSH",
+        "Token et 2FA",
+        "Biométrie et carte à puce"
+      ],
+      "answer": 1,
+      "explanation": "Connexion via clé LDAP personnelle (actions manuelles) et user Ansible avec clé SSH (automatisation)",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 11,
+      "question": "Où sont stockés les playbooks Ansible de l'équipe MDA ?",
+      "options": [
+        "GitHub",
+        "GitLab (projets inuit_inventories, dovecot_inventories, play_dovecot)",
+        "Bitbucket",
+        "Sur le Bastion uniquement"
+      ],
+      "answer": 1,
+      "explanation": "Les playbooks sont sur GitLab dans 3 projets : inuit_inventories (commun), dovecot_inventories (MDA), play_dovecot (orchestration)",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 12,
+      "question": "Quelle version d'Ansible est actuellement recommandée par la System Team ?",
+      "options": [
+        "2.9.0",
+        "2.14.2",
+        "2.10.5",
+        "3.0.0"
+      ],
+      "answer": 1,
+      "explanation": "La version Ansible recommandée actuellement est 2.14.2 selon les préconisations de la System Team",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 13,
+      "question": "Que permet le paramètre '--tags' dans une commande Ansible ?",
+      "options": [
+        "Définir la priorité du job",
+        "Sélectionner les rôles à jouer (ex: backend, proxy)",
+        "Ajouter des métadonnées",
+        "Créer des labels"
+      ],
+      "answer": 1,
+      "explanation": "Les tags permettent de sélectionner quels rôles Ansible doivent être exécutés (backend, proxy, dre, etc.)",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 14,
+      "question": "Que permet le paramètre '--limit' dans une commande Ansible ?",
+      "options": [
+        "Limiter la RAM utilisée",
+        "Cibler des serveurs spécifiques (un seul, liste ou groupe)",
+        "Limiter le temps d'exécution",
+        "Limiter les logs"
+      ],
+      "answer": 1,
+      "explanation": "Le paramètre --limit permet de cibler précisément les serveurs : un seul, une liste avec virgules, ou un groupe entier",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 15,
+      "question": "Combien d'environnements de qualification existent dans l'infrastructure MDA ?",
+      "options": [
+        "2 environnements (QT1, QT2)",
+        "4 environnements (QT1, QT2, QF1, QF2)",
+        "6 environnements",
+        "8 environnements"
+      ],
+      "answer": 1,
+      "explanation": "Il existe 4 environnements de qualification principaux : QT1, QT2 (même datacenter), QF1, QF2 (datacenters différents)",
+      "difficulty": "easy"
+    },
+    {
+      "id": 16,
+      "question": "Quel environnement est dédié aux tests de charge ISO production ?",
+      "options": [
+        "QT1",
+        "QM (Métrologie)",
+        "QF1",
+        "QC (Dev)"
+      ],
+      "answer": 1,
+      "explanation": "QM (Métrologie) est dédié aux tests de charge avec des serveurs ISO prod en taille (mais pas en quantité)",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 17,
+      "question": "Quel environnement est réservé au fournisseur Dovecot pour ses tests ?",
+      "options": [
+        "QT1",
+        "QC (Dev)",
+        "QF1",
+        "Prod cachée"
+      ],
+      "answer": 1,
+      "explanation": "QC (Dev) est l'environnement dédié au fournisseur pour tester et valider les nouvelles versions avant passage en QT/QF",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 18,
+      "question": "Quel outil permet de chercher rapidement des serveurs dans l'infrastructure ?",
+      "options": [
+        "Centreon",
+        "Cactus (recherche par trigramme, nom ou wildcard)",
+        "Grafana",
+        "CMDB"
+      ],
+      "answer": 1,
+      "explanation": "Cactus permet de rechercher des serveurs par trigramme (D2B, DMD), nom (OPM11DMB01) ou wildcard (%AUB%)",
+      "difficulty": "easy"
+    },
+    {
+      "id": 19,
+      "question": "Quelle est la nomenclature d'un serveur de production backend à Aubervilliers ring 1 ?",
+      "options": [
+        "OPRD1B01AUB",
+        "OPRDDMB01AUB",
+        "OPMED1B01AUB",
+        "OPME11D1B01AUB"
+      ],
+      "answer": 3,
+      "explanation": "Format : <ENV><TRIGRAM><NUM><SITE>. Production = OPME11, D1B = backend ring 1, 01 = numéro, AUB = Aubervilliers",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 20,
+      "question": "Quel composant permet d'exécuter des jobs Ansible dans un conteneur persistant ?",
+      "options": [
+        "Kubernetes",
+        "Docker Runner (alias Dr, image clever-runner)",
+        "Jenkins",
+        "GitLab CI uniquement"
+      ],
+      "answer": 1,
+      "explanation": "Docker Runner (Dr) utilise l'image clever-runner pour lancer des jobs Ansible persistants, même si connexion SSH perdue",
+      "difficulty": "advanced"
+    },
+    {
+      "id": 21,
+      "question": "Que signifie STP dans l'infrastructure MDA ?",
+      "options": [
+        "System Transfer Protocol",
+        "Serveur de Transfert de Fichiers (SFTP)",
+        "Standard Transmission Process",
+        "Secure Transport Platform"
+      ],
+      "answer": 1,
+      "explanation": "STP est le Serveur de Transfert de Fichiers utilisant SFTP, connecté à Axway, servant de fallback pour les notifications PNS",
+      "difficulty": "easy"
+    },
+    {
+      "id": 22,
+      "question": "Quel est le rôle principal du STP pour l'équipe MDA ?",
+      "options": [
+        "Backup des bases de données",
+        "Fallback notifications PNS (rattrapage notifications échouées)",
+        "Stockage des logs",
+        "Transfert de configurations"
+      ],
+      "answer": 1,
+      "explanation": "STP sert de fallback PNS : en cas d'échec notification, backend crée fichier local → cron transfère vers STP → PNS consomme et retry",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 23,
+      "question": "Combien de serveurs STP existe-t-il dans l'infrastructure ?",
+      "options": [
+        "1 par site (2 total)",
+        "3 par site (6 total)",
+        "1 seul serveur centralisé",
+        "5 serveurs"
+      ],
+      "answer": 0,
+      "explanation": "Il existe 1 serveur STP par site (Aubervilliers et Val-de-Reuil), soit 2 serveurs au total",
+      "difficulty": "easy"
+    },
+    {
+      "id": 24,
+      "question": "Quel fichier Ansible liste tous les rôles disponibles ?",
+      "options": [
+        "roles.yml",
+        "requirements.yml",
+        "playbook.yml",
+        "inventory.yml"
+      ],
+      "answer": 1,
+      "explanation": "Le fichier requirements.yml dans dovecot_playware liste tous les rôles Ansible disponibles pour l'équipe",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 25,
+      "question": "Quelle est la structure d'un playbook Ansible type ?",
+      "options": [
+        "Uniquement des rôles",
+        "Pre-tasks → Rôles selon tags → Post-tasks",
+        "Uniquement des tasks",
+        "Variables → Rôles → Variables"
+      ],
+      "answer": 1,
+      "explanation": "Structure : Pre-tasks (vérifications), Rôles appelés selon tags (backend, proxy...), Post-tasks (Nrpe, collecte)",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 26,
+      "question": "Où sont stockées les variables communes à toutes les équipes dans Ansible ?",
+      "options": [
+        "dovecot_inventories",
+        "inuit_inventories (projet commun)",
+        "play_dovecot",
+        "ansible_globals"
+      ],
+      "answer": 1,
+      "explanation": "inuit_inventories est le projet commun contenant les hosts et variables communes (crons, nrpe, collecte) utilisées par toutes équipes",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 27,
+      "question": "Où sont stockées les variables privées spécifiques à l'équipe MDA ?",
+      "options": [
+        "inuit_inventories",
+        "dovecot_inventories (spécifique MDA)",
+        "play_dovecot",
+        "mda_private"
+      ],
+      "answer": 1,
+      "explanation": "dovecot_inventories contient les variables privées spécifiques MDA (group_vars par équipe) complétant inuit_inventories",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 28,
+      "question": "Quelle est la première étape recommandée pour un débutant en déploiement ?",
+      "options": [
+        "Utiliser directement les pipelines GitLab CI",
+        "Utiliser le Bastion pour comprendre les mécanismes",
+        "Modifier directement en production",
+        "Utiliser Chef"
+      ],
+      "answer": 1,
+      "explanation": "Recommandation : débutant utilise Bastion pour comprendre mécanismes Ansible, confirmé passe aux pipelines pour automatisation",
+      "difficulty": "easy"
+    }
+  ]
+}

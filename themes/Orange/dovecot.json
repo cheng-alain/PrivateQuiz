@@ -1,45 +1,330 @@
 {
   "title": "Dovecot",
-  "description": "3 questions couvrant les bases de Dovecot : présentation générale, protocoles supportés et authentification",
   "questions": [
     {
       "id": 1,
-      "question": "Qu'est-ce que Dovecot ?",
+      "question": "Quelle commande doveadm permet de localiser le backend hébergeant un utilisateur ?",
       "options": [
-        "Un serveur de messagerie IMAP/POP3",
-        "Un serveur SMTP",
-        "Un client de messagerie",
-        "Un outil de supervision réseau"
+        "doveadm find <ISE2>",
+        "doveadm director status <ISE2>",
+        "doveadm locate <ISE2>",
+        "doveadm backend <ISE2>"
       ],
-      "answer": 0,
-      "explanation": "Dovecot est un serveur de messagerie open-source principalement utilisé pour fournir les services IMAP et POP3, permettant aux utilisateurs d'accéder à leurs emails.",
+      "answer": 1,
+      "explanation": "La commande 'doveadm director status <ISE2>' depuis un directeur retourne le backend (Current) hébergeant l'utilisateur",
       "difficulty": "easy"
     },
     {
       "id": 2,
-      "question": "Quels protocoles sont principalement supportés par Dovecot ?",
+      "question": "Que retourne la commande 'doveadm who' ?",
       "options": [
-        "SMTP et HTTP",
-        "IMAP et POP3",
-        "FTP et SFTP",
-        "SNMP et LDAP"
+        "Liste des backends disponibles",
+        "Liste des utilisateurs actuellement connectés",
+        "Liste des directeurs actifs",
+        "Liste des services dovecot"
       ],
       "answer": 1,
-      "explanation": "Dovecot supporte principalement les protocoles IMAP et POP3, qui permettent aux clients de messagerie de récupérer et consulter les emails stockés sur le serveur.",
+      "explanation": "'doveadm who' affiche la liste des utilisateurs actuellement connectés avec leur nombre de process",
       "difficulty": "easy"
     },
     {
       "id": 3,
-      "question": "Quel fichier est couramment utilisé pour configurer Dovecot ?",
+      "question": "Quelle commande permet de forcer la reconstruction de l'index INBOX d'un utilisateur ?",
       "options": [
-        "/etc/dovecot/dovecot.conf",
-        "/etc/mail/dovecot.yml",
-        "/usr/local/dovecot/config.json",
-        "/var/mail/dovecot.conf"
+        "doveadm rebuild -u <user> INBOX",
+        "doveadm force-resync -u <user> INBOX",
+        "doveadm reindex -u <user> INBOX",
+        "doveadm repair -u <user> INBOX"
       ],
-      "answer": 0,
-      "explanation": "Le fichier principal de configuration de Dovecot est généralement situé dans /etc/dovecot/dovecot.conf, avec des fichiers supplémentaires inclus depuis conf.d.",
+      "answer": 1,
+      "explanation": "'doveadm force-resync -u <user> INBOX' force la reconstruction complète de l'index INBOX depuis le stockage",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 4,
+      "question": "Quelle commande permet de lister tous les emails d'un utilisateur ?",
+      "options": [
+        "doveadm list -u <user>",
+        "doveadm search -u <user> ALL",
+        "doveadm mailbox -u <user>",
+        "doveadm show -u <user>"
+      ],
+      "answer": 1,
+      "explanation": "'doveadm search -u <user> ALL' liste tous les emails de l'utilisateur sur le backend",
       "difficulty": "easy"
+    },
+    {
+      "id": 5,
+      "question": "Que fait la commande 'doveadm director flush <IP_BACKEND>' ?",
+      "options": [
+        "Vide le cache du backend",
+        "Force l'évacuation immédiate des sessions du backend (par défaut 100 connexions parallèles)",
+        "Supprime le backend du ring",
+        "Redémarre le backend"
+      ],
+      "answer": 1,
+      "explanation": "'doveadm director flush' force l'évacuation immédiate des sessions (défaut 100 connexions parallèles) pour vidanger le backend rapidement",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 6,
+      "question": "Quelle commande permet de lister le contenu du métacash d'un backend ?",
+      "options": [
+        "doveadm cache list",
+        "doveadm metacache list",
+        "doveadm storage list",
+        "doveadm index list"
+      ],
+      "answer": 1,
+      "explanation": "'doveadm metacache list' affiche le contenu du métacash (40 000 à 50 000 boîtes par backend)",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 7,
+      "question": "Quelle commande permet de vider complètement le métacash d'un backend ?",
+      "options": [
+        "doveadm metacache clear",
+        "doveadm metacache flushall",
+        "doveadm cache purge",
+        "doveadm storage flush"
+      ],
+      "answer": 1,
+      "explanation": "'doveadm metacache flushall' vide complètement le métacash du backend (opération longue >15 min)",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 8,
+      "question": "Quelle commande permet de recharger la configuration dovecot sans redémarrer le service ?",
+      "options": [
+        "service dovecot restart",
+        "doveadm reload",
+        "dovecot -r",
+        "systemctl reload dovecot"
+      ],
+      "answer": 1,
+      "explanation": "'doveadm reload' recharge la configuration dovecot.conf sans redémarrer le service (utile pour changements mineurs)",
+      "difficulty": "easy"
+    },
+    {
+      "id": 9,
+      "question": "Quelle commande permet d'arrêter proprement dovecot SANS tuer les sessions IMAP/POP3 existantes ?",
+      "options": [
+        "service dovecot stop",
+        "doveadm -D -o shutdown_clients=no stop",
+        "doveadm stop --keep-sessions",
+        "dovecot --graceful-stop"
+      ],
+      "answer": 1,
+      "explanation": "'doveadm -D -o shutdown_clients=no stop' arrête dovecot en préservant les sessions existantes (shutdown_clients contrôle le kill)",
+      "difficulty": "hard"
+    },
+    {
+      "id": 10,
+      "question": "Quel est le fichier de configuration principal de Dovecot ?",
+      "options": [
+        "/etc/dovecot/dovecot.cfg",
+        "/etc/dovecot/dovecot.conf",
+        "/etc/dovecot/main.conf",
+        "/etc/dovecot.conf"
+      ],
+      "answer": 1,
+      "explanation": "Le fichier de configuration principal est /etc/dovecot/dovecot.conf contenant protocols, services, plugins, etc.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 11,
+      "question": "Où sont stockés les logs dovecot par défaut ?",
+      "options": [
+        "/var/log/dovecot.log",
+        "/var/log/maillog",
+        "/var/log/dovecot/dovecot.log",
+        "/var/log/messages"
+      ],
+      "answer": 1,
+      "explanation": "Les logs dovecot sont dans /var/log/maillog (via rsyslog), incluant erreurs, connexions, et événements applicatifs",
+      "difficulty": "easy"
+    },
+    {
+      "id": 12,
+      "question": "Quels sont les principaux services dovecot actifs sur un backend ?",
+      "options": [
+        "imap, pop3, smtp",
+        "imap-worker, pns-worker, indexer-worker, lmtp, auth",
+        "director, proxy, login",
+        "backend, storage, cache"
+      ],
+      "answer": 1,
+      "explanation": "Services backends : imap-worker (sessions IMAP), pns-worker (notifications), indexer-worker (sync metacash), lmtp (réception), auth (authentification)",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 13,
+      "question": "Quel service dovecot gère les sessions IMAP sur un backend ?",
+      "options": [
+        "dovecot/imap",
+        "dovecot/imap-worker",
+        "dovecot/imap-login",
+        "dovecot/imap-server"
+      ],
+      "answer": 1,
+      "explanation": "Le service 'imap-worker' gère les sessions IMAP actives sur les backends (vs imap-login sur proxies)",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 14,
+      "question": "Quel service dovecot gère les notifications push (PNS) sur un backend ?",
+      "options": [
+        "dovecot/pns",
+        "dovecot/pns-worker",
+        "dovecot/push-worker",
+        "dovecot/notify"
+      ],
+      "answer": 1,
+      "explanation": "Le service 'pns-worker' gère les notifications push (PNS) sur les backends",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 15,
+      "question": "Quel service dovecot synchronise le métacash avec le stockage physique ?",
+      "options": [
+        "dovecot/sync-worker",
+        "dovecot/indexer-worker",
+        "dovecot/cache-worker",
+        "dovecot/storage-worker"
+      ],
+      "answer": 1,
+      "explanation": "Le service 'indexer-worker' synchronise le métacash (ZRAM) avec le stockage physique (ScalityRing via Cassandra)",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 16,
+      "question": "Pourquoi ne faut-il JAMAIS rebooter un backend à l'arrache ?",
+      "options": [
+        "Perte de configuration",
+        "Métacash volatile en ZRAM = perte totale au reboot",
+        "Corruption base de données",
+        "Déconnexion réseau"
+      ],
+      "answer": 1,
+      "explanation": "Le métacash est en ZRAM (RAM compressée volatile) : reboot = perte totale → reconstruction depuis ScalityRing (plusieurs heures)",
+      "difficulty": "easy"
+    },
+    {
+      "id": 17,
+      "question": "Quelle est la procédure OBLIGATOIRE avant de rebooter un backend ?",
+      "options": [
+        "Arrêter dovecot simplement",
+        "Vider le backend du trafic (vhost 0, attendre 15min ou flush, puis reboot)",
+        "Prévenir les utilisateurs",
+        "Faire un backup"
+      ],
+      "answer": 1,
+      "explanation": "OBLIGATOIRE : 1) vhost 0 (arrêt nouvelles connexions), 2) attendre 15 min OU flush, 3) reboot. Sinon perte métacash + surcharge OBOS",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 18,
+      "question": "Que signifie FTS dans le contexte Dovecot ?",
+      "options": [
+        "Fast Transfer Service",
+        "Full Text Search (moteur de recherche)",
+        "File Transfer System",
+        "Fault Tolerant Storage"
+      ],
+      "answer": 1,
+      "explanation": "FTS = Full Text Search, le moteur de recherche Dovecot permettant la recherche dans le contenu des emails",
+      "difficulty": "easy"
+    },
+    {
+      "id": 19,
+      "question": "Pourquoi doit-on exécuter une commande doveadm uniquement sur le backend hébergeant l'utilisateur ?",
+      "options": [
+        "Pour des raisons de sécurité",
+        "Sinon création d'un nouveau métacash + dsync-merge coûteux et plantogène",
+        "C'est obligatoire par protocole",
+        "Pour éviter la surcharge réseau"
+      ],
+      "answer": 1,
+      "explanation": "Exécuter doveadm sur le mauvais backend génère un nouveau métacash → déclenchement d'un dsync-merge (action coûteuse et risquée)",
+      "difficulty": "hard"
+    },
+    {
+      "id": 20,
+      "question": "Quelle commande permet de tuer tous les process dovecot en force (urgence) ?",
+      "options": [
+        "service dovecot stop --force",
+        "ps -ef | grep dovecot | grep -v grep | awk '{print $2}' | xargs -n1 kill -9",
+        "doveadm kill --all",
+        "dovecot --force-stop"
+      ],
+      "answer": 1,
+      "explanation": "En urgence : 'ps -ef | grep dovecot | awk... | xargs kill -9' tue tous les process dovecot (dernier recours si restart échoue)",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 21,
+      "question": "Où se trouve le métacash sur un backend ?",
+      "options": [
+        "/var/cache/dovecot/",
+        "/data/dovecot/metacache/",
+        "/tmp/metacash/",
+        "/var/lib/dovecot/metacache/"
+      ],
+      "answer": 1,
+      "explanation": "Le métacash se trouve dans /data/dovecot/metacache/ (240 GB ZRAM) contenant les métadonnées des 40-50k boîtes du backend",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 22,
+      "question": "Quel plugin dovecot est utilisé pour le stockage objet ScalityRing ?",
+      "options": [
+        "storage_plugin",
+        "obox",
+        "scality_plugin",
+        "object_storage"
+      ],
+      "answer": 1,
+      "explanation": "Le plugin 'obox' permet à Dovecot d'utiliser le stockage objet (ScalityRing) au lieu du système de fichiers classique",
+      "difficulty": "hard"
+    },
+    {
+      "id": 23,
+      "question": "Que permet la commande 'doveadm log errors' ?",
+      "options": [
+        "Activer les logs d'erreurs",
+        "Afficher uniquement les erreurs récentes des logs dovecot",
+        "Réparer les erreurs",
+        "Exporter les logs"
+      ],
+      "answer": 1,
+      "explanation": "'doveadm log errors' filtre et affiche uniquement les erreurs récentes des logs dovecot (utile pour troubleshooting rapide)",
+      "difficulty": "easy"
+    },
+    {
+      "id": 24,
+      "question": "Quelle commande permet d'arrêter temporairement un service dovecot spécifique ?",
+      "options": [
+        "service <service> stop",
+        "doveadm service stop <service>",
+        "systemctl stop dovecot-<service>",
+        "dovecot disable <service>"
+      ],
+      "answer": 1,
+      "explanation": "'doveadm service stop <service>' (ex: imap, lmtp) arrête temporairement un service dovecot sans redémarrer tout dovecot",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": 25,
+      "question": "Que signifie le message d'erreur 'Socket already exists: /var/run/dovecot/lmtp' au restart ?",
+      "options": [
+        "Le service est déjà démarré",
+        "Des process dovecot orphelins n'ont pas été tués proprement",
+        "Problème de permissions",
+        "Corruption du socket"
+      ],
+      "answer": 1,
+      "explanation": "Ce message indique que des process dovecot orphelins persistent : il faut les tuer manuellement (kill -9) avant de redémarrer",
+      "difficulty": "intermediate"
     }
   ]
 }
