@@ -631,6 +631,7 @@ function updateScore() {
     document.getElementById('scoreDisplay').textContent = `Score: ${score}/${totalQuestions}`;
 }
 
+// Version simplifiée : affiche juste le score final (feedback immédiat remplace le récap)
 function showResults() {
     document.getElementById('quizContainer').style.display = 'none';
     document.getElementById('results').style.display = 'block';
@@ -640,20 +641,25 @@ function showResults() {
 
     let message = '';
     if (percentage >= 80) {
-        message = '🏆 Excellent ! Tu maîtrises parfaitement le sujet !';
+        message = 'Excellent ! Tu maîtrises parfaitement le sujet !';
     } else if (percentage >= 60) {
-        message = '👍 Bien joué ! Quelques révisions et tu seras parfait !';
+        message = 'Bien joué ! Quelques révisions et tu seras parfait !';
     } else if (percentage >= 40) {
-        message = '📚 Pas mal, mais il reste du travail !';
+        message = 'Pas mal, mais il reste du travail !';
     } else {
-        message = '💪 Ne te décourage pas, continue à apprendre !';
+        message = 'Ne te décourage pas, continue à apprendre !';
     }
 
     document.getElementById('resultMessage').textContent = message;
 
-    displayWrongAnswers();
+    // Masquer la section des mauvaises réponses (feedback immédiat la remplace)
+    document.getElementById('wrongAnswersSection').style.display = 'none';
+
+    // displayWrongAnswers(); // Commenté : le feedback immédiat remplace le récapitulatif
 }
 
+/*
+// ANCIEN RÉCAPITULATIF - Commenté pour usage futur (mode examen)
 function displayWrongAnswers() {
     const wrongAnswersSection = document.getElementById('wrongAnswersSection');
     const wrongAnswersContainer = document.getElementById('wrongAnswersContainer');
@@ -706,6 +712,7 @@ function displayWrongAnswers() {
         });
     }
 }
+*/
 
 function goHome() {
     if (confirm('Es-tu sûr de vouloir quitter le quiz ?')) {
