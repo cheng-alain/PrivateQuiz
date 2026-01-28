@@ -383,7 +383,8 @@ function displayQuestion() {
     document.getElementById('nextBtn').style.display = 'none';
 
     // Afficher le bouton Précédent si on n'est pas à la première question
-    document.getElementById('prevBtn').style.display = currentQuestionIndex > 0 ? 'inline-block' : 'none';
+    // Utiliser visibility pour garder l'espace et centrer les autres boutons
+    document.getElementById('prevBtn').style.visibility = currentQuestionIndex > 0 ? 'visible' : 'hidden';
 
     updateUI();
 }
