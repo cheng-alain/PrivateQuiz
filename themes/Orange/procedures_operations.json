@@ -5,12 +5,12 @@
       "id": 1,
       "question": "Que signifie l'acronyme SWAN ?",
       "options": [
-        "System Wide Automation Network",
         "Standard Work Authorization (demande de changement)",
+        "System Wide Automation Network",
         "Server Workflow Administration",
         "System Warning Alert Notification"
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "SWAN est l'outil de gestion des changements (Standard Work Authorization) chez Orange pour gérer les demandes de modification en production",
       "difficulty": "easy"
     },
@@ -19,11 +19,11 @@
       "question": "Le SWAN est-il obligatoire pour les modifications en environnement qualif ?",
       "options": [
         "Oui, toujours obligatoire",
-        "Non, SWAN obligatoire uniquement en PROD",
         "Oui, mais uniquement pour QF1/QF2",
+        "Non, SWAN obligatoire uniquement en PROD",
         "Oui, mais uniquement pour les backends"
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "Le SWAN n'est obligatoire QU'EN PRODUCTION. En qualif/préprod, pas de SWAN nécessaire mais communication Mattermost recommandée",
       "difficulty": "easy"
     },
@@ -32,11 +32,11 @@
       "question": "Quelle est la fréquence du PiCAB ?",
       "options": [
         "Tous les lundis",
-        "Toutes les 2 semaines (mercredi)",
         "Tous les vendredis",
-        "1 fois par mois"
+        "1 fois par mois",
+        "Toutes les 2 semaines (mercredi)"
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "Le PiCAB (Pre-Implementation CAB) a lieu toutes les 2 semaines le mercredi pour valider les changements à risque fort",
       "difficulty": "easy"
     },
@@ -57,12 +57,12 @@
       "id": 5,
       "question": "Quel est le rôle d'Elisabeth dans la gestion des changements ?",
       "options": [
-        "Product Owner",
         "Release Manager (communication Teams Opération)",
+        "Product Owner",
         "Tech Lead",
         "Scrum Master"
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "Elisabeth est Release Manager, elle gère la communication via Teams Opération et anime le point changement du vendredi",
       "difficulty": "easy"
     },
@@ -71,11 +71,11 @@
       "question": "Sur quel canal faut-il communiquer AVANT et APRÈS chaque changement en production ?",
       "options": [
         "Teams",
-        "Mattermost (channel équipe + channel de change)",
         "Email uniquement",
+        "Mattermost (channel équipe + channel de change)",
         "Slack"
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "Communication obligatoire sur Mattermost : 'SWAN X - je commence ma MEP' puis 'SWAN X - j'ai terminé ma MEP'",
       "difficulty": "easy"
     },
@@ -84,11 +84,11 @@
       "question": "Quel est l'outil principal pour déployer des configurations sur les serveurs ?",
       "options": [
         "Chef",
-        "Ansible (via playbooks)",
         "Puppet",
-        "SaltStack"
+        "SaltStack",
+        "Ansible (via playbooks)"
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "Ansible est l'outil principal de déploiement, utilisant des playbooks pour installer/configurer les serveurs",
       "difficulty": "easy"
     },
@@ -109,12 +109,12 @@
       "id": 9,
       "question": "Quelle fonctionnalité le Bastion offre-t-il pour se connecter rapidement aux serveurs ?",
       "options": [
-        "SSH automatique",
         "Fast Connect (alias de connexion rapide)",
+        "SSH automatique",
         "VPN intégré",
         "RDP"
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "Fast Connect permet de taper le nom du serveur et affiche une liste pour connexion directe sans commande SSH complète",
       "difficulty": "intermediate"
     },
@@ -123,11 +123,11 @@
       "question": "Quels sont les 2 types d'authentification utilisés depuis le Bastion ?",
       "options": [
         "User/password et certificat",
-        "Clé LDAP personnelle et user Ansible avec clé SSH",
         "Token et 2FA",
+        "Clé LDAP personnelle et user Ansible avec clé SSH",
         "Biométrie et carte à puce"
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "Connexion via clé LDAP personnelle (actions manuelles) et user Ansible avec clé SSH (automatisation)",
       "difficulty": "intermediate"
     },
@@ -136,11 +136,11 @@
       "question": "Où sont stockés les playbooks Ansible de l'équipe MDA ?",
       "options": [
         "GitHub",
-        "GitLab (projets inuit_inventories, dovecot_inventories, play_dovecot)",
         "Bitbucket",
-        "Sur le Bastion uniquement"
+        "Sur le Bastion uniquement",
+        "GitLab (projets inuit_inventories, dovecot_inventories, play_dovecot)"
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "Les playbooks sont sur GitLab dans 3 projets : inuit_inventories (commun), dovecot_inventories (MDA), play_dovecot (orchestration)",
       "difficulty": "intermediate"
     },
@@ -161,12 +161,12 @@
       "id": 13,
       "question": "Que permet le paramètre '--tags' dans une commande Ansible ?",
       "options": [
-        "Définir la priorité du job",
         "Sélectionner les rôles à jouer (ex: backend, proxy)",
+        "Définir la priorité du job",
         "Ajouter des métadonnées",
         "Créer des labels"
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "Les tags permettent de sélectionner quels rôles Ansible doivent être exécutés (backend, proxy, dre, etc.)",
       "difficulty": "intermediate"
     },
@@ -175,11 +175,11 @@
       "question": "Que permet le paramètre '--limit' dans une commande Ansible ?",
       "options": [
         "Limiter la RAM utilisée",
-        "Cibler des serveurs spécifiques (un seul, liste ou groupe)",
         "Limiter le temps d'exécution",
+        "Cibler des serveurs spécifiques (un seul, liste ou groupe)",
         "Limiter les logs"
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "Le paramètre --limit permet de cibler précisément les serveurs : un seul, une liste avec virgules, ou un groupe entier",
       "difficulty": "intermediate"
     },
@@ -188,11 +188,11 @@
       "question": "Combien d'environnements de qualification existent dans l'infrastructure MDA ?",
       "options": [
         "2 environnements (QT1, QT2)",
-        "4 environnements (QT1, QT2, QF1, QF2)",
         "6 environnements",
-        "8 environnements"
+        "8 environnements",
+        "4 environnements (QT1, QT2, QF1, QF2)"
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "Il existe 4 environnements de qualification principaux : QT1, QT2 (même datacenter), QF1, QF2 (datacenters différents)",
       "difficulty": "easy"
     },
@@ -213,12 +213,12 @@
       "id": 17,
       "question": "Quel environnement est réservé au fournisseur Dovecot pour ses tests ?",
       "options": [
-        "QT1",
         "QC (Dev)",
+        "QT1",
         "QF1",
         "Prod cachée"
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "QC (Dev) est l'environnement dédié au fournisseur pour tester et valider les nouvelles versions avant passage en QT/QF",
       "difficulty": "intermediate"
     },
@@ -227,11 +227,11 @@
       "question": "Quel outil permet de chercher rapidement des serveurs dans l'infrastructure ?",
       "options": [
         "Centreon",
-        "Cactus (recherche par trigramme, nom ou wildcard)",
         "Grafana",
+        "Cactus (recherche par trigramme, nom ou wildcard)",
         "CMDB"
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "Cactus permet de rechercher des serveurs par trigramme (D2B, DMD), nom (OPM11DMB01) ou wildcard (%AUB%)",
       "difficulty": "easy"
     },
@@ -252,12 +252,12 @@
       "id": 20,
       "question": "Quel composant permet d'exécuter des jobs Ansible dans un conteneur persistant ?",
       "options": [
-        "Kubernetes",
         "Docker Runner (alias Dr, image clever-runner)",
+        "Kubernetes",
         "Jenkins",
         "GitLab CI uniquement"
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "Docker Runner (Dr) utilise l'image clever-runner pour lancer des jobs Ansible persistants, même si connexion SSH perdue",
       "difficulty": "advanced"
     },
@@ -266,11 +266,11 @@
       "question": "Que signifie STP dans l'infrastructure MDA ?",
       "options": [
         "System Transfer Protocol",
-        "Serveur de Transfert de Fichiers (SFTP)",
         "Standard Transmission Process",
-        "Secure Transport Platform"
+        "Secure Transport Platform",
+        "Serveur de Transfert de Fichiers (SFTP)"
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "STP est le Serveur de Transfert de Fichiers utilisant SFTP, connecté à Axway, servant de fallback pour les notifications PNS",
       "difficulty": "easy"
     },
@@ -305,11 +305,11 @@
       "question": "Quel fichier Ansible liste tous les rôles disponibles ?",
       "options": [
         "roles.yml",
-        "requirements.yml",
         "playbook.yml",
+        "requirements.yml",
         "inventory.yml"
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "Le fichier requirements.yml dans dovecot_playware liste tous les rôles Ansible disponibles pour l'équipe",
       "difficulty": "intermediate"
     },
@@ -318,11 +318,11 @@
       "question": "Quelle est la structure d'un playbook Ansible type ?",
       "options": [
         "Uniquement des rôles",
-        "Pre-tasks → Rôles selon tags → Post-tasks",
         "Uniquement des tasks",
-        "Variables → Rôles → Variables"
+        "Variables → Rôles → Variables",
+        "Pre-tasks → Rôles selon tags → Post-tasks"
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "Structure : Pre-tasks (vérifications), Rôles appelés selon tags (backend, proxy...), Post-tasks (Nrpe, collecte)",
       "difficulty": "intermediate"
     },
@@ -343,12 +343,12 @@
       "id": 27,
       "question": "Où sont stockées les variables privées spécifiques à l'équipe MDA ?",
       "options": [
-        "inuit_inventories",
         "dovecot_inventories (spécifique MDA)",
+        "inuit_inventories",
         "play_dovecot",
         "mda_private"
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "dovecot_inventories contient les variables privées spécifiques MDA (group_vars par équipe) complétant inuit_inventories",
       "difficulty": "intermediate"
     },
@@ -357,11 +357,11 @@
       "question": "Quelle est la première étape recommandée pour un débutant en déploiement ?",
       "options": [
         "Utiliser directement les pipelines GitLab CI",
-        "Utiliser le Bastion pour comprendre les mécanismes",
         "Modifier directement en production",
+        "Utiliser le Bastion pour comprendre les mécanismes",
         "Utiliser Chef"
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "Recommandation : débutant utilise Bastion pour comprendre mécanismes Ansible, confirmé passe aux pipelines pour automatisation",
       "difficulty": "easy"
     }

@@ -218,9 +218,9 @@ function updateSelectedThemeInfo() {
         let difficultyBadge = '';
         if (selectedDifficulty) {
             const difficultyLabels = {
-                'easy': '📚 Facile',
-                'intermediate': '🎯 Moyen',
-                'advanced': '🚀 Difficile',
+                'easy': 'Facile',
+                'intermediate': 'Moyen',
+                'advanced': 'Difficile',
                 'all': '🏆 Examen Final'
             };
             difficultyBadge = `<span class="difficulty-badge">${difficultyLabels[selectedDifficulty]}</span>`;
@@ -550,13 +550,13 @@ function showResults() {
 
     let message = '';
     if (percentage >= 80) {
-        message = '🏆 Excellent! You mastered the subject perfectly!';
+        message = '🏆 Excellent ! Tu maîtrises parfaitement le sujet !';
     } else if (percentage >= 60) {
-        message = '👍 Well done! A few revisions and you\'ll be perfect!';
+        message = '👍 Bien joué ! Quelques révisions et tu seras parfait !';
     } else if (percentage >= 40) {
-        message = '📚 Not bad, but there\'s still work to do!';
+        message = '📚 Pas mal, mais il reste du travail !';
     } else {
-        message = '💪 Don\'t get discouraged, keep learning!';
+        message = '💪 Ne te décourage pas, continue à apprendre !';
     }
 
     document.getElementById('resultMessage').textContent = message;
@@ -588,14 +588,14 @@ function displayWrongAnswers() {
             const userAnswerDiv = document.createElement('div');
             userAnswerDiv.className = 'user-answer';
             userAnswerDiv.innerHTML = `
-                <span class="answer-label">Your answer:</span>
+                <span class="answer-label">Ta réponse :</span>
                 <span>${wrong.userAnswer}</span>
             `;
 
             const correctAnswerDiv = document.createElement('div');
             correctAnswerDiv.className = 'correct-answer';
             correctAnswerDiv.innerHTML = `
-                <span class="answer-label">Correct answer:</span>
+                <span class="answer-label">Bonne réponse :</span>
                 <span>${wrong.correctAnswer}</span>
             `;
 
@@ -608,7 +608,7 @@ function displayWrongAnswers() {
             if (wrong.explanation) {
                 const explanationDiv = document.createElement('div');
                 explanationDiv.className = 'explanation';
-                explanationDiv.innerHTML = `<strong>Explanation:</strong> ${wrong.explanation}`;
+                explanationDiv.innerHTML = `<strong>Explication :</strong> ${wrong.explanation}`;
                 wrongQuestionDiv.appendChild(explanationDiv);
             }
 
@@ -618,7 +618,7 @@ function displayWrongAnswers() {
 }
 
 function goHome() {
-    if (confirm('Are you sure you want to quit the quiz?')) {
+    if (confirm('Es-tu sûr de vouloir quitter le quiz ?')) {
         resetQuiz();
     }
 }
@@ -642,7 +642,7 @@ function resetQuiz() {
 
     // Reset theme header
     document.getElementById('backToCategoriesBtn').style.display = 'none';
-    document.getElementById('themeTitle').textContent = 'Select Assessment Topic';
+    document.getElementById('themeTitle').textContent = 'Sélectionner un thème';
 
     // Go back to categories
     displayThemes();

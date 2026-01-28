@@ -32,11 +32,11 @@
       "question": "Quel est le nombre exact de serveurs PPU (Proxy Public) en production ?",
       "options": [
         "35 PPU",
-        "39 PPU",
         "42 PPU",
-        "48 PPU"
+        "48 PPU",
+        "39 PPU"
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "Il y a exactement 39 serveurs PPU (Proxy Public) dans l'infrastructure MDA",
       "difficulty": "easy"
     },
@@ -70,12 +70,12 @@
       "id": 6,
       "question": "Combien de rings Scality existe-t-il par site en production ?",
       "options": [
-        "2 rings",
         "3 rings",
+        "2 rings",
         "4 rings",
         "5 rings"
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "Il existe 3 rings Scality par site (ring 1, ring 2, ring 3)",
       "difficulty": "easy"
     },
@@ -98,10 +98,10 @@
       "options": [
         "350 backends",
         "400 backends",
-        "420 backends",
-        "450 backends"
+        "450 backends",
+        "420 backends"
       ],
-      "answer": 2,
+      "answer": 3,
       "explanation": "Il y a exactement 420 backends au total en production (210 par site × 2 sites)",
       "difficulty": "intermediate"
     },
@@ -122,12 +122,12 @@
       "id": 10,
       "question": "Que signifie le trigramme PPU ?",
       "options": [
+        "Proxy Publique (terme technique)",
         "Proxy Public Unifié",
         "Proxy Public User",
-        "Proxy Publique (terme technique)",
         "Proxy Principal Utilisateur"
       ],
-      "answer": 2,
+      "answer": 0,
       "explanation": "PPU signifie Proxy Public, qui gère le trafic des clients lourds (Thunderbird, Outlook, iPhone)",
       "difficulty": "easy"
     },
@@ -162,11 +162,11 @@
       "question": "Que signifie le trigramme DMB (ancienne architecture) ?",
       "options": [
         "Dovecot Mail Box",
-        "Dovecot Mail Backend",
         "Director Mail Backend",
-        "Database Mail Backend"
+        "Database Mail Backend",
+        "Dovecot Mail Backend"
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "DMB signifie Dovecot Mail Backend, l'ancien nom des backends (remplacé par D1B/D2B/D3B dans la nouvelle architecture)",
       "difficulty": "intermediate"
     },
@@ -174,12 +174,12 @@
       "id": 14,
       "question": "Dans la nomenclature 'OPRDMD01AUB', que représente 'OPR' ?",
       "options": [
+        "Production (environnement)",
         "Opération",
         "Optimisation Production",
-        "Production (environnement)",
         "Opérationnel"
       ],
-      "answer": 2,
+      "answer": 0,
       "explanation": "OPR (ou OPM) désigne l'environnement de production dans la nomenclature Orange",
       "difficulty": "intermediate"
     },
@@ -202,10 +202,10 @@
       "options": [
         "Couche PROXY",
         "Couche DIRECTORS",
-        "Couche CLIENT (Load Balancer)",
-        "Couche STOCKAGE"
+        "Couche STOCKAGE",
+        "Couche CLIENT (Load Balancer)"
       ],
-      "answer": 2,
+      "answer": 3,
       "explanation": "La première couche est CLIENT, qui inclut le Load Balancer réseau avant d'atteindre les proxies (PPU/PPR)",
       "difficulty": "easy"
     },
@@ -227,11 +227,11 @@
       "question": "Quelle est la technologie principale utilisée pour le stockage physique des emails ?",
       "options": [
         "Cassandra",
-        "ScalityRing (stockage objet)",
         "Redis",
-        "MySQL"
+        "MySQL",
+        "ScalityRing (stockage objet)"
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "ScalityRing est la technologie de stockage objet utilisée pour stocker physiquement les emails (pétaoctets de données)",
       "difficulty": "intermediate"
     },
@@ -252,12 +252,12 @@
       "id": 20,
       "question": "Quel est le rôle principal de HAProxy dans l'architecture MDA ?",
       "options": [
+        "Routage du trafic vers les directeurs",
         "Authentification des utilisateurs",
         "Stockage des emails",
-        "Routage du trafic vers les directeurs",
         "Gestion des queues de mails"
       ],
-      "answer": 2,
+      "answer": 0,
       "explanation": "HAProxy est un reverse proxy qui assure le routage du trafic depuis les PPU/PPR vers les directeurs appropriés",
       "difficulty": "intermediate"
     },
@@ -292,11 +292,11 @@
       "question": "Dans la nouvelle architecture MVP, quels trigrammes remplacent les DOB ?",
       "options": [
         "DMB, DXB, DYB",
-        "D1B, D2B, D3B",
         "DX1, DX2, DX3",
-        "DB1, DB2, DB3"
+        "DB1, DB2, DB3",
+        "D1B, D2B, D3B"
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "Les DOB (ancienne architecture) sont remplacés par D1B, D2B et D3B dans la nouvelle architecture MVP avec Cassandra/S-ProxyD",
       "difficulty": "intermediate"
     },
@@ -356,12 +356,12 @@
       "id": 28,
       "question": "Combien de serveurs DRA existe-t-il par site ?",
       "options": [
-        "2 DRA par site",
         "3 DRA par site",
+        "2 DRA par site",
         "4 DRA par site",
         "5 DRA par site"
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "Il y a 3 serveurs DRA par site (DRA01, DRA02, DRA03) pour assurer la redondance",
       "difficulty": "intermediate"
     },
@@ -371,10 +371,10 @@
       "options": [
         "180 backends",
         "200 backends",
-        "210 backends",
-        "240 backends"
+        "240 backends",
+        "210 backends"
       ],
-      "answer": 2,
+      "answer": 3,
       "explanation": "Chaque site possède approximativement 210 backends (70 backends × 3 rings = 210)",
       "difficulty": "intermediate"
     },
@@ -396,11 +396,11 @@
       "question": "Quelle est la principale différence entre l'ancienne architecture DOB et la nouvelle D1B/D2B/D3B ?",
       "options": [
         "Le nombre de serveurs uniquement",
-        "Les protocoles supportés",
         "Le système de stockage : CDMI/OBOS vers Cassandra/S-ProxyD",
+        "Les protocoles supportés",
         "L'authentification LDAP"
       ],
-      "answer": 2,
+      "answer": 1,
       "explanation": "La principale différence est le système de stockage : ancienne architecture utilise CDMI/OBOS, nouvelle architecture utilise Cassandra/S-ProxyD (ScalityRing)",
       "difficulty": "advanced"
     },
@@ -409,11 +409,11 @@
       "question": "Que se passe-t-il quand un client se connecte à un PPU d'un site alors que sa boîte est sur l'autre site ?",
       "options": [
         "La connexion échoue",
-        "Le client est redirigé vers l'autre site automatiquement",
         "USD indique le bon site/ring et le trafic est routé en inter-site",
+        "Le client est redirigé vers l'autre site automatiquement",
         "Le backend est dupliqué sur les deux sites"
       ],
-      "answer": 2,
+      "answer": 1,
       "explanation": "Les PPU sont inter-site : USD indique le site et ring corrects, puis le trafic est routé vers le bon directeur/backend même si sur un autre site",
       "difficulty": "advanced"
     },
@@ -423,10 +423,10 @@
       "options": [
         "Les PPU (Proxy Public)",
         "Les directeurs (DMD)",
-        "Les backends (DOB/D1B/D2B/D3B)",
-        "Les DRA (REST API)"
+        "Les DRA (REST API)",
+        "Les backends (DOB/D1B/D2B/D3B)"
       ],
-      "answer": 2,
+      "answer": 3,
       "explanation": "Les backends (DOB/D1B/D2B/D3B) sont le cœur de la messagerie : ils traitent les protocoles IMAP, LMTP, POP3 et gèrent les boîtes mails des utilisateurs",
       "difficulty": "intermediate"
     }

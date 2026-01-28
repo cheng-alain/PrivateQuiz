@@ -5,12 +5,12 @@
       "id": 1,
       "question": "Combien d'environnements de qualification principaux existent pour l'équipe MDA ?",
       "options": [
-        "2 environnements",
         "4 environnements (QT1, QT2, QF1, QF2)",
+        "2 environnements",
         "6 environnements",
         "8 environnements"
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "Il existe 4 environnements de qualification principaux : QT1, QT2 (même datacenter), QF1, QF2 (datacenters différents)",
       "difficulty": "easy"
     },
@@ -19,11 +19,11 @@
       "question": "Quelle est la particularité des environnements QT1 et QT2 ?",
       "options": [
         "Ils sont dans des datacenters différents",
-        "Ils sont dans le même datacenter",
         "Ils sont ISO production",
+        "Ils sont dans le même datacenter",
         "Ils sont dédiés au fournisseur"
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "QT1 et QT2 sont dans le même datacenter, offrant des environnements distincts pour des tests variés",
       "difficulty": "intermediate"
     },
@@ -32,11 +32,11 @@
       "question": "Quelle est la particularité des environnements QF1 et QF2 ?",
       "options": [
         "Ils sont dans le même datacenter que QT",
-        "Ils sont dans des datacenters différents de QT",
         "Ils sont uniquement pour les tests de charge",
-        "Ils n'ont pas de backends"
+        "Ils n'ont pas de backends",
+        "Ils sont dans des datacenters différents de QT"
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "QF1 et QF2 sont dans des datacenters différents de QT pour tester sur une infrastructure différente",
       "difficulty": "intermediate"
     },
@@ -70,12 +70,12 @@
       "id": 6,
       "question": "Quel est le code environnement pour QF1 dans la nomenclature VM ?",
       "options": [
-        "inme12",
         "inme13",
+        "inme12",
         "inme15",
         "inme16"
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "QF1 utilise le code 'inme13' dans la nomenclature des VMs",
       "difficulty": "intermediate"
     },
@@ -97,11 +97,11 @@
       "question": "Que signifie 'in' dans la nomenclature 'inme12' ?",
       "options": [
         "Infrastructure",
-        "Intégrateur",
         "Internal",
-        "Integration"
+        "Integration",
+        "Intégrateur"
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "'in' signifie 'intégrateur' dans la nomenclature Orange (par opposition à 'op' pour opération/production)",
       "difficulty": "intermediate"
     },
@@ -122,12 +122,12 @@
       "id": 10,
       "question": "Quel suffixe de site est utilisé dans les environnements de qualification ?",
       "options": [
-        "aub et nd1 (comme en prod)",
         "noi (pour tous les environnements qualif)",
+        "aub et nd1 (comme en prod)",
         "qt1 et qf1",
         "test1 et test2"
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "Les environnements de qualification utilisent le suffixe 'noi' au lieu des suffixes prod (aub/nd1)",
       "difficulty": "intermediate"
     },
@@ -136,11 +136,11 @@
       "question": "Exemple de nomenclature complète d'un directeur ring 1 sur QF1 site 1 ?",
       "options": [
         "inme12d1d01noi",
-        "inme13d1d01noi",
         "inme15d1d01noi",
+        "inme13d1d01noi",
         "opme11d1d01aub"
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "Format : <ENV><TRIGRAM><NUM><SITE>. QF1 = inme13, d1d = directeur ring 1, 01 = numéro, noi = site qualif",
       "difficulty": "advanced"
     },
@@ -149,11 +149,11 @@
       "question": "Combien de directeurs existe-t-il par ring dans un environnement de qualification ?",
       "options": [
         "2 directeurs",
-        "3 directeurs (réduit vs prod)",
         "9 directeurs (comme en prod)",
-        "1 directeur seulement"
+        "1 directeur seulement",
+        "3 directeurs (réduit vs prod)"
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "Les environnements qualif ont typiquement 2 directeurs par ring (configuration allégée vs 9 en prod)",
       "difficulty": "intermediate"
     },
@@ -187,12 +187,12 @@
       "id": 15,
       "question": "Quel est le code environnement pour QM (Métrologie) ?",
       "options": [
-        "inme11",
         "inme1d",
+        "inme11",
         "qmme11",
         "dvme11"
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "QM (Métrologie) utilise le code 'inme1d' dans la nomenclature",
       "difficulty": "advanced"
     },
@@ -214,11 +214,11 @@
       "question": "Quelle est la hiérarchie d'utilisation des environnements ?",
       "options": [
         "QT → QF → QC → Prod",
-        "QC (fournisseur) → QT/QF (validation) → QM (charge) → Prod",
         "QM → QT → QF → Prod",
-        "QF → QT → Prod"
+        "QF → QT → Prod",
+        "QC (fournisseur) → QT/QF (validation) → QM (charge) → Prod"
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "Hiérarchie : 1) QC (dev fournisseur), 2) QT1/QT2/QF1/QF2 (validation versions), 3) QM (tests charge ponctuels), 4) Prod cachée, 5) Prod",
       "difficulty": "intermediate"
     },
@@ -239,12 +239,12 @@
       "id": 19,
       "question": "En qualification, combien de sites (site1/site2) sont configurés par environnement ?",
       "options": [
-        "1 site uniquement",
         "2 sites (pour simuler bi-site comme en prod)",
+        "1 site uniquement",
         "3 sites",
         "Variable selon l'environnement"
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "Chaque environnement qualif a 2 sites configurés (site1/site2) pour simuler l'architecture bi-site de production",
       "difficulty": "intermediate"
     },
@@ -253,11 +253,11 @@
       "question": "Quelle différence majeure existe entre la volumétrie qualif et production ?",
       "options": [
         "Qualif a plus de serveurs que prod",
-        "Qualif a configuration réduite (ex: 2 directeurs vs 9 en prod)",
         "Qualif a exactement la même config que prod",
+        "Qualif a configuration réduite (ex: 2 directeurs vs 9 en prod)",
         "Qualif n'a pas de directeurs"
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "Qualif : ~1000 VMs totales avec configs réduites (2 directeurs/ring vs 9 en prod), vs Prod : 1650 VMs",
       "difficulty": "intermediate"
     },
@@ -266,11 +266,11 @@
       "question": "Combien de composants DRE (Redis) existe-t-il typiquement en qualification ?",
       "options": [
         "1 par site",
-        "3 par site (comme en prod)",
         "5 par site",
-        "Aucun Redis en qualif"
+        "Aucun Redis en qualif",
+        "3 par site (comme en prod)"
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "Selon les fichiers hosts, il y a 3 serveurs DRE par site en qualif (ex: inme13dre01noi, inme13dre02noi, inme13dre03noi)",
       "difficulty": "advanced"
     },

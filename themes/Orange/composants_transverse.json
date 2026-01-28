@@ -6,11 +6,11 @@
       "question": "Que signifie le trigramme DRE ?",
       "options": [
         "Dovecot Redis Engine",
-        "Director Redis (terme technique)",
         "Database Redis Engine",
+        "Director Redis (terme technique)",
         "Dedicated Redis Environment"
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "DRE désigne les serveurs Redis dédiés à l'infrastructure MDA, utilisés comme cache clé-valeur ultra-rapide",
       "difficulty": "easy"
     },
@@ -31,12 +31,12 @@
       "id": 3,
       "question": "Quelle est l'architecture Redis utilisée dans MDA ?",
       "options": [
-        "Redis standalone",
         "Cluster Master-Slave avec failover automatique",
+        "Redis standalone",
         "Redis Cluster sharding",
         "Redis Sentinel uniquement"
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "Redis fonctionne en cluster Master-Slave : 1 master actif + 2 slaves en réplication avec failover automatique en cas de panne",
       "difficulty": "intermediate"
     },
@@ -58,11 +58,11 @@
       "question": "Quel est le nom du proxy utilisé par les backends pour communiquer avec Redis ?",
       "options": [
         "HAProxy",
-        "Predixy",
         "RedisProxy",
-        "Dovecot-proxy"
+        "Dovecot-proxy",
+        "Predixy"
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "Predixy (ou Predicxi) est le proxy installé sur chaque backend pour gérer les connexions vers Redis",
       "difficulty": "intermediate"
     },
@@ -71,11 +71,11 @@
       "question": "Quel est le bug connu de Predixy sous forte charge ?",
       "options": [
         "Perte de données Redis",
-        "Multiplication des connexions jusqu'à 30 000 (ne ferme pas les anciennes)",
         "Crash du service",
+        "Multiplication des connexions jusqu'à 30 000 (ne ferme pas les anciennes)",
         "Corruption de la base Redis"
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "Bug connu : Predixy ne ferme pas les anciennes connexions sous forte charge, duplication jusqu'à 30 000 connexions → Redis saturé",
       "difficulty": "intermediate"
     },
@@ -83,12 +83,12 @@
       "id": 7,
       "question": "Quelle est la solution préventive mise en place pour éviter le bug Predixy ?",
       "options": [
-        "Augmenter la RAM Redis",
         "Cron automatique redémarrant Predixy tous les 3 jours",
+        "Augmenter la RAM Redis",
         "Monitoring 24/7 manuel",
         "Désactiver Predixy"
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "Un cron redémarre automatiquement Predixy tous les 3 jours sur tous les backends pour éviter l'accumulation progressive de connexions",
       "difficulty": "intermediate"
     },
@@ -110,11 +110,11 @@
       "question": "Que signifie le trigramme DMQ ?",
       "options": [
         "Dovecot Mail Queue",
-        "Dovecot Message Queue (RabbitMQ)",
         "Director Message Queue",
-        "Database Mail Queue"
+        "Database Mail Queue",
+        "Dovecot Message Queue (RabbitMQ)"
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "DMQ désigne les serveurs RabbitMQ (Message Queue) utilisés pour gérer les files d'attente de l'infrastructure MDA",
       "difficulty": "easy"
     },
@@ -135,12 +135,12 @@
       "id": 11,
       "question": "Combien de queues totales RabbitMQ gère-t-il dans MDA ?",
       "options": [
-        "6 queues",
         "12 queues",
+        "6 queues",
         "24 queues",
         "48 queues"
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "RabbitMQ gère 12 queues au total pour répartir le trafic (environ 18 backends par queue : 210 backends / 12)",
       "difficulty": "intermediate"
     },
@@ -149,11 +149,11 @@
       "question": "Quel type de queues RabbitMQ utilise-t-il maintenant pour améliorer la résilience ?",
       "options": [
         "Classic queues",
-        "Quorum queues (répliquées sur tous les nœuds)",
         "Stream queues",
-        "Priority queues"
+        "Priority queues",
+        "Quorum queues (répliquées sur tous les nœuds)"
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "Les nouvelles queues quorum sont répliquées sur tous les nœuds (1 à 5) avec un leader, offrant meilleure résilience qu'avant (queue sur 1 seul nœud)",
       "difficulty": "intermediate"
     },
@@ -162,11 +162,11 @@
       "question": "Quel est le nom de la queue RabbitMQ critique pour les communications légales ?",
       "options": [
         "deve_legal_queue",
-        "deve_adm_legal_quorum_q",
         "legal_critical_queue",
+        "deve_adm_legal_quorum_q",
         "rabbitmq_legal_q"
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "La queue 'deve_adm_legal_quorum_q' est dédiée aux communications légales (Snapchat, interceptions) et est critique pour les engagements contractuels",
       "difficulty": "advanced"
     },
@@ -187,12 +187,12 @@
       "id": 15,
       "question": "Quels sont les principaux types de trafic gérés par RabbitMQ ?",
       "options": [
-        "Uniquement les notifications PNS",
         "PNS (notifications), PIM (calendrier), demandes DRA, dépôts/transferts backend",
+        "Uniquement les notifications PNS",
         "Uniquement les emails LMTP",
         "Authentification LDAP"
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "RabbitMQ gère : trafic PNS volumineux (notifications), calendrier PIM, demandes DRA (REST API), dépôts/transferts de mails depuis backends",
       "difficulty": "intermediate"
     },
@@ -214,11 +214,11 @@
       "question": "Que signifie le trigramme DRA ?",
       "options": [
         "Dovecot Redis API",
-        "Dovecot REST API (Director REST API)",
         "Database REST Access",
-        "Director Remote Access"
+        "Director Remote Access",
+        "Dovecot REST API (Director REST API)"
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "DRA signifie Dovecot REST API, l'API REST permettant la gestion administrative des boîtes mails",
       "difficulty": "easy"
     },
@@ -240,11 +240,11 @@
       "question": "Quelle est la stack technique complète d'un DRA ?",
       "options": [
         "Dovecot uniquement",
-        "Apache (httpd) → Tomcat → REST API Java (OX) → Dovecot",
         "Nginx → Node.js → API",
+        "Apache (httpd) → Tomcat → REST API Java (OX) → Dovecot",
         "HAProxy → Python → Dovecot"
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "Stack DRA : Apache httpd (reverse proxy) → Tomcat (serveur Java) → REST API Java OpenXchange → Dovecot (exécution via doveadm sur backends)",
       "difficulty": "intermediate"
     },
@@ -252,12 +252,12 @@
       "id": 20,
       "question": "Quelles sont les principales équipes utilisatrices du DRA ?",
       "options": [
-        "Uniquement l'équipe MDA",
         "Provisioning, CSR Tool (Abuse), Équipe Légale",
+        "Uniquement l'équipe MDA",
         "Uniquement les développeurs",
         "Support client uniquement"
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "Le DRA est utilisé par : Provisioning (création/suppression boîtes), CSR Tool (stats, accès technique), Équipe Abuse (modération), Légal (interceptions)",
       "difficulty": "intermediate"
     },
@@ -279,11 +279,11 @@
       "question": "Quelle opération DRA cause des problèmes de performance la nuit ?",
       "options": [
         "Création massive de boîtes",
-        "Campagnes suppression Super Balles (boîtes inactives >10 ans)",
         "Backup des bases de données",
-        "Synchronisation LDAP"
+        "Synchronisation LDAP",
+        "Campagnes suppression Super Balles (boîtes inactives >10 ans)"
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "Les campagnes de suppression Super Balles (Provisioning) envoient des paquets massifs : DRA n'a pas de queue → load 100% → besoin optimisation",
       "difficulty": "advanced"
     },
@@ -292,11 +292,11 @@
       "question": "Quel est le rôle de Cassandra dans l'architecture MDA ?",
       "options": [
         "Stocker les emails physiquement",
-        "Stocker l'index permettant de localiser les objets dans ScalityRing",
         "Gérer les sessions utilisateurs",
+        "Stocker l'index permettant de localiser les objets dans ScalityRing",
         "Authentifier les utilisateurs"
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "Cassandra stocke les clés/index permettant aux backends de localiser les objets emails dans ScalityRing (où sont les données physiques)",
       "difficulty": "intermediate"
     },
@@ -343,12 +343,12 @@
       "id": 27,
       "question": "Quelle est la technologie de stockage physique des emails dans MDA ?",
       "options": [
-        "NFS classique",
         "ScalityRing (stockage objet)",
+        "NFS classique",
         "Ceph",
         "NetApp SAN"
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "ScalityRing est la technologie de stockage objet utilisée pour stocker physiquement les emails (plusieurs pétaoctets de données)",
       "difficulty": "easy"
     },
@@ -370,11 +370,11 @@
       "question": "Quel composant permet aux backends d'accéder à ScalityRing ?",
       "options": [
         "CDMI",
-        "S-ProxyD (proxy HTTP ScalityRing)",
         "NFS Gateway",
-        "iSCSI Gateway"
+        "iSCSI Gateway",
+        "S-ProxyD (proxy HTTP ScalityRing)"
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "S-ProxyD est le proxy HTTP Scality qui permet aux backends d'accéder au stockage objet ScalityRing",
       "difficulty": "intermediate"
     },
@@ -383,11 +383,11 @@
       "question": "Les backends MDA peuvent-ils accéder à un ring Scality d'un autre site ?",
       "options": [
         "Oui, inter-site complet",
-        "Non, pas d'inter-site MDA ↔ rings Scality",
         "Oui, mais uniquement en lecture",
+        "Non, pas d'inter-site MDA ↔ rings Scality",
         "Oui, mais uniquement en écriture"
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "Il n'y a pas d'inter-site entre les backends MDA et les rings Scality : backends AUB → rings AUB, backends VDR → rings VDR",
       "difficulty": "intermediate"
     },
