@@ -9,6 +9,7 @@ import (
 	"os"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
 )
 
@@ -50,6 +51,7 @@ type QCMResponse struct {
 type Answer struct {
 	QuestionID int         `json:"questionId"`
 	Answer     interface{} `json:"answer"`
+	ThemeID    string      `json:"themeId"`
 }
 
 type AnswerResult struct {
@@ -58,11 +60,39 @@ type AnswerResult struct {
 	Explanation   string      `json:"explanation"`
 }
 
-var qcmData QCM
-var themesList ThemesList
+// Cache thread-safe pour les QCM
+type QCMCache struct {
+	mu    sync.RWMutex
+	cache map[string]*QCM
+}
+
+func NewQCMCache() *QCMCache {
+	return &QCMCache{
+		cache: make(map[string]*QCM),
+	}
+}
+
+func (c *QCMCache) Get(themeID string) (*QCM, bool) {
+	c.mu.RLock()
+	defer c.mu.RUnlock()
+	qcm, exists := c.cache[themeID]
+	return qcm, exists
+}
+
+func (c *QCMCache) Set(themeID string, qcm *QCM) {
+	c.mu.Lock()
+	defer c.mu.Unlock()
+	c.cache[themeID] = qcm
+}
+
+var (
+	themesList ThemesList
+	qcmCache   *QCMCache
+)
 
 func main() {
 	loadThemes()
+	qcmCache = NewQCMCache()
 
 	host := getEnv("HOST", "0.0.0.0")
 	port := getEnv("PORT", "8080")
@@ -100,6 +130,7 @@ func getEnv(key, defaultValue string) string {
 // CORS middleware
 func corsMiddleware(next http.HandlerFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		// TODO: En production, configurer les origines autorisées spécifiquement
 		w.Header().Set("Access-Control-Allow-Origin", "*")
 		w.Header().Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
 		w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
@@ -124,7 +155,14 @@ func loadThemes() {
 	}
 }
 
-func loadQCMData(themeID string) error {
+// Version optimisée avec cache
+func loadQCMData(themeID string) (*QCM, error) {
+	// Vérifier le cache d'abord
+	if qcm, exists := qcmCache.Get(themeID); exists {
+		return qcm, nil
+	}
+
+	// Trouver le fichier du thème
 	var themeFile string
 	for _, theme := range themesList.Themes {
 		if theme.ID == themeID {
@@ -134,27 +172,33 @@ func loadQCMData(themeID string) error {
 	}
 
 	if themeFile == "" {
-		return fmt.Errorf("theme not found: %s", themeID)
+		return nil, fmt.Errorf("theme not found: %s", themeID)
 	}
 
+	// Charger depuis le disque
 	data, err := os.ReadFile(fmt.Sprintf("themes/%s", themeFile))
 	if err != nil {
-		return fmt.Errorf("error reading theme file: %v", err)
+		return nil, fmt.Errorf("error reading theme file: %v", err)
 	}
 
-	if err := json.Unmarshal(data, &qcmData); err != nil {
-		return fmt.Errorf("error parsing JSON: %v", err)
+	var qcm QCM
+	if err := json.Unmarshal(data, &qcm); err != nil {
+		return nil, fmt.Errorf("error parsing JSON: %v", err)
 	}
 
-	// Filter out invalid questions
-	validQuestions := make([]Question, 0, len(qcmData.Questions))
-	for _, question := range qcmData.Questions {
+	// Filtrer les questions invalides
+	validQuestions := make([]Question, 0, len(qcm.Questions))
+	for _, question := range qcm.Questions {
 		if strings.TrimSpace(question.Question) != "" && question.ID > 0 {
 			validQuestions = append(validQuestions, question)
 		}
 	}
-	qcmData.Questions = validQuestions
-	return nil
+	qcm.Questions = validQuestions
+
+	// Mettre en cache
+	qcmCache.Set(themeID, &qcm)
+
+	return &qcm, nil
 }
 
 func serveHTML(w http.ResponseWriter, r *http.Request) {
@@ -173,13 +217,15 @@ func getQCM(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if err := loadQCMData(themeID); err != nil {
+	qcm, err := loadQCMData(themeID)
+	if err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
 
-	questions := make([]Question, len(qcmData.Questions))
-	copy(questions, qcmData.Questions)
+	// Copie locale pour éviter la modification du cache
+	questions := make([]Question, 0, len(qcm.Questions))
+	questions = append(questions, qcm.Questions...)
 
 	// Filter by difficulty
 	if difficulty := r.URL.Query().Get("difficulty"); difficulty != "" && difficulty != "all" {
@@ -207,7 +253,7 @@ func getQCM(w http.ResponseWriter, r *http.Request) {
 	}
 
 	response := QCMResponse{
-		Title:     qcmData.Title,
+		Title:     qcm.Title,
 		Questions: questions,
 		Total:     len(questions),
 	}
@@ -228,18 +274,29 @@ func checkAnswer(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Find question
-	var question Question
-	found := false
-	for _, q := range qcmData.Questions {
+	// Vérifier que le themeID est fourni
+	if answer.ThemeID == "" {
+		http.Error(w, "Theme ID is required", http.StatusBadRequest)
+		return
+	}
+
+	// Charger le QCM du thème spécifique
+	qcm, err := loadQCMData(answer.ThemeID)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+
+	// Chercher la question dans CE thème uniquement
+	var question *Question
+	for _, q := range qcm.Questions {
 		if q.ID == answer.QuestionID {
-			question = q
-			found = true
+			question = &q
 			break
 		}
 	}
 
-	if !found {
+	if question == nil {
 		http.Error(w, "Question not found", http.StatusNotFound)
 		return
 	}

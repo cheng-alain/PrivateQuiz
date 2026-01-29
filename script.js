@@ -446,7 +446,8 @@ async function validateAnswer() {
             },
             body: JSON.stringify({
                 questionId: question.id,
-                answer: userAnswers[question.id]
+                answer: userAnswers[question.id],
+                themeId: selectedTheme.id
             })
         });
 
