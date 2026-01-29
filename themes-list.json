@@ -152,7 +152,7 @@
     {
       "id": "dovecot",
       "title": "Dovecot",
-      "description": "25 questions sur les commandes doveadm essentielles : localisation utilisateur, gestion backend, métacash, troubleshooting et logs",
+      "description": "25 questions sur les commandes doveadm essentielles : localisation utilisateur, gestion backend, metacache, troubleshooting et logs",
       "category": "Orange",
       "difficulty": "Progressive",
       "questions_count": 25,
@@ -172,7 +172,7 @@
     {
       "id": "directeurs_backends",
       "title": "Directeurs et Backends",
-      "description": "38 questions sur les directeurs Dovecot et backends : rôle, configuration, vhost, commandes doveadm et métacash",
+      "description": "38 questions sur les directeurs Dovecot et backends : rôle, configuration, vhost, commandes doveadm et metacache",
       "category": "Orange",
       "difficulty": "Progressive",
       "questions_count": 38,

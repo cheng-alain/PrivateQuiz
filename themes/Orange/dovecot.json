@@ -68,7 +68,7 @@
     },
     {
       "id": 6,
-      "question": "Quelle commande permet de lister le contenu du métacash d'un backend ?",
+      "question": "Quelle commande permet de lister le contenu du metacache d'un backend ?",
       "options": [
         "doveadm cache list",
         "doveadm storage list",
@@ -76,12 +76,12 @@
         "doveadm metacache list"
       ],
       "answer": 3,
-      "explanation": "'doveadm metacache list' affiche le contenu du métacash (40 000 à 50 000 boîtes par backend)",
+      "explanation": "'doveadm metacache list' affiche le contenu du metacache (40 000 à 50 000 boîtes par backend)",
       "difficulty": "intermediate"
     },
     {
       "id": 7,
-      "question": "Quelle commande permet de vider complètement le métacash d'un backend ?",
+      "question": "Quelle commande permet de vider complètement le metacache d'un backend ?",
       "options": [
         "doveadm metacache flushall",
         "doveadm metacache clear",
@@ -89,7 +89,7 @@
         "doveadm storage flush"
       ],
       "answer": 0,
-      "explanation": "'doveadm metacache flushall' vide complètement le métacash du backend (opération longue >15 min)",
+      "explanation": "'doveadm metacache flushall' vide complètement le metacache du backend (opération longue >15 min)",
       "difficulty": "intermediate"
     },
     {
@@ -185,7 +185,7 @@
     },
     {
       "id": 15,
-      "question": "Quel service dovecot synchronise le métacash avec le stockage physique ?",
+      "question": "Quel service dovecot synchronise le metacache avec le stockage physique ?",
       "options": [
         "dovecot/indexer-worker",
         "dovecot/sync-worker",
@@ -193,7 +193,7 @@
         "dovecot/storage-worker"
       ],
       "answer": 0,
-      "explanation": "Le service 'indexer-worker' synchronise le métacash (ZRAM) avec le stockage physique (ScalityRing via Cassandra)",
+      "explanation": "Le service 'indexer-worker' synchronise le metacache (ZRAM) avec le stockage physique (ScalityRing via Cassandra)",
       "difficulty": "intermediate"
     },
     {
@@ -201,12 +201,12 @@
       "question": "Pourquoi ne faut-il JAMAIS rebooter un backend à l'arrache ?",
       "options": [
         "Perte de configuration",
-        "Métacash volatile en ZRAM = perte totale au reboot",
+        "metacache volatile en ZRAM = perte totale au reboot",
         "Corruption base de données",
         "Déconnexion réseau"
       ],
       "answer": 1,
-      "explanation": "Le métacash est en ZRAM (RAM compressée volatile) : reboot = perte totale → reconstruction depuis ScalityRing (plusieurs heures)",
+      "explanation": "Le metacache est en ZRAM (RAM compressée volatile) : reboot = perte totale → reconstruction depuis ScalityRing (plusieurs heures)",
       "difficulty": "easy"
     },
     {
@@ -219,7 +219,7 @@
         "Faire un backup"
       ],
       "answer": 2,
-      "explanation": "OBLIGATOIRE : 1) vhost 0 (arrêt nouvelles connexions), 2) attendre 15 min OU flush, 3) reboot. Sinon perte métacash + surcharge OBOS",
+      "explanation": "OBLIGATOIRE : 1) vhost 0 (arrêt nouvelles connexions), 2) attendre 15 min OU flush, 3) reboot. Sinon perte metacache + surcharge OBOS",
       "difficulty": "intermediate"
     },
     {
@@ -239,13 +239,13 @@
       "id": 19,
       "question": "Pourquoi doit-on exécuter une commande doveadm uniquement sur le backend hébergeant l'utilisateur ?",
       "options": [
-        "Sinon création d'un nouveau métacash + dsync-merge coûteux et plantogène",
+        "Sinon création d'un nouveau metacache + dsync-merge coûteux et plantogène",
         "Pour des raisons de sécurité",
         "C'est obligatoire par protocole",
         "Pour éviter la surcharge réseau"
       ],
       "answer": 0,
-      "explanation": "Exécuter doveadm sur le mauvais backend génère un nouveau métacash → déclenchement d'un dsync-merge (action coûteuse et risquée)",
+      "explanation": "Exécuter doveadm sur le mauvais backend génère un nouveau metacache → déclenchement d'un dsync-merge (action coûteuse et risquée)",
       "difficulty": "hard"
     },
     {
@@ -263,7 +263,7 @@
     },
     {
       "id": 21,
-      "question": "Où se trouve le métacash sur un backend ?",
+      "question": "Où se trouve le metacache sur un backend ?",
       "options": [
         "/var/cache/dovecot/",
         "/tmp/metacache/",
@@ -271,7 +271,7 @@
         "/var/lib/dovecot/metacache/"
       ],
       "answer": 2,
-      "explanation": "Le métacash se trouve dans /data/dovecot/metacache/ (240 GB ZRAM) contenant les métadonnées des 40-50k boîtes du backend",
+      "explanation": "Le metacache se trouve dans /data/dovecot/metacache/ (240 GB ZRAM) contenant les métadonnées des 40-50k boîtes du backend",
       "difficulty": "intermediate"
     },
     {

@@ -414,7 +414,7 @@
         "Backend → Directeurs → ScalityRing"
       ],
       "answer": 1,
-      "explanation": "Workflow : 1) Backend consulte Cassandra pour localisation objet, 2) Backend récupère objet dans ScalityRing via S-ProxyD, 3) Mise à jour métacash local",
+      "explanation": "Workflow : 1) Backend consulte Cassandra pour localisation objet, 2) Backend récupère objet dans ScalityRing via S-ProxyD, 3) Mise à jour metacache local",
       "difficulty": "advanced"
     }
   ]

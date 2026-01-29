@@ -307,7 +307,7 @@
         "Redis",
         "Cassandra",
         "Les directeurs Dovecot",
-        "Le métacash"
+        "Le metacache"
       ],
       "answer": 1,
       "explanation": "Cassandra stocke l'index (métadonnées) permettant de retrouver les objets physiques stockés dans ScalityRing",

@@ -180,7 +180,7 @@
         "Traiter les protocoles mail (IMAP, POP3, LMTP) et gérer les boîtes"
       ],
       "answer": 3,
-      "explanation": "Les backends sont le cœur de la messagerie : ils traitent IMAP, POP3, LMTP, SIEVE, gèrent les boîtes mails et le métacash",
+      "explanation": "Les backends sont le cœur de la messagerie : ils traitent IMAP, POP3, LMTP, SIEVE, gèrent les boîtes mails et le metacache",
       "difficulty": "easy"
     },
     {
@@ -198,7 +198,7 @@
     },
     {
       "id": 16,
-      "question": "Quelle est la taille du métacash (ZRAM) sur un backend ?",
+      "question": "Quelle est la taille du metacache (ZRAM) sur un backend ?",
       "options": [
         "120 Go",
         "280 Go",
@@ -206,12 +206,12 @@
         "512 Go"
       ],
       "answer": 2,
-      "explanation": "Le métacash utilise 240 Go de ZRAM (RAM compressée) sur chaque backend pour stocker les métadonnées des boîtes mails",
+      "explanation": "Le metacache utilise 240 Go de ZRAM (RAM compressée) sur chaque backend pour stocker les métadonnées des boîtes mails",
       "difficulty": "easy"
     },
     {
       "id": 17,
-      "question": "Où est stocké le métacash sur un backend ?",
+      "question": "Où est stocké le metacache sur un backend ?",
       "options": [
         "/var/dovecot/metacache/",
         "/opt/dovecot/cache/",
@@ -219,12 +219,12 @@
         "/data/dovecot/metacache/"
       ],
       "answer": 3,
-      "explanation": "Le métacash est stocké dans /data/dovecot/metacache/ avec une organisation par dossiers utilisateurs",
+      "explanation": "Le metacache est stocké dans /data/dovecot/metacache/ avec une organisation par dossiers utilisateurs",
       "difficulty": "intermediate"
     },
     {
       "id": 18,
-      "question": "Que contient le métacash d'un backend ?",
+      "question": "Que contient le metacache d'un backend ?",
       "options": [
         "Les emails complets des utilisateurs",
         "Les métadonnées des emails (index, états, flags)",
@@ -232,20 +232,20 @@
         "Les logs des connexions"
       ],
       "answer": 1,
-      "explanation": "Le métacash contient les métadonnées : index des emails, états (lu/non lu), flags, filtres Sieve, mais pas le contenu complet des emails",
+      "explanation": "Le metacache contient les métadonnées : index des emails, états (lu/non lu), flags, filtres Sieve, mais pas le contenu complet des emails",
       "difficulty": "intermediate"
     },
     {
       "id": 19,
-      "question": "Que se passe-t-il si le métacash d'un backend est perdu ?",
+      "question": "Que se passe-t-il si le metacache d'un backend est perdu ?",
       "options": [
-        "Le métacash peut être reconstruit depuis ScalityRing",
+        "Le metacache peut être reconstruit depuis ScalityRing",
         "Les emails sont définitivement perdus",
         "Les utilisateurs ne peuvent plus se connecter",
         "Les directeurs tombent en cascade"
       ],
       "answer": 0,
-      "explanation": "La perte de métacash n'entraîne PAS de perte de données. Le métacash peut être reconstruit depuis le stockage physique (ScalityRing)",
+      "explanation": "La perte de metacache n'entraîne PAS de perte de données. Le metacache peut être reconstruit depuis le stockage physique (ScalityRing)",
       "difficulty": "intermediate"
     },
     {
@@ -258,12 +258,12 @@
         "director et backend-manager"
       ],
       "answer": 2,
-      "explanation": "Les principaux services sont : imap-worker (sessions IMAP), pns-worker (notifications), indexer-worker (synchro métacash), lmtp (réception), auth (authentification)",
+      "explanation": "Les principaux services sont : imap-worker (sessions IMAP), pns-worker (notifications), indexer-worker (synchro metacache), lmtp (réception), auth (authentification)",
       "difficulty": "intermediate"
     },
     {
       "id": 21,
-      "question": "Quel service backend est responsable de la synchronisation du métacash avec le stockage distant ?",
+      "question": "Quel service backend est responsable de la synchronisation du metacache avec le stockage distant ?",
       "options": [
         "sync-worker",
         "metacache-worker",
@@ -271,7 +271,7 @@
         "indexer-worker"
       ],
       "answer": 3,
-      "explanation": "Le service 'indexer-worker' est responsable de la synchronisation entre le métacash local et le stockage distant (ScalityRing)",
+      "explanation": "Le service 'indexer-worker' est responsable de la synchronisation entre le metacache local et le stockage distant (ScalityRing)",
       "difficulty": "intermediate"
     },
     {
@@ -291,13 +291,13 @@
       "id": 23,
       "question": "Quelle est la principale raison pour laquelle les backends ne doivent PAS être redémarrés ?",
       "options": [
-        "Effacement du métacash en ZRAM et impact sur ScalityRing",
+        "Effacement du metacache en ZRAM et impact sur ScalityRing",
         "Perte des connexions LDAP",
         "Corruption de Cassandra",
         "Perte des directeurs associés"
       ],
       "answer": 0,
-      "explanation": "Le métacash étant en ZRAM (RAM), il est effacé au reboot. Le rechargement est très coûteux pour le backend et ScalityRing (centaines de milliers de fichiers)",
+      "explanation": "Le metacache étant en ZRAM (RAM), il est effacé au reboot. Le rechargement est très coûteux pour le backend et ScalityRing (centaines de milliers de fichiers)",
       "difficulty": "intermediate"
     },
     {
@@ -359,7 +359,7 @@
         "Cassandra",
         "Les directeurs",
         "Redis",
-        "Le métacash"
+        "Le metacache"
       ],
       "answer": 0,
       "explanation": "Cassandra stocke les clés permettant de localiser les objets physiques dans ScalityRing (3 tiers Cassandra pour 3 rings)",
@@ -422,7 +422,7 @@
       "question": "Quelle est la principale différence entre DOB (ancienne architecture) et D1B/D2B/D3B (nouvelle) ?",
       "options": [
         "Le nombre de protocoles supportés",
-        "La taille du métacash",
+        "La taille du metacache",
         "Le nombre d'utilisateurs par backend",
         "Le système de stockage : CDMI/OBOS vs Cassandra/S-ProxyD"
       ],
@@ -450,7 +450,7 @@
         "Perte du routage intelligent pour 1/3 des utilisateurs",
         "Aucun impact, les backends continuent",
         "Tous les emails sont perdus",
-        "Corruption du métacash"
+        "Corruption du metacache"
       ],
       "answer": 0,
       "explanation": "La perte d'un ring de directeurs impacte environ 1/3 des utilisateurs (1 ring sur 3) : ils ne peuvent plus être routés vers leurs backends",
@@ -466,7 +466,7 @@
         "Il ne fonctionne pas correctement"
       ],
       "answer": 2,
-      "explanation": "Le délai est configuré à 1h pour éviter les re-créations de métacash coûteuses, mais c'est trop long en cas de vrai incident backend",
+      "explanation": "Le délai est configuré à 1h pour éviter les re-créations de metacache coûteuses, mais c'est trop long en cas de vrai incident backend",
       "difficulty": "advanced"
     },
     {
