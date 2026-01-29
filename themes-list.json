@@ -3,7 +3,7 @@
     {
       "id": "ansible",
       "title": "Ansible",
-      "description": "90 questions couvrant tous les niveaux d'Ansible : fondamentaux, playbooks, rôles et optimisation",
+      "description": "Questions couvrant tous les niveaux d'Ansible : fondamentaux, playbooks, rôles et optimisation",
       "category": "DevOps",
       "difficulty": "Progressive",
       "questions_count": 90,
@@ -13,7 +13,7 @@
     {
       "id": "aws",
       "title": "AWS (Amazon Web Services)",
-      "description": "100 questions couvrant AWS du fondamental à l'architecture production",
+      "description": "Questions couvrant AWS du fondamental à l'architecture production",
       "category": "DevOps",
       "difficulty": "Progressive",
       "questions_count": 100,
@@ -32,7 +32,7 @@
     {
       "id": "azure",
       "title": "Microsoft Azure",
-      "description": "100 questions sur Azure : concepts, VMs, stockage, réseau et services cloud",
+      "description": "Questions sur Azure : concepts, VMs, stockage, réseau et services cloud",
       "category": "DevOps",
       "difficulty": "Progressive",
       "questions_count": 100,
@@ -42,7 +42,7 @@
     {
       "id": "cicd",
       "title": "CI/CD",
-      "description": "80 questions sur l'intégration et le déploiement continus : Git, pipelines, tests et déploiement",
+      "description": "Questions sur l'intégration et le déploiement continus : Git, pipelines, tests et déploiement",
       "category": "DevOps",
       "difficulty": "Progressive",
       "questions_count": 80,
@@ -52,7 +52,7 @@
     {
       "id": "database",
       "title": "Databases",
-      "description": "70 questions sur les bases de données SQL et NoSQL pour DevOps",
+      "description": "Questions sur les bases de données SQL et NoSQL pour DevOps",
       "category": "DevOps",
       "difficulty": "Progressive",
       "questions_count": 70,
@@ -62,7 +62,7 @@
     {
       "id": "docker",
       "title": "Docker",
-      "description": "100 questions sur Docker : conteneurisation, images, réseaux, volumes et orchestration",
+      "description": "Questions sur Docker : conteneurisation, images, réseaux, volumes et orchestration",
       "category": "DevOps",
       "difficulty": "Progressive",
       "questions_count": 100,
@@ -72,7 +72,7 @@
     {
       "id": "gcp",
       "title": "Google Cloud Platform",
-      "description": "100 questions sur GCP : Compute Engine, Cloud Storage, networking et services cloud",
+      "description": "Questions sur GCP : Compute Engine, Cloud Storage, networking et services cloud",
       "category": "DevOps",
       "difficulty": "Progressive",
       "questions_count": 100,
@@ -82,7 +82,7 @@
     {
       "id": "git",
       "title": "Git & Version Control",
-      "description": "70 questions sur Git et le contrôle de version : commits, branches, merge et workflows",
+      "description": "Questions sur Git et le contrôle de version : commits, branches, merge et workflows",
       "category": "DevOps",
       "difficulty": "Progressive",
       "questions_count": 70,
@@ -92,7 +92,7 @@
     {
       "id": "kubernetes",
       "title": "Kubernetes",
-      "description": "150 questions sur Kubernetes : architecture, pods, services, déploiements et administration",
+      "description": "Questions sur Kubernetes : architecture, pods, services, déploiements et administration",
       "category": "DevOps",
       "difficulty": "Progressive",
       "questions_count": 150,
@@ -102,7 +102,7 @@
     {
       "id": "linux",
       "title": "Linux & Shell Scripting",
-      "description": "80 questions sur Linux et le shell scripting : administration système, bash et troubleshooting",
+      "description": "Questions sur Linux et le shell scripting : administration système, bash et troubleshooting",
       "category": "DevOps",
       "difficulty": "Progressive",
       "questions_count": 80,
@@ -112,7 +112,7 @@
     {
       "id": "monitoring",
       "title": "Monitoring & Observabilité",
-      "description": "90 questions sur le monitoring : métriques, logs, traces, Prometheus, Grafana et alerting",
+      "description": "Questions sur le monitoring : métriques, logs, traces, Prometheus, Grafana et alerting",
       "category": "DevOps",
       "difficulty": "Progressive",
       "questions_count": 90,
@@ -122,7 +122,7 @@
     {
       "id": "network",
       "title": "Networking DevOps",
-      "description": "80 questions sur le networking : protocoles, DNS, load balancing et sécurité réseau",
+      "description": "Questions sur le networking : protocoles, DNS, load balancing et sécurité réseau",
       "category": "DevOps",
       "difficulty": "Progressive",
       "questions_count": 80,
@@ -132,7 +132,7 @@
     {
       "id": "security_secret",
       "title": "Security & Secrets Management",
-      "description": "70 questions sur la sécurité et la gestion des secrets : encryption, Vault, certificats et best practices",
+      "description": "Questions sur la sécurité et la gestion des secrets : encryption, Vault, certificats et best practices",
       "category": "DevOps",
       "difficulty": "Progressive",
       "questions_count": 70,
@@ -142,7 +142,7 @@
     {
       "id": "terraform",
       "title": "Terraform",
-      "description": "100 questions sur Terraform : HCL, providers, state management et modules",
+      "description": "Questions sur Terraform : HCL, providers, state management et modules",
       "category": "DevOps",
       "difficulty": "Progressive",
       "questions_count": 100,
@@ -152,7 +152,7 @@
     {
       "id": "dovecot",
       "title": "Dovecot",
-      "description": "25 questions sur les commandes doveadm essentielles : localisation utilisateur, gestion backend, metacache, troubleshooting et logs",
+      "description": "Questions sur les commandes doveadm essentielles : localisation utilisateur, gestion backend, metacache, troubleshooting et logs",
       "category": "Orange",
       "difficulty": "Progressive",
       "questions_count": 25,
@@ -162,7 +162,7 @@
     {
       "id": "architecture_globale",
       "title": "Architecture Globale MDA",
-      "description": "32 questions sur l'architecture globale de l'infrastructure MDA : couches, sites, nomenclature et composants",
+      "description": "Questions sur l'architecture globale de l'infrastructure MDA : couches, sites, nomenclature et composants",
       "category": "Orange",
       "difficulty": "Progressive",
       "questions_count": 32,
@@ -172,7 +172,7 @@
     {
       "id": "directeurs_backends",
       "title": "Directeurs et Backends",
-      "description": "38 questions sur les directeurs Dovecot et backends : rôle, configuration, vhost, commandes doveadm et metacache",
+      "description": "Questions sur les directeurs Dovecot et backends : rôle, configuration, vhost, commandes doveadm et metacache",
       "category": "Orange",
       "difficulty": "Progressive",
       "questions_count": 38,
@@ -182,7 +182,7 @@
     {
       "id": "proxies_ppu_ppr",
       "title": "Proxies PPU et PPR",
-      "description": "28 questions sur les proxies PPU (public) et PPR (privé) : protocoles, authentification, HAProxy et sécurité",
+      "description": "Questions sur les proxies PPU (public) et PPR (privé) : protocoles, authentification, HAProxy et sécurité",
       "category": "Orange",
       "difficulty": "Progressive",
       "questions_count": 28,
@@ -192,7 +192,7 @@
     {
       "id": "composants_transverse",
       "title": "Composants Transverses",
-      "description": "32 questions sur Redis, RabbitMQ, DRA, Cassandra et ScalityRing : architecture, configuration et troubleshooting",
+      "description": "Questions sur Redis, RabbitMQ, DRA, Cassandra et ScalityRing : architecture, configuration et troubleshooting",
       "category": "Orange",
       "difficulty": "Progressive",
       "questions_count": 32,
@@ -202,7 +202,7 @@
     {
       "id": "supervision_monitoring",
       "title": "Supervision et Monitoring",
-      "description": "28 questions sur les outils de supervision : Centreon, Kibana/ELK, Grafana, PIMS et méthodologie d'incident",
+      "description": "Questions sur les outils de supervision : Centreon, Kibana/ELK, Grafana, PIMS et méthodologie d'incident",
       "category": "Orange",
       "difficulty": "Progressive",
       "questions_count": 28,
@@ -212,7 +212,7 @@
     {
       "id": "procedures_operations",
       "title": "Procédures Opérationnelles",
-      "description": "28 questions sur les procédures opérationnelles : SWAN, PiCAB, Ansible, Bastion, environnements et déploiements",
+      "description": "Questions sur les procédures opérationnelles : SWAN, PiCAB, Ansible, Bastion, environnements et déploiements",
       "category": "Orange",
       "difficulty": "Progressive",
       "questions_count": 28,
@@ -222,7 +222,7 @@
     {
       "id": "environnements_qualification",
       "title": "Environnements de Qualification",
-      "description": "22 questions sur les environnements de qualification : QT1, QT2, QF1, QF2, QM, QC, nomenclature et configurations",
+      "description": "Questions sur les environnements de qualification : QT1, QT2, QF1, QF2, QM, QC, nomenclature et configurations",
       "category": "Orange",
       "difficulty": "Progressive",
       "questions_count": 22,
