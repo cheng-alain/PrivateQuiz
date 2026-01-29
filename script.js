@@ -14,6 +14,14 @@ let themes = [];
 // Structure: { questionId, userAnswer, isCorrect, timestamp }
 let answersHistory = [];
 
+// Accessibilité: Permet d'activer les éléments role="button" avec Enter/Space
+document.addEventListener('keydown', function(e) {
+    if (e.target.getAttribute('role') === 'button' && (e.key === 'Enter' || e.key === ' ')) {
+        e.preventDefault();
+        e.target.click();
+    }
+});
+
 // Helper: Check if question is multiple choice
 function isMultipleChoice(question) {
     return Array.isArray(question.correct) && question.correct.length > 1;
@@ -66,6 +74,8 @@ function displayThemes() {
     Object.keys(categories).sort().forEach(categoryName => {
         const categoryCard = document.createElement('div');
         categoryCard.className = 'theme-card category-card';
+        categoryCard.setAttribute('tabindex', '0');
+        categoryCard.setAttribute('role', 'button');
 
         const icon = document.createElement('div');
         icon.className = 'theme-icon';
@@ -112,6 +122,8 @@ function displayThemesOfCategory(categoryName) {
     categoryThemes.forEach(theme => {
         const themeCard = document.createElement('div');
         themeCard.className = 'theme-card';
+        themeCard.setAttribute('tabindex', '0');
+        themeCard.setAttribute('role', 'button');
 
         const content = document.createElement('div');
         content.className = 'theme-content';
@@ -350,6 +362,8 @@ function displayQuestion() {
     question.options.forEach((option, index) => {
         const optionElement = document.createElement('div');
         optionElement.className = 'option';
+        optionElement.setAttribute('tabindex', '0');
+        optionElement.setAttribute('role', 'button');
 
         const letter = document.createElement('div');
         letter.className = 'option-letter';
@@ -460,7 +474,6 @@ async function validateAnswer() {
         // Mettre à jour le score
         if (result.correct) {
             score++;
-            updateScore();
         }
 
         // Stocker dans answersHistory
@@ -560,7 +573,6 @@ function previousQuestion() {
     const historyEntry = answersHistory.find(h => h.questionId === prevQuestion.id);
     if (historyEntry && historyEntry.isCorrect) {
         score--;
-        updateScore();
     }
 
     // Retirer cette question de l'historique (on va la re-répondre)
@@ -605,8 +617,6 @@ function showCorrection(result) {
 
         option.onclick = null;
     });
-
-    updateScore();
 }
 
 function updateUI() {
@@ -629,11 +639,6 @@ function updateUI() {
     if (validateBtn) validateBtn.disabled = !hasAnswer;
 }
 
-function updateScore() {
-    // Score masqué du header - fonction conservée pour usage futur
-    // const scoreElement = document.getElementById('scoreDisplay');
-    // if (scoreElement) scoreElement.textContent = `Score: ${score}/${totalQuestions}`;
-}
 
 // Version simplifiée : affiche juste le score final (feedback immédiat remplace le récap)
 function showResults() {
@@ -658,65 +663,7 @@ function showResults() {
 
     // Masquer la section des mauvaises réponses (feedback immédiat la remplace)
     document.getElementById('wrongAnswersSection').style.display = 'none';
-
-    // displayWrongAnswers(); // Commenté : le feedback immédiat remplace le récapitulatif
 }
-
-/*
-// ANCIEN RÉCAPITULATIF - Commenté pour usage futur (mode examen)
-function displayWrongAnswers() {
-    const wrongAnswersSection = document.getElementById('wrongAnswersSection');
-    const wrongAnswersContainer = document.getElementById('wrongAnswersContainer');
-
-    if (wrongAnswers.length === 0) {
-        wrongAnswersSection.style.display = 'none';
-    } else {
-        wrongAnswersSection.style.display = 'block';
-        wrongAnswersContainer.innerHTML = '';
-
-        wrongAnswers.forEach((wrong, index) => {
-            const wrongQuestionDiv = document.createElement('div');
-            wrongQuestionDiv.className = 'wrong-question';
-
-            const questionText = document.createElement('div');
-            questionText.className = 'wrong-question-text';
-            questionText.textContent = `${index + 1}. ${wrong.question}`;
-
-            const comparisonDiv = document.createElement('div');
-            comparisonDiv.className = 'answer-comparison';
-
-            const userAnswerDiv = document.createElement('div');
-            userAnswerDiv.className = 'user-answer';
-            userAnswerDiv.innerHTML = `
-                <span class="answer-label">Ta réponse :</span>
-                <span>${wrong.userAnswer}</span>
-            `;
-
-            const correctAnswerDiv = document.createElement('div');
-            correctAnswerDiv.className = 'correct-answer';
-            correctAnswerDiv.innerHTML = `
-                <span class="answer-label">Bonne réponse :</span>
-                <span>${wrong.correctAnswer}</span>
-            `;
-
-            comparisonDiv.appendChild(userAnswerDiv);
-            comparisonDiv.appendChild(correctAnswerDiv);
-
-            wrongQuestionDiv.appendChild(questionText);
-            wrongQuestionDiv.appendChild(comparisonDiv);
-
-            if (wrong.explanation) {
-                const explanationDiv = document.createElement('div');
-                explanationDiv.className = 'explanation';
-                explanationDiv.innerHTML = `<strong>Explication :</strong> ${wrong.explanation}`;
-                wrongQuestionDiv.appendChild(explanationDiv);
-            }
-
-            wrongAnswersContainer.appendChild(wrongQuestionDiv);
-        });
-    }
-}
-*/
 
 function goHome() {
     if (confirm('Es-tu sûr de vouloir quitter le quiz ?')) {

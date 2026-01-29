@@ -198,19 +198,6 @@
     },
     {
       "id": 16,
-      "question": "Quel était le trigramme des backends dans l'ancienne architecture (CDMI/OBOS) ?",
-      "options": [
-        "DOB",
-        "DMB",
-        "DXB",
-        "DSB"
-      ],
-      "answer": 0,
-      "explanation": "DOB (Dovecot BackEnd) était le trigramme de l'ancienne architecture utilisant CDMI/OBOS pour le stockage",
-      "difficulty": "easy"
-    },
-    {
-      "id": 17,
       "question": "Quelle est la taille du métacash (ZRAM) sur un backend ?",
       "options": [
         "120 Go",
@@ -223,7 +210,7 @@
       "difficulty": "easy"
     },
     {
-      "id": 18,
+      "id": 17,
       "question": "Où est stocké le métacash sur un backend ?",
       "options": [
         "/var/dovecot/metacache/",
@@ -236,7 +223,7 @@
       "difficulty": "intermediate"
     },
     {
-      "id": 19,
+      "id": 18,
       "question": "Que contient le métacash d'un backend ?",
       "options": [
         "Les emails complets des utilisateurs",
@@ -249,7 +236,7 @@
       "difficulty": "intermediate"
     },
     {
-      "id": 20,
+      "id": 19,
       "question": "Que se passe-t-il si le métacash d'un backend est perdu ?",
       "options": [
         "Le métacash peut être reconstruit depuis ScalityRing",
@@ -262,7 +249,7 @@
       "difficulty": "intermediate"
     },
     {
-      "id": 21,
+      "id": 20,
       "question": "Quels sont les principaux services Dovecot actifs sur un backend ?",
       "options": [
         "Uniquement imap et pop3",
@@ -275,7 +262,7 @@
       "difficulty": "intermediate"
     },
     {
-      "id": 22,
+      "id": 21,
       "question": "Quel service backend est responsable de la synchronisation du métacash avec le stockage distant ?",
       "options": [
         "sync-worker",
@@ -288,7 +275,7 @@
       "difficulty": "intermediate"
     },
     {
-      "id": 23,
+      "id": 22,
       "question": "Quel service backend est responsable des notifications PNS ?",
       "options": [
         "notif-worker",
@@ -301,7 +288,7 @@
       "difficulty": "easy"
     },
     {
-      "id": 24,
+      "id": 23,
       "question": "Quelle est la principale raison pour laquelle les backends ne doivent PAS être redémarrés ?",
       "options": [
         "Effacement du métacash en ZRAM et impact sur ScalityRing",
@@ -314,7 +301,7 @@
       "difficulty": "intermediate"
     },
     {
-      "id": 25,
+      "id": 24,
       "question": "En cas d'incident sur un backend, quelle est la PRIORITÉ ABSOLUE ?",
       "options": [
         "Analyser les logs pour comprendre",
@@ -327,7 +314,7 @@
       "difficulty": "intermediate"
     },
     {
-      "id": 26,
+      "id": 25,
       "question": "Quelle est la procédure correcte de vidage d'un backend avant maintenance ?",
       "options": [
         "Redémarrer directement le backend",
@@ -340,7 +327,7 @@
       "difficulty": "intermediate"
     },
     {
-      "id": 27,
+      "id": 26,
       "question": "Lors du vidage progressif d'un backend, à quelle vitesse le vhost est-il remonté ?",
       "options": [
         "Immédiatement à 100",
@@ -353,7 +340,7 @@
       "difficulty": "advanced"
     },
     {
-      "id": 28,
+      "id": 27,
       "question": "Combien d'interfaces réseau (ETH) possède un backend ?",
       "options": [
         "1 interface",
@@ -366,7 +353,7 @@
       "difficulty": "intermediate"
     },
     {
-      "id": 29,
+      "id": 28,
       "question": "Quel composant maintient l'index permettant de localiser les objets dans ScalityRing ?",
       "options": [
         "Cassandra",
@@ -379,7 +366,7 @@
       "difficulty": "intermediate"
     },
     {
-      "id": 30,
+      "id": 29,
       "question": "Combien de boîtes mails un backend peut-il héberger approximativement ?",
       "options": [
         "10 000 à 20 000",
@@ -392,7 +379,7 @@
       "difficulty": "intermediate"
     },
     {
-      "id": 31,
+      "id": 30,
       "question": "Quelle commande permet de vérifier l'état du ring des directeurs ?",
       "options": [
         "doveadm director list",
@@ -405,7 +392,7 @@
       "difficulty": "easy"
     },
     {
-      "id": 32,
+      "id": 31,
       "question": "Dans un ring de directeurs, chaque directeur communique avec combien de voisins ?",
       "options": [
         "2 voisins (left et right)",
@@ -418,7 +405,7 @@
       "difficulty": "intermediate"
     },
     {
-      "id": 33,
+      "id": 32,
       "question": "Combien de directeurs minimum doivent être disponibles dans un ring pour maintenir le service ?",
       "options": [
         "1 directeur suffit",
@@ -431,7 +418,7 @@
       "difficulty": "advanced"
     },
     {
-      "id": 34,
+      "id": 33,
       "question": "Quelle est la principale différence entre DOB (ancienne architecture) et D1B/D2B/D3B (nouvelle) ?",
       "options": [
         "Le nombre de protocoles supportés",
@@ -444,7 +431,7 @@
       "difficulty": "intermediate"
     },
     {
-      "id": 35,
+      "id": 34,
       "question": "Pourquoi faut-il TOUJOURS utiliser l'identifiant ISE2 avec les commandes director ?",
       "options": [
         "Pour des raisons de sécurité uniquement",
@@ -457,7 +444,7 @@
       "difficulty": "advanced"
     },
     {
-      "id": 36,
+      "id": 35,
       "question": "Quel est l'impact d'une perte totale d'un ring de directeurs ?",
       "options": [
         "Perte du routage intelligent pour 1/3 des utilisateurs",
@@ -470,7 +457,7 @@
       "difficulty": "advanced"
     },
     {
-      "id": 37,
+      "id": 36,
       "question": "Quelle est la limitation actuelle du paramètre 'delayed_down_delay' de Dovemon ?",
       "options": [
         "Il est désactivé",
@@ -483,7 +470,7 @@
       "difficulty": "advanced"
     },
     {
-      "id": 38,
+      "id": 37,
       "question": "Combien de connexions en parallèle sont traitées par défaut lors d'un 'doveadm director flush' ?",
       "options": [
         "10 connexions",
